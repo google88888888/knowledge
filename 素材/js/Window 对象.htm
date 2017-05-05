@@ -1,0 +1,473 @@
+<!DOCTYPE HTML>
+<!-- saved from url=(0051)http://www.w3school.com.cn/jsref/dom_obj_window.asp -->
+<!DOCTYPE html PUBLIC "" ""><HTML lang="zh-cn"><HEAD><META content="IE=11.0000" 
+http-equiv="X-UA-Compatible">
+ 
+<META charset="gbk"> 
+<META name="robots" content="all"> 
+<META name="author" content="w3school.com.cn"> <LINK href="Window%20对象_files/c5.css" 
+rel="stylesheet" type="text/css"> <TITLE>Window 对象</TITLE> 
+<META name="GENERATOR" content="MSHTML 11.00.9600.18639"></HEAD> 
+<BODY class="browserscripting" id="jsref">
+<DIV id="wrapper">
+<DIV id="header"><A title="w3school 在线教程" style="float: left;" href="http://www.w3school.com.cn/index.html">w3school 
+在线教程</A>
+<DIV id="ad_head">
+<SCRIPT type="text/javascript"><!--
+google_ad_client = "pub-3381531532877742";
+/* 728x90, 创建于 08-12-1 */
+google_ad_slot = "7423315034";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</SCRIPT>
+ 
+<SCRIPT src="Window%20对象_files/f.txt" type="text/javascript"></SCRIPT>
+ </DIV></DIV>
+<DIV id="navfirst">
+<UL id="menu">
+  <LI id="h"><A title="HTML 系列教程" href="http://www.w3school.com.cn/h.asp">HTML 
+  系列教程</A></LI>
+  <LI id="b"><A title="浏览器脚本教程" 
+  href="http://www.w3school.com.cn/b.asp">浏览器脚本</A></LI>
+  <LI id="s"><A title="服务器脚本教程" 
+  href="http://www.w3school.com.cn/s.asp">服务器脚本</A></LI>
+  <LI id="d"><A title="ASP.NET 教程" 
+  href="http://www.w3school.com.cn/d.asp">ASP.NET 教程</A></LI>
+  <LI id="x"><A title="XML 系列教程" href="http://www.w3school.com.cn/x.asp">XML 
+  系列教程</A></LI>
+  <LI id="ws"><A title="Web Services 系列教程" href="http://www.w3school.com.cn/ws.asp">Web 
+  Services 系列教程</A></LI>
+  <LI id="w"><A title="建站手册" 
+  href="http://www.w3school.com.cn/w.asp">建站手册</A></LI></UL></DIV>
+<DIV id="navsecond">
+<DIV id="course">
+<H2>JS &amp; DOM 参考手册</H2>
+<UL>
+  <LI><A title="JavaScript 和 HTML DOM 参考手册" href="http://www.w3school.com.cn/jsref/index.asp">参考手册目录</A></LI></UL>
+<H2>JavaScript 对象</H2>
+<UL>
+  <LI><A title="JavaScript Array 对象参考手册" href="http://www.w3school.com.cn/jsref/jsref_obj_array.asp">JS 
+  Array</A></LI>
+  <LI><A title="JavaScript Boolean 对象参考手册" href="http://www.w3school.com.cn/jsref/jsref_obj_boolean.asp">JS 
+  Boolean</A></LI>
+  <LI><A title="JavaScript Date 对象参考手册" href="http://www.w3school.com.cn/jsref/jsref_obj_date.asp">JS 
+  Date</A></LI>
+  <LI><A title="JavaScript Math 对象的参考手册" href="http://www.w3school.com.cn/jsref/jsref_obj_math.asp">JS 
+  Math</A></LI>
+  <LI><A title="JavaScript Number 对象参考手册" href="http://www.w3school.com.cn/jsref/jsref_obj_number.asp">JS 
+  Number</A></LI>
+  <LI><A title="JavaScript String 对象参考手册" href="http://www.w3school.com.cn/jsref/jsref_obj_string.asp">JS 
+  String</A></LI>
+  <LI><A title="JavaScript RegExp 对象参考手册" href="http://www.w3school.com.cn/jsref/jsref_obj_regexp.asp">JS 
+  RegExp</A></LI>
+  <LI><A title="JavaScript 全局对象参考手册" href="http://www.w3school.com.cn/jsref/jsref_obj_global.asp">JS 
+  Functions</A></LI>
+  <LI><A title="JavaScript 事件参考手册" href="http://www.w3school.com.cn/jsref/jsref_events.asp">JS 
+  Events</A></LI></UL>
+<H2>Browser 对象</H2>
+<UL>
+  <LI class="currentLink"><A title="HTML DOM Window 对象" href="http://www.w3school.com.cn/jsref/dom_obj_window.asp">Window</A></LI>
+  <LI><A title="HTML DOM Navigator 对象" href="http://www.w3school.com.cn/jsref/dom_obj_navigator.asp">Navigator</A></LI>
+  <LI><A title="HTML DOM Screen 对象" href="http://www.w3school.com.cn/jsref/dom_obj_screen.asp">Screen</A></LI>
+  <LI><A title="HTML DOM History 对象" href="http://www.w3school.com.cn/jsref/dom_obj_history.asp">History</A></LI>
+  <LI><A title="HTML DOM Location 对象" href="http://www.w3school.com.cn/jsref/dom_obj_location.asp">Location</A></LI></UL>
+<H2>HTML DOM 对象</H2>
+<UL>
+  <LI><A title="HTML DOM Document 对象" href="http://www.w3school.com.cn/jsref/dom_obj_document.asp">DOM 
+  Document</A></LI>
+  <LI><A title="HTML DOM Element 对象" href="http://www.w3school.com.cn/jsref/dom_obj_all.asp">DOM 
+  Element</A></LI>
+  <LI><A title="HTML DOM Attribute 对象" href="http://www.w3school.com.cn/jsref/dom_obj_attributes.asp">DOM 
+  Attribute</A></LI>
+  <LI><A title="HTML DOM Event 对象" href="http://www.w3school.com.cn/jsref/dom_obj_event.asp">DOM 
+  Event</A></LI></UL>
+<H2>HTML 对象</H2>
+<UL>
+  <LI><A title="HTML DOM Anchor 对象" href="http://www.w3school.com.cn/jsref/dom_obj_anchor.asp">&lt;a&gt;</A></LI>
+  <LI><A title="HTML DOM Area 对象" href="http://www.w3school.com.cn/jsref/dom_obj_area.asp">&lt;area&gt;</A></LI>
+  <LI><A title="HTML DOM Audio 对象" href="http://www.w3school.com.cn/jsref/dom_obj_audio.asp">&lt;audio&gt;</A></LI>
+  <LI><A title="HTML DOM Base 对象" href="http://www.w3school.com.cn/jsref/dom_obj_base.asp">&lt;base&gt;</A></LI>
+  <LI><A title="HTML DOM Body 对象" href="http://www.w3school.com.cn/jsref/dom_obj_body.asp">&lt;body&gt;</A></LI>
+  <LI><A title="HTML DOM Blockquote 对象" href="http://www.w3school.com.cn/jsref/dom_obj_blockquote.asp">&lt;blockquote&gt;</A></LI>
+  <LI><A title="HTML DOM Button 对象" href="http://www.w3school.com.cn/jsref/dom_obj_pushbutton.asp">&lt;button&gt;</A></LI>
+  <LI><A title="HTML DOM Canvas 对象" href="http://www.w3school.com.cn/jsref/dom_obj_canvas.asp">&lt;canvas&gt;</A></LI>
+  <LI><A title="HTML DOM Column 对象" href="http://www.w3school.com.cn/jsref/dom_obj_col.asp">&lt;col&gt;</A></LI>
+  <LI><A title="HTML DOM ColumnGroup 对象" href="http://www.w3school.com.cn/jsref/dom_obj_colgroup.asp">&lt;colgroup&gt;</A></LI>
+  <LI><A title="HTML DOM Datalist 对象" href="http://www.w3school.com.cn/jsref/dom_obj_datalist.asp">&lt;datalist&gt;</A></LI>
+  <LI><A title="HTML DOM Del 对象" href="http://www.w3school.com.cn/jsref/dom_obj_del.asp">&lt;del&gt;</A></LI>
+  <LI><A title="HTML DOM Details 对象" href="http://www.w3school.com.cn/jsref/dom_obj_details.asp">&lt;details&gt;</A></LI>
+  <LI><A title="HTML DOM Dialog 对象" href="http://www.w3school.com.cn/jsref/dom_obj_dialog.asp">&lt;dialog&gt;</A></LI>
+  <LI><A title="HTML DOM Embed 对象" href="http://www.w3school.com.cn/jsref/dom_obj_embed.asp">&lt;embed&gt;</A></LI>
+  <LI><A title="HTML DOM Fieldset 对象" href="http://www.w3school.com.cn/jsref/dom_obj_fieldset.asp">&lt;fieldset&gt;</A></LI>
+  <LI><A title="HTML DOM Form 对象" href="http://www.w3school.com.cn/jsref/dom_obj_form.asp">&lt;form&gt;</A></LI>
+  <LI><A title="HTML DOM Frame 对象" href="http://www.w3school.com.cn/jsref/dom_obj_frame.asp">&lt;frame&gt;</A></LI>
+  <LI><A title="HTML DOM Frameset 对象" href="http://www.w3school.com.cn/jsref/dom_obj_frameset.asp">&lt;frameset&gt;</A></LI>
+  <LI><A title="HTML DOM IFrame 对象" href="http://www.w3school.com.cn/jsref/dom_obj_iframe.asp">&lt;iframe&gt;</A></LI>
+  <LI><A title="HTML DOM Image 对象" href="http://www.w3school.com.cn/jsref/dom_obj_image.asp">&lt;img&gt;</A></LI>
+  <LI><A title="HTML DOM Ins 对象" href="http://www.w3school.com.cn/jsref/dom_obj_ins.asp">&lt;ins&gt;</A></LI>
+  <LI><A title="HTML DOM Button 对象" href="http://www.w3school.com.cn/jsref/dom_obj_button.asp">&lt;input&gt; 
+  button</A></LI>
+  <LI><A title="HTML DOM Checkbox 对象" href="http://www.w3school.com.cn/jsref/dom_obj_checkbox.asp">&lt;input&gt; 
+  checkbox</A></LI>
+  <LI><A title="HTML DOM Color 对象" href="http://www.w3school.com.cn/jsref/dom_obj_color.asp">&lt;input&gt; 
+  color</A></LI>
+  <LI><A title="HTML DOM Input Date 对象" href="http://www.w3school.com.cn/jsref/dom_obj_date.asp">&lt;input&gt; 
+  date</A></LI>
+  <LI><A title="HTML DOM Datetime 对象" href="http://www.w3school.com.cn/jsref/dom_obj_datetime.asp">&lt;input&gt; 
+  datetime</A></LI>
+  <LI><A title="HTML DOM Datetime Local 对象" href="http://www.w3school.com.cn/jsref/dom_obj_datetime-local.asp">&lt;input&gt; 
+  datetime-local</A></LI>
+  <LI><A title="HTML DOM Email 对象" href="http://www.w3school.com.cn/jsref/dom_obj_email.asp">&lt;input&gt; 
+  email</A></LI>
+  <LI><A title="HTML DOM FileUpload 对象" href="http://www.w3school.com.cn/jsref/dom_obj_fileupload.asp">&lt;input&gt; 
+  file</A></LI>
+  <LI><A title="HTML DOM Hidden 对象" href="http://www.w3school.com.cn/jsref/dom_obj_hidden.asp">&lt;input&gt; 
+  hidden</A></LI>
+  <LI><A title="HTML DOM Input Image 对象" href="http://www.w3school.com.cn/jsref/dom_obj_input_image.asp">&lt;input&gt; 
+  image</A></LI>
+  <LI><A title="HTML DOM Month 对象" href="http://www.w3school.com.cn/jsref/dom_obj_month.asp">&lt;input&gt; 
+  month</A></LI>
+  <LI><A title="HTML DOM Number 对象" href="http://www.w3school.com.cn/jsref/dom_obj_number.asp">&lt;input&gt; 
+  number</A></LI>
+  <LI><A title="HTML DOM Password 对象" href="http://www.w3school.com.cn/jsref/dom_obj_password.asp">&lt;input&gt; 
+  password</A></LI>
+  <LI><A title="HTML DOM Input Range 对象" href="http://www.w3school.com.cn/jsref/dom_obj_range.asp">&lt;input&gt; 
+  range</A></LI>
+  <LI><A title="HTML DOM Radio 对象" href="http://www.w3school.com.cn/jsref/dom_obj_radio.asp">&lt;input&gt; 
+  radio</A></LI>
+  <LI><A title="HTML DOM Reset 对象" href="http://www.w3school.com.cn/jsref/dom_obj_reset.asp">&lt;input&gt; 
+  reset</A></LI>
+  <LI><A title="HTML DOM Input Search 对象" href="http://www.w3school.com.cn/jsref/dom_obj_search.asp">&lt;input&gt; 
+  search</A></LI>
+  <LI><A title="HTML DOM Submit 对象" href="http://www.w3school.com.cn/jsref/dom_obj_submit.asp">&lt;input&gt; 
+  submit</A></LI>
+  <LI><A title="HTML DOM Text 对象" href="http://www.w3school.com.cn/jsref/dom_obj_text.asp">&lt;input&gt; 
+  text</A></LI>
+  <LI><A title="HTML DOM Input Time 对象" href="http://www.w3school.com.cn/jsref/dom_obj_input_time.asp">&lt;input&gt; 
+  time</A></LI>
+  <LI><A title="HTML DOM Input URL 对象" href="http://www.w3school.com.cn/jsref/dom_obj_url.asp">&lt;input&gt; 
+  url</A></LI>
+  <LI><A title="HTML DOM Week 对象" href="http://www.w3school.com.cn/jsref/dom_obj_week.asp">&lt;input&gt; 
+  week</A></LI>
+  <LI><A title="HTML DOM Keygen 对象" href="http://www.w3school.com.cn/jsref/dom_obj_keygen.asp">&lt;keygen&gt;</A></LI>
+  <LI><A title="HTML DOM Label 对象" href="http://www.w3school.com.cn/jsref/dom_obj_label.asp">&lt;label&gt;</A></LI>
+  <LI><A title="HTML DOM Legend 对象" href="http://www.w3school.com.cn/jsref/dom_obj_legend.asp">&lt;legend&gt;</A></LI>
+  <LI><A title="HTML DOM Li 对象" href="http://www.w3school.com.cn/jsref/dom_obj_li.asp">&lt;li&gt;</A></LI>
+  <LI><A title="HTML DOM Link 对象" href="http://www.w3school.com.cn/jsref/dom_obj_link.asp">&lt;link&gt;</A></LI>
+  <LI><A title="HTML DOM Map 对象" href="http://www.w3school.com.cn/jsref/dom_obj_map.asp">&lt;map&gt;</A></LI>
+  <LI><A title="HTML DOM Menu 对象" href="http://www.w3school.com.cn/jsref/dom_obj_menu.asp">&lt;menu&gt;</A></LI>
+  <LI><A title="HTML DOM MenuItem 对象" href="http://www.w3school.com.cn/jsref/dom_obj_menuitem.asp">&lt;menuitem&gt;</A></LI>
+  <LI><A title="HTML DOM Meta 对象" href="http://www.w3school.com.cn/jsref/dom_obj_meta.asp">&lt;meta&gt;</A></LI>
+  <LI><A title="HTML DOM Meter 对象" href="http://www.w3school.com.cn/jsref/dom_obj_meter.asp">&lt;meter&gt;</A></LI>
+  <LI><A title="HTML DOM Object 对象" href="http://www.w3school.com.cn/jsref/dom_obj_object.asp">&lt;object&gt;</A></LI>
+  <LI><A title="HTML DOM Ol 对象" href="http://www.w3school.com.cn/jsref/dom_obj_ol.asp">&lt;ol&gt;</A></LI>
+  <LI><A title="HTML DOM OptionGroup 对象" href="http://www.w3school.com.cn/jsref/dom_obj_optgroup.asp">&lt;optgroup&gt;</A></LI>
+  <LI><A title="HTML DOM Option 对象" href="http://www.w3school.com.cn/jsref/dom_obj_option.asp">&lt;option&gt;</A></LI>
+  <LI><A title="HTML DOM Parameter 对象" href="http://www.w3school.com.cn/jsref/dom_obj_param.asp">&lt;param&gt;</A></LI>
+  <LI><A title="HTML DOM Progress 对象" href="http://www.w3school.com.cn/jsref/dom_obj_progress.asp">&lt;progress&gt;</A></LI>
+  <LI><A title="HTML DOM Quote 对象" href="http://www.w3school.com.cn/jsref/dom_obj_quote.asp">&lt;q&gt;</A></LI>
+  <LI><A title="HTML DOM Script 对象" href="http://www.w3school.com.cn/jsref/dom_obj_script.asp">&lt;script&gt;</A></LI>
+  <LI><A title="HTML DOM Select 对象" href="http://www.w3school.com.cn/jsref/dom_obj_select.asp">&lt;select&gt;</A></LI>
+  <LI><A title="HTML DOM Source 对象" href="http://www.w3school.com.cn/jsref/dom_obj_source.asp">&lt;source&gt;</A></LI>
+  <LI><A title="HTML DOM Style 对象" href="http://www.w3school.com.cn/jsref/dom_obj_style.asp">&lt;style&gt;</A></LI>
+  <LI><A title="HTML DOM Table 对象" href="http://www.w3school.com.cn/jsref/dom_obj_table.asp">&lt;table&gt;</A></LI>
+  <LI><A title="HTML DOM TableCell 对象" href="http://www.w3school.com.cn/jsref/dom_obj_tabledata.asp">&lt;td&gt;</A></LI>
+  <LI><A title="HTML DOM TableHeader 对象" href="http://www.w3school.com.cn/jsref/dom_obj_tablehead.asp">&lt;th&gt;</A></LI>
+  <LI><A title="HTML DOM TableRow 对象" href="http://www.w3school.com.cn/jsref/dom_obj_tablerow.asp">&lt;tr&gt;</A></LI>
+  <LI><A title="HTML DOM Textarea 对象" href="http://www.w3school.com.cn/jsref/dom_obj_textarea.asp">&lt;textarea&gt;</A></LI>
+  <LI><A title="HTML DOM Time 对象" href="http://www.w3school.com.cn/jsref/dom_obj_time.asp">&lt;time&gt;</A></LI>
+  <LI><A title="HTML DOM Title 对象" href="http://www.w3school.com.cn/jsref/dom_obj_title.asp">&lt;title&gt;</A></LI>
+  <LI><A title="HTML DOM Track 对象" href="http://www.w3school.com.cn/jsref/dom_obj_track.asp">&lt;track&gt;</A></LI>
+  <LI><A title="HTML DOM Video 对象" href="http://www.w3school.com.cn/jsref/dom_obj_video.asp">&lt;video&gt;</A></LI></UL></DIV>
+<DIV id="selected">
+<H2>建站手册</H2>
+<UL>
+  <LI><A title="网站构建" 
+  href="http://www.w3school.com.cn/site/index.asp">网站构建</A></LI>
+  <LI><A title="万维网联盟 (W3C)" 
+  href="http://www.w3school.com.cn/w3c/index.asp">万维网联盟 (W3C)</A></LI>
+  <LI><A title="浏览器信息" 
+  href="http://www.w3school.com.cn/browsers/index.asp">浏览器信息</A></LI>
+  <LI><A title="网站品质" 
+  href="http://www.w3school.com.cn/quality/index.asp">网站品质</A></LI>
+  <LI><A title="语义网" 
+  href="http://www.w3school.com.cn/semweb/index.asp">语义网</A></LI>
+  <LI><A title="职业规划" 
+  href="http://www.w3school.com.cn/careers/index.asp">职业规划</A></LI>
+  <LI><A title="网站主机" 
+  href="http://www.w3school.com.cn/hosting/index.asp">网站主机</A></LI></UL>
+<H2><A title="关于 W3School" id="link_about" href="http://www.w3school.com.cn/about/index.asp">关于 
+W3School</A></H2>
+<H2><A title="帮助 W3School" id="link_help" href="http://www.w3school.com.cn/about/about_helping.asp">帮助 
+W3School</A></H2></DIV></DIV>
+<DIV id="maincontent">
+<H1>Window 对象</H1>
+<DIV>
+<H2>Window 对象</H2>
+<P>Window 对象表示浏览器中打开的窗口。</P>
+<P>如果文档包含框架（frame 或 iframe 标签），浏览器会为 HTML 文档创建一个 window 对象，并为每个框架创建一个额外的 window 
+对象。</P>
+<P class="note"><SPAN>注释：</SPAN>没有应用于 window 对象的公开标准，不过所有浏览器都支持该对象。</P></DIV>
+<DIV>
+<H2>Window 对象集合</H2>
+<TABLE class="dataintable">
+  <TBODY>
+  <TR>
+    <TH style="width: 25%;">集合</TH>
+    <TH>描述</TH></TR>
+  <TR>
+    <TD class="no_wrap">frames[]</TD>
+    <TD>
+      <P>返回窗口中所有命名的框架。</P>
+      <P>该集合是 Window 对象的数组，每个 Window 对象在窗口中含有一个框架或 &lt;iframe&gt;。属性 
+      frames.length 存放数组 frames[] 中含有的元素个数。注意，frames[] 数组中引用的框架可能还包括框架，它们自己也具有 
+      frames[] 数组。</P></TD></TR></TBODY></TABLE></DIV>
+<DIV>
+<H2>Window 对象属性</H2>
+<TABLE class="dataintable">
+  <TBODY>
+  <TR>
+    <TH style="width: 25%;">属性</TH>
+    <TH>描述</TH></TR>
+  <TR>
+    <TD><A 
+      href="http://www.w3school.com.cn/jsref/prop_win_closed.asp">closed</A></TD>
+    <TD>返回窗口是否已被关闭。</TD></TR>
+  <TR>
+    <TD><A 
+      href="http://www.w3school.com.cn/jsref/prop_win_defaultstatus.asp">defaultStatus</A></TD>
+    <TD>设置或返回窗口状态栏中的默认文本。</TD></TR>
+  <TR>
+    <TD><A 
+      href="http://www.w3school.com.cn/jsref/dom_obj_document.asp">document</A></TD>
+    <TD>对 Document 对象的只读引用。请参阅 <A href="http://www.w3school.com.cn/jsref/dom_obj_document.asp">Document 
+      对象</A>。</TD></TR>
+  <TR>
+    <TD><A 
+      href="http://www.w3school.com.cn/jsref/dom_obj_history.asp">history</A></TD>
+    <TD>对 History 对象的只读引用。请参数 <A href="http://www.w3school.com.cn/jsref/dom_obj_history.asp">History 
+      对象</A>。</TD></TR>
+  <TR>
+    <TD><A href="http://www.w3school.com.cn/jsref/prop_win_innerheight_innerwidth.asp">innerheight</A></TD>
+    <TD>返回窗口的文档显示区的高度。</TD></TR>
+  <TR>
+    <TD><A href="http://www.w3school.com.cn/jsref/prop_win_innerheight_innerwidth.asp">innerwidth</A></TD>
+    <TD>返回窗口的文档显示区的宽度。</TD></TR>
+  <TR>
+    <TD>length</TD>
+    <TD>设置或返回窗口中的框架数量。</TD></TR>
+  <TR>
+    <TD><A 
+      href="http://www.w3school.com.cn/jsref/dom_obj_location.asp">location</A></TD>
+    <TD>用于窗口或框架的 Location 对象。请参阅 <A href="http://www.w3school.com.cn/jsref/dom_obj_location.asp">Location 
+      对象</A>。</TD></TR>
+  <TR>
+    <TD><A 
+    href="http://www.w3school.com.cn/jsref/prop_win_name.asp">name</A></TD>
+    <TD>设置或返回窗口的名称。</TD></TR>
+  <TR>
+    <TD><A 
+      href="http://www.w3school.com.cn/jsref/dom_obj_navigator.asp">Navigator</A></TD>
+    <TD>对 Navigator 对象的只读引用。请参数 <A href="http://www.w3school.com.cn/jsref/dom_obj_navigator.asp">Navigator 
+      对象</A>。</TD></TR>
+  <TR>
+    <TD><A 
+      href="http://www.w3school.com.cn/jsref/prop_win_opener.asp">opener</A></TD>
+    <TD>返回对创建此窗口的窗口的引用。</TD></TR>
+  <TR>
+    <TD><A 
+      href="http://www.w3school.com.cn/jsref/prop_win_outerheight.asp">outerheight</A></TD>
+    <TD>返回窗口的外部高度。</TD></TR>
+  <TR>
+    <TD><A 
+      href="http://www.w3school.com.cn/jsref/prop_win_outerwidth.asp">outerwidth</A></TD>
+    <TD>返回窗口的外部宽度。</TD></TR>
+  <TR>
+    <TD>pageXOffset</TD>
+    <TD>设置或返回当前页面相对于窗口显示区左上角的 X 位置。</TD></TR>
+  <TR>
+    <TD>pageYOffset</TD>
+    <TD>设置或返回当前页面相对于窗口显示区左上角的 Y 位置。</TD></TR>
+  <TR>
+    <TD>parent</TD>
+    <TD>返回父窗口。</TD></TR>
+  <TR>
+    <TD><A 
+      href="http://www.w3school.com.cn/jsref/dom_obj_screen.asp">Screen</A></TD>
+    <TD>对 Screen 对象的只读引用。请参数 <A href="http://www.w3school.com.cn/jsref/dom_obj_screen.asp">Screen 
+      对象</A>。</TD></TR>
+  <TR>
+    <TD><A 
+    href="http://www.w3school.com.cn/jsref/prop_win_self.asp">self</A></TD>
+    <TD>返回对当前窗口的引用。等价于 Window 属性。</TD></TR>
+  <TR>
+    <TD><A 
+      href="http://www.w3school.com.cn/jsref/prop_win_status.asp">status</A></TD>
+    <TD>设置窗口状态栏的文本。</TD></TR>
+  <TR>
+    <TD><A href="http://www.w3school.com.cn/jsref/prop_win_top.asp">top</A></TD>
+    <TD>返回最顶层的先辈窗口。</TD></TR>
+  <TR>
+    <TD>window</TD>
+    <TD>window 属性等价于 self 属性，它包含了对窗口自身的引用。</TD></TR>
+  <TR>
+    <TD>
+      <UL>
+        <LI>screenLeft</LI>
+        <LI>screenTop</LI>
+        <LI>screenX</LI>
+        <LI>screenY</LI></UL></TD>
+    <TD>只读整数。声明了窗口的左上角在屏幕上的的 x 坐标和 y 坐标。IE、Safari 和 Opera 支持 screenLeft 和 
+      screenTop，而 Firefox 和 Safari 支持 screenX 和 
+screenY。</TD></TR></TBODY></TABLE></DIV>
+<DIV>
+<H2>Window 对象方法</H2>
+<TABLE class="dataintable">
+  <TBODY>
+  <TR>
+    <TH style="width: 25%;">方法</TH>
+    <TH>描述</TH></TR>
+  <TR>
+    <TD><A 
+      href="http://www.w3school.com.cn/jsref/met_win_alert.asp">alert()</A></TD>
+    <TD>显示带有一段消息和一个确认按钮的警告框。</TD></TR>
+  <TR>
+    <TD><A 
+    href="http://www.w3school.com.cn/jsref/met_win_blur.asp">blur()</A></TD>
+    <TD>把键盘焦点从顶层窗口移开。</TD></TR>
+  <TR>
+    <TD><A 
+      href="http://www.w3school.com.cn/jsref/met_win_clearinterval.asp">clearInterval()</A></TD>
+    <TD>取消由 setInterval() 设置的 timeout。</TD></TR>
+  <TR>
+    <TD><A 
+      href="http://www.w3school.com.cn/jsref/met_win_cleartimeout.asp">clearTimeout()</A></TD>
+    <TD>取消由 setTimeout() 方法设置的 timeout。</TD></TR>
+  <TR>
+    <TD><A 
+      href="http://www.w3school.com.cn/jsref/met_win_close.asp">close()</A></TD>
+    <TD>关闭浏览器窗口。</TD></TR>
+  <TR>
+    <TD><A 
+      href="http://www.w3school.com.cn/jsref/met_win_confirm.asp">confirm()</A></TD>
+    <TD>显示带有一段消息以及确认按钮和取消按钮的对话框。</TD></TR>
+  <TR>
+    <TD><A 
+      href="http://www.w3school.com.cn/jsref/met_win_createpopup.asp">createPopup()</A></TD>
+    <TD>创建一个 pop-up 窗口。</TD></TR>
+  <TR>
+    <TD><A 
+      href="http://www.w3school.com.cn/jsref/met_win_focus.asp">focus()</A></TD>
+    <TD>把键盘焦点给予一个窗口。</TD></TR>
+  <TR>
+    <TD><A 
+      href="http://www.w3school.com.cn/jsref/met_win_moveby.asp">moveBy()</A></TD>
+    <TD>可相对窗口的当前坐标把它移动指定的像素。</TD></TR>
+  <TR>
+    <TD><A 
+      href="http://www.w3school.com.cn/jsref/met_win_moveto.asp">moveTo()</A></TD>
+    <TD>把窗口的左上角移动到一个指定的坐标。</TD></TR>
+  <TR>
+    <TD><A 
+    href="http://www.w3school.com.cn/jsref/met_win_open.asp">open()</A></TD>
+    <TD>打开一个新的浏览器窗口或查找一个已命名的窗口。</TD></TR>
+  <TR>
+    <TD><A 
+      href="http://www.w3school.com.cn/jsref/met_win_print.asp">print()</A></TD>
+    <TD>打印当前窗口的内容。</TD></TR>
+  <TR>
+    <TD><A 
+      href="http://www.w3school.com.cn/jsref/met_win_prompt.asp">prompt()</A></TD>
+    <TD>显示可提示用户输入的对话框。</TD></TR>
+  <TR>
+    <TD><A 
+      href="http://www.w3school.com.cn/jsref/met_win_resizeby.asp">resizeBy()</A></TD>
+    <TD>按照指定的像素调整窗口的大小。</TD></TR>
+  <TR>
+    <TD><A 
+      href="http://www.w3school.com.cn/jsref/met_win_resizeto.asp">resizeTo()</A></TD>
+    <TD>把窗口的大小调整到指定的宽度和高度。</TD></TR>
+  <TR>
+    <TD><A 
+      href="http://www.w3school.com.cn/jsref/met_win_scrollby.asp">scrollBy()</A></TD>
+    <TD>按照指定的像素值来滚动内容。</TD></TR>
+  <TR>
+    <TD><A 
+      href="http://www.w3school.com.cn/jsref/met_win_scrollto.asp">scrollTo()</A></TD>
+    <TD>把内容滚动到指定的坐标。</TD></TR>
+  <TR>
+    <TD><A 
+      href="http://www.w3school.com.cn/jsref/met_win_setinterval.asp">setInterval()</A></TD>
+    <TD>按照指定的周期（以毫秒计）来调用函数或计算表达式。</TD></TR>
+  <TR>
+    <TD><A 
+      href="http://www.w3school.com.cn/jsref/met_win_settimeout.asp">setTimeout()</A></TD>
+    <TD>在指定的毫秒数后调用函数或计算表达式。</TD></TR></TBODY></TABLE></DIV>
+<DIV>
+<H2>Window 对象描述</H2>
+<P>Window 对象表示一个浏览器窗口或一个框架。在客户端 JavaScript 中，Window 
+对象是全局对象，所有的表达式都在当前的环境中计算。也就是说，要引用当前窗口根本不需要特殊的语法，可以把那个窗口的属性作为全局变量来使用。例如，可以只写 <A 
+href="http://www.w3school.com.cn/jsref/dom_obj_document.asp">document</A>，而不必写 
+window.document。</P>
+<P>同样，可以把当前窗口对象的方法当作函数来使用，如只写 alert()，而不必写 Window.alert()。</P>
+<P>除了上面列出的属性和方法，Window 对象还实现了核心 JavaScript 所定义的所有全局属性和方法。</P>
+<P>Window 对象的 window 属性和 <A href="http://www.w3school.com.cn/jsref/prop_win_self.asp">self 
+属性</A>引用的都是它自己。当你想明确地引用当前窗口，而不仅仅是隐式地引用它时，可以使用这两个属性。除了这两个属性之外，parent 属性、top 属性以及 
+frame[] 数组都引用了与当前 Window 对象相关的其他 Window 对象。</P>
+<P>要引用窗口中的一个框架，可以使用如下语法：</P>
+<PRE>frame[i]		<SPAN>//当前窗口的框架</SPAN>
+self.frame[i]	<SPAN>//当前窗口的框架</SPAN>
+w.frame[i]	<SPAN>//窗口 w 的框架</SPAN>
+</PRE>
+<P>要引用一个框架的父窗口（或父框架），可以使用下面的语法：</P>
+<PRE>parent		<SPAN>//当前窗口的父窗口</SPAN>
+self.parent	<SPAN>//当前窗口的父窗口</SPAN>
+w.parent 		<SPAN>//窗口 w 的父窗口</SPAN>
+</PRE>
+<P>要从顶层窗口含有的任何一个框架中引用它，可以使用如下语法：</P>
+<PRE>top		<SPAN>//当前框架的顶层窗口</SPAN>
+self.top		<SPAN>//当前框架的顶层窗口</SPAN>
+f.top		<SPAN>//框架 f 的顶层窗口</SPAN>
+</PRE>
+<P>新的顶层浏览器窗口由方法 Window.open() 创建。当调用该方法时，应把 open() 
+调用的返回值存储在一个变量中，然后使用那个变量来引用新窗口。新窗口的 <A href="http://www.w3school.com.cn/jsref/prop_win_opener.asp">opener 
+属性</A>反过来引用了打开它的那个窗口。</P>
+<P>一般来说，Window 对象的方法都是对浏览器窗口或框架进行某种操作。而 <A href="http://www.w3school.com.cn/jsref/met_win_alert.asp">alert() 
+方法</A>、<A href="http://www.w3school.com.cn/jsref/met_win_confirm.asp">confirm() 
+方法</A>和 <A href="http://www.w3school.com.cn/jsref/met_win_prompt.asp">prompt 
+方法</A>则不同，它们通过简单的对话框与用户进行交互。</P></DIV></DIV><!-- maincontent end --> 
+<DIV id="sidebar">
+<DIV id="searchui">
+<FORM id="searchform" action="http://www.google.com.hk/search" method="get">
+<P><LABEL for="searched_content">Search:</LABEL></P>
+<P><INPUT name="sitesearch" type="hidden" value="w3school.com.cn"></P>
+<P><INPUT name="as_q" title="在此输入搜索内容。" class="box" id="searched_content" type="text"> 
+<INPUT title="搜索！" class="button" type="submit" value="Go"> </P></FORM></DIV>
+<DIV id="tools">
+<H5 id="tools_reference"><A 
+href="http://www.w3school.com.cn/jsref/index.asp">JavaScript 参考手册</A></H5>
+<H5 id="tools_example"><A href="http://www.w3school.com.cn/example/jseg_examples.asp">JavaScript 
+实例</A></H5>
+<H5 id="tools_quiz"><A 
+href="http://www.w3school.com.cn/js/js_quiz.asp">JavaScript 测验</A></H5></DIV>
+<DIV id="ad">
+<SCRIPT type="text/javascript"><!--
+google_ad_client = "ca-pub-3381531532877742";
+/* sidebar-160x600 */
+google_ad_slot = "3772569310";
+google_ad_width = 160;
+google_ad_height = 600;
+//-->
+</SCRIPT>
+ 
+<SCRIPT src="Window%20对象_files/f.txt" type="text/javascript"></SCRIPT>
+ </DIV></DIV>
+<DIV id="footer">
+<P>W3School 提供的内容仅用于培训。我们不保证内容的正确性。通过使用本站内容随之而来的风险与本站无关。W3School 
+简体中文版的所有内容仅供测试，对任何法律问题及风险不承担任何责任。 </P>
+<P>当使用本站时，代表您已接受了本站的<A title="关于使用" href="http://www.w3school.com.cn/about/about_use.asp">使用条款</A>和<A 
+title="关于隐私" 
+href="http://www.w3school.com.cn/about/about_privacy.asp">隐私条款</A>。版权所有，保留一切权利。
+ 赞助商：<A title="上海赢科投资有限公司" href="http://www.yktz.net/">上海赢科投资有限公司</A>。 <A href="http://www.miitbeian.gov.cn/">蒙ICP备06004630号</A> 
+</P></DIV></DIV><!-- wrapper end --> </BODY></HTML>

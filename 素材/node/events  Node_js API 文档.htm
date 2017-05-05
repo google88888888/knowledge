@@ -1,0 +1,617 @@
+﻿<!DOCTYPE HTML>
+<!-- saved from url=(0032)http://nodejs.cn/api/events.html -->
+<!DOCTYPE html PUBLIC "" ""><HTML lang="zh-cmn-Hans"><HEAD><META 
+content="IE=11.0000" http-equiv="X-UA-Compatible">
+   
+<META charset="utf-8">   <TITLE>events | Node.js API 文档</TITLE>   <LINK href="events%20%20Node_js%20API%20文档_files/api.css" 
+rel="stylesheet">   <LINK href="/static/favicon.png" rel="icon" type="image/png" 
+sizes="32x32"> 
+<META name="GENERATOR" content="MSHTML 11.00.9600.18639"></HEAD> 
+<BODY class="alt apidoc" id="api-section-events">
+<DIV class="clearfix" id="content">
+<DIV class="interior" id="column2">
+<DIV class="interior" id="intro"><A href="http://nodejs.cn/">          Node.js 
+中文网         </A>         
+<DIV><INPUT id="search_input" placeholder="API 快速搜索" value="">         
+</DIV></DIV>
+<UL>
+  <LI><A class="nav-documentation" href="http://nodejs.cn/api/documentation.html">关于本文档</A></LI>
+  <LI><A class="nav-synopsis" 
+  href="http://nodejs.cn/api/synopsis.html">用法与例子</A></LI></UL>
+<DIV class="line"></DIV>
+<UL>
+  <LI><A class="nav-assert" href="http://nodejs.cn/api/assert.html">Assert 
+  (断言)</A></LI>
+  <LI><A class="nav-buffer" 
+  href="http://nodejs.cn/api/buffer.html">Buffer</A></LI>
+  <LI><A class="nav-addons" href="http://nodejs.cn/api/addons.html">C/C++ 
+  插件</A></LI>
+  <LI><A class="nav-child_process" href="http://nodejs.cn/api/child_process.html">Child 
+  Processes (子进程)</A></LI>
+  <LI><A class="nav-cluster" href="http://nodejs.cn/api/cluster.html">Cluster 
+  (集群)</A></LI>
+  <LI><A class="nav-cli" href="http://nodejs.cn/api/cli.html">CLI 
+  (命令行选项)</A></LI>
+  <LI><A class="nav-console" href="http://nodejs.cn/api/console.html">Console 
+  (控制台)</A></LI>
+  <LI><A class="nav-crypto" href="http://nodejs.cn/api/crypto.html">Crypto 
+  (加密)</A></LI>
+  <LI><A class="nav-debugger" href="http://nodejs.cn/api/debugger.html">Debugger 
+  (调试器)</A></LI>
+  <LI><A class="nav-dns" href="http://nodejs.cn/api/dns.html">DNS 
+  (域名服务器)</A></LI>
+  <LI><A class="nav-domain" href="http://nodejs.cn/api/domain.html">Domain 
+  (域)</A></LI>
+  <LI><A class="nav-errors" href="http://nodejs.cn/api/errors.html">Error 
+  (错误)</A></LI>
+  <LI><A class="nav-events active" 
+  href="http://nodejs.cn/api/events.html">Events (事件)</A></LI>
+  <LI><A class="nav-fs" href="http://nodejs.cn/api/fs.html">File System 
+  (文件系统)</A></LI>
+  <LI><A class="nav-globals" href="http://nodejs.cn/api/globals.html">Global 
+  (全局变量)</A></LI>
+  <LI><A class="nav-http" href="http://nodejs.cn/api/http.html">HTTP</A></LI>
+  <LI><A class="nav-https" href="http://nodejs.cn/api/https.html">HTTPS</A></LI>
+  <LI><A class="nav-modules" href="http://nodejs.cn/api/modules.html">Module 
+  (模块)</A></LI>
+  <LI><A class="nav-net" href="http://nodejs.cn/api/net.html">Net (网络)</A></LI>
+  <LI><A class="nav-os" href="http://nodejs.cn/api/os.html">OS (操作系统)</A></LI>
+  <LI><A class="nav-path" href="http://nodejs.cn/api/path.html">Path 
+  (路径)</A></LI>
+  <LI><A class="nav-process" href="http://nodejs.cn/api/process.html">Process 
+  (进程)</A></LI>
+  <LI><A class="nav-punycode" 
+  href="http://nodejs.cn/api/punycode.html">Punycode</A></LI>
+  <LI><A class="nav-querystring" 
+  href="http://nodejs.cn/api/querystring.html">Query Strings (查询字符串)</A></LI>
+  <LI><A class="nav-readline" href="http://nodejs.cn/api/readline.html">Readline 
+  (逐行读取)</A></LI>
+  <LI><A class="nav-repl" href="http://nodejs.cn/api/repl.html">REPL 
+  (交互式解释器)</A></LI>
+  <LI><A class="nav-stream" href="http://nodejs.cn/api/stream.html">Stream 
+  (流)</A></LI>
+  <LI><A class="nav-string_decoder" href="http://nodejs.cn/api/string_decoder.html">String 
+  Decoder (字符串解码器)</A></LI>
+  <LI><A class="nav-timers" href="http://nodejs.cn/api/timers.html">Timer 
+  (定时器)</A></LI>
+  <LI><A class="nav-tls" href="http://nodejs.cn/api/tls.html">TLS 
+  (安全传输层)</A></LI>
+  <LI><A class="nav-tty" href="http://nodejs.cn/api/tty.html">TTY (终端)</A></LI>
+  <LI><A class="nav-dgram" href="http://nodejs.cn/api/dgram.html">UDP/Datagram 
+  (数据报)</A></LI>
+  <LI><A class="nav-url" href="http://nodejs.cn/api/url.html">URL</A></LI>
+  <LI><A class="nav-util" href="http://nodejs.cn/api/util.html">Util 
+  (实用工具)</A></LI>
+  <LI><A class="nav-v8" href="http://nodejs.cn/api/v8.html">V8</A></LI>
+  <LI><A class="nav-vm" href="http://nodejs.cn/api/vm.html">VM (虚拟机)</A></LI>
+  <LI><A class="nav-zlib" href="http://nodejs.cn/api/zlib.html">ZLIB 
+  (压缩)</A></LI></UL>
+<DIV class="line"></DIV></DIV>
+<DIV class="interior" id="column1" data-id="events"><HEADER>
+<H1>Node.js v6.10.3 文档</H1>
+<DIV id="gtoc">
+<P><A name="toc" href="http://nodejs.cn/api/">返回文档首页</A>             <!--<a href="/api/all.html">单页面显示</a> |--> 
+            <!--<a href="/api/events.json">JSON格式</a> |-->             <!--<a href="/api/en/events.html">查看英文版</a>--> 
+          </P></DIV>
+<HR>
+</HEADER>
+<DIV id="toc">
+<H2>目录</H2>
+<UL>
+  <LI><SPAN class="stability_2"><A href="http://nodejs.cn/api/events.html#events_events">events 
+  (事件)</A></SPAN>
+  <UL> 
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/events.html#events_passing_arguments_and_this_to_listeners">给监听器传入参数与 
+    <CODE>this</CODE></A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/events.html#events_asynchronous_vs_synchronous">异步与同步</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/events.html#events_handling_events_only_once">只处理事件一次</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/events.html#events_error_events">错误事件</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/events.html#events_class_eventemitter">EventEmitter 
+    类</A></SPAN>
+    <UL> 
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/events.html#events_event_newlistener">'newListener' 
+      事件</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/events.html#events_event_removelistener">'removeListener' 
+      事件</A></SPAN></LI>
+      <LI><SPAN class="stability_0"><A href="http://nodejs.cn/api/events.html#events_eventemitter_listenercount_emitter_eventname">EventEmitter.listenerCount(emitter, 
+      eventName)</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/events.html#events_eventemitter_defaultmaxlisteners">EventEmitter.defaultMaxListeners</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/events.html#events_emitter_addlistener_eventname_listener">emitter.addListener(eventName, 
+      listener)</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/events.html#events_emitter_emit_eventname_args">emitter.emit(eventName[, 
+      ...args])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/events.html#events_emitter_eventnames">emitter.eventNames()</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/events.html#events_emitter_getmaxlisteners">emitter.getMaxListeners()</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/events.html#events_emitter_listenercount_eventname">emitter.listenerCount(eventName)</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/events.html#events_emitter_listeners_eventname">emitter.listeners(eventName)</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/events.html#events_emitter_on_eventname_listener">emitter.on(eventName, 
+      listener)</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/events.html#events_emitter_once_eventname_listener">emitter.once(eventName, 
+      listener)</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/events.html#events_emitter_prependlistener_eventname_listener">emitter.prependListener(eventName, 
+      listener)</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/events.html#events_emitter_prependoncelistener_eventname_listener">emitter.prependOnceListener(eventName, 
+      listener)</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/events.html#events_emitter_removealllisteners_eventname">emitter.removeAllListeners([eventName])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/events.html#events_emitter_removelistener_eventname_listener">emitter.removeListener(eventName, 
+      listener)</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/events.html#events_emitter_setmaxlisteners_n">emitter.setMaxListeners(n)</A></SPAN></LI></UL></LI></UL></LI></UL></DIV>
+<DIV id="apicontent">
+<H1>events (事件)<SPAN><A class="mark" id="events_events" href="http://nodejs.cn/api/events.html#events_events">#</A></SPAN></H1>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/events.html#events_events">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/events/events.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<PRE class="api_stability api_stability_2"><A href="http://nodejs.cn/api/documentation.html#documentation_stability_index">稳定性: 2</A> - 稳定的</PRE><!--type=module--> 
+<P>大多数 Node.js 核心 API 
+都是采用惯用的异步事件驱动架构，其中某些类型的对象（称为触发器）会周期性地触发命名事件来调用函数对象（监听器）。</P>
+<P>例如，一个 <A 
+href="http://nodejs.cn/api/net.html#net_class_net_server"><CODE>net.Server</CODE></A> 
+对象会在每次有新连接时触发一个事件；一个 <A href="http://nodejs.cn/api/fs.html#fs_class_fs_readstream"><CODE>fs.ReadStream</CODE></A> 
+会在文件被打开时触发一个事件；一个 <A href="http://nodejs.cn/api/stream.html">stream</A> 
+会在数据可读时触发事件。</P>
+<P>所有能触发事件的对象都是 <CODE>EventEmitter</CODE> 类的实例。 这些对象开放了一个 
+<CODE>eventEmitter.on()</CODE> 函数，允许将一个或多个函数附加到会被对象触发的命名事件上。
+ 事件名称通常是驼峰式的字符串，但也可以使用任何有效的 JavaScript 属性名。</P>
+<P>当 <CODE>EventEmitter</CODE> 对象触发一个事件时，所有附加在特定事件上的函数都被同步地调用。
+ 被调用的监听器返回的值都会被忽略并丢弃。</P>
+<P>以下例子展示了一个只有单个监听器的 <CODE>EventEmitter</CODE> 实例。 
+<CODE>eventEmitter.on()</CODE> 方法用于注册监听器，<CODE>eventEmitter.emit()</CODE> 
+方法用于触发事件。</P>
+<PRE><CODE class="lang-js">const EventEmitter = require('events');
+
+class MyEmitter extends EventEmitter {}
+
+const myEmitter = new MyEmitter();
+myEmitter.on('event', () =&gt; {
+  console.log('发生了一个事件！');
+});
+myEmitter.emit('event');
+</CODE></PRE>
+<H2>给监听器传入参数与 <CODE>this</CODE><SPAN><A class="mark" id="events_passing_arguments_and_this_to_listeners" 
+href="http://nodejs.cn/api/events.html#events_passing_arguments_and_this_to_listeners">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/events.html#events_passing_arguments_and_this_to_listeners">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/events/passing_arguments_and_this_to_listeners.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P><CODE>eventEmitter.emit()</CODE> 方法允许将任意参数传给监听器函数。 当一个普通的监听器函数被 
+<CODE>EventEmitter</CODE> 调用时，标准的 <CODE>this</CODE> 关键词会被设置指向监听器所附加的 
+<CODE>EventEmitter</CODE>。</P>
+<PRE><CODE class="lang-js">const myEmitter = new MyEmitter();
+myEmitter.on('event', function(a, b) {
+  console.log(a, b, this);
+  // 打印:
+  //   a b MyEmitter {
+  //     domain: null,
+  //     _events: { event: [Function] },
+  //     _eventsCount: 1,
+  //     _maxListeners: undefined }
+});
+myEmitter.emit('event', 'a', 'b');
+</CODE></PRE>
+<P>也可以使用 ES6 的箭头函数作为监听器。但是这样 <CODE>this</CODE> 关键词就不再指向 
+<CODE>EventEmitter</CODE> 实例：</P>
+<PRE><CODE class="lang-js">const myEmitter = new MyEmitter();
+myEmitter.on('event', (a, b) =&gt; {
+  console.log(a, b, this);
+  // 打印: a b {}
+});
+myEmitter.emit('event', 'a', 'b');
+</CODE></PRE>
+<H2>异步与同步<SPAN><A class="mark" id="events_asynchronous_vs_synchronous" href="http://nodejs.cn/api/events.html#events_asynchronous_vs_synchronous">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/events.html#events_asynchronous_vs_synchronous">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/events/asynchronous_vs_synchronous.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P><CODE>EventListener</CODE> 会按照监听器注册的顺序同步地调用所有监听器。 所以需要确保事件的正确排序且避免竞争条件或逻辑错误。
+ 监听器函数可以使用 <CODE>setImmediate()</CODE> 或 <CODE>process.nextTick()</CODE> 
+方法切换到异步操作模式：</P>
+<PRE><CODE class="lang-js">const myEmitter = new MyEmitter();
+myEmitter.on('event', (a, b) =&gt; {
+  setImmediate(() =&gt; {
+    console.log('这个是异步发生的');
+  });
+});
+myEmitter.emit('event', 'a', 'b');
+</CODE></PRE>
+<H2>只处理事件一次<SPAN><A class="mark" id="events_handling_events_only_once" href="http://nodejs.cn/api/events.html#events_handling_events_only_once">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/events.html#events_handling_events_only_once">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/events/handling_events_only_once.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P>当使用 <CODE>eventEmitter.on()</CODE> 方法注册监听器时，监听器会在每次触发命名事件时被调用。</P>
+<PRE><CODE class="lang-js">const myEmitter = new MyEmitter();
+let m = 0;
+myEmitter.on('event', () =&gt; {
+  console.log(++m);
+});
+myEmitter.emit('event');
+// 打印: 1
+myEmitter.emit('event');
+// 打印: 2
+</CODE></PRE>
+<P>使用 <CODE>eventEmitter.once()</CODE> 方法时可以注册一个对于特定事件最多被调用一次的监听器。
+ 当事件被触发时，监听器会被注销，然后再调用。</P>
+<PRE><CODE class="lang-js">const myEmitter = new MyEmitter();
+let m = 0;
+myEmitter.once('event', () =&gt; {
+  console.log(++m);
+});
+myEmitter.emit('event');
+// 打印: 1
+myEmitter.emit('event');
+// 忽略
+</CODE></PRE>
+<H2>错误事件<SPAN><A class="mark" id="events_error_events" href="http://nodejs.cn/api/events.html#events_error_events">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/events.html#events_error_events">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/events/error_events.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P>当 <CODE>EventEmitter</CODE> 实例中发生错误时，会触发一个 <CODE>'error'</CODE> 事件。 这在 
+Node.js 中是特殊情况。</P>
+<P>如果 <CODE>EventEmitter</CODE> 没有为 <CODE>'error'</CODE> 事件注册至少一个监听器，则当 
+<CODE>'error'</CODE> 事件触发时，会抛出错误、打印堆栈跟踪、且退出 Node.js 进程。</P>
+<PRE><CODE class="lang-js">const myEmitter = new MyEmitter();
+myEmitter.emit('error', new Error('whoops!'));
+// 抛出错误，并使 Node.js 奔溃
+</CODE></PRE>
+<P>为了防止 Node.js 进程崩溃，可以在 <A href="http://nodejs.cn/api/process.html#process_event_uncaughtexception"><CODE>process</CODE> 
+对象的 <CODE>uncaughtException</CODE> 事件</A>上注册监听器，或使用 <A href="http://nodejs.cn/api/domain.html"><CODE>domain</CODE></A> 
+模块。 （注意，<CODE>domain</CODE> 模块已被废弃）</P>
+<PRE><CODE class="lang-js">const myEmitter = new MyEmitter();
+
+process.on('uncaughtException', (err) =&gt; {
+  console.error('有错误');
+});
+
+myEmitter.emit('error', new Error('whoops!'));
+// 打印: 有错误
+</CODE></PRE>
+<P>作为最佳实践，应该始终为 <CODE>'error'</CODE> 事件注册监听器。</P>
+<PRE><CODE class="lang-js">const myEmitter = new MyEmitter();
+myEmitter.on('error', (err) =&gt; {
+  console.error('有错误');
+});
+myEmitter.emit('error', new Error('whoops!'));
+// 打印: 有错误
+</CODE></PRE>
+<H2>EventEmitter 类<SPAN><A class="mark" id="events_class_eventemitter" href="http://nodejs.cn/api/events.html#events_class_eventemitter">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/events.html#events_class_eventemitter">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/events/class_eventemitter.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.26</SPAN> </DIV>
+<P><CODE>EventEmitter</CODE> 类由 <CODE>events</CODE> 模块定义和开放的：</P>
+<PRE><CODE class="lang-js">const EventEmitter = require('events');
+</CODE></PRE>
+<P>当新的监听器被添加时，所有的 EventEmitter 会触发 <CODE>'newListener'</CODE> 事件；当移除已存在的监听器时，则触发 
+<CODE>'removeListener'</CODE>。</P>
+<H3>'newListener' 事件<SPAN><A class="mark" id="events_event_newlistener" href="http://nodejs.cn/api/events.html#events_event_newlistener">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/events.html#events_event_newlistener">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/events/event_newlistener.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.26</SPAN> </DIV>
+<UL>
+  <LI><CODE>eventName</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  | <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Symbol_type">&lt;Symbol&gt;</A> 
+  要监听的事件的名称</LI>
+  <LI><CODE>listener</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">&lt;Function&gt;</A> 
+  事件的句柄函数</LI></UL>
+<P><CODE>EventEmitter</CODE> 实例会在一个监听器被添加到其内部监听器数组之前触发自身的 
+<CODE>'newListener'</CODE> 事件。</P>
+<P>注册了 <CODE>'newListener'</CODE> 事件的监听器会传入事件名与被添加的监听器的引用。</P>
+<P>事实上，在添加监听器之前触发事件有一个微妙但重要的副作用： <CODE>'newListener'</CODE> 
+回调中任何额外的被注册到相同名称的监听器会在监听器被添加之前被插入 。</P>
+<PRE><CODE class="lang-js">const myEmitter = new MyEmitter();
+// 只处理一次，所以不会无限循环
+myEmitter.once('newListener', (event, listener) =&gt; {
+  if (event === 'event') {
+    // 在开头插入一个新的监听器
+    myEmitter.on('event', () =&gt; {
+      console.log('B');
+    });
+  }
+});
+myEmitter.on('event', () =&gt; {
+  console.log('A');
+});
+myEmitter.emit('event');
+// 打印:
+//   B
+//   A
+</CODE></PRE>
+<H3>'removeListener' 事件<SPAN><A class="mark" id="events_event_removelistener" 
+href="http://nodejs.cn/api/events.html#events_event_removelistener">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/events.html#events_event_removelistener">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/events/event_removelistener.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.9.3</SPAN> </DIV>
+<UL>
+  <LI><CODE>eventName</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  | <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Symbol_type">&lt;Symbol&gt;</A> 
+  事件名</LI>
+  <LI><CODE>listener</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">&lt;Function&gt;</A> 
+  事件句柄函数</LI></UL>
+<P><CODE>'removeListener'</CODE> 事件在 <CODE>listener</CODE> 被移除后触发。</P>
+<H3>EventEmitter.listenerCount(emitter, eventName)<SPAN><A class="mark" id="events_eventemitter_listenercount_emitter_eventname" 
+href="http://nodejs.cn/api/events.html#events_eventemitter_listenercount_emitter_eventname">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/events.html#events_eventemitter_listenercount_emitter_eventname">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/events/eventemitter_listenercount_emitter_eventname.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.9.12</SPAN> <SPAN>废弃于: v4.0.0 </SPAN> 
+</DIV>
+<PRE class="api_stability api_stability_0"><A href="http://nodejs.cn/api/documentation.html#documentation_stability_index">稳定性: 0</A> - 废弃的: 使用 <A href="http://nodejs.cn/api/events.html#events_emitter_listenercount_eventname"><CODE>emitter.listenerCount()</CODE></A> 代替。</PRE>
+<P>A class method that returns the number of listeners for the given 
+<CODE>eventName</CODE> registered on the given <CODE>emitter</CODE>.</P>
+<PRE><CODE class="lang-js">const myEmitter = new MyEmitter();
+myEmitter.on('event', () =&gt; {});
+myEmitter.on('event', () =&gt; {});
+console.log(EventEmitter.listenerCount(myEmitter, 'event'));
+// Prints: 2
+</CODE></PRE>
+<H3>EventEmitter.defaultMaxListeners<SPAN><A class="mark" id="events_eventemitter_defaultmaxlisteners" 
+href="http://nodejs.cn/api/events.html#events_eventemitter_defaultmaxlisteners">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/events.html#events_eventemitter_defaultmaxlisteners">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/events/eventemitter_defaultmaxlisteners.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.11.2</SPAN> </DIV>
+<P>每个事件默认可以注册最多 10 个监听器。 单个 <CODE>EventEmitter</CODE> 实例的限制可以使用 <A href="http://nodejs.cn/api/events.html#events_emitter_setmaxlisteners_n"><CODE>emitter.setMaxListeners(n)</CODE></A> 
+方法改变。 所有 <CODE>EventEmitter</CODE> 实例的默认值可以使用 
+<CODE>EventEmitter.defaultMaxListeners</CODE> 属性改变。</P>
+<P>设置 <CODE>EventEmitter.defaultMaxListeners</CODE> 要谨慎，因为会影响所有 
+<CODE>EventEmitter</CODE> 实例，包括之前创建的。 因而，调用 <A href="http://nodejs.cn/api/events.html#events_emitter_setmaxlisteners_n"><CODE>emitter.setMaxListeners(n)</CODE></A> 
+优先于 <CODE>EventEmitter.defaultMaxListeners</CODE>。</P>
+<P>注意，这不是一个硬性限制。 <CODE>EventEmitter</CODE> 实例允许添加更多的监听器，但会向 <CODE>stderr</CODE> 
+输出跟踪警告，表明检测到一个可能的 EventEmitter 内存泄漏。 对于任何单个 <CODE>EventEmitter</CODE> 
+实例，<CODE>emitter.getMaxListeners()</CODE> 和 
+<CODE>emitter.setMaxListeners()</CODE> 方法可用于暂时地消除此警告：</P>
+<PRE><CODE class="lang-js">emitter.setMaxListeners(emitter.getMaxListeners() + 1);
+emitter.once('event', () =&gt; {
+  // 做些操作
+  emitter.setMaxListeners(Math.max(emitter.getMaxListeners() - 1, 0));
+});
+</CODE></PRE>
+<P><A 
+href="http://nodejs.cn/api/cli.html#cli_trace_warnings"><CODE>--trace-warnings</CODE></A> 
+命令行标志可用于显示此类警告的堆栈跟踪。</P>
+<P>触发的警告可以使用 <A 
+href="http://nodejs.cn/api/process.html#process_event_warning"><CODE>process.on('warning')</CODE></A> 
+检查，还有额外的 <CODE>emitter</CODE>、<CODE>type</CODE> 和 <CODE>count</CODE> 
+属性，分别代表事件触发器实例的引用、事件的名称、和附加的监听器的数量。</P>
+<H3>emitter.addListener(eventName, listener)<SPAN><A class="mark" id="events_emitter_addlistener_eventname_listener" 
+href="http://nodejs.cn/api/events.html#events_emitter_addlistener_eventname_listener">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/events.html#events_emitter_addlistener_eventname_listener">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/events/emitter_addlistener_eventname_listener.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.26</SPAN> </DIV>
+<P><CODE>emitter.on(eventName, listener)</CODE> 的别名。</P>
+<H3>emitter.emit(eventName[, ...args])<SPAN><A class="mark" id="events_emitter_emit_eventname_args" 
+href="http://nodejs.cn/api/events.html#events_emitter_emit_eventname_args">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/events.html#events_emitter_emit_eventname_args">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/events/emitter_emit_eventname_args.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.26</SPAN> </DIV>
+<P>按监听器的注册顺序，同步地调用每个注册到名为 <CODE>eventName</CODE> 事件的监听器，并传入提供的参数。</P>
+<P>如果事件有监听器，则返回 <CODE>true</CODE> ，否则返回 <CODE>false</CODE>。</P>
+<H3>emitter.eventNames()<SPAN><A class="mark" id="events_emitter_eventnames" 
+href="http://nodejs.cn/api/events.html#events_emitter_eventnames">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/events.html#events_emitter_eventnames">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/events/emitter_eventnames.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v6.0.0</SPAN> </DIV>
+<P>返回一个列出触发器已注册监听器的事件的数组。 数组中的值为字符串或符号。 </P>
+<PRE><CODE class="lang-js">const EventEmitter = require('events');
+const myEE = new EventEmitter();
+myEE.on('foo', () =&gt; {});
+myEE.on('bar', () =&gt; {});
+
+const sym = Symbol('symbol');
+myEE.on(sym, () =&gt; {});
+
+console.log(myEE.eventNames());
+// 打印: [ 'foo', 'bar', Symbol(symbol) ]
+</CODE></PRE>
+<H3>emitter.getMaxListeners()<SPAN><A class="mark" id="events_emitter_getmaxlisteners" 
+href="http://nodejs.cn/api/events.html#events_emitter_getmaxlisteners">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/events.html#events_emitter_getmaxlisteners">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/events/emitter_getmaxlisteners.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v1.0.0</SPAN> </DIV>
+<P>返回 <CODE>EventEmitter</CODE> 当前的最大监听器限制值，该值可以通过 <A href="http://nodejs.cn/api/events.html#events_emitter_setmaxlisteners_n"><CODE>emitter.setMaxListeners(n)</CODE></A> 
+设置或默认为 <A href="http://nodejs.cn/api/events.html#events_eventemitter_defaultmaxlisteners"><CODE>EventEmitter.defaultMaxListeners</CODE></A>。</P>
+<H3>emitter.listenerCount(eventName)<SPAN><A class="mark" id="events_emitter_listenercount_eventname" 
+href="http://nodejs.cn/api/events.html#events_emitter_listenercount_eventname">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/events.html#events_emitter_listenercount_eventname">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/events/emitter_listenercount_eventname.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v3.2.0</SPAN> </DIV>
+<UL>
+  <LI><CODE>eventName</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  | <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Symbol_type">&lt;Symbol&gt;</A> 
+  正在被监听的事件名</LI></UL>
+<P>返回正在监听名为 <CODE>eventName</CODE> 的事件的监听器的数量。</P>
+<H3>emitter.listeners(eventName)<SPAN><A class="mark" id="events_emitter_listeners_eventname" 
+href="http://nodejs.cn/api/events.html#events_emitter_listeners_eventname">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/events.html#events_emitter_listeners_eventname">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/events/emitter_listeners_eventname.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.26</SPAN> </DIV>
+<P>返回名为 <CODE>eventName</CODE> 的事件的监听器数组的副本。</P>
+<PRE><CODE class="lang-js">server.on('connection', (stream) =&gt; {
+  console.log('someone connected!');
+});
+console.log(util.inspect(server.listeners('connection')));
+// 打印: [ [Function] ]
+</CODE></PRE>
+<H3>emitter.on(eventName, listener)<SPAN><A class="mark" id="events_emitter_on_eventname_listener" 
+href="http://nodejs.cn/api/events.html#events_emitter_on_eventname_listener">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/events.html#events_emitter_on_eventname_listener">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/events/emitter_on_eventname_listener.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.101</SPAN> </DIV>
+<UL>
+  <LI><CODE>eventName</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  | <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Symbol_type">&lt;Symbol&gt;</A> 
+  事件名</LI>
+  <LI><CODE>listener</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">&lt;Function&gt;</A> 
+  回调函数</LI></UL>
+<P>添加 <CODE>listener</CODE> 函数到名为 <CODE>eventName</CODE> 的事件的监听器数组的末尾。 不会检查 
+<CODE>listener</CODE> 是否已被添加。 多次调用并传入相同的 <CODE>eventName</CODE> 和 
+<CODE>listener</CODE> 会导致 <CODE>listener</CODE> 被添加与调用多次。</P>
+<PRE><CODE class="lang-js">server.on('connection', (stream) =&gt; {
+  console.log('有连接！');
+});
+</CODE></PRE>
+<P>返回一个 <CODE>EventEmitter</CODE> 引用，可以链式调用。</P>
+<P>默认情况下，事件监听器会按照添加的顺序依次调用。 <CODE>emitter.prependListener()</CODE> 
+方法可用于将事件监听器添加到监听器数组的开头。</P>
+<PRE><CODE class="lang-js">const myEE = new EventEmitter();
+myEE.on('foo', () =&gt; console.log('a'));
+myEE.prependListener('foo', () =&gt; console.log('b'));
+myEE.emit('foo');
+// 打印:
+//   b
+//   a
+</CODE></PRE>
+<H3>emitter.once(eventName, listener)<SPAN><A class="mark" id="events_emitter_once_eventname_listener" 
+href="http://nodejs.cn/api/events.html#events_emitter_once_eventname_listener">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/events.html#events_emitter_once_eventname_listener">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/events/emitter_once_eventname_listener.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.3.0</SPAN> </DIV>
+<UL>
+  <LI><CODE>eventName</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  | <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Symbol_type">&lt;Symbol&gt;</A> 
+  事件名</LI>
+  <LI><CODE>listener</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">&lt;Function&gt;</A> 
+  回调函数</LI></UL>
+<P>添加一个单次 <CODE>listener</CODE> 函数到名为 <CODE>eventName</CODE> 的事件。 下次触发 
+<CODE>eventName</CODE> 事件时，监听器会被移除，然后调用。</P>
+<PRE><CODE class="lang-js">server.once('connection', (stream) =&gt; {
+  console.log('首次调用！');
+});
+</CODE></PRE>
+<P>返回一个 <CODE>EventEmitter</CODE> 引用，可以链式调用。</P>
+<P>默认情况下，事件监听器会按照添加的顺序依次调用。 <CODE>emitter.prependOnceListener()</CODE> 
+方法可用于将事件监听器添加到监听器数组的开头。</P>
+<PRE><CODE class="lang-js">const myEE = new EventEmitter();
+myEE.once('foo', () =&gt; console.log('a'));
+myEE.prependOnceListener('foo', () =&gt; console.log('b'));
+myEE.emit('foo');
+// 打印:
+//   b
+//   a
+</CODE></PRE>
+<H3>emitter.prependListener(eventName, listener)<SPAN><A class="mark" id="events_emitter_prependlistener_eventname_listener" 
+href="http://nodejs.cn/api/events.html#events_emitter_prependlistener_eventname_listener">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/events.html#events_emitter_prependlistener_eventname_listener">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/events/emitter_prependlistener_eventname_listener.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v6.0.0</SPAN> </DIV>
+<UL>
+  <LI><CODE>eventName</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  | <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Symbol_type">&lt;Symbol&gt;</A> 
+  事件名</LI>
+  <LI><CODE>listener</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">&lt;Function&gt;</A> 
+  回调函数</LI></UL>
+<P>添加 <CODE>listener</CODE> 函数到名为 <CODE>eventName</CODE> 的事件的监听器数组的开头。 不会检查 
+<CODE>listener</CODE> 是否已被添加。 多次调用并传入相同的 <CODE>eventName</CODE> 和 
+<CODE>listener</CODE> 会导致 <CODE>listener</CODE> 被添加与调用多次。</P>
+<PRE><CODE class="lang-js">server.prependListener('connection', (stream) =&gt; {
+  console.log('有连接！');
+});
+</CODE></PRE>
+<P>返回一个 <CODE>EventEmitter</CODE> 引用，可以链式调用。</P>
+<H3>emitter.prependOnceListener(eventName, listener)<SPAN><A class="mark" id="events_emitter_prependoncelistener_eventname_listener" 
+href="http://nodejs.cn/api/events.html#events_emitter_prependoncelistener_eventname_listener">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/events.html#events_emitter_prependoncelistener_eventname_listener">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/events/emitter_prependoncelistener_eventname_listener.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v6.0.0</SPAN> </DIV>
+<UL>
+  <LI><CODE>eventName</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  | <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Symbol_type">&lt;Symbol&gt;</A> 
+  事件名</LI>
+  <LI><CODE>listener</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">&lt;Function&gt;</A> 
+  回调函数</LI></UL>
+<P>添加一个单次 <CODE>listener</CODE> 函数到名为 <CODE>eventName</CODE> 的事件的监听器数组的开头。 下次触发 
+<CODE>eventName</CODE> 事件时，监听器会被移除，然后调用。</P>
+<PRE><CODE class="lang-js">server.prependOnceListener('connection', (stream) =&gt; {
+  console.log('首次调用！');
+});
+</CODE></PRE>
+<P>返回一个 <CODE>EventEmitter</CODE> 引用，可以链式调用。</P>
+<H3>emitter.removeAllListeners([eventName])<SPAN><A class="mark" id="events_emitter_removealllisteners_eventname" 
+href="http://nodejs.cn/api/events.html#events_emitter_removealllisteners_eventname">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/events.html#events_emitter_removealllisteners_eventname">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/events/emitter_removealllisteners_eventname.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.26</SPAN> </DIV>
+<P>移除全部或指定 <CODE>eventName</CODE> 的监听器。</P>
+<P>注意，在代码中移除其他地方添加的监听器是一个不好的做法，尤其是当 <CODE>EventEmitter</CODE> 实例是其他组件或模块（如 
+socket 或文件流）创建的。</P>
+<P>返回一个 <CODE>EventEmitter</CODE> 引用，可以链式调用。</P>
+<H3>emitter.removeListener(eventName, listener)<SPAN><A class="mark" id="events_emitter_removelistener_eventname_listener" 
+href="http://nodejs.cn/api/events.html#events_emitter_removelistener_eventname_listener">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/events.html#events_emitter_removelistener_eventname_listener">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/events/emitter_removelistener_eventname_listener.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.26</SPAN> </DIV>
+<P>从名为 <CODE>eventName</CODE> 的事件的监听器数组中移除指定的 <CODE>listener</CODE>。</P>
+<PRE><CODE class="lang-js">const callback = (stream) =&gt; {
+  console.log('有连接！');
+};
+server.on('connection', callback);
+// ...
+server.removeListener('connection', callback);
+</CODE></PRE>
+<P><CODE>removeListener</CODE> 最多只会从监听器数组里移除一个监听器实例。 如果任何单一的监听器被多次添加到指定 
+<CODE>eventName</CODE> 的监听器数组中，则必须多次调用 <CODE>removeListener</CODE> 才能移除每个实例。</P>
+<P>注意，一旦一个事件被触发，所有绑定到它的监听器都会按顺序依次触发。 这意味着，在事件触发后、最后一个监听器完成执行前，任何 
+<CODE>removeListener()</CODE> 或 <CODE>removeAllListeners()</CODE> 调用都不会从 
+<CODE>emit()</CODE> 中移除它们。 随后的事件会像预期的那样发生。</P>
+<PRE><CODE class="lang-js">const myEmitter = new MyEmitter();
+
+const callbackA = () =&gt; {
+  console.log('A');
+  myEmitter.removeListener('event', callbackB);
+};
+
+const callbackB = () =&gt; {
+  console.log('B');
+};
+
+myEmitter.on('event', callbackA);
+
+myEmitter.on('event', callbackB);
+
+// callbackA 移除了监听器 callbackB，但它依然会被调用。
+// 触发是内部的监听器数组为 [callbackA, callbackB]
+myEmitter.emit('event');
+// 打印:
+//   A
+//   B
+
+// callbackB 被移除了。
+// 内部监听器数组为 [callbackA]
+myEmitter.emit('event');
+// 打印:
+//   A
+</CODE></PRE>
+<P>因为监听器是使用内部数组进行管理的，所以调用它会改变在监听器被移除后注册的任何监听器的位置索引。 虽然这不会影响监听器的调用顺序，但意味着由 
+<CODE>emitter.listeners()</CODE> 方法返回的监听器数组副本需要被重新创建。</P>
+<P>返回一个 <CODE>EventEmitter</CODE> 引用，可以链式调用。</P>
+<H3>emitter.setMaxListeners(n)<SPAN><A class="mark" id="events_emitter_setmaxlisteners_n" 
+href="http://nodejs.cn/api/events.html#events_emitter_setmaxlisteners_n">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/events.html#events_emitter_setmaxlisteners_n">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/events/emitter_setmaxlisteners_n.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.3.5</SPAN> </DIV>
+<P>默认情况下，如果为特定事件添加了超过 <CODE>10</CODE> 个监听器，则 <CODE>EventEmitter</CODE> 会打印一个警告。
+ 此限制有助于寻找内存泄露。 但是，并不是所有的事件都要被限为 <CODE>10</CODE> 个。 
+<CODE>emitter.setMaxListeners()</CODE> 方法允许修改指定的 <CODE>EventEmitter</CODE> 
+实例的限制。 值设为 <CODE>Infinity</CODE>（或 <CODE>0</CODE>）表明不限制监听器的数量。</P>
+<P>返回一个 <CODE>EventEmitter</CODE> 引用，可以链式调用。</P></DIV></DIV></DIV><!-- 搜索弹窗 -->  
+ 
+<DIV id="modal_search_bg"></DIV>
+<DIV 
+id="modal_search"><INPUT id="modal_search_input" placeholder="API 快速搜索" value=""> 
+    
+<DIV id="modal_search_result"></DIV></DIV><!-- js -->   <!--[if lt IE 10]><script src="/static/lib/placeholders.js?20170426"></script><![endif]--> 
+  
+<SCRIPT src="events%20%20Node_js%20API%20文档_files/api.js"></SCRIPT>
+ </BODY></HTML>

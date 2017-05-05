@@ -1,0 +1,220 @@
+﻿<!DOCTYPE HTML>
+<!-- saved from url=(0029)http://nodejs.cn/api/tty.html -->
+<!DOCTYPE html PUBLIC "" ""><HTML lang="zh-cmn-Hans"><HEAD><META 
+content="IE=11.0000" http-equiv="X-UA-Compatible">
+   
+<META charset="utf-8">   <TITLE>tty | Node.js API 文档</TITLE>   <LINK href="tty%20%20Node_js%20API%20文档_files/api.css" 
+rel="stylesheet">   <LINK href="/static/favicon.png" rel="icon" type="image/png" 
+sizes="32x32"> 
+<META name="GENERATOR" content="MSHTML 11.00.9600.18639"></HEAD> 
+<BODY class="alt apidoc" id="api-section-tty">
+<DIV class="clearfix" id="content">
+<DIV class="interior" id="column2">
+<DIV class="interior" id="intro"><A href="http://nodejs.cn/">          Node.js 
+中文网         </A>         
+<DIV><INPUT id="search_input" placeholder="API 快速搜索" value="">         
+</DIV></DIV>
+<UL>
+  <LI><A class="nav-documentation" href="http://nodejs.cn/api/documentation.html">关于本文档</A></LI>
+  <LI><A class="nav-synopsis" 
+  href="http://nodejs.cn/api/synopsis.html">用法与例子</A></LI></UL>
+<DIV class="line"></DIV>
+<UL>
+  <LI><A class="nav-assert" href="http://nodejs.cn/api/assert.html">Assert 
+  (断言)</A></LI>
+  <LI><A class="nav-buffer" 
+  href="http://nodejs.cn/api/buffer.html">Buffer</A></LI>
+  <LI><A class="nav-addons" href="http://nodejs.cn/api/addons.html">C/C++ 
+  插件</A></LI>
+  <LI><A class="nav-child_process" href="http://nodejs.cn/api/child_process.html">Child 
+  Processes (子进程)</A></LI>
+  <LI><A class="nav-cluster" href="http://nodejs.cn/api/cluster.html">Cluster 
+  (集群)</A></LI>
+  <LI><A class="nav-cli" href="http://nodejs.cn/api/cli.html">CLI 
+  (命令行选项)</A></LI>
+  <LI><A class="nav-console" href="http://nodejs.cn/api/console.html">Console 
+  (控制台)</A></LI>
+  <LI><A class="nav-crypto" href="http://nodejs.cn/api/crypto.html">Crypto 
+  (加密)</A></LI>
+  <LI><A class="nav-debugger" href="http://nodejs.cn/api/debugger.html">Debugger 
+  (调试器)</A></LI>
+  <LI><A class="nav-dns" href="http://nodejs.cn/api/dns.html">DNS 
+  (域名服务器)</A></LI>
+  <LI><A class="nav-domain" href="http://nodejs.cn/api/domain.html">Domain 
+  (域)</A></LI>
+  <LI><A class="nav-errors" href="http://nodejs.cn/api/errors.html">Error 
+  (错误)</A></LI>
+  <LI><A class="nav-events" href="http://nodejs.cn/api/events.html">Events 
+  (事件)</A></LI>
+  <LI><A class="nav-fs" href="http://nodejs.cn/api/fs.html">File System 
+  (文件系统)</A></LI>
+  <LI><A class="nav-globals" href="http://nodejs.cn/api/globals.html">Global 
+  (全局变量)</A></LI>
+  <LI><A class="nav-http" href="http://nodejs.cn/api/http.html">HTTP</A></LI>
+  <LI><A class="nav-https" href="http://nodejs.cn/api/https.html">HTTPS</A></LI>
+  <LI><A class="nav-modules" href="http://nodejs.cn/api/modules.html">Module 
+  (模块)</A></LI>
+  <LI><A class="nav-net" href="http://nodejs.cn/api/net.html">Net (网络)</A></LI>
+  <LI><A class="nav-os" href="http://nodejs.cn/api/os.html">OS (操作系统)</A></LI>
+  <LI><A class="nav-path" href="http://nodejs.cn/api/path.html">Path 
+  (路径)</A></LI>
+  <LI><A class="nav-process" href="http://nodejs.cn/api/process.html">Process 
+  (进程)</A></LI>
+  <LI><A class="nav-punycode" 
+  href="http://nodejs.cn/api/punycode.html">Punycode</A></LI>
+  <LI><A class="nav-querystring" 
+  href="http://nodejs.cn/api/querystring.html">Query Strings (查询字符串)</A></LI>
+  <LI><A class="nav-readline" href="http://nodejs.cn/api/readline.html">Readline 
+  (逐行读取)</A></LI>
+  <LI><A class="nav-repl" href="http://nodejs.cn/api/repl.html">REPL 
+  (交互式解释器)</A></LI>
+  <LI><A class="nav-stream" href="http://nodejs.cn/api/stream.html">Stream 
+  (流)</A></LI>
+  <LI><A class="nav-string_decoder" href="http://nodejs.cn/api/string_decoder.html">String 
+  Decoder (字符串解码器)</A></LI>
+  <LI><A class="nav-timers" href="http://nodejs.cn/api/timers.html">Timer 
+  (定时器)</A></LI>
+  <LI><A class="nav-tls" href="http://nodejs.cn/api/tls.html">TLS 
+  (安全传输层)</A></LI>
+  <LI><A class="nav-tty active" href="http://nodejs.cn/api/tty.html">TTY 
+  (终端)</A></LI>
+  <LI><A class="nav-dgram" href="http://nodejs.cn/api/dgram.html">UDP/Datagram 
+  (数据报)</A></LI>
+  <LI><A class="nav-url" href="http://nodejs.cn/api/url.html">URL</A></LI>
+  <LI><A class="nav-util" href="http://nodejs.cn/api/util.html">Util 
+  (实用工具)</A></LI>
+  <LI><A class="nav-v8" href="http://nodejs.cn/api/v8.html">V8</A></LI>
+  <LI><A class="nav-vm" href="http://nodejs.cn/api/vm.html">VM (虚拟机)</A></LI>
+  <LI><A class="nav-zlib" href="http://nodejs.cn/api/zlib.html">ZLIB 
+  (压缩)</A></LI></UL>
+<DIV class="line"></DIV></DIV>
+<DIV class="interior" id="column1" data-id="tty"><HEADER>
+<H1>Node.js v6.10.3 文档</H1>
+<DIV id="gtoc">
+<P><A name="toc" href="http://nodejs.cn/api/">返回文档首页</A>             <!--<a href="/api/all.html">单页面显示</a> |--> 
+            <!--<a href="/api/tty.json">JSON格式</a> |-->             <!--<a href="/api/en/tty.html">查看英文版</a>--> 
+          </P></DIV>
+<HR>
+</HEADER>
+<DIV id="toc">
+<H2>目录</H2>
+<UL>
+  <LI><SPAN class="stability_2"><A 
+  href="http://nodejs.cn/api/tty.html#tty_tty">tty (终端)</A></SPAN>
+  <UL> 
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/tty.html#tty_class_tty_readstream">tty.ReadStream 
+    类</A></SPAN>
+    <UL> 
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/tty.html#tty_readstream_israw">readStream.isRaw</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/tty.html#tty_readstream_setrawmode_mode">readStream.setRawMode(mode)</A></SPAN></LI></UL></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/tty.html#tty_class_tty_writestream">tty.WriteStream 
+    类</A></SPAN>
+    <UL> 
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/tty.html#tty_event_resize">'resize' 
+      事件</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/tty.html#tty_writestream_columns">writeStream.columns</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/tty.html#tty_writestream_rows">writeStream.rows</A></SPAN></LI></UL></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/tty.html#tty_tty_isatty_fd">tty.isatty(fd)</A></SPAN></LI></UL></LI></UL></DIV>
+<DIV id="apicontent">
+<H1>tty (终端)<SPAN><A class="mark" id="tty_tty" href="http://nodejs.cn/api/tty.html#tty_tty">#</A></SPAN></H1>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/tty.html#tty_tty">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/tty/tty.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<PRE class="api_stability api_stability_2"><A href="http://nodejs.cn/api/documentation.html#documentation_stability_index">稳定性: 2</A> - 稳定的</PRE>
+<P><CODE>tty</CODE> 模块提供了 <CODE>tty.ReadStream</CODE> 类和 
+<CODE>tty.WriteStream</CODE> 类。 大多数情况下无需直接使用此模块。 它可以通过以下方式使用：</P>
+<PRE><CODE class="lang-js">const tty = require('tty');
+</CODE></PRE>
+<P>当 Node.js 检测到它正被运行在一个文本终端（TTY）的上下文中时，则 <CODE>process.stdin</CODE> 默认会被初始化为一个 
+<CODE>tty.ReadStream</CODE> 实例，<CODE>process.stdout</CODE> 和 
+<CODE>process.stderr</CODE> 默认会被初始化为一个 <CODE>tty.WriteStream</CODE> 实例。 判断 
+Node.js 是否正被运行在一个 TTY 上下文中的首选方法是去检查 <CODE>process.stdout.isTTY</CODE> 属性的值是否为 
+<CODE>true</CODE>：</P>
+<PRE><CODE class="lang-sh">$ node -p -e "Boolean(process.stdout.isTTY)"
+true
+$ node -p -e "Boolean(process.stdout.isTTY)" | cat
+false
+</CODE></PRE>
+<P>大多数情况下，应用程序几乎没有理由创建 <CODE>tty.ReadStream</CODE> 类和 
+<CODE>tty.WriteStream</CODE> 类的实例。</P>
+<H2>tty.ReadStream 类<SPAN><A class="mark" id="tty_class_tty_readstream" href="http://nodejs.cn/api/tty.html#tty_class_tty_readstream">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/tty.html#tty_class_tty_readstream">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/tty/class_tty_readstream.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.5.8</SPAN> </DIV>
+<P><CODE>tty.ReadStream</CODE> 类是 <CODE>net.Socket</CODE> 的一个子类，表示一个 TTY 的可读部分。
+ 正常情况下，<CODE>process.stdin</CODE> 是一个 Node.js 进程中唯一的 <CODE>tty.ReadStream</CODE> 
+实例，没有理由创建更多的实例。</P>
+<H3>readStream.isRaw<SPAN><A class="mark" id="tty_readstream_israw" href="http://nodejs.cn/api/tty.html#tty_readstream_israw">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/tty.html#tty_readstream_israw">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/tty/readstream_israw.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.7.7</SPAN> </DIV>
+<P>一个 <CODE>boolean</CODE> 值，如果 TTY 当前被配置成作为一个原始设备来操作，则返回 <CODE>true</CODE>。 默认为 
+<CODE>false</CODE>。</P>
+<H3>readStream.setRawMode(mode)<SPAN><A class="mark" id="tty_readstream_setrawmode_mode" 
+href="http://nodejs.cn/api/tty.html#tty_readstream_setrawmode_mode">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/tty.html#tty_readstream_setrawmode_mode">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/tty/readstream_setrawmode_mode.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.7.7</SPAN> </DIV>
+<P>允许配置 <CODE>tty.ReadStream</CODE> 作为一个原始设备来操作。</P>
+<P>当在原始模式中，输入总是按字符生效，但不包括修饰符。 此外，终端对字符的所有特殊处理会被禁用，包括应答输入的字符。 注意，该模式中 
+<CODE>CTRL</CODE>+<CODE>C</CODE> 不再产生一个 <CODE>SIGINT</CODE>。</P>
+<UL>
+  <LI><CODE>mode</CODE> <SPAN class="type">&lt;boolean&gt;</SPAN> 如果为 
+  <CODE>true</CODE>，则配置 <CODE>tty.ReadStream</CODE> 作为一个原始设备来操作。 如果为 
+  <CODE>false</CODE>，则配置 <CODE>tty.ReadStream</CODE> 以默认模式来操作。 
+  <CODE>readStream.isRaw</CODE> 属性会被设为对应的值。</LI></UL>
+<H2>tty.WriteStream 类<SPAN><A class="mark" id="tty_class_tty_writestream" href="http://nodejs.cn/api/tty.html#tty_class_tty_writestream">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/tty.html#tty_class_tty_writestream">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/tty/class_tty_writestream.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.5.8</SPAN> </DIV>
+<P><CODE>tty.WriteStream</CODE> 类是 <CODE>net.Socket</CODE> 的一个子类，表示一个 TTY 的可写部分。
+ 正常情况下，<CODE>process.stdout</CODE> 和 <CODE>process.stderr</CODE> 是一个 Node.js 
+进程中唯一的 <CODE>tty.WriteStream</CODE> 实例，没有理由创建更多的实例。</P>
+<H3>'resize' 事件<SPAN><A class="mark" id="tty_event_resize" href="http://nodejs.cn/api/tty.html#tty_event_resize">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/tty.html#tty_event_resize">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/tty/event_resize.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.7.7</SPAN> </DIV>
+<P>当 <CODE>writeStream.columns</CODE> 属性或 <CODE>writeStream.rows</CODE> 
+属性发生变化时触发 <CODE>'resize'</CODE> 事件。 监听器回调没有参数传入。</P>
+<PRE><CODE class="lang-js">process.stdout.on('resize', () =&gt; {
+  console.log('屏幕大小已改变！');
+  console.log(`${process.stdout.columns}x${process.stdout.rows}`);
+});
+</CODE></PRE>
+<H3>writeStream.columns<SPAN><A class="mark" id="tty_writestream_columns" href="http://nodejs.cn/api/tty.html#tty_writestream_columns">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/tty.html#tty_writestream_columns">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/tty/writestream_columns.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.7.7</SPAN> </DIV>
+<P>一个 <CODE>number</CODE>，指明 TTY 当前具有的列数。 当 <CODE>'resize'</CODE> 
+事件被触发时，该属性会被更新。</P>
+<H3>writeStream.rows<SPAN><A class="mark" id="tty_writestream_rows" href="http://nodejs.cn/api/tty.html#tty_writestream_rows">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/tty.html#tty_writestream_rows">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/tty/writestream_rows.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.7.7</SPAN> </DIV>
+<P>一个 <CODE>number</CODE>，指明 TTY 当前具有的行数。 当 <CODE>'resize'</CODE> 
+事件被触发时，该属性会被更新。</P>
+<H2>tty.isatty(fd)<SPAN><A class="mark" id="tty_tty_isatty_fd" href="http://nodejs.cn/api/tty.html#tty_tty_isatty_fd">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/tty.html#tty_tty_isatty_fd">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/tty/tty_isatty_fd.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.5.8</SPAN> </DIV>
+<UL>
+  <LI><CODE>fd</CODE> <SPAN class="type">&lt;number&gt;</SPAN> 
+一个数值型的文件描述符。</LI></UL>
+<P>如果给定的 <CODE>fd</CODE> 与一个 TTY 相关联，则 <CODE>tty.isatty()</CODE> 方法返回 
+<CODE>true</CODE>，否则返回 <CODE>false</CODE>。</P></DIV></DIV></DIV><!-- 搜索弹窗 -->   
+<DIV id="modal_search_bg"></DIV>
+<DIV 
+id="modal_search"><INPUT id="modal_search_input" placeholder="API 快速搜索" value=""> 
+    
+<DIV id="modal_search_result"></DIV></DIV><!-- js -->   <!--[if lt IE 10]><script src="/static/lib/placeholders.js?20170426"></script><![endif]--> 
+  
+<SCRIPT src="tty%20%20Node_js%20API%20文档_files/api.js"></SCRIPT>
+ </BODY></HTML>

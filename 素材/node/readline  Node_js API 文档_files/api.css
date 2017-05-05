@@ -1,0 +1,525 @@
+html {
+	-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; -webkit-font-variant-ligatures: none; font-variant-ligatures: none;
+}
+body {
+	background: rgb(255, 255, 255); margin: 0px; padding: 0px; color: rgb(51, 51, 51); font-family: "Microsoft Yahei","Lato","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Verdana,Tahoma,sans-serif; font-size: 62.5%;
+}
+h1 {
+	margin: 0.8em 0px 0.5em; line-height: 1.2;
+}
+h2 {
+	margin: 0.8em 0px 0.5em; line-height: 1.2;
+}
+h3 {
+	margin: 0.8em 0px 0.5em; line-height: 1.2;
+}
+h4 {
+	margin: 0.8em 0px 0.5em; line-height: 1.2;
+}
+h5 {
+	margin: 1em 0px 0.8em; line-height: 1.2;
+}
+h6 {
+	margin: 1em 0px 0.8em; line-height: 1.2;
+}
+h1 {
+	font-size: 2.44em; margin-top: 0px;
+}
+h2 {
+	font-size: 1.95em;
+}
+h3 {
+	font-size: 1.56em;
+}
+h4 {
+	font-size: 1.25em;
+}
+h5 {
+	font-size: 1em;
+}
+h6 {
+	font-size: 0.8em;
+}
+pre {
+	font-family: Monaco,Consolas,"Lucida Console",monospace;
+}
+tt {
+	font-family: Monaco,Consolas,"Lucida Console",monospace;
+}
+code {
+	font-family: Monaco,Consolas,"Lucida Console",monospace;
+}
+.pre {
+	font-family: Monaco,Consolas,"Lucida Console",monospace;
+}
+span.type {
+	font-family: Monaco,Consolas,"Lucida Console",monospace;
+}
+a.type {
+	font-family: Monaco,Consolas,"Lucida Console",monospace;
+}
+#content {
+	font-size: 1.8em; position: relative;
+}
+a {
+	margin: -0.1em; padding: 0.1em 0.2em; border-radius: 2px; color: rgb(67, 133, 61); text-decoration: none;
+}
+a:link {
+	margin: -0.1em; padding: 0.1em 0.2em; border-radius: 2px; color: rgb(67, 133, 61); text-decoration: none;
+}
+a:active {
+	margin: -0.1em; padding: 0.1em 0.2em; border-radius: 2px; color: rgb(67, 133, 61); text-decoration: none;
+}
+a:hover {
+	outline: 0px; color: rgb(255, 255, 255); background-color: rgb(67, 133, 61);
+}
+a:focus {
+	outline: 0px; color: rgb(255, 255, 255); background-color: rgb(67, 133, 61);
+}
+strong {
+	font-weight: 700;
+}
+code a:hover {
+	background: 0px;
+}
+em code {
+	font-style: normal;
+}
+#changelog #gtoc {
+	display: none;
+}
+#gtoc {
+	font-size: 0.8em;
+}
+.line {
+	width: calc(100% - 1em); padding-bottom: 1px; display: block;
+}
+.api_stability {
+	margin: 0px 0px 1em; color: white !important; font-family: "Lato","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Verdana,Tahoma,sans-serif; font-weight: 700;
+}
+.api_stability * {
+	color: white !important;
+}
+.api_stability a {
+	text-decoration: underline;
+}
+.api_stability a:hover {
+	background: rgba(255, 255, 255, 0.4);
+}
+.api_stability a:active {
+	background: rgba(255, 255, 255, 0.4);
+}
+.api_stability a:focus {
+	background: rgba(255, 255, 255, 0.4);
+}
+.api_stability a code {
+	background: 0px;
+}
+.api_stability_0 {
+	background-color: rgb(214, 0, 39);
+}
+.api_stability_1 {
+	background-color: rgb(236, 83, 21);
+}
+.api_stability_2 {
+	background-color: rgb(78, 186, 15);
+}
+.api_stability_3 {
+	background-color: rgb(0, 132, 182);
+}
+.api_metadata {
+	font-size: 0.75em; margin-bottom: 1em;
+}
+.api_metadata span {
+	margin-right: 1em;
+}
+.api_metadata span:last-child {
+	margin-right: 0px;
+}
+ul.plain {
+	list-style: none;
+}
+abbr {
+	border-bottom-color: rgb(69, 69, 69); border-bottom-width: 1px; border-bottom-style: dotted;
+}
+p {
+	margin: 0px 0px 1.12em; line-height: 1.5em; position: relative; text-rendering: optimizeLegibility;
+}
+#apicontent > *:last-child {
+	padding-bottom: 2em; margin-bottom: 0px;
+}
+table {
+	margin: 0px 0px 1.5em; border-collapse: collapse;
+}
+th {
+	border: 1px solid rgb(170, 170, 170); border-image: none;
+}
+td {
+	border: 1px solid rgb(170, 170, 170); border-image: none;
+}
+th {
+	text-align: left;
+}
+ol {
+	margin: 0px 0px 0.6em; padding: 0px;
+}
+ul {
+	margin: 0px 0px 0.6em; padding: 0px;
+}
+dl {
+	margin: 0px 0px 0.6em; padding: 0px;
+}
+ol ul {
+	margin-bottom: 0px;
+}
+ol ol {
+	margin-bottom: 0px;
+}
+ol dl {
+	margin-bottom: 0px;
+}
+ul ul {
+	margin-bottom: 0px;
+}
+ul ol {
+	margin-bottom: 0px;
+}
+ul dl {
+	margin-bottom: 0px;
+}
+dl ul {
+	margin-bottom: 0px;
+}
+dl ol {
+	margin-bottom: 0px;
+}
+dl dl {
+	margin-bottom: 0px;
+}
+ul {
+	margin-left: 2em;
+}
+ol {
+	margin-left: 2em;
+}
+dl dt {
+	margin: 1.5em 0px 0px; position: relative;
+}
+dl dd {
+	margin: 0px 1em; position: relative;
+}
+dd + dt.pre {
+	margin-top: 1.6em;
+}
+h1 {
+	font-weight: 700; position: relative; text-rendering: optimizeLegibility;
+}
+h2 {
+	font-weight: 700; position: relative; text-rendering: optimizeLegibility;
+}
+h3 {
+	font-weight: 700; position: relative; text-rendering: optimizeLegibility;
+}
+h4 {
+	font-weight: 700; position: relative; text-rendering: optimizeLegibility;
+}
+h5 {
+	font-weight: 700; position: relative; text-rendering: optimizeLegibility;
+}
+h6 {
+	font-weight: 700; position: relative; text-rendering: optimizeLegibility;
+}
+header h1 {
+	margin: 0px; line-height: 2em; font-size: 2em;
+}
+#apicontent {
+	padding-top: 1em;
+}
+#apicontent .line {
+	margin: 1em 1em 0.95em; width: calc(50% - 1em); background-color: rgb(204, 204, 204);
+}
+h2 + h2 {
+	margin: 0px 0px 0.5em;
+}
+h3 + h3 {
+	margin: 0px 0px 0.5em;
+}
+h2 {
+	padding-right: 40px; position: relative;
+}
+h3 {
+	padding-right: 40px; position: relative;
+}
+h4 {
+	padding-right: 40px; position: relative;
+}
+h5 {
+	padding-right: 40px; position: relative;
+}
+h1 span {
+	top: 0px; right: 0px; display: block; position: absolute;
+}
+h2 span {
+	top: 0px; right: 0px; display: block; position: absolute;
+}
+h3 span {
+	top: 0px; right: 0px; display: block; position: absolute;
+}
+h4 span {
+	top: 0px; right: 0px; display: block; position: absolute;
+}
+h1 span:hover {
+	opacity: 1;
+}
+h2 span:hover {
+	opacity: 1;
+}
+h3 span:hover {
+	opacity: 1;
+}
+h4 span:hover {
+	opacity: 1;
+}
+h1 span a {
+	color: rgb(0, 0, 0); font-size: 0.8em; font-weight: bold; text-decoration: none;
+}
+h2 span a {
+	color: rgb(0, 0, 0); font-size: 0.8em; font-weight: bold; text-decoration: none;
+}
+h3 span a {
+	color: rgb(0, 0, 0); font-size: 0.8em; font-weight: bold; text-decoration: none;
+}
+h4 span a {
+	color: rgb(0, 0, 0); font-size: 0.8em; font-weight: bold; text-decoration: none;
+}
+pre {
+	margin: 0px; padding: 0px; line-height: 1.5em;
+}
+tt {
+	margin: 0px; padding: 0px; line-height: 1.5em;
+}
+code {
+	margin: 0px; padding: 0px; line-height: 1.5em;
+}
+.pre {
+	line-height: 1.5em; font-size: 1.2em;
+}
+pre {
+	background: rgb(242, 242, 242); margin: 1em; padding: 1em; vertical-align: top; -ms-overflow-x: auto;
+}
+pre > code {
+	padding: 0px; font-size: 0.8em;
+}
+pre + h3 {
+	margin-top: 2.22em;
+}
+code.pre {
+	white-space: pre;
+}
+#intro {
+	margin-top: 1.25em; margin-left: 1em;
+}
+#intro a {
+	color: rgb(221, 221, 221); font-size: 1.25em; font-weight: bold;
+}
+hr {
+	background: 0px; border-width: medium medium 1px; border-style: none none solid; border-color: currentColor currentColor rgb(122, 122, 122); margin: 0px 0px 1em; border-image: none;
+}
+#toc h2 {
+	margin: 1.5em 0px; line-height: 0; font-size: 1em;
+}
+#toc ul {
+	font-size: 0.81em;
+}
+#toc ul ul {
+	font-size: 1em;
+}
+#toc ul a {
+	text-decoration: none;
+}
+#toc ul li {
+	list-style: square; margin-bottom: 0.66em;
+}
+#toc li > ul {
+	margin-top: 0.66em;
+}
+#toc .stability_0::after {
+	color: rgb(255, 255, 255); background-color: rgb(213, 0, 39);
+}
+#toc .stability_0::after {
+	padding: 0px 0.3em 0.2em; border-radius: 3px; left: 0.5em; top: -0.18em; font-size: 0.8em; position: relative; content: "·ÏÆúµÄ";
+}
+.lang_en #toc .stability_0::after {
+	content: "deprecated";
+}
+#apicontent li {
+	margin-bottom: 0.5em;
+}
+#apicontent li:last-child {
+	margin-bottom: 0px;
+}
+tt {
+	padding: 0.1em 0.3em; border-radius: 2px; color: rgb(4, 4, 4); font-size: 0.9em; background-color: rgb(242, 242, 242);
+}
+code {
+	padding: 0.1em 0.3em; border-radius: 2px; color: rgb(4, 4, 4); font-size: 0.9em; background-color: rgb(242, 242, 242);
+}
+a code {
+	background: inherit; padding: 0px; color: inherit;
+}
+.type {
+	line-height: 1.5em; font-size: 0.9em;
+}
+.interior#column1 {
+	padding: 0px 2em; margin-left: 234px; -webkit-padding-start: 1.5em;
+}
+.interior#column2 {
+	background: rgb(51, 51, 51); left: 0px; top: 0px; width: 245px; bottom: 0px; position: fixed; -ms-overflow-x: hidden; -ms-overflow-y: scroll;
+}
+#column2 ul {
+	background: rgb(51, 51, 51); list-style: none; margin: 0.9em 0px 0.5em;
+}
+#column2 > :first-child {
+	margin: 1.25em 1em;
+}
+#column2 > ul:nth-child(2) {
+	margin: 1.25em 0px 0.5em;
+}
+#column2 > ul:last-child {
+	margin: 0.9em 0px 1.25em;
+}
+#column2 ul li {
+	padding-bottom: 0.5em; padding-left: 1.4em; font-size: 0.8em; margin-bottom: 0.5em;
+}
+#column2 .line {
+	margin: 0px 0.5em; background-color: rgb(112, 112, 112);
+}
+#column2 ul li:last-child {
+	margin-bottom: 0px;
+}
+#column2 ul li a {
+	border-radius: 0px; color: rgb(204, 204, 204);
+}
+#column2 ul li a.active {
+	background: 0px; border-radius: 0px; color: rgb(67, 133, 61); border-bottom-color: rgb(67, 133, 61); border-bottom-width: 1px; border-bottom-style: solid;
+}
+#column2 ul li a.active:hover {
+	background: 0px; border-radius: 0px; color: rgb(67, 133, 61); border-bottom-color: rgb(67, 133, 61); border-bottom-width: 1px; border-bottom-style: solid;
+}
+#column2 ul li a.active:focus {
+	background: 0px; border-radius: 0px; color: rgb(67, 133, 61); border-bottom-color: rgb(67, 133, 61); border-bottom-width: 1px; border-bottom-style: solid;
+}
+#intro a:hover {
+	background: 0px; color: rgb(255, 255, 255);
+}
+#intro a:focus {
+	background: 0px; color: rgb(255, 255, 255);
+}
+#column2 ul li a:hover {
+	background: 0px; color: rgb(255, 255, 255);
+}
+#column2 ul li a:focus {
+	background: 0px; color: rgb(255, 255, 255);
+}
+span > .mark {
+	top: 0px; right: 0px; color: rgb(112, 112, 112); font-size: 1em; position: absolute;
+}
+span > .mark:visited {
+	top: 0px; right: 0px; color: rgb(112, 112, 112); font-size: 1em; position: absolute;
+}
+span > .mark:hover {
+	background: 0px; color: rgb(67, 133, 61);
+}
+span > .mark:focus {
+	background: 0px; color: rgb(67, 133, 61);
+}
+span > .mark:active {
+	background: 0px; color: rgb(67, 133, 61);
+}
+th {
+	padding: 0.75em 1em; vertical-align: top;
+}
+td {
+	padding: 0.75em 1em; vertical-align: top;
+}
+th > *:last-child {
+	margin-bottom: 0px;
+}
+td > *:last-child {
+	margin-bottom: 0px;
+}
+.clearfix::after {
+	height: 0px; clear: both; display: block; visibility: hidden; content: ".";
+}
+@media only screen and (max-width:1024px)
+{
+#content {
+	overflow: visible; font-size: 2.5em;
+}
+.interior#column1 {
+	width: auto; padding-right: 0.5em; padding-left: 0.5em; margin-left: 0px; -ms-overflow-y: visible;
+}
+#column2 {
+	display: none;
+}
+}
+@media only screen and (orientation:portrait) and (max-width:1024px)
+{
+#content {
+	font-size: 3.5em;
+}
+}
+@media print
+{
+html {
+	height: auto;
+}
+.interior#column2 {
+	display: none;
+}
+.interior#column1 {
+	margin-left: auto; -ms-overflow-y: auto;
+}
+}
+.sh_sourceCode {
+	font-style: normal; font-weight: normal;
+}
+.sh_sourceCode .sh_symbol {
+	color: rgb(51, 51, 51);
+}
+.sh_sourceCode .sh_cbracket {
+	color: rgb(51, 51, 51);
+}
+.sh_sourceCode .sh_keyword {
+	color: rgb(51, 51, 136);
+}
+.sh_sourceCode .sh_string {
+	color: rgb(229, 67, 5);
+}
+.sh_sourceCode .sh_regexp {
+	color: rgb(229, 67, 5);
+}
+.sh_sourceCode .sh_number {
+	color: rgb(229, 67, 5);
+}
+.sh_sourceCode .sh_specialchar {
+	color: rgb(229, 67, 5);
+}
+.sh_sourceCode .sh_comment {
+	color: rgb(102, 102, 102); font-weight: lighter;
+}
+#search_input {
+	padding: 5px; margin-top: 10px;
+}
+#modal_search_bg {
+	left: 0px; top: 0px; right: 0px; bottom: 0px; display: none; position: fixed; opacity: 0.5; background-color: rgb(0, 0, 0);
+}
+#modal_search {
+	background: rgb(255, 255, 255); padding: 20px; left: 50%; top: 55px; width: 540px; margin-left: -270px; display: none; position: fixed; box-sizing: border-box;
+}
+#modal_search_input {
+	padding: 15px; width: 100%; box-sizing: border-box;
+}
+.modal_search_result_item {
+	margin: 0px !important; padding: 0px 20px !important; border-radius: 0px !important; line-height: 37px; font-size: 14px; border-bottom-color: rgb(221, 221, 221); border-bottom-width: 1px; border-bottom-style: solid; display: block; box-sizing: border-box; background-color: rgb(255, 255, 255);
+}

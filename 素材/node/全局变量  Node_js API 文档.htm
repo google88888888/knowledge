@@ -1,0 +1,345 @@
+﻿<!DOCTYPE HTML>
+<!-- saved from url=(0033)http://nodejs.cn/api/globals.html -->
+<!DOCTYPE html PUBLIC "" ""><HTML lang="zh-cmn-Hans"><HEAD><META 
+content="IE=11.0000" http-equiv="X-UA-Compatible">
+   
+<META charset="utf-8">   <TITLE>全局变量 | Node.js API 文档</TITLE>   <LINK href="全局变量%20%20Node_js%20API%20文档_files/api.css" 
+rel="stylesheet">   <LINK href="/static/favicon.png" rel="icon" type="image/png" 
+sizes="32x32"> 
+<META name="GENERATOR" content="MSHTML 11.00.9600.18639"></HEAD> 
+<BODY class="alt apidoc" id="api-section-globals">
+<DIV class="clearfix" id="content">
+<DIV class="interior" id="column2">
+<DIV class="interior" id="intro"><A href="http://nodejs.cn/">          Node.js 
+中文网         </A>         
+<DIV><INPUT id="search_input" placeholder="API 快速搜索" value="">         
+</DIV></DIV>
+<UL>
+  <LI><A class="nav-documentation" href="http://nodejs.cn/api/documentation.html">关于本文档</A></LI>
+  <LI><A class="nav-synopsis" 
+  href="http://nodejs.cn/api/synopsis.html">用法与例子</A></LI></UL>
+<DIV class="line"></DIV>
+<UL>
+  <LI><A class="nav-assert" href="http://nodejs.cn/api/assert.html">Assert 
+  (断言)</A></LI>
+  <LI><A class="nav-buffer" 
+  href="http://nodejs.cn/api/buffer.html">Buffer</A></LI>
+  <LI><A class="nav-addons" href="http://nodejs.cn/api/addons.html">C/C++ 
+  插件</A></LI>
+  <LI><A class="nav-child_process" href="http://nodejs.cn/api/child_process.html">Child 
+  Processes (子进程)</A></LI>
+  <LI><A class="nav-cluster" href="http://nodejs.cn/api/cluster.html">Cluster 
+  (集群)</A></LI>
+  <LI><A class="nav-cli" href="http://nodejs.cn/api/cli.html">CLI 
+  (命令行选项)</A></LI>
+  <LI><A class="nav-console" href="http://nodejs.cn/api/console.html">Console 
+  (控制台)</A></LI>
+  <LI><A class="nav-crypto" href="http://nodejs.cn/api/crypto.html">Crypto 
+  (加密)</A></LI>
+  <LI><A class="nav-debugger" href="http://nodejs.cn/api/debugger.html">Debugger 
+  (调试器)</A></LI>
+  <LI><A class="nav-dns" href="http://nodejs.cn/api/dns.html">DNS 
+  (域名服务器)</A></LI>
+  <LI><A class="nav-domain" href="http://nodejs.cn/api/domain.html">Domain 
+  (域)</A></LI>
+  <LI><A class="nav-errors" href="http://nodejs.cn/api/errors.html">Error 
+  (错误)</A></LI>
+  <LI><A class="nav-events" href="http://nodejs.cn/api/events.html">Events 
+  (事件)</A></LI>
+  <LI><A class="nav-fs" href="http://nodejs.cn/api/fs.html">File System 
+  (文件系统)</A></LI>
+  <LI><A class="nav-globals active" 
+  href="http://nodejs.cn/api/globals.html">Global (全局变量)</A></LI>
+  <LI><A class="nav-http" href="http://nodejs.cn/api/http.html">HTTP</A></LI>
+  <LI><A class="nav-https" href="http://nodejs.cn/api/https.html">HTTPS</A></LI>
+  <LI><A class="nav-modules" href="http://nodejs.cn/api/modules.html">Module 
+  (模块)</A></LI>
+  <LI><A class="nav-net" href="http://nodejs.cn/api/net.html">Net (网络)</A></LI>
+  <LI><A class="nav-os" href="http://nodejs.cn/api/os.html">OS (操作系统)</A></LI>
+  <LI><A class="nav-path" href="http://nodejs.cn/api/path.html">Path 
+  (路径)</A></LI>
+  <LI><A class="nav-process" href="http://nodejs.cn/api/process.html">Process 
+  (进程)</A></LI>
+  <LI><A class="nav-punycode" 
+  href="http://nodejs.cn/api/punycode.html">Punycode</A></LI>
+  <LI><A class="nav-querystring" 
+  href="http://nodejs.cn/api/querystring.html">Query Strings (查询字符串)</A></LI>
+  <LI><A class="nav-readline" href="http://nodejs.cn/api/readline.html">Readline 
+  (逐行读取)</A></LI>
+  <LI><A class="nav-repl" href="http://nodejs.cn/api/repl.html">REPL 
+  (交互式解释器)</A></LI>
+  <LI><A class="nav-stream" href="http://nodejs.cn/api/stream.html">Stream 
+  (流)</A></LI>
+  <LI><A class="nav-string_decoder" href="http://nodejs.cn/api/string_decoder.html">String 
+  Decoder (字符串解码器)</A></LI>
+  <LI><A class="nav-timers" href="http://nodejs.cn/api/timers.html">Timer 
+  (定时器)</A></LI>
+  <LI><A class="nav-tls" href="http://nodejs.cn/api/tls.html">TLS 
+  (安全传输层)</A></LI>
+  <LI><A class="nav-tty" href="http://nodejs.cn/api/tty.html">TTY (终端)</A></LI>
+  <LI><A class="nav-dgram" href="http://nodejs.cn/api/dgram.html">UDP/Datagram 
+  (数据报)</A></LI>
+  <LI><A class="nav-url" href="http://nodejs.cn/api/url.html">URL</A></LI>
+  <LI><A class="nav-util" href="http://nodejs.cn/api/util.html">Util 
+  (实用工具)</A></LI>
+  <LI><A class="nav-v8" href="http://nodejs.cn/api/v8.html">V8</A></LI>
+  <LI><A class="nav-vm" href="http://nodejs.cn/api/vm.html">VM (虚拟机)</A></LI>
+  <LI><A class="nav-zlib" href="http://nodejs.cn/api/zlib.html">ZLIB 
+  (压缩)</A></LI></UL>
+<DIV class="line"></DIV></DIV>
+<DIV class="interior" id="column1" data-id="globals"><HEADER>
+<H1>Node.js v6.10.3 文档</H1>
+<DIV id="gtoc">
+<P><A name="toc" href="http://nodejs.cn/api/">返回文档首页</A>             <!--<a href="/api/all.html">单页面显示</a> |--> 
+            <!--<a href="/api/globals.json">JSON格式</a> |-->             <!--<a href="/api/en/globals.html">查看英文版</a>--> 
+          </P></DIV>
+<HR>
+</HEADER>
+<DIV id="toc">
+<H2>目录</H2>
+<UL>
+  <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/globals.html#globals_global_objects">全局变量</A></SPAN>
+  <UL> 
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/globals.html#globals_class_buffer">Buffer 
+    类</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/globals.html#globals_dirname">__dirname</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/globals.html#globals_filename">__filename</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/globals.html#globals_clearimmediate_immediateobject">clearImmediate(immediateObject)</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/globals.html#globals_clearinterval_intervalobject">clearInterval(intervalObject)</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/globals.html#globals_cleartimeout_timeoutobject">clearTimeout(timeoutObject)</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/globals.html#globals_console">console</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/globals.html#globals_exports">exports</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/globals.html#globals_global">global</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/globals.html#globals_module">module</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/globals.html#globals_process">process</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/globals.html#globals_require">require()</A></SPAN>
+    <UL> 
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/globals.html#globals_require_cache">require.cache</A></SPAN></LI>
+      <LI><SPAN class="stability_0"><A href="http://nodejs.cn/api/globals.html#globals_require_extensions">require.extensions</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/globals.html#globals_require_resolve">require.resolve()</A></SPAN></LI></UL></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/globals.html#globals_setimmediate_callback_args">setImmediate(callback[, 
+    ...args])</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/globals.html#globals_setinterval_callback_delay_args">setInterval(callback, 
+    delay[, ...args])</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/globals.html#globals_settimeout_callback_delay_args">setTimeout(callback, 
+    delay[, ...args])</A></SPAN></LI></UL></LI></UL></DIV>
+<DIV id="apicontent">
+<H1>全局变量<SPAN><A class="mark" id="globals_global_objects" href="http://nodejs.cn/api/globals.html#globals_global_objects">#</A></SPAN></H1>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/globals.html#globals_global_objects">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/globals/global_objects.md" 
+target="_blank" rel="nofollow">参与翻译</A></P><!-- type=misc --> 
+<P>这些对象在所有模块中都是可用的。 有些对象实际上不在全局作用域内，而是在模块作用域内，这个在文档中会注明。</P>
+<P>以下列出的对象是特定于 Node.js 的。 有些<A href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects">内置对象</A>是 
+JavaScript 语言本身的一部分，它们也可以全局访问。</P>
+<H2>Buffer 类<SPAN><A class="mark" id="globals_class_buffer" href="http://nodejs.cn/api/globals.html#globals_class_buffer">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/globals.html#globals_class_buffer">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/globals/class_buffer.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.103</SPAN> </DIV><!-- type=global --> 
+<UL>
+  <LI><A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">&lt;Function&gt;</A></LI></UL>
+<P>用于处理二进制数据。详见 <A href="http://nodejs.cn/api/buffer.html">buffer 章节</A>。</P>
+<H2>__dirname<SPAN><A class="mark" id="globals_dirname" href="http://nodejs.cn/api/globals.html#globals_dirname">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/globals.html#globals_dirname">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/globals/dirname.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.27</SPAN> </DIV><!-- type=var --> 
+<UL>
+  <LI><A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A></LI></UL>
+<P>当前模块的目录名。 等同于 <A 
+href="http://nodejs.cn/api/globals.html#globals_filename"><CODE>__filename</CODE></A> 
+的 <A 
+href="http://nodejs.cn/api/path.html#path_path_dirname_path"><CODE>path.dirname()</CODE></A>。</P>
+<P><CODE>__dirname</CODE> 实际上不是一个全局变量，而是每个模块内部的。</P>
+<P>例子，从 <CODE>/Users/mjr</CODE> 运行 <CODE>node example.js</CODE>：</P>
+<PRE><CODE class="lang-js">console.log(__dirname);
+// 输出: /Users/mjr
+console.log(path.dirname(__filename));
+// 输出: /Users/mjr
+</CODE></PRE>
+<H2>__filename<SPAN><A class="mark" id="globals_filename" href="http://nodejs.cn/api/globals.html#globals_filename">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/globals.html#globals_filename">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/globals/filename.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.0.1</SPAN> </DIV><!-- type=var --> 
+<UL>
+  <LI><A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A></LI></UL>
+<P>当前模块的文件名。 这是当前模块文件的解析后的绝对路径。</P>
+<P>对于主程序而言，无需与在命令行中使用的文件名相同。</P>
+<P>查看 <A 
+href="http://nodejs.cn/api/globals.html#globals_dirname"><CODE>__dirname</CODE></A> 
+了解当前模块的目录名。</P>
+<P><CODE>__filename</CODE> 实际上不是一个全局变量，而是每个模块内部的。</P>
+<P>例子：</P>
+<P>从 <CODE>/Users/mjr</CODE> 运行 <CODE>node example.js</CODE>：</P>
+<PRE><CODE class="lang-js">console.log(__filename);
+// 输出: /Users/mjr/example.js
+console.log(__dirname);
+// 输出: /Users/mjr
+</CODE></PRE>
+<P>给出两个模块：<CODE>a</CODE> 和 <CODE>b</CODE>，其中 <CODE>b</CODE> 是 <CODE>a</CODE> 
+的一个依赖，目录结构如下：</P>
+<UL>
+  <LI><CODE>/Users/mjr/app/a.js</CODE></LI>
+  <LI><CODE>/Users/mjr/app/node_modules/b/b.js</CODE></LI></UL>
+<P><CODE>b.js</CODE> 的 <CODE>__filename</CODE> 返回 
+<CODE>/Users/mjr/app/node_modules/b/b.js</CODE>，<CODE>a.js</CODE> 的 
+<CODE>__filename</CODE> 返回 <CODE>/Users/mjr/app/a.js</CODE>。</P>
+<H2>clearImmediate(immediateObject)<SPAN><A class="mark" id="globals_clearimmediate_immediateobject" 
+href="http://nodejs.cn/api/globals.html#globals_clearimmediate_immediateobject">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/globals.html#globals_clearimmediate_immediateobject">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/globals/clearimmediate_immediateobject.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.9.1</SPAN> </DIV><!--type=global--> 
+<P><A 
+href="http://nodejs.cn/api/timers.html#timers_clearimmediate_immediate"><CODE>clearImmediate</CODE></A> 
+描述在<A href="http://nodejs.cn/api/timers.html">定时器</A>章节。</P>
+<H2>clearInterval(intervalObject)<SPAN><A class="mark" id="globals_clearinterval_intervalobject" 
+href="http://nodejs.cn/api/globals.html#globals_clearinterval_intervalobject">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/globals.html#globals_clearinterval_intervalobject">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/globals/clearinterval_intervalobject.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.0.1</SPAN> </DIV><!--type=global--> 
+<P><A 
+href="http://nodejs.cn/api/timers.html#timers_clearinterval_timeout"><CODE>clearInterval</CODE></A> 
+描述在<A href="http://nodejs.cn/api/timers.html">定时器</A>章节。</P>
+<H2>clearTimeout(timeoutObject)<SPAN><A class="mark" id="globals_cleartimeout_timeoutobject" 
+href="http://nodejs.cn/api/globals.html#globals_cleartimeout_timeoutobject">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/globals.html#globals_cleartimeout_timeoutobject">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/globals/cleartimeout_timeoutobject.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.0.1</SPAN> </DIV><!--type=global--> 
+<P><A 
+href="http://nodejs.cn/api/timers.html#timers_cleartimeout_timeout"><CODE>clearTimeout</CODE></A> 
+描述在<A href="http://nodejs.cn/api/timers.html">定时器</A>章节。</P>
+<H2>console<SPAN><A class="mark" id="globals_console" href="http://nodejs.cn/api/globals.html#globals_console">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/globals.html#globals_console">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/globals/console.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.100</SPAN> </DIV><!-- type=global --> 
+<UL>
+  <LI><A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">&lt;Object&gt;</A></LI></UL>
+<P>用于打印 <CODE>stdout</CODE> 和 <CODE>stderr</CODE>。 详见 <A href="http://nodejs.cn/api/console.html"><CODE>console</CODE></A> 
+章节。</P>
+<H2>exports<SPAN><A class="mark" id="globals_exports" href="http://nodejs.cn/api/globals.html#globals_exports">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/globals.html#globals_exports">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/globals/exports.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.12</SPAN> </DIV><!-- type=var --> 
+<P><CODE>module.exports</CODE> 的一个简短的引用。 何时使用 <CODE>exports</CODE> 与何时使用 
+<CODE>module.exports</CODE> 详见<A 
+href="http://nodejs.cn/api/modules.html">模块系统文档</A>。</P>
+<P><CODE>exports</CODE> 实际上不是一个全局变量，而是每个模块内部的。</P>
+<P>详见<A href="http://nodejs.cn/api/modules.html">模块系统文档</A>。</P>
+<H2>global<SPAN><A class="mark" id="globals_global" href="http://nodejs.cn/api/globals.html#globals_global">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/globals.html#globals_global">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/globals/global.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.27</SPAN> </DIV><!-- type=global --> 
+<UL>
+  <LI><A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">&lt;Object&gt;</A> 
+  全局的命名空间对象。</LI></UL>
+<P>在浏览器中，顶层作用域就是全局作用域。 这意味着在浏览器中，如果在全局作用域内使用 <CODE>var something</CODE> 
+会定义一个全局变量。 在 Node.js 中则不同。 顶层作用域不是全局作用域；在 Node.js 模块中使用 <CODE>var 
+something</CODE> 会是模块内部的。</P>
+<H2>module<SPAN><A class="mark" id="globals_module" href="http://nodejs.cn/api/globals.html#globals_module">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/globals.html#globals_module">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/globals/module.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.16</SPAN> </DIV><!-- type=var --> 
+<UL>
+  <LI><A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">&lt;Object&gt;</A></LI></UL>
+<P>当前模块的引用。 具体地说，<CODE>module.exports</CODE> 用于定义一个模块导出什么，且通过 
+<CODE>require()</CODE> 引入。</P>
+<P><CODE>module</CODE> 实际上不是一个全局变量，而是每个模块内部的。</P>
+<P>详见<A href="http://nodejs.cn/api/modules.html">模块系统文档</A>。</P>
+<H2>process<SPAN><A class="mark" id="globals_process" href="http://nodejs.cn/api/globals.html#globals_process">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/globals.html#globals_process">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/globals/process.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.7</SPAN> </DIV><!-- type=global --> 
+<UL>
+  <LI><A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">&lt;Object&gt;</A></LI></UL>
+<P>进程对象。详见 <A 
+href="http://nodejs.cn/api/process.html#process_process"><CODE>process</CODE> 
+对象</A>章节。</P>
+<H2>require()<SPAN><A class="mark" id="globals_require" href="http://nodejs.cn/api/globals.html#globals_require">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/globals.html#globals_require">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/globals/require.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.13</SPAN> </DIV><!-- type=var --> 
+<UL>
+  <LI><A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">&lt;Function&gt;</A></LI></UL>
+<P>用于引入模块。详见<A 
+href="http://nodejs.cn/api/modules.html#modules_modules">模块</A>章节。 
+<CODE>require</CODE> 实际上不是一个全部变量，而是每个模块内部的。</P>
+<H3>require.cache<SPAN><A class="mark" id="globals_require_cache" href="http://nodejs.cn/api/globals.html#globals_require_cache">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/globals.html#globals_require_cache">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/globals/require_cache.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.3.0</SPAN> </DIV>
+<UL>
+  <LI><A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">&lt;Object&gt;</A></LI></UL>
+<P>当模块被引入时，它们会缓存到这个对象。 通过从该对象删除键值，下次调用 <CODE>require</CODE> 时会重新加载模块。 注意，这不适用于<A 
+href="http://nodejs.cn/api/addons.html">原生插件</A>，因为重新加载会导致错误。</P>
+<H3>require.extensions<SPAN><A class="mark" id="globals_require_extensions" 
+href="http://nodejs.cn/api/globals.html#globals_require_extensions">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/globals.html#globals_require_extensions">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/globals/require_extensions.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.3.0</SPAN> <SPAN>废弃于: v0.10.6 </SPAN> 
+</DIV>
+<PRE class="api_stability api_stability_0"><A href="http://nodejs.cn/api/documentation.html#documentation_stability_index">稳定性: 0</A> - 废弃的</PRE>
+<UL>
+  <LI><A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">&lt;Object&gt;</A></LI></UL>
+<P>Instruct <CODE>require</CODE> on how to handle certain file extensions.</P>
+<P>Process files with the extension <CODE>.sjs</CODE> as <CODE>.js</CODE>:</P>
+<PRE><CODE class="lang-js">require.extensions['.sjs'] = require.extensions['.js'];
+</CODE></PRE>
+<P><STRONG>Deprecated</STRONG>  In the past, this list has been used to load
+ non-JavaScript modules into Node.js by compiling them on-demand. However, in 
+practice, there are much better ways to do this, such as loading modules via 
+some other Node.js program, or compiling them to JavaScript ahead of time.</P>
+<P>Since the Module system is locked, this feature will probably never go away.  
+However, it may have subtle bugs and complexities that are best left 
+untouched.</P>
+<H3>require.resolve()<SPAN><A class="mark" id="globals_require_resolve" href="http://nodejs.cn/api/globals.html#globals_require_resolve">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/globals.html#globals_require_resolve">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/globals/require_resolve.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.3.0</SPAN> </DIV>
+<P>使用内部的 <CODE>require()</CODE> 机制来查找模块的位置，但不会加载模块，只返回解析后的文件名。</P>
+<H2>setImmediate(callback[, ...args])<SPAN><A class="mark" id="globals_setimmediate_callback_args" 
+href="http://nodejs.cn/api/globals.html#globals_setimmediate_callback_args">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/globals.html#globals_setimmediate_callback_args">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/globals/setimmediate_callback_args.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.9.1</SPAN> </DIV><!-- type=global --> 
+<P><A 
+href="http://nodejs.cn/api/timers.html#timers_setimmediate_callback_args"><CODE>setImmediate</CODE></A> 
+描述在<A href="http://nodejs.cn/api/timers.html">定时器</A>章节。</P>
+<H2>setInterval(callback, delay[, ...args])<SPAN><A class="mark" id="globals_setinterval_callback_delay_args" 
+href="http://nodejs.cn/api/globals.html#globals_setinterval_callback_delay_args">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/globals.html#globals_setinterval_callback_delay_args">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/globals/setinterval_callback_delay_args.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.0.1</SPAN> </DIV><!-- type=global --> 
+<P><A href="http://nodejs.cn/api/timers.html#timers_setinterval_callback_delay_args"><CODE>setInterval</CODE></A> 
+描述在<A href="http://nodejs.cn/api/timers.html">定时器</A>章节。</P>
+<H2>setTimeout(callback, delay[, ...args])<SPAN><A class="mark" id="globals_settimeout_callback_delay_args" 
+href="http://nodejs.cn/api/globals.html#globals_settimeout_callback_delay_args">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/globals.html#globals_settimeout_callback_delay_args">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/globals/settimeout_callback_delay_args.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.0.1</SPAN> </DIV><!-- type=global --> 
+<P><A href="http://nodejs.cn/api/timers.html#timers_settimeout_callback_delay_args"><CODE>setTimeout</CODE></A> 
+描述在<A href="http://nodejs.cn/api/timers.html">定时器</A>章节。</P></DIV></DIV></DIV><!-- 搜索弹窗 --> 
+  
+<DIV id="modal_search_bg"></DIV>
+<DIV 
+id="modal_search"><INPUT id="modal_search_input" placeholder="API 快速搜索" value=""> 
+    
+<DIV id="modal_search_result"></DIV></DIV><!-- js -->   <!--[if lt IE 10]><script src="/static/lib/placeholders.js?20170426"></script><![endif]--> 
+  
+<SCRIPT src="全局变量%20%20Node_js%20API%20文档_files/api.js"></SCRIPT>
+ </BODY></HTML>

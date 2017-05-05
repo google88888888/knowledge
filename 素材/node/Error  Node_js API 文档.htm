@@ -1,0 +1,583 @@
+﻿<!DOCTYPE HTML>
+<!-- saved from url=(0032)http://nodejs.cn/api/errors.html -->
+<!DOCTYPE html PUBLIC "" ""><HTML lang="zh-cmn-Hans"><HEAD><META 
+content="IE=11.0000" http-equiv="X-UA-Compatible">
+   
+<META charset="utf-8">   <TITLE>Error | Node.js API 文档</TITLE>   <LINK href="Error%20%20Node_js%20API%20文档_files/api.css" 
+rel="stylesheet">   <LINK href="/static/favicon.png" rel="icon" type="image/png" 
+sizes="32x32"> 
+<META name="GENERATOR" content="MSHTML 11.00.9600.18639"></HEAD> 
+<BODY class="alt apidoc" id="api-section-errors">
+<DIV class="clearfix" id="content">
+<DIV class="interior" id="column2">
+<DIV class="interior" id="intro"><A href="http://nodejs.cn/">          Node.js 
+中文网         </A>         
+<DIV><INPUT id="search_input" placeholder="API 快速搜索" value="">         
+</DIV></DIV>
+<UL>
+  <LI><A class="nav-documentation" href="http://nodejs.cn/api/documentation.html">关于本文档</A></LI>
+  <LI><A class="nav-synopsis" 
+  href="http://nodejs.cn/api/synopsis.html">用法与例子</A></LI></UL>
+<DIV class="line"></DIV>
+<UL>
+  <LI><A class="nav-assert" href="http://nodejs.cn/api/assert.html">Assert 
+  (断言)</A></LI>
+  <LI><A class="nav-buffer" 
+  href="http://nodejs.cn/api/buffer.html">Buffer</A></LI>
+  <LI><A class="nav-addons" href="http://nodejs.cn/api/addons.html">C/C++ 
+  插件</A></LI>
+  <LI><A class="nav-child_process" href="http://nodejs.cn/api/child_process.html">Child 
+  Processes (子进程)</A></LI>
+  <LI><A class="nav-cluster" href="http://nodejs.cn/api/cluster.html">Cluster 
+  (集群)</A></LI>
+  <LI><A class="nav-cli" href="http://nodejs.cn/api/cli.html">CLI 
+  (命令行选项)</A></LI>
+  <LI><A class="nav-console" href="http://nodejs.cn/api/console.html">Console 
+  (控制台)</A></LI>
+  <LI><A class="nav-crypto" href="http://nodejs.cn/api/crypto.html">Crypto 
+  (加密)</A></LI>
+  <LI><A class="nav-debugger" href="http://nodejs.cn/api/debugger.html">Debugger 
+  (调试器)</A></LI>
+  <LI><A class="nav-dns" href="http://nodejs.cn/api/dns.html">DNS 
+  (域名服务器)</A></LI>
+  <LI><A class="nav-domain" href="http://nodejs.cn/api/domain.html">Domain 
+  (域)</A></LI>
+  <LI><A class="nav-errors active" href="http://nodejs.cn/api/errors.html">Error 
+  (错误)</A></LI>
+  <LI><A class="nav-events" href="http://nodejs.cn/api/events.html">Events 
+  (事件)</A></LI>
+  <LI><A class="nav-fs" href="http://nodejs.cn/api/fs.html">File System 
+  (文件系统)</A></LI>
+  <LI><A class="nav-globals" href="http://nodejs.cn/api/globals.html">Global 
+  (全局变量)</A></LI>
+  <LI><A class="nav-http" href="http://nodejs.cn/api/http.html">HTTP</A></LI>
+  <LI><A class="nav-https" href="http://nodejs.cn/api/https.html">HTTPS</A></LI>
+  <LI><A class="nav-modules" href="http://nodejs.cn/api/modules.html">Module 
+  (模块)</A></LI>
+  <LI><A class="nav-net" href="http://nodejs.cn/api/net.html">Net (网络)</A></LI>
+  <LI><A class="nav-os" href="http://nodejs.cn/api/os.html">OS (操作系统)</A></LI>
+  <LI><A class="nav-path" href="http://nodejs.cn/api/path.html">Path 
+  (路径)</A></LI>
+  <LI><A class="nav-process" href="http://nodejs.cn/api/process.html">Process 
+  (进程)</A></LI>
+  <LI><A class="nav-punycode" 
+  href="http://nodejs.cn/api/punycode.html">Punycode</A></LI>
+  <LI><A class="nav-querystring" 
+  href="http://nodejs.cn/api/querystring.html">Query Strings (查询字符串)</A></LI>
+  <LI><A class="nav-readline" href="http://nodejs.cn/api/readline.html">Readline 
+  (逐行读取)</A></LI>
+  <LI><A class="nav-repl" href="http://nodejs.cn/api/repl.html">REPL 
+  (交互式解释器)</A></LI>
+  <LI><A class="nav-stream" href="http://nodejs.cn/api/stream.html">Stream 
+  (流)</A></LI>
+  <LI><A class="nav-string_decoder" href="http://nodejs.cn/api/string_decoder.html">String 
+  Decoder (字符串解码器)</A></LI>
+  <LI><A class="nav-timers" href="http://nodejs.cn/api/timers.html">Timer 
+  (定时器)</A></LI>
+  <LI><A class="nav-tls" href="http://nodejs.cn/api/tls.html">TLS 
+  (安全传输层)</A></LI>
+  <LI><A class="nav-tty" href="http://nodejs.cn/api/tty.html">TTY (终端)</A></LI>
+  <LI><A class="nav-dgram" href="http://nodejs.cn/api/dgram.html">UDP/Datagram 
+  (数据报)</A></LI>
+  <LI><A class="nav-url" href="http://nodejs.cn/api/url.html">URL</A></LI>
+  <LI><A class="nav-util" href="http://nodejs.cn/api/util.html">Util 
+  (实用工具)</A></LI>
+  <LI><A class="nav-v8" href="http://nodejs.cn/api/v8.html">V8</A></LI>
+  <LI><A class="nav-vm" href="http://nodejs.cn/api/vm.html">VM (虚拟机)</A></LI>
+  <LI><A class="nav-zlib" href="http://nodejs.cn/api/zlib.html">ZLIB 
+  (压缩)</A></LI></UL>
+<DIV class="line"></DIV></DIV>
+<DIV class="interior" id="column1" data-id="errors"><HEADER>
+<H1>Node.js v6.10.3 文档</H1>
+<DIV id="gtoc">
+<P><A name="toc" href="http://nodejs.cn/api/">返回文档首页</A>             <!--<a href="/api/all.html">单页面显示</a> |--> 
+            <!--<a href="/api/errors.json">JSON格式</a> |-->             <!--<a href="/api/en/errors.html">查看英文版</a>--> 
+          </P></DIV>
+<HR>
+</HEADER>
+<DIV id="toc">
+<H2>目录</H2>
+<UL>
+  <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/errors.html#errors_errors">Error 
+  (错误)</A></SPAN>
+  <UL> 
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/errors.html#errors_error_propagation_and_interception">错误的冒泡和捕获</A></SPAN>
+    <UL> 
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/errors.html#errors_node_js_style_callbacks">Node.js 
+      风格的回调</A></SPAN></LI></UL></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/errors.html#errors_class_error">Error 
+    类</A></SPAN>
+    <UL> 
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/errors.html#errors_new_error_message">new 
+      Error(message)</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/errors.html#errors_error_capturestacktrace_targetobject_constructoropt">Error.captureStackTrace(targetObject[, 
+      constructorOpt])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/errors.html#errors_error_stacktracelimit">Error.stackTraceLimit</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/errors.html#errors_error_message">error.message</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/errors.html#errors_error_stack">error.stack</A></SPAN></LI></UL></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/errors.html#errors_class_rangeerror">RangeError 
+    类</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/errors.html#errors_class_referenceerror">ReferenceError 
+    类</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/errors.html#errors_class_syntaxerror">SyntaxError 
+    类</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/errors.html#errors_class_typeerror">TypeError 
+    类</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/errors.html#errors_exceptions_vs_errors">异常与错误</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/errors.html#errors_system_errors">系统错误</A></SPAN>
+    <UL> 
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/errors.html#errors_class_system_error">系统错误类</A></SPAN>
+      <UL> 
+        <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/errors.html#errors_error_code">error.code</A></SPAN></LI>
+        <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/errors.html#errors_error_errno">error.errno</A></SPAN></LI>
+        <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/errors.html#errors_error_syscall">error.syscall</A></SPAN></LI>
+        <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/errors.html#errors_error_path">error.path</A></SPAN></LI>
+        <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/errors.html#errors_error_address">error.address</A></SPAN></LI>
+        <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/errors.html#errors_error_port">error.port</A></SPAN></LI></UL></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/errors.html#errors_common_system_errors">常见的系统错误</A></SPAN></LI></UL></LI></UL></LI></UL></DIV>
+<DIV id="apicontent">
+<H1>Error (错误)<SPAN><A class="mark" id="errors_errors" href="http://nodejs.cn/api/errors.html#errors_errors">#</A></SPAN></H1>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/errors.html#errors_errors">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/errors/errors.md" 
+target="_blank" rel="nofollow">参与翻译</A></P><!--type=misc--> 
+<P>Node.js 中运行的应用程序一般会遇到以下四类错误：</P>
+<UL>
+  <LI>标准的 JavaScript 错误：
+  <UL>
+    <LI><A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/EvalError">&lt;EvalError&gt;</A> 
+    : 当调用 <CODE>eval()</CODE> 失败时抛出。</LI>
+    <LI><A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SyntaxError">&lt;SyntaxError&gt;</A> 
+    : 当 JavaScript 语法错误时抛出。</LI>
+    <LI><A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError">&lt;RangeError&gt;</A> 
+    : 当一个值不在预期范围内时抛出。</LI>
+    <LI><A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError">&lt;ReferenceError&gt;</A> 
+    : 当使用未定义的变量时抛出。</LI>
+    <LI><A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError">&lt;TypeError&gt;</A> 
+    : 当传入错误类型的参数时抛出。</LI>
+    <LI><A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/URIError">&lt;URIError&gt;</A> 
+    : 当一个全局的 URI 处理函数被误用时抛出。</LI></UL></LI>
+  <LI>由底层操作系的触发的系统错误，例如试图打开一个不存在的文件、试图向一个已关闭的 socket 发送数据等。</LI>
+  <LI>由应用程序代码触发的用户自定义的错误。</LI>
+  <LI>断言错误是错误的一个特殊的类，每当 Node.js 检测到一个不应该发生的异常逻辑时会触发。 这类错误通常由 <CODE>assert</CODE> 
+  模块触发。</LI></UL>
+<P>所有 Node.js 引起的 JavaScript 和系统错误都是继承自或实例化自标准的 JavaScript 的 <A class="type" 
+href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error">&lt;Error&gt;</A> 
+类，且保证至少提供类中的可用的属性。</P>
+<H2>错误的冒泡和捕获<SPAN><A class="mark" id="errors_error_propagation_and_interception" 
+href="http://nodejs.cn/api/errors.html#errors_error_propagation_and_interception">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/errors.html#errors_error_propagation_and_interception">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/errors/error_propagation_and_interception.md" 
+target="_blank" rel="nofollow">参与翻译</A></P><!--type=misc--> 
+<P>Node.js 支持几种当应用程序运行时发生的错误的冒泡和处理的机制。 如何报告和处理这些错误完全取决于错误的类型和被调用的 API 的风格。</P>
+<P>所有 JavaScript 错误都会被作为异常处理，异常会立即产生并使用标准的 JavaScript <CODE>throw</CODE> 
+机制抛出一个错误。 这些都是使用 JavaScript 语言提供的 <A href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch"><CODE>try 
+/ catch</CODE> 语句</A>处理的。</P>
+<PRE><CODE class="lang-js">// 抛出一个 ReferenceError，因为 z 为 undefined
+try {
+  const m = 1;
+  const n = m + z;
+} catch (err) {
+  // 在这里处理错误。
+}
+</CODE></PRE>
+<P>JavaScript 的 <CODE>throw</CODE> 机制的任何使用都会引起异常，异常必须使用 <CODE>try / catch</CODE> 
+处理，否则 Node.js 进程会立即退出。</P>
+<P>除了少数例外，同步的 API（任何不接受 <CODE>callback</CODE> 函数的阻塞方法，例如 <A href="http://nodejs.cn/api/fs.html#fs_fs_readfilesync_file_options"><CODE>fs.readFileSync</CODE></A>）会使用 
+<CODE>throw</CODE> 报告错误。</P>
+<P>异步的 API 中发生的错误可能会以多种方式进行报告：</P>
+<UL>
+  <LI>
+  <P>大多数的异步方法都接受一个 <CODE>callback</CODE> 函数，该函数会接受一个 <CODE>Error</CODE> 
+  对象传入作为第一个参数。 如果第一个参数不是 <CODE>null</CODE> 而是一个 <CODE>Error</CODE> 
+  实例，则说明发生了错误，应该进行处理。</P>
+<PRE><CODE class="lang-js">const fs = require('fs');
+fs.readFile('一个不存在的文件', (err, data) =&gt; {
+  if (err) {
+    console.error('读取文件出错！', err);
+    return;
+  }
+  // 否则处理数据
+});
+</CODE></PRE></LI>
+  <LI>
+  <P>当一个异步方法被一个 <CODE>EventEmitter</CODE> 对象调用时，错误会被分发到对象的 <CODE>'error'</CODE> 
+  事件上。</P>
+<PRE><CODE class="lang-js">const net = require('net');
+const connection = net.connect('localhost');
+
+// 添加一个 'error' 事件句柄到一个流：
+connection.on('error', (err) =&gt; {
+  // 如果连接被服务器重置，或无法连接，或发生任何错误，则错误会被发送到这里。 
+  console.error(err);
+});
+
+connection.pipe(process.stdout);
+</CODE></PRE></LI>
+  <LI>
+  <P>Node.js API 中有一小部分普通的异步方法仍可能使用 <CODE>throw</CODE> 机制抛出异常，且必须使用 <CODE>try / 
+  catch</CODE> 处理。 这些方法并没有一个完整的列表；请参阅各个方法的文档以确定所需的合适的错误处理机制。</P></LI></UL>
+<P><CODE>'error'</CODE> 事件机制的使用常见于<A 
+href="http://nodejs.cn/api/stream.html">基于流</A>和<A href="http://nodejs.cn/api/events.html#events_class_eventemitter">基于事件触发器</A>的 
+API，它们本身就代表了一系列的异步操作（相对于要么成功要么失败的单一操作）。</P>
+<P>对于所有的 <CODE>EventEmitter</CODE> 对象，如果没有提供一个 <CODE>'error'</CODE> 
+事件句柄，则错误会被抛出，并造成 Node.js 进程报告一个未处理的异常且随即崩溃，除非： 适当地使用 <A href="http://nodejs.cn/api/domain.html"><CODE>domain</CODE></A> 
+模块或已经注册了一个 <A href="http://nodejs.cn/api/process.html#process_event_uncaughtexception"><CODE>process.on('uncaughtException')</CODE></A> 
+事件的句柄。</P>
+<PRE><CODE class="lang-js">const EventEmitter = require('events');
+const ee = new EventEmitter();
+
+setImmediate(() =&gt; {
+  // 这会使进程崩溃，因为还为添加 'error' 事件句柄。
+  ee.emit('error', new Error('这会崩溃'));
+});
+</CODE></PRE>
+<P>这种方式产生的错误无法使用 <CODE>try / catch</CODE> 截获，因为它们是在调用的代码已经退出后抛出的。</P>
+<P>开发者必须查阅各个方法的文档以明确在错误发生时这些方法是如何冒泡的。</P>
+<H3>Node.js 风格的回调<SPAN><A class="mark" id="errors_node_js_style_callbacks" href="http://nodejs.cn/api/errors.html#errors_node_js_style_callbacks">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/errors.html#errors_node_js_style_callbacks">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/errors/node_js_style_callbacks.md" 
+target="_blank" rel="nofollow">参与翻译</A></P><!--type=misc--> 
+<P>大多数由 Node.js 核心 API 暴露出来的异步方法都遵循一个被称为“Node.js 风格的回调”的惯用模式。
+ 使用这种模式，一个回调函数是作为一个参数传给方法的。 当操作完成或发生错误时，回调函数会被调用，并带上错误对象（如果有）作为第一个参数。
+ 如果没有发生错误，则第一个参数为 <CODE>null</CODE>。</P>
+<PRE><CODE class="lang-js">const fs = require('fs');
+
+function nodeStyleCallback(err, data) {
+  if (err) {
+    console.error('There was an error', err);
+    return;
+  }
+  console.log(data);
+}
+
+fs.readFile('/some/file/that/does-not-exist', nodeStyleCallback);
+fs.readFile('/some/file/that/does-exist', nodeStyleCallback);
+</CODE></PRE>
+<P>JavaScript 的 <CODE>try / catch</CODE> 机制无法用于捕获由异步 API 引起的错误。 尝试使用 
+<CODE>throw</CODE> 而不是一个 Node.js 风格的回调，是初学者常犯的错误：</P>
+<PRE><CODE class="lang-js">// 这无法使用：
+const fs = require('fs');
+
+try {
+  fs.readFile('/some/file/that/does-not-exist', (err, data) =&gt; {
+    // 假设的错误：在这里抛出
+    if (err) {
+      throw err;
+    }
+  });
+} catch (err) {
+  // 这不会捕获到抛出！
+  console.error(err);
+}
+</CODE></PRE>
+<P>这无法使用，因为传给 <CODE>fs.readFile()</CODE> 的回调函数是被异步地调用。 当回调被调用时，周围的代码（包括 
+<CODE>try { } catch (err) { }</CODE> 区域）已经退出。 大多数情况下，在回调内抛出一个错误会使 Node.js 进程崩溃。
+ 如果<A href="http://nodejs.cn/api/domain.html">域</A>已启用，或已在 
+<CODE>process.on('uncaughtException')</CODE> 注册了一个句柄，则这些错误可被捕获。</P>
+<H2>Error 类<SPAN><A class="mark" id="errors_class_error" href="http://nodejs.cn/api/errors.html#errors_class_error">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/errors.html#errors_class_error">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/errors/class_error.md" 
+target="_blank" rel="nofollow">参与翻译</A></P><!--type=class--> 
+<P>一个通用的 JavaScript <CODE>Error</CODE> 对象，它不表示错误发生的具体情况。 <CODE>Error</CODE> 
+对象会捕捉一个“堆栈跟踪”，详细说明被实例化的 <CODE>Error</CODE> 对象在代码中的位置，并可能提供错误的文字描述。</P>
+<P>所有由 Node.js 产生的错误，包括所有系统的和 JavaScript 的错误都实例化自或继承自 <CODE>Error</CODE> 类。</P>
+<H3>new Error(message)<SPAN><A class="mark" id="errors_new_error_message" href="http://nodejs.cn/api/errors.html#errors_new_error_message">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/errors.html#errors_new_error_message">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/errors/new_error_message.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="signature">
+<UL>
+  <LI><CODE>message</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A></LI></UL></DIV>
+<P>新建一个 <CODE>Error</CODE> 实例，并设置 <CODE>error.message</CODE> 属性以提供文本信息。 如果 
+<CODE>message</CODE> 传的是一个对象，则会调用 <CODE>message.toString()</CODE> 生成文本信息。 
+<CODE>error.stack</CODE> 属性表示被调用的 <CODE>new Error()</CODE> 在代码中的位置。 堆栈跟踪是基于 <A 
+href="https://github.com/v8/v8/wiki/Stack-Trace-API">V8 的堆栈跟踪 API</A> 的。
+ 堆栈跟踪只会取（a）异步代码执行的开头或（b）<CODE>Error.stackTraceLimit</CODE> 属性给出的栈帧中的最小项。</P>
+<H3>Error.captureStackTrace(targetObject[, constructorOpt])<SPAN><A class="mark" 
+id="errors_error_capturestacktrace_targetobject_constructoropt" href="http://nodejs.cn/api/errors.html#errors_error_capturestacktrace_targetobject_constructoropt">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/errors.html#errors_error_capturestacktrace_targetobject_constructoropt">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/errors/error_capturestacktrace_targetobject_constructoropt.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="signature">
+<UL>
+  <LI><CODE>targetObject</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">&lt;Object&gt;</A></LI>
+  <LI><CODE>constructorOpt</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">&lt;Function&gt;</A></LI></UL></DIV>
+<P>在 <CODE>targetObject</CODE> 上创建一个 <CODE>.stack</CODE> 属性，当访问时返回一个表示代码中调用 
+<CODE>Error.captureStackTrace()</CODE> 的位置的字符串。</P>
+<PRE><CODE class="lang-js">const myObject = {};
+Error.captureStackTrace(myObject);
+myObject.stack;  // 类似 `new Error().stack`
+</CODE></PRE>
+<P>跟踪的第一行，不是前缀为 <CODE>ErrorType: message</CODE>，而是调用 
+<CODE>targetObject.toString()</CODE> 的结果。</P>
+<P>可选的 <CODE>constructorOpt</CODE> 参数接受一个函数。 如果提供了，则 <CODE>constructorOpt</CODE> 
+之上包括自身在内的全部栈帧都会被生成的堆栈跟踪省略。</P>
+<P><CODE>constructorOpt</CODE> 参数用在向最终用户隐藏错误生成的具体细节时非常有用。例如：</P>
+<PRE><CODE class="lang-js">function MyError() {
+  Error.captureStackTrace(this, MyError);
+}
+
+// 没传入 MyError 到 captureStackTrace，MyError 帧会显示在 .stack 属性。
+// 通过传入构造函数，可以省略该帧及其之上的所有帧。
+new MyError().stack;
+</CODE></PRE>
+<H3>Error.stackTraceLimit<SPAN><A class="mark" id="errors_error_stacktracelimit" 
+href="http://nodejs.cn/api/errors.html#errors_error_stacktracelimit">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/errors.html#errors_error_stacktracelimit">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/errors/error_stacktracelimit.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="signature">
+<UL>
+  <LI><A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Number&gt;</A></LI></UL></DIV>
+<P><CODE>Error.stackTraceLimit</CODE> 属性指定了堆栈跟踪收集的栈帧数量（无论是 <CODE>new 
+Error().stack</CODE> 或 <CODE>Error.captureStackTrace(obj)</CODE> 产生的）。</P>
+<P>默认值为 <CODE>10</CODE> ，但可设为任何有效的 JavaScript 数值。 值改变后的变化会影响所有捕获到的堆栈跟踪。</P>
+<P>如果设为一个非数值或负数，则堆栈跟踪不会捕捉任何栈帧。</P>
+<H3>error.message<SPAN><A class="mark" id="errors_error_message" href="http://nodejs.cn/api/errors.html#errors_error_message">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/errors.html#errors_error_message">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/errors/error_message.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="signature">
+<UL>
+  <LI><A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A></LI></UL></DIV>
+<P><CODE>error.message</CODE> 属性是错误的字符串描述，通过调用 <CODE>new Error(message)</CODE> 
+设置。 传给构造函数的 <CODE>message</CODE> 也会出现在 <CODE>Error</CODE> 的堆栈跟踪的第一行。
+ 但是，<CODE>Error</CODE> 对象创建后改变这个属性可能不会改变堆栈跟踪的第一行（比如当 <CODE>error.stack</CODE> 
+在该属性被改变之前被读取）。</P>
+<PRE><CODE class="lang-js">const err = new Error('错误信息');
+console.error(err.message);
+// 打印: 错误信息
+</CODE></PRE>
+<H3>error.stack<SPAN><A class="mark" id="errors_error_stack" href="http://nodejs.cn/api/errors.html#errors_error_stack">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/errors.html#errors_error_stack">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/errors/error_stack.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="signature">
+<UL>
+  <LI><A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A></LI></UL></DIV>
+<P><CODE>error.stack</CODE> 属性是一个字符串，描述代码中 <CODE>Error</CODE> 被实例化的位置。</P>
+<P>例子：</P>
+<PRE><CODE class="lang-txt">Error: Things keep happening!
+   at /home/gbusey/file.js:525:2
+   at Frobnicator.refrobulate (/home/gbusey/business-logic.js:424:21)
+   at Actor.&lt;anonymous&gt; (/home/gbusey/actors.js:400:8)
+   at increaseSynergy (/home/gbusey/actors.js:701:6)
+</CODE></PRE>
+<P>第一行会被格式化为 <CODE>&lt;error class name&gt;: &lt;error 
+message&gt;</CODE>，且带上一系列栈帧（每一行都以 "at " 开头）。 每一帧描述了一个代码中导致错误生成的调用点。 V8 
+引擎会试图显示每个函数的名称（变量名、函数名、或对象的方法名），但偶尔也可能找不到一个合适的名称。 如果 V8 
+引擎没法确定一个函数的名称，则只显示帧的位置信息。 否则，在位置信息的旁边会显示明确的函数名。</P>
+<P>注意，帧只由 JavaScript 函数产生。 例如，同步地执行一个名为 <CODE>cheetahify</CODE> 的 C++ 
+插件，且插件自身调用一个 JavaScript 函数，代表 <CODE>cheetahify</CODE> 回调的栈帧不会出现在堆栈跟踪里：</P>
+<PRE><CODE class="lang-js">const cheetahify = require('./native-binding.node');
+
+function makeFaster() {
+  // cheetahify 同步地调用 speedy.
+  cheetahify(function speedy() {
+    throw new Error('oh no!');
+  });
+}
+
+makeFaster(); // 会抛出：
+  // /home/gbusey/file.js:6
+  //     throw new Error('oh no!');
+  //           ^
+  // Error: oh no!
+  //     at speedy (/home/gbusey/file.js:6:11)
+  //     at makeFaster (/home/gbusey/file.js:5:3)
+  //     at Object.&lt;anonymous&gt; (/home/gbusey/file.js:10:1)
+  //     at Module._compile (module.js:456:26)
+  //     at Object.Module._extensions..js (module.js:474:10)
+  //     at Module.load (module.js:356:32)
+  //     at Function.Module._load (module.js:312:12)
+  //     at Function.Module.runMain (module.js:497:10)
+  //     at startup (node.js:119:16)
+  //     at node.js:906:3
+</CODE></PRE>
+<P>位置信息会是其中之一：</P>
+<UL>
+  <LI><CODE>native</CODE>，帧表示一个 V8 引擎内部的调用（比如，<CODE>[].forEach</CODE>）。</LI>
+  <LI><CODE>plain-filename.js:line:column</CODE>，帧表示一个 Node.js 内部的调用。</LI>
+  <LI><CODE>/absolute/path/to/file.js:line:column</CODE>，帧表示一个用户程序或其依赖的调用。</LI></UL>
+<P>代表堆栈跟踪的字符串是在 <CODE>error.stack</CODE> 属性被访问时才生成的。</P>
+<P>堆栈跟踪捕获的帧的数量是由 <CODE>Error.stackTraceLimit</CODE> 或当前事件循环中可用的帧数量的最小值界定的。</P>
+<P>系统级的错误是由扩展的 <CODE>Error</CODE> 实例产生的，详见<A href="http://nodejs.cn/api/errors.html#errors_system_errors">系统错误</A>。</P>
+<H2>RangeError 类<SPAN><A class="mark" id="errors_class_rangeerror" href="http://nodejs.cn/api/errors.html#errors_class_rangeerror">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/errors.html#errors_class_rangeerror">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/errors/class_rangeerror.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P><CODE>Error</CODE> 的一个子类，表明一个函数的一个给定的参数的值不在可接受的集合或范围内；
+ 无论是一个数字范围还是给定函数参数的选项的集合。</P>
+<P>例子：</P>
+<PRE><CODE class="lang-js">require('net').connect(-1);
+  // 抛出 "RangeError: "port" option should be &gt;= 0 and &lt; 65536: -1"
+</CODE></PRE>
+<P>Node.js 会生成并以参数校验的形式立即抛出 <CODE>RangeError</CODE> 实例。</P>
+<H2>ReferenceError 类<SPAN><A class="mark" id="errors_class_referenceerror" href="http://nodejs.cn/api/errors.html#errors_class_referenceerror">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/errors.html#errors_class_referenceerror">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/errors/class_referenceerror.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P><CODE>Error</CODE> 的一个子类，表明试图访问一个未定义的变量。 这些错误通常表明代码有拼写错误或程序已损坏。</P>
+<P>虽然客户端代码可能产生和传播这些错误，但在实践中，只有 V8 引擎会这么做。</P>
+<PRE><CODE class="lang-js">doesNotExist;
+  // 抛出 ReferenceError，在这个程序中 doesNotExist 不是一个变量。
+</CODE></PRE>
+<P>除非应用程序是动态生成并运行的代码，否则 <CODE>ReferenceError</CODE> 实例应该始终被视为代码中或其依赖中的错误。</P>
+<H2>SyntaxError 类<SPAN><A class="mark" id="errors_class_syntaxerror" href="http://nodejs.cn/api/errors.html#errors_class_syntaxerror">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/errors.html#errors_class_syntaxerror">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/errors/class_syntaxerror.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P><CODE>Error</CODE> 的一个子类，表明程序不是有效的 JavaScript 代码。 这些错误是代码执行的结果产生和传播的。
+ 代码执行可能产生自 <CODE>eval</CODE>、<CODE>Function</CODE>、<CODE>require</CODE> 或 <A 
+href="http://nodejs.cn/api/vm.html">vm</A>。 这些错误几乎都表明程序已损坏。</P>
+<PRE><CODE class="lang-js">try {
+  require('vm').runInThisContext('binary ! isNotOk');
+} catch (err) {
+  // err 是一个 SyntaxError
+}
+</CODE></PRE>
+<P><CODE>SyntaxError</CODE> 实例在创建它们的上下文中是不可恢复的。 它们只可被其他上下文捕获。</P>
+<H2>TypeError 类<SPAN><A class="mark" id="errors_class_typeerror" href="http://nodejs.cn/api/errors.html#errors_class_typeerror">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/errors.html#errors_class_typeerror">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/errors/class_typeerror.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P><CODE>Error</CODE> 的一个子类，表明提供的参数不是一个被允许的类型。 例如，将一个函数传给一个期望字符串的参数会被视为一个 
+<CODE>TypeError</CODE>。</P>
+<PRE><CODE class="lang-js">require('url').parse(() =&gt; { });
+  // 抛出 TypeError，因为它期望的是一个字符串
+</CODE></PRE>
+<P>Node.js 会生成并以参数校验的形式立即抛出 <CODE>TypeError</CODE> 实例。</P>
+<H2>异常与错误<SPAN><A class="mark" id="errors_exceptions_vs_errors" href="http://nodejs.cn/api/errors.html#errors_exceptions_vs_errors">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/errors.html#errors_exceptions_vs_errors">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/errors/exceptions_vs_errors.md" 
+target="_blank" rel="nofollow">参与翻译</A></P><!--type=misc--> 
+<P>JavaScript 异常是一个作为一个无效操作的结果或作为一个 <CODE>throw</CODE> 声明的目标所抛出的值。 虽然它不要求这些值是 
+<CODE>Error</CODE> 的实例或继承自 <CODE>Error</CODE> 的类的实例，但所有通过 Node.js 或 JavaScript 
+运行时抛出的异常都是 <CODE>Error</CODE> 实例。</P>
+<P>有些异常在 JavaScript 层是无法恢复的。 这些异常总会引起 Node.js 进程的崩溃。 例如 <CODE>assert()</CODE> 
+检测或在 C++ 层调用的 <CODE>abort()</CODE>。</P>
+<H2>系统错误<SPAN><A class="mark" id="errors_system_errors" href="http://nodejs.cn/api/errors.html#errors_system_errors">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/errors.html#errors_system_errors">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/errors/system_errors.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P>系统错误是当程序运行环境中发生异常时产生的。
+ 特别是，当应用程序违反了操作系统的限制时发生的操作错误，例如试图读取一个不存在的文件或用户没有足够的权限。</P>
+<P>系统错误通常产生于系统调用层级。 在大多数 Unix 系统上，可通过运行 <CODE>man 2 intro</CODE>、<CODE>man 3 
+errno</CODE>、或<A 
+href="http://man7.org/linux/man-pages/man3/errno.3.html">在线文档</A>获取错误代码的详细清单和含义。</P>
+<P>系统错误是由扩展的 <CODE>Error</CODE> 对象加上附加属性表现的。</P>
+<H3>系统错误类<SPAN><A class="mark" id="errors_class_system_error" href="http://nodejs.cn/api/errors.html#errors_class_system_error">#</A></SPAN></H3>
+<H4>error.code<SPAN><A class="mark" id="errors_error_code" href="http://nodejs.cn/api/errors.html#errors_error_code">#</A></SPAN></H4>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/errors.html#errors_error_code">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/errors/error_code.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="signature">
+<UL>
+  <LI><A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A></LI></UL></DIV>
+<P><CODE>error.code</CODE> 属性是一个表示错误码的字符串，总是 <CODE>E</CODE> 带上一串大写字母。</P>
+<H4>error.errno<SPAN><A class="mark" id="errors_error_errno" href="http://nodejs.cn/api/errors.html#errors_error_errno">#</A></SPAN></H4>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/errors.html#errors_error_errno">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/errors/error_errno.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="signature">
+<UL>
+  <LI><A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  | <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Number&gt;</A></LI></UL></DIV>
+<P><CODE>error.errno</CODE> 属性是一个数值或字符串。 如果返回一个数值，则数值是一个负数，对应 <A href="http://docs.libuv.org/en/v1.x/errors.html"><CODE>libuv 
+错误处理</CODE></A> 中定义的错误码。 详见 uv-errno.h 头文件（Node.js 源代码中的 
+<CODE>deps/uv/include/uv-errno.h</CODE>）。 如果返回一个字符串，则同 
+<CODE>error.code</CODE>。</P>
+<H4>error.syscall<SPAN><A class="mark" id="errors_error_syscall" href="http://nodejs.cn/api/errors.html#errors_error_syscall">#</A></SPAN></H4>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/errors.html#errors_error_syscall">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/errors/error_syscall.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="signature">
+<UL>
+  <LI><A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A></LI></UL></DIV>
+<P><CODE>error.syscall</CODE> 属性是一个字符串，描述失败的 <A href="http://man7.org/linux/man-pages/man2/syscall.2.html">系统调用</A>。</P>
+<H4>error.path<SPAN><A class="mark" id="errors_error_path" href="http://nodejs.cn/api/errors.html#errors_error_path">#</A></SPAN></H4>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/errors.html#errors_error_path">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/errors/error_path.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="signature">
+<UL>
+  <LI><A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A></LI></UL></DIV>
+<P>When present (e.g. in <CODE>fs</CODE> or <CODE>child_process</CODE>), the 
+<CODE>error.path</CODE> property is a string containing a relevant invalid 
+pathname.</P>
+<H4>error.address<SPAN><A class="mark" id="errors_error_address" href="http://nodejs.cn/api/errors.html#errors_error_address">#</A></SPAN></H4>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/errors.html#errors_error_address">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/errors/error_address.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="signature">
+<UL>
+  <LI><A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A></LI></UL></DIV>
+<P>When present (e.g. in <CODE>net</CODE> or <CODE>dgram</CODE>), the 
+<CODE>error.address</CODE> property is a string describing the address to which 
+the connection failed.</P>
+<H4>error.port<SPAN><A class="mark" id="errors_error_port" href="http://nodejs.cn/api/errors.html#errors_error_port">#</A></SPAN></H4>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/errors.html#errors_error_port">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/errors/error_port.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="signature">
+<UL>
+  <LI><A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Number&gt;</A></LI></UL></DIV>
+<P>When present (e.g. in <CODE>net</CODE> or <CODE>dgram</CODE>), the 
+<CODE>error.port</CODE> property is a number representing the connection's port 
+that is not available.</P>
+<H3>常见的系统错误<SPAN><A class="mark" id="errors_common_system_errors" href="http://nodejs.cn/api/errors.html#errors_common_system_errors">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/errors.html#errors_common_system_errors">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/errors/common_system_errors.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P>以下列表是不完整的，但列举了编写 Node.js 程序时会遇到的一些常见的系统错误。 详细的列表可从 <A href="http://man7.org/linux/man-pages/man3/errno.3.html">ERRNO 
+文档</A>找到。</P>
+<UL>
+  <LI>
+  <P><CODE>EACCES</CODE> (拒绝访问): 试图以被一个文件的访问权限禁止的方式访问一个文件。</P></LI>
+  <LI>
+  <P><CODE>EADDRINUSE</CODE> (地址已被使用):  试图绑定一个服务器（<A href="http://nodejs.cn/api/net.html"><CODE>net</CODE></A>、<A 
+  href="http://nodejs.cn/api/http.html"><CODE>http</CODE></A> 或 <A href="http://nodejs.cn/api/https.html"><CODE>https</CODE></A>）到本地地址，但因另一个本地系统的服务器已占用了该地址而导致失败。</P></LI>
+  <LI>
+  <P><CODE>ECONNREFUSED</CODE> (连接被拒绝): 无法连接，因为目标机器积极拒绝。
+   这通常是因为试图连接到外部主机上的废弃的服务。</P></LI>
+  <LI>
+  <P><CODE>ECONNRESET</CODE> (连接被重置): 一个连接被强行关闭。 这通常是因为连接到远程 socket 超时或重启。 常发生于 
+  <A href="http://nodejs.cn/api/http.html"><CODE>http</CODE></A> 和 <A href="http://nodejs.cn/api/net.html"><CODE>net</CODE></A> 
+  模块。</P></LI>
+  <LI>
+  <P><CODE>EEXIST</CODE> (文件已存在): 一个操作的目标文件已存在，而要求目标不存在。</P></LI>
+  <LI>
+  <P><CODE>EISDIR</CODE> (是一个目录): 一个操作要求一个文件，但给定的路径是一个目录。</P></LI>
+  <LI>
+  <P><CODE>EMFILE</CODE> (系统打开了太多文件): 已达到系统<A href="https://en.wikipedia.org/wiki/File_descriptor">文件描述符</A>允许的最大数量，且描述符的请求不能被满足直到至少关闭其中一个。
+   当一次并行打开多个文件时会发生这个错误，尤其是在进程的文件描述限制数量较低的操作系统（如 OS X）。 要解决这个限制，可在运行 Node.js 
+  进程的同一 shell 中运行 <CODE>ulimit -n 2048</CODE>。</P></LI>
+  <LI>
+  <P><CODE>ENOENT</CODE> (无此文件或目录): 通常是由 <A 
+  href="http://nodejs.cn/api/fs.html"><CODE>fs</CODE></A> 
+  操作引起的，表明指定的路径不存在，即给定的路径找不到文件或目录。</P></LI>
+  <LI>
+  <P><CODE>ENOTDIR</CODE> (不是一个目录): 给定的路径虽然存在，但不是一个目录。 通常是由 <A href="http://nodejs.cn/api/fs.html#fs_fs_readdir_path_options_callback"><CODE>fs.readdir</CODE></A> 
+  引起的。</P></LI>
+  <LI>
+  <P><CODE>ENOTEMPTY</CODE> (目录非空): 一个操作的目标是一个非空的目录，而要求的是一个空目录。 通常是由 <A href="http://nodejs.cn/api/fs.html#fs_fs_unlink_path_callback"><CODE>fs.unlink</CODE></A> 
+  引起的。</P></LI>
+  <LI>
+  <P><CODE>EPERM</CODE> (操作不被允许): 试图执行一个需要更高权限的操作。</P></LI>
+  <LI>
+  <P><CODE>EPIPE</CODE> (管道损坏): 写入一个管道、socket 或 FIFO 时没有进程读取数据。 常见于 <A href="http://nodejs.cn/api/net.html"><CODE>net</CODE></A> 
+  和 <A href="http://nodejs.cn/api/http.html"><CODE>http</CODE></A> 
+  层，表明远端要写入的流已被关闭。</P></LI>
+  <LI>
+  <P><CODE>ETIMEDOUT</CODE> (操作超时): 一个连接或发送的请求失败，因为连接方在一段时间后没有做出合适的响应。 常见于 <A 
+  href="http://nodejs.cn/api/http.html"><CODE>http</CODE></A> 或 <A href="http://nodejs.cn/api/net.html"><CODE>net</CODE></A>。
+   往往标志着 <CODE>socket.end()</CODE> 没有被正确地调用。</P></LI></UL></DIV></DIV></DIV><!-- 搜索弹窗 --> 
+  
+<DIV id="modal_search_bg"></DIV>
+<DIV 
+id="modal_search"><INPUT id="modal_search_input" placeholder="API 快速搜索" value=""> 
+    
+<DIV id="modal_search_result"></DIV></DIV><!-- js -->   <!--[if lt IE 10]><script src="/static/lib/placeholders.js?20170426"></script><![endif]--> 
+  
+<SCRIPT src="Error%20%20Node_js%20API%20文档_files/api.js"></SCRIPT>
+ </BODY></HTML>

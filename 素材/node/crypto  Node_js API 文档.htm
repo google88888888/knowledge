@@ -1,0 +1,2101 @@
+﻿<!DOCTYPE HTML>
+<!-- saved from url=(0032)http://nodejs.cn/api/crypto.html -->
+<!DOCTYPE html PUBLIC "" ""><HTML lang="zh-cmn-Hans"><HEAD><META 
+content="IE=11.0000" http-equiv="X-UA-Compatible">
+   
+<META charset="utf-8">   <TITLE>crypto | Node.js API 文档</TITLE>   <LINK href="crypto%20%20Node_js%20API%20文档_files/api.css" 
+rel="stylesheet">   <LINK href="/static/favicon.png" rel="icon" type="image/png" 
+sizes="32x32"> 
+<META name="GENERATOR" content="MSHTML 11.00.9600.18639"></HEAD> 
+<BODY class="alt apidoc" id="api-section-crypto">
+<DIV class="clearfix" id="content">
+<DIV class="interior" id="column2">
+<DIV class="interior" id="intro"><A href="http://nodejs.cn/">          Node.js 
+中文网         </A>         
+<DIV><INPUT id="search_input" placeholder="API 快速搜索" value="">         
+</DIV></DIV>
+<UL>
+  <LI><A class="nav-documentation" href="http://nodejs.cn/api/documentation.html">关于本文档</A></LI>
+  <LI><A class="nav-synopsis" 
+  href="http://nodejs.cn/api/synopsis.html">用法与例子</A></LI></UL>
+<DIV class="line"></DIV>
+<UL>
+  <LI><A class="nav-assert" href="http://nodejs.cn/api/assert.html">Assert 
+  (断言)</A></LI>
+  <LI><A class="nav-buffer" 
+  href="http://nodejs.cn/api/buffer.html">Buffer</A></LI>
+  <LI><A class="nav-addons" href="http://nodejs.cn/api/addons.html">C/C++ 
+  插件</A></LI>
+  <LI><A class="nav-child_process" href="http://nodejs.cn/api/child_process.html">Child 
+  Processes (子进程)</A></LI>
+  <LI><A class="nav-cluster" href="http://nodejs.cn/api/cluster.html">Cluster 
+  (集群)</A></LI>
+  <LI><A class="nav-cli" href="http://nodejs.cn/api/cli.html">CLI 
+  (命令行选项)</A></LI>
+  <LI><A class="nav-console" href="http://nodejs.cn/api/console.html">Console 
+  (控制台)</A></LI>
+  <LI><A class="nav-crypto active" 
+  href="http://nodejs.cn/api/crypto.html">Crypto (加密)</A></LI>
+  <LI><A class="nav-debugger" href="http://nodejs.cn/api/debugger.html">Debugger 
+  (调试器)</A></LI>
+  <LI><A class="nav-dns" href="http://nodejs.cn/api/dns.html">DNS 
+  (域名服务器)</A></LI>
+  <LI><A class="nav-domain" href="http://nodejs.cn/api/domain.html">Domain 
+  (域)</A></LI>
+  <LI><A class="nav-errors" href="http://nodejs.cn/api/errors.html">Error 
+  (错误)</A></LI>
+  <LI><A class="nav-events" href="http://nodejs.cn/api/events.html">Events 
+  (事件)</A></LI>
+  <LI><A class="nav-fs" href="http://nodejs.cn/api/fs.html">File System 
+  (文件系统)</A></LI>
+  <LI><A class="nav-globals" href="http://nodejs.cn/api/globals.html">Global 
+  (全局变量)</A></LI>
+  <LI><A class="nav-http" href="http://nodejs.cn/api/http.html">HTTP</A></LI>
+  <LI><A class="nav-https" href="http://nodejs.cn/api/https.html">HTTPS</A></LI>
+  <LI><A class="nav-modules" href="http://nodejs.cn/api/modules.html">Module 
+  (模块)</A></LI>
+  <LI><A class="nav-net" href="http://nodejs.cn/api/net.html">Net (网络)</A></LI>
+  <LI><A class="nav-os" href="http://nodejs.cn/api/os.html">OS (操作系统)</A></LI>
+  <LI><A class="nav-path" href="http://nodejs.cn/api/path.html">Path 
+  (路径)</A></LI>
+  <LI><A class="nav-process" href="http://nodejs.cn/api/process.html">Process 
+  (进程)</A></LI>
+  <LI><A class="nav-punycode" 
+  href="http://nodejs.cn/api/punycode.html">Punycode</A></LI>
+  <LI><A class="nav-querystring" 
+  href="http://nodejs.cn/api/querystring.html">Query Strings (查询字符串)</A></LI>
+  <LI><A class="nav-readline" href="http://nodejs.cn/api/readline.html">Readline 
+  (逐行读取)</A></LI>
+  <LI><A class="nav-repl" href="http://nodejs.cn/api/repl.html">REPL 
+  (交互式解释器)</A></LI>
+  <LI><A class="nav-stream" href="http://nodejs.cn/api/stream.html">Stream 
+  (流)</A></LI>
+  <LI><A class="nav-string_decoder" href="http://nodejs.cn/api/string_decoder.html">String 
+  Decoder (字符串解码器)</A></LI>
+  <LI><A class="nav-timers" href="http://nodejs.cn/api/timers.html">Timer 
+  (定时器)</A></LI>
+  <LI><A class="nav-tls" href="http://nodejs.cn/api/tls.html">TLS 
+  (安全传输层)</A></LI>
+  <LI><A class="nav-tty" href="http://nodejs.cn/api/tty.html">TTY (终端)</A></LI>
+  <LI><A class="nav-dgram" href="http://nodejs.cn/api/dgram.html">UDP/Datagram 
+  (数据报)</A></LI>
+  <LI><A class="nav-url" href="http://nodejs.cn/api/url.html">URL</A></LI>
+  <LI><A class="nav-util" href="http://nodejs.cn/api/util.html">Util 
+  (实用工具)</A></LI>
+  <LI><A class="nav-v8" href="http://nodejs.cn/api/v8.html">V8</A></LI>
+  <LI><A class="nav-vm" href="http://nodejs.cn/api/vm.html">VM (虚拟机)</A></LI>
+  <LI><A class="nav-zlib" href="http://nodejs.cn/api/zlib.html">ZLIB 
+  (压缩)</A></LI></UL>
+<DIV class="line"></DIV></DIV>
+<DIV class="interior" id="column1" data-id="crypto"><HEADER>
+<H1>Node.js v6.10.3 文档</H1>
+<DIV id="gtoc">
+<P><A name="toc" href="http://nodejs.cn/api/">返回文档首页</A>             <!--<a href="/api/all.html">单页面显示</a> |--> 
+            <!--<a href="/api/crypto.json">JSON格式</a> |-->             <!--<a href="/api/en/crypto.html">查看英文版</a>--> 
+          </P></DIV>
+<HR>
+</HEADER>
+<DIV id="toc">
+<H2>目录</H2>
+<UL>
+  <LI><SPAN class="stability_2"><A href="http://nodejs.cn/api/crypto.html#crypto_crypto">Crypto</A></SPAN>
+  <UL> 
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_determining_if_crypto_support_is_unavailable">Determining 
+    if crypto support is unavailable</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_class_certificate">Class: 
+    Certificate</A></SPAN>
+    <UL> 
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_new_crypto_certificate">new 
+      crypto.Certificate()</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_certificate_exportchallenge_spkac">certificate.exportChallenge(spkac)</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_certificate_exportpublickey_spkac">certificate.exportPublicKey(spkac)</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_certificate_verifyspkac_spkac">certificate.verifySpkac(spkac)</A></SPAN></LI></UL></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_class_cipher">Class: 
+    Cipher</A></SPAN>
+    <UL> 
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_cipher_final_output_encoding">cipher.final([output_encoding])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_cipher_setaad_buffer">cipher.setAAD(buffer)</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_cipher_getauthtag">cipher.getAuthTag()</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_cipher_setautopadding_auto_padding_true">cipher.setAutoPadding(auto_padding=true)</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_cipher_update_data_input_encoding_output_encoding">cipher.update(data[, 
+      input_encoding][, output_encoding])</A></SPAN></LI></UL></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_class_decipher">Class: 
+    Decipher</A></SPAN>
+    <UL> 
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_decipher_final_output_encoding">decipher.final([output_encoding])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_decipher_setaad_buffer">decipher.setAAD(buffer)</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_decipher_setauthtag_buffer">decipher.setAuthTag(buffer)</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_decipher_setautopadding_auto_padding_true">decipher.setAutoPadding(auto_padding=true)</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_decipher_update_data_input_encoding_output_encoding">decipher.update(data[, 
+      input_encoding][, output_encoding])</A></SPAN></LI></UL></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_class_diffiehellman">Class: 
+    DiffieHellman</A></SPAN>
+    <UL> 
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_diffiehellman_computesecret_other_public_key_input_encoding_output_encoding">diffieHellman.computeSecret(other_public_key[, 
+      input_encoding][, output_encoding])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_diffiehellman_generatekeys_encoding">diffieHellman.generateKeys([encoding])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_diffiehellman_getgenerator_encoding">diffieHellman.getGenerator([encoding])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_diffiehellman_getprime_encoding">diffieHellman.getPrime([encoding])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_diffiehellman_getprivatekey_encoding">diffieHellman.getPrivateKey([encoding])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_diffiehellman_getpublickey_encoding">diffieHellman.getPublicKey([encoding])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_diffiehellman_setprivatekey_private_key_encoding">diffieHellman.setPrivateKey(private_key[, 
+      encoding])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_diffiehellman_setpublickey_public_key_encoding">diffieHellman.setPublicKey(public_key[, 
+      encoding])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_diffiehellman_verifyerror">diffieHellman.verifyError</A></SPAN></LI></UL></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_class_ecdh">Class: 
+    ECDH</A></SPAN>
+    <UL> 
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_ecdh_computesecret_other_public_key_input_encoding_output_encoding">ecdh.computeSecret(other_public_key[, 
+      input_encoding][, output_encoding])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_ecdh_generatekeys_encoding_format">ecdh.generateKeys([encoding[, 
+      format]])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_ecdh_getprivatekey_encoding">ecdh.getPrivateKey([encoding])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_ecdh_getpublickey_encoding_format">ecdh.getPublicKey([encoding[, 
+      format]])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_ecdh_setprivatekey_private_key_encoding">ecdh.setPrivateKey(private_key[, 
+      encoding])</A></SPAN></LI>
+      <LI><SPAN class="stability_0"><A href="http://nodejs.cn/api/crypto.html#crypto_ecdh_setpublickey_public_key_encoding">ecdh.setPublicKey(public_key[, 
+      encoding])</A></SPAN></LI></UL></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_class_hash">Class: 
+    Hash</A></SPAN>
+    <UL> 
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_hash_digest_encoding">hash.digest([encoding])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_hash_update_data_input_encoding">hash.update(data[, 
+      input_encoding])</A></SPAN></LI></UL></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_class_hmac">Class: 
+    Hmac</A></SPAN>
+    <UL> 
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_hmac_digest_encoding">hmac.digest([encoding])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_hmac_update_data_input_encoding">hmac.update(data[, 
+      input_encoding])</A></SPAN></LI></UL></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_class_sign">Class: 
+    Sign</A></SPAN>
+    <UL> 
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_sign_sign_private_key_output_format">sign.sign(private_key[, 
+      output_format])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_sign_update_data_input_encoding">sign.update(data[, 
+      input_encoding])</A></SPAN></LI></UL></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_class_verify">Class: 
+    Verify</A></SPAN>
+    <UL> 
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_verifier_update_data_input_encoding">verifier.update(data[, 
+      input_encoding])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_verifier_verify_object_signature_signature_format">verifier.verify(object, 
+      signature[, signature_format])</A></SPAN></LI></UL></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_crypto_module_methods_and_properties"><CODE>crypto</CODE> 
+    module methods and properties</A></SPAN>
+    <UL> 
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_crypto_constants">crypto.constants</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_crypto_default_encoding">crypto.DEFAULT_ENCODING</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_crypto_fips">crypto.fips</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_crypto_createcipher_algorithm_password">crypto.createCipher(algorithm, 
+      password)</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_crypto_createcipheriv_algorithm_key_iv">crypto.createCipheriv(algorithm, 
+      key, iv)</A></SPAN></LI>
+      <LI><SPAN class="stability_0"><A href="http://nodejs.cn/api/crypto.html#crypto_crypto_createcredentials_details">crypto.createCredentials(details)</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_crypto_createdecipher_algorithm_password">crypto.createDecipher(algorithm, 
+      password)</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_crypto_createdecipheriv_algorithm_key_iv">crypto.createDecipheriv(algorithm, 
+      key, iv)</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_crypto_creatediffiehellman_prime_prime_encoding_generator_generator_encoding">crypto.createDiffieHellman(prime[, 
+      prime_encoding][, generator][, generator_encoding])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_crypto_creatediffiehellman_prime_length_generator">crypto.createDiffieHellman(prime_length[, 
+      generator])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_crypto_createecdh_curve_name">crypto.createECDH(curve_name)</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_crypto_createhash_algorithm">crypto.createHash(algorithm)</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_crypto_createhmac_algorithm_key">crypto.createHmac(algorithm, 
+      key)</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_crypto_createsign_algorithm">crypto.createSign(algorithm)</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_crypto_createverify_algorithm">crypto.createVerify(algorithm)</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_crypto_getciphers">crypto.getCiphers()</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_crypto_getcurves">crypto.getCurves()</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_crypto_getdiffiehellman_group_name">crypto.getDiffieHellman(group_name)</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_crypto_gethashes">crypto.getHashes()</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_crypto_pbkdf2_password_salt_iterations_keylen_digest_callback">crypto.pbkdf2(password, 
+      salt, iterations, keylen, digest, callback)</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_crypto_pbkdf2sync_password_salt_iterations_keylen_digest">crypto.pbkdf2Sync(password, 
+      salt, iterations, keylen, digest)</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_crypto_privatedecrypt_private_key_buffer">crypto.privateDecrypt(private_key, 
+      buffer)</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_crypto_timingsafeequal_a_b">crypto.timingSafeEqual(a, 
+      b)</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_crypto_privateencrypt_private_key_buffer">crypto.privateEncrypt(private_key, 
+      buffer)</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_crypto_publicdecrypt_public_key_buffer">crypto.publicDecrypt(public_key, 
+      buffer)</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_crypto_publicencrypt_public_key_buffer">crypto.publicEncrypt(public_key, 
+      buffer)</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_crypto_randombytes_size_callback">crypto.randomBytes(size[, 
+      callback])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_crypto_setengine_engine_flags">crypto.setEngine(engine[, 
+      flags])</A></SPAN></LI></UL></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_notes">Notes</A></SPAN>
+    <UL> 
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_legacy_streams_api_pre_node_js_v0_10">Legacy 
+      Streams API (pre Node.js v0.10)</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_recent_ecdh_changes">Recent 
+      ECDH Changes</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_support_for_weak_or_compromised_algorithms">Support 
+      for weak or compromised algorithms</A></SPAN></LI></UL></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_crypto_constants_1">Crypto 
+    Constants</A></SPAN>
+    <UL> 
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_openssl_options">OpenSSL 
+      Options</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_openssl_engine_constants">OpenSSL 
+      Engine Constants</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_other_openssl_constants">Other 
+      OpenSSL Constants</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/crypto.html#crypto_node_js_crypto_constants">Node.js 
+      Crypto Constants</A></SPAN></LI></UL></LI></UL></LI></UL></DIV>
+<DIV id="apicontent">
+<H1>Crypto<SPAN><A class="mark" id="crypto_crypto" href="http://nodejs.cn/api/crypto.html#crypto_crypto">#</A></SPAN></H1>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_crypto">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/crypto.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<PRE class="api_stability api_stability_2"><A href="http://nodejs.cn/api/documentation.html#documentation_stability_index">Stability: 2</A> - Stable</PRE>
+<P>The <CODE>crypto</CODE> module provides cryptographic functionality that 
+includes a set of wrappers for OpenSSL's hash, HMAC, cipher, decipher, sign and 
+verify functions.</P>
+<P>Use <CODE>require('crypto')</CODE> to access this module.</P>
+<PRE><CODE class="lang-js">const crypto = require('crypto');
+
+const secret = 'abcdefg';
+const hash = crypto.createHmac('sha256', secret)
+                   .update('I love cupcakes')
+                   .digest('hex');
+console.log(hash);
+// Prints:
+//   c0fa1bc00531bd78ef38c628449c5102aeabd49b5dc3a2a516ea6ea959d6658e
+</CODE></PRE>
+<H2>Determining if crypto support is unavailable<SPAN><A class="mark" id="crypto_determining_if_crypto_support_is_unavailable" 
+href="http://nodejs.cn/api/crypto.html#crypto_determining_if_crypto_support_is_unavailable">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_determining_if_crypto_support_is_unavailable">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/determining_if_crypto_support_is_unavailable.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P>It is possible for Node.js to be built without including support for the 
+<CODE>crypto</CODE> module. In such cases, calling 
+<CODE>require('crypto')</CODE> will result in an error being thrown.</P>
+<PRE><CODE class="lang-js">let crypto;
+try {
+  crypto = require('crypto');
+} catch (err) {
+  console.log('crypto support is disabled!');
+}
+</CODE></PRE>
+<H2>Class: Certificate<SPAN><A class="mark" id="crypto_class_certificate" href="http://nodejs.cn/api/crypto.html#crypto_class_certificate">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_class_certificate">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/class_certificate.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.11.8</SPAN> </DIV>
+<P>SPKAC is a Certificate Signing Request mechanism originally implemented by
+ Netscape and now specified formally as part of <A href="http://www.w3.org/TR/html5/forms.html#the-keygen-element">HTML5's 
+<CODE>keygen</CODE> element</A>.</P>
+<P>The <CODE>crypto</CODE> module provides the <CODE>Certificate</CODE> class 
+for working with SPKAC data. The most common usage is handling output generated 
+by the HTML5 <CODE>&lt;keygen&gt;</CODE> element. Node.js uses <A href="https://www.openssl.org/docs/man1.0.2/apps/spkac.html">OpenSSL's 
+SPKAC implementation</A> internally.</P>
+<H3>new crypto.Certificate()<SPAN><A class="mark" id="crypto_new_crypto_certificate" 
+href="http://nodejs.cn/api/crypto.html#crypto_new_crypto_certificate">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_new_crypto_certificate">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/new_crypto_certificate.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P>Instances of the <CODE>Certificate</CODE> class can be created using the 
+<CODE>new</CODE> keyword or by calling <CODE>crypto.Certificate()</CODE> as a 
+function:</P>
+<PRE><CODE class="lang-js">const crypto = require('crypto');
+
+const cert1 = new crypto.Certificate();
+const cert2 = crypto.Certificate();
+</CODE></PRE>
+<H3>certificate.exportChallenge(spkac)<SPAN><A class="mark" id="crypto_certificate_exportchallenge_spkac" 
+href="http://nodejs.cn/api/crypto.html#crypto_certificate_exportchallenge_spkac">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_certificate_exportchallenge_spkac">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/certificate_exportchallenge_spkac.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.11.8</SPAN> </DIV>
+<P>The <CODE>spkac</CODE> data structure includes a public key and a challenge. 
+The <CODE>certificate.exportChallenge()</CODE> returns the challenge component 
+in the form of a Node.js <A 
+href="http://nodejs.cn/api/buffer.html"><CODE>Buffer</CODE></A>. The 
+<CODE>spkac</CODE> argument can be either a string or a <A href="http://nodejs.cn/api/buffer.html"><CODE>Buffer</CODE></A>.</P>
+<PRE><CODE class="lang-js">const cert = require('crypto').Certificate();
+const spkac = getSpkacSomehow();
+const challenge = cert.exportChallenge(spkac);
+console.log(challenge.toString('utf8'));
+// Prints: the challenge as a UTF8 string
+</CODE></PRE>
+<H3>certificate.exportPublicKey(spkac)<SPAN><A class="mark" id="crypto_certificate_exportpublickey_spkac" 
+href="http://nodejs.cn/api/crypto.html#crypto_certificate_exportpublickey_spkac">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_certificate_exportpublickey_spkac">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/certificate_exportpublickey_spkac.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.11.8</SPAN> </DIV>
+<P>The <CODE>spkac</CODE> data structure includes a public key and a challenge. 
+The <CODE>certificate.exportPublicKey()</CODE> returns the public key component 
+in the form of a Node.js <A 
+href="http://nodejs.cn/api/buffer.html"><CODE>Buffer</CODE></A>. The 
+<CODE>spkac</CODE> argument can be either a string or a <A href="http://nodejs.cn/api/buffer.html"><CODE>Buffer</CODE></A>.</P>
+<PRE><CODE class="lang-js">const cert = require('crypto').Certificate();
+const spkac = getSpkacSomehow();
+const publicKey = cert.exportPublicKey(spkac);
+console.log(publicKey);
+// Prints: the public key as &lt;Buffer ...&gt;
+</CODE></PRE>
+<H3>certificate.verifySpkac(spkac)<SPAN><A class="mark" id="crypto_certificate_verifyspkac_spkac" 
+href="http://nodejs.cn/api/crypto.html#crypto_certificate_verifyspkac_spkac">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_certificate_verifyspkac_spkac">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/certificate_verifyspkac_spkac.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.11.8</SPAN> </DIV>
+<P>Returns <CODE>true</CODE> if the given <CODE>spkac</CODE> data structure is 
+valid, <CODE>false</CODE> otherwise. The <CODE>spkac</CODE> argument must be a 
+Node.js <A href="http://nodejs.cn/api/buffer.html"><CODE>Buffer</CODE></A>.</P>
+<PRE><CODE class="lang-js">const cert = require('crypto').Certificate();
+const spkac = getSpkacSomehow();
+console.log(cert.verifySpkac(Buffer.from(spkac)));
+// Prints: true or false
+</CODE></PRE>
+<H2>Class: Cipher<SPAN><A class="mark" id="crypto_class_cipher" href="http://nodejs.cn/api/crypto.html#crypto_class_cipher">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_class_cipher">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/class_cipher.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.94</SPAN> </DIV>
+<P>Instances of the <CODE>Cipher</CODE> class are used to encrypt data. The 
+class can be used in one of two ways:</P>
+<UL>
+  <LI>As a <A href="http://nodejs.cn/api/stream.html">stream</A> that is both 
+  readable and writable, where plain unencrypted data is written to produce 
+  encrypted data on the readable side, or</LI>
+  <LI>Using the <A href="http://nodejs.cn/api/crypto.html#crypto_cipher_update_data_input_encoding_output_encoding"><CODE>cipher.update()</CODE></A> 
+  and <A href="http://nodejs.cn/api/crypto.html#crypto_cipher_final_output_encoding"><CODE>cipher.final()</CODE></A> 
+  methods to produce the encrypted data.</LI></UL>
+<P>The <A href="http://nodejs.cn/api/crypto.html#crypto_crypto_createcipher_algorithm_password"><CODE>crypto.createCipher()</CODE></A> 
+or <A href="http://nodejs.cn/api/crypto.html#crypto_crypto_createcipheriv_algorithm_key_iv"><CODE>crypto.createCipheriv()</CODE></A> 
+methods are used to create <CODE>Cipher</CODE> instances. <CODE>Cipher</CODE> 
+objects are not to be created directly using the <CODE>new</CODE> keyword.</P>
+<P>Example: Using <CODE>Cipher</CODE> objects as streams:</P>
+<PRE><CODE class="lang-js">const crypto = require('crypto');
+const cipher = crypto.createCipher('aes192', 'a password');
+
+let encrypted = '';
+cipher.on('readable', () =&gt; {
+  const data = cipher.read();
+  if (data)
+    encrypted += data.toString('hex');
+});
+cipher.on('end', () =&gt; {
+  console.log(encrypted);
+  // Prints: ca981be48e90867604588e75d04feabb63cc007a8f8ad89b10616ed84d815504
+});
+
+cipher.write('some clear text data');
+cipher.end();
+</CODE></PRE>
+<P>Example: Using <CODE>Cipher</CODE> and piped streams:</P>
+<PRE><CODE class="lang-js">const crypto = require('crypto');
+const fs = require('fs');
+const cipher = crypto.createCipher('aes192', 'a password');
+
+const input = fs.createReadStream('test.js');
+const output = fs.createWriteStream('test.enc');
+
+input.pipe(cipher).pipe(output);
+</CODE></PRE>
+<P>Example: Using the <A href="http://nodejs.cn/api/crypto.html#crypto_cipher_update_data_input_encoding_output_encoding"><CODE>cipher.update()</CODE></A> 
+and <A href="http://nodejs.cn/api/crypto.html#crypto_cipher_final_output_encoding"><CODE>cipher.final()</CODE></A> 
+methods:</P>
+<PRE><CODE class="lang-js">const crypto = require('crypto');
+const cipher = crypto.createCipher('aes192', 'a password');
+
+let encrypted = cipher.update('some clear text data', 'utf8', 'hex');
+encrypted += cipher.final('hex');
+console.log(encrypted);
+// Prints: ca981be48e90867604588e75d04feabb63cc007a8f8ad89b10616ed84d815504
+</CODE></PRE>
+<H3>cipher.final([output_encoding])<SPAN><A class="mark" id="crypto_cipher_final_output_encoding" 
+href="http://nodejs.cn/api/crypto.html#crypto_cipher_final_output_encoding">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_cipher_final_output_encoding">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/cipher_final_output_encoding.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.94</SPAN> </DIV>
+<P>Returns any remaining enciphered contents. If <CODE>output_encoding</CODE>
+ parameter is one of <CODE>'latin1'</CODE>, <CODE>'base64'</CODE> or 
+<CODE>'hex'</CODE>, a string is returned. If an <CODE>output_encoding</CODE> is 
+not provided, a <A 
+href="http://nodejs.cn/api/buffer.html"><CODE>Buffer</CODE></A> is returned.</P>
+<P>Once the <CODE>cipher.final()</CODE> method has been called, the 
+<CODE>Cipher</CODE> object can no longer be used to encrypt data. Attempts to 
+call <CODE>cipher.final()</CODE> more than once will result in an error being 
+thrown.</P>
+<H3>cipher.setAAD(buffer)<SPAN><A class="mark" id="crypto_cipher_setaad_buffer" 
+href="http://nodejs.cn/api/crypto.html#crypto_cipher_setaad_buffer">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_cipher_setaad_buffer">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/cipher_setaad_buffer.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v1.0.0</SPAN> </DIV>
+<P>When using an authenticated encryption mode (only <CODE>GCM</CODE> is 
+currently supported), the <CODE>cipher.setAAD()</CODE> method sets the value 
+used for the <EM>additional authenticated data</EM> (AAD) input parameter.</P>
+<H3>cipher.getAuthTag()<SPAN><A class="mark" id="crypto_cipher_getauthtag" href="http://nodejs.cn/api/crypto.html#crypto_cipher_getauthtag">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_cipher_getauthtag">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/cipher_getauthtag.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v1.0.0</SPAN> </DIV>
+<P>When using an authenticated encryption mode (only <CODE>GCM</CODE> is 
+currently supported), the <CODE>cipher.getAuthTag()</CODE> method returns a <A 
+href="http://nodejs.cn/api/buffer.html"><CODE>Buffer</CODE></A> containing the 
+<EM>authentication tag</EM> that has been computed from the given data.</P>
+<P>The <CODE>cipher.getAuthTag()</CODE> method should only be called after 
+encryption has been completed using the <A href="http://nodejs.cn/api/crypto.html#crypto_cipher_final_output_encoding"><CODE>cipher.final()</CODE></A> 
+method.</P>
+<H3>cipher.setAutoPadding(auto_padding=true)<SPAN><A class="mark" id="crypto_cipher_setautopadding_auto_padding_true" 
+href="http://nodejs.cn/api/crypto.html#crypto_cipher_setautopadding_auto_padding_true">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_cipher_setautopadding_auto_padding_true">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/cipher_setautopadding_auto_padding_true.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.7.1</SPAN> </DIV>
+<P>When using block encryption algorithms, the <CODE>Cipher</CODE> class will 
+automatically add padding to the input data to the appropriate block size. To 
+disable the default padding call <CODE>cipher.setAutoPadding(false)</CODE>.</P>
+<P>When <CODE>auto_padding</CODE> is <CODE>false</CODE>, the length of the 
+entire input data must be a multiple of the cipher's block size or <A href="http://nodejs.cn/api/crypto.html#crypto_cipher_final_output_encoding"><CODE>cipher.final()</CODE></A> 
+will throw an Error. Disabling automatic padding is useful for non-standard 
+padding, for instance using <CODE>0x0</CODE> instead of PKCS padding.</P>
+<P>The <CODE>cipher.setAutoPadding()</CODE> method must be called before <A 
+href="http://nodejs.cn/api/crypto.html#crypto_cipher_final_output_encoding"><CODE>cipher.final()</CODE></A>.</P>
+<H3>cipher.update(data[, input_encoding][, output_encoding])<SPAN><A class="mark" 
+id="crypto_cipher_update_data_input_encoding_output_encoding" href="http://nodejs.cn/api/crypto.html#crypto_cipher_update_data_input_encoding_output_encoding">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_cipher_update_data_input_encoding_output_encoding">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/cipher_update_data_input_encoding_output_encoding.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.94</SPAN> </DIV>
+<P>Updates the cipher with <CODE>data</CODE>. If the <CODE>input_encoding</CODE> 
+argument is given, its value must be one of <CODE>'utf8'</CODE>, 
+<CODE>'ascii'</CODE>, or <CODE>'latin1'</CODE> and the <CODE>data</CODE>
+ argument is a string using the specified encoding. If the 
+<CODE>input_encoding</CODE> argument is not given, <CODE>data</CODE> must be a 
+<A href="http://nodejs.cn/api/buffer.html"><CODE>Buffer</CODE></A>. If 
+<CODE>data</CODE> is a <A 
+href="http://nodejs.cn/api/buffer.html"><CODE>Buffer</CODE></A> then 
+<CODE>input_encoding</CODE> is ignored.</P>
+<P>The <CODE>output_encoding</CODE> specifies the output format of the 
+enciphered data, and can be <CODE>'latin1'</CODE>, <CODE>'base64'</CODE> or 
+<CODE>'hex'</CODE>. If the <CODE>output_encoding</CODE> is specified, a string 
+using the specified encoding is returned. If no <CODE>output_encoding</CODE> is 
+provided, a <A href="http://nodejs.cn/api/buffer.html"><CODE>Buffer</CODE></A> 
+is returned.</P>
+<P>The <CODE>cipher.update()</CODE> method can be called multiple times with new 
+data until <A href="http://nodejs.cn/api/crypto.html#crypto_cipher_final_output_encoding"><CODE>cipher.final()</CODE></A> 
+is called. Calling <CODE>cipher.update()</CODE> after <A href="http://nodejs.cn/api/crypto.html#crypto_cipher_final_output_encoding"><CODE>cipher.final()</CODE></A> 
+will result in an error being thrown.</P>
+<H2>Class: Decipher<SPAN><A class="mark" id="crypto_class_decipher" href="http://nodejs.cn/api/crypto.html#crypto_class_decipher">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_class_decipher">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/class_decipher.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.94</SPAN> </DIV>
+<P>Instances of the <CODE>Decipher</CODE> class are used to decrypt data. The 
+class can be used in one of two ways:</P>
+<UL>
+  <LI>As a <A href="http://nodejs.cn/api/stream.html">stream</A> that is both 
+  readable and writable, where plain encrypted data is written to produce 
+  unencrypted data on the readable side, or</LI>
+  <LI>Using the <A href="http://nodejs.cn/api/crypto.html#crypto_decipher_update_data_input_encoding_output_encoding"><CODE>decipher.update()</CODE></A> 
+  and <A href="http://nodejs.cn/api/crypto.html#crypto_decipher_final_output_encoding"><CODE>decipher.final()</CODE></A> 
+  methods to produce the unencrypted data.</LI></UL>
+<P>The <A href="http://nodejs.cn/api/crypto.html#crypto_crypto_createdecipher_algorithm_password"><CODE>crypto.createDecipher()</CODE></A> 
+or <A href="http://nodejs.cn/api/crypto.html#crypto_crypto_createdecipheriv_algorithm_key_iv"><CODE>crypto.createDecipheriv()</CODE></A> 
+methods are used to create <CODE>Decipher</CODE> instances. 
+<CODE>Decipher</CODE> objects are not to be created directly using the 
+<CODE>new</CODE> keyword.</P>
+<P>Example: Using <CODE>Decipher</CODE> objects as streams:</P>
+<PRE><CODE class="lang-js">const crypto = require('crypto');
+const decipher = crypto.createDecipher('aes192', 'a password');
+
+let decrypted = '';
+decipher.on('readable', () =&gt; {
+  const data = decipher.read();
+  if (data)
+    decrypted += data.toString('utf8');
+});
+decipher.on('end', () =&gt; {
+  console.log(decrypted);
+  // Prints: some clear text data
+});
+
+const encrypted = 'ca981be48e90867604588e75d04feabb63cc007a8f8ad89b10616ed84d815504';
+decipher.write(encrypted, 'hex');
+decipher.end();
+</CODE></PRE>
+<P>Example: Using <CODE>Decipher</CODE> and piped streams:</P>
+<PRE><CODE class="lang-js">const crypto = require('crypto');
+const fs = require('fs');
+const decipher = crypto.createDecipher('aes192', 'a password');
+
+const input = fs.createReadStream('test.enc');
+const output = fs.createWriteStream('test.js');
+
+input.pipe(decipher).pipe(output);
+</CODE></PRE>
+<P>Example: Using the <A href="http://nodejs.cn/api/crypto.html#crypto_decipher_update_data_input_encoding_output_encoding"><CODE>decipher.update()</CODE></A> 
+and <A href="http://nodejs.cn/api/crypto.html#crypto_decipher_final_output_encoding"><CODE>decipher.final()</CODE></A> 
+methods:</P>
+<PRE><CODE class="lang-js">const crypto = require('crypto');
+const decipher = crypto.createDecipher('aes192', 'a password');
+
+const encrypted = 'ca981be48e90867604588e75d04feabb63cc007a8f8ad89b10616ed84d815504';
+let decrypted = decipher.update(encrypted, 'hex', 'utf8');
+decrypted += decipher.final('utf8');
+console.log(decrypted);
+// Prints: some clear text data
+</CODE></PRE>
+<H3>decipher.final([output_encoding])<SPAN><A class="mark" id="crypto_decipher_final_output_encoding" 
+href="http://nodejs.cn/api/crypto.html#crypto_decipher_final_output_encoding">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_decipher_final_output_encoding">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/decipher_final_output_encoding.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.94</SPAN> </DIV>
+<P>Returns any remaining deciphered contents. If <CODE>output_encoding</CODE>
+ parameter is one of <CODE>'latin1'</CODE>, <CODE>'ascii'</CODE> or 
+<CODE>'utf8'</CODE>, a string is returned. If an <CODE>output_encoding</CODE> is 
+not provided, a <A 
+href="http://nodejs.cn/api/buffer.html"><CODE>Buffer</CODE></A> is returned.</P>
+<P>Once the <CODE>decipher.final()</CODE> method has been called, the 
+<CODE>Decipher</CODE> object can no longer be used to decrypt data. Attempts to 
+call <CODE>decipher.final()</CODE> more than once will result in an error being 
+thrown.</P>
+<H3>decipher.setAAD(buffer)<SPAN><A class="mark" id="crypto_decipher_setaad_buffer" 
+href="http://nodejs.cn/api/crypto.html#crypto_decipher_setaad_buffer">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_decipher_setaad_buffer">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/decipher_setaad_buffer.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v1.0.0</SPAN> </DIV>
+<P>When using an authenticated encryption mode (only <CODE>GCM</CODE> is 
+currently supported), the <CODE>decipher.setAAD()</CODE> method sets the value 
+used for the <EM>additional authenticated data</EM> (AAD) input parameter.</P>
+<H3>decipher.setAuthTag(buffer)<SPAN><A class="mark" id="crypto_decipher_setauthtag_buffer" 
+href="http://nodejs.cn/api/crypto.html#crypto_decipher_setauthtag_buffer">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_decipher_setauthtag_buffer">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/decipher_setauthtag_buffer.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v1.0.0</SPAN> </DIV>
+<P>When using an authenticated encryption mode (only <CODE>GCM</CODE> is 
+currently supported), the <CODE>decipher.setAuthTag()</CODE> method is used to 
+pass in the received <EM>authentication tag</EM>. If no tag is provided, or if 
+the cipher text has been tampered with, <A href="http://nodejs.cn/api/crypto.html#crypto_decipher_final_output_encoding"><CODE>decipher.final()</CODE></A> 
+with throw, indicating that the cipher text should be discarded due to failed 
+authentication.</P>
+<H3>decipher.setAutoPadding(auto_padding=true)<SPAN><A class="mark" id="crypto_decipher_setautopadding_auto_padding_true" 
+href="http://nodejs.cn/api/crypto.html#crypto_decipher_setautopadding_auto_padding_true">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_decipher_setautopadding_auto_padding_true">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/decipher_setautopadding_auto_padding_true.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.7.1</SPAN> </DIV>
+<P>When data has been encrypted without standard block padding, calling 
+<CODE>decipher.setAutoPadding(false)</CODE> will disable automatic padding to 
+prevent <A href="http://nodejs.cn/api/crypto.html#crypto_decipher_final_output_encoding"><CODE>decipher.final()</CODE></A> 
+from checking for and removing padding.</P>
+<P>Turning auto padding off will only work if the input data's length is a
+ multiple of the ciphers block size.</P>
+<P>The <CODE>decipher.setAutoPadding()</CODE> method must be called before <A 
+href="http://nodejs.cn/api/crypto.html#crypto_decipher_update_data_input_encoding_output_encoding"><CODE>decipher.update()</CODE></A>.</P>
+<H3>decipher.update(data[, input_encoding][, output_encoding])<SPAN><A class="mark" 
+id="crypto_decipher_update_data_input_encoding_output_encoding" href="http://nodejs.cn/api/crypto.html#crypto_decipher_update_data_input_encoding_output_encoding">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_decipher_update_data_input_encoding_output_encoding">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/decipher_update_data_input_encoding_output_encoding.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.94</SPAN> </DIV>
+<P>Updates the decipher with <CODE>data</CODE>. If the 
+<CODE>input_encoding</CODE> argument is given, its value must be one of 
+<CODE>'latin1'</CODE>, <CODE>'base64'</CODE>, or <CODE>'hex'</CODE> and the 
+<CODE>data</CODE> argument is a string using the specified encoding. If the 
+<CODE>input_encoding</CODE> argument is not given, <CODE>data</CODE> must be a 
+<A href="http://nodejs.cn/api/buffer.html"><CODE>Buffer</CODE></A>. If 
+<CODE>data</CODE> is a <A 
+href="http://nodejs.cn/api/buffer.html"><CODE>Buffer</CODE></A> then 
+<CODE>input_encoding</CODE> is ignored.</P>
+<P>The <CODE>output_encoding</CODE> specifies the output format of the 
+enciphered data, and can be <CODE>'latin1'</CODE>, <CODE>'ascii'</CODE> or 
+<CODE>'utf8'</CODE>. If the <CODE>output_encoding</CODE> is specified, a string 
+using the specified encoding is returned. If no <CODE>output_encoding</CODE> is 
+provided, a <A href="http://nodejs.cn/api/buffer.html"><CODE>Buffer</CODE></A> 
+is returned.</P>
+<P>The <CODE>decipher.update()</CODE> method can be called multiple times with 
+new data until <A href="http://nodejs.cn/api/crypto.html#crypto_decipher_final_output_encoding"><CODE>decipher.final()</CODE></A> 
+is called. Calling <CODE>decipher.update()</CODE> after <A href="http://nodejs.cn/api/crypto.html#crypto_decipher_final_output_encoding"><CODE>decipher.final()</CODE></A> 
+will result in an error being thrown.</P>
+<H2>Class: DiffieHellman<SPAN><A class="mark" id="crypto_class_diffiehellman" 
+href="http://nodejs.cn/api/crypto.html#crypto_class_diffiehellman">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_class_diffiehellman">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/class_diffiehellman.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.5.0</SPAN> </DIV>
+<P>The <CODE>DiffieHellman</CODE> class is a utility for creating Diffie-Hellman 
+key exchanges.</P>
+<P>Instances of the <CODE>DiffieHellman</CODE> class can be created using the <A 
+href="http://nodejs.cn/api/crypto.html#crypto_crypto_creatediffiehellman_prime_prime_encoding_generator_generator_encoding"><CODE>crypto.createDiffieHellman()</CODE></A> 
+function.</P>
+<PRE><CODE class="lang-js">const crypto = require('crypto');
+const assert = require('assert');
+
+// Generate Alice's keys...
+const alice = crypto.createDiffieHellman(2048);
+const aliceKey = alice.generateKeys();
+
+// Generate Bob's keys...
+const bob = crypto.createDiffieHellman(alice.getPrime(), alice.getGenerator());
+const bobKey = bob.generateKeys();
+
+// Exchange and generate the secret...
+const aliceSecret = alice.computeSecret(bobKey);
+const bobSecret = bob.computeSecret(aliceKey);
+
+// OK
+assert.strictEqual(aliceSecret.toString('hex'), bobSecret.toString('hex'));
+</CODE></PRE>
+<H3>diffieHellman.computeSecret(other_public_key[, input_encoding][, 
+output_encoding])<SPAN><A class="mark" id="crypto_diffiehellman_computesecret_other_public_key_input_encoding_output_encoding" 
+href="http://nodejs.cn/api/crypto.html#crypto_diffiehellman_computesecret_other_public_key_input_encoding_output_encoding">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_diffiehellman_computesecret_other_public_key_input_encoding_output_encoding">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/diffiehellman_computesecret_other_public_key_input_encoding_output_encoding.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.5.0</SPAN> </DIV>
+<P>Computes the shared secret using <CODE>other_public_key</CODE> as the other
+ party's public key and returns the computed shared secret. The supplied key is 
+interpreted using the specified <CODE>input_encoding</CODE>, and secret is
+ encoded using specified <CODE>output_encoding</CODE>. Encodings can be 
+<CODE>'latin1'</CODE>, <CODE>'hex'</CODE>, or <CODE>'base64'</CODE>. If the 
+<CODE>input_encoding</CODE> is not provided, <CODE>other_public_key</CODE> is 
+expected to be a <A 
+href="http://nodejs.cn/api/buffer.html"><CODE>Buffer</CODE></A>.</P>
+<P>If <CODE>output_encoding</CODE> is given a string is returned; otherwise, a 
+<A href="http://nodejs.cn/api/buffer.html"><CODE>Buffer</CODE></A> is 
+returned.</P>
+<H3>diffieHellman.generateKeys([encoding])<SPAN><A class="mark" id="crypto_diffiehellman_generatekeys_encoding" 
+href="http://nodejs.cn/api/crypto.html#crypto_diffiehellman_generatekeys_encoding">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_diffiehellman_generatekeys_encoding">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/diffiehellman_generatekeys_encoding.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.5.0</SPAN> </DIV>
+<P>Generates private and public Diffie-Hellman key values, and returns the 
+public key in the specified <CODE>encoding</CODE>. This key should be
+ transferred to the other party. Encoding can be <CODE>'latin1'</CODE>, 
+<CODE>'hex'</CODE>, or <CODE>'base64'</CODE>. If <CODE>encoding</CODE> is 
+provided a string is returned; otherwise a <A href="http://nodejs.cn/api/buffer.html"><CODE>Buffer</CODE></A> 
+is returned.</P>
+<H3>diffieHellman.getGenerator([encoding])<SPAN><A class="mark" id="crypto_diffiehellman_getgenerator_encoding" 
+href="http://nodejs.cn/api/crypto.html#crypto_diffiehellman_getgenerator_encoding">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_diffiehellman_getgenerator_encoding">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/diffiehellman_getgenerator_encoding.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.5.0</SPAN> </DIV>
+<P>Returns the Diffie-Hellman generator in the specified <CODE>encoding</CODE>, 
+which can be <CODE>'latin1'</CODE>, <CODE>'hex'</CODE>, or 
+<CODE>'base64'</CODE>. If  <CODE>encoding</CODE> is provided a string is
+ returned; otherwise a <A 
+href="http://nodejs.cn/api/buffer.html"><CODE>Buffer</CODE></A> is returned.</P>
+<H3>diffieHellman.getPrime([encoding])<SPAN><A class="mark" id="crypto_diffiehellman_getprime_encoding" 
+href="http://nodejs.cn/api/crypto.html#crypto_diffiehellman_getprime_encoding">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_diffiehellman_getprime_encoding">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/diffiehellman_getprime_encoding.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.5.0</SPAN> </DIV>
+<P>Returns the Diffie-Hellman prime in the specified <CODE>encoding</CODE>, 
+which can be <CODE>'latin1'</CODE>, <CODE>'hex'</CODE>, or 
+<CODE>'base64'</CODE>. If <CODE>encoding</CODE> is provided a string is
+ returned; otherwise a <A 
+href="http://nodejs.cn/api/buffer.html"><CODE>Buffer</CODE></A> is returned.</P>
+<H3>diffieHellman.getPrivateKey([encoding])<SPAN><A class="mark" id="crypto_diffiehellman_getprivatekey_encoding" 
+href="http://nodejs.cn/api/crypto.html#crypto_diffiehellman_getprivatekey_encoding">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_diffiehellman_getprivatekey_encoding">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/diffiehellman_getprivatekey_encoding.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.5.0</SPAN> </DIV>
+<P>Returns the Diffie-Hellman private key in the specified 
+<CODE>encoding</CODE>, which can be <CODE>'latin1'</CODE>, <CODE>'hex'</CODE>, 
+or <CODE>'base64'</CODE>. If <CODE>encoding</CODE> is provided a string is 
+returned; otherwise a <A 
+href="http://nodejs.cn/api/buffer.html"><CODE>Buffer</CODE></A> is returned.</P>
+<H3>diffieHellman.getPublicKey([encoding])<SPAN><A class="mark" id="crypto_diffiehellman_getpublickey_encoding" 
+href="http://nodejs.cn/api/crypto.html#crypto_diffiehellman_getpublickey_encoding">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_diffiehellman_getpublickey_encoding">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/diffiehellman_getpublickey_encoding.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.5.0</SPAN> </DIV>
+<P>Returns the Diffie-Hellman public key in the specified <CODE>encoding</CODE>, 
+which can be <CODE>'latin1'</CODE>, <CODE>'hex'</CODE>, or 
+<CODE>'base64'</CODE>. If <CODE>encoding</CODE> is provided a string is 
+returned; otherwise a <A 
+href="http://nodejs.cn/api/buffer.html"><CODE>Buffer</CODE></A> is returned.</P>
+<H3>diffieHellman.setPrivateKey(private_key[, encoding])<SPAN><A class="mark" 
+id="crypto_diffiehellman_setprivatekey_private_key_encoding" href="http://nodejs.cn/api/crypto.html#crypto_diffiehellman_setprivatekey_private_key_encoding">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_diffiehellman_setprivatekey_private_key_encoding">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/diffiehellman_setprivatekey_private_key_encoding.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.5.0</SPAN> </DIV>
+<P>Sets the Diffie-Hellman private key. If the <CODE>encoding</CODE> argument is 
+provided and is either <CODE>'latin1'</CODE>, <CODE>'hex'</CODE>, or 
+<CODE>'base64'</CODE>, <CODE>private_key</CODE> is expected to be a string. If 
+no <CODE>encoding</CODE> is provided, <CODE>private_key</CODE> is expected to be 
+a <A href="http://nodejs.cn/api/buffer.html"><CODE>Buffer</CODE></A>.</P>
+<H3>diffieHellman.setPublicKey(public_key[, encoding])<SPAN><A class="mark" id="crypto_diffiehellman_setpublickey_public_key_encoding" 
+href="http://nodejs.cn/api/crypto.html#crypto_diffiehellman_setpublickey_public_key_encoding">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_diffiehellman_setpublickey_public_key_encoding">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/diffiehellman_setpublickey_public_key_encoding.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.5.0</SPAN> </DIV>
+<P>Sets the Diffie-Hellman public key. If the <CODE>encoding</CODE> argument is 
+provided and is either <CODE>'latin1'</CODE>, <CODE>'hex'</CODE> or 
+<CODE>'base64'</CODE>, <CODE>public_key</CODE> is expected to be a string. If no 
+<CODE>encoding</CODE> is provided, <CODE>public_key</CODE> is expected to be a 
+<A href="http://nodejs.cn/api/buffer.html"><CODE>Buffer</CODE></A>.</P>
+<H3>diffieHellman.verifyError<SPAN><A class="mark" id="crypto_diffiehellman_verifyerror" 
+href="http://nodejs.cn/api/crypto.html#crypto_diffiehellman_verifyerror">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_diffiehellman_verifyerror">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/diffiehellman_verifyerror.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.11.12</SPAN> </DIV>
+<P>A bit field containing any warnings and/or errors resulting from a check
+ performed during initialization of the <CODE>DiffieHellman</CODE> object.</P>
+<P>The following values are valid for this property (as defined in 
+<CODE>constants</CODE> module):</P>
+<UL>
+  <LI><CODE>DH_CHECK_P_NOT_SAFE_PRIME</CODE></LI>
+  <LI><CODE>DH_CHECK_P_NOT_PRIME</CODE></LI>
+  <LI><CODE>DH_UNABLE_TO_CHECK_GENERATOR</CODE></LI>
+  <LI><CODE>DH_NOT_SUITABLE_GENERATOR</CODE></LI></UL>
+<H2>Class: ECDH<SPAN><A class="mark" id="crypto_class_ecdh" href="http://nodejs.cn/api/crypto.html#crypto_class_ecdh">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_class_ecdh">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/class_ecdh.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.11.14</SPAN> </DIV>
+<P>The <CODE>ECDH</CODE> class is a utility for creating Elliptic Curve 
+Diffie-Hellman (ECDH) key exchanges.</P>
+<P>Instances of the <CODE>ECDH</CODE> class can be created using the <A href="http://nodejs.cn/api/crypto.html#crypto_crypto_createecdh_curve_name"><CODE>crypto.createECDH()</CODE></A> 
+function.</P>
+<PRE><CODE class="lang-js">const crypto = require('crypto');
+const assert = require('assert');
+
+// Generate Alice's keys...
+const alice = crypto.createECDH('secp521r1');
+const aliceKey = alice.generateKeys();
+
+// Generate Bob's keys...
+const bob = crypto.createECDH('secp521r1');
+const bobKey = bob.generateKeys();
+
+// Exchange and generate the secret...
+const aliceSecret = alice.computeSecret(bobKey);
+const bobSecret = bob.computeSecret(aliceKey);
+
+assert.strictEqual(aliceSecret.toString('hex'), bobSecret.toString('hex'));
+  // OK
+</CODE></PRE>
+<H3>ecdh.computeSecret(other_public_key[, input_encoding][, 
+output_encoding])<SPAN><A class="mark" id="crypto_ecdh_computesecret_other_public_key_input_encoding_output_encoding" 
+href="http://nodejs.cn/api/crypto.html#crypto_ecdh_computesecret_other_public_key_input_encoding_output_encoding">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_ecdh_computesecret_other_public_key_input_encoding_output_encoding">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/ecdh_computesecret_other_public_key_input_encoding_output_encoding.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.11.14</SPAN> </DIV>
+<P>Computes the shared secret using <CODE>other_public_key</CODE> as the other
+ party's public key and returns the computed shared secret. The supplied key is 
+interpreted using specified <CODE>input_encoding</CODE>, and the returned secret
+ is encoded using the specified <CODE>output_encoding</CODE>. Encodings can be 
+<CODE>'latin1'</CODE>, <CODE>'hex'</CODE>, or <CODE>'base64'</CODE>. If the 
+<CODE>input_encoding</CODE> is not provided, <CODE>other_public_key</CODE> is 
+expected to be a <A 
+href="http://nodejs.cn/api/buffer.html"><CODE>Buffer</CODE></A>.</P>
+<P>If <CODE>output_encoding</CODE> is given a string will be returned; otherwise 
+a <A href="http://nodejs.cn/api/buffer.html"><CODE>Buffer</CODE></A> is 
+returned.</P>
+<H3>ecdh.generateKeys([encoding[, format]])<SPAN><A class="mark" id="crypto_ecdh_generatekeys_encoding_format" 
+href="http://nodejs.cn/api/crypto.html#crypto_ecdh_generatekeys_encoding_format">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_ecdh_generatekeys_encoding_format">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/ecdh_generatekeys_encoding_format.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.11.14</SPAN> </DIV>
+<P>Generates private and public EC Diffie-Hellman key values, and returns the 
+public key in the specified <CODE>format</CODE> and <CODE>encoding</CODE>. This 
+key should be transferred to the other party.</P>
+<P>The <CODE>format</CODE> arguments specifies point encoding and can be 
+<CODE>'compressed'</CODE>, <CODE>'uncompressed'</CODE>, or 
+<CODE>'hybrid'</CODE>. If <CODE>format</CODE> is not specified, the point will
+ be returned in <CODE>'uncompressed'</CODE> format.</P>
+<P>The <CODE>encoding</CODE> argument can be <CODE>'latin1'</CODE>, 
+<CODE>'hex'</CODE>, or <CODE>'base64'</CODE>. If <CODE>encoding</CODE> is 
+provided a string is returned; otherwise a <A href="http://nodejs.cn/api/buffer.html"><CODE>Buffer</CODE></A>
+ is returned.</P>
+<H3>ecdh.getPrivateKey([encoding])<SPAN><A class="mark" id="crypto_ecdh_getprivatekey_encoding" 
+href="http://nodejs.cn/api/crypto.html#crypto_ecdh_getprivatekey_encoding">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_ecdh_getprivatekey_encoding">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/ecdh_getprivatekey_encoding.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.11.14</SPAN> </DIV>
+<P>Returns the EC Diffie-Hellman private key in the specified 
+<CODE>encoding</CODE>, which can be <CODE>'latin1'</CODE>, <CODE>'hex'</CODE>, 
+or <CODE>'base64'</CODE>. If <CODE>encoding</CODE> is provided a string is 
+returned; otherwise a <A 
+href="http://nodejs.cn/api/buffer.html"><CODE>Buffer</CODE></A> is returned.</P>
+<H3>ecdh.getPublicKey([encoding[, format]])<SPAN><A class="mark" id="crypto_ecdh_getpublickey_encoding_format" 
+href="http://nodejs.cn/api/crypto.html#crypto_ecdh_getpublickey_encoding_format">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_ecdh_getpublickey_encoding_format">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/ecdh_getpublickey_encoding_format.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.11.14</SPAN> </DIV>
+<P>Returns the EC Diffie-Hellman public key in the specified 
+<CODE>encoding</CODE> and <CODE>format</CODE>.</P>
+<P>The <CODE>format</CODE> argument specifies point encoding and can be 
+<CODE>'compressed'</CODE>, <CODE>'uncompressed'</CODE>, or 
+<CODE>'hybrid'</CODE>. If <CODE>format</CODE> is not specified the point will be
+ returned in <CODE>'uncompressed'</CODE> format.</P>
+<P>The <CODE>encoding</CODE> argument can be <CODE>'latin1'</CODE>, 
+<CODE>'hex'</CODE>, or <CODE>'base64'</CODE>. If <CODE>encoding</CODE> is 
+specified, a string is returned; otherwise a <A href="http://nodejs.cn/api/buffer.html"><CODE>Buffer</CODE></A> 
+is returned.</P>
+<H3>ecdh.setPrivateKey(private_key[, encoding])<SPAN><A class="mark" id="crypto_ecdh_setprivatekey_private_key_encoding" 
+href="http://nodejs.cn/api/crypto.html#crypto_ecdh_setprivatekey_private_key_encoding">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_ecdh_setprivatekey_private_key_encoding">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/ecdh_setprivatekey_private_key_encoding.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.11.14</SPAN> </DIV>
+<P>Sets the EC Diffie-Hellman private key. The <CODE>encoding</CODE> can be 
+<CODE>'latin1'</CODE>, <CODE>'hex'</CODE> or <CODE>'base64'</CODE>. If 
+<CODE>encoding</CODE> is provided, <CODE>private_key</CODE> is expected to be a 
+string; otherwise <CODE>private_key</CODE> is expected to be a <A href="http://nodejs.cn/api/buffer.html"><CODE>Buffer</CODE></A>. 
+If <CODE>private_key</CODE> is not valid for the curve specified when the 
+<CODE>ECDH</CODE> object was created, an error is thrown. Upon setting the 
+private key, the associated public point (key) is also generated and set in the 
+ECDH object.</P>
+<H3>ecdh.setPublicKey(public_key[, encoding])<SPAN><A class="mark" id="crypto_ecdh_setpublickey_public_key_encoding" 
+href="http://nodejs.cn/api/crypto.html#crypto_ecdh_setpublickey_public_key_encoding">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_ecdh_setpublickey_public_key_encoding">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/ecdh_setpublickey_public_key_encoding.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.11.14</SPAN> <SPAN>废弃于: v5.2.0 </SPAN> 
+</DIV>
+<PRE class="api_stability api_stability_0"><A href="http://nodejs.cn/api/documentation.html#documentation_stability_index">Stability: 0</A> - Deprecated</PRE>
+<P>Sets the EC Diffie-Hellman public key. Key encoding can be 
+<CODE>'latin1'</CODE>, <CODE>'hex'</CODE> or <CODE>'base64'</CODE>. If 
+<CODE>encoding</CODE> is provided <CODE>public_key</CODE> is expected to be a 
+string; otherwise a <A 
+href="http://nodejs.cn/api/buffer.html"><CODE>Buffer</CODE></A> is expected.</P>
+<P>Note that there is not normally a reason to call this method because 
+<CODE>ECDH</CODE> only requires a private key and the other party's public key 
+to compute the shared secret. Typically either <A href="http://nodejs.cn/api/crypto.html#crypto_ecdh_generatekeys_encoding_format"><CODE>ecdh.generateKeys()</CODE></A> 
+or <A href="http://nodejs.cn/api/crypto.html#crypto_ecdh_setprivatekey_private_key_encoding"><CODE>ecdh.setPrivateKey()</CODE></A> 
+will be called. The <A href="http://nodejs.cn/api/crypto.html#crypto_ecdh_setprivatekey_private_key_encoding"><CODE>ecdh.setPrivateKey()</CODE></A> 
+method attempts to generate the public point/key associated with the private key 
+being set.</P>
+<P>Example (obtaining a shared secret):</P>
+<PRE><CODE class="lang-js">const crypto = require('crypto');
+const alice = crypto.createECDH('secp256k1');
+const bob = crypto.createECDH('secp256k1');
+
+// Note: This is a shortcut way to specify one of Alice's previous private
+// keys. It would be unwise to use such a predictable private key in a real
+// application.
+alice.setPrivateKey(
+  crypto.createHash('sha256').update('alice', 'utf8').digest()
+);
+
+// Bob uses a newly generated cryptographically strong
+// pseudorandom key pair
+bob.generateKeys();
+
+const aliceSecret = alice.computeSecret(bob.getPublicKey(), null, 'hex');
+const bobSecret = bob.computeSecret(alice.getPublicKey(), null, 'hex');
+
+// aliceSecret and bobSecret should be the same shared secret value
+console.log(aliceSecret === bobSecret);
+</CODE></PRE>
+<H2>Class: Hash<SPAN><A class="mark" id="crypto_class_hash" href="http://nodejs.cn/api/crypto.html#crypto_class_hash">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_class_hash">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/class_hash.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.92</SPAN> </DIV>
+<P>The <CODE>Hash</CODE> class is a utility for creating hash digests of data. 
+It can be used in one of two ways:</P>
+<UL>
+  <LI>As a <A href="http://nodejs.cn/api/stream.html">stream</A> that is both 
+  readable and writable, where data is written to produce a computed hash digest 
+  on the readable side, or</LI>
+  <LI>Using the <A href="http://nodejs.cn/api/crypto.html#crypto_hash_update_data_input_encoding"><CODE>hash.update()</CODE></A> 
+  and <A 
+  href="http://nodejs.cn/api/crypto.html#crypto_hash_digest_encoding"><CODE>hash.digest()</CODE></A> 
+  methods to produce the computed hash.</LI></UL>
+<P>The <A href="http://nodejs.cn/api/crypto.html#crypto_crypto_createhash_algorithm"><CODE>crypto.createHash()</CODE></A> 
+method is used to create <CODE>Hash</CODE> instances. <CODE>Hash</CODE> objects 
+are not to be created directly using the <CODE>new</CODE> keyword.</P>
+<P>Example: Using <CODE>Hash</CODE> objects as streams:</P>
+<PRE><CODE class="lang-js">const crypto = require('crypto');
+const hash = crypto.createHash('sha256');
+
+hash.on('readable', () =&gt; {
+  const data = hash.read();
+  if (data)
+    console.log(data.toString('hex'));
+    // Prints:
+    //   6a2da20943931e9834fc12cfe5bb47bbd9ae43489a30726962b576f4e3993e50
+});
+
+hash.write('some data to hash');
+hash.end();
+</CODE></PRE>
+<P>Example: Using <CODE>Hash</CODE> and piped streams:</P>
+<PRE><CODE class="lang-js">const crypto = require('crypto');
+const fs = require('fs');
+const hash = crypto.createHash('sha256');
+
+const input = fs.createReadStream('test.js');
+input.pipe(hash).pipe(process.stdout);
+</CODE></PRE>
+<P>Example: Using the <A href="http://nodejs.cn/api/crypto.html#crypto_hash_update_data_input_encoding"><CODE>hash.update()</CODE></A> 
+and <A 
+href="http://nodejs.cn/api/crypto.html#crypto_hash_digest_encoding"><CODE>hash.digest()</CODE></A> 
+methods:</P>
+<PRE><CODE class="lang-js">const crypto = require('crypto');
+const hash = crypto.createHash('sha256');
+
+hash.update('some data to hash');
+console.log(hash.digest('hex'));
+// Prints:
+//   6a2da20943931e9834fc12cfe5bb47bbd9ae43489a30726962b576f4e3993e50
+</CODE></PRE>
+<H3>hash.digest([encoding])<SPAN><A class="mark" id="crypto_hash_digest_encoding" 
+href="http://nodejs.cn/api/crypto.html#crypto_hash_digest_encoding">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_hash_digest_encoding">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/hash_digest_encoding.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.92</SPAN> </DIV>
+<P>Calculates the digest of all of the data passed to be hashed (using the <A 
+href="http://nodejs.cn/api/crypto.html#crypto_hash_update_data_input_encoding"><CODE>hash.update()</CODE></A> 
+method). The <CODE>encoding</CODE> can be <CODE>'hex'</CODE>, 
+<CODE>'latin1'</CODE> or <CODE>'base64'</CODE>. If <CODE>encoding</CODE> is 
+provided a string will be returned; otherwise a <A href="http://nodejs.cn/api/buffer.html"><CODE>Buffer</CODE></A> 
+is returned.</P>
+<P>The <CODE>Hash</CODE> object can not be used again after 
+<CODE>hash.digest()</CODE> method has been called. Multiple calls will cause an 
+error to be thrown.</P>
+<H3>hash.update(data[, input_encoding])<SPAN><A class="mark" id="crypto_hash_update_data_input_encoding" 
+href="http://nodejs.cn/api/crypto.html#crypto_hash_update_data_input_encoding">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_hash_update_data_input_encoding">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/hash_update_data_input_encoding.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.92</SPAN> </DIV>
+<P>Updates the hash content with the given <CODE>data</CODE>, the encoding of 
+which is given in <CODE>input_encoding</CODE> and can be <CODE>'utf8'</CODE>, 
+<CODE>'ascii'</CODE> or <CODE>'latin1'</CODE>. If <CODE>encoding</CODE> is not 
+provided, and the <CODE>data</CODE> is a string, an encoding of 
+<CODE>'utf8'</CODE> is enforced. If <CODE>data</CODE> is a <A href="http://nodejs.cn/api/buffer.html"><CODE>Buffer</CODE></A> 
+then <CODE>input_encoding</CODE> is ignored.</P>
+<P>This can be called many times with new data as it is streamed.</P>
+<H2>Class: Hmac<SPAN><A class="mark" id="crypto_class_hmac" href="http://nodejs.cn/api/crypto.html#crypto_class_hmac">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_class_hmac">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/class_hmac.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.94</SPAN> </DIV>
+<P>The <CODE>Hmac</CODE> Class is a utility for creating cryptographic HMAC 
+digests. It can be used in one of two ways:</P>
+<UL>
+  <LI>As a <A href="http://nodejs.cn/api/stream.html">stream</A> that is both 
+  readable and writable, where data is written to produce a computed HMAC digest 
+  on the readable side, or</LI>
+  <LI>Using the <A href="http://nodejs.cn/api/crypto.html#crypto_hmac_update_data_input_encoding"><CODE>hmac.update()</CODE></A> 
+  and <A 
+  href="http://nodejs.cn/api/crypto.html#crypto_hmac_digest_encoding"><CODE>hmac.digest()</CODE></A> 
+  methods to produce the computed HMAC digest.</LI></UL>
+<P>The <A href="http://nodejs.cn/api/crypto.html#crypto_crypto_createhmac_algorithm_key"><CODE>crypto.createHmac()</CODE></A> 
+method is used to create <CODE>Hmac</CODE> instances. <CODE>Hmac</CODE> objects 
+are not to be created directly using the <CODE>new</CODE> keyword.</P>
+<P>Example: Using <CODE>Hmac</CODE> objects as streams:</P>
+<PRE><CODE class="lang-js">const crypto = require('crypto');
+const hmac = crypto.createHmac('sha256', 'a secret');
+
+hmac.on('readable', () =&gt; {
+  const data = hmac.read();
+  if (data)
+    console.log(data.toString('hex'));
+    // Prints:
+    //   7fd04df92f636fd450bc841c9418e5825c17f33ad9c87c518115a45971f7f77e
+});
+
+hmac.write('some data to hash');
+hmac.end();
+</CODE></PRE>
+<P>Example: Using <CODE>Hmac</CODE> and piped streams:</P>
+<PRE><CODE class="lang-js">const crypto = require('crypto');
+const fs = require('fs');
+const hmac = crypto.createHmac('sha256', 'a secret');
+
+const input = fs.createReadStream('test.js');
+input.pipe(hmac).pipe(process.stdout);
+</CODE></PRE>
+<P>Example: Using the <A href="http://nodejs.cn/api/crypto.html#crypto_hmac_update_data_input_encoding"><CODE>hmac.update()</CODE></A> 
+and <A 
+href="http://nodejs.cn/api/crypto.html#crypto_hmac_digest_encoding"><CODE>hmac.digest()</CODE></A> 
+methods:</P>
+<PRE><CODE class="lang-js">const crypto = require('crypto');
+const hmac = crypto.createHmac('sha256', 'a secret');
+
+hmac.update('some data to hash');
+console.log(hmac.digest('hex'));
+// Prints:
+//   7fd04df92f636fd450bc841c9418e5825c17f33ad9c87c518115a45971f7f77e
+</CODE></PRE>
+<H3>hmac.digest([encoding])<SPAN><A class="mark" id="crypto_hmac_digest_encoding" 
+href="http://nodejs.cn/api/crypto.html#crypto_hmac_digest_encoding">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_hmac_digest_encoding">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/hmac_digest_encoding.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.94</SPAN> </DIV>
+<P>Calculates the HMAC digest of all of the data passed using <A href="http://nodejs.cn/api/crypto.html#crypto_hmac_update_data_input_encoding"><CODE>hmac.update()</CODE></A>.
+ The <CODE>encoding</CODE> can be <CODE>'hex'</CODE>, <CODE>'latin1'</CODE> or 
+<CODE>'base64'</CODE>. If <CODE>encoding</CODE> is provided a string is 
+returned; otherwise a <A 
+href="http://nodejs.cn/api/buffer.html"><CODE>Buffer</CODE></A> is returned;</P>
+<P>The <CODE>Hmac</CODE> object can not be used again after 
+<CODE>hmac.digest()</CODE> has been called. Multiple calls to 
+<CODE>hmac.digest()</CODE> will result in an error being thrown.</P>
+<H3>hmac.update(data[, input_encoding])<SPAN><A class="mark" id="crypto_hmac_update_data_input_encoding" 
+href="http://nodejs.cn/api/crypto.html#crypto_hmac_update_data_input_encoding">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_hmac_update_data_input_encoding">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/hmac_update_data_input_encoding.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.94</SPAN> </DIV>
+<P>Updates the <CODE>Hmac</CODE> content with the given <CODE>data</CODE>, the 
+encoding of which is given in <CODE>input_encoding</CODE> and can be 
+<CODE>'utf8'</CODE>, <CODE>'ascii'</CODE> or <CODE>'latin1'</CODE>. If 
+<CODE>encoding</CODE> is not provided, and the <CODE>data</CODE> is a string, an
+ encoding of <CODE>'utf8'</CODE> is enforced. If <CODE>data</CODE> is a <A href="http://nodejs.cn/api/buffer.html"><CODE>Buffer</CODE></A> 
+then <CODE>input_encoding</CODE> is ignored.</P>
+<P>This can be called many times with new data as it is streamed.</P>
+<H2>Class: Sign<SPAN><A class="mark" id="crypto_class_sign" href="http://nodejs.cn/api/crypto.html#crypto_class_sign">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_class_sign">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/class_sign.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.92</SPAN> </DIV>
+<P>The <CODE>Sign</CODE> Class is a utility for generating signatures. It can be 
+used in one of two ways:</P>
+<UL>
+  <LI>As a writable <A href="http://nodejs.cn/api/stream.html">stream</A>, where 
+  data to be signed is written and the <A href="http://nodejs.cn/api/crypto.html#crypto_sign_sign_private_key_output_format"><CODE>sign.sign()</CODE></A> 
+  method is used to generate and return the signature, or</LI>
+  <LI>Using the <A href="http://nodejs.cn/api/crypto.html#crypto_sign_update_data_input_encoding"><CODE>sign.update()</CODE></A> 
+  and <A href="http://nodejs.cn/api/crypto.html#crypto_sign_sign_private_key_output_format"><CODE>sign.sign()</CODE></A> 
+  methods to produce the signature.</LI></UL>
+<P>The <A href="http://nodejs.cn/api/crypto.html#crypto_crypto_createsign_algorithm"><CODE>crypto.createSign()</CODE></A> 
+method is used to create <CODE>Sign</CODE> instances. <CODE>Sign</CODE> objects 
+are not to be created directly using the <CODE>new</CODE> keyword.</P>
+<P>Example: Using <CODE>Sign</CODE> objects as streams:</P>
+<PRE><CODE class="lang-js">const crypto = require('crypto');
+const sign = crypto.createSign('RSA-SHA256');
+
+sign.write('some data to sign');
+sign.end();
+
+const privateKey = getPrivateKeySomehow();
+console.log(sign.sign(privateKey, 'hex'));
+// Prints: the calculated signature
+</CODE></PRE>
+<P>Example: Using the <A href="http://nodejs.cn/api/crypto.html#crypto_sign_update_data_input_encoding"><CODE>sign.update()</CODE></A> 
+and <A href="http://nodejs.cn/api/crypto.html#crypto_sign_sign_private_key_output_format"><CODE>sign.sign()</CODE></A> 
+methods:</P>
+<PRE><CODE class="lang-js">const crypto = require('crypto');
+const sign = crypto.createSign('RSA-SHA256');
+
+sign.update('some data to sign');
+
+const privateKey = getPrivateKeySomehow();
+console.log(sign.sign(privateKey, 'hex'));
+// Prints: the calculated signature
+</CODE></PRE>
+<P>A <CODE>Sign</CODE> instance can also be created by just passing in the 
+digest algorithm name, in which case OpenSSL will infer the full signature 
+algorithm from the type of the PEM-formatted private key, including algorithms 
+that do not have directly exposed name constants, e.g. 'ecdsa-with-SHA256'.</P>
+<P>Example: signing using ECDSA with SHA256</P>
+<PRE><CODE class="lang-js">const crypto = require('crypto');
+const sign = crypto.createSign('sha256');
+
+sign.update('some data to sign');
+
+const privateKey =
+`-----BEGIN EC PRIVATE KEY-----
+MHcCAQEEIF+jnWY1D5kbVYDNvxxo/Y+ku2uJPDwS0r/VuPZQrjjVoAoGCCqGSM49
+AwEHoUQDQgAEurOxfSxmqIRYzJVagdZfMMSjRNNhB8i3mXyIMq704m2m52FdfKZ2
+pQhByd5eyj3lgZ7m7jbchtdgyOF8Io/1ng==
+-----END EC PRIVATE KEY-----`;
+
+console.log(sign.sign(privateKey).toString('hex'));
+</CODE></PRE>
+<H3>sign.sign(private_key[, output_format])<SPAN><A class="mark" id="crypto_sign_sign_private_key_output_format" 
+href="http://nodejs.cn/api/crypto.html#crypto_sign_sign_private_key_output_format">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_sign_sign_private_key_output_format">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/sign_sign_private_key_output_format.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.92</SPAN> </DIV>
+<P>Calculates the signature on all the data passed through using either <A href="http://nodejs.cn/api/crypto.html#crypto_sign_update_data_input_encoding"><CODE>sign.update()</CODE></A> 
+or <A href="http://nodejs.cn/api/stream.html#stream_writable_write_chunk_encoding_callback"><CODE>sign.write()</CODE></A>.</P>
+<P>The <CODE>private_key</CODE> argument can be an object or a string. If 
+<CODE>private_key</CODE> is a string, it is treated as a raw key with no 
+passphrase. If <CODE>private_key</CODE> is an object, it is interpreted as a 
+hash containing two properties:</P>
+<UL>
+  <LI><CODE>key</CODE> : <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  - PEM encoded private key</LI>
+  <LI><CODE>passphrase</CODE> : <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  - passphrase for the private key</LI></UL>
+<P>The <CODE>output_format</CODE> can specify one of <CODE>'latin1'</CODE>, 
+<CODE>'hex'</CODE> or <CODE>'base64'</CODE>. If <CODE>output_format</CODE> is 
+provided a string is returned; otherwise a <A href="http://nodejs.cn/api/buffer.html"><CODE>Buffer</CODE></A> 
+is returned.</P>
+<P>The <CODE>Sign</CODE> object can not be again used after 
+<CODE>sign.sign()</CODE> method has been called. Multiple calls to 
+<CODE>sign.sign()</CODE> will result in an error being thrown.</P>
+<H3>sign.update(data[, input_encoding])<SPAN><A class="mark" id="crypto_sign_update_data_input_encoding" 
+href="http://nodejs.cn/api/crypto.html#crypto_sign_update_data_input_encoding">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_sign_update_data_input_encoding">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/sign_update_data_input_encoding.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.92</SPAN> </DIV>
+<P>Updates the <CODE>Sign</CODE> content with the given <CODE>data</CODE>, the 
+encoding of which is given in <CODE>input_encoding</CODE> and can be 
+<CODE>'utf8'</CODE>, <CODE>'ascii'</CODE> or <CODE>'latin1'</CODE>. If 
+<CODE>encoding</CODE> is not provided, and the <CODE>data</CODE> is a string, an
+ encoding of <CODE>'utf8'</CODE> is enforced. If <CODE>data</CODE> is a <A href="http://nodejs.cn/api/buffer.html"><CODE>Buffer</CODE></A> 
+then <CODE>input_encoding</CODE> is ignored.</P>
+<P>This can be called many times with new data as it is streamed.</P>
+<H2>Class: Verify<SPAN><A class="mark" id="crypto_class_verify" href="http://nodejs.cn/api/crypto.html#crypto_class_verify">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_class_verify">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/class_verify.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.92</SPAN> </DIV>
+<P>The <CODE>Verify</CODE> class is a utility for verifying signatures. It can 
+be used in one of two ways:</P>
+<UL>
+  <LI>As a writable <A href="http://nodejs.cn/api/stream.html">stream</A> where 
+  written data is used to validate against the supplied signature, or</LI>
+  <LI>Using the <A href="http://nodejs.cn/api/crypto.html#crypto_verifier_update_data_input_encoding"><CODE>verify.update()</CODE></A> 
+  and <A href="http://nodejs.cn/api/crypto.html#crypto_verifier_verify_object_signature_signature_format"><CODE>verify.verify()</CODE></A> 
+  methods to verify the signature.</LI></UL>
+<P>The <A href="http://nodejs.cn/api/crypto.html#crypto_crypto_createverify_algorithm"><CODE>crypto.createVerify()</CODE></A> 
+method is used to create <CODE>Verify</CODE> instances. <CODE>Verify</CODE> 
+objects are not to be created directly using the <CODE>new</CODE> keyword.</P>
+<P>Example: Using <CODE>Verify</CODE> objects as streams:</P>
+<PRE><CODE class="lang-js">const crypto = require('crypto');
+const verify = crypto.createVerify('RSA-SHA256');
+
+verify.write('some data to sign');
+verify.end();
+
+const publicKey = getPublicKeySomehow();
+const signature = getSignatureToVerify();
+console.log(verify.verify(publicKey, signature));
+// Prints: true or false
+</CODE></PRE>
+<P>Example: Using the <A href="http://nodejs.cn/api/crypto.html#crypto_verifier_update_data_input_encoding"><CODE>verify.update()</CODE></A> 
+and <A href="http://nodejs.cn/api/crypto.html#crypto_verifier_verify_object_signature_signature_format"><CODE>verify.verify()</CODE></A> 
+methods:</P>
+<PRE><CODE class="lang-js">const crypto = require('crypto');
+const verify = crypto.createVerify('RSA-SHA256');
+
+verify.update('some data to sign');
+
+const publicKey = getPublicKeySomehow();
+const signature = getSignatureToVerify();
+console.log(verify.verify(publicKey, signature));
+// Prints: true or false
+</CODE></PRE>
+<H3>verifier.update(data[, input_encoding])<SPAN><A class="mark" id="crypto_verifier_update_data_input_encoding" 
+href="http://nodejs.cn/api/crypto.html#crypto_verifier_update_data_input_encoding">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_verifier_update_data_input_encoding">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/verifier_update_data_input_encoding.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.92</SPAN> </DIV>
+<P>Updates the <CODE>Verify</CODE> content with the given <CODE>data</CODE>, the 
+encoding of which is given in <CODE>input_encoding</CODE> and can be 
+<CODE>'utf8'</CODE>, <CODE>'ascii'</CODE> or <CODE>'latin1'</CODE>. If 
+<CODE>encoding</CODE> is not provided, and the <CODE>data</CODE> is a string, an
+ encoding of <CODE>'utf8'</CODE> is enforced. If <CODE>data</CODE> is a <A href="http://nodejs.cn/api/buffer.html"><CODE>Buffer</CODE></A> 
+then <CODE>input_encoding</CODE> is ignored.</P>
+<P>This can be called many times with new data as it is streamed.</P>
+<H3>verifier.verify(object, signature[, signature_format])<SPAN><A class="mark" 
+id="crypto_verifier_verify_object_signature_signature_format" href="http://nodejs.cn/api/crypto.html#crypto_verifier_verify_object_signature_signature_format">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_verifier_verify_object_signature_signature_format">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/verifier_verify_object_signature_signature_format.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.92</SPAN> </DIV>
+<P>Verifies the provided data using the given <CODE>object</CODE> and 
+<CODE>signature</CODE>. The <CODE>object</CODE> argument is a string containing 
+a PEM encoded object, which can be one an RSA public key, a DSA public key, or 
+an X.509 certificate. The <CODE>signature</CODE> argument is the previously 
+calculated signature for the data, in the <CODE>signature_format</CODE> which 
+can be <CODE>'latin1'</CODE>, <CODE>'hex'</CODE> or <CODE>'base64'</CODE>. If a 
+<CODE>signature_format</CODE> is specified, the <CODE>signature</CODE> is 
+expected to be a string; otherwise <CODE>signature</CODE> is expected to be a <A 
+href="http://nodejs.cn/api/buffer.html"><CODE>Buffer</CODE></A>.</P>
+<P>Returns <CODE>true</CODE> or <CODE>false</CODE> depending on the validity of 
+the signature for the data and public key.</P>
+<P>The <CODE>verifier</CODE> object can not be used again after 
+<CODE>verify.verify()</CODE> has been called. Multiple calls to 
+<CODE>verify.verify()</CODE> will result in an error being thrown.</P>
+<H2><CODE>crypto</CODE> module methods and properties<SPAN><A class="mark" id="crypto_crypto_module_methods_and_properties" 
+href="http://nodejs.cn/api/crypto.html#crypto_crypto_module_methods_and_properties">#</A></SPAN></H2>
+<H3>crypto.constants<SPAN><A class="mark" id="crypto_crypto_constants" href="http://nodejs.cn/api/crypto.html#crypto_crypto_constants">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_crypto_constants">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/crypto_constants.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v6.3.0</SPAN> </DIV>
+<P>Returns an object containing commonly used constants for crypto and security
+ related operations. The specific constants currently defined are described in 
+<A href="http://nodejs.cn/api/crypto.html#crypto_crypto_constants_1">Crypto 
+Constants</A>.</P>
+<H3>crypto.DEFAULT_ENCODING<SPAN><A class="mark" id="crypto_crypto_default_encoding" 
+href="http://nodejs.cn/api/crypto.html#crypto_crypto_default_encoding">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_crypto_default_encoding">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/crypto_default_encoding.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.9.3</SPAN> </DIV>
+<P>The default encoding to use for functions that can take either strings or <A 
+href="http://nodejs.cn/api/buffer.html">buffers</A>. The default value is 
+<CODE>'buffer'</CODE>, which makes methods default to <A href="http://nodejs.cn/api/buffer.html"><CODE>Buffer</CODE></A> 
+objects.</P>
+<P>The <CODE>crypto.DEFAULT_ENCODING</CODE> mechanism is provided for backwards 
+compatibility with legacy programs that expect <CODE>'latin1'</CODE> to be the 
+default encoding.</P>
+<P>New applications should expect the default to be <CODE>'buffer'</CODE>. This 
+property may become deprecated in a future Node.js release.</P>
+<H3>crypto.fips<SPAN><A class="mark" id="crypto_crypto_fips" href="http://nodejs.cn/api/crypto.html#crypto_crypto_fips">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_crypto_fips">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/crypto_fips.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v6.0.0</SPAN> </DIV>
+<P>Property for checking and controlling whether a FIPS compliant crypto 
+provider is currently in use. Setting to true requires a FIPS build of 
+Node.js.</P>
+<H3>crypto.createCipher(algorithm, password)<SPAN><A class="mark" id="crypto_crypto_createcipher_algorithm_password" 
+href="http://nodejs.cn/api/crypto.html#crypto_crypto_createcipher_algorithm_password">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_crypto_createcipher_algorithm_password">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/crypto_createcipher_algorithm_password.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.94</SPAN> </DIV>
+<P>Creates and returns a <CODE>Cipher</CODE> object that uses the given 
+<CODE>algorithm</CODE> and <CODE>password</CODE>.</P>
+<P>The <CODE>algorithm</CODE> is dependent on OpenSSL, examples are 
+<CODE>'aes192'</CODE>, etc. On recent OpenSSL releases, <CODE>openssl 
+list-cipher-algorithms</CODE> will display the available cipher algorithms.</P>
+<P>The <CODE>password</CODE> is used to derive the cipher key and initialization 
+vector (IV). The value must be either a <CODE>'latin1'</CODE> encoded string or 
+a <A href="http://nodejs.cn/api/buffer.html"><CODE>Buffer</CODE></A>.</P>
+<P>The implementation of <CODE>crypto.createCipher()</CODE> derives keys using 
+the OpenSSL function <A href="https://www.openssl.org/docs/man1.0.2/crypto/EVP_BytesToKey.html"><CODE>EVP_BytesToKey</CODE></A> 
+with the digest algorithm set to MD5, one iteration, and no salt. The lack of 
+salt allows dictionary attacks as the same password always creates the same key. 
+The low iteration count and non-cryptographically secure hash algorithm allow 
+passwords to be tested very rapidly.</P>
+<P>In line with OpenSSL's recommendation to use pbkdf2 instead of <A href="https://www.openssl.org/docs/man1.0.2/crypto/EVP_BytesToKey.html"><CODE>EVP_BytesToKey</CODE></A> 
+it is recommended that developers derive a key and IV on their own using <A 
+href="http://nodejs.cn/api/crypto.html#crypto_crypto_pbkdf2_password_salt_iterations_keylen_digest_callback"><CODE>crypto.pbkdf2()</CODE></A> 
+and to use <A href="http://nodejs.cn/api/crypto.html#crypto_crypto_createcipheriv_algorithm_key_iv"><CODE>crypto.createCipheriv()</CODE></A>
+ to create the <CODE>Cipher</CODE> object.</P>
+<H3>crypto.createCipheriv(algorithm, key, iv)<SPAN><A class="mark" id="crypto_crypto_createcipheriv_algorithm_key_iv" 
+href="http://nodejs.cn/api/crypto.html#crypto_crypto_createcipheriv_algorithm_key_iv">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_crypto_createcipheriv_algorithm_key_iv">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/crypto_createcipheriv_algorithm_key_iv.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P>Creates and returns a <CODE>Cipher</CODE> object, with the given 
+<CODE>algorithm</CODE>, <CODE>key</CODE> and initialization vector 
+(<CODE>iv</CODE>).</P>
+<P>The <CODE>algorithm</CODE> is dependent on OpenSSL, examples are 
+<CODE>'aes192'</CODE>, etc. On recent OpenSSL releases, <CODE>openssl 
+list-cipher-algorithms</CODE> will display the available cipher algorithms.</P>
+<P>The <CODE>key</CODE> is the raw key used by the <CODE>algorithm</CODE> and 
+<CODE>iv</CODE> is an <A href="https://en.wikipedia.org/wiki/Initialization_vector">initialization 
+vector</A>. Both arguments must be <CODE>'utf8'</CODE> encoded strings or <A 
+href="http://nodejs.cn/api/buffer.html">buffers</A>.</P>
+<H3>crypto.createCredentials(details)<SPAN><A class="mark" id="crypto_crypto_createcredentials_details" 
+href="http://nodejs.cn/api/crypto.html#crypto_crypto_createcredentials_details">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_crypto_createcredentials_details">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/crypto_createcredentials_details.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.92</SPAN> <SPAN>废弃于: v0.11.13 </SPAN> 
+</DIV>
+<PRE class="api_stability api_stability_0"><A href="http://nodejs.cn/api/documentation.html#documentation_stability_index">Stability: 0</A> - Deprecated: Use <A href="http://nodejs.cn/api/tls.html#tls_tls_createsecurecontext_options"><CODE>tls.createSecureContext()</CODE></A> instead.</PRE>
+<UL>
+  <LI><CODE>details</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">&lt;Object&gt;</A> 
+  Identical to <A href="http://nodejs.cn/api/tls.html#tls_tls_createsecurecontext_options"><CODE>tls.createSecureContext()</CODE></A>.</LI></UL>
+<P>The <CODE>crypto.createCredentials()</CODE> method is a deprecated function 
+for creating and returning a <CODE>tls.SecureContext</CODE>. It should not be 
+used. Replace it with <A href="http://nodejs.cn/api/tls.html#tls_tls_createsecurecontext_options"><CODE>tls.createSecureContext()</CODE></A> 
+which has the exact same arguments and return value.</P>
+<P>Returns a <CODE>tls.SecureContext</CODE>, as-if <A href="http://nodejs.cn/api/tls.html#tls_tls_createsecurecontext_options"><CODE>tls.createSecureContext()</CODE></A> 
+had been called.</P>
+<H3>crypto.createDecipher(algorithm, password)<SPAN><A class="mark" id="crypto_crypto_createdecipher_algorithm_password" 
+href="http://nodejs.cn/api/crypto.html#crypto_crypto_createdecipher_algorithm_password">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_crypto_createdecipher_algorithm_password">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/crypto_createdecipher_algorithm_password.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.94</SPAN> </DIV>
+<P>Creates and returns a <CODE>Decipher</CODE> object that uses the given 
+<CODE>algorithm</CODE> and <CODE>password</CODE> (key).</P>
+<P>The implementation of <CODE>crypto.createDecipher()</CODE> derives keys using 
+the OpenSSL function <A href="https://www.openssl.org/docs/man1.0.2/crypto/EVP_BytesToKey.html"><CODE>EVP_BytesToKey</CODE></A> 
+with the digest algorithm set to MD5, one iteration, and no salt. The lack of 
+salt allows dictionary attacks as the same password always creates the same key. 
+The low iteration count and non-cryptographically secure hash algorithm allow 
+passwords to be tested very rapidly.</P>
+<P>In line with OpenSSL's recommendation to use pbkdf2 instead of <A href="https://www.openssl.org/docs/man1.0.2/crypto/EVP_BytesToKey.html"><CODE>EVP_BytesToKey</CODE></A> 
+it is recommended that developers derive a key and IV on their own using <A 
+href="http://nodejs.cn/api/crypto.html#crypto_crypto_pbkdf2_password_salt_iterations_keylen_digest_callback"><CODE>crypto.pbkdf2()</CODE></A> 
+and to use <A href="http://nodejs.cn/api/crypto.html#crypto_crypto_createdecipheriv_algorithm_key_iv"><CODE>crypto.createDecipheriv()</CODE></A>
+ to create the <CODE>Decipher</CODE> object.</P>
+<H3>crypto.createDecipheriv(algorithm, key, iv)<SPAN><A class="mark" id="crypto_crypto_createdecipheriv_algorithm_key_iv" 
+href="http://nodejs.cn/api/crypto.html#crypto_crypto_createdecipheriv_algorithm_key_iv">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_crypto_createdecipheriv_algorithm_key_iv">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/crypto_createdecipheriv_algorithm_key_iv.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.94</SPAN> </DIV>
+<P>Creates and returns a <CODE>Decipher</CODE> object that uses the given 
+<CODE>algorithm</CODE>, <CODE>key</CODE> and initialization vector 
+(<CODE>iv</CODE>).</P>
+<P>The <CODE>algorithm</CODE> is dependent on OpenSSL, examples are 
+<CODE>'aes192'</CODE>, etc. On recent OpenSSL releases, <CODE>openssl 
+list-cipher-algorithms</CODE> will display the available cipher algorithms.</P>
+<P>The <CODE>key</CODE> is the raw key used by the <CODE>algorithm</CODE> and 
+<CODE>iv</CODE> is an <A href="https://en.wikipedia.org/wiki/Initialization_vector">initialization 
+vector</A>. Both arguments must be <CODE>'utf8'</CODE> encoded strings or <A 
+href="http://nodejs.cn/api/buffer.html">buffers</A>.</P>
+<H3>crypto.createDiffieHellman(prime[, prime_encoding][, generator][, 
+generator_encoding])<SPAN><A class="mark" id="crypto_crypto_creatediffiehellman_prime_prime_encoding_generator_generator_encoding" 
+href="http://nodejs.cn/api/crypto.html#crypto_crypto_creatediffiehellman_prime_prime_encoding_generator_generator_encoding">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_crypto_creatediffiehellman_prime_prime_encoding_generator_generator_encoding">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/crypto_creatediffiehellman_prime_prime_encoding_generator_generator_encoding.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.11.12</SPAN> </DIV>
+<P>Creates a <CODE>DiffieHellman</CODE> key exchange object using the supplied 
+<CODE>prime</CODE> and an optional specific <CODE>generator</CODE>.</P>
+<P>The <CODE>generator</CODE> argument can be a number, string, or <A href="http://nodejs.cn/api/buffer.html"><CODE>Buffer</CODE></A>. 
+If <CODE>generator</CODE> is not specified, the value <CODE>2</CODE> is 
+used.</P>
+<P>The <CODE>prime_encoding</CODE> and <CODE>generator_encoding</CODE> arguments 
+can be <CODE>'latin1'</CODE>, <CODE>'hex'</CODE>, or <CODE>'base64'</CODE>.</P>
+<P>If <CODE>prime_encoding</CODE> is specified, <CODE>prime</CODE> is expected 
+to be a string; otherwise a <A 
+href="http://nodejs.cn/api/buffer.html"><CODE>Buffer</CODE></A> is expected.</P>
+<P>If <CODE>generator_encoding</CODE> is specified, <CODE>generator</CODE> is 
+expected to be a string; otherwise either a number or <A href="http://nodejs.cn/api/buffer.html"><CODE>Buffer</CODE></A> 
+is expected.</P>
+<H3>crypto.createDiffieHellman(prime_length[, generator])<SPAN><A class="mark" 
+id="crypto_crypto_creatediffiehellman_prime_length_generator" href="http://nodejs.cn/api/crypto.html#crypto_crypto_creatediffiehellman_prime_length_generator">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_crypto_creatediffiehellman_prime_length_generator">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/crypto_creatediffiehellman_prime_length_generator.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.5.0</SPAN> </DIV>
+<P>Creates a <CODE>DiffieHellman</CODE> key exchange object and generates a 
+prime of <CODE>prime_length</CODE> bits using an optional specific numeric 
+<CODE>generator</CODE>. If <CODE>generator</CODE> is not specified, the value 
+<CODE>2</CODE> is used.</P>
+<H3>crypto.createECDH(curve_name)<SPAN><A class="mark" id="crypto_crypto_createecdh_curve_name" 
+href="http://nodejs.cn/api/crypto.html#crypto_crypto_createecdh_curve_name">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_crypto_createecdh_curve_name">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/crypto_createecdh_curve_name.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.11.14</SPAN> </DIV>
+<P>Creates an Elliptic Curve Diffie-Hellman (<CODE>ECDH</CODE>) key exchange 
+object using a predefined curve specified by the <CODE>curve_name</CODE> string. 
+Use <A 
+href="http://nodejs.cn/api/crypto.html#crypto_crypto_getcurves"><CODE>crypto.getCurves()</CODE></A> 
+to obtain a list of available curve names. On recent OpenSSL releases, 
+<CODE>openssl ecparam -list_curves</CODE> will also display the name and 
+description of each available elliptic curve.</P>
+<H3>crypto.createHash(algorithm)<SPAN><A class="mark" id="crypto_crypto_createhash_algorithm" 
+href="http://nodejs.cn/api/crypto.html#crypto_crypto_createhash_algorithm">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_crypto_createhash_algorithm">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/crypto_createhash_algorithm.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.92</SPAN> </DIV>
+<P>Creates and returns a <CODE>Hash</CODE> object that can be used to generate 
+hash digests using the given <CODE>algorithm</CODE>.</P>
+<P>The <CODE>algorithm</CODE> is dependent on the available algorithms supported 
+by the version of OpenSSL on the platform. Examples are <CODE>'sha256'</CODE>, 
+<CODE>'sha512'</CODE>, etc. On recent releases of OpenSSL, <CODE>openssl 
+list-message-digest-algorithms</CODE> will display the available digest 
+algorithms.</P>
+<P>Example: generating the sha256 sum of a file</P>
+<PRE><CODE class="lang-js">const filename = process.argv[2];
+const crypto = require('crypto');
+const fs = require('fs');
+
+const hash = crypto.createHash('sha256');
+
+const input = fs.createReadStream(filename);
+input.on('readable', () =&gt; {
+  const data = input.read();
+  if (data)
+    hash.update(data);
+  else {
+    console.log(`${hash.digest('hex')} ${filename}`);
+  }
+});
+</CODE></PRE>
+<H3>crypto.createHmac(algorithm, key)<SPAN><A class="mark" id="crypto_crypto_createhmac_algorithm_key" 
+href="http://nodejs.cn/api/crypto.html#crypto_crypto_createhmac_algorithm_key">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_crypto_createhmac_algorithm_key">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/crypto_createhmac_algorithm_key.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.94</SPAN> </DIV>
+<P>Creates and returns an <CODE>Hmac</CODE> object that uses the given 
+<CODE>algorithm</CODE> and <CODE>key</CODE>.</P>
+<P>The <CODE>algorithm</CODE> is dependent on the available algorithms supported 
+by the version of OpenSSL on the platform. Examples are <CODE>'sha256'</CODE>, 
+<CODE>'sha512'</CODE>, etc. On recent releases of OpenSSL, <CODE>openssl 
+list-message-digest-algorithms</CODE> will display the available digest 
+algorithms.</P>
+<P>The <CODE>key</CODE> is the HMAC key used to generate the cryptographic HMAC 
+hash.</P>
+<P>Example: generating the sha256 HMAC of a file</P>
+<PRE><CODE class="lang-js">const filename = process.argv[2];
+const crypto = require('crypto');
+const fs = require('fs');
+
+const hmac = crypto.createHmac('sha256', 'a secret');
+
+const input = fs.createReadStream(filename);
+input.on('readable', () =&gt; {
+  const data = input.read();
+  if (data)
+    hmac.update(data);
+  else {
+    console.log(`${hmac.digest('hex')} ${filename}`);
+  }
+});
+</CODE></PRE>
+<H3>crypto.createSign(algorithm)<SPAN><A class="mark" id="crypto_crypto_createsign_algorithm" 
+href="http://nodejs.cn/api/crypto.html#crypto_crypto_createsign_algorithm">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_crypto_createsign_algorithm">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/crypto_createsign_algorithm.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.92</SPAN> </DIV>
+<P>Creates and returns a <CODE>Sign</CODE> object that uses the given 
+<CODE>algorithm</CODE>. Use <A href="http://nodejs.cn/api/crypto.html#crypto_crypto_gethashes"><CODE>crypto.getHashes()</CODE></A> 
+to obtain an array of names of the available signing algorithms.</P>
+<H3>crypto.createVerify(algorithm)<SPAN><A class="mark" id="crypto_crypto_createverify_algorithm" 
+href="http://nodejs.cn/api/crypto.html#crypto_crypto_createverify_algorithm">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_crypto_createverify_algorithm">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/crypto_createverify_algorithm.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.92</SPAN> </DIV>
+<P>Creates and returns a <CODE>Verify</CODE> object that uses the given 
+algorithm. Use <A href="http://nodejs.cn/api/crypto.html#crypto_crypto_gethashes"><CODE>crypto.getHashes()</CODE></A> 
+to obtain an array of names of the available signing algorithms.</P>
+<H3>crypto.getCiphers()<SPAN><A class="mark" id="crypto_crypto_getciphers" href="http://nodejs.cn/api/crypto.html#crypto_crypto_getciphers">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_crypto_getciphers">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/crypto_getciphers.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.9.3</SPAN> </DIV>
+<P>Returns an array with the names of the supported cipher algorithms.</P>
+<P>Example:</P>
+<PRE><CODE class="lang-js">const ciphers = crypto.getCiphers();
+console.log(ciphers); // ['aes-128-cbc', 'aes-128-ccm', ...]
+</CODE></PRE>
+<H3>crypto.getCurves()<SPAN><A class="mark" id="crypto_crypto_getcurves" href="http://nodejs.cn/api/crypto.html#crypto_crypto_getcurves">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_crypto_getcurves">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/crypto_getcurves.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v2.3.0</SPAN> </DIV>
+<P>Returns an array with the names of the supported elliptic curves.</P>
+<P>Example:</P>
+<PRE><CODE class="lang-js">const curves = crypto.getCurves();
+console.log(curves); // ['Oakley-EC2N-3', 'Oakley-EC2N-4', ...]
+</CODE></PRE>
+<H3>crypto.getDiffieHellman(group_name)<SPAN><A class="mark" id="crypto_crypto_getdiffiehellman_group_name" 
+href="http://nodejs.cn/api/crypto.html#crypto_crypto_getdiffiehellman_group_name">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_crypto_getdiffiehellman_group_name">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/crypto_getdiffiehellman_group_name.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.7.5</SPAN> </DIV>
+<P>Creates a predefined <CODE>DiffieHellman</CODE> key exchange object. The
+ supported groups are: <CODE>'modp1'</CODE>, <CODE>'modp2'</CODE>, 
+<CODE>'modp5'</CODE> (defined in <A href="https://www.rfc-editor.org/rfc/rfc2412.txt">RFC 
+2412</A>, but see <A href="http://nodejs.cn/api/crypto.html#crypto_support_for_weak_or_compromised_algorithms">Caveats</A>) 
+and <CODE>'modp14'</CODE>, <CODE>'modp15'</CODE>, <CODE>'modp16'</CODE>, 
+<CODE>'modp17'</CODE>, <CODE>'modp18'</CODE> (defined in <A href="https://www.rfc-editor.org/rfc/rfc3526.txt">RFC 
+3526</A>). The returned object mimics the interface of objects created by <A 
+href="http://nodejs.cn/api/crypto.html#crypto_crypto_creatediffiehellman_prime_prime_encoding_generator_generator_encoding"><CODE>crypto.createDiffieHellman()</CODE></A>, 
+but will not allow changing the keys (with <A href="http://nodejs.cn/api/crypto.html#crypto_diffiehellman_setpublickey_public_key_encoding"><CODE>diffieHellman.setPublicKey()</CODE></A> 
+for example). The advantage of using this method is that the parties do not have 
+to generate nor exchange a group modulus beforehand, saving both processor and 
+communication time.</P>
+<P>Example (obtaining a shared secret):</P>
+<PRE><CODE class="lang-js">const crypto = require('crypto');
+const alice = crypto.getDiffieHellman('modp14');
+const bob = crypto.getDiffieHellman('modp14');
+
+alice.generateKeys();
+bob.generateKeys();
+
+const aliceSecret = alice.computeSecret(bob.getPublicKey(), null, 'hex');
+const bobSecret = bob.computeSecret(alice.getPublicKey(), null, 'hex');
+
+/* aliceSecret and bobSecret should be the same */
+console.log(aliceSecret === bobSecret);
+</CODE></PRE>
+<H3>crypto.getHashes()<SPAN><A class="mark" id="crypto_crypto_gethashes" href="http://nodejs.cn/api/crypto.html#crypto_crypto_gethashes">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_crypto_gethashes">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/crypto_gethashes.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.9.3</SPAN> </DIV>
+<P>Returns an array of the names of the supported hash algorithms, such as 
+<CODE>RSA-SHA256</CODE>.</P>
+<P>Example:</P>
+<PRE><CODE class="lang-js">const hashes = crypto.getHashes();
+console.log(hashes); // ['DSA', 'DSA-SHA', 'DSA-SHA1', ...]
+</CODE></PRE>
+<H3>crypto.pbkdf2(password, salt, iterations, keylen, digest, callback)<SPAN><A 
+class="mark" id="crypto_crypto_pbkdf2_password_salt_iterations_keylen_digest_callback" 
+href="http://nodejs.cn/api/crypto.html#crypto_crypto_pbkdf2_password_salt_iterations_keylen_digest_callback">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_crypto_pbkdf2_password_salt_iterations_keylen_digest_callback">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/crypto_pbkdf2_password_salt_iterations_keylen_digest_callback.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.5.5</SPAN> </DIV>
+<P>Provides an asynchronous Password-Based Key Derivation Function 2 (PBKDF2)
+ implementation. A selected HMAC digest algorithm specified by 
+<CODE>digest</CODE> is applied to derive a key of the requested byte length 
+(<CODE>keylen</CODE>) from the <CODE>password</CODE>, <CODE>salt</CODE> and 
+<CODE>iterations</CODE>.</P>
+<P>The supplied <CODE>callback</CODE> function is called with two arguments: 
+<CODE>err</CODE> and <CODE>derivedKey</CODE>. If an error occurs, 
+<CODE>err</CODE> will be set; otherwise <CODE>err</CODE> will be null. The 
+successfully generated <CODE>derivedKey</CODE> will be passed as a <A href="http://nodejs.cn/api/buffer.html"><CODE>Buffer</CODE></A>.</P>
+<P>The <CODE>iterations</CODE> argument must be a number set as high as 
+possible. The higher the number of iterations, the more secure the derived key 
+will be, but will take a longer amount of time to complete.</P>
+<P>The <CODE>salt</CODE> should also be as unique as possible. It is recommended 
+that the salts are random and their lengths are greater than 16 bytes. See <A 
+href="http://csrc.nist.gov/publications/nistpubs/800-132/nist-sp800-132.pdf">NIST 
+SP 800-132</A> for details.</P>
+<P>Example:</P>
+<PRE><CODE class="lang-js">const crypto = require('crypto');
+crypto.pbkdf2('secret', 'salt', 100000, 512, 'sha512', (err, key) =&gt; {
+  if (err) throw err;
+  console.log(key.toString('hex'));  // '3745e48...aa39b34'
+});
+</CODE></PRE>
+<P>An array of supported digest functions can be retrieved using <A href="http://nodejs.cn/api/crypto.html#crypto_crypto_gethashes"><CODE>crypto.getHashes()</CODE></A>.</P>
+<H3>crypto.pbkdf2Sync(password, salt, iterations, keylen, digest)<SPAN><A class="mark" 
+id="crypto_crypto_pbkdf2sync_password_salt_iterations_keylen_digest" href="http://nodejs.cn/api/crypto.html#crypto_crypto_pbkdf2sync_password_salt_iterations_keylen_digest">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_crypto_pbkdf2sync_password_salt_iterations_keylen_digest">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/crypto_pbkdf2sync_password_salt_iterations_keylen_digest.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.9.3</SPAN> </DIV>
+<P>Provides a synchronous Password-Based Key Derivation Function 2 (PBKDF2)
+ implementation. A selected HMAC digest algorithm specified by 
+<CODE>digest</CODE> is applied to derive a key of the requested byte length 
+(<CODE>keylen</CODE>) from the <CODE>password</CODE>, <CODE>salt</CODE> and 
+<CODE>iterations</CODE>.</P>
+<P>If an error occurs an Error will be thrown, otherwise the derived key will be
+ returned as a <A 
+href="http://nodejs.cn/api/buffer.html"><CODE>Buffer</CODE></A>.</P>
+<P>The <CODE>iterations</CODE> argument must be a number set as high as 
+possible. The higher the number of iterations, the more secure the derived key 
+will be, but will take a longer amount of time to complete.</P>
+<P>The <CODE>salt</CODE> should also be as unique as possible. It is recommended 
+that the salts are random and their lengths are greater than 16 bytes. See <A 
+href="http://csrc.nist.gov/publications/nistpubs/800-132/nist-sp800-132.pdf">NIST 
+SP 800-132</A> for details.</P>
+<P>Example:</P>
+<PRE><CODE class="lang-js">const crypto = require('crypto');
+const key = crypto.pbkdf2Sync('secret', 'salt', 100000, 512, 'sha512');
+console.log(key.toString('hex'));  // '3745e48...aa39b34'
+</CODE></PRE>
+<P>An array of supported digest functions can be retrieved using <A href="http://nodejs.cn/api/crypto.html#crypto_crypto_gethashes"><CODE>crypto.getHashes()</CODE></A>.</P>
+<H3>crypto.privateDecrypt(private_key, buffer)<SPAN><A class="mark" id="crypto_crypto_privatedecrypt_private_key_buffer" 
+href="http://nodejs.cn/api/crypto.html#crypto_crypto_privatedecrypt_private_key_buffer">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_crypto_privatedecrypt_private_key_buffer">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/crypto_privatedecrypt_private_key_buffer.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.11.14</SPAN> </DIV>
+<P>Decrypts <CODE>buffer</CODE> with <CODE>private_key</CODE>.</P>
+<P><CODE>private_key</CODE> can be an object or a string. If 
+<CODE>private_key</CODE> is a string, it is treated as the key with no 
+passphrase and will use <CODE>RSA_PKCS1_OAEP_PADDING</CODE>. If 
+<CODE>private_key</CODE> is an object, it is interpreted as a hash object with 
+the keys:</P>
+<UL>
+  <LI><CODE>key</CODE> : <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  - PEM encoded private key</LI>
+  <LI><CODE>passphrase</CODE> : <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  - Optional passphrase for the private key</LI>
+  <LI><CODE>padding</CODE> : An optional padding value, one of the following:
+  <UL>
+    <LI><CODE>crypto.constants.RSA_NO_PADDING</CODE></LI>
+    <LI><CODE>crypto.constants.RSA_PKCS1_PADDING</CODE></LI>
+    <LI><CODE>crypto.constants.RSA_PKCS1_OAEP_PADDING</CODE></LI></UL></LI></UL>
+<P>All paddings are defined in <CODE>crypto.constants</CODE>.</P>
+<H3>crypto.timingSafeEqual(a, b)<SPAN><A class="mark" id="crypto_crypto_timingsafeequal_a_b" 
+href="http://nodejs.cn/api/crypto.html#crypto_crypto_timingsafeequal_a_b">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_crypto_timingsafeequal_a_b">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/crypto_timingsafeequal_a_b.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v6.6.0</SPAN> </DIV>
+<P>Returns true if <CODE>a</CODE> is equal to <CODE>b</CODE>, without leaking 
+timing information that would allow an attacker to guess one of the values. This 
+is suitable for comparing HMAC digests or secret values like authentication 
+cookies or <A href="https://www.w3.org/TR/capability-urls/">capability 
+urls</A>.</P>
+<P><CODE>a</CODE> and <CODE>b</CODE> must both be <CODE>Buffer</CODE>s, and they 
+must have the same length.</P>
+<P><STRONG>Note</STRONG>: Use of <CODE>crypto.timingSafeEqual</CODE> does not 
+guarantee that the <EM>surrounding</EM> code is timing-safe. Care should be 
+taken to ensure that the surrounding code does not introduce timing 
+vulnerabilities.</P>
+<H3>crypto.privateEncrypt(private_key, buffer)<SPAN><A class="mark" id="crypto_crypto_privateencrypt_private_key_buffer" 
+href="http://nodejs.cn/api/crypto.html#crypto_crypto_privateencrypt_private_key_buffer">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_crypto_privateencrypt_private_key_buffer">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/crypto_privateencrypt_private_key_buffer.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v1.1.0</SPAN> </DIV>
+<P>Encrypts <CODE>buffer</CODE> with <CODE>private_key</CODE>.</P>
+<P><CODE>private_key</CODE> can be an object or a string. If 
+<CODE>private_key</CODE> is a string, it is treated as the key with no 
+passphrase and will use <CODE>RSA_PKCS1_PADDING</CODE>. If 
+<CODE>private_key</CODE> is an object, it is interpreted as a hash object with 
+the keys:</P>
+<UL>
+  <LI><CODE>key</CODE> : <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  - PEM encoded private key</LI>
+  <LI><CODE>passphrase</CODE> : <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  - Optional passphrase for the private key</LI>
+  <LI><CODE>padding</CODE> : An optional padding value, one of the following:
+  <UL>
+    <LI><CODE>crypto.constants.RSA_NO_PADDING</CODE></LI>
+    <LI><CODE>crypto.constants.RSA_PKCS1_PADDING</CODE></LI></UL></LI></UL>
+<P>All paddings are defined in <CODE>crypto.constants</CODE>.</P>
+<H3>crypto.publicDecrypt(public_key, buffer)<SPAN><A class="mark" id="crypto_crypto_publicdecrypt_public_key_buffer" 
+href="http://nodejs.cn/api/crypto.html#crypto_crypto_publicdecrypt_public_key_buffer">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_crypto_publicdecrypt_public_key_buffer">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/crypto_publicdecrypt_public_key_buffer.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v1.1.0</SPAN> </DIV>
+<P>Decrypts <CODE>buffer</CODE> with <CODE>public_key</CODE>.</P>
+<P><CODE>public_key</CODE> can be an object or a string. If 
+<CODE>public_key</CODE> is a string, it is treated as the key with no passphrase 
+and will use <CODE>RSA_PKCS1_PADDING</CODE>. If <CODE>public_key</CODE> is an 
+object, it is interpreted as a hash object with the keys:</P>
+<UL>
+  <LI><CODE>key</CODE> : <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  - PEM encoded public key</LI>
+  <LI><CODE>passphrase</CODE> : <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  - Optional passphrase for the private key</LI>
+  <LI><CODE>padding</CODE> : An optional padding value, one of the following:
+  <UL>
+    <LI><CODE>crypto.constants.RSA_NO_PADDING</CODE></LI>
+    <LI><CODE>crypto.constants.RSA_PKCS1_PADDING</CODE></LI>
+    <LI><CODE>crypto.constants.RSA_PKCS1_OAEP_PADDING</CODE></LI></UL></LI></UL>
+<P>Because RSA public keys can be derived from private keys, a private key may
+ be passed instead of a public key.</P>
+<P>All paddings are defined in <CODE>crypto.constants</CODE>.</P>
+<H3>crypto.publicEncrypt(public_key, buffer)<SPAN><A class="mark" id="crypto_crypto_publicencrypt_public_key_buffer" 
+href="http://nodejs.cn/api/crypto.html#crypto_crypto_publicencrypt_public_key_buffer">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_crypto_publicencrypt_public_key_buffer">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/crypto_publicencrypt_public_key_buffer.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.11.14</SPAN> </DIV>
+<P>Encrypts <CODE>buffer</CODE> with <CODE>public_key</CODE>.</P>
+<P><CODE>public_key</CODE> can be an object or a string. If 
+<CODE>public_key</CODE> is a string, it is treated as the key with no passphrase 
+and will use <CODE>RSA_PKCS1_OAEP_PADDING</CODE>. If <CODE>public_key</CODE> is 
+an object, it is interpreted as a hash object with the keys:</P>
+<UL>
+  <LI><CODE>key</CODE> : <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  - PEM encoded public key</LI>
+  <LI><CODE>passphrase</CODE> : <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  - Optional passphrase for the private key</LI>
+  <LI><CODE>padding</CODE> : An optional padding value, one of the following:
+  <UL>
+    <LI><CODE>crypto.constants.RSA_NO_PADDING</CODE></LI>
+    <LI><CODE>crypto.constants.RSA_PKCS1_PADDING</CODE></LI>
+    <LI><CODE>crypto.constants.RSA_PKCS1_OAEP_PADDING</CODE></LI></UL></LI></UL>
+<P>Because RSA public keys can be derived from private keys, a private key may
+ be passed instead of a public key.</P>
+<P>All paddings are defined in <CODE>crypto.constants</CODE>.</P>
+<H3>crypto.randomBytes(size[, callback])<SPAN><A class="mark" id="crypto_crypto_randombytes_size_callback" 
+href="http://nodejs.cn/api/crypto.html#crypto_crypto_randombytes_size_callback">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_crypto_randombytes_size_callback">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/crypto_randombytes_size_callback.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.5.8</SPAN> </DIV>
+<P>Generates cryptographically strong pseudo-random data. The <CODE>size</CODE> 
+argument is a number indicating the number of bytes to generate.</P>
+<P>If a <CODE>callback</CODE> function is provided, the bytes are generated 
+asynchronously and the <CODE>callback</CODE> function is invoked with two 
+arguments: <CODE>err</CODE> and <CODE>buf</CODE>. If an error occurs, 
+<CODE>err</CODE> will be an Error object; otherwise it is null. The 
+<CODE>buf</CODE> argument is a <A 
+href="http://nodejs.cn/api/buffer.html"><CODE>Buffer</CODE></A> containing the 
+generated bytes.</P>
+<PRE><CODE class="lang-js">// Asynchronous
+const crypto = require('crypto');
+crypto.randomBytes(256, (err, buf) =&gt; {
+  if (err) throw err;
+  console.log(`${buf.length} bytes of random data: ${buf.toString('hex')}`);
+});
+</CODE></PRE>
+<P>If the <CODE>callback</CODE> function is not provided, the random bytes are 
+generated synchronously and returned as a <A href="http://nodejs.cn/api/buffer.html"><CODE>Buffer</CODE></A>. 
+An error will be thrown if there is a problem generating the bytes.</P>
+<PRE><CODE class="lang-js">// Synchronous
+const buf = crypto.randomBytes(256);
+console.log(
+  `${buf.length} bytes of random data: ${buf.toString('hex')}`);
+</CODE></PRE>
+<P>The <CODE>crypto.randomBytes()</CODE> method will block until there is 
+sufficient entropy. This should normally never take longer than a few 
+milliseconds. The only time when generating the random bytes may conceivably 
+block for a longer period of time is right after boot, when the whole system is 
+still low on entropy.</P>
+<H3>crypto.setEngine(engine[, flags])<SPAN><A class="mark" id="crypto_crypto_setengine_engine_flags" 
+href="http://nodejs.cn/api/crypto.html#crypto_crypto_setengine_engine_flags">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_crypto_setengine_engine_flags">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/crypto_setengine_engine_flags.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.11.11</SPAN> </DIV>
+<P>Load and set the <CODE>engine</CODE> for some or all OpenSSL functions 
+(selected by flags).</P>
+<P><CODE>engine</CODE> could be either an id or a path to the engine's shared 
+library.</P>
+<P>The optional <CODE>flags</CODE> argument uses <CODE>ENGINE_METHOD_ALL</CODE> 
+by default. The <CODE>flags</CODE> is a bit field taking one of or a mix of the 
+following flags (defined in <CODE>crypto.constants</CODE>):</P>
+<UL>
+  <LI><CODE>crypto.constants.ENGINE_METHOD_RSA</CODE></LI>
+  <LI><CODE>crypto.constants.ENGINE_METHOD_DSA</CODE></LI>
+  <LI><CODE>crypto.constants.ENGINE_METHOD_DH</CODE></LI>
+  <LI><CODE>crypto.constants.ENGINE_METHOD_RAND</CODE></LI>
+  <LI><CODE>crypto.constants.ENGINE_METHOD_ECDH</CODE></LI>
+  <LI><CODE>crypto.constants.ENGINE_METHOD_ECDSA</CODE></LI>
+  <LI><CODE>crypto.constants.ENGINE_METHOD_CIPHERS</CODE></LI>
+  <LI><CODE>crypto.constants.ENGINE_METHOD_DIGESTS</CODE></LI>
+  <LI><CODE>crypto.constants.ENGINE_METHOD_STORE</CODE></LI>
+  <LI><CODE>crypto.constants.ENGINE_METHOD_PKEY_METHS</CODE></LI>
+  <LI><CODE>crypto.constants.ENGINE_METHOD_PKEY_ASN1_METHS</CODE></LI>
+  <LI><CODE>crypto.constants.ENGINE_METHOD_ALL</CODE></LI>
+  <LI><CODE>crypto.constants.ENGINE_METHOD_NONE</CODE></LI></UL>
+<H2>Notes<SPAN><A class="mark" id="crypto_notes" href="http://nodejs.cn/api/crypto.html#crypto_notes">#</A></SPAN></H2>
+<H3>Legacy Streams API (pre Node.js v0.10)<SPAN><A class="mark" id="crypto_legacy_streams_api_pre_node_js_v0_10" 
+href="http://nodejs.cn/api/crypto.html#crypto_legacy_streams_api_pre_node_js_v0_10">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_legacy_streams_api_pre_node_js_v0_10">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/legacy_streams_api_pre_node_js_v0_10.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P>The Crypto module was added to Node.js before there was the concept of a
+ unified Stream API, and before there were <A href="http://nodejs.cn/api/buffer.html"><CODE>Buffer</CODE></A> 
+objects for handling binary data. As such, the many of the <CODE>crypto</CODE> 
+defined classes have methods not typically found on other Node.js classes that 
+implement the <A href="http://nodejs.cn/api/stream.html">streams</A> API (e.g. 
+<CODE>update()</CODE>, <CODE>final()</CODE>, or <CODE>digest()</CODE>). Also, 
+many methods accepted and returned <CODE>'latin1'</CODE> encoded strings by 
+default rather than Buffers. This default was changed after Node.js v0.8 to use 
+<A href="http://nodejs.cn/api/buffer.html"><CODE>Buffer</CODE></A> objects by 
+default instead.</P>
+<H3>Recent ECDH Changes<SPAN><A class="mark" id="crypto_recent_ecdh_changes" 
+href="http://nodejs.cn/api/crypto.html#crypto_recent_ecdh_changes">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_recent_ecdh_changes">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/recent_ecdh_changes.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P>Usage of <CODE>ECDH</CODE> with non-dynamically generated key pairs has been 
+simplified. Now, <A href="http://nodejs.cn/api/crypto.html#crypto_ecdh_setprivatekey_private_key_encoding"><CODE>ecdh.setPrivateKey()</CODE></A> 
+can be called with a preselected private key and the associated public point 
+(key) will be computed and stored in the object. This allows code to only store 
+and provide the private part of the EC key pair. <A href="http://nodejs.cn/api/crypto.html#crypto_ecdh_setprivatekey_private_key_encoding"><CODE>ecdh.setPrivateKey()</CODE></A> 
+now also validates that the private key is valid for the selected curve.</P>
+<P>The <A href="http://nodejs.cn/api/crypto.html#crypto_ecdh_setpublickey_public_key_encoding"><CODE>ecdh.setPublicKey()</CODE></A> 
+method is now deprecated as its inclusion in the API is not useful. Either a 
+previously stored private key should be set, which automatically generates the 
+associated public key, or <A href="http://nodejs.cn/api/crypto.html#crypto_ecdh_generatekeys_encoding_format"><CODE>ecdh.generateKeys()</CODE></A>
+ should be called. The main drawback of using <A href="http://nodejs.cn/api/crypto.html#crypto_ecdh_setpublickey_public_key_encoding"><CODE>ecdh.setPublicKey()</CODE></A> 
+is that it can be used to put the ECDH key pair into an inconsistent state.</P>
+<H3>Support for weak or compromised algorithms<SPAN><A class="mark" id="crypto_support_for_weak_or_compromised_algorithms" 
+href="http://nodejs.cn/api/crypto.html#crypto_support_for_weak_or_compromised_algorithms">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_support_for_weak_or_compromised_algorithms">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/support_for_weak_or_compromised_algorithms.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P>The <CODE>crypto</CODE> module still supports some algorithms which are 
+already compromised and are not currently recommended for use. The API also 
+allows the use of ciphers and hashes with a small key size that are considered 
+to be too weak for safe use.</P>
+<P>Users should take full responsibility for selecting the crypto algorithm and 
+key size according to their security requirements.</P>
+<P>Based on the recommendations of <A href="http://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-131Ar1.pdf">NIST 
+SP 800-131A</A>:</P>
+<UL>
+  <LI>MD5 and SHA-1 are no longer acceptable where collision resistance is
+   required such as digital signatures.</LI>
+  <LI>The key used with RSA, DSA and DH algorithms is recommended to have at 
+  least 2048 bits and that of the curve of ECDSA and ECDH at least 224 bits, to 
+  be safe to use for several years.</LI>
+  <LI>The DH groups of <CODE>modp1</CODE>, <CODE>modp2</CODE> and 
+  <CODE>modp5</CODE> have a key size smaller than 2048 bits and are not 
+  recommended.</LI></UL>
+<P>See the reference for other recommendations and details.</P>
+<H2>Crypto Constants<SPAN><A class="mark" id="crypto_crypto_constants_1" href="http://nodejs.cn/api/crypto.html#crypto_crypto_constants_1">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_crypto_constants_1">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/crypto_constants_1.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P>The following constants exported by <CODE>crypto.constants</CODE> apply to 
+various uses of the <CODE>crypto</CODE>, <CODE>tls</CODE>, and 
+<CODE>https</CODE> modules and are generally specific to OpenSSL.</P>
+<H3>OpenSSL Options<SPAN><A class="mark" id="crypto_openssl_options" href="http://nodejs.cn/api/crypto.html#crypto_openssl_options">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_openssl_options">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/openssl_options.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<TABLE>
+  <TBODY>
+  <TR>
+    <TH>Constant</TH>
+    <TH>Description</TH></TR>
+  <TR>
+    <TD><CODE>SSL_OP_ALL</CODE></TD>
+    <TD>Applies multiple bug workarounds within OpenSSL. See     <A href="https://www.openssl.org/docs/man1.0.2/ssl/SSL_CTX_set_options.html">https://www.openssl.org/docs/man1.0.2/ssl/SSL_CTX_set_options.html</A> 
+      for    detail.</TD></TR>
+  <TR>
+    <TD><CODE>SSL_OP_ALLOW_UNSAFE_LEGACY_RENEGOTIATION</CODE></TD>
+    <TD>Allows legacy insecure renegotiation between OpenSSL and unpatched    
+      clients or servers. See     <A href="https://www.openssl.org/docs/man1.0.2/ssl/SSL_CTX_set_options.html">https://www.openssl.org/docs/man1.0.2/ssl/SSL_CTX_set_options.html</A>.</TD></TR>
+  <TR>
+    <TD><CODE>SSL_OP_CIPHER_SERVER_PREFERENCE</CODE></TD>
+    <TD>Attempts to use the server's preferences instead of the client's when  
+        selecting a cipher. Behaviour depends on protocol version. See     <A 
+      href="https://www.openssl.org/docs/man1.0.2/ssl/SSL_CTX_set_options.html">https://www.openssl.org/docs/man1.0.2/ssl/SSL_CTX_set_options.html</A>.</TD></TR>
+  <TR>
+    <TD><CODE>SSL_OP_CISCO_ANYCONNECT</CODE></TD>
+    <TD>Instructs OpenSSL to use Cisco's "speshul" version of 
+  DTLS_BAD_VER.</TD></TR>
+  <TR>
+    <TD><CODE>SSL_OP_COOKIE_EXCHANGE</CODE></TD>
+    <TD>Instructs OpenSSL to turn on cookie exchange.</TD></TR>
+  <TR>
+    <TD><CODE>SSL_OP_CRYPTOPRO_TLSEXT_BUG</CODE></TD>
+    <TD>Instructs OpenSSL to add server-hello extension from an early version  
+        of the cryptopro draft.</TD></TR>
+  <TR>
+    <TD><CODE>SSL_OP_DONT_INSERT_EMPTY_FRAGMENTS</CODE></TD>
+    <TD>Instructs OpenSSL to disable a SSL 3.0/TLS 1.0 vulnerability    
+      workaround added in OpenSSL 0.9.6d.</TD></TR>
+  <TR>
+    <TD><CODE>SSL_OP_EPHEMERAL_RSA</CODE></TD>
+    <TD>Instructs OpenSSL to always use the tmp_rsa key when performing RSA    
+      operations.</TD></TR>
+  <TR>
+    <TD><CODE>SSL_OP_LEGACY_SERVER_CONNECT</CODE></TD>
+    <TD>Allows initial connection to servers that do not support RI.</TD></TR>
+  <TR>
+    <TD><CODE>SSL_OP_MICROSOFT_BIG_SSLV3_BUFFER</CODE></TD>
+    <TD></TD></TR>
+  <TR>
+    <TD><CODE>SSL_OP_MICROSOFT_SESS_ID_BUG</CODE></TD>
+    <TD></TD></TR>
+  <TR>
+    <TD><CODE>SSL_OP_MSIE_SSLV2_RSA_PADDING</CODE></TD>
+    <TD>Instructs OpenSSL to disable the workaround for a man-in-the-middle    
+      protocol-version vulnerability in the SSL 2.0 server implementation.</TD></TR>
+  <TR>
+    <TD><CODE>SSL_OP_NETSCAPE_CA_DN_BUG</CODE></TD>
+    <TD></TD></TR>
+  <TR>
+    <TD><CODE>SSL_OP_NETSCAPE_CHALLENGE_BUG</CODE></TD>
+    <TD></TD></TR>
+  <TR>
+    <TD><CODE>SSL_OP_NETSCAPE_DEMO_CIPHER_CHANGE_BUG</CODE></TD>
+    <TD></TD></TR>
+  <TR>
+    <TD><CODE>SSL_OP_NETSCAPE_REUSE_CIPHER_CHANGE_BUG</CODE></TD>
+    <TD></TD></TR>
+  <TR>
+    <TD><CODE>SSL_OP_NO_COMPRESSION</CODE></TD>
+    <TD>Instructs OpenSSL to disable support for SSL/TLS compression.</TD></TR>
+  <TR>
+    <TD><CODE>SSL_OP_NO_QUERY_MTU</CODE></TD>
+    <TD></TD></TR>
+  <TR>
+    <TD><CODE>SSL_OP_NO_SESSION_RESUMPTION_ON_RENEGOTIATION</CODE></TD>
+    <TD>Instructs OpenSSL to always start a new session when performing    
+      renegotiation.</TD></TR>
+  <TR>
+    <TD><CODE>SSL_OP_NO_SSLv2</CODE></TD>
+    <TD>Instructs OpenSSL to turn off SSL v2</TD></TR>
+  <TR>
+    <TD><CODE>SSL_OP_NO_SSLv3</CODE></TD>
+    <TD>Instructs OpenSSL to turn off SSL v3</TD></TR>
+  <TR>
+    <TD><CODE>SSL_OP_NO_TICKET</CODE></TD>
+    <TD>Instructs OpenSSL to disable use of RFC4507bis tickets.</TD></TR>
+  <TR>
+    <TD><CODE>SSL_OP_NO_TLSv1</CODE></TD>
+    <TD>Instructs OpenSSL to turn off TLS v1</TD></TR>
+  <TR>
+    <TD><CODE>SSL_OP_NO_TLSv1_1</CODE></TD>
+    <TD>Instructs OpenSSL to turn off TLS v1.1</TD></TR>
+  <TR>
+    <TD><CODE>SSL_OP_NO_TLSv1_2</CODE></TD>
+    <TD>Instructs OpenSSL to turn off TLS v1.2</TD></TR>
+  <TR>
+    <TD><CODE>SSL_OP_PKCS1_CHECK_1</CODE></TD>
+    <TD></TD>
+  <TR>
+    <TD><CODE>SSL_OP_PKCS1_CHECK_2</CODE></TD>
+    <TD></TD></TR>
+  <TR>
+    <TD><CODE>SSL_OP_SINGLE_DH_USE</CODE></TD>
+    <TD>Instructs OpenSSL to always create a new key when using    
+      temporary/ephemeral DH parameters.</TD></TR>
+  <TR>
+    <TD><CODE>SSL_OP_SINGLE_ECDH_USE</CODE></TD>
+    <TD>Instructs OpenSSL to always create a new key when using    
+      temporary/ephemeral ECDH parameters.</TD></TR>
+  <TR>
+    <TD><CODE>SSL_OP_SSLEAY_080_CLIENT_DH_BUG</CODE></TD>
+    <TD></TD>
+  <TR>
+    <TD><CODE>SSL_OP_SSLREF2_REUSE_CERT_TYPE_BUG</CODE></TD>
+    <TD></TD></TR>
+  <TR>
+    <TD><CODE>SSL_OP_TLS_BLOCK_PADDING_BUG</CODE></TD>
+    <TD></TD></TR>
+  <TR>
+    <TD><CODE>SSL_OP_TLS_D5_BUG</CODE></TD>
+    <TD></TD></TR>
+  <TR>
+    <TD><CODE>SSL_OP_TLS_ROLLBACK_BUG</CODE></TD>
+    <TD>Instructs OpenSSL to disable version rollback attack 
+  detection.</TD></TR></TBODY></TABLE>
+<H3>OpenSSL Engine Constants<SPAN><A class="mark" id="crypto_openssl_engine_constants" 
+href="http://nodejs.cn/api/crypto.html#crypto_openssl_engine_constants">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_openssl_engine_constants">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/openssl_engine_constants.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<TABLE>
+  <TBODY>
+  <TR>
+    <TH>Constant</TH>
+    <TH>Description</TH></TR>
+  <TR>
+    <TD><CODE>ENGINE_METHOD_RSA</CODE></TD>
+    <TD>Limit engine usage to RSA</TD></TR>
+  <TR>
+    <TD><CODE>ENGINE_METHOD_DSA</CODE></TD>
+    <TD>Limit engine usage to DSA</TD></TR>
+  <TR>
+    <TD><CODE>ENGINE_METHOD_DH</CODE></TD>
+    <TD>Limit engine usage to DH</TD></TR>
+  <TR>
+    <TD><CODE>ENGINE_METHOD_RAND</CODE></TD>
+    <TD>Limit engine usage to RAND</TD></TR>
+  <TR>
+    <TD><CODE>ENGINE_METHOD_ECDH</CODE></TD>
+    <TD>Limit engine usage to ECDH</TD></TR>
+  <TR>
+    <TD><CODE>ENGINE_METHOD_ECDSA</CODE></TD>
+    <TD>Limit engine usage to ECDSA</TD></TR>
+  <TR>
+    <TD><CODE>ENGINE_METHOD_CIPHERS</CODE></TD>
+    <TD>Limit engine usage to CIPHERS</TD></TR>
+  <TR>
+    <TD><CODE>ENGINE_METHOD_DIGESTS</CODE></TD>
+    <TD>Limit engine usage to DIGESTS</TD></TR>
+  <TR>
+    <TD><CODE>ENGINE_METHOD_STORE</CODE></TD>
+    <TD>Limit engine usage to STORE</TD></TR>
+  <TR>
+    <TD><CODE>ENGINE_METHOD_PKEY_METHS</CODE></TD>
+    <TD>Limit engine usage to PKEY_METHDS</TD></TR>
+  <TR>
+    <TD><CODE>ENGINE_METHOD_PKEY_ASN1_METHS</CODE></TD>
+    <TD>Limit engine usage to PKEY_ASN1_METHS</TD></TR>
+  <TR>
+    <TD><CODE>ENGINE_METHOD_ALL</CODE></TD>
+    <TD></TD></TR>
+  <TR>
+    <TD><CODE>ENGINE_METHOD_NONE</CODE></TD>
+    <TD></TD></TR></TBODY></TABLE>
+<H3>Other OpenSSL Constants<SPAN><A class="mark" id="crypto_other_openssl_constants" 
+href="http://nodejs.cn/api/crypto.html#crypto_other_openssl_constants">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_other_openssl_constants">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/other_openssl_constants.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<TABLE>
+  <TBODY>
+  <TR>
+    <TH>Constant</TH>
+    <TH>Description</TH></TR>
+  <TR>
+    <TD><CODE>DH_CHECK_P_NOT_SAFE_PRIME</CODE></TD>
+    <TD></TD></TR>
+  <TR>
+    <TD><CODE>DH_CHECK_P_NOT_PRIME</CODE></TD>
+    <TD></TD></TR>
+  <TR>
+    <TD><CODE>DH_UNABLE_TO_CHECK_GENERATOR</CODE></TD>
+    <TD></TD></TR>
+  <TR>
+    <TD><CODE>DH_NOT_SUITABLE_GENERATOR</CODE></TD>
+    <TD></TD></TR>
+  <TR>
+    <TD><CODE>NPN_ENABLED</CODE></TD>
+    <TD></TD></TR>
+  <TR>
+    <TD><CODE>ALPN_ENABLED</CODE></TD>
+    <TD></TD></TR>
+  <TR>
+    <TD><CODE>RSA_PKCS1_PADDING</CODE></TD>
+    <TD></TD></TR>
+  <TR>
+    <TD><CODE>RSA_SSLV23_PADDING</CODE></TD>
+    <TD></TD></TR>
+  <TR>
+    <TD><CODE>RSA_NO_PADDING</CODE></TD>
+    <TD></TD></TR>
+  <TR>
+    <TD><CODE>RSA_PKCS1_OAEP_PADDING</CODE></TD>
+    <TD></TD></TR>
+  <TR>
+    <TD><CODE>RSA_X931_PADDING</CODE></TD>
+    <TD></TD></TR>
+  <TR>
+    <TD><CODE>RSA_PKCS1_PSS_PADDING</CODE></TD>
+    <TD></TD></TR>
+  <TR>
+    <TD><CODE>POINT_CONVERSION_COMPRESSED</CODE></TD>
+    <TD></TD></TR>
+  <TR>
+    <TD><CODE>POINT_CONVERSION_UNCOMPRESSED</CODE></TD>
+    <TD></TD></TR>
+  <TR>
+    <TD><CODE>POINT_CONVERSION_HYBRID</CODE></TD>
+    <TD></TD></TR></TBODY></TABLE>
+<H3>Node.js Crypto Constants<SPAN><A class="mark" id="crypto_node_js_crypto_constants" 
+href="http://nodejs.cn/api/crypto.html#crypto_node_js_crypto_constants">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/crypto.html#crypto_node_js_crypto_constants">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/crypto/node_js_crypto_constants.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<TABLE>
+  <TBODY>
+  <TR>
+    <TH>Constant</TH>
+    <TH>Description</TH></TR>
+  <TR>
+    <TD><CODE>defaultCoreCipherList</CODE></TD>
+    <TD>Specifies the built-in default cipher list used by Node.js.</TD></TR>
+  <TR>
+    <TD><CODE>defaultCipherList</CODE></TD>
+    <TD>Specifies the active default cipher list used by the current Node.js   
+       process.</TD></TR></TBODY></TABLE></DIV></DIV></DIV><!-- 搜索弹窗 -->   
+<DIV id="modal_search_bg"></DIV>
+<DIV 
+id="modal_search"><INPUT id="modal_search_input" placeholder="API 快速搜索" value=""> 
+    
+<DIV id="modal_search_result"></DIV></DIV><!-- js -->   <!--[if lt IE 10]><script src="/static/lib/placeholders.js?20170426"></script><![endif]--> 
+  
+<SCRIPT src="crypto%20%20Node_js%20API%20文档_files/api.js"></SCRIPT>
+ </BODY></HTML>

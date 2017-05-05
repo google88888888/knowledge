@@ -1,0 +1,642 @@
+﻿<!DOCTYPE HTML>
+<!-- saved from url=(0028)http://nodejs.cn/api/vm.html -->
+<!DOCTYPE html PUBLIC "" ""><HTML lang="zh-cmn-Hans"><HEAD><META 
+content="IE=11.0000" http-equiv="X-UA-Compatible">
+   
+<META charset="utf-8">   <TITLE>vm (executing javascript) | Node.js API 
+文档</TITLE>   <LINK href="vm%20(executing%20javascript)%20%20Node_js%20API%20文档_files/api.css" 
+rel="stylesheet">   <LINK href="/static/favicon.png" rel="icon" type="image/png" 
+sizes="32x32"> 
+<META name="GENERATOR" content="MSHTML 11.00.9600.18639"></HEAD> 
+<BODY class="alt apidoc" id="api-section-vm">
+<DIV class="clearfix" id="content">
+<DIV class="interior" id="column2">
+<DIV class="interior" id="intro"><A href="http://nodejs.cn/">          Node.js 
+中文网         </A>         
+<DIV><INPUT id="search_input" placeholder="API 快速搜索" value="">         
+</DIV></DIV>
+<UL>
+  <LI><A class="nav-documentation" href="http://nodejs.cn/api/documentation.html">关于本文档</A></LI>
+  <LI><A class="nav-synopsis" 
+  href="http://nodejs.cn/api/synopsis.html">用法与例子</A></LI></UL>
+<DIV class="line"></DIV>
+<UL>
+  <LI><A class="nav-assert" href="http://nodejs.cn/api/assert.html">Assert 
+  (断言)</A></LI>
+  <LI><A class="nav-buffer" 
+  href="http://nodejs.cn/api/buffer.html">Buffer</A></LI>
+  <LI><A class="nav-addons" href="http://nodejs.cn/api/addons.html">C/C++ 
+  插件</A></LI>
+  <LI><A class="nav-child_process" href="http://nodejs.cn/api/child_process.html">Child 
+  Processes (子进程)</A></LI>
+  <LI><A class="nav-cluster" href="http://nodejs.cn/api/cluster.html">Cluster 
+  (集群)</A></LI>
+  <LI><A class="nav-cli" href="http://nodejs.cn/api/cli.html">CLI 
+  (命令行选项)</A></LI>
+  <LI><A class="nav-console" href="http://nodejs.cn/api/console.html">Console 
+  (控制台)</A></LI>
+  <LI><A class="nav-crypto" href="http://nodejs.cn/api/crypto.html">Crypto 
+  (加密)</A></LI>
+  <LI><A class="nav-debugger" href="http://nodejs.cn/api/debugger.html">Debugger 
+  (调试器)</A></LI>
+  <LI><A class="nav-dns" href="http://nodejs.cn/api/dns.html">DNS 
+  (域名服务器)</A></LI>
+  <LI><A class="nav-domain" href="http://nodejs.cn/api/domain.html">Domain 
+  (域)</A></LI>
+  <LI><A class="nav-errors" href="http://nodejs.cn/api/errors.html">Error 
+  (错误)</A></LI>
+  <LI><A class="nav-events" href="http://nodejs.cn/api/events.html">Events 
+  (事件)</A></LI>
+  <LI><A class="nav-fs" href="http://nodejs.cn/api/fs.html">File System 
+  (文件系统)</A></LI>
+  <LI><A class="nav-globals" href="http://nodejs.cn/api/globals.html">Global 
+  (全局变量)</A></LI>
+  <LI><A class="nav-http" href="http://nodejs.cn/api/http.html">HTTP</A></LI>
+  <LI><A class="nav-https" href="http://nodejs.cn/api/https.html">HTTPS</A></LI>
+  <LI><A class="nav-modules" href="http://nodejs.cn/api/modules.html">Module 
+  (模块)</A></LI>
+  <LI><A class="nav-net" href="http://nodejs.cn/api/net.html">Net (网络)</A></LI>
+  <LI><A class="nav-os" href="http://nodejs.cn/api/os.html">OS (操作系统)</A></LI>
+  <LI><A class="nav-path" href="http://nodejs.cn/api/path.html">Path 
+  (路径)</A></LI>
+  <LI><A class="nav-process" href="http://nodejs.cn/api/process.html">Process 
+  (进程)</A></LI>
+  <LI><A class="nav-punycode" 
+  href="http://nodejs.cn/api/punycode.html">Punycode</A></LI>
+  <LI><A class="nav-querystring" 
+  href="http://nodejs.cn/api/querystring.html">Query Strings (查询字符串)</A></LI>
+  <LI><A class="nav-readline" href="http://nodejs.cn/api/readline.html">Readline 
+  (逐行读取)</A></LI>
+  <LI><A class="nav-repl" href="http://nodejs.cn/api/repl.html">REPL 
+  (交互式解释器)</A></LI>
+  <LI><A class="nav-stream" href="http://nodejs.cn/api/stream.html">Stream 
+  (流)</A></LI>
+  <LI><A class="nav-string_decoder" href="http://nodejs.cn/api/string_decoder.html">String 
+  Decoder (字符串解码器)</A></LI>
+  <LI><A class="nav-timers" href="http://nodejs.cn/api/timers.html">Timer 
+  (定时器)</A></LI>
+  <LI><A class="nav-tls" href="http://nodejs.cn/api/tls.html">TLS 
+  (安全传输层)</A></LI>
+  <LI><A class="nav-tty" href="http://nodejs.cn/api/tty.html">TTY (终端)</A></LI>
+  <LI><A class="nav-dgram" href="http://nodejs.cn/api/dgram.html">UDP/Datagram 
+  (数据报)</A></LI>
+  <LI><A class="nav-url" href="http://nodejs.cn/api/url.html">URL</A></LI>
+  <LI><A class="nav-util" href="http://nodejs.cn/api/util.html">Util 
+  (实用工具)</A></LI>
+  <LI><A class="nav-v8" href="http://nodejs.cn/api/v8.html">V8</A></LI>
+  <LI><A class="nav-vm active" href="http://nodejs.cn/api/vm.html">VM 
+  (虚拟机)</A></LI>
+  <LI><A class="nav-zlib" href="http://nodejs.cn/api/zlib.html">ZLIB 
+  (压缩)</A></LI></UL>
+<DIV class="line"></DIV></DIV>
+<DIV class="interior" id="column1" data-id="vm"><HEADER>
+<H1>Node.js v6.10.3 文档</H1>
+<DIV id="gtoc">
+<P><A name="toc" href="http://nodejs.cn/api/">返回文档首页</A>             <!--<a href="/api/all.html">单页面显示</a> |--> 
+            <!--<a href="/api/vm.json">JSON格式</a> |-->             <!--<a href="/api/en/vm.html">查看英文版</a>--> 
+          </P></DIV>
+<HR>
+</HEADER>
+<DIV id="toc">
+<H2>目录</H2>
+<UL>
+  <LI><SPAN class="stability_2"><A href="http://nodejs.cn/api/vm.html#vm_vm_executing_javascript">vm 
+  (虚拟机)</A></SPAN>
+  <UL> 
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/vm.html#vm_class_vm_script">Class: 
+    vm.Script</A></SPAN>
+    <UL> 
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/vm.html#vm_new_vm_script_code_options">new 
+      vm.Script(code, options)</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/vm.html#vm_script_runincontext_contextifiedsandbox_options">script.runInContext(contextifiedSandbox[, 
+      options])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/vm.html#vm_script_runinnewcontext_sandbox_options">script.runInNewContext([sandbox][, 
+      options])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/vm.html#vm_script_runinthiscontext_options">script.runInThisContext([options])</A></SPAN></LI></UL></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/vm.html#vm_vm_createcontext_sandbox">vm.createContext([sandbox])</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/vm.html#vm_vm_iscontext_sandbox">vm.isContext(sandbox)</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/vm.html#vm_vm_runincontext_code_contextifiedsandbox_options">vm.runInContext(code, 
+    contextifiedSandbox[, options])</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/vm.html#vm_vm_runindebugcontext_code">vm.runInDebugContext(code)</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/vm.html#vm_vm_runinnewcontext_code_sandbox_options">vm.runInNewContext(code[, 
+    sandbox][, options])</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/vm.html#vm_vm_runinthiscontext_code_options">vm.runInThisContext(code[, 
+    options])</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/vm.html#vm_example_running_an_http_server_within_a_vm">Example: 
+    Running an HTTP Server within a VM</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/vm.html#vm_what_does_it_mean_to_contextify_an_object">What 
+    does it mean to "contextify" an object?</A></SPAN></LI></UL></LI></UL></DIV>
+<DIV id="apicontent">
+<H1>vm (虚拟机)<SPAN><A class="mark" id="vm_vm_executing_javascript" href="http://nodejs.cn/api/vm.html#vm_vm_executing_javascript">#</A></SPAN></H1>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/vm.html#vm_vm_executing_javascript">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/vm/vm_executing_javascript.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<PRE class="api_stability api_stability_2"><A href="http://nodejs.cn/api/documentation.html#documentation_stability_index">稳定性: 2</A> - 稳定的</PRE><!--name=vm--> 
+<P><CODE>vm</CODE> 模块提供了一系列 API 用于在 V8 虚拟机环境中编译和运行代码。 它可以通过以下方式使用：</P>
+<PRE><CODE class="lang-js">const vm = require('vm');
+</CODE></PRE>
+<P>JavaScript 代码可以被编译并立即运行，或编译、保存然后再运行。</P>
+<P><EM>Note</EM>: The vm module is not a security mechanism. <STRONG>Do not use 
+it to run untrusted code</STRONG>.</P>
+<H2>Class: vm.Script<SPAN><A class="mark" id="vm_class_vm_script" href="http://nodejs.cn/api/vm.html#vm_class_vm_script">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/vm.html#vm_class_vm_script">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/vm/class_vm_script.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.3.1</SPAN> </DIV>
+<P>Instances of the <CODE>vm.Script</CODE> class contain precompiled scripts 
+that can be executed in specific sandboxes (or "contexts").</P>
+<H3>new vm.Script(code, options)<SPAN><A class="mark" id="vm_new_vm_script_code_options" 
+href="http://nodejs.cn/api/vm.html#vm_new_vm_script_code_options">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/vm.html#vm_new_vm_script_code_options">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/vm/new_vm_script_code_options.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.3.1</SPAN> </DIV>
+<UL>
+  <LI><CODE>code</CODE> <SPAN class="type">&lt;string&gt;</SPAN> The JavaScript 
+  code to compile.</LI>
+  <LI><CODE>options</CODE>
+  <UL> 
+    <LI><CODE>filename</CODE> <SPAN class="type">&lt;string&gt;</SPAN> Specifies 
+    the filename used in stack traces produced by this script.</LI>
+    <LI><CODE>lineOffset</CODE> <SPAN class="type">&lt;number&gt;</SPAN> 
+    Specifies the line number offset that is displayed in stack traces produced 
+    by this script.</LI>
+    <LI><CODE>columnOffset</CODE> <SPAN class="type">&lt;number&gt;</SPAN> 
+    Specifies the column number offset that is displayed in stack traces 
+    produced by this script.</LI>
+    <LI><CODE>displayErrors</CODE> <SPAN class="type">&lt;boolean&gt;</SPAN> 
+    When <CODE>true</CODE>, if an <A href="http://nodejs.cn/api/errors.html#errors_class_error"><CODE>Error</CODE></A> 
+    error occurs while compiling the <CODE>code</CODE>, the line of code causing 
+    the error is attached to the stack trace.</LI>
+    <LI><CODE>timeout</CODE> <SPAN class="type">&lt;number&gt;</SPAN> Specifies 
+    the number of milliseconds to execute <CODE>code</CODE> before terminating 
+    execution. If execution is terminated, an <A href="http://nodejs.cn/api/errors.html#errors_class_error"><CODE>Error</CODE></A>
+     will be thrown.</LI>
+    <LI><CODE>cachedData</CODE> <A class="type" href="http://nodejs.cn/api/buffer.html#buffer_class_buffer">&lt;Buffer&gt;</A> 
+    Provides an optional <CODE>Buffer</CODE> with V8's code cache data for the 
+    supplied source. When supplied, the <CODE>cachedDataRejected</CODE> value
+     will be set to either <CODE>true</CODE> or <CODE>false</CODE> depending on 
+    acceptance of the data by V8.</LI>
+    <LI><CODE>produceCachedData</CODE> <SPAN class="type">&lt;boolean&gt;</SPAN> 
+    When <CODE>true</CODE> and no <CODE>cachedData</CODE> is present, V8 will 
+    attempt to produce code cache data for <CODE>code</CODE>. Upon success, a 
+    <CODE>Buffer</CODE> with V8's code cache data will be produced and stored in 
+    the <CODE>cachedData</CODE> property of the returned <CODE>vm.Script</CODE> 
+    instance. The <CODE>cachedDataProduced</CODE> value will be set to either 
+    <CODE>true</CODE> or <CODE>false</CODE> depending on whether code cache data 
+    is produced successfully.</LI></UL></LI></UL>
+<P>Creating a new <CODE>vm.Script</CODE> object compiles <CODE>code</CODE> but 
+does not run it. The compiled <CODE>vm.Script</CODE> can be run later multiple 
+times. It is important to note that the <CODE>code</CODE> is not bound to any 
+global object; rather, it is bound before each run, just for that run.</P>
+<H3>script.runInContext(contextifiedSandbox[, options])<SPAN><A class="mark" id="vm_script_runincontext_contextifiedsandbox_options" 
+href="http://nodejs.cn/api/vm.html#vm_script_runincontext_contextifiedsandbox_options">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/vm.html#vm_script_runincontext_contextifiedsandbox_options">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/vm/script_runincontext_contextifiedsandbox_options.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.3.1</SPAN> </DIV>
+<UL>
+  <LI><CODE>contextifiedSandbox</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">&lt;Object&gt;</A> 
+  A <A href="http://nodejs.cn/api/vm.html#vm_what_does_it_mean_to_contextify_an_object">contextified</A> 
+  object as returned by the <CODE>vm.createContext()</CODE> method.</LI>
+  <LI><CODE>options</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">&lt;Object&gt;</A>
+  <UL> 
+    <LI><CODE>filename</CODE> <SPAN class="type">&lt;string&gt;</SPAN> Specifies 
+    the filename used in stack traces produced by this script.</LI>
+    <LI><CODE>lineOffset</CODE> <SPAN class="type">&lt;number&gt;</SPAN> 
+    Specifies the line number offset that is displayed in stack traces produced 
+    by this script.</LI>
+    <LI><CODE>columnOffset</CODE> <SPAN class="type">&lt;number&gt;</SPAN> 
+    Specifies the column number offset that is displayed in stack traces 
+    produced by this script.</LI>
+    <LI><CODE>displayErrors</CODE> <SPAN class="type">&lt;boolean&gt;</SPAN> 
+    When <CODE>true</CODE>, if an <A href="http://nodejs.cn/api/errors.html#errors_class_error"><CODE>Error</CODE></A> 
+    error occurs while compiling the <CODE>code</CODE>, the line of code causing 
+    the error is attached to the stack trace.</LI>
+    <LI><CODE>timeout</CODE> <SPAN class="type">&lt;number&gt;</SPAN> Specifies 
+    the number of milliseconds to execute <CODE>code</CODE> before terminating 
+    execution. If execution is terminated, an <A href="http://nodejs.cn/api/errors.html#errors_class_error"><CODE>Error</CODE></A>
+     will be thrown.</LI>
+    <LI><CODE>breakOnSigint</CODE>: if <CODE>true</CODE>, the execution will be 
+    terminated when <CODE>SIGINT</CODE> (Ctrl+C) is received. Existing handlers 
+    for the event that have been attached via <CODE>process.on("SIGINT")</CODE> 
+    will be disabled during script execution, but will continue to work after 
+    that. If execution is terminated, an <A href="http://nodejs.cn/api/errors.html#errors_class_error"><CODE>Error</CODE></A> 
+    will be thrown.</LI></UL></LI></UL>
+<P>Runs the compiled code contained by the <CODE>vm.Script</CODE> object within 
+the given <CODE>contextifiedSandbox</CODE> and returns the result. Running code 
+does not have access to local scope.</P>
+<P>The following example compiles code that increments a global variable, sets
+ the value of another global variable, then execute the code multiple times. The 
+globals are contained in the <CODE>sandbox</CODE> object.</P>
+<PRE><CODE class="lang-js">const util = require('util');
+const vm = require('vm');
+
+const sandbox = {
+  animal: 'cat',
+  count: 2
+};
+
+const script = new vm.Script('count += 1; name = "kitty";');
+
+const context = new vm.createContext(sandbox);
+for (var i = 0; i &lt; 10; ++i) {
+  script.runInContext(context);
+}
+
+console.log(util.inspect(sandbox));
+
+// { animal: 'cat', count: 12, name: 'kitty' }
+</CODE></PRE>
+<H3>script.runInNewContext([sandbox][, options])<SPAN><A class="mark" id="vm_script_runinnewcontext_sandbox_options" 
+href="http://nodejs.cn/api/vm.html#vm_script_runinnewcontext_sandbox_options">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/vm.html#vm_script_runinnewcontext_sandbox_options">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/vm/script_runinnewcontext_sandbox_options.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.3.1</SPAN> </DIV>
+<UL>
+  <LI><CODE>sandbox</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">&lt;Object&gt;</A> 
+  An object that will be <A href="http://nodejs.cn/api/vm.html#vm_what_does_it_mean_to_contextify_an_object">contextified</A>. 
+  If <CODE>undefined</CODE>, a new object will be created.</LI>
+  <LI><CODE>options</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">&lt;Object&gt;</A>
+  <UL> 
+    <LI><CODE>filename</CODE> <SPAN class="type">&lt;string&gt;</SPAN> Specifies 
+    the filename used in stack traces produced by this script.</LI>
+    <LI><CODE>lineOffset</CODE> <SPAN class="type">&lt;number&gt;</SPAN> 
+    Specifies the line number offset that is displayed in stack traces produced 
+    by this script.</LI>
+    <LI><CODE>columnOffset</CODE> <SPAN class="type">&lt;number&gt;</SPAN> 
+    Specifies the column number offset that is displayed in stack traces 
+    produced by this script.</LI>
+    <LI><CODE>displayErrors</CODE> <SPAN class="type">&lt;boolean&gt;</SPAN> 
+    When <CODE>true</CODE>, if an <A href="http://nodejs.cn/api/errors.html#errors_class_error"><CODE>Error</CODE></A> 
+    error occurs while compiling the <CODE>code</CODE>, the line of code causing 
+    the error is attached to the stack trace.</LI>
+    <LI><CODE>timeout</CODE> <SPAN class="type">&lt;number&gt;</SPAN> Specifies 
+    the number of milliseconds to execute <CODE>code</CODE> before terminating 
+    execution. If execution is terminated, an <A href="http://nodejs.cn/api/errors.html#errors_class_error"><CODE>Error</CODE></A>
+     will be thrown.</LI></UL></LI></UL>
+<P>First contextifies the given <CODE>sandbox</CODE>, runs the compiled code 
+contained by the <CODE>vm.Script</CODE> object within the created sandbox, and 
+returns the result. Running code does not have access to local scope.</P>
+<P>The following example compiles code that sets a global variable, then 
+executes the code multiple times in different contexts. The globals are set on 
+and contained within each individual <CODE>sandbox</CODE>.</P>
+<PRE><CODE class="lang-js">const util = require('util');
+const vm = require('vm');
+
+const script = new vm.Script('globalVar = "set"');
+
+const sandboxes = [{}, {}, {}];
+sandboxes.forEach((sandbox) =&gt; {
+  script.runInNewContext(sandbox);
+});
+
+console.log(util.inspect(sandboxes));
+
+// [{ globalVar: 'set' }, { globalVar: 'set' }, { globalVar: 'set' }]
+</CODE></PRE>
+<H3>script.runInThisContext([options])<SPAN><A class="mark" id="vm_script_runinthiscontext_options" 
+href="http://nodejs.cn/api/vm.html#vm_script_runinthiscontext_options">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/vm.html#vm_script_runinthiscontext_options">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/vm/script_runinthiscontext_options.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.3.1</SPAN> </DIV>
+<UL>
+  <LI><CODE>options</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">&lt;Object&gt;</A>
+  <UL> 
+    <LI><CODE>filename</CODE> <SPAN class="type">&lt;string&gt;</SPAN> Specifies 
+    the filename used in stack traces produced by this script.</LI>
+    <LI><CODE>lineOffset</CODE> <SPAN class="type">&lt;number&gt;</SPAN> 
+    Specifies the line number offset that is displayed in stack traces produced 
+    by this script.</LI>
+    <LI><CODE>columnOffset</CODE> <SPAN class="type">&lt;number&gt;</SPAN> 
+    Specifies the column number offset that is displayed in stack traces 
+    produced by this script.</LI>
+    <LI><CODE>displayErrors</CODE> <SPAN class="type">&lt;boolean&gt;</SPAN> 
+    When <CODE>true</CODE>, if an <A href="http://nodejs.cn/api/errors.html#errors_class_error"><CODE>Error</CODE></A> 
+    error occurs while compiling the <CODE>code</CODE>, the line of code causing 
+    the error is attached to the stack trace.</LI>
+    <LI><CODE>timeout</CODE> <SPAN class="type">&lt;number&gt;</SPAN> Specifies 
+    the number of milliseconds to execute <CODE>code</CODE> before terminating 
+    execution. If execution is terminated, an <A href="http://nodejs.cn/api/errors.html#errors_class_error"><CODE>Error</CODE></A>
+     will be thrown.</LI></UL></LI></UL>
+<P>Runs the compiled code contained by the <CODE>vm.Script</CODE> within the 
+context of the current <CODE>global</CODE> object. Running code does not have 
+access to local scope, but <EM>does</EM> have access to the current 
+<CODE>global</CODE> object.</P>
+<P>The following example compiles code that increments a <CODE>global</CODE> 
+variable then executes that code multiple times:</P>
+<PRE><CODE class="lang-js">const vm = require('vm');
+
+global.globalVar = 0;
+
+const script = new vm.Script('globalVar += 1', { filename: 'myfile.vm' });
+
+for (var i = 0; i &lt; 1000; ++i) {
+  script.runInThisContext();
+}
+
+console.log(globalVar);
+
+// 1000
+</CODE></PRE>
+<H2>vm.createContext([sandbox])<SPAN><A class="mark" id="vm_vm_createcontext_sandbox" 
+href="http://nodejs.cn/api/vm.html#vm_vm_createcontext_sandbox">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/vm.html#vm_vm_createcontext_sandbox">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/vm/vm_createcontext_sandbox.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.3.1</SPAN> </DIV>
+<UL>
+  <LI><CODE>sandbox</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">&lt;Object&gt;</A></LI></UL>
+<P>If given a <CODE>sandbox</CODE> object, the <CODE>vm.createContext()</CODE> 
+method will <A href="http://nodejs.cn/api/vm.html#vm_what_does_it_mean_to_contextify_an_object">prepare
+ that sandbox</A> so that it can be used in calls to <A href="http://nodejs.cn/api/vm.html#vm_vm_runincontext_code_contextifiedsandbox_options"><CODE>vm.runInContext()</CODE></A> 
+or <A href="http://nodejs.cn/api/vm.html#vm_script_runincontext_contextifiedsandbox_options"><CODE>script.runInContext()</CODE></A>. 
+Inside such scripts, the <CODE>sandbox</CODE> object will be the global object, 
+retaining all of its existing properties but also having the built-in objects 
+and functions any standard <A href="https://es5.github.io/#x15.1">global 
+object</A> has. Outside of scripts run by the vm module, global variables will 
+remain unchanged.</P>
+<PRE><CODE class="lang-js">const util = require('util');
+const vm = require('vm');
+
+var globalVar = 3;
+
+const sandbox = { globalVar: 1 };
+vm.createContext(sandbox);
+
+vm.runInContext('globalVar *= 2;', sandbox);
+
+console.log(util.inspect(sandbox)); // 2
+
+console.log(util.inspect(globalVar)); // 3
+</CODE></PRE>
+<P>If <CODE>sandbox</CODE> is omitted (or passed explicitly as 
+<CODE>undefined</CODE>), a new, empty <A href="http://nodejs.cn/api/vm.html#vm_what_does_it_mean_to_contextify_an_object">contextified</A> 
+sandbox object will be returned.</P>
+<P>The <CODE>vm.createContext()</CODE> method is primarily useful for creating a 
+single sandbox that can be used to run multiple scripts. For instance, if 
+emulating a web browser, the method can be used to create a single sandbox 
+representing a window's global object, then run all <CODE>&lt;script&gt;</CODE> 
+tags together within the context of that sandbox.</P>
+<H2>vm.isContext(sandbox)<SPAN><A class="mark" id="vm_vm_iscontext_sandbox" 
+href="http://nodejs.cn/api/vm.html#vm_vm_iscontext_sandbox">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/vm.html#vm_vm_iscontext_sandbox">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/vm/vm_iscontext_sandbox.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.11.7</SPAN> </DIV>
+<UL>
+  <LI><CODE>sandbox</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">&lt;Object&gt;</A></LI></UL>
+<P>Returns <CODE>true</CODE> if the given <CODE>sandbox</CODE> object has been 
+<A href="http://nodejs.cn/api/vm.html#vm_what_does_it_mean_to_contextify_an_object">contextified</A> 
+using <A 
+href="http://nodejs.cn/api/vm.html#vm_vm_createcontext_sandbox"><CODE>vm.createContext()</CODE></A>.</P>
+<H2>vm.runInContext(code, contextifiedSandbox[, options])<SPAN><A class="mark" 
+id="vm_vm_runincontext_code_contextifiedsandbox_options" href="http://nodejs.cn/api/vm.html#vm_vm_runincontext_code_contextifiedsandbox_options">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/vm.html#vm_vm_runincontext_code_contextifiedsandbox_options">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/vm/vm_runincontext_code_contextifiedsandbox_options.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="signature">
+<UL>
+  <LI><CODE>code</CODE> <SPAN class="type">&lt;string&gt;</SPAN> The JavaScript 
+  code to compile and run.</LI>
+  <LI><CODE>contextifiedSandbox</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">&lt;Object&gt;</A> 
+  The <A href="http://nodejs.cn/api/vm.html#vm_what_does_it_mean_to_contextify_an_object">contextified</A> 
+  object that will be used as the <CODE>global</CODE> when the <CODE>code</CODE> 
+  is compiled and run.</LI>
+  <LI><CODE>options</CODE>
+  <UL> 
+    <LI><CODE>filename</CODE> <SPAN class="type">&lt;string&gt;</SPAN> Specifies 
+    the filename used in stack traces produced by this script.</LI>
+    <LI><CODE>lineOffset</CODE> <SPAN class="type">&lt;number&gt;</SPAN> 
+    Specifies the line number offset that is displayed in stack traces produced 
+    by this script.</LI>
+    <LI><CODE>columnOffset</CODE> <SPAN class="type">&lt;number&gt;</SPAN> 
+    Specifies the column number offset that is displayed in stack traces 
+    produced by this script.</LI>
+    <LI><CODE>displayErrors</CODE> <SPAN class="type">&lt;boolean&gt;</SPAN> 
+    When <CODE>true</CODE>, if an <A href="http://nodejs.cn/api/errors.html#errors_class_error"><CODE>Error</CODE></A> 
+    error occurs while compiling the <CODE>code</CODE>, the line of code causing 
+    the error is attached to the stack trace.</LI>
+    <LI><CODE>timeout</CODE> <SPAN class="type">&lt;number&gt;</SPAN> Specifies 
+    the number of milliseconds to execute <CODE>code</CODE> before terminating 
+    execution. If execution is terminated, an <A href="http://nodejs.cn/api/errors.html#errors_class_error"><CODE>Error</CODE></A>
+     will be thrown.</LI></UL></LI></UL></DIV>
+<P>The <CODE>vm.runInContext()</CODE> method compiles <CODE>code</CODE>, runs it 
+within the context of the <CODE>contextifiedSandbox</CODE>, then returns the 
+result. Running code does not have access to the local scope. The 
+<CODE>contextifiedSandbox</CODE> object <EM>must</EM> have been previously <A 
+href="http://nodejs.cn/api/vm.html#vm_what_does_it_mean_to_contextify_an_object">contextified</A> 
+using the <A 
+href="http://nodejs.cn/api/vm.html#vm_vm_createcontext_sandbox"><CODE>vm.createContext()</CODE></A> 
+method.</P>
+<P>The following example compiles and executes different scripts using a single 
+<A href="http://nodejs.cn/api/vm.html#vm_what_does_it_mean_to_contextify_an_object">contextified</A> 
+object:</P>
+<PRE><CODE class="lang-js">const util = require('util');
+const vm = require('vm');
+
+const sandbox = { globalVar: 1 };
+vm.createContext(sandbox);
+
+for (var i = 0; i &lt; 10; ++i) {
+  vm.runInContext('globalVar *= 2;', sandbox);
+}
+console.log(util.inspect(sandbox));
+
+// { globalVar: 1024 }
+</CODE></PRE>
+<H2>vm.runInDebugContext(code)<SPAN><A class="mark" id="vm_vm_runindebugcontext_code" 
+href="http://nodejs.cn/api/vm.html#vm_vm_runindebugcontext_code">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/vm.html#vm_vm_runindebugcontext_code">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/vm/vm_runindebugcontext_code.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.11.14</SPAN> </DIV>
+<UL>
+  <LI><CODE>code</CODE> <SPAN class="type">&lt;string&gt;</SPAN> The JavaScript 
+  code to compile and run.</LI></UL>
+<P>The <CODE>vm.runInDebugContext()</CODE> method compiles and executes 
+<CODE>code</CODE> inside the V8 debug context. The primary use case is to gain 
+access to the V8 <CODE>Debug</CODE> object:</P>
+<PRE><CODE class="lang-js">const vm = require('vm');
+const Debug = vm.runInDebugContext('Debug');
+console.log(Debug.findScript(process.emit).name);  // 'events.js'
+console.log(Debug.findScript(process.exit).name);  // 'internal/process.js'
+</CODE></PRE>
+<P><EM>Note</EM>: The debug context and object are intrinsically tied to V8's 
+debugger implementation and may change (or even be removed) without prior 
+warning.</P>
+<P>The <CODE>Debug</CODE> object can also be made available using the 
+V8-specific <CODE>--expose_debug_as=</CODE> <A href="http://nodejs.cn/api/cli.html">command 
+line option</A>.</P>
+<H2>vm.runInNewContext(code[, sandbox][, options])<SPAN><A class="mark" id="vm_vm_runinnewcontext_code_sandbox_options" 
+href="http://nodejs.cn/api/vm.html#vm_vm_runinnewcontext_code_sandbox_options">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/vm.html#vm_vm_runinnewcontext_code_sandbox_options">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/vm/vm_runinnewcontext_code_sandbox_options.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.3.1</SPAN> </DIV>
+<UL>
+  <LI><CODE>code</CODE> <SPAN class="type">&lt;string&gt;</SPAN> The JavaScript 
+  code to compile and run.</LI>
+  <LI><CODE>sandbox</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">&lt;Object&gt;</A> 
+  An object that will be <A href="http://nodejs.cn/api/vm.html#vm_what_does_it_mean_to_contextify_an_object">contextified</A>. 
+  If <CODE>undefined</CODE>, a new object will be created.</LI>
+  <LI><CODE>options</CODE>
+  <UL> 
+    <LI><CODE>filename</CODE> <SPAN class="type">&lt;string&gt;</SPAN> Specifies 
+    the filename used in stack traces produced by this script.</LI>
+    <LI><CODE>lineOffset</CODE> <SPAN class="type">&lt;number&gt;</SPAN> 
+    Specifies the line number offset that is displayed in stack traces produced 
+    by this script.</LI>
+    <LI><CODE>columnOffset</CODE> <SPAN class="type">&lt;number&gt;</SPAN> 
+    Specifies the column number offset that is displayed in stack traces 
+    produced by this script.</LI>
+    <LI><CODE>displayErrors</CODE> <SPAN class="type">&lt;boolean&gt;</SPAN> 
+    When <CODE>true</CODE>, if an <A href="http://nodejs.cn/api/errors.html#errors_class_error"><CODE>Error</CODE></A> 
+    error occurs while compiling the <CODE>code</CODE>, the line of code causing 
+    the error is attached to the stack trace.</LI>
+    <LI><CODE>timeout</CODE> <SPAN class="type">&lt;number&gt;</SPAN> Specifies 
+    the number of milliseconds to execute <CODE>code</CODE> before terminating 
+    execution. If execution is terminated, an <A href="http://nodejs.cn/api/errors.html#errors_class_error"><CODE>Error</CODE></A>
+     will be thrown.</LI></UL></LI></UL>
+<P>The <CODE>vm.runInNewContext()</CODE> first contextifies the given 
+<CODE>sandbox</CODE> object (or creates a new <CODE>sandbox</CODE> if passed as 
+<CODE>undefined</CODE>), compiles the <CODE>code</CODE>, runs it within the 
+context of the created context, then returns the result. Running code does not 
+have access to the local scope.</P>
+<P>The following example compiles and executes code that increments a global
+ variable and sets a new one. These globals are contained in the 
+<CODE>sandbox</CODE>.</P>
+<PRE><CODE class="lang-js">const util = require('util');
+const vm = require('vm');
+
+const sandbox = {
+  animal: 'cat',
+  count: 2
+};
+
+vm.runInNewContext('count += 1; name = "kitty"', sandbox);
+console.log(util.inspect(sandbox));
+
+// { animal: 'cat', count: 3, name: 'kitty' }
+</CODE></PRE>
+<H2>vm.runInThisContext(code[, options])<SPAN><A class="mark" id="vm_vm_runinthiscontext_code_options" 
+href="http://nodejs.cn/api/vm.html#vm_vm_runinthiscontext_code_options">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/vm.html#vm_vm_runinthiscontext_code_options">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/vm/vm_runinthiscontext_code_options.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.3.1</SPAN> </DIV>
+<UL>
+  <LI><CODE>code</CODE> <SPAN class="type">&lt;string&gt;</SPAN> The JavaScript 
+  code to compile and run.</LI>
+  <LI><CODE>options</CODE>
+  <UL> 
+    <LI><CODE>filename</CODE> <SPAN class="type">&lt;string&gt;</SPAN> Specifies 
+    the filename used in stack traces produced by this script.</LI>
+    <LI><CODE>lineOffset</CODE> <SPAN class="type">&lt;number&gt;</SPAN> 
+    Specifies the line number offset that is displayed in stack traces produced 
+    by this script.</LI>
+    <LI><CODE>columnOffset</CODE> <SPAN class="type">&lt;number&gt;</SPAN> 
+    Specifies the column number offset that is displayed in stack traces 
+    produced by this script.</LI>
+    <LI><CODE>displayErrors</CODE> <SPAN class="type">&lt;boolean&gt;</SPAN> 
+    When <CODE>true</CODE>, if an <A href="http://nodejs.cn/api/errors.html#errors_class_error"><CODE>Error</CODE></A> 
+    error occurs while compiling the <CODE>code</CODE>, the line of code causing 
+    the error is attached to the stack trace.</LI>
+    <LI><CODE>timeout</CODE> <SPAN class="type">&lt;number&gt;</SPAN> Specifies 
+    the number of milliseconds to execute <CODE>code</CODE> before terminating 
+    execution. If execution is terminated, an <A href="http://nodejs.cn/api/errors.html#errors_class_error"><CODE>Error</CODE></A>
+     will be thrown.</LI></UL></LI></UL>
+<P><CODE>vm.runInThisContext()</CODE> compiles <CODE>code</CODE>, runs it within 
+the context of the current <CODE>global</CODE> and returns the result. Running 
+code does not have access to local scope, but does have access to the current 
+<CODE>global</CODE> object.</P>
+<P>The following example illustrates using both 
+<CODE>vm.runInThisContext()</CODE> and the JavaScript <A href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval"><CODE>eval()</CODE></A> 
+function to run the same code:</P>
+<PRE><CODE class="lang-js">const vm = require('vm');
+var localVar = 'initial value';
+
+const vmResult = vm.runInThisContext('localVar = "vm";');
+console.log('vmResult:', vmResult);
+console.log('localVar:', localVar);
+
+const evalResult = eval('localVar = "eval";');
+console.log('evalResult:', evalResult);
+console.log('localVar:', localVar);
+
+// vmResult: 'vm', localVar: 'initial value'
+// evalResult: 'eval', localVar: 'eval'
+</CODE></PRE>
+<P>Because <CODE>vm.runInThisContext()</CODE> does not have access to the local 
+scope, <CODE>localVar</CODE> is unchanged. In contrast, <A href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/eval"><CODE>eval()</CODE></A> 
+<EM>does</EM> have access to the local scope, so the value <CODE>localVar</CODE> 
+is changed. In this way <CODE>vm.runInThisContext()</CODE> is much like an <A 
+href="https://es5.github.io/#x10.4.2">indirect <CODE>eval()</CODE> call</A>, 
+e.g. <CODE>(0,eval)('code')</CODE>.</P>
+<H2>Example: Running an HTTP Server within a VM<SPAN><A class="mark" id="vm_example_running_an_http_server_within_a_vm" 
+href="http://nodejs.cn/api/vm.html#vm_example_running_an_http_server_within_a_vm">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/vm.html#vm_example_running_an_http_server_within_a_vm">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/vm/example_running_an_http_server_within_a_vm.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P>When using either <A href="http://nodejs.cn/api/vm.html#vm_script_runinthiscontext_options"><CODE>script.runInThisContext()</CODE></A> 
+or <A 
+href="http://nodejs.cn/api/vm.html#vm_vm_runinthiscontext_code_options"><CODE>vm.runInThisContext()</CODE></A>, 
+the code is executed within the current V8 global context. The code passed to 
+this VM context will have its own isolated scope.</P>
+<P>In order to run a simple web server using the <CODE>http</CODE> module the 
+code passed to the context must either call <CODE>require('http')</CODE> on its 
+own, or have a reference to the <CODE>http</CODE> module passed to it. For 
+instance:</P>
+<PRE><CODE class="lang-js">'use strict';
+const vm = require('vm');
+
+let code =
+`(function(require) {
+
+   const http = require('http');
+
+   http.createServer( (request, response) =&gt; {
+     response.writeHead(200, {'Content-Type': 'text/plain'});
+     response.end('Hello World\\n');
+   }).listen(8124);
+
+   console.log('Server running at http://127.0.0.1:8124/');
+ })`;
+
+ vm.runInThisContext(code)(require);
+</CODE></PRE>
+<P><EM>Note</EM>: The <CODE>require()</CODE> in the above case shares the state 
+with the context it is passed from. This may introduce risks when untrusted code 
+is executed, e.g. altering objects in the context in unwanted ways.</P>
+<H2>What does it mean to "contextify" an object?<SPAN><A class="mark" id="vm_what_does_it_mean_to_contextify_an_object" 
+href="http://nodejs.cn/api/vm.html#vm_what_does_it_mean_to_contextify_an_object">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/vm.html#vm_what_does_it_mean_to_contextify_an_object">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/vm/what_does_it_mean_to_contextify_an_object.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P>All JavaScript executed within Node.js runs within the scope of a "context".
+ According to the <A href="https://github.com/v8/v8/wiki/Embedder's%20Guide#contexts">V8 
+Embedder's Guide</A>:</P>
+<BLOCKQUOTE>
+  <P>In V8, a context is an execution environment that allows separate, 
+  unrelated, JavaScript applications to run in a single instance of V8. You must 
+  explicitly specify the context in which you want any JavaScript code to be 
+  run.</P></BLOCKQUOTE>
+<P>When the method <CODE>vm.createContext()</CODE> is called, the 
+<CODE>sandbox</CODE> object that is passed in (or a newly created object if 
+<CODE>sandbox</CODE> is <CODE>undefined</CODE>) is associated internally with a 
+new instance of a V8 Context. This V8 Context provides the <CODE>code</CODE> run 
+using the <CODE>vm</CODE> modules methods with an isolated global environment
+ within which it can operate. The process of creating the V8 Context and
+ associating it with the <CODE>sandbox</CODE> object is what this document 
+refers to as "contextifying" the <CODE>sandbox</CODE>.</P></DIV></DIV></DIV><!-- 搜索弹窗 --> 
+  
+<DIV id="modal_search_bg"></DIV>
+<DIV 
+id="modal_search"><INPUT id="modal_search_input" placeholder="API 快速搜索" value=""> 
+    
+<DIV id="modal_search_result"></DIV></DIV><!-- js -->   <!--[if lt IE 10]><script src="/static/lib/placeholders.js?20170426"></script><![endif]--> 
+  
+<SCRIPT src="vm%20(executing%20javascript)%20%20Node_js%20API%20文档_files/api.js"></SCRIPT>
+ </BODY></HTML>

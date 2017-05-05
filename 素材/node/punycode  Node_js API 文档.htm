@@ -1,0 +1,253 @@
+﻿<!DOCTYPE HTML>
+<!-- saved from url=(0034)http://nodejs.cn/api/punycode.html -->
+<!DOCTYPE html PUBLIC "" ""><HTML lang="zh-cmn-Hans"><HEAD><META 
+content="IE=11.0000" http-equiv="X-UA-Compatible">
+   
+<META charset="utf-8">   <TITLE>punycode | Node.js API 文档</TITLE>   <LINK href="punycode%20%20Node_js%20API%20文档_files/api.css" 
+rel="stylesheet">   <LINK href="/static/favicon.png" rel="icon" type="image/png" 
+sizes="32x32"> 
+<META name="GENERATOR" content="MSHTML 11.00.9600.18639"></HEAD> 
+<BODY class="alt apidoc" id="api-section-punycode">
+<DIV class="clearfix" id="content">
+<DIV class="interior" id="column2">
+<DIV class="interior" id="intro"><A href="http://nodejs.cn/">          Node.js 
+中文网         </A>         
+<DIV><INPUT id="search_input" placeholder="API 快速搜索" value="">         
+</DIV></DIV>
+<UL>
+  <LI><A class="nav-documentation" href="http://nodejs.cn/api/documentation.html">关于本文档</A></LI>
+  <LI><A class="nav-synopsis" 
+  href="http://nodejs.cn/api/synopsis.html">用法与例子</A></LI></UL>
+<DIV class="line"></DIV>
+<UL>
+  <LI><A class="nav-assert" href="http://nodejs.cn/api/assert.html">Assert 
+  (断言)</A></LI>
+  <LI><A class="nav-buffer" 
+  href="http://nodejs.cn/api/buffer.html">Buffer</A></LI>
+  <LI><A class="nav-addons" href="http://nodejs.cn/api/addons.html">C/C++ 
+  插件</A></LI>
+  <LI><A class="nav-child_process" href="http://nodejs.cn/api/child_process.html">Child 
+  Processes (子进程)</A></LI>
+  <LI><A class="nav-cluster" href="http://nodejs.cn/api/cluster.html">Cluster 
+  (集群)</A></LI>
+  <LI><A class="nav-cli" href="http://nodejs.cn/api/cli.html">CLI 
+  (命令行选项)</A></LI>
+  <LI><A class="nav-console" href="http://nodejs.cn/api/console.html">Console 
+  (控制台)</A></LI>
+  <LI><A class="nav-crypto" href="http://nodejs.cn/api/crypto.html">Crypto 
+  (加密)</A></LI>
+  <LI><A class="nav-debugger" href="http://nodejs.cn/api/debugger.html">Debugger 
+  (调试器)</A></LI>
+  <LI><A class="nav-dns" href="http://nodejs.cn/api/dns.html">DNS 
+  (域名服务器)</A></LI>
+  <LI><A class="nav-domain" href="http://nodejs.cn/api/domain.html">Domain 
+  (域)</A></LI>
+  <LI><A class="nav-errors" href="http://nodejs.cn/api/errors.html">Error 
+  (错误)</A></LI>
+  <LI><A class="nav-events" href="http://nodejs.cn/api/events.html">Events 
+  (事件)</A></LI>
+  <LI><A class="nav-fs" href="http://nodejs.cn/api/fs.html">File System 
+  (文件系统)</A></LI>
+  <LI><A class="nav-globals" href="http://nodejs.cn/api/globals.html">Global 
+  (全局变量)</A></LI>
+  <LI><A class="nav-http" href="http://nodejs.cn/api/http.html">HTTP</A></LI>
+  <LI><A class="nav-https" href="http://nodejs.cn/api/https.html">HTTPS</A></LI>
+  <LI><A class="nav-modules" href="http://nodejs.cn/api/modules.html">Module 
+  (模块)</A></LI>
+  <LI><A class="nav-net" href="http://nodejs.cn/api/net.html">Net (网络)</A></LI>
+  <LI><A class="nav-os" href="http://nodejs.cn/api/os.html">OS (操作系统)</A></LI>
+  <LI><A class="nav-path" href="http://nodejs.cn/api/path.html">Path 
+  (路径)</A></LI>
+  <LI><A class="nav-process" href="http://nodejs.cn/api/process.html">Process 
+  (进程)</A></LI>
+  <LI><A class="nav-punycode active" 
+  href="http://nodejs.cn/api/punycode.html">Punycode</A></LI>
+  <LI><A class="nav-querystring" 
+  href="http://nodejs.cn/api/querystring.html">Query Strings (查询字符串)</A></LI>
+  <LI><A class="nav-readline" href="http://nodejs.cn/api/readline.html">Readline 
+  (逐行读取)</A></LI>
+  <LI><A class="nav-repl" href="http://nodejs.cn/api/repl.html">REPL 
+  (交互式解释器)</A></LI>
+  <LI><A class="nav-stream" href="http://nodejs.cn/api/stream.html">Stream 
+  (流)</A></LI>
+  <LI><A class="nav-string_decoder" href="http://nodejs.cn/api/string_decoder.html">String 
+  Decoder (字符串解码器)</A></LI>
+  <LI><A class="nav-timers" href="http://nodejs.cn/api/timers.html">Timer 
+  (定时器)</A></LI>
+  <LI><A class="nav-tls" href="http://nodejs.cn/api/tls.html">TLS 
+  (安全传输层)</A></LI>
+  <LI><A class="nav-tty" href="http://nodejs.cn/api/tty.html">TTY (终端)</A></LI>
+  <LI><A class="nav-dgram" href="http://nodejs.cn/api/dgram.html">UDP/Datagram 
+  (数据报)</A></LI>
+  <LI><A class="nav-url" href="http://nodejs.cn/api/url.html">URL</A></LI>
+  <LI><A class="nav-util" href="http://nodejs.cn/api/util.html">Util 
+  (实用工具)</A></LI>
+  <LI><A class="nav-v8" href="http://nodejs.cn/api/v8.html">V8</A></LI>
+  <LI><A class="nav-vm" href="http://nodejs.cn/api/vm.html">VM (虚拟机)</A></LI>
+  <LI><A class="nav-zlib" href="http://nodejs.cn/api/zlib.html">ZLIB 
+  (压缩)</A></LI></UL>
+<DIV class="line"></DIV></DIV>
+<DIV class="interior" id="column1" data-id="punycode"><HEADER>
+<H1>Node.js v6.10.3 文档</H1>
+<DIV id="gtoc">
+<P><A name="toc" href="http://nodejs.cn/api/">返回文档首页</A>             <!--<a href="/api/all.html">单页面显示</a> |--> 
+            <!--<a href="/api/punycode.json">JSON格式</a> |-->             <!--<a href="/api/en/punycode.html">查看英文版</a>--> 
+          </P></DIV>
+<HR>
+</HEADER>
+<DIV id="toc">
+<H2>目录</H2>
+<UL>
+  <LI><SPAN class="stability_0"><A href="http://nodejs.cn/api/punycode.html#punycode_punycode">Punycode</A></SPAN>
+  <UL> 
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/punycode.html#punycode_punycode_decode_string">punycode.decode(string)</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/punycode.html#punycode_punycode_encode_string">punycode.encode(string)</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/punycode.html#punycode_punycode_toascii_domain">punycode.toASCII(domain)</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/punycode.html#punycode_punycode_tounicode_domain">punycode.toUnicode(domain)</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/punycode.html#punycode_punycode_ucs2">punycode.ucs2</A></SPAN>
+    <UL> 
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/punycode.html#punycode_punycode_ucs2_decode_string">punycode.ucs2.decode(string)</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/punycode.html#punycode_punycode_ucs2_encode_codepoints">punycode.ucs2.encode(codePoints)</A></SPAN></LI></UL></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/punycode.html#punycode_punycode_version">punycode.version</A></SPAN></LI></UL></LI></UL></DIV>
+<DIV id="apicontent">
+<H1>Punycode<SPAN><A class="mark" id="punycode_punycode" href="http://nodejs.cn/api/punycode.html#punycode_punycode">#</A></SPAN></H1>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/punycode.html#punycode_punycode">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/punycode/punycode.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<PRE class="api_stability api_stability_0"><A href="http://nodejs.cn/api/documentation.html#documentation_stability_index">稳定性: 0</A> - 废弃的</PRE>
+<P><STRONG>The version of the punycode module bundled in Node.js is being 
+deprecated</STRONG>. In a future major version of Node.js this module will be 
+removed. Users currently depending on the <CODE>punycode</CODE> module should 
+switch to using the userland-provided <A 
+href="https://mths.be/punycode">Punycode.js</A> module instead.</P>
+<P>The <CODE>punycode</CODE> module is a bundled version of the <A href="https://mths.be/punycode">Punycode.js</A> 
+module. It can be accessed using:</P>
+<PRE><CODE class="lang-js">const punycode = require('punycode');
+</CODE></PRE>
+<P><A href="https://tools.ietf.org/html/rfc3492">Punycode</A> is a character 
+encoding scheme defined by RFC 3492 that is primarily intended for use in 
+Internationalized Domain Names. Because host names in URLs are limited to ASCII 
+characters only, Domain Names that contain non-ASCII characters must be 
+converted into ASCII using the Punycode scheme. For instance, the Japanese 
+character that translates into the English word, <CODE>'example'</CODE> is 
+<CODE>'例'</CODE>. The Internationalized Domain Name, <CODE>'例.com'</CODE> 
+(equivalent to <CODE>'example.com'</CODE>) is represented by Punycode as the 
+ASCII string <CODE>'xn--fsq.com'</CODE>.</P>
+<P>The <CODE>punycode</CODE> module provides a simple implementation of the 
+Punycode standard.</P>
+<P><EM>Note</EM>: The <CODE>punycode</CODE> module is a third-party dependency 
+used by Node.js and made available to developers as a convenience. Fixes or 
+other modifications to the module must be directed to the <A href="https://mths.be/punycode">Punycode.js</A> 
+project.</P>
+<H2>punycode.decode(string)<SPAN><A class="mark" id="punycode_punycode_decode_string" 
+href="http://nodejs.cn/api/punycode.html#punycode_punycode_decode_string">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/punycode.html#punycode_punycode_decode_string">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/punycode/punycode_decode_string.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.5.1</SPAN> </DIV>
+<UL>
+  <LI><CODE>string</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A></LI></UL>
+<P>The <CODE>punycode.decode()</CODE> method converts a <A href="https://tools.ietf.org/html/rfc3492">Punycode</A> 
+string of ASCII-only characters to the equivalent string of Unicode 
+codepoints.</P>
+<PRE><CODE class="lang-js">punycode.decode('maana-pta'); // 'mañana'
+punycode.decode('--dqo34k'); // '☃-⌘'
+</CODE></PRE>
+<H2>punycode.encode(string)<SPAN><A class="mark" id="punycode_punycode_encode_string" 
+href="http://nodejs.cn/api/punycode.html#punycode_punycode_encode_string">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/punycode.html#punycode_punycode_encode_string">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/punycode/punycode_encode_string.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.5.1</SPAN> </DIV>
+<UL>
+  <LI><CODE>string</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A></LI></UL>
+<P>The <CODE>punycode.encode()</CODE> method converts a string of Unicode 
+codepoints to a <A href="https://tools.ietf.org/html/rfc3492">Punycode</A> 
+string of ASCII-only characters.</P>
+<PRE><CODE class="lang-js">punycode.encode('mañana'); // 'maana-pta'
+punycode.encode('☃-⌘'); // '--dqo34k'
+</CODE></PRE>
+<H2>punycode.toASCII(domain)<SPAN><A class="mark" id="punycode_punycode_toascii_domain" 
+href="http://nodejs.cn/api/punycode.html#punycode_punycode_toascii_domain">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/punycode.html#punycode_punycode_toascii_domain">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/punycode/punycode_toascii_domain.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.6.1</SPAN> </DIV>
+<UL>
+  <LI><CODE>domain</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A></LI></UL>
+<P>The <CODE>punycode.toASCII()</CODE> method converts a Unicode string 
+representing an Internationalized Domain Name to <A href="https://tools.ietf.org/html/rfc3492">Punycode</A>. 
+Only the non-ASCII parts of the domain name will be converted. Calling 
+<CODE>punycode.toASCII()</CODE> on a string that already only contains ASCII 
+characters will have no effect.</P>
+<PRE><CODE class="lang-js">// encode domain names
+punycode.toASCII('mañana.com');  // 'xn--maana-pta.com'
+punycode.toASCII('☃-⌘.com');   // 'xn----dqo34k.com'
+punycode.toASCII('example.com'); // 'example.com'
+</CODE></PRE>
+<H2>punycode.toUnicode(domain)<SPAN><A class="mark" id="punycode_punycode_tounicode_domain" 
+href="http://nodejs.cn/api/punycode.html#punycode_punycode_tounicode_domain">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/punycode.html#punycode_punycode_tounicode_domain">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/punycode/punycode_tounicode_domain.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.6.1</SPAN> </DIV>
+<UL>
+  <LI><CODE>domain</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A></LI></UL>
+<P>The <CODE>punycode.toUnicode()</CODE> method converts a string representing a 
+domain name containing <A 
+href="https://tools.ietf.org/html/rfc3492">Punycode</A> encoded characters into 
+Unicode. Only the <A href="https://tools.ietf.org/html/rfc3492">Punycode</A>
+ encoded parts of the domain name are be converted.</P>
+<PRE><CODE class="lang-js">// decode domain names
+punycode.toUnicode('xn--maana-pta.com'); // 'mañana.com'
+punycode.toUnicode('xn----dqo34k.com');  // '☃-⌘.com'
+punycode.toUnicode('example.com');       // 'example.com'
+</CODE></PRE>
+<H2>punycode.ucs2<SPAN><A class="mark" id="punycode_punycode_ucs2" href="http://nodejs.cn/api/punycode.html#punycode_punycode_ucs2">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/punycode.html#punycode_punycode_ucs2">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/punycode/punycode_ucs2.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.7.0</SPAN> </DIV>
+<H3>punycode.ucs2.decode(string)<SPAN><A class="mark" id="punycode_punycode_ucs2_decode_string" 
+href="http://nodejs.cn/api/punycode.html#punycode_punycode_ucs2_decode_string">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/punycode.html#punycode_punycode_ucs2_decode_string">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/punycode/punycode_ucs2_decode_string.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.7.0</SPAN> </DIV>
+<UL>
+  <LI><CODE>string</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A></LI></UL>
+<P>The <CODE>punycode.ucs2.decode()</CODE> method returns an array containing 
+the numeric codepoint values of each Unicode symbol in the string.</P>
+<PRE><CODE class="lang-js">punycode.ucs2.decode('abc'); // [0x61, 0x62, 0x63]
+// surrogate pair for U+1D306 tetragram for centre:
+punycode.ucs2.decode('\uD834\uDF06'); // [0x1D306]
+</CODE></PRE>
+<H3>punycode.ucs2.encode(codePoints)<SPAN><A class="mark" id="punycode_punycode_ucs2_encode_codepoints" 
+href="http://nodejs.cn/api/punycode.html#punycode_punycode_ucs2_encode_codepoints">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/punycode.html#punycode_punycode_ucs2_encode_codepoints">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/punycode/punycode_ucs2_encode_codepoints.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.7.0</SPAN> </DIV>
+<UL>
+  <LI><CODE>codePoints</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">&lt;Array&gt;</A></LI></UL>
+<P>The <CODE>punycode.ucs2.encode()</CODE> method returns a string based on an 
+array of numeric code point values.</P>
+<PRE><CODE class="lang-js">punycode.ucs2.encode([0x61, 0x62, 0x63]); // 'abc'
+punycode.ucs2.encode([0x1D306]); // '\uD834\uDF06'
+</CODE></PRE>
+<H2>punycode.version<SPAN><A class="mark" id="punycode_punycode_version" href="http://nodejs.cn/api/punycode.html#punycode_punycode_version">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/punycode.html#punycode_punycode_version">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/punycode/punycode_version.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.6.1</SPAN> </DIV>
+<P>Returns a string identifying the current <A 
+href="https://mths.be/punycode">Punycode.js</A> version 
+number.</P></DIV></DIV></DIV><!-- 搜索弹窗 -->   
+<DIV id="modal_search_bg"></DIV>
+<DIV 
+id="modal_search"><INPUT id="modal_search_input" placeholder="API 快速搜索" value=""> 
+    
+<DIV id="modal_search_result"></DIV></DIV><!-- js -->   <!--[if lt IE 10]><script src="/static/lib/placeholders.js?20170426"></script><![endif]--> 
+  
+<SCRIPT src="punycode%20%20Node_js%20API%20文档_files/api.js"></SCRIPT>
+ </BODY></HTML>

@@ -1,0 +1,1097 @@
+﻿<!DOCTYPE HTML>
+<!-- saved from url=(0032)http://nodejs.cn/api/addons.html -->
+<!DOCTYPE html PUBLIC "" ""><HTML lang="zh-cmn-Hans"><HEAD><META 
+content="IE=11.0000" http-equiv="X-UA-Compatible">
+   
+<META charset="utf-8">   <TITLE>C/C++ 插件 | Node.js API 文档</TITLE>   <LINK href="C-C++%20插件%20%20Node_js%20API%20文档_files/api.css" 
+rel="stylesheet">   <LINK href="/static/favicon.png" rel="icon" type="image/png" 
+sizes="32x32"> 
+<META name="GENERATOR" content="MSHTML 11.00.9600.18639"></HEAD> 
+<BODY class="alt apidoc" id="api-section-addons">
+<DIV class="clearfix" id="content">
+<DIV class="interior" id="column2">
+<DIV class="interior" id="intro"><A href="http://nodejs.cn/">          Node.js 
+中文网         </A>         
+<DIV><INPUT id="search_input" placeholder="API 快速搜索" value="">         
+</DIV></DIV>
+<UL>
+  <LI><A class="nav-documentation" href="http://nodejs.cn/api/documentation.html">关于本文档</A></LI>
+  <LI><A class="nav-synopsis" 
+  href="http://nodejs.cn/api/synopsis.html">用法与例子</A></LI></UL>
+<DIV class="line"></DIV>
+<UL>
+  <LI><A class="nav-assert" href="http://nodejs.cn/api/assert.html">Assert 
+  (断言)</A></LI>
+  <LI><A class="nav-buffer" 
+  href="http://nodejs.cn/api/buffer.html">Buffer</A></LI>
+  <LI><A class="nav-addons active" href="http://nodejs.cn/api/addons.html">C/C++ 
+  插件</A></LI>
+  <LI><A class="nav-child_process" href="http://nodejs.cn/api/child_process.html">Child 
+  Processes (子进程)</A></LI>
+  <LI><A class="nav-cluster" href="http://nodejs.cn/api/cluster.html">Cluster 
+  (集群)</A></LI>
+  <LI><A class="nav-cli" href="http://nodejs.cn/api/cli.html">CLI 
+  (命令行选项)</A></LI>
+  <LI><A class="nav-console" href="http://nodejs.cn/api/console.html">Console 
+  (控制台)</A></LI>
+  <LI><A class="nav-crypto" href="http://nodejs.cn/api/crypto.html">Crypto 
+  (加密)</A></LI>
+  <LI><A class="nav-debugger" href="http://nodejs.cn/api/debugger.html">Debugger 
+  (调试器)</A></LI>
+  <LI><A class="nav-dns" href="http://nodejs.cn/api/dns.html">DNS 
+  (域名服务器)</A></LI>
+  <LI><A class="nav-domain" href="http://nodejs.cn/api/domain.html">Domain 
+  (域)</A></LI>
+  <LI><A class="nav-errors" href="http://nodejs.cn/api/errors.html">Error 
+  (错误)</A></LI>
+  <LI><A class="nav-events" href="http://nodejs.cn/api/events.html">Events 
+  (事件)</A></LI>
+  <LI><A class="nav-fs" href="http://nodejs.cn/api/fs.html">File System 
+  (文件系统)</A></LI>
+  <LI><A class="nav-globals" href="http://nodejs.cn/api/globals.html">Global 
+  (全局变量)</A></LI>
+  <LI><A class="nav-http" href="http://nodejs.cn/api/http.html">HTTP</A></LI>
+  <LI><A class="nav-https" href="http://nodejs.cn/api/https.html">HTTPS</A></LI>
+  <LI><A class="nav-modules" href="http://nodejs.cn/api/modules.html">Module 
+  (模块)</A></LI>
+  <LI><A class="nav-net" href="http://nodejs.cn/api/net.html">Net (网络)</A></LI>
+  <LI><A class="nav-os" href="http://nodejs.cn/api/os.html">OS (操作系统)</A></LI>
+  <LI><A class="nav-path" href="http://nodejs.cn/api/path.html">Path 
+  (路径)</A></LI>
+  <LI><A class="nav-process" href="http://nodejs.cn/api/process.html">Process 
+  (进程)</A></LI>
+  <LI><A class="nav-punycode" 
+  href="http://nodejs.cn/api/punycode.html">Punycode</A></LI>
+  <LI><A class="nav-querystring" 
+  href="http://nodejs.cn/api/querystring.html">Query Strings (查询字符串)</A></LI>
+  <LI><A class="nav-readline" href="http://nodejs.cn/api/readline.html">Readline 
+  (逐行读取)</A></LI>
+  <LI><A class="nav-repl" href="http://nodejs.cn/api/repl.html">REPL 
+  (交互式解释器)</A></LI>
+  <LI><A class="nav-stream" href="http://nodejs.cn/api/stream.html">Stream 
+  (流)</A></LI>
+  <LI><A class="nav-string_decoder" href="http://nodejs.cn/api/string_decoder.html">String 
+  Decoder (字符串解码器)</A></LI>
+  <LI><A class="nav-timers" href="http://nodejs.cn/api/timers.html">Timer 
+  (定时器)</A></LI>
+  <LI><A class="nav-tls" href="http://nodejs.cn/api/tls.html">TLS 
+  (安全传输层)</A></LI>
+  <LI><A class="nav-tty" href="http://nodejs.cn/api/tty.html">TTY (终端)</A></LI>
+  <LI><A class="nav-dgram" href="http://nodejs.cn/api/dgram.html">UDP/Datagram 
+  (数据报)</A></LI>
+  <LI><A class="nav-url" href="http://nodejs.cn/api/url.html">URL</A></LI>
+  <LI><A class="nav-util" href="http://nodejs.cn/api/util.html">Util 
+  (实用工具)</A></LI>
+  <LI><A class="nav-v8" href="http://nodejs.cn/api/v8.html">V8</A></LI>
+  <LI><A class="nav-vm" href="http://nodejs.cn/api/vm.html">VM (虚拟机)</A></LI>
+  <LI><A class="nav-zlib" href="http://nodejs.cn/api/zlib.html">ZLIB 
+  (压缩)</A></LI></UL>
+<DIV class="line"></DIV></DIV>
+<DIV class="interior" id="column1" data-id="addons"><HEADER>
+<H1>Node.js v6.10.3 文档</H1>
+<DIV id="gtoc">
+<P><A name="toc" href="http://nodejs.cn/api/">返回文档首页</A>             <!--<a href="/api/all.html">单页面显示</a> |--> 
+            <!--<a href="/api/addons.json">JSON格式</a> |-->             <!--<a href="/api/en/addons.html">查看英文版</a>--> 
+          </P></DIV>
+<HR>
+</HEADER>
+<DIV id="toc">
+<H2>目录</H2>
+<UL>
+  <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/addons.html#addons_c_c_addons">C/C++ 
+  插件</A></SPAN>
+  <UL> 
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/addons.html#addons_hello_world">Hello 
+    world</A></SPAN>
+    <UL> 
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/addons.html#addons_building">构建</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/addons.html#addons_linking_to_node_js_own_dependencies">链接到 
+      Node.js 自有的依赖</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/addons.html#addons_loading_addons_using_require">使用 
+      require() 加载插件</A></SPAN></LI></UL></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/addons.html#addons_native_abstractions_for_node_js">Node.js 
+    的原生抽象</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/addons.html#addons_addon_examples">插件示例</A></SPAN>
+    <UL> 
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/addons.html#addons_function_arguments">函数的参数</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/addons.html#addons_callbacks">回调</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/addons.html#addons_object_factory">对象工厂</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/addons.html#addons_function_factory">函数工厂</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/addons.html#addons_wrapping_c_objects">包装 
+      C++ 对象</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/addons.html#addons_factory_of_wrapped_objects">包装对象的工厂</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/addons.html#addons_passing_wrapped_objects_around">传递包装的对象</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/addons.html#addons_atexit_hooks">AtExit 
+      钩子</A></SPAN>
+      <UL> 
+        <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/addons.html#addons_void_atexit_callback_args">void 
+        AtExit(callback, args)</A></SPAN></LI></UL></LI></UL></LI></UL></LI></UL></DIV>
+<DIV id="apicontent">
+<H1>C/C++ 插件<SPAN><A class="mark" id="addons_c_c_addons" href="http://nodejs.cn/api/addons.html#addons_c_c_addons">#</A></SPAN></H1>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/addons.html#addons_c_c_addons">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/addons/c_c_addons.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P>Node.js 插件是用 C 或 C++ 编写的动态链接共享对象，可以使用 <A href="http://nodejs.cn/api/globals.html#globals_require"><CODE>require()</CODE></A> 
+函数加载到 Node.js 中，且像普通的 Node.js 模块一样被使用。 它们主要用于为运行于 Node.js 的 JavaScript 和 C/C++ 
+库之间提供接口。</P>
+<P>目前用于实现插件的方法相当复杂，涉及多个组件和 API 的知识：</P>
+<UL>
+  <LI>
+  <P>V8：Node.js 当前用于提供 JavaScript 实现的 C++ 库。 V8 提供了用于创建对象、调用函数等机制。 V8 的 API 
+  文档主要在 <CODE>v8.h</CODE> 头文件中（Node.js 源代码中的 
+  <CODE>deps/v8/include/v8.h</CODE>），也可以在查看 <A href="https://v8docs.nodesource.com/">V8 
+  在线文档</A>。</P></LI>
+  <LI>
+  <P><A href="https://github.com/libuv/libuv">libuv</A>：实现了 Node.js 
+  的事件循环、工作线程、与平台所有的的异步操作的 C 库。 它也是一个跨平台的抽象库，使所有主流操作系统中可以像 POSIX 
+  一样访问常用的系统任务，比如与文件系统、socket、定时器和系统事件的交互。 libuv 还提供了一个类似 POSIX 
+  多线程的线程抽象，可被用于强化更复杂的需要超越标准事件循环的异步插件。 鼓励插件开发者多思考如何通过在 libuv 的非阻塞系统操作、工作线程、或自定义的 
+  libuv 线程中降低工作负载来避免在 I/O 或其他时间密集型任务中阻塞事件循环。</P></LI>
+  <LI>
+  <P>内置的 Node.js 库。Node.js 自身开放了一些插件可以使用的 C/C++ API。 其中最重要的是 
+  <CODE>node::ObjectWrap</CODE> 类。</P></LI>
+  <LI>
+  <P>Node.js 包含一些其他的静态链接库，如 OpenSSL。 这些库位于 Node.js 源代码中的 <CODE>deps/</CODE> 目录。
+   只有 V8 和 OpenSSL 符号是被 Node.js 有目的地再导出，并且通过插件被用于不同的场景。 更多信息请查看<A href="http://nodejs.cn/api/addons.html#addons_linking_to_node_js_own_dependencies">链接到 
+  Node.js 自身的依赖</A>。</P></LI></UL>
+<P>以下例子可从 <A href="https://github.com/nodejs/node-addon-examples">Node 
+插件示例</A>下载，并作为你自己插件的起点。</P>
+<H2>Hello world<SPAN><A class="mark" id="addons_hello_world" href="http://nodejs.cn/api/addons.html#addons_hello_world">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/addons.html#addons_hello_world">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/addons/hello_world.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P>“Hello World” 示例是一个简单的插件，用 C++ 编写，相当于以下 JavaScript 代码：</P>
+<PRE><CODE class="lang-js">module.exports.hello = () =&gt; 'world';
+</CODE></PRE>
+<P>首先，创建 <CODE>hello.cc</CODE> 文件：</P>
+<PRE><CODE class="lang-cpp">// hello.cc
+#include &lt;node.h&gt;
+
+namespace demo {
+
+using v8::FunctionCallbackInfo;
+using v8::Isolate;
+using v8::Local;
+using v8::Object;
+using v8::String;
+using v8::Value;
+
+void Method(const FunctionCallbackInfo&lt;Value&gt;&amp; args) {
+  Isolate* isolate = args.GetIsolate();
+  args.GetReturnValue().Set(String::NewFromUtf8(isolate, "world"));
+}
+
+void init(Local&lt;Object&gt; exports) {
+  NODE_SET_METHOD(exports, "hello", Method);
+}
+
+NODE_MODULE(addon, init)
+
+}  // namespace demo
+</CODE></PRE>
+<P>注意，所有的 Node.js 插件必须导出一个如下模式的初始化函数：</P>
+<PRE><CODE class="lang-cpp">void Initialize(Local&lt;Object&gt; exports);
+NODE_MODULE(module_name, Initialize)
+</CODE></PRE>
+<P><CODE>NODE_MODULE</CODE> 后面没有分号，因为它不是一个函数（详见 <CODE>node.h</CODE>）。</P>
+<P><CODE>module_name</CODE> 必须匹配最终的二进制文件名（不包括 .node 后缀）。</P>
+<P>在 <CODE>hello.cc</CODE> 示例中，初始化函数是 <CODE>init</CODE>，插件模块名是 
+<CODE>addon</CODE>。</P>
+<H3>构建<SPAN><A class="mark" id="addons_building" href="http://nodejs.cn/api/addons.html#addons_building">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/addons.html#addons_building">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/addons/building.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P>当源代码已被编写，它必须被编译成二进制 <CODE>addon.node</CODE> 文件。 要做到这点，需在项目的顶层创建一个名为 
+<CODE>binding.gyp</CODE> 的文件，它使用一个类似 JSON 的格式来描述你的模块的构建配置。 该文件会被 <A href="https://github.com/nodejs/node-gyp">node-gyp</A>（一个用于编译 
+Node.js 插件的工具）使用。</P>
+<PRE><CODE class="lang-json">{
+  "targets": [
+    {
+      "target_name": "addon",
+      "sources": [ "hello.cc" ]
+    }
+  ]
+}
+</CODE></PRE>
+<P>注意：Node.js 会捆绑与发布一个版本的 <CODE>node-gyp</CODE> 工具作为 <CODE>npm</CODE> 的一部分。
+ 该版本不可以直接被开发者使用，仅为了支持使用 <CODE>npm install</CODE> 命令编译与安装插件的能力。 需要直接使用 
+<CODE>node-gyp</CODE> 的开发者可以使用 <CODE>npm install -g node-gyp</CODE> 命令进行安装。 查看 
+<CODE>node-gyp</CODE> <A 
+href="https://github.com/nodejs/node-gyp#installation">安装说明</A>了解更多信息，包括平台特定的要求。</P>
+<P>但 <CODE>binding.gyp</CODE> 文件已被创建，使用 <CODE>node-gyp configure</CODE> 
+为当前平台生成相应的项目构建文件。 这会在 <CODE>build/</CODE> 目录下生成一个 <CODE>Makefile</CODE> 文件（在 
+Unix 平台上）或 <CODE>vcxproj</CODE> 文件（在 Windows 上）。</P>
+<P>下一步，调用 <CODE>node-gyp build</CODE> 命令生成编译后的 <CODE>addon.node</CODE> 的文件。
+ 它会被放进 <CODE>build/Release/</CODE> 目录。</P>
+<P>当使用 <CODE>npm install</CODE> 安装一个 Node.js 插件时，npm 会使用自身捆绑的 
+<CODE>node-gyp</CODE> 版本来执行同样的一套动作，为用户要求的平台生成一个插件编译后的版本。</P>
+<P>当构建完成时，二进制插件就可以在 Node.js 中被使用，通过 <A href="http://nodejs.cn/api/globals.html#globals_require"><CODE>require()</CODE></A> 
+构建后的 <CODE>addon.node</CODE> 模块：</P>
+<PRE><CODE class="lang-js">// hello.js
+const addon = require('./build/Release/addon');
+
+console.log(addon.hello());
+// 打印: 'world'
+</CODE></PRE>
+<P>请查看 <A 
+href="https://github.com/arturadib/node-qt">https://github.com/arturadib/node-qt</A> 
+了解生产环境中的例子。</P>
+<P>因为编译后的二进制插件的确切路径取决于它如何被编译（比如有时它可能在 <CODE>./build/Debug/</CODE> 中），所以插件可以使用 <A 
+href="https://github.com/TooTallNate/node-bindings">bindings</A> 包加载编译后的模块。</P>
+<P>注意，虽然 <CODE>bindings</CODE> 包在如何定位插件模块的实现上更复杂，但它本质上使用了一个 
+<CODE>try-catch</CODE> 模式，类似如下：</P>
+<PRE><CODE class="lang-js">try {
+  return require('./build/Release/addon.node');
+} catch (err) {
+  return require('./build/Debug/addon.node');
+}
+</CODE></PRE>
+<H3>链接到 Node.js 自有的依赖<SPAN><A class="mark" id="addons_linking_to_node_js_own_dependencies" 
+href="http://nodejs.cn/api/addons.html#addons_linking_to_node_js_own_dependencies">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/addons.html#addons_linking_to_node_js_own_dependencies">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/addons/linking_to_node_js_own_dependencies.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P>Node.js 使用了一些静态链接库，比如 V8 引擎、libuv 和 OpenSSL。 所有的插件都需要链接到 V8，也可能链接到任何其他依赖。
+ 通常情况下，只要简单地包含相应的 <CODE>#include &lt;...&gt;</CODE> 声明（如 <CODE>#include 
+&lt;v8.h&gt;</CODE>），则 <CODE>node-gyp</CODE> 会自动定位到相应的头文件。 但是也有一些注意事项需要注意：</P>
+<UL>
+  <LI>
+  <P>当 <CODE>node-gyp</CODE> 运行时，它会检测指定的 Node.js 发行版本，并下载完整的源代码包或只是头文件。
+   如果下载了完整的源代码，则插件对全套的 Node.js 依赖有完全的访问权限。 如果只下载了 Node.js 的文件头，则只有 Node.js 
+  导出的符号可用。</P></LI>
+  <LI>
+  <P><CODE>node-gyp</CODE> 可使用指向一个本地 Node.js 源代码镜像的 <CODE>--nodedir</CODE> 
+  标志来运行。 如果使用该选项，则插件有全套依赖的访问权限。</P></LI></UL>
+<H3>使用 require() 加载插件<SPAN><A class="mark" id="addons_loading_addons_using_require" 
+href="http://nodejs.cn/api/addons.html#addons_loading_addons_using_require">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/addons.html#addons_loading_addons_using_require">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/addons/loading_addons_using_require.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P>编译后的二进制插件的文件扩展名是 <CODE>.node</CODE>（而不是 <CODE>.dll</CODE> 或 
+<CODE>.so</CODE>）。 <A 
+href="http://nodejs.cn/api/globals.html#globals_require"><CODE>require()</CODE></A> 
+函数用于查找具有 <CODE>.node</CODE> 文件扩展名的文件，并初始化为动态链接库。</P>
+<P>当调用 <A 
+href="http://nodejs.cn/api/globals.html#globals_require"><CODE>require()</CODE></A> 
+时，<CODE>.node</CODE> 拓展名通常可被省略，Node.js 仍会找到并初始化该插件。 注意，Node.js 会优先尝试查找并加载同名的模块或 
+JavaScript 文件。 例如，如果与二进制的 <CODE>addon.node</CODE> 同一目录下有一个 <CODE>addon.js</CODE> 
+文件，则 <A 
+href="http://nodejs.cn/api/globals.html#globals_require"><CODE>require('addon')</CODE></A> 
+会优先加载 <CODE>addon.js</CODE> 文件。</P>
+<H2>Node.js 的原生抽象<SPAN><A class="mark" id="addons_native_abstractions_for_node_js" 
+href="http://nodejs.cn/api/addons.html#addons_native_abstractions_for_node_js">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/addons.html#addons_native_abstractions_for_node_js">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/addons/native_abstractions_for_node_js.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P>文档中所示的每个例子都直接使用 Node.js 和 V8 的 API 来实现插件。 V8 的 API 可能并且已经与下一个 V8 的发行版本有显著的变化。
+ 伴随着每次变化，插件为了能够继续工作，可能需要进行更新和重新编译。 Node.js 的发布计划会尽量减少这种变化的频率和影响，但 Node.js 目前可以确保 
+V8 API 的稳定性。</P>
+<P><A href="https://github.com/nodejs/nan">Node.js 的原生抽象</A>（或称为 
+<CODE>nan</CODE>）提供了一组工具，建议插件开发者使用这些工具来保持插件在过往与将来的 V8 和 Node.js 的版本之间的兼容性。 查看 <A 
+href="https://github.com/nodejs/nan/tree/master/examples/"><CODE>nan</CODE> 
+示例</A>了解它是如何被使用的。</P>
+<H2>插件示例<SPAN><A class="mark" id="addons_addon_examples" href="http://nodejs.cn/api/addons.html#addons_addon_examples">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/addons.html#addons_addon_examples">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/addons/addon_examples.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P>以下是一些插件示例，用于帮助开发者入门。 这些例子使用了 V8 的 API。 查看在线的 <A href="https://v8docs.nodesource.com/">V8 
+文档</A>有助于了解各种 V8 调用，V8 的<A href="https://github.com/v8/v8/wiki/Embedder's%20Guide">嵌入器指南</A>解释了句柄、作用域和函数模板等的一些概念。</P>
+<P>每个示例都使用以下的 <CODE>binding.gyp</CODE> 文件：</P>
+<PRE><CODE class="lang-json">{
+  "targets": [
+    {
+      "target_name": "addon",
+      "sources": [ "addon.cc" ]
+    }
+  ]
+}
+</CODE></PRE>
+<P>如果有一个以上的 <CODE>.cc</CODE> 文件，则只需添加额外的文件名到 <CODE>sources</CODE> 数组。 例如：</P>
+<PRE><CODE class="lang-json">"sources": ["addon.cc", "myexample.cc"]
+</CODE></PRE>
+<P>当 <CODE>binding.gyp</CODE> 文件准备就绪，则插件示例可以使用 <CODE>node-gyp</CODE> 
+进行配置和构建：</P>
+<PRE><CODE class="lang-console">$ node-gyp configure build
+</CODE></PRE>
+<H3>函数的参数<SPAN><A class="mark" id="addons_function_arguments" href="http://nodejs.cn/api/addons.html#addons_function_arguments">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/addons.html#addons_function_arguments">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/addons/function_arguments.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P>插件通常会开放一些对象和函数，供运行在 Node.js 中的 JavaScript 访问。 当从 JavaScript 调用函数时，输入参数和返回值必须与 
+C/C++ 代码相互映射。</P>
+<P>以下例子描述了如何读取从 JavaScript 传入的函数参数与如何返回结果：</P>
+<PRE><CODE class="lang-cpp">// addon.cc
+#include &lt;node.h&gt;
+
+namespace demo {
+
+using v8::Exception;
+using v8::FunctionCallbackInfo;
+using v8::Isolate;
+using v8::Local;
+using v8::Number;
+using v8::Object;
+using v8::String;
+using v8::Value;
+
+// 这是 "add" 方法的实现
+// 输入参数使用 const FunctionCallbackInfo&lt;Value&gt;&amp; args 结构传入
+void Add(const FunctionCallbackInfo&lt;Value&gt;&amp; args) {
+  Isolate* isolate = args.GetIsolate();
+
+  // 检查传入的参数的个数
+  if (args.Length() &lt; 2) {
+    // 抛出一个错误并传回到 JavaScript
+    isolate-&gt;ThrowException(Exception::TypeError(
+        String::NewFromUtf8(isolate, "参数的数量错误")));
+    return;
+  }
+
+  // 检查参数的类型
+  if (!args[0]-&gt;IsNumber() || !args[1]-&gt;IsNumber()) {
+    isolate-&gt;ThrowException(Exception::TypeError(
+        String::NewFromUtf8(isolate, "参数错误")));
+    return;
+  }
+
+  // 执行操作
+  double value = args[0]-&gt;NumberValue() + args[1]-&gt;NumberValue();
+  Local&lt;Number&gt; num = Number::New(isolate, value);
+
+  // 设置返回值
+  args.GetReturnValue().Set(num);
+}
+
+void Init(Local&lt;Object&gt; exports) {
+  NODE_SET_METHOD(exports, "add", Add);
+}
+
+NODE_MODULE(addon, Init)
+
+}  // namespace demo
+</CODE></PRE>
+<P>但已被编译，示例插件就可以在 Node.js 中引入和使用：</P>
+<PRE><CODE class="lang-js">// test.js
+const addon = require('./build/Release/addon');
+
+console.log('This should be eight:', addon.add(3, 5));
+</CODE></PRE>
+<H3>回调<SPAN><A class="mark" id="addons_callbacks" href="http://nodejs.cn/api/addons.html#addons_callbacks">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/addons.html#addons_callbacks">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/addons/callbacks.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P>把 JavaScript 函数传入到一个 C++ 函数并在那里执行它们，这在插件里是常见的做法。 以下例子描述了如何调用这些回调：</P>
+<PRE><CODE class="lang-cpp">// addon.cc
+#include &lt;node.h&gt;
+
+namespace demo {
+
+using v8::Function;
+using v8::FunctionCallbackInfo;
+using v8::Isolate;
+using v8::Local;
+using v8::Null;
+using v8::Object;
+using v8::String;
+using v8::Value;
+
+void RunCallback(const FunctionCallbackInfo&lt;Value&gt;&amp; args) {
+  Isolate* isolate = args.GetIsolate();
+  Local&lt;Function&gt; cb = Local&lt;Function&gt;::Cast(args[0]);
+  const unsigned argc = 1;
+  Local&lt;Value&gt; argv[argc] = { String::NewFromUtf8(isolate, "hello world") };
+  cb-&gt;Call(Null(isolate), argc, argv);
+}
+
+void Init(Local&lt;Object&gt; exports, Local&lt;Object&gt; module) {
+  NODE_SET_METHOD(module, "exports", RunCallback);
+}
+
+NODE_MODULE(addon, Init)
+
+}  // namespace demo
+</CODE></PRE>
+<P>注意，该例子使用了一个带有两个参数的 <CODE>Init()</CODE>，它接收完整的 <CODE>module</CODE> 对象作为第二个参数。
+ 这使得插件可以用一个单一的函数完全地重写 <CODE>exports</CODE>，而不是添加函数作为 <CODE>exports</CODE> 
+的属性。</P>
+<P>为了验证它，运行以下 JavaScript：</P>
+<PRE><CODE class="lang-js">// test.js
+const addon = require('./build/Release/addon');
+
+addon((msg) =&gt; {
+  console.log(msg);
+// 打印: 'hello world'
+});
+</CODE></PRE>
+<P>注意，在这个例子中，回调函数是被同步地调用。</P>
+<H3>对象工厂<SPAN><A class="mark" id="addons_object_factory" href="http://nodejs.cn/api/addons.html#addons_object_factory">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/addons.html#addons_object_factory">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/addons/object_factory.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P>插件可从 C++ 函数中创建并返回新的对象，如以下例子所示。 一个带有 <CODE>msg</CODE> 属性的对象被创建并返回，该属性会输出传入 
+<CODE>createObject()</CODE> 的字符串：</P>
+<PRE><CODE class="lang-cpp">// addon.cc
+#include &lt;node.h&gt;
+
+namespace demo {
+
+using v8::FunctionCallbackInfo;
+using v8::Isolate;
+using v8::Local;
+using v8::Object;
+using v8::String;
+using v8::Value;
+
+void CreateObject(const FunctionCallbackInfo&lt;Value&gt;&amp; args) {
+  Isolate* isolate = args.GetIsolate();
+
+  Local&lt;Object&gt; obj = Object::New(isolate);
+  obj-&gt;Set(String::NewFromUtf8(isolate, "msg"), args[0]-&gt;ToString());
+
+  args.GetReturnValue().Set(obj);
+}
+
+void Init(Local&lt;Object&gt; exports, Local&lt;Object&gt; module) {
+  NODE_SET_METHOD(module, "exports", CreateObject);
+}
+
+NODE_MODULE(addon, Init)
+
+}  // namespace demo
+</CODE></PRE>
+<P>在 JavaScript 中测试它：</P>
+<PRE><CODE class="lang-js">// test.js
+const addon = require('./build/Release/addon');
+
+const obj1 = addon('hello');
+const obj2 = addon('world');
+console.log(obj1.msg, obj2.msg);
+// 打印: 'hello world'
+</CODE></PRE>
+<H3>函数工厂<SPAN><A class="mark" id="addons_function_factory" href="http://nodejs.cn/api/addons.html#addons_function_factory">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/addons.html#addons_function_factory">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/addons/function_factory.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P>另一种常见情况是创建 JavaScript 函数来包装 C++ 函数，并返回到 JavaScript：</P>
+<PRE><CODE class="lang-cpp">// addon.cc
+#include &lt;node.h&gt;
+
+namespace demo {
+
+using v8::Function;
+using v8::FunctionCallbackInfo;
+using v8::FunctionTemplate;
+using v8::Isolate;
+using v8::Local;
+using v8::Object;
+using v8::String;
+using v8::Value;
+
+void MyFunction(const FunctionCallbackInfo&lt;Value&gt;&amp; args) {
+  Isolate* isolate = args.GetIsolate();
+  args.GetReturnValue().Set(String::NewFromUtf8(isolate, "hello world"));
+}
+
+void CreateFunction(const FunctionCallbackInfo&lt;Value&gt;&amp; args) {
+  Isolate* isolate = args.GetIsolate();
+
+  Local&lt;FunctionTemplate&gt; tpl = FunctionTemplate::New(isolate, MyFunction);
+  Local&lt;Function&gt; fn = tpl-&gt;GetFunction();
+
+  // 可以省略这步使它匿名
+  fn-&gt;SetName(String::NewFromUtf8(isolate, "theFunction"));
+
+  args.GetReturnValue().Set(fn);
+}
+
+void Init(Local&lt;Object&gt; exports, Local&lt;Object&gt; module) {
+  NODE_SET_METHOD(module, "exports", CreateFunction);
+}
+
+NODE_MODULE(addon, Init)
+
+}  // namespace demo
+</CODE></PRE>
+<P>测试它：</P>
+<PRE><CODE class="lang-js">// test.js
+const addon = require('./build/Release/addon');
+
+const fn = addon();
+console.log(fn());
+// 打印: 'hello world'
+</CODE></PRE>
+<H3>包装 C++ 对象<SPAN><A class="mark" id="addons_wrapping_c_objects" href="http://nodejs.cn/api/addons.html#addons_wrapping_c_objects">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/addons.html#addons_wrapping_c_objects">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/addons/wrapping_c_objects.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P>也可以包装 C++ 对象/类使其可以使用 JavaScript 的 <CODE>new</CODE> 操作来创建新的实例：</P>
+<PRE><CODE class="lang-cpp">// addon.cc
+#include &lt;node.h&gt;
+#include "myobject.h"
+
+namespace demo {
+
+using v8::Local;
+using v8::Object;
+
+void InitAll(Local&lt;Object&gt; exports) {
+  MyObject::Init(exports);
+}
+
+NODE_MODULE(addon, InitAll)
+
+}  // namespace demo
+</CODE></PRE>
+<P>然后，在 <CODE>myobject.h</CODE> 中，包装类继承自 <CODE>node::ObjectWrap</CODE>：</P>
+<PRE><CODE class="lang-cpp">// myobject.h
+#ifndef MYOBJECT_H
+#define MYOBJECT_H
+
+#include &lt;node.h&gt;
+#include &lt;node_object_wrap.h&gt;
+
+namespace demo {
+
+class MyObject : public node::ObjectWrap {
+ public:
+  static void Init(v8::Local&lt;v8::Object&gt; exports);
+
+ private:
+  explicit MyObject(double value = 0);
+  ~MyObject();
+
+  static void New(const v8::FunctionCallbackInfo&lt;v8::Value&gt;&amp; args);
+  static void PlusOne(const v8::FunctionCallbackInfo&lt;v8::Value&gt;&amp; args);
+  static v8::Persistent&lt;v8::Function&gt; constructor;
+  double value_;
+};
+
+}  // namespace demo
+
+#endif
+</CODE></PRE>
+<P>在 <CODE>myobject.cc</CODE> 中，实现要被开放的各种方法。 下面，通过把 <CODE>plusOne()</CODE> 
+添加到构造函数的原型来开放它：</P>
+<PRE><CODE class="lang-cpp">// myobject.cc
+#include "myobject.h"
+
+namespace demo {
+
+using v8::Context;
+using v8::Function;
+using v8::FunctionCallbackInfo;
+using v8::FunctionTemplate;
+using v8::Isolate;
+using v8::Local;
+using v8::Number;
+using v8::Object;
+using v8::Persistent;
+using v8::String;
+using v8::Value;
+
+Persistent&lt;Function&gt; MyObject::constructor;
+
+MyObject::MyObject(double value) : value_(value) {
+}
+
+MyObject::~MyObject() {
+}
+
+void MyObject::Init(Local&lt;Object&gt; exports) {
+  Isolate* isolate = exports-&gt;GetIsolate();
+
+  // 准备构造函数模版
+  Local&lt;FunctionTemplate&gt; tpl = FunctionTemplate::New(isolate, New);
+  tpl-&gt;SetClassName(String::NewFromUtf8(isolate, "MyObject"));
+  tpl-&gt;InstanceTemplate()-&gt;SetInternalFieldCount(1);
+
+  // 原型
+  NODE_SET_PROTOTYPE_METHOD(tpl, "plusOne", PlusOne);
+
+  constructor.Reset(isolate, tpl-&gt;GetFunction());
+  exports-&gt;Set(String::NewFromUtf8(isolate, "MyObject"),
+               tpl-&gt;GetFunction());
+}
+
+void MyObject::New(const FunctionCallbackInfo&lt;Value&gt;&amp; args) {
+  Isolate* isolate = args.GetIsolate();
+
+  if (args.IsConstructCall()) {
+    // 像构造函数一样调用：`new MyObject(...)`
+    double value = args[0]-&gt;IsUndefined() ? 0 : args[0]-&gt;NumberValue();
+    MyObject* obj = new MyObject(value);
+    obj-&gt;Wrap(args.This());
+    args.GetReturnValue().Set(args.This());
+  } else {
+    // 像普通方法 `MyObject(...)` 一样调用，转为构造调用。
+    const int argc = 1;
+    Local&lt;Value&gt; argv[argc] = { args[0] };
+    Local&lt;Context&gt; context = isolate-&gt;GetCurrentContext();
+    Local&lt;Function&gt; cons = Local&lt;Function&gt;::New(isolate, constructor);
+    Local&lt;Object&gt; result =
+        cons-&gt;NewInstance(context, argc, argv).ToLocalChecked();
+    args.GetReturnValue().Set(result);
+  }
+}
+
+void MyObject::PlusOne(const FunctionCallbackInfo&lt;Value&gt;&amp; args) {
+  Isolate* isolate = args.GetIsolate();
+
+  MyObject* obj = ObjectWrap::Unwrap&lt;MyObject&gt;(args.Holder());
+  obj-&gt;value_ += 1;
+
+  args.GetReturnValue().Set(Number::New(isolate, obj-&gt;value_));
+}
+
+}  // namespace demo
+</CODE></PRE>
+<P>要构建这个例子，<CODE>myobject.cc</CODE> 文件必须被添加到 <CODE>binding.gyp</CODE>：</P>
+<PRE><CODE class="lang-json">{
+  "targets": [
+    {
+      "target_name": "addon",
+      "sources": [
+        "addon.cc",
+        "myobject.cc"
+      ]
+    }
+  ]
+}
+</CODE></PRE>
+<P>测试：</P>
+<PRE><CODE class="lang-js">// test.js
+const addon = require('./build/Release/addon');
+
+const obj = new addon.MyObject(10);
+console.log(obj.plusOne());
+// 打印: 11
+console.log(obj.plusOne());
+// 打印: 12
+console.log(obj.plusOne());
+// 打印: 13
+</CODE></PRE>
+<H3>包装对象的工厂<SPAN><A class="mark" id="addons_factory_of_wrapped_objects" href="http://nodejs.cn/api/addons.html#addons_factory_of_wrapped_objects">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/addons.html#addons_factory_of_wrapped_objects">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/addons/factory_of_wrapped_objects.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P>也可以使用一个工厂模式，避免显式地使用 JavaScript 的 <CODE>new</CODE> 操作来创建对象实例：</P>
+<PRE><CODE class="lang-js">const obj = addon.createObject();
+// 而不是：
+// const obj = new addon.Object();
+</CODE></PRE>
+<P>首先，在 <CODE>addon.cc</CODE> 中实现 <CODE>createObject()</CODE> 方法：</P>
+<PRE><CODE class="lang-cpp">// addon.cc
+#include &lt;node.h&gt;
+#include "myobject.h"
+
+namespace demo {
+
+using v8::FunctionCallbackInfo;
+using v8::Isolate;
+using v8::Local;
+using v8::Object;
+using v8::String;
+using v8::Value;
+
+void CreateObject(const FunctionCallbackInfo&lt;Value&gt;&amp; args) {
+  MyObject::NewInstance(args);
+}
+
+void InitAll(Local&lt;Object&gt; exports, Local&lt;Object&gt; module) {
+  MyObject::Init(exports-&gt;GetIsolate());
+
+  NODE_SET_METHOD(module, "exports", CreateObject);
+}
+
+NODE_MODULE(addon, InitAll)
+
+}  // namespace demo
+</CODE></PRE>
+<P>在 <CODE>myobject.h</CODE> 中，添加静态方法 <CODE>NewInstance()</CODE> 来处理实例化对象。
+ 这个方法用来代替在 JavaScript 中使用 <CODE>new</CODE>：</P>
+<PRE><CODE class="lang-cpp">// myobject.h
+#ifndef MYOBJECT_H
+#define MYOBJECT_H
+
+#include &lt;node.h&gt;
+#include &lt;node_object_wrap.h&gt;
+
+namespace demo {
+
+class MyObject : public node::ObjectWrap {
+ public:
+  static void Init(v8::Isolate* isolate);
+  static void NewInstance(const v8::FunctionCallbackInfo&lt;v8::Value&gt;&amp; args);
+
+ private:
+  explicit MyObject(double value = 0);
+  ~MyObject();
+
+  static void New(const v8::FunctionCallbackInfo&lt;v8::Value&gt;&amp; args);
+  static void PlusOne(const v8::FunctionCallbackInfo&lt;v8::Value&gt;&amp; args);
+  static v8::Persistent&lt;v8::Function&gt; constructor;
+  double value_;
+};
+
+}  // namespace demo
+
+#endif
+</CODE></PRE>
+<P><CODE>myobject.cc</CODE> 中的实现类似与之前的例子：</P>
+<PRE><CODE class="lang-cpp">// myobject.cc
+#include &lt;node.h&gt;
+#include "myobject.h"
+
+namespace demo {
+
+using v8::Context;
+using v8::Function;
+using v8::FunctionCallbackInfo;
+using v8::FunctionTemplate;
+using v8::Isolate;
+using v8::Local;
+using v8::Number;
+using v8::Object;
+using v8::Persistent;
+using v8::String;
+using v8::Value;
+
+Persistent&lt;Function&gt; MyObject::constructor;
+
+MyObject::MyObject(double value) : value_(value) {
+}
+
+MyObject::~MyObject() {
+}
+
+void MyObject::Init(Isolate* isolate) {
+  // 准备构造函数模版
+  Local&lt;FunctionTemplate&gt; tpl = FunctionTemplate::New(isolate, New);
+  tpl-&gt;SetClassName(String::NewFromUtf8(isolate, "MyObject"));
+  tpl-&gt;InstanceTemplate()-&gt;SetInternalFieldCount(1);
+
+  // 原型
+  NODE_SET_PROTOTYPE_METHOD(tpl, "plusOne", PlusOne);
+
+  constructor.Reset(isolate, tpl-&gt;GetFunction());
+}
+
+void MyObject::New(const FunctionCallbackInfo&lt;Value&gt;&amp; args) {
+  Isolate* isolate = args.GetIsolate();
+
+  if (args.IsConstructCall()) {
+    // 像构造函数一样调用：`new MyObject(...)`
+    double value = args[0]-&gt;IsUndefined() ? 0 : args[0]-&gt;NumberValue();
+    MyObject* obj = new MyObject(value);
+    obj-&gt;Wrap(args.This());
+    args.GetReturnValue().Set(args.This());
+  } else {
+    // 像普通方法 `MyObject(...)` 一样调用，转为构造调用。
+    const int argc = 1;
+    Local&lt;Value&gt; argv[argc] = { args[0] };
+    Local&lt;Function&gt; cons = Local&lt;Function&gt;::New(isolate, constructor);
+    Local&lt;Context&gt; context = isolate-&gt;GetCurrentContext();
+    Local&lt;Object&gt; instance =
+        cons-&gt;NewInstance(context, argc, argv).ToLocalChecked();
+    args.GetReturnValue().Set(instance);
+  }
+}
+
+void MyObject::NewInstance(const FunctionCallbackInfo&lt;Value&gt;&amp; args) {
+  Isolate* isolate = args.GetIsolate();
+
+  const unsigned argc = 1;
+  Local&lt;Value&gt; argv[argc] = { args[0] };
+  Local&lt;Function&gt; cons = Local&lt;Function&gt;::New(isolate, constructor);
+  Local&lt;Context&gt; context = isolate-&gt;GetCurrentContext();
+  Local&lt;Object&gt; instance =
+      cons-&gt;NewInstance(context, argc, argv).ToLocalChecked();
+
+  args.GetReturnValue().Set(instance);
+}
+
+void MyObject::PlusOne(const FunctionCallbackInfo&lt;Value&gt;&amp; args) {
+  Isolate* isolate = args.GetIsolate();
+
+  MyObject* obj = ObjectWrap::Unwrap&lt;MyObject&gt;(args.Holder());
+  obj-&gt;value_ += 1;
+
+  args.GetReturnValue().Set(Number::New(isolate, obj-&gt;value_));
+}
+
+}  // namespace demo
+</CODE></PRE>
+<P>要构建这个例子，<CODE>myobject.cc</CODE> 文件必须被添加到 <CODE>binding.gyp</CODE>：</P>
+<PRE><CODE class="lang-json">{
+  "targets": [
+    {
+      "target_name": "addon",
+      "sources": [
+        "addon.cc",
+        "myobject.cc"
+      ]
+    }
+  ]
+}
+</CODE></PRE>
+<P>测试：</P>
+<PRE><CODE class="lang-js">// test.js
+const createObject = require('./build/Release/addon');
+
+const obj = createObject(10);
+console.log(obj.plusOne());
+// 打印: 11
+console.log(obj.plusOne());
+// 打印: 12
+console.log(obj.plusOne());
+// 打印: 13
+
+const obj2 = createObject(20);
+console.log(obj2.plusOne());
+// 打印: 21
+console.log(obj2.plusOne());
+// 打印: 22
+console.log(obj2.plusOne());
+// 打印: 23
+</CODE></PRE>
+<H3>传递包装的对象<SPAN><A class="mark" id="addons_passing_wrapped_objects_around" 
+href="http://nodejs.cn/api/addons.html#addons_passing_wrapped_objects_around">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/addons.html#addons_passing_wrapped_objects_around">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/addons/passing_wrapped_objects_around.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P>除了包装和返回 C++ 对象，也可以通过使用 Node.js 的辅助函数 <CODE>node::ObjectWrap::Unwrap</CODE> 
+进行去包装来传递包装的对象。 以下例子展示了一个 <CODE>add()</CODE> 函数，它可以把两个 <CODE>MyObject</CODE> 
+对象作为输入参数：</P>
+<PRE><CODE class="lang-cpp">// addon.cc
+#include &lt;node.h&gt;
+#include &lt;node_object_wrap.h&gt;
+#include "myobject.h"
+
+namespace demo {
+
+using v8::FunctionCallbackInfo;
+using v8::Isolate;
+using v8::Local;
+using v8::Number;
+using v8::Object;
+using v8::String;
+using v8::Value;
+
+void CreateObject(const FunctionCallbackInfo&lt;Value&gt;&amp; args) {
+  MyObject::NewInstance(args);
+}
+
+void Add(const FunctionCallbackInfo&lt;Value&gt;&amp; args) {
+  Isolate* isolate = args.GetIsolate();
+
+  MyObject* obj1 = node::ObjectWrap::Unwrap&lt;MyObject&gt;(
+      args[0]-&gt;ToObject());
+  MyObject* obj2 = node::ObjectWrap::Unwrap&lt;MyObject&gt;(
+      args[1]-&gt;ToObject());
+
+  double sum = obj1-&gt;value() + obj2-&gt;value();
+  args.GetReturnValue().Set(Number::New(isolate, sum));
+}
+
+void InitAll(Local&lt;Object&gt; exports) {
+  MyObject::Init(exports-&gt;GetIsolate());
+
+  NODE_SET_METHOD(exports, "createObject", CreateObject);
+  NODE_SET_METHOD(exports, "add", Add);
+}
+
+NODE_MODULE(addon, InitAll)
+
+}  // namespace demo
+</CODE></PRE>
+<P>在 <CODE>myobject.h</CODE> 中，新增了一个新的公共方法用于在去包装对象后访问私有值。</P>
+<PRE><CODE class="lang-cpp">// myobject.h
+#ifndef MYOBJECT_H
+#define MYOBJECT_H
+
+#include &lt;node.h&gt;
+#include &lt;node_object_wrap.h&gt;
+
+namespace demo {
+
+class MyObject : public node::ObjectWrap {
+ public:
+  static void Init(v8::Isolate* isolate);
+  static void NewInstance(const v8::FunctionCallbackInfo&lt;v8::Value&gt;&amp; args);
+  inline double value() const { return value_; }
+
+ private:
+  explicit MyObject(double value = 0);
+  ~MyObject();
+
+  static void New(const v8::FunctionCallbackInfo&lt;v8::Value&gt;&amp; args);
+  static v8::Persistent&lt;v8::Function&gt; constructor;
+  double value_;
+};
+
+}  // namespace demo
+
+#endif
+</CODE></PRE>
+<P><CODE>myobject.cc</CODE> 中的实现类似之前的例子：</P>
+<PRE><CODE class="lang-cpp">// myobject.cc
+#include &lt;node.h&gt;
+#include "myobject.h"
+
+namespace demo {
+
+using v8::Context;
+using v8::Function;
+using v8::FunctionCallbackInfo;
+using v8::FunctionTemplate;
+using v8::Isolate;
+using v8::Local;
+using v8::Object;
+using v8::Persistent;
+using v8::String;
+using v8::Value;
+
+Persistent&lt;Function&gt; MyObject::constructor;
+
+MyObject::MyObject(double value) : value_(value) {
+}
+
+MyObject::~MyObject() {
+}
+
+void MyObject::Init(Isolate* isolate) {
+  // Prepare constructor template
+  Local&lt;FunctionTemplate&gt; tpl = FunctionTemplate::New(isolate, New);
+  tpl-&gt;SetClassName(String::NewFromUtf8(isolate, "MyObject"));
+  tpl-&gt;InstanceTemplate()-&gt;SetInternalFieldCount(1);
+
+  constructor.Reset(isolate, tpl-&gt;GetFunction());
+}
+
+void MyObject::New(const FunctionCallbackInfo&lt;Value&gt;&amp; args) {
+  Isolate* isolate = args.GetIsolate();
+
+  if (args.IsConstructCall()) {
+    // 像构造函数一样调用：`new MyObject(...)`
+    double value = args[0]-&gt;IsUndefined() ? 0 : args[0]-&gt;NumberValue();
+    MyObject* obj = new MyObject(value);
+    obj-&gt;Wrap(args.This());
+    args.GetReturnValue().Set(args.This());
+  } else {
+    // 像普通方法 `MyObject(...)` 一样调用，转为构造调用。
+    const int argc = 1;
+    Local&lt;Value&gt; argv[argc] = { args[0] };
+    Local&lt;Context&gt; context = isolate-&gt;GetCurrentContext();
+    Local&lt;Function&gt; cons = Local&lt;Function&gt;::New(isolate, constructor);
+    Local&lt;Object&gt; instance =
+        cons-&gt;NewInstance(context, argc, argv).ToLocalChecked();
+    args.GetReturnValue().Set(instance);
+  }
+}
+
+void MyObject::NewInstance(const FunctionCallbackInfo&lt;Value&gt;&amp; args) {
+  Isolate* isolate = args.GetIsolate();
+
+  const unsigned argc = 1;
+  Local&lt;Value&gt; argv[argc] = { args[0] };
+  Local&lt;Function&gt; cons = Local&lt;Function&gt;::New(isolate, constructor);
+  Local&lt;Context&gt; context = isolate-&gt;GetCurrentContext();
+  Local&lt;Object&gt; instance =
+      cons-&gt;NewInstance(context, argc, argv).ToLocalChecked();
+
+  args.GetReturnValue().Set(instance);
+}
+
+}  // namespace demo
+</CODE></PRE>
+<P>测试：</P>
+<PRE><CODE class="lang-js">// test.js
+const addon = require('./build/Release/addon');
+
+const obj1 = addon.createObject(10);
+const obj2 = addon.createObject(20);
+const result = addon.add(obj1, obj2);
+
+console.log(result);
+// 打印: 30
+</CODE></PRE>
+<H3>AtExit 钩子<SPAN><A class="mark" id="addons_atexit_hooks" href="http://nodejs.cn/api/addons.html#addons_atexit_hooks">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/addons.html#addons_atexit_hooks">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/addons/atexit_hooks.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P>“AtExit” 钩子是一个函数，它在 Node.js 事件循环结束后、但在 JavaScript 虚拟机被终止与 Node.js 关闭前被调用。 
+“AtExit” 钩子使用 <CODE>node::AtExit</CODE> API 注册。</P>
+<H4>void AtExit(callback, args)<SPAN><A class="mark" id="addons_void_atexit_callback_args" 
+href="http://nodejs.cn/api/addons.html#addons_void_atexit_callback_args">#</A></SPAN></H4>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/addons.html#addons_void_atexit_callback_args">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/addons/void_atexit_callback_args.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="signature">
+<UL>
+  <LI><CODE>callback</CODE>: <CODE>void (*)(void*)</CODE> - 一个退出时调用的函数的指针。</LI>
+  <LI><CODE>args</CODE>: <CODE>void*</CODE> - 一个退出时传递给回调的指针。</LI></UL></DIV>
+<P>注册的 AtExit 钩子会在事件循环结束之后但虚拟机被终止之前退出。</P>
+<P>AtExit 有两个参数：一个退出时运行的回调函数的指针，和一个要传入回调的无类型的上下文数据的指针。</P>
+<P>回调按照后进先出的顺序运行。</P>
+<P>以下 <CODE>addon.cc</CODE> 实现了 AtExit：</P>
+<PRE><CODE class="lang-cpp">// addon.cc
+#undef NDEBUG
+#include &lt;assert.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;node.h&gt;
+
+namespace demo {
+
+using node::AtExit;
+using v8::HandleScope;
+using v8::Isolate;
+using v8::Local;
+using v8::Object;
+
+static char cookie[] = "yum yum";
+static int at_exit_cb1_called = 0;
+static int at_exit_cb2_called = 0;
+
+static void at_exit_cb1(void* arg) {
+  Isolate* isolate = static_cast&lt;Isolate*&gt;(arg);
+  HandleScope scope(isolate);
+  Local&lt;Object&gt; obj = Object::New(isolate);
+  assert(!obj.IsEmpty()); // assert VM is still alive
+  assert(obj-&gt;IsObject());
+  at_exit_cb1_called++;
+}
+
+static void at_exit_cb2(void* arg) {
+  assert(arg == static_cast&lt;void*&gt;(cookie));
+  at_exit_cb2_called++;
+}
+
+static void sanity_check(void*) {
+  assert(at_exit_cb1_called == 1);
+  assert(at_exit_cb2_called == 2);
+}
+
+void init(Local&lt;Object&gt; exports) {
+  AtExit(sanity_check);
+  AtExit(at_exit_cb2, cookie);
+  AtExit(at_exit_cb2, cookie);
+  AtExit(at_exit_cb1, exports-&gt;GetIsolate());
+}
+
+NODE_MODULE(addon, init);
+
+}  // namespace demo
+</CODE></PRE>
+<P>测试：</P>
+<PRE><CODE class="lang-js">// test.js
+const addon = require('./build/Release/addon');
+</CODE></PRE></DIV></DIV></DIV><!-- 搜索弹窗 --> 
+  
+<DIV id="modal_search_bg"></DIV>
+<DIV 
+id="modal_search"><INPUT id="modal_search_input" placeholder="API 快速搜索" value=""> 
+    
+<DIV id="modal_search_result"></DIV></DIV><!-- js -->   <!--[if lt IE 10]><script src="/static/lib/placeholders.js?20170426"></script><![endif]--> 
+  
+<SCRIPT src="C-C++%20插件%20%20Node_js%20API%20文档_files/api.js"></SCRIPT>
+ </BODY></HTML>

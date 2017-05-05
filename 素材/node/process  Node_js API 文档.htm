@@ -1,0 +1,1829 @@
+﻿<!DOCTYPE HTML>
+<!-- saved from url=(0033)http://nodejs.cn/api/process.html -->
+<!DOCTYPE html PUBLIC "" ""><HTML lang="zh-cmn-Hans"><HEAD><META 
+content="IE=11.0000" http-equiv="X-UA-Compatible">
+   
+<META charset="utf-8">   <TITLE>process | Node.js API 文档</TITLE>   <LINK href="process%20%20Node_js%20API%20文档_files/api.css" 
+rel="stylesheet">   <LINK href="/static/favicon.png" rel="icon" type="image/png" 
+sizes="32x32"> 
+<META name="GENERATOR" content="MSHTML 11.00.9600.18639"></HEAD> 
+<BODY class="alt apidoc" id="api-section-process">
+<DIV class="clearfix" id="content">
+<DIV class="interior" id="column2">
+<DIV class="interior" id="intro"><A href="http://nodejs.cn/">          Node.js 
+中文网         </A>         
+<DIV><INPUT id="search_input" placeholder="API 快速搜索" value="">         
+</DIV></DIV>
+<UL>
+  <LI><A class="nav-documentation" href="http://nodejs.cn/api/documentation.html">关于本文档</A></LI>
+  <LI><A class="nav-synopsis" 
+  href="http://nodejs.cn/api/synopsis.html">用法与例子</A></LI></UL>
+<DIV class="line"></DIV>
+<UL>
+  <LI><A class="nav-assert" href="http://nodejs.cn/api/assert.html">Assert 
+  (断言)</A></LI>
+  <LI><A class="nav-buffer" 
+  href="http://nodejs.cn/api/buffer.html">Buffer</A></LI>
+  <LI><A class="nav-addons" href="http://nodejs.cn/api/addons.html">C/C++ 
+  插件</A></LI>
+  <LI><A class="nav-child_process" href="http://nodejs.cn/api/child_process.html">Child 
+  Processes (子进程)</A></LI>
+  <LI><A class="nav-cluster" href="http://nodejs.cn/api/cluster.html">Cluster 
+  (集群)</A></LI>
+  <LI><A class="nav-cli" href="http://nodejs.cn/api/cli.html">CLI 
+  (命令行选项)</A></LI>
+  <LI><A class="nav-console" href="http://nodejs.cn/api/console.html">Console 
+  (控制台)</A></LI>
+  <LI><A class="nav-crypto" href="http://nodejs.cn/api/crypto.html">Crypto 
+  (加密)</A></LI>
+  <LI><A class="nav-debugger" href="http://nodejs.cn/api/debugger.html">Debugger 
+  (调试器)</A></LI>
+  <LI><A class="nav-dns" href="http://nodejs.cn/api/dns.html">DNS 
+  (域名服务器)</A></LI>
+  <LI><A class="nav-domain" href="http://nodejs.cn/api/domain.html">Domain 
+  (域)</A></LI>
+  <LI><A class="nav-errors" href="http://nodejs.cn/api/errors.html">Error 
+  (错误)</A></LI>
+  <LI><A class="nav-events" href="http://nodejs.cn/api/events.html">Events 
+  (事件)</A></LI>
+  <LI><A class="nav-fs" href="http://nodejs.cn/api/fs.html">File System 
+  (文件系统)</A></LI>
+  <LI><A class="nav-globals" href="http://nodejs.cn/api/globals.html">Global 
+  (全局变量)</A></LI>
+  <LI><A class="nav-http" href="http://nodejs.cn/api/http.html">HTTP</A></LI>
+  <LI><A class="nav-https" href="http://nodejs.cn/api/https.html">HTTPS</A></LI>
+  <LI><A class="nav-modules" href="http://nodejs.cn/api/modules.html">Module 
+  (模块)</A></LI>
+  <LI><A class="nav-net" href="http://nodejs.cn/api/net.html">Net (网络)</A></LI>
+  <LI><A class="nav-os" href="http://nodejs.cn/api/os.html">OS (操作系统)</A></LI>
+  <LI><A class="nav-path" href="http://nodejs.cn/api/path.html">Path 
+  (路径)</A></LI>
+  <LI><A class="nav-process active" 
+  href="http://nodejs.cn/api/process.html">Process (进程)</A></LI>
+  <LI><A class="nav-punycode" 
+  href="http://nodejs.cn/api/punycode.html">Punycode</A></LI>
+  <LI><A class="nav-querystring" 
+  href="http://nodejs.cn/api/querystring.html">Query Strings (查询字符串)</A></LI>
+  <LI><A class="nav-readline" href="http://nodejs.cn/api/readline.html">Readline 
+  (逐行读取)</A></LI>
+  <LI><A class="nav-repl" href="http://nodejs.cn/api/repl.html">REPL 
+  (交互式解释器)</A></LI>
+  <LI><A class="nav-stream" href="http://nodejs.cn/api/stream.html">Stream 
+  (流)</A></LI>
+  <LI><A class="nav-string_decoder" href="http://nodejs.cn/api/string_decoder.html">String 
+  Decoder (字符串解码器)</A></LI>
+  <LI><A class="nav-timers" href="http://nodejs.cn/api/timers.html">Timer 
+  (定时器)</A></LI>
+  <LI><A class="nav-tls" href="http://nodejs.cn/api/tls.html">TLS 
+  (安全传输层)</A></LI>
+  <LI><A class="nav-tty" href="http://nodejs.cn/api/tty.html">TTY (终端)</A></LI>
+  <LI><A class="nav-dgram" href="http://nodejs.cn/api/dgram.html">UDP/Datagram 
+  (数据报)</A></LI>
+  <LI><A class="nav-url" href="http://nodejs.cn/api/url.html">URL</A></LI>
+  <LI><A class="nav-util" href="http://nodejs.cn/api/util.html">Util 
+  (实用工具)</A></LI>
+  <LI><A class="nav-v8" href="http://nodejs.cn/api/v8.html">V8</A></LI>
+  <LI><A class="nav-vm" href="http://nodejs.cn/api/vm.html">VM (虚拟机)</A></LI>
+  <LI><A class="nav-zlib" href="http://nodejs.cn/api/zlib.html">ZLIB 
+  (压缩)</A></LI></UL>
+<DIV class="line"></DIV></DIV>
+<DIV class="interior" id="column1" data-id="process"><HEADER>
+<H1>Node.js v6.10.3 文档</H1>
+<DIV id="gtoc">
+<P><A name="toc" href="http://nodejs.cn/api/">返回文档首页</A>             <!--<a href="/api/all.html">单页面显示</a> |--> 
+            <!--<a href="/api/process.json">JSON格式</a> |-->             <!--<a href="/api/en/process.html">查看英文版</a>--> 
+          </P></DIV>
+<HR>
+</HEADER>
+<DIV id="toc">
+<H2>目录</H2>
+<UL>
+  <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/process.html#process_process">process 
+  (进程)</A></SPAN>
+  <UL> 
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/process.html#process_process_events">Process 
+    Events</A></SPAN>
+    <UL> 
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/process.html#process_event_beforeexit">Event: 
+      'beforeExit'</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/process.html#process_event_disconnect">Event: 
+      'disconnect'</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/process.html#process_event_exit">Event: 
+      'exit'</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/process.html#process_event_message">Event: 
+      'message'</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/process.html#process_event_rejectionhandled">Event: 
+      'rejectionHandled'</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/process.html#process_event_uncaughtexception">Event: 
+      'uncaughtException'</A></SPAN>
+      <UL> 
+        <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/process.html#process_warning_using_uncaughtexception_correctly">Warning: 
+        Using <CODE>'uncaughtException'</CODE> correctly</A></SPAN></LI></UL></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/process.html#process_event_unhandledrejection">Event: 
+      'unhandledRejection'</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/process.html#process_event_warning">Event: 
+      'warning'</A></SPAN>
+      <UL> 
+        <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/process.html#process_emitting_custom_warnings">Emitting 
+        custom warnings</A></SPAN></LI>
+        <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/process.html#process_emitting_custom_deprecation_warnings">Emitting 
+        custom deprecation warnings</A></SPAN></LI></UL></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/process.html#process_signal_events">Signal 
+      Events</A></SPAN></LI></UL></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/process.html#process_process_abort">process.abort()</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/process.html#process_process_arch">process.arch</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/process.html#process_process_argv">process.argv</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/process.html#process_process_argv0">process.argv0</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/process.html#process_process_chdir_directory">process.chdir(directory)</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/process.html#process_process_config">process.config</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/process.html#process_process_connected">process.connected</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/process.html#process_process_cpuusage_previousvalue">process.cpuUsage([previousValue])</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/process.html#process_process_cwd">process.cwd()</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/process.html#process_process_disconnect">process.disconnect()</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/process.html#process_process_env">process.env</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/process.html#process_process_emitwarning_warning_name_ctor">process.emitWarning(warning[, 
+    name][, ctor])</A></SPAN>
+    <UL> 
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/process.html#process_avoiding_duplicate_warnings">Avoiding 
+      duplicate warnings</A></SPAN></LI></UL></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/process.html#process_process_execargv">process.execArgv</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/process.html#process_process_execpath">process.execPath</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/process.html#process_process_exit_code">process.exit([code])</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/process.html#process_process_exitcode">process.exitCode</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/process.html#process_process_getegid">process.getegid()</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/process.html#process_process_geteuid">process.geteuid()</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/process.html#process_process_getgid">process.getgid()</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/process.html#process_process_getgroups">process.getgroups()</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/process.html#process_process_getuid">process.getuid()</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/process.html#process_process_hrtime_time">process.hrtime([time])</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/process.html#process_process_initgroups_user_extra_group">process.initgroups(user, 
+    extra_group)</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/process.html#process_process_kill_pid_signal">process.kill(pid[, 
+    signal])</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/process.html#process_process_mainmodule">process.mainModule</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/process.html#process_process_memoryusage">process.memoryUsage()</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/process.html#process_process_nexttick_callback_args">process.nextTick(callback[, 
+    ...args])</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/process.html#process_process_pid">process.pid</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/process.html#process_process_platform">process.platform</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/process.html#process_process_release">process.release</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/process.html#process_process_send_message_sendhandle_options_callback">process.send(message[, 
+    sendHandle[, options]][, callback])</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/process.html#process_process_setegid_id">process.setegid(id)</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/process.html#process_process_seteuid_id">process.seteuid(id)</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/process.html#process_process_setgid_id">process.setgid(id)</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/process.html#process_process_setgroups_groups">process.setgroups(groups)</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/process.html#process_process_setuid_id">process.setuid(id)</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/process.html#process_process_stderr">process.stderr</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/process.html#process_process_stdin">process.stdin</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/process.html#process_process_stdout">process.stdout</A></SPAN>
+    <UL> 
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/process.html#process_a_note_on_process_i_o">A 
+      note on process I/O</A></SPAN></LI></UL></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/process.html#process_process_title">process.title</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/process.html#process_process_umask_mask">process.umask([mask])</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/process.html#process_process_uptime">process.uptime()</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/process.html#process_process_version">process.version</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/process.html#process_process_versions">process.versions</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/process.html#process_exit_codes">Exit 
+    Codes</A></SPAN></LI></UL></LI></UL></DIV>
+<DIV id="apicontent">
+<H1>process (进程)<SPAN><A class="mark" id="process_process" href="http://nodejs.cn/api/process.html#process_process">#</A></SPAN></H1>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/process.html#process_process">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/process/process.md" 
+target="_blank" rel="nofollow">参与翻译</A></P><!-- type=global --> 
+<P><CODE>process</CODE> 对象是一个 <CODE>global</CODE> （全局变量），提供有关信息，控制当前 Node.js 
+进程。作为一个对象，它对于 Node.js 应用程序始终是可用的，故无需使用 <CODE>require()</CODE>。</P>
+<H2>Process Events<SPAN><A class="mark" id="process_process_events" href="http://nodejs.cn/api/process.html#process_process_events">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/process.html#process_process_events">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/process/process_events.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P>The <CODE>process</CODE> object is an instance of <A href="http://nodejs.cn/api/events.html#events_class_eventemitter"><CODE>EventEmitter</CODE></A>.</P>
+<H3>Event: 'beforeExit'<SPAN><A class="mark" id="process_event_beforeexit" href="http://nodejs.cn/api/process.html#process_event_beforeexit">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/process.html#process_event_beforeexit">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/process/event_beforeexit.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.11.12</SPAN> </DIV>
+<P>The <CODE>'beforeExit'</CODE> event is emitted when Node.js empties its event 
+loop and has no additional work to schedule. Normally, the Node.js process will 
+exit when there is no work scheduled, but a listener registered on the 
+<CODE>'beforeExit'</CODE> event can make asynchronous calls, and thereby cause 
+the Node.js process to continue.</P>
+<P>The listener callback function is invoked with the value of <A href="http://nodejs.cn/api/process.html#process_process_exitcode"><CODE>process.exitCode</CODE></A> 
+passed as the only argument.</P>
+<P>The <CODE>'beforeExit'</CODE> event is <EM>not</EM> emitted for conditions 
+causing explicit termination, such as calling <A href="http://nodejs.cn/api/process.html#process_process_exit_code"><CODE>process.exit()</CODE></A> 
+or uncaught exceptions.</P>
+<P>The <CODE>'beforeExit'</CODE> should <EM>not</EM> be used as an alternative 
+to the <CODE>'exit'</CODE> event unless the intention is to schedule additional 
+work.</P>
+<H3>Event: 'disconnect'<SPAN><A class="mark" id="process_event_disconnect" href="http://nodejs.cn/api/process.html#process_event_disconnect">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/process.html#process_event_disconnect">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/process/event_disconnect.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.7.7</SPAN> </DIV>
+<P>If the Node.js process is spawned with an IPC channel (see the <A href="http://nodejs.cn/api/child_process.html">Child 
+Process</A> and <A href="http://nodejs.cn/api/cluster.html">Cluster</A> 
+documentation), the <CODE>'disconnect'</CODE> event will be emitted when the IPC 
+channel is closed.</P>
+<H3>Event: 'exit'<SPAN><A class="mark" id="process_event_exit" href="http://nodejs.cn/api/process.html#process_event_exit">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/process.html#process_event_exit">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/process/event_exit.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.7</SPAN> </DIV>
+<P>The <CODE>'exit'</CODE> event is emitted when the Node.js process is about to 
+exit as a result of either:</P>
+<UL>
+  <LI>The <CODE>process.exit()</CODE> method being called explicitly;</LI>
+  <LI>The Node.js event loop no longer having any additional work to 
+  perform.</LI></UL>
+<P>There is no way to prevent the exiting of the event loop at this point, and 
+once all <CODE>'exit'</CODE> listeners have finished running the Node.js process 
+will terminate.</P>
+<P>The listener callback function is invoked with the exit code specified either
+ by the <A 
+href="http://nodejs.cn/api/process.html#process_process_exitcode"><CODE>process.exitCode</CODE></A> 
+property, or the <CODE>exitCode</CODE> argument passed to the <A href="http://nodejs.cn/api/process.html#process_process_exit_code"><CODE>process.exit()</CODE></A> 
+method, as the only argument.</P>
+<P>For example:</P>
+<PRE><CODE class="lang-js">process.on('exit', (code) =&gt; {
+  console.log(`About to exit with code: ${code}`);
+});
+</CODE></PRE>
+<P>Listener functions <STRONG>must</STRONG> only perform 
+<STRONG>synchronous</STRONG> operations. The Node.js process will exit 
+immediately after calling the <CODE>'exit'</CODE> event listeners causing any 
+additional work still queued in the event loop to be abandoned. In the following 
+example, for instance, the timeout will never occur:</P>
+<PRE><CODE class="lang-js">process.on('exit', (code) =&gt; {
+  setTimeout(() =&gt; {
+    console.log('This will not run');
+  }, 0);
+});
+</CODE></PRE>
+<H3>Event: 'message'<SPAN><A class="mark" id="process_event_message" href="http://nodejs.cn/api/process.html#process_event_message">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/process.html#process_event_message">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/process/event_message.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.5.10</SPAN> </DIV>
+<P>If the Node.js process is spawned with an IPC channel (see the <A href="http://nodejs.cn/api/child_process.html">Child 
+Process</A> and <A href="http://nodejs.cn/api/cluster.html">Cluster</A> 
+documentation), the <CODE>'message'</CODE> event is emitted whenever a message 
+sent by a parent process using <A href="http://nodejs.cn/api/child_process.html#child_process_child_send_message_sendhandle_options_callback"><CODE>childprocess.send()</CODE></A> 
+is received by the child process.</P>
+<P>The listener callback is invoked with the following arguments:</P>
+<UL>
+  <LI><CODE>message</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">&lt;Object&gt;</A> 
+  a parsed JSON object or primitive value</LI>
+  <LI><CODE>sendHandle</CODE> <SPAN class="type">&lt;Handle object&gt;</SPAN> a 
+  <A 
+  href="http://nodejs.cn/api/net.html#net_class_net_socket"><CODE>net.Socket</CODE></A> 
+  or <A 
+  href="http://nodejs.cn/api/net.html#net_class_net_server"><CODE>net.Server</CODE></A> 
+  object, or undefined.</LI></UL>
+<H3>Event: 'rejectionHandled'<SPAN><A class="mark" id="process_event_rejectionhandled" 
+href="http://nodejs.cn/api/process.html#process_event_rejectionhandled">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/process.html#process_event_rejectionhandled">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/process/event_rejectionhandled.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v1.4.1</SPAN> </DIV>
+<P>The <CODE>'rejectionHandled'</CODE> event is emitted whenever a 
+<CODE>Promise</CODE> has been rejected and an error handler was attached to it 
+(using <A href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/catch"><CODE>promise.catch()</CODE></A>, 
+for example) later than one turn of the Node.js event loop.</P>
+<P>The listener callback is invoked with a reference to the rejected 
+<CODE>Promise</CODE> as the only argument.</P>
+<P>The <CODE>Promise</CODE> object would have previously been emitted in an 
+<CODE>'unhandledRejection'</CODE> event, but during the course of processing 
+gained a rejection handler.</P>
+<P>There is no notion of a top level for a <CODE>Promise</CODE> chain at which 
+rejections can always be handled. Being inherently asynchronous in nature, a 
+<CODE>Promise</CODE> rejection can be handled at a future point in time — 
+possibly much later than the event loop turn it takes for the 
+<CODE>'unhandledRejection'</CODE> event to be emitted.</P>
+<P>Another way of stating this is that, unlike in synchronous code where there 
+is an ever-growing list of unhandled exceptions, with Promises there can be a
+ growing-and-shrinking list of unhandled rejections.</P>
+<P>In synchronous code, the <CODE>'uncaughtException'</CODE> event is emitted 
+when the list of unhandled exceptions grows.</P>
+<P>In asynchronous code, the <CODE>'unhandledRejection'</CODE> event is emitted 
+when the list of unhandled rejections grows, and the 
+<CODE>'rejectionHandled'</CODE> event is emitted when the list of unhandled 
+rejections shrinks.</P>
+<P>For example:</P>
+<PRE><CODE class="lang-js">const unhandledRejections = new Map();
+process.on('unhandledRejection', (reason, p) =&gt; {
+  unhandledRejections.set(p, reason);
+});
+process.on('rejectionHandled', (p) =&gt; {
+  unhandledRejections.delete(p);
+});
+</CODE></PRE>
+<P>In this example, the <CODE>unhandledRejections</CODE> <CODE>Map</CODE> will 
+grow and shrink over time, reflecting rejections that start unhandled and then 
+become handled. It is possible to record such errors in an error log, either 
+periodically (which is likely best for long-running application) or upon process 
+exit (which is likely most convenient for scripts).</P>
+<H3>Event: 'uncaughtException'<SPAN><A class="mark" id="process_event_uncaughtexception" 
+href="http://nodejs.cn/api/process.html#process_event_uncaughtexception">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/process.html#process_event_uncaughtexception">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/process/event_uncaughtexception.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.18</SPAN> </DIV>
+<P>The <CODE>'uncaughtException'</CODE> event is emitted when an uncaught 
+JavaScript exception bubbles all the way back to the event loop. By default, 
+Node.js handles such exceptions by printing the stack trace to 
+<CODE>stderr</CODE> and exiting. Adding a handler for the 
+<CODE>'uncaughtException'</CODE> event overrides this default behavior.</P>
+<P>The listener function is called with the <CODE>Error</CODE> object passed as 
+the only argument.</P>
+<P>For example:</P>
+<PRE><CODE class="lang-js">process.on('uncaughtException', (err) =&gt; {
+  fs.writeSync(1, `Caught exception: ${err}`);
+});
+
+setTimeout(() =&gt; {
+  console.log('This will still run.');
+}, 500);
+
+// Intentionally cause an exception, but don't catch it.
+nonexistentFunc();
+console.log('This will not run.');
+</CODE></PRE>
+<H4>Warning: Using <CODE>'uncaughtException'</CODE> correctly<SPAN><A class="mark" 
+id="process_warning_using_uncaughtexception_correctly" href="http://nodejs.cn/api/process.html#process_warning_using_uncaughtexception_correctly">#</A></SPAN></H4>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/process.html#process_warning_using_uncaughtexception_correctly">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/process/warning_using_uncaughtexception_correctly.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P>Note that <CODE>'uncaughtException'</CODE> is a crude mechanism for exception 
+handling intended to be used only as a last resort. The event <EM>should 
+not</EM> be used as an equivalent to <CODE>On Error Resume Next</CODE>. 
+Unhandled exceptions inherently mean that an application is in an undefined 
+state. Attempting to resume application code without properly recovering from 
+the exception can cause additional unforeseen and unpredictable issues.</P>
+<P>Exceptions thrown from within the event handler will not be caught. Instead 
+the process will exit with a non-zero exit code and the stack trace will be 
+printed. This is to avoid infinite recursion.</P>
+<P>Attempting to resume normally after an uncaught exception can be similar to
+ pulling out of the power cord when upgrading a computer -- nine out of ten
+ times nothing happens - but the 10th time, the system becomes corrupted.</P>
+<P>The correct use of <CODE>'uncaughtException'</CODE> is to perform synchronous 
+cleanup of allocated resources (e.g. file descriptors, handles, etc) before 
+shutting down the process. <STRONG>It is not safe to resume normal operation 
+after <CODE>'uncaughtException'</CODE>.</STRONG></P>
+<P>To restart a crashed application in a more reliable way, whether 
+<CODE>uncaughtException</CODE> is emitted or not, an external monitor should be 
+employed in a separate process to detect application failures and recover or 
+restart as needed.</P>
+<H3>Event: 'unhandledRejection'<SPAN><A class="mark" id="process_event_unhandledrejection" 
+href="http://nodejs.cn/api/process.html#process_event_unhandledrejection">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/process.html#process_event_unhandledrejection">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/process/event_unhandledrejection.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v1.4.1</SPAN> </DIV>
+<P>The <CODE>'unhandledRejection</CODE>' event is emitted whenever a 
+<CODE>Promise</CODE> is rejected and no error handler is attached to the promise 
+within a turn of the event loop. When programming with Promises, exceptions are 
+encapsulated as "rejected promises". Rejections can be caught and handled using 
+<A href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/catch"><CODE>promise.catch()</CODE></A> 
+and are propagated through a <CODE>Promise</CODE> chain. The 
+<CODE>'unhandledRejection'</CODE> event is useful for detecting and keeping 
+track of promises that were rejected whose rejections have not yet been 
+handled.</P>
+<P>The listener function is called with the following arguments:</P>
+<UL>
+  <LI><CODE>reason</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error">&lt;Error&gt;</A> 
+  | <SPAN class="type">&lt;any&gt;</SPAN> The object with which the promise was 
+  rejected (typically an <A href="http://nodejs.cn/api/errors.html#errors_class_error"><CODE>Error</CODE></A> 
+  object).</LI>
+  <LI><CODE>p</CODE> the <CODE>Promise</CODE> that was rejected.</LI></UL>
+<P>For example:</P>
+<PRE><CODE class="lang-js">process.on('unhandledRejection', (reason, p) =&gt; {
+  console.log('Unhandled Rejection at: Promise', p, 'reason:', reason);
+  // application specific logging, throwing an error, or other logic here
+});
+
+somePromise.then((res) =&gt; {
+  return reportToUser(JSON.pasre(res)); // note the typo (`pasre`)
+}); // no `.catch` or `.then`
+</CODE></PRE>
+<P>The following will also trigger the <CODE>'unhandledRejection'</CODE> event 
+to be emitted:</P>
+<PRE><CODE class="lang-js">function SomeResource() {
+  // Initially set the loaded status to a rejected promise
+  this.loaded = Promise.reject(new Error('Resource not yet loaded!'));
+}
+
+var resource = new SomeResource();
+// no .catch or .then on resource.loaded for at least a turn
+</CODE></PRE>
+<P>In this example case, it is possible to track the rejection as a developer 
+error as would typically be the case for other <CODE>'unhandledRejection'</CODE> 
+events. To address such failures, a non-operational <A href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/catch"><CODE>.catch(() 
+=&gt; { })</CODE></A> handler may be attached to <CODE>resource.loaded</CODE>, 
+which would prevent the <CODE>'unhandledRejection'</CODE> event from being 
+emitted. Alternatively, the <A href="http://nodejs.cn/api/process.html#process_event_rejectionhandled"><CODE>'rejectionHandled'</CODE></A> 
+event may be used.</P>
+<H3>Event: 'warning'<SPAN><A class="mark" id="process_event_warning" href="http://nodejs.cn/api/process.html#process_event_warning">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/process.html#process_event_warning">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/process/event_warning.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v6.0.0</SPAN> </DIV>
+<P>The <CODE>'warning'</CODE> event is emitted whenever Node.js emits a process 
+warning.</P>
+<P>A process warning is similar to an error in that it describes exceptional
+ conditions that are being brought to the user's attention. However, warnings
+ are not part of the normal Node.js and JavaScript error handling flow. Node.js 
+can emit warnings whenever it detects bad coding practices that could lead to 
+sub-optimal application performance, bugs or security vulnerabilities.</P>
+<P>The listener function is called with a single <CODE>warning</CODE> argument 
+whose value is an <CODE>Error</CODE> object. There are three key properties that 
+describe the warning:</P>
+<UL>
+  <LI><CODE>name</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  The name of the warning (currently <CODE>Warning</CODE> by default).</LI>
+  <LI><CODE>message</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  A system-provided description of the warning.</LI>
+  <LI><CODE>stack</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  A stack trace to the location in the code where the warning was 
+issued.</LI></UL>
+<PRE><CODE class="lang-js">process.on('warning', (warning) =&gt; {
+  console.warn(warning.name);    // Print the warning name
+  console.warn(warning.message); // Print the warning message
+  console.warn(warning.stack);   // Print the stack trace
+});
+</CODE></PRE>
+<P>By default, Node.js will print process warnings to <CODE>stderr</CODE>. The 
+<CODE>--no-warnings</CODE> command-line option can be used to suppress the 
+default console output but the <CODE>'warning'</CODE> event will still be 
+emitted by the <CODE>process</CODE> object.</P>
+<P>The following example illustrates the warning that is printed to 
+<CODE>stderr</CODE> when too many listeners have been added to an event</P>
+<PRE><CODE class="lang-txt">$ node
+&gt; events.defaultMaxListeners = 1;
+&gt; process.on('foo', () =&gt; {});
+&gt; process.on('foo', () =&gt; {});
+&gt; (node:38638) Warning: Possible EventEmitter memory leak detected. 2 foo
+... listeners added. Use emitter.setMaxListeners() to increase limit
+</CODE></PRE>
+<P>In contrast, the following example turns off the default warning output and
+ adds a custom handler to the <CODE>'warning'</CODE> event:</P>
+<PRE><CODE class="lang-txt">$ node --no-warnings
+&gt; var p = process.on('warning', (warning) =&gt; console.warn('Do not do that!'));
+&gt; events.defaultMaxListeners = 1;
+&gt; process.on('foo', () =&gt; {});
+&gt; process.on('foo', () =&gt; {});
+&gt; Do not do that!
+</CODE></PRE>
+<P>The <CODE>--trace-warnings</CODE> command-line option can be used to have the 
+default console output for warnings include the full stack trace of the 
+warning.</P>
+<H4>Emitting custom warnings<SPAN><A class="mark" id="process_emitting_custom_warnings" 
+href="http://nodejs.cn/api/process.html#process_emitting_custom_warnings">#</A></SPAN></H4>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/process.html#process_emitting_custom_warnings">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/process/emitting_custom_warnings.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P>The <A href="http://nodejs.cn/api/process.html#process_process_emitwarning_warning_name_ctor"><CODE>process.emitWarning()</CODE></A> 
+method can be used to issue custom or application specific warnings.</P>
+<PRE><CODE class="lang-js">// Emit a warning using a string...
+process.emitWarning('Something happened!');
+  // Prints: (node 12345) Warning: Something happened!
+
+// Emit a warning using an object...
+process.emitWarning('Something Happened!', 'CustomWarning');
+  // Prints: (node 12345) CustomWarning: Something happened!
+
+// Emit a warning using a custom Error object...
+class CustomWarning extends Error {
+  constructor(message) {
+    super(message);
+    this.name = 'CustomWarning';
+    Error.captureStackTrace(this, CustomWarning);
+  }
+}
+const myWarning = new CustomWarning('Something happened!');
+process.emitWarning(myWarning);
+  // Prints: (node 12345) CustomWarning: Something happened!
+</CODE></PRE>
+<H4>Emitting custom deprecation warnings<SPAN><A class="mark" id="process_emitting_custom_deprecation_warnings" 
+href="http://nodejs.cn/api/process.html#process_emitting_custom_deprecation_warnings">#</A></SPAN></H4>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/process.html#process_emitting_custom_deprecation_warnings">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/process/emitting_custom_deprecation_warnings.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P>Custom deprecation warnings can be emitted by setting the <CODE>name</CODE> 
+of a custom warning to <CODE>DeprecationWarning</CODE>. For instance:</P>
+<PRE><CODE class="lang-js">process.emitWarning('This API is deprecated', 'DeprecationWarning');
+</CODE></PRE>
+<P>Or,</P>
+<PRE><CODE class="lang-js">const err = new Error('This API is deprecated');
+err.name = 'DeprecationWarning';
+process.emitWarning(err);
+</CODE></PRE>
+<P>Launching Node.js using the <CODE>--throw-deprecation</CODE> command line 
+flag will cause custom deprecation warnings to be thrown as exceptions.</P>
+<P>Using the <CODE>--trace-deprecation</CODE> command line flag will cause the 
+custom deprecation to be printed to <CODE>stderr</CODE> along with the stack 
+trace.</P>
+<P>Using the <CODE>--no-deprecation</CODE> command line flag will suppress all 
+reporting of the custom deprecation.</P>
+<P>The <CODE>*-deprecation</CODE> command line flags only affect warnings that 
+use the name <CODE>DeprecationWarning</CODE>.</P>
+<H3>Signal Events<SPAN><A class="mark" id="process_signal_events" href="http://nodejs.cn/api/process.html#process_signal_events">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/process.html#process_signal_events">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/process/signal_events.md" 
+target="_blank" rel="nofollow">参与翻译</A></P><!--type=event--> <!--name=SIGINT, SIGHUP, etc.--> 
+<P>Signal events will be emitted when the Node.js process receives a signal. 
+Please refer to <A 
+href="http://man7.org/linux/man-pages/man7/signal.7.html">signal(7)</A> for a 
+listing of standard POSIX signal names such as <CODE>SIGINT</CODE>, 
+<CODE>SIGHUP</CODE>, etc.</P>
+<P>The name of each event will be the uppercase common name for the signal (e.g. 
+<CODE>'SIGINT'</CODE> for <CODE>SIGINT</CODE> signals).</P>
+<P>For example:</P>
+<PRE><CODE class="lang-js">// Begin reading from stdin so the process does not exit.
+process.stdin.resume();
+
+process.on('SIGINT', () =&gt; {
+  console.log('Received SIGINT.  Press Control-D to exit.');
+});
+</CODE></PRE>
+<P><EM>Note</EM>: An easy way to send the <CODE>SIGINT</CODE> signal is with 
+<CODE>&lt;Ctrl&gt;-C</CODE> in most terminal programs.</P>
+<P>It is important to take note of the following:</P>
+<UL>
+  <LI><CODE>SIGUSR1</CODE> is reserved by Node.js to start the debugger.  It's 
+  possible to install a listener but doing so will <EM>not</EM> stop the 
+  debugger from starting.</LI>
+  <LI><CODE>SIGTERM</CODE> and <CODE>SIGINT</CODE> have default handlers on 
+  non-Windows platforms that resets the terminal mode before exiting with code 
+  <CODE>128 + signal number</CODE>. If one of these signals has a listener 
+  installed, its default behavior will be removed (Node.js will no longer 
+  exit).</LI>
+  <LI><CODE>SIGPIPE</CODE> is ignored by default. It can have a listener 
+  installed.</LI>
+  <LI><CODE>SIGHUP</CODE> is generated on Windows when the console window is 
+  closed, and on other platforms under various similar conditions, see <A href="http://man7.org/linux/man-pages/man7/signal.7.html">signal(7)</A>. 
+  It can have a listener installed, however Node.js will be unconditionally 
+  terminated by Windows about 10 seconds later. On non-Windows platforms, the 
+  default behavior of <CODE>SIGHUP</CODE> is to terminate Node.js, but once a 
+  listener has been installed its default behavior will be removed.</LI>
+  <LI><CODE>SIGTERM</CODE> is not supported on Windows, it can be listened 
+  on.</LI>
+  <LI><CODE>SIGINT</CODE> from the terminal is supported on all platforms, and 
+  can usually be generated with <CODE>CTRL+C</CODE> (though this may be 
+  configurable). It is not generated when terminal raw mode is enabled.</LI>
+  <LI><CODE>SIGBREAK</CODE> is delivered on Windows when 
+  <CODE>&lt;Ctrl&gt;+&lt;Break&gt;</CODE> is pressed, on non-Windows platforms 
+  it can be listened on, but there is no way to send or generate it.</LI>
+  <LI><CODE>SIGWINCH</CODE> is delivered when the console has been resized. On 
+  Windows, this will only happen on write to the console when the cursor is 
+  being moved, or when a readable tty is used in raw mode.</LI>
+  <LI><CODE>SIGKILL</CODE> cannot have a listener installed, it will 
+  unconditionally terminate Node.js on all platforms.</LI>
+  <LI><CODE>SIGSTOP</CODE> cannot have a listener installed.</LI>
+  <LI><CODE>SIGBUS</CODE>, <CODE>SIGFPE</CODE>, <CODE>SIGSEGV</CODE> and 
+  <CODE>SIGILL</CODE>, when not raised artificially using <A href="http://man7.org/linux/man-pages/man2/kill.2.html">kill(2)</A>, 
+  inherently leave the process in a state from which it is not safe to attempt 
+  to call JS listeners. Doing so might lead to the process hanging in an endless 
+  loop, since listeners attached using <CODE>process.on()</CODE> are called 
+  asynchronously and therefore unable to correct the underlying problem.</LI></UL>
+<P><EM>Note</EM>: Windows does not support sending signals, but Node.js offers 
+some emulation with <A href="http://nodejs.cn/api/process.html#process_process_kill_pid_signal"><CODE>process.kill()</CODE></A>, 
+and <A href="http://nodejs.cn/api/child_process.html#child_process_child_kill_signal"><CODE>ChildProcess.kill()</CODE></A>. 
+Sending signal <CODE>0</CODE> can be used to test for the existence of a 
+process. Sending <CODE>SIGINT</CODE>, <CODE>SIGTERM</CODE>, and 
+<CODE>SIGKILL</CODE> cause the unconditional termination of the target
+ process.</P>
+<H2>process.abort()<SPAN><A class="mark" id="process_process_abort" href="http://nodejs.cn/api/process.html#process_process_abort">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/process.html#process_process_abort">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/process/process_abort.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.7.0</SPAN> </DIV>
+<P>The <CODE>process.abort()</CODE> method causes the Node.js process to exit 
+immediately and generate a core file.</P>
+<H2>process.arch<SPAN><A class="mark" id="process_process_arch" href="http://nodejs.cn/api/process.html#process_process_arch">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/process.html#process_process_arch">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/process/process_arch.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.5.0</SPAN> </DIV>
+<UL>
+  <LI><A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A></LI></UL>
+<P>The <CODE>process.arch</CODE> property returns a String identifying the 
+processor architecture that the Node.js process is currently running on. For 
+instance <CODE>'arm'</CODE>, <CODE>'ia32'</CODE>, or <CODE>'x64'</CODE>.</P>
+<PRE><CODE class="lang-js">console.log(`This processor architecture is ${process.arch}`);
+</CODE></PRE>
+<H2>process.argv<SPAN><A class="mark" id="process_process_argv" href="http://nodejs.cn/api/process.html#process_process_argv">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/process.html#process_process_argv">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/process/process_argv.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.27</SPAN> </DIV>
+<UL>
+  <LI><A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">&lt;Array&gt;</A></LI></UL>
+<P>The <CODE>process.argv</CODE> property returns an array containing the 
+command line arguments passed when the Node.js process was launched. The first 
+element will be <A href="http://nodejs.cn/api/process.html#process_process_execpath"><CODE>process.execPath</CODE></A>. 
+See <CODE>process.argv0</CODE> if access to the original value of 
+<CODE>argv[0]</CODE> is needed.  The second element will be the path to the 
+JavaScript file being executed. The remaining elements will be any additional 
+command line arguments.</P>
+<P>For example, assuming the following script for 
+<CODE>process-args.js</CODE>:</P>
+<PRE><CODE class="lang-js">// print process.argv
+process.argv.forEach((val, index) =&gt; {
+  console.log(`${index}: ${val}`);
+});
+</CODE></PRE>
+<P>Launching the Node.js process as:</P>
+<PRE><CODE class="lang-console">$ node process-2.js one two=three four
+</CODE></PRE>
+<P>Would generate the output:</P>
+<PRE><CODE class="lang-text">0: /usr/local/bin/node
+1: /Users/mjr/work/node/process-2.js
+2: one
+3: two=three
+4: four
+</CODE></PRE>
+<H2>process.argv0<SPAN><A class="mark" id="process_process_argv0" href="http://nodejs.cn/api/process.html#process_process_argv0">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/process.html#process_process_argv0">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/process/process_argv0.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: 6.4.0</SPAN> </DIV>
+<UL>
+  <LI><A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A></LI></UL>
+<P>The <CODE>process.argv0</CODE> property stores a read-only copy of the 
+original value of <CODE>argv[0]</CODE> passed when Node.js starts.</P>
+<PRE><CODE class="lang-console">$ bash -c 'exec -a customArgv0 ./node'
+&gt; process.argv[0]
+'/Volumes/code/external/node/out/Release/node'
+&gt; process.argv0
+'customArgv0'
+</CODE></PRE>
+<H2>process.chdir(directory)<SPAN><A class="mark" id="process_process_chdir_directory" 
+href="http://nodejs.cn/api/process.html#process_process_chdir_directory">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/process.html#process_process_chdir_directory">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/process/process_chdir_directory.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.17</SPAN> </DIV>
+<UL>
+  <LI><CODE>directory</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A></LI></UL>
+<P>The <CODE>process.chdir()</CODE> method changes the current working directory 
+of the Node.js process or throws an exception if doing so fails (for instance, 
+if the specified <CODE>directory</CODE> does not exist).</P>
+<PRE><CODE class="lang-js">console.log(`Starting directory: ${process.cwd()}`);
+try {
+  process.chdir('/tmp');
+  console.log(`New directory: ${process.cwd()}`);
+}
+catch (err) {
+  console.log(`chdir: ${err}`);
+}
+</CODE></PRE>
+<H2>process.config<SPAN><A class="mark" id="process_process_config" href="http://nodejs.cn/api/process.html#process_process_config">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/process.html#process_process_config">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/process/process_config.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.7.7</SPAN> </DIV>
+<UL>
+  <LI><A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">&lt;Object&gt;</A></LI></UL>
+<P>The <CODE>process.config</CODE> property returns an Object containing the 
+JavaScript representation of the configure options used to compile the current 
+Node.js executable. This is the same as the <CODE>config.gypi</CODE> file that 
+was produced when running the <CODE>./configure</CODE> script.</P>
+<P>An example of the possible output looks like:</P>
+<PRE><CODE class="lang-js">{
+  target_defaults:
+   { cflags: [],
+     default_configuration: 'Release',
+     defines: [],
+     include_dirs: [],
+     libraries: [] },
+  variables:
+   {
+     host_arch: 'x64',
+     node_install_npm: 'true',
+     node_prefix: '',
+     node_shared_cares: 'false',
+     node_shared_http_parser: 'false',
+     node_shared_libuv: 'false',
+     node_shared_zlib: 'false',
+     node_use_dtrace: 'false',
+     node_use_openssl: 'true',
+     node_shared_openssl: 'false',
+     strict_aliasing: 'true',
+     target_arch: 'x64',
+     v8_use_snapshot: 'true'
+   }
+}
+</CODE></PRE>
+<P><EM>Note</EM>: The <CODE>process.config</CODE> property is 
+<STRONG>not</STRONG> read-only and there are existing modules in the ecosystem 
+that are known to extend, modify, or entirely replace the value of 
+<CODE>process.config</CODE>.</P>
+<H2>process.connected<SPAN><A class="mark" id="process_process_connected" href="http://nodejs.cn/api/process.html#process_process_connected">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/process.html#process_process_connected">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/process/process_connected.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.7.2</SPAN> </DIV>
+<UL>
+  <LI><A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type">&lt;Boolean&gt;</A></LI></UL>
+<P>If the Node.js process is spawned with an IPC channel (see the <A href="http://nodejs.cn/api/child_process.html">Child 
+Process</A> and <A href="http://nodejs.cn/api/cluster.html">Cluster</A> 
+documentation), the <CODE>process.connected</CODE> property will return 
+<CODE>true</CODE> so long as the IPC channel is connected and will return 
+<CODE>false</CODE> after <CODE>process.disconnect()</CODE> is called.</P>
+<P>Once <CODE>process.connected</CODE> is <CODE>false</CODE>, it is no longer 
+possible to send messages over the IPC channel using 
+<CODE>process.send()</CODE>.</P>
+<H2>process.cpuUsage([previousValue])<SPAN><A class="mark" id="process_process_cpuusage_previousvalue" 
+href="http://nodejs.cn/api/process.html#process_process_cpuusage_previousvalue">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/process.html#process_process_cpuusage_previousvalue">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/process/process_cpuusage_previousvalue.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v6.1.0</SPAN> </DIV>
+<UL>
+  <LI><CODE>previousValue</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">&lt;Object&gt;</A> 
+  A previous return value from calling <CODE>process.cpuUsage()</CODE></LI>
+  <LI>Returns: <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">&lt;Object&gt;</A>
+  <UL> 
+    <LI><CODE>user</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A></LI>
+    <LI><CODE>system</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A></LI></UL></LI></UL>
+<P>The <CODE>process.cpuUsage()</CODE> method returns the user and system CPU 
+time usage of the current process, in an object with properties 
+<CODE>user</CODE> and <CODE>system</CODE>, whose values are microsecond values 
+(millionth of a second). These values measure time spent in user and system code 
+respectively, and may end up being greater than actual elapsed time if multiple 
+CPU cores are performing work for this process.</P>
+<P>The result of a previous call to <CODE>process.cpuUsage()</CODE> can be 
+passed as the argument to the function, to get a diff reading.</P>
+<PRE><CODE class="lang-js">const startUsage = process.cpuUsage();
+// { user: 38579, system: 6986 }
+
+// spin the CPU for 500 milliseconds
+const now = Date.now();
+while (Date.now() - now &lt; 500);
+
+console.log(process.cpuUsage(startUsage));
+// { user: 514883, system: 11226 }
+</CODE></PRE>
+<H2>process.cwd()<SPAN><A class="mark" id="process_process_cwd" href="http://nodejs.cn/api/process.html#process_process_cwd">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/process.html#process_process_cwd">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/process/process_cwd.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.8</SPAN> </DIV>
+<UL>
+  <LI>Returns: <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A></LI></UL>
+<P>The <CODE>process.cwd()</CODE> method returns the current working directory 
+of the Node.js process.</P>
+<PRE><CODE class="lang-js">console.log(`Current directory: ${process.cwd()}`);
+</CODE></PRE>
+<H2>process.disconnect()<SPAN><A class="mark" id="process_process_disconnect" 
+href="http://nodejs.cn/api/process.html#process_process_disconnect">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/process.html#process_process_disconnect">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/process/process_disconnect.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.7.2</SPAN> </DIV>
+<P>If the Node.js process is spawned with an IPC channel (see the <A href="http://nodejs.cn/api/child_process.html">Child 
+Process</A> and <A href="http://nodejs.cn/api/cluster.html">Cluster</A> 
+documentation), the <CODE>process.disconnect()</CODE> method will close the IPC 
+channel to the parent process, allowing the child process to exit gracefully
+ once there are no other connections keeping it alive.</P>
+<P>The effect of calling <CODE>process.disconnect()</CODE> is that same as 
+calling the parent process's <A href="http://nodejs.cn/api/child_process.html#child_process_child_disconnect"><CODE>ChildProcess.disconnect()</CODE></A>.</P>
+<P>If the Node.js process was not spawned with an IPC channel, 
+<CODE>process.disconnect()</CODE> will be <CODE>undefined</CODE>.</P>
+<H2>process.env<SPAN><A class="mark" id="process_process_env" href="http://nodejs.cn/api/process.html#process_process_env">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/process.html#process_process_env">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/process/process_env.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.27</SPAN> </DIV>
+<UL>
+  <LI><A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">&lt;Object&gt;</A></LI></UL>
+<P>The <CODE>process.env</CODE> property returns an object containing the user 
+environment. See <A 
+href="http://man7.org/linux/man-pages/man7/environ.7.html">environ(7)</A>.</P>
+<P>An example of this object looks like:</P>
+<PRE><CODE class="lang-js">{
+  TERM: 'xterm-256color',
+  SHELL: '/usr/local/bin/bash',
+  USER: 'maciej',
+  PATH: '~/.bin/:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin',
+  PWD: '/Users/maciej',
+  EDITOR: 'vim',
+  SHLVL: '1',
+  HOME: '/Users/maciej',
+  LOGNAME: 'maciej',
+  _: '/usr/local/bin/node'
+}
+</CODE></PRE>
+<P>It is possible to modify this object, but such modifications will not be
+ reflected outside the Node.js process. In other words, the following example
+ would not work:</P>
+<PRE><CODE class="lang-console">$ node -e 'process.env.foo = "bar"' &amp;&amp; echo $foo
+</CODE></PRE>
+<P>While the following will:</P>
+<PRE><CODE class="lang-js">process.env.foo = 'bar';
+console.log(process.env.foo);
+</CODE></PRE>
+<P>Assigning a property on <CODE>process.env</CODE> will implicitly convert the 
+value to a string.</P>
+<P>Example:</P>
+<PRE><CODE class="lang-js">process.env.test = null;
+console.log(process.env.test);
+// =&gt; 'null'
+process.env.test = undefined;
+console.log(process.env.test);
+// =&gt; 'undefined'
+</CODE></PRE>
+<P>Use <CODE>delete</CODE> to delete a property from 
+<CODE>process.env</CODE>.</P>
+<P>Example:</P>
+<PRE><CODE class="lang-js">process.env.TEST = 1;
+delete process.env.TEST;
+console.log(process.env.TEST);
+// =&gt; undefined
+</CODE></PRE>
+<P>On Windows operating systems, environment variables are case-insensitive.</P>
+<P>Example:</P>
+<PRE><CODE class="lang-js">process.env.TEST = 1;
+console.log(process.env.test);
+// =&gt; 1
+</CODE></PRE>
+<H2>process.emitWarning(warning[, name][, ctor])<SPAN><A class="mark" id="process_process_emitwarning_warning_name_ctor" 
+href="http://nodejs.cn/api/process.html#process_process_emitwarning_warning_name_ctor">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/process.html#process_process_emitwarning_warning_name_ctor">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/process/process_emitwarning_warning_name_ctor.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v6.0.0</SPAN> </DIV>
+<UL>
+  <LI><CODE>warning</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  | <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error">&lt;Error&gt;</A> 
+  The warning to emit.</LI>
+  <LI><CODE>name</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  When <CODE>warning</CODE> is a String, <CODE>name</CODE> is the name to use
+   for the warning. Default: <CODE>Warning</CODE>.</LI>
+  <LI><CODE>ctor</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">&lt;Function&gt;</A> 
+  When <CODE>warning</CODE> is a String, <CODE>ctor</CODE> is an optional
+   function used to limit the generated stack trace. Default 
+  <CODE>process.emitWarning</CODE></LI></UL>
+<P>The <CODE>process.emitWarning()</CODE> method can be used to emit custom or 
+application specific process warnings. These can be listened for by adding a 
+handler to the <A 
+href="http://nodejs.cn/api/process.html#process_event_warning"><CODE>process.on('warning')</CODE></A> 
+event.</P>
+<PRE><CODE class="lang-js">// Emit a warning using a string...
+process.emitWarning('Something happened!');
+// Emits: (node: 56338) Warning: Something happened!
+</CODE></PRE>
+<PRE><CODE class="lang-js">// Emit a warning using a string and a name...
+process.emitWarning('Something Happened!', 'CustomWarning');
+// Emits: (node:56338) CustomWarning: Something Happened!
+</CODE></PRE>
+<P>In each of the previous examples, an <CODE>Error</CODE> object is generated 
+internally by <CODE>process.emitWarning()</CODE> and passed through to the <A 
+href="http://nodejs.cn/api/process.html#process_event_warning"><CODE>process.on('warning')</CODE></A> 
+event.</P>
+<PRE><CODE class="lang-js">process.on('warning', (warning) =&gt; {
+  console.warn(warning.name);
+  console.warn(warning.message);
+  console.warn(warning.stack);
+});
+</CODE></PRE>
+<P>If <CODE>warning</CODE> is passed as an <CODE>Error</CODE> object, it will be 
+passed through to the <CODE>process.on('warning')</CODE> event handler 
+unmodified (and the optional <CODE>name</CODE> and <CODE>ctor</CODE> arguments 
+will be ignored):</P>
+<PRE><CODE class="lang-js">// Emit a warning using an Error object...
+const myWarning = new Error('Warning! Something happened!');
+myWarning.name = 'CustomWarning';
+
+process.emitWarning(myWarning);
+// Emits: (node:56338) CustomWarning: Warning! Something Happened!
+</CODE></PRE>
+<P>A <CODE>TypeError</CODE> is thrown if <CODE>warning</CODE> is anything other 
+than a string or <CODE>Error</CODE> object.</P>
+<P>Note that while process warnings use <CODE>Error</CODE> objects, the process 
+warning mechanism is <STRONG>not</STRONG> a replacement for normal error 
+handling mechanisms.</P>
+<P>The following additional handling is implemented if the warning 
+<CODE>name</CODE> is <CODE>DeprecationWarning</CODE>:</P>
+<UL>
+  <LI>If the <CODE>--throw-deprecation</CODE> command-line flag is used, the 
+  deprecation warning is thrown as an exception rather than being emitted as an 
+  event.</LI>
+  <LI>If the <CODE>--no-deprecation</CODE> command-line flag is used, the 
+  deprecation warning is suppressed.</LI>
+  <LI>If the <CODE>--trace-deprecation</CODE> command-line flag is used, the 
+  deprecation warning is printed to <CODE>stderr</CODE> along with the full 
+  stack trace.</LI></UL>
+<H3>Avoiding duplicate warnings<SPAN><A class="mark" id="process_avoiding_duplicate_warnings" 
+href="http://nodejs.cn/api/process.html#process_avoiding_duplicate_warnings">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/process.html#process_avoiding_duplicate_warnings">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/process/avoiding_duplicate_warnings.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P>As a best practice, warnings should be emitted only once per process. To do
+ so, it is recommended to place the <CODE>emitWarning()</CODE> behind a simple 
+boolean flag as illustrated in the example below:</P>
+<PRE><CODE class="lang-js">var warned = false;
+function emitMyWarning() {
+  if (!warned) {
+    process.emitWarning('Only warn once!');
+    warned = true;
+  }
+}
+emitMyWarning();
+// Emits: (node: 56339) Warning: Only warn once!
+emitMyWarning();
+// Emits nothing
+</CODE></PRE>
+<H2>process.execArgv<SPAN><A class="mark" id="process_process_execargv" href="http://nodejs.cn/api/process.html#process_process_execargv">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/process.html#process_process_execargv">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/process/process_execargv.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.7.7</SPAN> </DIV>
+<UL>
+  <LI><A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">&lt;Object&gt;</A></LI></UL>
+<P>The <CODE>process.execArgv</CODE> property returns the set of 
+Node.js-specific command-line options passed when the Node.js process was 
+launched. These options do not appear in the array returned by the <A href="http://nodejs.cn/api/process.html#process_process_argv"><CODE>process.argv</CODE></A> 
+property, and do not include the Node.js executable, the name of the script, or 
+any options following the script name. These options are useful in order to 
+spawn child processes with the same execution environment as the parent.</P>
+<P>For example:</P>
+<PRE><CODE class="lang-console">$ node --harmony script.js --version
+</CODE></PRE>
+<P>Results in <CODE>process.execArgv</CODE>:</P>
+<PRE><CODE class="lang-js">['--harmony']
+</CODE></PRE>
+<P>And <CODE>process.argv</CODE>:</P>
+<PRE><CODE class="lang-js">['/usr/local/bin/node', 'script.js', '--version']
+</CODE></PRE>
+<H2>process.execPath<SPAN><A class="mark" id="process_process_execpath" href="http://nodejs.cn/api/process.html#process_process_execpath">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/process.html#process_process_execpath">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/process/process_execpath.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.100</SPAN> </DIV>
+<UL>
+  <LI><A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A></LI></UL>
+<P>The <CODE>process.execPath</CODE> property returns the absolute pathname of 
+the executable that started the Node.js process.</P>
+<P>For example:</P>
+<PRE><CODE class="lang-js">'/usr/local/bin/node'
+</CODE></PRE>
+<H2>process.exit([code])<SPAN><A class="mark" id="process_process_exit_code" 
+href="http://nodejs.cn/api/process.html#process_process_exit_code">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/process.html#process_process_exit_code">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/process/process_exit_code.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.13</SPAN> </DIV>
+<UL>
+  <LI><CODE>code</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  The exit code. Defaults to <CODE>0</CODE>.</LI></UL>
+<P>The <CODE>process.exit()</CODE> method instructs Node.js to terminate the 
+process synchronously with an exit status of <CODE>code</CODE>. If 
+<CODE>code</CODE> is omitted, exit uses either the 'success' code <CODE>0</CODE> 
+or the value of <CODE>process.exitCode</CODE> if it has been set.  Node.js will 
+not terminate until all the <A href="http://nodejs.cn/api/process.html#process_event_exit"><CODE>'exit'</CODE></A> 
+event listeners are called.</P>
+<P>To exit with a 'failure' code:</P>
+<PRE><CODE class="lang-js">process.exit(1);
+</CODE></PRE>
+<P>The shell that executed Node.js should see the exit code as 
+<CODE>1</CODE>.</P>
+<P>It is important to note that calling <CODE>process.exit()</CODE> will force 
+the process to exit as quickly as possible <EM>even if there are still 
+asynchronous operations pending</EM> that have not yet completed fully, 
+<EM>including</EM> I/O operations to <CODE>process.stdout</CODE> and 
+<CODE>process.stderr</CODE>.</P>
+<P>In most situations, it is not actually necessary to call 
+<CODE>process.exit()</CODE> explicitly. The Node.js process will exit on its own 
+<EM>if there is no additional work pending</EM> in the event loop. The 
+<CODE>process.exitCode</CODE> property can be set to tell the process which exit 
+code to use when the process exits gracefully.</P>
+<P>For instance, the following example illustrates a <EM>misuse</EM> of the 
+<CODE>process.exit()</CODE> method that could lead to data printed to stdout 
+being truncated and lost:</P>
+<PRE><CODE class="lang-js">// This is an example of what *not* to do:
+if (someConditionNotMet()) {
+  printUsageToStdout();
+  process.exit(1);
+}
+</CODE></PRE>
+<P>The reason this is problematic is because writes to 
+<CODE>process.stdout</CODE> in Node.js are sometimes <EM>asynchronous</EM> and 
+may occur over multiple ticks of the Node.js event loop. Calling 
+<CODE>process.exit()</CODE>, however, forces the process to exit <EM>before</EM> 
+those additional writes to <CODE>stdout</CODE> can be performed.</P>
+<P>Rather than calling <CODE>process.exit()</CODE> directly, the code 
+<EM>should</EM> set the <CODE>process.exitCode</CODE> and allow the process to 
+exit naturally by avoiding scheduling any additional work for the event 
+loop:</P>
+<PRE><CODE class="lang-js">// How to properly set the exit code while letting
+// the process exit gracefully.
+if (someConditionNotMet()) {
+  printUsageToStdout();
+  process.exitCode = 1;
+}
+</CODE></PRE>
+<P>If it is necessary to terminate the Node.js process due to an error 
+condition, throwing an <EM>uncaught</EM> error and allowing the process to 
+terminate accordingly is safer than calling <CODE>process.exit()</CODE>.</P>
+<H2>process.exitCode<SPAN><A class="mark" id="process_process_exitcode" href="http://nodejs.cn/api/process.html#process_process_exitcode">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/process.html#process_process_exitcode">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/process/process_exitcode.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.11.8</SPAN> </DIV>
+<UL>
+  <LI><A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A></LI></UL>
+<P>A number which will be the process exit code, when the process either exits 
+gracefully, or is exited via <A href="http://nodejs.cn/api/process.html#process_process_exit_code"><CODE>process.exit()</CODE></A> 
+without specifying a code.</P>
+<P>Specifying a code to <A href="http://nodejs.cn/api/process.html#process_process_exit_code"><CODE>process.exit(code)</CODE></A> 
+will override any previous setting of <CODE>process.exitCode</CODE>.</P>
+<H2>process.getegid()<SPAN><A class="mark" id="process_process_getegid" href="http://nodejs.cn/api/process.html#process_process_getegid">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/process.html#process_process_getegid">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/process/process_getegid.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v2.0.0</SPAN> </DIV>
+<P>The <CODE>process.getegid()</CODE> method returns the numerical effective 
+group identity of the Node.js process. (See <A href="http://man7.org/linux/man-pages/man2/getegid.2.html">getegid(2)</A>.)</P>
+<PRE><CODE class="lang-js">if (process.getegid) {
+  console.log(`Current gid: ${process.getegid()}`);
+}
+</CODE></PRE>
+<P><EM>Note</EM>: This function is only available on POSIX platforms (i.e. not 
+Windows or Android)</P>
+<H2>process.geteuid()<SPAN><A class="mark" id="process_process_geteuid" href="http://nodejs.cn/api/process.html#process_process_geteuid">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/process.html#process_process_geteuid">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/process/process_geteuid.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v2.0.0</SPAN> </DIV>
+<UL>
+  <LI>Returns: <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">&lt;Object&gt;</A></LI></UL>
+<P>The <CODE>process.geteuid()</CODE> method returns the numerical effective 
+user identity of the process. (See <A href="http://man7.org/linux/man-pages/man2/geteuid.2.html">geteuid(2)</A>.)</P>
+<PRE><CODE class="lang-js">if (process.geteuid) {
+  console.log(`Current uid: ${process.geteuid()}`);
+}
+</CODE></PRE>
+<P><EM>Note</EM>: This function is only available on POSIX platforms (i.e. not 
+Windows or Android)</P>
+<H2>process.getgid()<SPAN><A class="mark" id="process_process_getgid" href="http://nodejs.cn/api/process.html#process_process_getgid">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/process.html#process_process_getgid">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/process/process_getgid.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.31</SPAN> </DIV>
+<UL>
+  <LI>Returns: <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">&lt;Object&gt;</A></LI></UL>
+<P>The <CODE>process.getgid()</CODE> method returns the numerical group identity 
+of the process. (See <A href="http://man7.org/linux/man-pages/man2/getgid.2.html">getgid(2)</A>.)</P>
+<PRE><CODE class="lang-js">if (process.getgid) {
+  console.log(`Current gid: ${process.getgid()}`);
+}
+</CODE></PRE>
+<P><EM>Note</EM>: This function is only available on POSIX platforms (i.e. not 
+Windows or Android)</P>
+<H2>process.getgroups()<SPAN><A class="mark" id="process_process_getgroups" 
+href="http://nodejs.cn/api/process.html#process_process_getgroups">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/process.html#process_process_getgroups">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/process/process_getgroups.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.9.4</SPAN> </DIV>
+<UL>
+  <LI>Returns: <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">&lt;Array&gt;</A></LI></UL>
+<P>The <CODE>process.getgroups()</CODE> method returns an array with the 
+supplementary group IDs. POSIX leaves it unspecified if the effective group ID 
+is included but Node.js ensures it always is.</P>
+<P><EM>Note</EM>: This function is only available on POSIX platforms (i.e. not 
+Windows or Android)</P>
+<H2>process.getuid()<SPAN><A class="mark" id="process_process_getuid" href="http://nodejs.cn/api/process.html#process_process_getuid">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/process.html#process_process_getuid">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/process/process_getuid.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.28</SPAN> </DIV>
+<UL>
+  <LI>Returns: <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A></LI></UL>
+<P>The <CODE>process.getuid()</CODE> method returns the numeric user identity of 
+the process. (See <A 
+href="http://man7.org/linux/man-pages/man2/getuid.2.html">getuid(2)</A>.)</P>
+<PRE><CODE class="lang-js">if (process.getuid) {
+  console.log(`Current uid: ${process.getuid()}`);
+}
+</CODE></PRE>
+<P><EM>Note</EM>: This function is only available on POSIX platforms (i.e. not 
+Windows or Android)</P>
+<H2>process.hrtime([time])<SPAN><A class="mark" id="process_process_hrtime_time" 
+href="http://nodejs.cn/api/process.html#process_process_hrtime_time">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/process.html#process_process_hrtime_time">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/process/process_hrtime_time.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.7.6</SPAN> </DIV>
+<P>The <CODE>process.hrtime()</CODE> method returns the current high-resolution 
+real time in a <CODE>[seconds, nanoseconds]</CODE> tuple Array. 
+<CODE>time</CODE> is an optional parameter that must be the result of a previous 
+<CODE>process.hrtime()</CODE> call (and therefore, a real time in a 
+<CODE>[seconds, nanoseconds]</CODE> tuple Array containing a previous time) to 
+diff with the current time. These times are relative to an arbitrary time in the
+ past, and not related to the time of day and therefore not subject to clock
+ drift. The primary use is for measuring performance between intervals.</P>
+<P>Passing in the result of a previous call to <CODE>process.hrtime()</CODE> is 
+useful for calculating an amount of time passed between calls:</P>
+<PRE><CODE class="lang-js">var time = process.hrtime();
+// [ 1800216, 25 ]
+
+setTimeout(() =&gt; {
+  var diff = process.hrtime(time);
+  // [ 1, 552 ]
+
+  console.log(`Benchmark took ${diff[0] * 1e9 + diff[1]} nanoseconds`);
+  // benchmark took 1000000527 nanoseconds
+}, 1000);
+</CODE></PRE>
+<P>Constructing an array by some method other than calling 
+<CODE>process.hrtime()</CODE> and passing the result to process.hrtime() will 
+result in undefined behavior.</P>
+<H2>process.initgroups(user, extra_group)<SPAN><A class="mark" id="process_process_initgroups_user_extra_group" 
+href="http://nodejs.cn/api/process.html#process_process_initgroups_user_extra_group">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/process.html#process_process_initgroups_user_extra_group">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/process/process_initgroups_user_extra_group.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.9.4</SPAN> </DIV>
+<UL>
+  <LI><CODE>user</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  | <SPAN class="type">&lt;number&gt;</SPAN> The user name or numeric 
+  identifier.</LI>
+  <LI><CODE>extra_group</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  | <SPAN class="type">&lt;number&gt;</SPAN> A group name or numeric 
+  identifier.</LI></UL>
+<P>The <CODE>process.initgroups()</CODE> method reads the 
+<CODE>/etc/group</CODE> file and initializes the group access list, using all 
+groups of which the user is a member. This is a privileged operation that 
+requires that the Node.js process either have <CODE>root</CODE> access or the 
+<CODE>CAP_SETGID</CODE> capability.</P>
+<P>Note that care must be taken when dropping privileges. Example:</P>
+<PRE><CODE class="lang-js">console.log(process.getgroups());         // [ 0 ]
+process.initgroups('bnoordhuis', 1000);   // switch user
+console.log(process.getgroups());         // [ 27, 30, 46, 1000, 0 ]
+process.setgid(1000);                     // drop root gid
+console.log(process.getgroups());         // [ 27, 30, 46, 1000 ]
+</CODE></PRE>
+<P><EM>Note</EM>: This function is only available on POSIX platforms (i.e. not 
+Windows or Android)</P>
+<H2>process.kill(pid[, signal])<SPAN><A class="mark" id="process_process_kill_pid_signal" 
+href="http://nodejs.cn/api/process.html#process_process_kill_pid_signal">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/process.html#process_process_kill_pid_signal">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/process/process_kill_pid_signal.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.0.6</SPAN> </DIV>
+<UL>
+  <LI><CODE>pid</CODE> <SPAN class="type">&lt;number&gt;</SPAN> A process 
+ID</LI>
+  <LI><CODE>signal</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  | <SPAN class="type">&lt;number&gt;</SPAN> The signal to send, either as a 
+  string or number. Defaults to <CODE>'SIGTERM'</CODE>.</LI></UL>
+<P>The <CODE>process.kill()</CODE> method sends the <CODE>signal</CODE> to the 
+process identified by <CODE>pid</CODE>.</P>
+<P>Signal names are strings such as <CODE>'SIGINT'</CODE> or 
+<CODE>'SIGHUP'</CODE>. See <A href="http://nodejs.cn/api/process.html#process_signal_events">Signal 
+Events</A> and <A 
+href="http://man7.org/linux/man-pages/man2/kill.2.html">kill(2)</A> for more 
+information.</P>
+<P>This method will throw an error if the target <CODE>pid</CODE> does not 
+exist. As a special case, a signal of <CODE>0</CODE> can be used to test for the 
+existence of a process. Windows platforms will throw an error if the 
+<CODE>pid</CODE> is used to kill a process group.</P>
+<P><EM>Note</EM>:Even though the name of this function is 
+<CODE>process.kill()</CODE>, it is really just a signal sender, like the 
+<CODE>kill</CODE> system call.  The signal sent may do something other than kill 
+the target process.</P>
+<P>For example:</P>
+<PRE><CODE class="lang-js">process.on('SIGHUP', () =&gt; {
+  console.log('Got SIGHUP signal.');
+});
+
+setTimeout(() =&gt; {
+  console.log('Exiting.');
+  process.exit(0);
+}, 100);
+
+process.kill(process.pid, 'SIGHUP');
+</CODE></PRE>
+<P><EM>Note</EM>: When <CODE>SIGUSR1</CODE> is received by a Node.js process, 
+Node.js will start the debugger, see <A href="http://nodejs.cn/api/process.html#process_signal_events">Signal 
+Events</A>.</P>
+<H2>process.mainModule<SPAN><A class="mark" id="process_process_mainmodule" 
+href="http://nodejs.cn/api/process.html#process_process_mainmodule">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/process.html#process_process_mainmodule">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/process/process_mainmodule.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.17</SPAN> </DIV>
+<P>The <CODE>process.mainModule</CODE> property provides an alternative way of 
+retrieving <A href="http://nodejs.cn/api/modules.html#modules_accessing_the_main_module"><CODE>require.main</CODE></A>. 
+The difference is that if the main module changes at runtime, <A href="http://nodejs.cn/api/modules.html#modules_accessing_the_main_module"><CODE>require.main</CODE></A> 
+may still refer to the original main module in modules that were required before 
+the change occurred. Generally, it's safe to assume that the two refer to the 
+same module.</P>
+<P>As with <A href="http://nodejs.cn/api/modules.html#modules_accessing_the_main_module"><CODE>require.main</CODE></A>, 
+<CODE>process.mainModule</CODE> will be <CODE>undefined</CODE> if there is no 
+entry script.</P>
+<H2>process.memoryUsage()<SPAN><A class="mark" id="process_process_memoryusage" 
+href="http://nodejs.cn/api/process.html#process_process_memoryusage">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/process.html#process_process_memoryusage">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/process/process_memoryusage.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.16</SPAN> </DIV>
+<UL>
+  <LI>Returns: <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">&lt;Object&gt;</A>
+  <UL> 
+    <LI><CODE>rss</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A></LI>
+    <LI><CODE>heapTotal</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A></LI>
+    <LI><CODE>heapUsed</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A></LI>
+    <LI><CODE>external</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A></LI></UL></LI></UL>
+<P>The <CODE>process.memoryUsage()</CODE> method returns an object describing 
+the memory usage of the Node.js process measured in bytes.</P>
+<P>For example, the code:</P>
+<PRE><CODE class="lang-js">console.log(process.memoryUsage());
+</CODE></PRE>
+<P>Will generate:</P>
+<PRE><CODE class="lang-js">{
+  rss: 4935680,
+  heapTotal: 1826816,
+  heapUsed: 650472,
+  external: 49879
+}
+</CODE></PRE>
+<P><CODE>heapTotal</CODE> and <CODE>heapUsed</CODE> refer to V8's memory usage. 
+<CODE>external</CODE> refers to the memory usage of C++ objects bound to 
+JavaScript objects managed by V8.</P>
+<H2>process.nextTick(callback[, ...args])<SPAN><A class="mark" id="process_process_nexttick_callback_args" 
+href="http://nodejs.cn/api/process.html#process_process_nexttick_callback_args">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/process.html#process_process_nexttick_callback_args">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/process/process_nexttick_callback_args.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.26</SPAN> </DIV>
+<UL>
+  <LI><CODE>callback</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">&lt;Function&gt;</A></LI>
+  <LI><CODE>...args</CODE> <SPAN class="type">&lt;any&gt;</SPAN> Additional 
+  arguments to pass when invoking the <CODE>callback</CODE></LI></UL>
+<P>The <CODE>process.nextTick()</CODE> method adds the <CODE>callback</CODE> to 
+the "next tick queue". Once the current turn of the event loop turn runs to 
+completion, all callbacks currently in the next tick queue will be called.</P>
+<P>This is <EM>not</EM> a simple alias to <A href="http://nodejs.cn/api/timers.html#timers_settimeout_callback_delay_args"><CODE>setTimeout(fn, 
+0)</CODE></A>. It is much more efficient.  It runs before any additional I/O 
+events (including timers) fire in subsequent ticks of the event loop.</P>
+<PRE><CODE class="lang-js">console.log('start');
+process.nextTick(() =&gt; {
+  console.log('nextTick callback');
+});
+console.log('scheduled');
+// Output:
+// start
+// scheduled
+// nextTick callback
+</CODE></PRE>
+<P>This is important when developing APIs in order to give users the opportunity
+ to assign event handlers <EM>after</EM> an object has been constructed but 
+before any I/O has occurred:</P>
+<PRE><CODE class="lang-js">function MyThing(options) {
+  this.setupOptions(options);
+
+  process.nextTick(() =&gt; {
+    this.startDoingStuff();
+  });
+}
+
+var thing = new MyThing();
+thing.getReadyForStuff();
+
+// thing.startDoingStuff() gets called now, not before.
+</CODE></PRE>
+<P>It is very important for APIs to be either 100% synchronous or 100%
+ asynchronous.  Consider this example:</P>
+<PRE><CODE class="lang-js">// WARNING!  DO NOT USE!  BAD UNSAFE HAZARD!
+function maybeSync(arg, cb) {
+  if (arg) {
+    cb();
+    return;
+  }
+
+  fs.stat('file', cb);
+}
+</CODE></PRE>
+<P>This API is hazardous because in the following case:</P>
+<PRE><CODE class="lang-js">const maybeTrue = Math.random() &gt; 0.5;
+
+maybeSync(maybeTrue, () =&gt; {
+  foo();
+});
+
+bar();
+</CODE></PRE>
+<P>It is not clear whether <CODE>foo()</CODE> or <CODE>bar()</CODE> will be 
+called first.</P>
+<P>The following approach is much better:</P>
+<PRE><CODE class="lang-js">function definitelyAsync(arg, cb) {
+  if (arg) {
+    process.nextTick(cb);
+    return;
+  }
+
+  fs.stat('file', cb);
+}
+</CODE></PRE>
+<P><EM>Note</EM>: the next tick queue is completely drained on each pass of the
+ event loop <STRONG>before</STRONG> additional I/O is processed.  As a result,
+ recursively setting nextTick callbacks will block any I/O from happening, just 
+like a <CODE>while(true);</CODE> loop.</P>
+<H2>process.pid<SPAN><A class="mark" id="process_process_pid" href="http://nodejs.cn/api/process.html#process_process_pid">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/process.html#process_process_pid">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/process/process_pid.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.15</SPAN> </DIV>
+<UL>
+  <LI><A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A></LI></UL>
+<P>The <CODE>process.pid</CODE> property returns the PID of the process.</P>
+<PRE><CODE class="lang-js">console.log(`This process is pid ${process.pid}`);
+</CODE></PRE>
+<H2>process.platform<SPAN><A class="mark" id="process_process_platform" href="http://nodejs.cn/api/process.html#process_process_platform">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/process.html#process_process_platform">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/process/process_platform.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.16</SPAN> </DIV>
+<UL>
+  <LI><A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A></LI></UL>
+<P>The <CODE>process.platform</CODE> property returns a string identifying the 
+operating system platform on which the Node.js process is running. For instance 
+<CODE>'darwin'</CODE>, <CODE>'freebsd'</CODE>, <CODE>'linux'</CODE>, 
+<CODE>'sunos'</CODE> or <CODE>'win32'</CODE></P>
+<PRE><CODE class="lang-js">console.log(`This platform is ${process.platform}`);
+</CODE></PRE>
+<H2>process.release<SPAN><A class="mark" id="process_process_release" href="http://nodejs.cn/api/process.html#process_process_release">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/process.html#process_process_release">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/process/process_release.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v3.0.0</SPAN> </DIV>
+<P>The <CODE>process.release</CODE> property returns an Object containing 
+metadata related to the current release, including URLs for the source tarball 
+and headers-only tarball.</P>
+<P><CODE>process.release</CODE> contains the following properties:</P>
+<UL>
+  <LI><CODE>name</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  A value that will always be <CODE>'node'</CODE> for Node.js. For legacy io.js 
+  releases, this will be <CODE>'io.js'</CODE>.</LI>
+  <LI><CODE>lts</CODE>: a string with a value indicating the <EM>codename</EM> 
+  of the LTS (Long-term Support) line the current release is part of. This 
+  property only exists for LTS releases and is <CODE>undefined</CODE> for all 
+  other release types, including stable releases. Current valid values are:
+  <UL>
+    <LI><CODE>"Argon"</CODE> for the v4.x LTS line beginning with v4.2.0.</LI>
+    <LI><CODE>"Boron"</CODE> for the v6.x LTS line beginning with 
+  v6.9.0.</LI></UL></LI>
+  <LI><CODE>sourceUrl</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  an absolute URL pointing to a <EM><CODE>.tar.gz</CODE></EM> file containing
+   the source code of the current release.</LI>
+  <LI><CODE>headersUrl</CODE><A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  an absolute URL pointing to a <EM><CODE>.tar.gz</CODE></EM> file containing
+   only the source header files for the current release. This file is
+   significantly smaller than the full source file and can be used for compiling
+   Node.js native add-ons.</LI>
+  <LI><CODE>libUrl</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  an absolute URL pointing to a <EM><CODE>node.lib</CODE></EM> file matching the
+   architecture and version of the current release. This file is used for
+   compiling Node.js native add-ons. <EM>This property is only present on 
+  Windows builds of Node.js and will be missing on all other 
+platforms.</EM></LI>
+  <LI><CODE>lts</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  a string label identifying the <A 
+  href="https://github.com/nodejs/LTS/">LTS</A> label for this release. If the 
+  Node.js release is not an LTS release, this will be 
+  <CODE>undefined</CODE>.</LI></UL>
+<P>For example:</P>
+<PRE><CODE class="lang-js">{
+  name: 'node',
+  lts: 'Argon',
+  sourceUrl: 'https://nodejs.org/download/release/v4.4.5/node-v4.4.5.tar.gz',
+  headersUrl: 'https://nodejs.org/download/release/v4.4.5/node-v4.4.5-headers.tar.gz',
+  libUrl: 'https://nodejs.org/download/release/v4.4.5/win-x64/node.lib'
+}
+</CODE></PRE>
+<P>In custom builds from non-release versions of the source tree, only the 
+<CODE>name</CODE> property may be present. The additional properties should not 
+be relied upon to exist.</P>
+<H2>process.send(message[, sendHandle[, options]][, callback])<SPAN><A class="mark" 
+id="process_process_send_message_sendhandle_options_callback" href="http://nodejs.cn/api/process.html#process_process_send_message_sendhandle_options_callback">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/process.html#process_process_send_message_sendhandle_options_callback">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/process/process_send_message_sendhandle_options_callback.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.5.9</SPAN> </DIV>
+<UL>
+  <LI><CODE>message</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">&lt;Object&gt;</A></LI>
+  <LI><CODE>sendHandle</CODE> <SPAN class="type">&lt;Handle 
+  object&gt;</SPAN></LI>
+  <LI><CODE>options</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">&lt;Object&gt;</A></LI>
+  <LI><CODE>callback</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">&lt;Function&gt;</A></LI>
+  <LI>Returns: <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type">&lt;Boolean&gt;</A></LI></UL>
+<P>If Node.js is spawned with an IPC channel, the <CODE>process.send()</CODE> 
+method can be used to send messages to the parent process. Messages will be 
+received as a <A href="http://nodejs.cn/api/child_process.html#child_process_event_message"><CODE>'message'</CODE></A> 
+event on the parent's <A href="http://nodejs.cn/api/child_process.html#child_process_class_childprocess"><CODE>ChildProcess</CODE></A> 
+object.</P>
+<P>If Node.js was not spawned with an IPC channel, <CODE>process.send()</CODE> 
+will be <CODE>undefined</CODE>.</P>
+<P><EM>Note</EM>: This function uses <A href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify"><CODE>JSON.stringify()</CODE></A> 
+internally to serialize the <CODE>message</CODE>.*</P>
+<H2>process.setegid(id)<SPAN><A class="mark" id="process_process_setegid_id" 
+href="http://nodejs.cn/api/process.html#process_process_setegid_id">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/process.html#process_process_setegid_id">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/process/process_setegid_id.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v2.0.0</SPAN> </DIV>
+<UL>
+  <LI><CODE>id</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  | <SPAN class="type">&lt;number&gt;</SPAN> A group name or ID</LI></UL>
+<P>The <CODE>process.setegid()</CODE> method sets the effective group identity 
+of the process. (See <A href="http://man7.org/linux/man-pages/man2/setegid.2.html">setegid(2)</A>.) 
+The <CODE>id</CODE> can be passed as either a numeric ID or a group name string. 
+If a group name is specified, this method blocks while resolving the associated 
+a numeric ID.</P>
+<PRE><CODE class="lang-js">if (process.getegid &amp;&amp; process.setegid) {
+  console.log(`Current gid: ${process.getegid()}`);
+  try {
+    process.setegid(501);
+    console.log(`New gid: ${process.getegid()}`);
+  }
+  catch (err) {
+    console.log(`Failed to set gid: ${err}`);
+  }
+}
+</CODE></PRE>
+<P><EM>Note</EM>: This function is only available on POSIX platforms (i.e. not 
+Windows or Android)</P>
+<H2>process.seteuid(id)<SPAN><A class="mark" id="process_process_seteuid_id" 
+href="http://nodejs.cn/api/process.html#process_process_seteuid_id">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/process.html#process_process_seteuid_id">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/process/process_seteuid_id.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v2.0.0</SPAN> </DIV>
+<UL>
+  <LI><CODE>id</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  | <SPAN class="type">&lt;number&gt;</SPAN> A user name or ID</LI></UL>
+<P>The <CODE>process.seteuid()</CODE> method sets the effective user identity of 
+the process. (See <A 
+href="http://man7.org/linux/man-pages/man2/seteuid.2.html">seteuid(2)</A>.) The 
+<CODE>id</CODE> can be passed as either a numeric ID or a username string.  If a 
+username is specified, the method blocks while resolving the associated numeric 
+ID.</P>
+<PRE><CODE class="lang-js">if (process.geteuid &amp;&amp; process.seteuid) {
+  console.log(`Current uid: ${process.geteuid()}`);
+  try {
+    process.seteuid(501);
+    console.log(`New uid: ${process.geteuid()}`);
+  }
+  catch (err) {
+    console.log(`Failed to set uid: ${err}`);
+  }
+}
+</CODE></PRE>
+<P><EM>Note</EM>: This function is only available on POSIX platforms (i.e. not 
+Windows or Android)</P>
+<H2>process.setgid(id)<SPAN><A class="mark" id="process_process_setgid_id" href="http://nodejs.cn/api/process.html#process_process_setgid_id">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/process.html#process_process_setgid_id">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/process/process_setgid_id.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.31</SPAN> </DIV>
+<UL>
+  <LI><CODE>id</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  | <SPAN class="type">&lt;number&gt;</SPAN> The group name or ID</LI></UL>
+<P>The <CODE>process.setgid()</CODE> method sets the group identity of the 
+process. (See setgid(2).)  The <CODE>id</CODE> can be passed as either a numeric 
+ID or a group name string. If a group name is specified, this method blocks 
+while resolving the associated numeric ID.</P>
+<PRE><CODE class="lang-js">if (process.getgid &amp;&amp; process.setgid) {
+  console.log(`Current gid: ${process.getgid()}`);
+  try {
+    process.setgid(501);
+    console.log(`New gid: ${process.getgid()}`);
+  }
+  catch (err) {
+    console.log(`Failed to set gid: ${err}`);
+  }
+}
+</CODE></PRE>
+<P><EM>Note</EM>: This function is only available on POSIX platforms (i.e. not 
+Windows or Android)</P>
+<H2>process.setgroups(groups)<SPAN><A class="mark" id="process_process_setgroups_groups" 
+href="http://nodejs.cn/api/process.html#process_process_setgroups_groups">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/process.html#process_process_setgroups_groups">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/process/process_setgroups_groups.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.9.4</SPAN> </DIV>
+<UL>
+  <LI><CODE>groups</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">&lt;Array&gt;</A></LI></UL>
+<P>The <CODE>process.setgroups()</CODE> method sets the supplementary group IDs 
+for the Node.js process. This is a privileged operation that requires the 
+Node.js process to have <CODE>root</CODE> or the <CODE>CAP_SETGID</CODE> 
+capability.</P>
+<P>The <CODE>groups</CODE> array can contain numeric group IDs, group names or 
+both.</P>
+<P><EM>Note</EM>: This function is only available on POSIX platforms (i.e. not 
+Windows or Android)</P>
+<H2>process.setuid(id)<SPAN><A class="mark" id="process_process_setuid_id" href="http://nodejs.cn/api/process.html#process_process_setuid_id">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/process.html#process_process_setuid_id">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/process/process_setuid_id.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.28</SPAN> </DIV>
+<P>The <CODE>process.setuid(id)</CODE> method sets the user identity of the 
+process. (See setuid(2).)  The <CODE>id</CODE> can be passed as either a numeric 
+ID or a username string. If a username is specified, the method blocks while 
+resolving the associated numeric ID.</P>
+<PRE><CODE class="lang-js">if (process.getuid &amp;&amp; process.setuid) {
+  console.log(`Current uid: ${process.getuid()}`);
+  try {
+    process.setuid(501);
+    console.log(`New uid: ${process.getuid()}`);
+  }
+  catch (err) {
+    console.log(`Failed to set uid: ${err}`);
+  }
+}
+</CODE></PRE>
+<P><EM>Note</EM>: This function is only available on POSIX platforms (i.e. not 
+Windows or Android)</P>
+<H2>process.stderr<SPAN><A class="mark" id="process_process_stderr" href="http://nodejs.cn/api/process.html#process_process_stderr">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/process.html#process_process_stderr">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/process/process_stderr.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="signature">
+<UL>
+  <LI><A class="type" 
+  href="http://nodejs.cn/api/stream.html#stream_stream">&lt;Stream&gt;</A></LI></UL></DIV>
+<P>The <CODE>process.stderr</CODE> property returns a stream connected to 
+<CODE>stderr</CODE> (fd <CODE>2</CODE>). It is a <A href="http://nodejs.cn/api/net.html#net_class_net_socket"><CODE>net.Socket</CODE></A> 
+(which is a <A href="http://nodejs.cn/api/stream.html#stream_duplex_and_transform_streams">Duplex</A>
+ stream) unless fd <CODE>2</CODE> refers to a file, in which case it is a <A 
+href="http://nodejs.cn/api/stream.html#stream_writable_streams">Writable</A> 
+stream.</P>
+<P>Note: <CODE>process.stderr</CODE> differs from other Node.js streams in 
+important ways, see <A href="http://nodejs.cn/api/process.html#process_a_note_on_process_i_o">note 
+on process I/O</A> for more information.</P>
+<H2>process.stdin<SPAN><A class="mark" id="process_process_stdin" href="http://nodejs.cn/api/process.html#process_process_stdin">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/process.html#process_process_stdin">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/process/process_stdin.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="signature">
+<UL>
+  <LI><A class="type" 
+  href="http://nodejs.cn/api/stream.html#stream_stream">&lt;Stream&gt;</A></LI></UL></DIV>
+<P>The <CODE>process.stdin</CODE> property returns a stream connected to 
+<CODE>stdin</CODE> (fd <CODE>0</CODE>). It is a <A href="http://nodejs.cn/api/net.html#net_class_net_socket"><CODE>net.Socket</CODE></A> 
+(which is a <A href="http://nodejs.cn/api/stream.html#stream_duplex_and_transform_streams">Duplex</A>
+ stream) unless fd <CODE>0</CODE> refers to a file, in which case it is a <A 
+href="http://nodejs.cn/api/stream.html#stream_readable_streams">Readable</A> 
+stream.</P>
+<P>举个例子:</P>
+<PRE><CODE class="lang-js">process.stdin.setEncoding('utf8');
+
+process.stdin.on('readable', () =&gt; {
+  var chunk = process.stdin.read();
+  if (chunk !== null) {
+    process.stdout.write(`data: ${chunk}`);
+  }
+});
+
+process.stdin.on('end', () =&gt; {
+  process.stdout.write('end');
+});
+</CODE></PRE>
+<P><CODE>process.stdin</CODE> 返回的 <A href="http://nodejs.cn/api/stream.html#stream_duplex_and_transform_streams">Duplex</A> 
+流, 可以在<CODE>旧</CODE>模式下使用,兼容node v0.10。 更多信息查看<A href="http://nodejs.cn/api/stream.html#stream_compatibility_with_older_node_js_versions">流的兼容性</A>。</P>
+<P><EM>注意</EM>: 在"旧模式下" <CODE>stdin</CODE>流 
+默认是暂停的.所以必须通过执行<CODE>.stdin.resume()</CODE>来恢复它. 
+同时<CODE>process.stdin.resume()</CODE>会切换到<CODE>旧模式</CODE></P>
+<H2>process.stdout<SPAN><A class="mark" id="process_process_stdout" href="http://nodejs.cn/api/process.html#process_process_stdout">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/process.html#process_process_stdout">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/process/process_stdout.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="signature">
+<UL>
+  <LI><A class="type" 
+  href="http://nodejs.cn/api/stream.html#stream_stream">&lt;Stream&gt;</A></LI></UL></DIV>
+<P>The <CODE>process.stdout</CODE> property returns a stream connected to 
+<CODE>stdout</CODE> (fd <CODE>1</CODE>). It is a <A href="http://nodejs.cn/api/net.html#net_class_net_socket"><CODE>net.Socket</CODE></A> 
+(which is a <A href="http://nodejs.cn/api/stream.html#stream_duplex_and_transform_streams">Duplex</A>
+ stream) unless fd <CODE>1</CODE> refers to a file, in which case it is a <A 
+href="http://nodejs.cn/api/stream.html#stream_writable_streams">Writable</A> 
+stream.</P>
+<P>例1： 将输入流数据输出到输出流，即输出到终端。</P>
+<PRE><CODE class="lang-js">process.stdin.pipe(process.stdout);
+</CODE></PRE>
+<P>例2： 要求用户输入两个数值，然后把和输出到终端。</P>
+<PRE><CODE class="lang-js">/*1:声明变量*/
+var num1, num2;
+/*2：向屏幕输出，提示信息，要求输入num1*/
+process.stdout.write('请输入num1的值：');
+/*3：监听用户的输入*/
+process.stdin.on('data', function (chunk) {
+    if (!num1) {
+        num1 = Number(chunk);
+        /*4：向屏幕输出，提示信息，要求输入num2*/
+        process.stdout.write('请输入num2的值');
+    } else {
+        num2 = Number(chunk);
+        process.stdout.write('结果是：' + (num1 + num2));
+    }
+});
+</CODE></PRE>
+<P>注意:  重要的是<CODE>process.stdout</CODE>不同于 Node.js 的其他流, 详情可以参考<A href="http://nodejs.cn/api/process.html#process_a_note_on_process_i_o">note 
+on process I/O</A> .</P>
+<H3>A note on process I/O<SPAN><A class="mark" id="process_a_note_on_process_i_o" 
+href="http://nodejs.cn/api/process.html#process_a_note_on_process_i_o">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/process.html#process_a_note_on_process_i_o">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/process/a_note_on_process_i_o.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P><CODE>process.stdout</CODE> and <CODE>process.stderr</CODE> differ from other 
+Node.js streams in important ways:</P>
+<OL>
+  <LI>They are used internally by <A href="http://nodejs.cn/api/console.html#console_console_log_data_args"><CODE>console.log()</CODE></A> 
+  and <A href="http://nodejs.cn/api/console.html#console_console_error_data_args"><CODE>console.error()</CODE></A>,
+   respectively.</LI>
+  <LI>They cannot be closed (<A href="http://nodejs.cn/api/stream.html#stream_writable_end_chunk_encoding_callback"><CODE>end()</CODE></A> 
+  will throw).</LI>
+  <LI>They will never emit the <A href="http://nodejs.cn/api/stream.html#stream_event_finish"><CODE>'finish'</CODE></A> 
+  event.</LI>
+  <LI>Writes may be synchronous depending on the what the stream is connected to
+   and whether the system is Windows or Unix:
+  <UL>
+    <LI>Files: <EM>synchronous</EM> on Windows and Linux</LI>
+    <LI>TTYs (Terminals): <EM>asynchronous</EM> on Windows, <EM>synchronous</EM> 
+    on Unix</LI>
+    <LI>Pipes (and sockets): <EM>synchronous</EM> on Windows, 
+    <EM>asynchronous</EM> on Unix</LI></UL></LI></OL>
+<P>These behaviours are partly for historical reasons, as changing them would
+ create backwards incompatibility, but they are also expected by some users.</P>
+<P>Synchronous writes avoid problems such as output written with 
+<CODE>console.log()</CODE> or <CODE>console.write()</CODE> being unexpectedly 
+interleaved, or not written at all if <CODE>process.exit()</CODE> is called 
+before an asynchronous write completes. See <A href="http://nodejs.cn/api/process.html#process_process_exit_code"><CODE>process.exit()</CODE></A> 
+for more information.</P>
+<P><STRONG><EM>Warning</EM></STRONG>: Synchronous writes block the event loop 
+until the write has completed. This can be near instantaneous in the case of 
+output to a file, but under high system load, pipes that are not being read at 
+the receiving end, or with slow terminals or file systems, its possible for the 
+event loop to be blocked often enough and long enough to have severe negative 
+performance impacts. This may not be a problem when writing to an interactive 
+terminal session, but consider this particularly careful when doing production 
+logging to the process output streams.</P>
+<P>To check if a stream is connected to a <A href="http://nodejs.cn/api/tty.html#tty_tty">TTY</A> 
+context, check the <CODE>isTTY</CODE> property.</P>
+<P>For instance:</P>
+<PRE><CODE class="lang-console">$ node -p "Boolean(process.stdin.isTTY)"
+true
+$ echo "foo" | node -p "Boolean(process.stdin.isTTY)"
+false
+$ node -p "Boolean(process.stdout.isTTY)"
+true
+$ node -p "Boolean(process.stdout.isTTY)" | cat
+false
+</CODE></PRE>
+<P>See the <A href="http://nodejs.cn/api/tty.html#tty_tty">TTY</A> documentation 
+for more information.</P>
+<H2>process.title<SPAN><A class="mark" id="process_process_title" href="http://nodejs.cn/api/process.html#process_process_title">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/process.html#process_process_title">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/process/process_title.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.104</SPAN> </DIV>
+<UL>
+  <LI><A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A></LI></UL>
+<P>The <CODE>process.title</CODE> property returns the current process title 
+(i.e. returns the current value of <CODE>ps</CODE>). Assigning a new value to 
+<CODE>process.title</CODE> modifies the current value of <CODE>ps</CODE>.</P>
+<P><EM>Note</EM>: When a new value is assigned, different platforms will impose 
+different maximum length restrictions on the title. Usually such restrictions 
+are quite limited. For instance, on Linux and OS X, <CODE>process.title</CODE> 
+is limited to the size of the binary name plus the length of the command line 
+arguments because setting the <CODE>process.title</CODE> overwrites the 
+<CODE>argv</CODE> memory of the process. Node.js v0.8 allowed for longer process 
+title strings by also overwriting the <CODE>environ</CODE> memory but that was 
+potentially insecure and confusing in some (rather obscure) cases.</P>
+<H2>process.umask([mask])<SPAN><A class="mark" id="process_process_umask_mask" 
+href="http://nodejs.cn/api/process.html#process_process_umask_mask">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/process.html#process_process_umask_mask">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/process/process_umask_mask.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.19</SPAN> </DIV>
+<UL>
+  <LI><CODE>mask</CODE> <SPAN class="type">&lt;number&gt;</SPAN></LI></UL>
+<P>The <CODE>process.umask()</CODE> method sets or returns the Node.js process's 
+file mode creation mask. Child processes inherit the mask from the parent 
+process. The old mask is return if the <CODE>mask</CODE> argument is given, 
+otherwise returns the current mask.</P>
+<PRE><CODE class="lang-js">const newmask = 0o022;
+const oldmask = process.umask(newmask);
+console.log(
+  `Changed umask from ${oldmask.toString(8)} to ${newmask.toString(8)}`
+);
+</CODE></PRE>
+<H2>process.uptime()<SPAN><A class="mark" id="process_process_uptime" href="http://nodejs.cn/api/process.html#process_process_uptime">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/process.html#process_process_uptime">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/process/process_uptime.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.5.0</SPAN> </DIV>
+<UL>
+  <LI>Returns: <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Number&gt;</A></LI></UL>
+<P>The <CODE>process.uptime()</CODE> method returns the number of seconds the 
+current Node.js process has been running.</P>
+<H2>process.version<SPAN><A class="mark" id="process_process_version" href="http://nodejs.cn/api/process.html#process_process_version">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/process.html#process_process_version">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/process/process_version.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.3</SPAN> </DIV>
+<UL>
+  <LI><A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A></LI></UL>
+<P>The <CODE>process.version</CODE> property returns the Node.js version 
+string.</P>
+<PRE><CODE class="lang-js">console.log(`Version: ${process.version}`);
+</CODE></PRE>
+<H2>process.versions<SPAN><A class="mark" id="process_process_versions" href="http://nodejs.cn/api/process.html#process_process_versions">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/process.html#process_process_versions">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/process/process_versions.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.2.0</SPAN> </DIV>
+<UL>
+  <LI><A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">&lt;Object&gt;</A></LI></UL>
+<P>The <CODE>process.versions</CODE> property returns an object listing the 
+version strings of Node.js and its dependencies. 
+<CODE>process.versions.modules</CODE> indicates the current ABI version, which 
+is increased whenever a C++ API changes. Node.js will refuse to load modules 
+that were compiled against a different module ABI version.</P>
+<PRE><CODE class="lang-js">console.log(process.versions);
+</CODE></PRE>
+<P>Will generate output similar to:</P>
+<PRE><CODE class="lang-js">{
+  http_parser: '2.3.0',
+  node: '1.1.1',
+  v8: '4.1.0.14',
+  uv: '1.3.0',
+  zlib: '1.2.8',
+  ares: '1.10.0-DEV',
+  modules: '43',
+  icu: '55.1',
+  openssl: '1.0.1k'
+}
+</CODE></PRE>
+<H2>Exit Codes<SPAN><A class="mark" id="process_exit_codes" href="http://nodejs.cn/api/process.html#process_exit_codes">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/process.html#process_exit_codes">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/process/exit_codes.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P>Node.js will normally exit with a <CODE>0</CODE> status code when no more 
+async operations are pending.  The following status codes are used in other
+ cases:</P>
+<UL>
+  <LI><CODE>1</CODE> <STRONG>Uncaught Fatal Exception</STRONG> - There was an 
+  uncaught exception, and it was not handled by a domain or an <A href="http://nodejs.cn/api/process.html#process_event_uncaughtexception"><CODE>'uncaughtException'</CODE></A> 
+  event handler.</LI>
+  <LI><CODE>2</CODE> - Unused (reserved by Bash for builtin misuse)</LI>
+  <LI><CODE>3</CODE> <STRONG>Internal JavaScript Parse Error</STRONG> - The 
+  JavaScript source code internal in Node.js's bootstrapping process caused a 
+  parse error.  This is extremely rare, and generally can only happen during 
+  development of Node.js itself.</LI>
+  <LI><CODE>4</CODE> <STRONG>Internal JavaScript Evaluation Failure</STRONG> - 
+  The JavaScript source code internal in Node.js's bootstrapping process failed 
+  to return a function value when evaluated.  This is extremely rare, and
+   generally can only happen during development of Node.js itself.</LI>
+  <LI><CODE>5</CODE> <STRONG>Fatal Error</STRONG> - There was a fatal 
+  unrecoverable error in V8. Typically a message will be printed to stderr with 
+  the prefix <CODE>FATAL ERROR</CODE>.</LI>
+  <LI><CODE>6</CODE> <STRONG>Non-function Internal Exception Handler</STRONG> - 
+  There was an uncaught exception, but the internal fatal exception handler
+   function was somehow set to a non-function, and could not be called.</LI>
+  <LI><CODE>7</CODE> <STRONG>Internal Exception Handler Run-Time 
+  Failure</STRONG> - There was an uncaught exception, and the internal fatal 
+  exception handler function itself threw an error while attempting to handle 
+  it.  This can happen, for example, if a <A href="http://nodejs.cn/api/process.html#process_event_uncaughtexception"><CODE>'uncaughtException'</CODE></A> 
+  or <CODE>domain.on('error')</CODE> handler throws an error.</LI>
+  <LI><CODE>8</CODE> - Unused.  In previous versions of Node.js, exit code 8 
+  sometimes indicated an uncaught exception.</LI>
+  <LI><CODE>9</CODE> - <STRONG>Invalid Argument</STRONG> - Either an unknown 
+  option was specified, or an option requiring a value was provided without a 
+  value.</LI>
+  <LI><CODE>10</CODE> <STRONG>Internal JavaScript Run-Time Failure</STRONG> - 
+  The JavaScript source code internal in Node.js's bootstrapping process threw 
+  an error when the bootstrapping function was called.  This is extremely rare,
+   and generally can only happen during development of Node.js itself.</LI>
+  <LI><CODE>12</CODE> <STRONG>Invalid Debug Argument</STRONG> - The 
+  <CODE>--debug</CODE>, <CODE>--inspect</CODE> and/or <CODE>--debug-brk</CODE> 
+  options were set, but the port number chosen was invalid or unavailable.</LI>
+  <LI><CODE>&gt;128</CODE> <STRONG>Signal Exits</STRONG> - If Node.js receives a 
+  fatal signal such as <CODE>SIGKILL</CODE> or <CODE>SIGHUP</CODE>, then its 
+  exit code will be <CODE>128</CODE> plus the value of the signal code.  This is 
+  a standard Unix practice, since exit codes are defined to be 7-bit integers, 
+  and signal exits set the high-order bit, and then contain the value of the 
+  signal code.</LI></UL></DIV></DIV></DIV><!-- 搜索弹窗 -->   
+<DIV id="modal_search_bg"></DIV>
+<DIV 
+id="modal_search"><INPUT id="modal_search_input" placeholder="API 快速搜索" value=""> 
+    
+<DIV id="modal_search_result"></DIV></DIV><!-- js -->   <!--[if lt IE 10]><script src="/static/lib/placeholders.js?20170426"></script><![endif]--> 
+  
+<SCRIPT src="process%20%20Node_js%20API%20文档_files/api.js"></SCRIPT>
+ </BODY></HTML>

@@ -1,0 +1,714 @@
+﻿<!DOCTYPE HTML>
+<!-- saved from url=(0030)http://nodejs.cn/api/zlib.html -->
+<!DOCTYPE html PUBLIC "" ""><HTML lang="zh-cmn-Hans"><HEAD><META 
+content="IE=11.0000" http-equiv="X-UA-Compatible">
+   
+<META charset="utf-8">   <TITLE>zlib | Node.js API 文档</TITLE>   <LINK href="zlib%20%20Node_js%20API%20文档_files/api.css" 
+rel="stylesheet">   <LINK href="/static/favicon.png" rel="icon" type="image/png" 
+sizes="32x32"> 
+<META name="GENERATOR" content="MSHTML 11.00.9600.18639"></HEAD> 
+<BODY class="alt apidoc" id="api-section-zlib">
+<DIV class="clearfix" id="content">
+<DIV class="interior" id="column2">
+<DIV class="interior" id="intro"><A href="http://nodejs.cn/">          Node.js 
+中文网         </A>         
+<DIV><INPUT id="search_input" placeholder="API 快速搜索" value="">         
+</DIV></DIV>
+<UL>
+  <LI><A class="nav-documentation" href="http://nodejs.cn/api/documentation.html">关于本文档</A></LI>
+  <LI><A class="nav-synopsis" 
+  href="http://nodejs.cn/api/synopsis.html">用法与例子</A></LI></UL>
+<DIV class="line"></DIV>
+<UL>
+  <LI><A class="nav-assert" href="http://nodejs.cn/api/assert.html">Assert 
+  (断言)</A></LI>
+  <LI><A class="nav-buffer" 
+  href="http://nodejs.cn/api/buffer.html">Buffer</A></LI>
+  <LI><A class="nav-addons" href="http://nodejs.cn/api/addons.html">C/C++ 
+  插件</A></LI>
+  <LI><A class="nav-child_process" href="http://nodejs.cn/api/child_process.html">Child 
+  Processes (子进程)</A></LI>
+  <LI><A class="nav-cluster" href="http://nodejs.cn/api/cluster.html">Cluster 
+  (集群)</A></LI>
+  <LI><A class="nav-cli" href="http://nodejs.cn/api/cli.html">CLI 
+  (命令行选项)</A></LI>
+  <LI><A class="nav-console" href="http://nodejs.cn/api/console.html">Console 
+  (控制台)</A></LI>
+  <LI><A class="nav-crypto" href="http://nodejs.cn/api/crypto.html">Crypto 
+  (加密)</A></LI>
+  <LI><A class="nav-debugger" href="http://nodejs.cn/api/debugger.html">Debugger 
+  (调试器)</A></LI>
+  <LI><A class="nav-dns" href="http://nodejs.cn/api/dns.html">DNS 
+  (域名服务器)</A></LI>
+  <LI><A class="nav-domain" href="http://nodejs.cn/api/domain.html">Domain 
+  (域)</A></LI>
+  <LI><A class="nav-errors" href="http://nodejs.cn/api/errors.html">Error 
+  (错误)</A></LI>
+  <LI><A class="nav-events" href="http://nodejs.cn/api/events.html">Events 
+  (事件)</A></LI>
+  <LI><A class="nav-fs" href="http://nodejs.cn/api/fs.html">File System 
+  (文件系统)</A></LI>
+  <LI><A class="nav-globals" href="http://nodejs.cn/api/globals.html">Global 
+  (全局变量)</A></LI>
+  <LI><A class="nav-http" href="http://nodejs.cn/api/http.html">HTTP</A></LI>
+  <LI><A class="nav-https" href="http://nodejs.cn/api/https.html">HTTPS</A></LI>
+  <LI><A class="nav-modules" href="http://nodejs.cn/api/modules.html">Module 
+  (模块)</A></LI>
+  <LI><A class="nav-net" href="http://nodejs.cn/api/net.html">Net (网络)</A></LI>
+  <LI><A class="nav-os" href="http://nodejs.cn/api/os.html">OS (操作系统)</A></LI>
+  <LI><A class="nav-path" href="http://nodejs.cn/api/path.html">Path 
+  (路径)</A></LI>
+  <LI><A class="nav-process" href="http://nodejs.cn/api/process.html">Process 
+  (进程)</A></LI>
+  <LI><A class="nav-punycode" 
+  href="http://nodejs.cn/api/punycode.html">Punycode</A></LI>
+  <LI><A class="nav-querystring" 
+  href="http://nodejs.cn/api/querystring.html">Query Strings (查询字符串)</A></LI>
+  <LI><A class="nav-readline" href="http://nodejs.cn/api/readline.html">Readline 
+  (逐行读取)</A></LI>
+  <LI><A class="nav-repl" href="http://nodejs.cn/api/repl.html">REPL 
+  (交互式解释器)</A></LI>
+  <LI><A class="nav-stream" href="http://nodejs.cn/api/stream.html">Stream 
+  (流)</A></LI>
+  <LI><A class="nav-string_decoder" href="http://nodejs.cn/api/string_decoder.html">String 
+  Decoder (字符串解码器)</A></LI>
+  <LI><A class="nav-timers" href="http://nodejs.cn/api/timers.html">Timer 
+  (定时器)</A></LI>
+  <LI><A class="nav-tls" href="http://nodejs.cn/api/tls.html">TLS 
+  (安全传输层)</A></LI>
+  <LI><A class="nav-tty" href="http://nodejs.cn/api/tty.html">TTY (终端)</A></LI>
+  <LI><A class="nav-dgram" href="http://nodejs.cn/api/dgram.html">UDP/Datagram 
+  (数据报)</A></LI>
+  <LI><A class="nav-url" href="http://nodejs.cn/api/url.html">URL</A></LI>
+  <LI><A class="nav-util" href="http://nodejs.cn/api/util.html">Util 
+  (实用工具)</A></LI>
+  <LI><A class="nav-v8" href="http://nodejs.cn/api/v8.html">V8</A></LI>
+  <LI><A class="nav-vm" href="http://nodejs.cn/api/vm.html">VM (虚拟机)</A></LI>
+  <LI><A class="nav-zlib active" href="http://nodejs.cn/api/zlib.html">ZLIB 
+  (压缩)</A></LI></UL>
+<DIV class="line"></DIV></DIV>
+<DIV class="interior" id="column1" data-id="zlib"><HEADER>
+<H1>Node.js v6.10.3 文档</H1>
+<DIV id="gtoc">
+<P><A name="toc" href="http://nodejs.cn/api/">返回文档首页</A>             <!--<a href="/api/all.html">单页面显示</a> |--> 
+            <!--<a href="/api/zlib.json">JSON格式</a> |-->             <!--<a href="/api/en/zlib.html">查看英文版</a>--> 
+          </P></DIV>
+<HR>
+</HEADER>
+<DIV id="toc">
+<H2>目录</H2>
+<UL>
+  <LI><SPAN class="stability_2"><A href="http://nodejs.cn/api/zlib.html#zlib_zlib">Zlib</A></SPAN>
+  <UL> 
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/zlib.html#zlib_compressing_http_requests_and_responses">Compressing 
+    HTTP requests and responses</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/zlib.html#zlib_memory_usage_tuning">Memory 
+    Usage Tuning</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/zlib.html#zlib_flushing">Flushing</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/zlib.html#zlib_constants">Constants</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/zlib.html#zlib_class_options">Class 
+    Options</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/zlib.html#zlib_class_zlib_deflate">Class: 
+    zlib.Deflate</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/zlib.html#zlib_class_zlib_deflateraw">Class: 
+    zlib.DeflateRaw</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/zlib.html#zlib_class_zlib_gunzip">Class: 
+    zlib.Gunzip</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/zlib.html#zlib_class_zlib_gzip">Class: 
+    zlib.Gzip</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/zlib.html#zlib_class_zlib_inflate">Class: 
+    zlib.Inflate</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/zlib.html#zlib_class_zlib_inflateraw">Class: 
+    zlib.InflateRaw</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/zlib.html#zlib_class_zlib_unzip">Class: 
+    zlib.Unzip</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/zlib.html#zlib_class_zlib_zlib">Class: 
+    zlib.Zlib</A></SPAN>
+    <UL> 
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/zlib.html#zlib_zlib_flush_kind_callback">zlib.flush([kind], 
+      callback)</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/zlib.html#zlib_zlib_params_level_strategy_callback">zlib.params(level, 
+      strategy, callback)</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/zlib.html#zlib_zlib_reset">zlib.reset()</A></SPAN></LI></UL></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/zlib.html#zlib_zlib_constants">zlib.constants</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/zlib.html#zlib_zlib_createdeflate_options">zlib.createDeflate([options])</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/zlib.html#zlib_zlib_createdeflateraw_options">zlib.createDeflateRaw([options])</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/zlib.html#zlib_zlib_creategunzip_options">zlib.createGunzip([options])</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/zlib.html#zlib_zlib_creategzip_options">zlib.createGzip([options])</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/zlib.html#zlib_zlib_createinflate_options">zlib.createInflate([options])</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/zlib.html#zlib_zlib_createinflateraw_options">zlib.createInflateRaw([options])</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/zlib.html#zlib_zlib_createunzip_options">zlib.createUnzip([options])</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/zlib.html#zlib_convenience_methods">Convenience 
+    Methods</A></SPAN>
+    <UL> 
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/zlib.html#zlib_zlib_deflate_buf_options_callback">zlib.deflate(buf[, 
+      options], callback)</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/zlib.html#zlib_zlib_deflatesync_buf_options">zlib.deflateSync(buf[, 
+      options])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/zlib.html#zlib_zlib_deflateraw_buf_options_callback">zlib.deflateRaw(buf[, 
+      options], callback)</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/zlib.html#zlib_zlib_deflaterawsync_buf_options">zlib.deflateRawSync(buf[, 
+      options])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/zlib.html#zlib_zlib_gunzip_buf_options_callback">zlib.gunzip(buf[, 
+      options], callback)</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/zlib.html#zlib_zlib_gunzipsync_buf_options">zlib.gunzipSync(buf[, 
+      options])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/zlib.html#zlib_zlib_gzip_buf_options_callback">zlib.gzip(buf[, 
+      options], callback)</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/zlib.html#zlib_zlib_gzipsync_buf_options">zlib.gzipSync(buf[, 
+      options])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/zlib.html#zlib_zlib_inflate_buf_options_callback">zlib.inflate(buf[, 
+      options], callback)</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/zlib.html#zlib_zlib_inflatesync_buf_options">zlib.inflateSync(buf[, 
+      options])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/zlib.html#zlib_zlib_inflateraw_buf_options_callback">zlib.inflateRaw(buf[, 
+      options], callback)</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/zlib.html#zlib_zlib_inflaterawsync_buf_options">zlib.inflateRawSync(buf[, 
+      options])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/zlib.html#zlib_zlib_unzip_buf_options_callback">zlib.unzip(buf[, 
+      options], callback)</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/zlib.html#zlib_zlib_unzipsync_buf_options">zlib.unzipSync(buf[, 
+      options])</A></SPAN></LI></UL></LI></UL></LI></UL></DIV>
+<DIV id="apicontent">
+<H1>Zlib<SPAN><A class="mark" id="zlib_zlib" href="http://nodejs.cn/api/zlib.html#zlib_zlib">#</A></SPAN></H1>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/zlib.html#zlib_zlib">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/zlib/zlib.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<PRE class="api_stability api_stability_2"><A href="http://nodejs.cn/api/documentation.html#documentation_stability_index">Stability: 2</A> - Stable</PRE>
+<P>The <CODE>zlib</CODE> module provides compression functionality implemented 
+using Gzip and Deflate/Inflate. It can be accessed using:</P>
+<PRE><CODE class="lang-js">const zlib = require('zlib');
+</CODE></PRE>
+<P>Compressing or decompressing a stream (such as a file) can be accomplished by
+ piping the source stream data through a <CODE>zlib</CODE> stream into a 
+destination stream:</P>
+<PRE><CODE class="lang-js">const gzip = zlib.createGzip();
+const fs = require('fs');
+const inp = fs.createReadStream('input.txt');
+const out = fs.createWriteStream('input.txt.gz');
+
+inp.pipe(gzip).pipe(out);
+</CODE></PRE>
+<P>It is also possible to compress or decompress data in a single step:</P>
+<PRE><CODE class="lang-js">const input = '.................................';
+zlib.deflate(input, (err, buffer) =&gt; {
+  if (!err) {
+    console.log(buffer.toString('base64'));
+  } else {
+    // handle error
+  }
+});
+
+const buffer = Buffer.from('eJzT0yMAAGTvBe8=', 'base64');
+zlib.unzip(buffer, (err, buffer) =&gt; {
+  if (!err) {
+    console.log(buffer.toString());
+  } else {
+    // handle error
+  }
+});
+</CODE></PRE>
+<H2>Compressing HTTP requests and responses<SPAN><A class="mark" id="zlib_compressing_http_requests_and_responses" 
+href="http://nodejs.cn/api/zlib.html#zlib_compressing_http_requests_and_responses">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/zlib.html#zlib_compressing_http_requests_and_responses">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/zlib/compressing_http_requests_and_responses.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P>The <CODE>zlib</CODE> module can be used to implement support for the 
+<CODE>gzip</CODE> and <CODE>deflate</CODE> content-encoding mechanisms defined 
+by <A href="https://tools.ietf.org/html/rfc7230#section-4.2">HTTP</A>.</P>
+<P>The HTTP <A href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.3"><CODE>Accept-Encoding</CODE></A> 
+header is used within an http request to identify the compression encodings 
+accepted by the client. The <A href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.11"><CODE>Content-Encoding</CODE></A>
+ header is used to identify the compression encodings actually applied to a
+ message.</P>
+<P><STRONG>Note: the examples given below are drastically simplified to show the 
+basic concept.</STRONG>  Using <CODE>zlib</CODE> encoding can be expensive, and 
+the results ought to be cached.  See <A href="http://nodejs.cn/api/zlib.html#zlib_memory_usage_tuning">Memory 
+Usage Tuning</A> for more information on the speed/memory/compression tradeoffs 
+involved in <CODE>zlib</CODE> usage.</P>
+<PRE><CODE class="lang-js">// client request example
+const zlib = require('zlib');
+const http = require('http');
+const fs = require('fs');
+const request = http.get({ host: 'example.com',
+                         path: '/',
+                         port: 80,
+                         headers: { 'Accept-Encoding': 'gzip,deflate' } });
+request.on('response', (response) =&gt; {
+  var output = fs.createWriteStream('example.com_index.html');
+
+  switch (response.headers['content-encoding']) {
+    // or, just use zlib.createUnzip() to handle both cases
+    case 'gzip':
+      response.pipe(zlib.createGunzip()).pipe(output);
+      break;
+    case 'deflate':
+      response.pipe(zlib.createInflate()).pipe(output);
+      break;
+    default:
+      response.pipe(output);
+      break;
+  }
+});
+
+// server example
+// Running a gzip operation on every request is quite expensive.
+// It would be much more efficient to cache the compressed buffer.
+const zlib = require('zlib');
+const http = require('http');
+const fs = require('fs');
+http.createServer((request, response) =&gt; {
+  var raw = fs.createReadStream('index.html');
+  var acceptEncoding = request.headers['accept-encoding'];
+  if (!acceptEncoding) {
+    acceptEncoding = '';
+  }
+
+  // Note: this is not a conformant accept-encoding parser.
+  // See http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.3
+  if (acceptEncoding.match(/\bdeflate\b/)) {
+    response.writeHead(200, { 'Content-Encoding': 'deflate' });
+    raw.pipe(zlib.createDeflate()).pipe(response);
+  } else if (acceptEncoding.match(/\bgzip\b/)) {
+    response.writeHead(200, { 'Content-Encoding': 'gzip' });
+    raw.pipe(zlib.createGzip()).pipe(response);
+  } else {
+    response.writeHead(200, {});
+    raw.pipe(response);
+  }
+}).listen(1337);
+</CODE></PRE>
+<P>By default, the <CODE>zlib</CODE> methods will throw an error when 
+decompressing truncated data. However, if it is known that the data is 
+incomplete, or the desire is to inspect only the beginning of a compressed file, 
+it is possible to suppress the default error handling by changing the flushing
+ method that is used to compressed the last chunk of input data:</P>
+<PRE><CODE class="lang-js">// This is a truncated version of the buffer from the above examples
+const buffer = Buffer.from('eJzT0yMA', 'base64');
+
+zlib.unzip(buffer, { finishFlush: zlib.Z_SYNC_FLUSH }, (err, buffer) =&gt; {
+  if (!err) {
+    console.log(buffer.toString());
+  } else {
+    // handle error
+  }
+});
+</CODE></PRE>
+<P>This will not change the behavior in other error-throwing situations, e.g.
+ when the input data has an invalid format. Using this method, it will not be
+ possible to determine whether the input ended prematurely or lacks the
+ integrity checks, making it necessary to manually check that the decompressed 
+result is valid.</P>
+<H2>Memory Usage Tuning<SPAN><A class="mark" id="zlib_memory_usage_tuning" href="http://nodejs.cn/api/zlib.html#zlib_memory_usage_tuning">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/zlib.html#zlib_memory_usage_tuning">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/zlib/memory_usage_tuning.md" 
+target="_blank" rel="nofollow">参与翻译</A></P><!--type=misc--> 
+<P>From <CODE>zlib/zconf.h</CODE>, modified to node.js's usage:</P>
+<P>The memory requirements for deflate are (in bytes):</P>
+<PRE><CODE class="lang-js">(1 &lt;&lt; (windowBits+2)) +  (1 &lt;&lt; (memLevel+9))
+</CODE></PRE>
+<P>That is: 128K for windowBits=15  +  128K for memLevel = 8 (default values) 
+plus a few kilobytes for small objects.</P>
+<P>For example, to reduce the default memory requirements from 256K to 128K, the
+ options should be set to:</P>
+<PRE><CODE class="lang-js">{ windowBits: 14, memLevel: 7 }
+</CODE></PRE>
+<P>This will, however, generally degrade compression.</P>
+<P>The memory requirements for inflate are (in bytes)</P>
+<PRE><CODE class="lang-js">1 &lt;&lt; windowBits
+</CODE></PRE>
+<P>That is, 32K for windowBits=15 (default value) plus a few kilobytes for small 
+objects.</P>
+<P>This is in addition to a single internal output slab buffer of size 
+<CODE>chunkSize</CODE>, which defaults to 16K.</P>
+<P>The speed of <CODE>zlib</CODE> compression is affected most dramatically by 
+the <CODE>level</CODE> setting.  A higher level will result in better 
+compression, but will take longer to complete.  A lower level will result in 
+less compression, but will be much faster.</P>
+<P>In general, greater memory usage options will mean that Node.js has to make
+ fewer calls to <CODE>zlib</CODE> because it will be able to process more data 
+on each <CODE>write</CODE> operation.  So, this is another factor that affects 
+the speed, at the cost of memory usage.</P>
+<H2>Flushing<SPAN><A class="mark" id="zlib_flushing" href="http://nodejs.cn/api/zlib.html#zlib_flushing">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/zlib.html#zlib_flushing">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/zlib/flushing.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P>Calling <A href="http://nodejs.cn/api/zlib.html#zlib_zlib_flush_kind_callback"><CODE>.flush()</CODE></A> 
+on a compression stream will make <CODE>zlib</CODE> return as much output as 
+currently possible. This may come at the cost of degraded compression quality, 
+but can be useful when data needs to be available as soon as possible.</P>
+<P>In the following example, <CODE>flush()</CODE> is used to write a compressed 
+partial HTTP response to the client:</P>
+<PRE><CODE class="lang-js">const zlib = require('zlib');
+const http = require('http');
+
+http.createServer((request, response) =&gt; {
+  // For the sake of simplicity, the Accept-Encoding checks are omitted.
+  response.writeHead(200, { 'content-encoding': 'gzip' });
+  const output = zlib.createGzip();
+  output.pipe(response);
+
+  setInterval(() =&gt; {
+    output.write(`The current time is ${Date()}\n`, () =&gt; {
+      // The data has been passed to zlib, but the compression algorithm may
+      // have decided to buffer the data for more efficient compression.
+      // Calling .flush() will make the data available as soon as the client
+      // is ready to receive it.
+      output.flush();
+    });
+  }, 1000);
+}).listen(1337);
+</CODE></PRE>
+<H2>Constants<SPAN><A class="mark" id="zlib_constants" href="http://nodejs.cn/api/zlib.html#zlib_constants">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/zlib.html#zlib_constants">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/zlib/constants.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.5.8</SPAN> </DIV><!--type=misc--> 
+<P>All of the constants defined in <CODE>zlib.h</CODE> are also defined on 
+<CODE>require('zlib')</CODE>. In the normal course of operations, it will not be 
+necessary to use these constants. They are documented so that their presence is 
+not surprising. This section is taken almost directly from the <A href="http://zlib.net/manual.html#Constants">zlib 
+documentation</A>.  See <A 
+href="http://zlib.net/manual.html#Constants">http://zlib.net/manual.html#Constants</A> 
+for more details.</P>
+<P>Allowed flush values.</P>
+<UL>
+  <LI><CODE>zlib.Z_NO_FLUSH</CODE></LI>
+  <LI><CODE>zlib.Z_PARTIAL_FLUSH</CODE></LI>
+  <LI><CODE>zlib.Z_SYNC_FLUSH</CODE></LI>
+  <LI><CODE>zlib.Z_FULL_FLUSH</CODE></LI>
+  <LI><CODE>zlib.Z_FINISH</CODE></LI>
+  <LI><CODE>zlib.Z_BLOCK</CODE></LI>
+  <LI><CODE>zlib.Z_TREES</CODE></LI></UL>
+<P>Return codes for the compression/decompression functions. Negative values are 
+errors, positive values are used for special but normal events.</P>
+<UL>
+  <LI><CODE>zlib.Z_OK</CODE></LI>
+  <LI><CODE>zlib.Z_STREAM_END</CODE></LI>
+  <LI><CODE>zlib.Z_NEED_DICT</CODE></LI>
+  <LI><CODE>zlib.Z_ERRNO</CODE></LI>
+  <LI><CODE>zlib.Z_STREAM_ERROR</CODE></LI>
+  <LI><CODE>zlib.Z_DATA_ERROR</CODE></LI>
+  <LI><CODE>zlib.Z_MEM_ERROR</CODE></LI>
+  <LI><CODE>zlib.Z_BUF_ERROR</CODE></LI>
+  <LI><CODE>zlib.Z_VERSION_ERROR</CODE></LI></UL>
+<P>Compression levels.</P>
+<UL>
+  <LI><CODE>zlib.Z_NO_COMPRESSION</CODE></LI>
+  <LI><CODE>zlib.Z_BEST_SPEED</CODE></LI>
+  <LI><CODE>zlib.Z_BEST_COMPRESSION</CODE></LI>
+  <LI><CODE>zlib.Z_DEFAULT_COMPRESSION</CODE></LI></UL>
+<P>Compression strategy.</P>
+<UL>
+  <LI><CODE>zlib.Z_FILTERED</CODE></LI>
+  <LI><CODE>zlib.Z_HUFFMAN_ONLY</CODE></LI>
+  <LI><CODE>zlib.Z_RLE</CODE></LI>
+  <LI><CODE>zlib.Z_FIXED</CODE></LI>
+  <LI><CODE>zlib.Z_DEFAULT_STRATEGY</CODE></LI></UL>
+<P>The deflate compression method (the only one supported in this version).</P>
+<UL>
+  <LI><CODE>zlib.Z_DEFLATED</CODE></LI></UL>
+<P>For initializing zalloc, zfree, opaque.</P>
+<UL>
+  <LI><CODE>zlib.Z_NULL</CODE></LI></UL>
+<H2>Class Options<SPAN><A class="mark" id="zlib_class_options" href="http://nodejs.cn/api/zlib.html#zlib_class_options">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/zlib.html#zlib_class_options">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/zlib/class_options.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.11.1</SPAN> </DIV><!--type=misc--> 
+<P>Each class takes an <CODE>options</CODE> object.  All options are 
+optional.</P>
+<P>Note that some options are only relevant when compressing, and are ignored by 
+the decompression classes.</P>
+<UL>
+  <LI><CODE>flush</CODE> (default: <CODE>zlib.Z_NO_FLUSH</CODE>)</LI>
+  <LI><CODE>finishFlush</CODE> (default: <CODE>zlib.Z_FINISH</CODE>)</LI>
+  <LI><CODE>chunkSize</CODE> (default: 16*1024)</LI>
+  <LI><CODE>windowBits</CODE></LI>
+  <LI><CODE>level</CODE> (compression only)</LI>
+  <LI><CODE>memLevel</CODE> (compression only)</LI>
+  <LI><CODE>strategy</CODE> (compression only)</LI>
+  <LI><CODE>dictionary</CODE> (deflate/inflate only, empty dictionary by 
+  default)</LI></UL>
+<P>See the description of <CODE>deflateInit2</CODE> and 
+<CODE>inflateInit2</CODE> at <A 
+href="http://zlib.net/manual.html#Advanced">http://zlib.net/manual.html#Advanced</A> 
+for more information on these.</P>
+<H2>Class: zlib.Deflate<SPAN><A class="mark" id="zlib_class_zlib_deflate" href="http://nodejs.cn/api/zlib.html#zlib_class_zlib_deflate">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/zlib.html#zlib_class_zlib_deflate">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/zlib/class_zlib_deflate.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.5.8</SPAN> </DIV>
+<P>Compress data using deflate.</P>
+<H2>Class: zlib.DeflateRaw<SPAN><A class="mark" id="zlib_class_zlib_deflateraw" 
+href="http://nodejs.cn/api/zlib.html#zlib_class_zlib_deflateraw">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/zlib.html#zlib_class_zlib_deflateraw">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/zlib/class_zlib_deflateraw.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.5.8</SPAN> </DIV>
+<P>Compress data using deflate, and do not append a <CODE>zlib</CODE> 
+header.</P>
+<H2>Class: zlib.Gunzip<SPAN><A class="mark" id="zlib_class_zlib_gunzip" href="http://nodejs.cn/api/zlib.html#zlib_class_zlib_gunzip">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/zlib.html#zlib_class_zlib_gunzip">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/zlib/class_zlib_gunzip.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.5.8</SPAN> </DIV>
+<P>Decompress a gzip stream.</P>
+<H2>Class: zlib.Gzip<SPAN><A class="mark" id="zlib_class_zlib_gzip" href="http://nodejs.cn/api/zlib.html#zlib_class_zlib_gzip">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/zlib.html#zlib_class_zlib_gzip">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/zlib/class_zlib_gzip.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.5.8</SPAN> </DIV>
+<P>Compress data using gzip.</P>
+<H2>Class: zlib.Inflate<SPAN><A class="mark" id="zlib_class_zlib_inflate" href="http://nodejs.cn/api/zlib.html#zlib_class_zlib_inflate">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/zlib.html#zlib_class_zlib_inflate">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/zlib/class_zlib_inflate.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.5.8</SPAN> </DIV>
+<P>Decompress a deflate stream.</P>
+<H2>Class: zlib.InflateRaw<SPAN><A class="mark" id="zlib_class_zlib_inflateraw" 
+href="http://nodejs.cn/api/zlib.html#zlib_class_zlib_inflateraw">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/zlib.html#zlib_class_zlib_inflateraw">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/zlib/class_zlib_inflateraw.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.5.8</SPAN> </DIV>
+<P>Decompress a raw deflate stream.</P>
+<H2>Class: zlib.Unzip<SPAN><A class="mark" id="zlib_class_zlib_unzip" href="http://nodejs.cn/api/zlib.html#zlib_class_zlib_unzip">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/zlib.html#zlib_class_zlib_unzip">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/zlib/class_zlib_unzip.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.5.8</SPAN> </DIV>
+<P>Decompress either a Gzip- or Deflate-compressed stream by auto-detecting the 
+header.</P>
+<H2>Class: zlib.Zlib<SPAN><A class="mark" id="zlib_class_zlib_zlib" href="http://nodejs.cn/api/zlib.html#zlib_class_zlib_zlib">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/zlib.html#zlib_class_zlib_zlib">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/zlib/class_zlib_zlib.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.5.8</SPAN> </DIV>
+<P>Not exported by the <CODE>zlib</CODE> module. It is documented here because 
+it is the base class of the compressor/decompressor classes.</P>
+<H3>zlib.flush([kind], callback)<SPAN><A class="mark" id="zlib_zlib_flush_kind_callback" 
+href="http://nodejs.cn/api/zlib.html#zlib_zlib_flush_kind_callback">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/zlib.html#zlib_zlib_flush_kind_callback">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/zlib/zlib_flush_kind_callback.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.5.8</SPAN> </DIV>
+<P><CODE>kind</CODE> defaults to <CODE>zlib.Z_FULL_FLUSH</CODE>.</P>
+<P>Flush pending data. Don't call this frivolously, premature flushes negatively
+ impact the effectiveness of the compression algorithm.</P>
+<P>Calling this only flushes data from the internal <CODE>zlib</CODE> state, and 
+does not perform flushing of any kind on the streams level. Rather, it behaves 
+like a normal call to <CODE>.write()</CODE>, i.e. it will be queued up behind 
+other pending writes and will only produce output when data is being read from 
+the stream.</P>
+<H3>zlib.params(level, strategy, callback)<SPAN><A class="mark" id="zlib_zlib_params_level_strategy_callback" 
+href="http://nodejs.cn/api/zlib.html#zlib_zlib_params_level_strategy_callback">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/zlib.html#zlib_zlib_params_level_strategy_callback">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/zlib/zlib_params_level_strategy_callback.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.11.4</SPAN> </DIV>
+<P>Dynamically update the compression level and compression strategy. Only 
+applicable to deflate algorithm.</P>
+<H3>zlib.reset()<SPAN><A class="mark" id="zlib_zlib_reset" href="http://nodejs.cn/api/zlib.html#zlib_zlib_reset">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/zlib.html#zlib_zlib_reset">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/zlib/zlib_reset.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.7.0</SPAN> </DIV>
+<P>Reset the compressor/decompressor to factory defaults. Only applicable to the 
+inflate and deflate algorithms.</P>
+<H2>zlib.constants<SPAN><A class="mark" id="zlib_zlib_constants" href="http://nodejs.cn/api/zlib.html#zlib_zlib_constants">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/zlib.html#zlib_zlib_constants">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/zlib/zlib_constants.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v7.0.0</SPAN> </DIV>
+<P>Provides an object enumerating Zlib-related constants.</P>
+<H2>zlib.createDeflate(<A href="http://nodejs.cn/api/zlib.html#zlib_class_options">options</A>)<SPAN><A 
+class="mark" id="zlib_zlib_createdeflate_options" href="http://nodejs.cn/api/zlib.html#zlib_zlib_createdeflate_options">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/zlib.html#zlib_zlib_createdeflate_options">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/zlib/zlib_createdeflate_options.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.5.8</SPAN> </DIV>
+<P>Returns a new <A href="http://nodejs.cn/api/zlib.html#zlib_class_zlib_deflate">Deflate</A> 
+object with an <A 
+href="http://nodejs.cn/api/zlib.html#zlib_class_options">options</A>.</P>
+<H2>zlib.createDeflateRaw(<A href="http://nodejs.cn/api/zlib.html#zlib_class_options">options</A>)<SPAN><A 
+class="mark" id="zlib_zlib_createdeflateraw_options" href="http://nodejs.cn/api/zlib.html#zlib_zlib_createdeflateraw_options">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/zlib.html#zlib_zlib_createdeflateraw_options">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/zlib/zlib_createdeflateraw_options.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.5.8</SPAN> </DIV>
+<P>Returns a new <A href="http://nodejs.cn/api/zlib.html#zlib_class_zlib_deflateraw">DeflateRaw</A> 
+object with an <A 
+href="http://nodejs.cn/api/zlib.html#zlib_class_options">options</A>.</P>
+<H2>zlib.createGunzip(<A href="http://nodejs.cn/api/zlib.html#zlib_class_options">options</A>)<SPAN><A 
+class="mark" id="zlib_zlib_creategunzip_options" href="http://nodejs.cn/api/zlib.html#zlib_zlib_creategunzip_options">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/zlib.html#zlib_zlib_creategunzip_options">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/zlib/zlib_creategunzip_options.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.5.8</SPAN> </DIV>
+<P>Returns a new <A 
+href="http://nodejs.cn/api/zlib.html#zlib_class_zlib_gunzip">Gunzip</A> object 
+with an <A 
+href="http://nodejs.cn/api/zlib.html#zlib_class_options">options</A>.</P>
+<H2>zlib.createGzip(<A 
+href="http://nodejs.cn/api/zlib.html#zlib_class_options">options</A>)<SPAN><A 
+class="mark" id="zlib_zlib_creategzip_options" href="http://nodejs.cn/api/zlib.html#zlib_zlib_creategzip_options">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/zlib.html#zlib_zlib_creategzip_options">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/zlib/zlib_creategzip_options.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.5.8</SPAN> </DIV>
+<P>Returns a new <A 
+href="http://nodejs.cn/api/zlib.html#zlib_class_zlib_gzip">Gzip</A> object with 
+an <A href="http://nodejs.cn/api/zlib.html#zlib_class_options">options</A>.</P>
+<H2>zlib.createInflate(<A href="http://nodejs.cn/api/zlib.html#zlib_class_options">options</A>)<SPAN><A 
+class="mark" id="zlib_zlib_createinflate_options" href="http://nodejs.cn/api/zlib.html#zlib_zlib_createinflate_options">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/zlib.html#zlib_zlib_createinflate_options">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/zlib/zlib_createinflate_options.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.5.8</SPAN> </DIV>
+<P>Returns a new <A href="http://nodejs.cn/api/zlib.html#zlib_class_zlib_inflate">Inflate</A> 
+object with an <A 
+href="http://nodejs.cn/api/zlib.html#zlib_class_options">options</A>.</P>
+<H2>zlib.createInflateRaw(<A href="http://nodejs.cn/api/zlib.html#zlib_class_options">options</A>)<SPAN><A 
+class="mark" id="zlib_zlib_createinflateraw_options" href="http://nodejs.cn/api/zlib.html#zlib_zlib_createinflateraw_options">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/zlib.html#zlib_zlib_createinflateraw_options">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/zlib/zlib_createinflateraw_options.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.5.8</SPAN> </DIV>
+<P>Returns a new <A href="http://nodejs.cn/api/zlib.html#zlib_class_zlib_inflateraw">InflateRaw</A> 
+object with an <A 
+href="http://nodejs.cn/api/zlib.html#zlib_class_options">options</A>.</P>
+<H2>zlib.createUnzip(<A 
+href="http://nodejs.cn/api/zlib.html#zlib_class_options">options</A>)<SPAN><A 
+class="mark" id="zlib_zlib_createunzip_options" href="http://nodejs.cn/api/zlib.html#zlib_zlib_createunzip_options">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/zlib.html#zlib_zlib_createunzip_options">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/zlib/zlib_createunzip_options.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.5.8</SPAN> </DIV>
+<P>Returns a new <A 
+href="http://nodejs.cn/api/zlib.html#zlib_class_zlib_unzip">Unzip</A> object 
+with an <A 
+href="http://nodejs.cn/api/zlib.html#zlib_class_options">options</A>.</P>
+<H2>Convenience Methods<SPAN><A class="mark" id="zlib_convenience_methods" href="http://nodejs.cn/api/zlib.html#zlib_convenience_methods">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/zlib.html#zlib_convenience_methods">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/zlib/convenience_methods.md" 
+target="_blank" rel="nofollow">参与翻译</A></P><!--type=misc--> 
+<P>All of these take a <A href="http://nodejs.cn/api/buffer.html">Buffer</A> or 
+string as the first argument, an optional second argument to supply options to 
+the <CODE>zlib</CODE> classes and will call the supplied callback with 
+<CODE>callback(error, result)</CODE>.</P>
+<P>Every method has a <CODE>*Sync</CODE> counterpart, which accept the same 
+arguments, but without a callback.</P>
+<H3>zlib.deflate(buf[, options], callback)<SPAN><A class="mark" id="zlib_zlib_deflate_buf_options_callback" 
+href="http://nodejs.cn/api/zlib.html#zlib_zlib_deflate_buf_options_callback">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/zlib.html#zlib_zlib_deflate_buf_options_callback">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/zlib/zlib_deflate_buf_options_callback.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.6.0</SPAN> </DIV>
+<H3>zlib.deflateSync(buf[, options])<SPAN><A class="mark" id="zlib_zlib_deflatesync_buf_options" 
+href="http://nodejs.cn/api/zlib.html#zlib_zlib_deflatesync_buf_options">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/zlib.html#zlib_zlib_deflatesync_buf_options">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/zlib/zlib_deflatesync_buf_options.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.11.12</SPAN> </DIV>
+<P>Compress a <A href="http://nodejs.cn/api/buffer.html">Buffer</A> or string 
+with <A 
+href="http://nodejs.cn/api/zlib.html#zlib_class_zlib_deflate">Deflate</A>.</P>
+<H3>zlib.deflateRaw(buf[, options], callback)<SPAN><A class="mark" id="zlib_zlib_deflateraw_buf_options_callback" 
+href="http://nodejs.cn/api/zlib.html#zlib_zlib_deflateraw_buf_options_callback">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/zlib.html#zlib_zlib_deflateraw_buf_options_callback">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/zlib/zlib_deflateraw_buf_options_callback.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.6.0</SPAN> </DIV>
+<H3>zlib.deflateRawSync(buf[, options])<SPAN><A class="mark" id="zlib_zlib_deflaterawsync_buf_options" 
+href="http://nodejs.cn/api/zlib.html#zlib_zlib_deflaterawsync_buf_options">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/zlib.html#zlib_zlib_deflaterawsync_buf_options">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/zlib/zlib_deflaterawsync_buf_options.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.11.12</SPAN> </DIV>
+<P>Compress a <A href="http://nodejs.cn/api/buffer.html">Buffer</A> or string 
+with <A 
+href="http://nodejs.cn/api/zlib.html#zlib_class_zlib_deflateraw">DeflateRaw</A>.</P>
+<H3>zlib.gunzip(buf[, options], callback)<SPAN><A class="mark" id="zlib_zlib_gunzip_buf_options_callback" 
+href="http://nodejs.cn/api/zlib.html#zlib_zlib_gunzip_buf_options_callback">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/zlib.html#zlib_zlib_gunzip_buf_options_callback">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/zlib/zlib_gunzip_buf_options_callback.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.6.0</SPAN> </DIV>
+<H3>zlib.gunzipSync(buf[, options])<SPAN><A class="mark" id="zlib_zlib_gunzipsync_buf_options" 
+href="http://nodejs.cn/api/zlib.html#zlib_zlib_gunzipsync_buf_options">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/zlib.html#zlib_zlib_gunzipsync_buf_options">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/zlib/zlib_gunzipsync_buf_options.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.11.12</SPAN> </DIV>
+<P>Decompress a <A href="http://nodejs.cn/api/buffer.html">Buffer</A> or string 
+with <A 
+href="http://nodejs.cn/api/zlib.html#zlib_class_zlib_gunzip">Gunzip</A>.</P>
+<H3>zlib.gzip(buf[, options], callback)<SPAN><A class="mark" id="zlib_zlib_gzip_buf_options_callback" 
+href="http://nodejs.cn/api/zlib.html#zlib_zlib_gzip_buf_options_callback">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/zlib.html#zlib_zlib_gzip_buf_options_callback">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/zlib/zlib_gzip_buf_options_callback.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.6.0</SPAN> </DIV>
+<H3>zlib.gzipSync(buf[, options])<SPAN><A class="mark" id="zlib_zlib_gzipsync_buf_options" 
+href="http://nodejs.cn/api/zlib.html#zlib_zlib_gzipsync_buf_options">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/zlib.html#zlib_zlib_gzipsync_buf_options">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/zlib/zlib_gzipsync_buf_options.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.11.12</SPAN> </DIV>
+<P>Compress a <A href="http://nodejs.cn/api/buffer.html">Buffer</A> or string 
+with <A href="http://nodejs.cn/api/zlib.html#zlib_class_zlib_gzip">Gzip</A>.</P>
+<H3>zlib.inflate(buf[, options], callback)<SPAN><A class="mark" id="zlib_zlib_inflate_buf_options_callback" 
+href="http://nodejs.cn/api/zlib.html#zlib_zlib_inflate_buf_options_callback">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/zlib.html#zlib_zlib_inflate_buf_options_callback">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/zlib/zlib_inflate_buf_options_callback.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.6.0</SPAN> </DIV>
+<H3>zlib.inflateSync(buf[, options])<SPAN><A class="mark" id="zlib_zlib_inflatesync_buf_options" 
+href="http://nodejs.cn/api/zlib.html#zlib_zlib_inflatesync_buf_options">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/zlib.html#zlib_zlib_inflatesync_buf_options">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/zlib/zlib_inflatesync_buf_options.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.11.12</SPAN> </DIV>
+<P>Decompress a <A href="http://nodejs.cn/api/buffer.html">Buffer</A> or string 
+with <A 
+href="http://nodejs.cn/api/zlib.html#zlib_class_zlib_inflate">Inflate</A>.</P>
+<H3>zlib.inflateRaw(buf[, options], callback)<SPAN><A class="mark" id="zlib_zlib_inflateraw_buf_options_callback" 
+href="http://nodejs.cn/api/zlib.html#zlib_zlib_inflateraw_buf_options_callback">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/zlib.html#zlib_zlib_inflateraw_buf_options_callback">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/zlib/zlib_inflateraw_buf_options_callback.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.6.0</SPAN> </DIV>
+<H3>zlib.inflateRawSync(buf[, options])<SPAN><A class="mark" id="zlib_zlib_inflaterawsync_buf_options" 
+href="http://nodejs.cn/api/zlib.html#zlib_zlib_inflaterawsync_buf_options">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/zlib.html#zlib_zlib_inflaterawsync_buf_options">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/zlib/zlib_inflaterawsync_buf_options.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.11.12</SPAN> </DIV>
+<P>Decompress a <A href="http://nodejs.cn/api/buffer.html">Buffer</A> or string 
+with <A 
+href="http://nodejs.cn/api/zlib.html#zlib_class_zlib_inflateraw">InflateRaw</A>.</P>
+<H3>zlib.unzip(buf[, options], callback)<SPAN><A class="mark" id="zlib_zlib_unzip_buf_options_callback" 
+href="http://nodejs.cn/api/zlib.html#zlib_zlib_unzip_buf_options_callback">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/zlib.html#zlib_zlib_unzip_buf_options_callback">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/zlib/zlib_unzip_buf_options_callback.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.6.0</SPAN> </DIV>
+<H3>zlib.unzipSync(buf[, options])<SPAN><A class="mark" id="zlib_zlib_unzipsync_buf_options" 
+href="http://nodejs.cn/api/zlib.html#zlib_zlib_unzipsync_buf_options">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/zlib.html#zlib_zlib_unzipsync_buf_options">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/zlib/zlib_unzipsync_buf_options.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.11.12</SPAN> </DIV>
+<P>Decompress a <A href="http://nodejs.cn/api/buffer.html">Buffer</A> or string 
+with <A 
+href="http://nodejs.cn/api/zlib.html#zlib_class_zlib_unzip">Unzip</A>.</P></DIV></DIV></DIV><!-- 搜索弹窗 --> 
+  
+<DIV id="modal_search_bg"></DIV>
+<DIV 
+id="modal_search"><INPUT id="modal_search_input" placeholder="API 快速搜索" value=""> 
+    
+<DIV id="modal_search_result"></DIV></DIV><!-- js -->   <!--[if lt IE 10]><script src="/static/lib/placeholders.js?20170426"></script><![endif]--> 
+  
+<SCRIPT src="zlib%20%20Node_js%20API%20文档_files/api.js"></SCRIPT>
+ </BODY></HTML>

@@ -1,0 +1,528 @@
+﻿<!DOCTYPE HTML>
+<!-- saved from url=(0030)http://nodejs.cn/api/path.html -->
+<!DOCTYPE html PUBLIC "" ""><HTML lang="zh-cmn-Hans"><HEAD><META 
+content="IE=11.0000" http-equiv="X-UA-Compatible">
+   
+<META charset="utf-8">   <TITLE>path | Node.js API 文档</TITLE>   <LINK href="path%20%20Node_js%20API%20文档_files/api.css" 
+rel="stylesheet">   <LINK href="/static/favicon.png" rel="icon" type="image/png" 
+sizes="32x32"> 
+<META name="GENERATOR" content="MSHTML 11.00.9600.18639"></HEAD> 
+<BODY class="alt apidoc" id="api-section-path">
+<DIV class="clearfix" id="content">
+<DIV class="interior" id="column2">
+<DIV class="interior" id="intro"><A href="http://nodejs.cn/">          Node.js 
+中文网         </A>         
+<DIV><INPUT id="search_input" placeholder="API 快速搜索" value="">         
+</DIV></DIV>
+<UL>
+  <LI><A class="nav-documentation" href="http://nodejs.cn/api/documentation.html">关于本文档</A></LI>
+  <LI><A class="nav-synopsis" 
+  href="http://nodejs.cn/api/synopsis.html">用法与例子</A></LI></UL>
+<DIV class="line"></DIV>
+<UL>
+  <LI><A class="nav-assert" href="http://nodejs.cn/api/assert.html">Assert 
+  (断言)</A></LI>
+  <LI><A class="nav-buffer" 
+  href="http://nodejs.cn/api/buffer.html">Buffer</A></LI>
+  <LI><A class="nav-addons" href="http://nodejs.cn/api/addons.html">C/C++ 
+  插件</A></LI>
+  <LI><A class="nav-child_process" href="http://nodejs.cn/api/child_process.html">Child 
+  Processes (子进程)</A></LI>
+  <LI><A class="nav-cluster" href="http://nodejs.cn/api/cluster.html">Cluster 
+  (集群)</A></LI>
+  <LI><A class="nav-cli" href="http://nodejs.cn/api/cli.html">CLI 
+  (命令行选项)</A></LI>
+  <LI><A class="nav-console" href="http://nodejs.cn/api/console.html">Console 
+  (控制台)</A></LI>
+  <LI><A class="nav-crypto" href="http://nodejs.cn/api/crypto.html">Crypto 
+  (加密)</A></LI>
+  <LI><A class="nav-debugger" href="http://nodejs.cn/api/debugger.html">Debugger 
+  (调试器)</A></LI>
+  <LI><A class="nav-dns" href="http://nodejs.cn/api/dns.html">DNS 
+  (域名服务器)</A></LI>
+  <LI><A class="nav-domain" href="http://nodejs.cn/api/domain.html">Domain 
+  (域)</A></LI>
+  <LI><A class="nav-errors" href="http://nodejs.cn/api/errors.html">Error 
+  (错误)</A></LI>
+  <LI><A class="nav-events" href="http://nodejs.cn/api/events.html">Events 
+  (事件)</A></LI>
+  <LI><A class="nav-fs" href="http://nodejs.cn/api/fs.html">File System 
+  (文件系统)</A></LI>
+  <LI><A class="nav-globals" href="http://nodejs.cn/api/globals.html">Global 
+  (全局变量)</A></LI>
+  <LI><A class="nav-http" href="http://nodejs.cn/api/http.html">HTTP</A></LI>
+  <LI><A class="nav-https" href="http://nodejs.cn/api/https.html">HTTPS</A></LI>
+  <LI><A class="nav-modules" href="http://nodejs.cn/api/modules.html">Module 
+  (模块)</A></LI>
+  <LI><A class="nav-net" href="http://nodejs.cn/api/net.html">Net (网络)</A></LI>
+  <LI><A class="nav-os" href="http://nodejs.cn/api/os.html">OS (操作系统)</A></LI>
+  <LI><A class="nav-path active" href="http://nodejs.cn/api/path.html">Path 
+  (路径)</A></LI>
+  <LI><A class="nav-process" href="http://nodejs.cn/api/process.html">Process 
+  (进程)</A></LI>
+  <LI><A class="nav-punycode" 
+  href="http://nodejs.cn/api/punycode.html">Punycode</A></LI>
+  <LI><A class="nav-querystring" 
+  href="http://nodejs.cn/api/querystring.html">Query Strings (查询字符串)</A></LI>
+  <LI><A class="nav-readline" href="http://nodejs.cn/api/readline.html">Readline 
+  (逐行读取)</A></LI>
+  <LI><A class="nav-repl" href="http://nodejs.cn/api/repl.html">REPL 
+  (交互式解释器)</A></LI>
+  <LI><A class="nav-stream" href="http://nodejs.cn/api/stream.html">Stream 
+  (流)</A></LI>
+  <LI><A class="nav-string_decoder" href="http://nodejs.cn/api/string_decoder.html">String 
+  Decoder (字符串解码器)</A></LI>
+  <LI><A class="nav-timers" href="http://nodejs.cn/api/timers.html">Timer 
+  (定时器)</A></LI>
+  <LI><A class="nav-tls" href="http://nodejs.cn/api/tls.html">TLS 
+  (安全传输层)</A></LI>
+  <LI><A class="nav-tty" href="http://nodejs.cn/api/tty.html">TTY (终端)</A></LI>
+  <LI><A class="nav-dgram" href="http://nodejs.cn/api/dgram.html">UDP/Datagram 
+  (数据报)</A></LI>
+  <LI><A class="nav-url" href="http://nodejs.cn/api/url.html">URL</A></LI>
+  <LI><A class="nav-util" href="http://nodejs.cn/api/util.html">Util 
+  (实用工具)</A></LI>
+  <LI><A class="nav-v8" href="http://nodejs.cn/api/v8.html">V8</A></LI>
+  <LI><A class="nav-vm" href="http://nodejs.cn/api/vm.html">VM (虚拟机)</A></LI>
+  <LI><A class="nav-zlib" href="http://nodejs.cn/api/zlib.html">ZLIB 
+  (压缩)</A></LI></UL>
+<DIV class="line"></DIV></DIV>
+<DIV class="interior" id="column1" data-id="path"><HEADER>
+<H1>Node.js v6.10.3 文档</H1>
+<DIV id="gtoc">
+<P><A name="toc" href="http://nodejs.cn/api/">返回文档首页</A>             <!--<a href="/api/all.html">单页面显示</a> |--> 
+            <!--<a href="/api/path.json">JSON格式</a> |-->             <!--<a href="/api/en/path.html">查看英文版</a>--> 
+          </P></DIV>
+<HR>
+</HEADER>
+<DIV id="toc">
+<H2>目录</H2>
+<UL>
+  <LI><SPAN class="stability_2"><A href="http://nodejs.cn/api/path.html#path_path">path 
+  (路径)</A></SPAN>
+  <UL> 
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/path.html#path_windows_vs_posix">Windows 
+    与 POSIX</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/path.html#path_path_basename_path_ext">path.basename(path[, 
+    ext])</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/path.html#path_path_delimiter">path.delimiter</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/path.html#path_path_dirname_path">path.dirname(path)</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/path.html#path_path_extname_path">path.extname(path)</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/path.html#path_path_format_pathobject">path.format(pathObject)</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/path.html#path_path_isabsolute_path">path.isAbsolute(path)</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/path.html#path_path_join_paths">path.join([...paths])</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/path.html#path_path_normalize_path">path.normalize(path)</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/path.html#path_path_parse_path">path.parse(path)</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/path.html#path_path_posix">path.posix</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/path.html#path_path_relative_from_to">path.relative(from, 
+    to)</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/path.html#path_path_resolve_paths">path.resolve([...paths])</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/path.html#path_path_sep">path.sep</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/path.html#path_path_win32">path.win32</A></SPAN></LI></UL></LI></UL></DIV>
+<DIV id="apicontent">
+<H1>path (路径)<SPAN><A class="mark" id="path_path" href="http://nodejs.cn/api/path.html#path_path">#</A></SPAN></H1>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/path.html#path_path">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/path/path.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<PRE class="api_stability api_stability_2"><A href="http://nodejs.cn/api/documentation.html#documentation_stability_index">稳定性: 2</A> - 稳定的</PRE>
+<P><CODE>path</CODE> 模块提供了一些工具函数，用于处理文件与目录的路径。可以通过以下方式使用：</P>
+<PRE><CODE class="lang-js">const path = require('path');
+</CODE></PRE>
+<H2>Windows 与 POSIX<SPAN><A class="mark" id="path_windows_vs_posix" href="http://nodejs.cn/api/path.html#path_windows_vs_posix">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/path.html#path_windows_vs_posix">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/path/windows_vs_posix.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P><CODE>path</CODE> 模块的默认操作会根据 Node.js 应用程序运行的操作系统的不同而变化。 比如，当运行在 Windows 
+操作系统上时，<CODE>path</CODE> 模块会认为使用的是 Windows 风格的路径。</P>
+<P>例如，对 Windows 文件路径 <CODE>C:\temp\myfile.html</CODE> 使用 
+<CODE>path.basename()</CODE> 函数，运行在 POSIX 上与运行在 Windows 上会产生不同的结果：</P>
+<P>在 POSIX 上:</P>
+<PRE><CODE class="lang-js">path.basename('C:\\temp\\myfile.html');
+// 返回: 'C:\\temp\\myfile.html'
+</CODE></PRE>
+<P>在 Windows 上:</P>
+<PRE><CODE class="lang-js">path.basename('C:\\temp\\myfile.html');
+// 返回: 'myfile.html'
+</CODE></PRE>
+<P>要想在任何操作系统上处理 Windows 文件路径时获得一致的结果，可以使用 <A href="http://nodejs.cn/api/path.html#path_path_win32"><CODE>path.win32</CODE></A>：</P>
+<P>在 POSIX 和 Windows 上:</P>
+<PRE><CODE class="lang-js">path.win32.basename('C:\\temp\\myfile.html');
+// 返回: 'myfile.html'
+</CODE></PRE>
+<P>要想在任何操作系统上处理 POSIX 文件路径时获得一致的结果，可以使用 <A href="http://nodejs.cn/api/path.html#path_path_posix"><CODE>path.posix</CODE></A>：</P>
+<P>在 POSIX 和 Windows 上:</P>
+<PRE><CODE class="lang-js">path.posix.basename('/tmp/myfile.html');
+// 返回: 'myfile.html'
+</CODE></PRE>
+<H2>path.basename(path[, ext])<SPAN><A class="mark" id="path_path_basename_path_ext" 
+href="http://nodejs.cn/api/path.html#path_path_basename_path_ext">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/path.html#path_path_basename_path_ext">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/path/path_basename_path_ext.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.25</SPAN> </DIV>
+<UL>
+  <LI><CODE>path</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A></LI>
+  <LI><CODE>ext</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  可选的文件扩展名</LI>
+  <LI>返回: <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A></LI></UL>
+<P><CODE>path.basename()</CODE> 方法返回一个 <CODE>path</CODE> 的最后一部分，类似于 Unix 中的 
+<CODE>basename</CODE> 命令。</P>
+<P>例子：</P>
+<PRE><CODE class="lang-js">path.basename('/foo/bar/baz/asdf/quux.html')
+// 返回: 'quux.html'
+
+path.basename('/foo/bar/baz/asdf/quux.html', '.html')
+// 返回: 'quux'
+</CODE></PRE>
+<P>如果 <CODE>path</CODE> 不是一个字符串或提供了 <CODE>ext</CODE> 但不是一个字符串，则抛出 <A href="http://nodejs.cn/api/errors.html#errors_class_typeerror"><CODE>TypeError</CODE></A>。</P>
+<H2>path.delimiter<SPAN><A class="mark" id="path_path_delimiter" href="http://nodejs.cn/api/path.html#path_path_delimiter">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/path.html#path_path_delimiter">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/path/path_delimiter.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.9.3</SPAN> </DIV>
+<UL>
+  <LI><A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A></LI></UL>
+<P>提供平台特定的路径分隔符：</P>
+<UL>
+  <LI>Windows 上是 <CODE>;</CODE></LI>
+  <LI>POSIX 上是 <CODE>:</CODE></LI></UL>
+<P>例如，在 POSIX 上：</P>
+<PRE><CODE class="lang-js">console.log(process.env.PATH)
+// 输出: '/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin'
+
+process.env.PATH.split(path.delimiter)
+// 返回: ['/usr/bin', '/bin', '/usr/sbin', '/sbin', '/usr/local/bin']
+</CODE></PRE>
+<P>在 Windows 上：</P>
+<PRE><CODE class="lang-js">console.log(process.env.PATH)
+// 输出: 'C:\Windows\system32;C:\Windows;C:\Program Files\node\'
+
+process.env.PATH.split(path.delimiter)
+// 返回: ['C:\\Windows\\system32', 'C:\\Windows', 'C:\\Program Files\\node\\']
+</CODE></PRE>
+<H2>path.dirname(path)<SPAN><A class="mark" id="path_path_dirname_path" href="http://nodejs.cn/api/path.html#path_path_dirname_path">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/path.html#path_path_dirname_path">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/path/path_dirname_path.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.16</SPAN> </DIV>
+<UL>
+  <LI><CODE>path</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A></LI>
+  <LI>返回: <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A></LI></UL>
+<P><CODE>path.dirname()</CODE> 方法返回一个 <CODE>path</CODE> 的目录名，类似于 Unix 中的 
+<CODE>dirname</CODE> 命令。</P>
+<P>例子：</P>
+<PRE><CODE class="lang-js">path.dirname('/foo/bar/baz/asdf/quux')
+// 返回: '/foo/bar/baz/asdf'
+</CODE></PRE>
+<P>如果 <CODE>path</CODE> 不是一个字符串，则抛出 <A href="http://nodejs.cn/api/errors.html#errors_class_typeerror"><CODE>TypeError</CODE></A>。</P>
+<H2>path.extname(path)<SPAN><A class="mark" id="path_path_extname_path" href="http://nodejs.cn/api/path.html#path_path_extname_path">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/path.html#path_path_extname_path">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/path/path_extname_path.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.25</SPAN> </DIV>
+<UL>
+  <LI><CODE>path</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A></LI>
+  <LI>返回: <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A></LI></UL>
+<P><CODE>path.extname()</CODE> 方法返回 <CODE>path</CODE> 的扩展名，即从 <CODE>path</CODE> 
+的最后一部分中的最后一个 <CODE>.</CODE>（句号）字符到字符串结束。 如果 <CODE>path</CODE> 的最后一部分没有 
+<CODE>.</CODE> 或 <CODE>path</CODE> 的文件名（见 <CODE>path.basename()</CODE>）的第一个字符是 
+<CODE>.</CODE>，则返回一个空字符串。</P>
+<P>例子：</P>
+<PRE><CODE class="lang-js">path.extname('index.html')
+// 返回: '.html'
+
+path.extname('index.coffee.md')
+// 返回: '.md'
+
+path.extname('index.')
+// 返回: '.'
+
+path.extname('index')
+// 返回: ''
+
+path.extname('.index')
+// 返回: ''
+</CODE></PRE>
+<P>如果 <CODE>path</CODE> 不是一个字符串，则抛出 <A href="http://nodejs.cn/api/errors.html#errors_class_typeerror"><CODE>TypeError</CODE></A>。</P>
+<H2>path.format(pathObject)<SPAN><A class="mark" id="path_path_format_pathobject" 
+href="http://nodejs.cn/api/path.html#path_path_format_pathobject">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/path.html#path_path_format_pathobject">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/path/path_format_pathobject.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.11.15</SPAN> </DIV>
+<UL>
+  <LI><CODE>pathObject</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">&lt;Object&gt;</A>
+  <UL> 
+    <LI><CODE>dir</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A></LI>
+    <LI><CODE>root</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A></LI>
+    <LI><CODE>base</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A></LI>
+    <LI><CODE>name</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A></LI>
+    <LI><CODE>ext</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A></LI></UL></LI>
+  <LI>返回: <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A></LI></UL>
+<P><CODE>path.format()</CODE> 方法会从一个对象返回一个路径字符串。 与 <A href="http://nodejs.cn/api/path.html#path_path_parse_path"><CODE>path.parse()</CODE></A> 
+相反。</P>
+<P>当 <CODE>pathObject</CODE> 提供的属性有组合时，有些属性的优先级比其他的高：</P>
+<UL>
+  <LI>如果提供了 <CODE>pathObject.dir</CODE>，则 <CODE>pathObject.root</CODE> 会被忽略</LI>
+  <LI>如果提供了 <CODE>pathObject.base</CODE> 存在，则 <CODE>pathObject.ext</CODE> 和 
+  <CODE>pathObject.name</CODE> 会被忽略</LI></UL>
+<P>例如，在 POSIX 上：</P>
+<PRE><CODE class="lang-js">// 如果提供了 `dir`、`root` 和 `base`，则返回 `${dir}${path.sep}${base}`。
+// `root` 会被忽略。
+path.format({
+  root: '/ignored',
+  dir: '/home/user/dir',
+  base: 'file.txt'
+});
+// 返回: '/home/user/dir/file.txt'
+
+// 如果没有指定 `dir`，则 `root` 会被使用。
+// 如果只提供了 `root` 或 `dir` 等于 `root`，则平台的分隔符不会被包含。
+// `ext` 会被忽略。
+path.format({
+  root: '/',
+  base: 'file.txt',
+  ext: 'ignored'
+});
+// 返回: '/file.txt'
+
+// 如果没有指定 `base`，则 `name` + `ext` 会被使用。
+path.format({
+  root: '/',
+  name: 'file',
+  ext: '.txt'
+});
+// 返回: '/file.txt'
+</CODE></PRE>
+<P>在 Windows 上：</P>
+<PRE><CODE class="lang-js">path.format({
+  dir : "C:\\path\\dir",
+  base : "file.txt"
+});
+// 返回: 'C:\\path\\dir\\file.txt'
+</CODE></PRE>
+<H2>path.isAbsolute(path)<SPAN><A class="mark" id="path_path_isabsolute_path" 
+href="http://nodejs.cn/api/path.html#path_path_isabsolute_path">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/path.html#path_path_isabsolute_path">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/path/path_isabsolute_path.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.11.2</SPAN> </DIV>
+<UL>
+  <LI><CODE>path</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A></LI>
+  <LI>返回: <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type">&lt;Boolean&gt;</A></LI></UL>
+<P><CODE>path.isAbsolute()</CODE> 方法会判定 <CODE>path</CODE> 是否为一个绝对路径。</P>
+<P>如果给定的 <CODE>path</CODE> 是一个长度为零的字符串，则返回 <CODE>false</CODE>。</P>
+<P>例如，在 POSIX 上：</P>
+<PRE><CODE class="lang-js">path.isAbsolute('/foo/bar') // true
+path.isAbsolute('/baz/..')  // true
+path.isAbsolute('qux/')     // false
+path.isAbsolute('.')        // false
+</CODE></PRE>
+<P>在 Windows 上：</P>
+<PRE><CODE class="lang-js">path.isAbsolute('//server')    // true
+path.isAbsolute('\\\\server')  // true
+path.isAbsolute('C:/foo/..')   // true
+path.isAbsolute('C:\\foo\\..') // true
+path.isAbsolute('bar\\baz')    // false
+path.isAbsolute('bar/baz')     // false
+path.isAbsolute('.')           // false
+</CODE></PRE>
+<P>如果 <CODE>path</CODE> 不是一个字符串，则抛出 <A href="http://nodejs.cn/api/errors.html#errors_class_typeerror"><CODE>TypeError</CODE></A>。</P>
+<H2>path.join([...paths])<SPAN><A class="mark" id="path_path_join_paths" href="http://nodejs.cn/api/path.html#path_path_join_paths">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/path.html#path_path_join_paths">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/path/path_join_paths.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.16</SPAN> </DIV>
+<UL>
+  <LI><CODE>...paths</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  一个路径片段的序列</LI>
+  <LI>返回: <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A></LI></UL>
+<P><CODE>path.join()</CODE> 方法使用平台特定的分隔符把全部给定的 <CODE>path</CODE> 
+片段连接到一起，并规范化生成的路径。</P>
+<P>长度为零的 <CODE>path</CODE> 片段会被忽略。 如果连接后的路径字符串是一个长度为零的字符串，则返回 
+<CODE>'.'</CODE>，表示当前工作目录。</P>
+<P>例子：</P>
+<PRE><CODE class="lang-js">path.join('/foo', 'bar', 'baz/asdf', 'quux', '..')
+// 返回: '/foo/bar/baz/asdf'
+
+path.join('foo', {}, 'bar')
+// 抛出 TypeError: path.join 的参数必须为字符串
+</CODE></PRE>
+<P>如果任一路径片段不是一个字符串，则抛出 <A href="http://nodejs.cn/api/errors.html#errors_class_typeerror"><CODE>TypeError</CODE></A>。</P>
+<H2>path.normalize(path)<SPAN><A class="mark" id="path_path_normalize_path" 
+href="http://nodejs.cn/api/path.html#path_path_normalize_path">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/path.html#path_path_normalize_path">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/path/path_normalize_path.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.23</SPAN> </DIV>
+<UL>
+  <LI><CODE>path</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A></LI>
+  <LI>返回: <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A></LI></UL>
+<P><CODE>path.normalize()</CODE> 方法会规范化给定的 <CODE>path</CODE>，并解析 
+<CODE>'..'</CODE> 和 <CODE>'.'</CODE> 片段。</P>
+<P>当发现多个连续的路径分隔符时（如 POSIX 上的 <CODE>/</CODE> 与 Windows 上的 
+<CODE>\</CODE>），它们会被单一的路径分隔符替换。 末尾的多个分隔符会被保留。</P>
+<P>如果 <CODE>path</CODE> 是一个长度为零的字符串，则返回 <CODE>'.'</CODE>，表示当前工作目录。</P>
+<P>例如，在 POSIX 上：</P>
+<PRE><CODE class="lang-js">path.normalize('/foo/bar//baz/asdf/quux/..')
+// 返回: '/foo/bar/baz/asdf'
+</CODE></PRE>
+<P>在 Windows 上：</P>
+<PRE><CODE class="lang-js">path.normalize('C:\\temp\\\\foo\\bar\\..\\');
+// 返回: 'C:\\temp\\foo\\'
+</CODE></PRE>
+<P>如果 <CODE>path</CODE> 不是一个字符串，则抛出 <A href="http://nodejs.cn/api/errors.html#errors_class_typeerror"><CODE>TypeError</CODE></A>。</P>
+<H2>path.parse(path)<SPAN><A class="mark" id="path_path_parse_path" href="http://nodejs.cn/api/path.html#path_path_parse_path">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/path.html#path_path_parse_path">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/path/path_parse_path.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.11.15</SPAN> </DIV>
+<UL>
+  <LI><CODE>path</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A></LI>
+  <LI>返回: <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">&lt;Object&gt;</A></LI></UL>
+<P><CODE>path.parse()</CODE> 方法返回一个对象，对象的属性表示 <CODE>path</CODE> 的元素。</P>
+<P>返回的对象有以下属性：</P>
+<UL>
+  <LI><CODE>root</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A></LI>
+  <LI><CODE>dir</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A></LI>
+  <LI><CODE>base</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A></LI>
+  <LI><CODE>ext</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A></LI>
+  <LI><CODE>name</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A></LI></UL>
+<P>例如，在 POSIX 上：</P>
+<PRE><CODE class="lang-js">path.parse('/home/user/dir/file.txt')
+// 返回:
+// {
+//    root : "/",
+//    dir : "/home/user/dir",
+//    base : "file.txt",
+//    ext : ".txt",
+//    name : "file"
+// }
+</CODE></PRE>
+<PRE><CODE class="lang-text">┌─────────────────────┬────────────┐
+│          dir        │    base    │
+├──────┬              ├──────┬─────┤
+│ root │              │ name │ ext │
+"  /    home/user/dir / file  .txt "
+└──────┴──────────────┴──────┴─────┘
+(请无视以上字符串中的空格，它们只是为了布局)
+</CODE></PRE>
+<P>在 Windows 上：</P>
+<PRE><CODE class="lang-js">path.parse('C:\\path\\dir\\file.txt')
+// 返回:
+// {
+//    root : "C:\\",
+//    dir : "C:\\path\\dir",
+//    base : "file.txt",
+//    ext : ".txt",
+//    name : "file"
+// }
+</CODE></PRE>
+<PRE><CODE class="lang-text">┌─────────────────────┬────────────┐
+│          dir        │    base    │
+├──────┬              ├──────┬─────┤
+│ root │              │ name │ ext │
+" C:\      path\dir   \ file  .txt "
+└──────┴──────────────┴──────┴─────┘
+(请无视以上字符串中的空格，它们只是为了布局)
+</CODE></PRE>
+<P>如果 <CODE>path</CODE> 不是一个字符串，则抛出 <A href="http://nodejs.cn/api/errors.html#errors_class_typeerror"><CODE>TypeError</CODE></A>。</P>
+<H2>path.posix<SPAN><A class="mark" id="path_path_posix" href="http://nodejs.cn/api/path.html#path_path_posix">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/path.html#path_path_posix">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/path/path_posix.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.11.15</SPAN> </DIV>
+<UL>
+  <LI><A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">&lt;Object&gt;</A></LI></UL>
+<P><CODE>path.posix</CODE> 属性提供了 <CODE>path</CODE> 方法针对 POSIX 的实现。</P>
+<H2>path.relative(from, to)<SPAN><A class="mark" id="path_path_relative_from_to" 
+href="http://nodejs.cn/api/path.html#path_path_relative_from_to">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/path.html#path_path_relative_from_to">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/path/path_relative_from_to.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.5.0</SPAN> </DIV>
+<UL>
+  <LI><CODE>from</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A></LI>
+  <LI><CODE>to</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A></LI>
+  <LI>返回: <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A></LI></UL>
+<P><CODE>path.relative()</CODE> 方法返回从 <CODE>from</CODE> 到 <CODE>to</CODE> 的相对路径。
+ 如果 <CODE>from</CODE> 和 <CODE>to</CODE> 各自解析到同一路径（调用 
+<CODE>path.resolve()</CODE>），则返回一个长度为零的字符串。</P>
+<P>如果 <CODE>from</CODE> 或 <CODE>to</CODE> 
+传入了一个长度为零的字符串，则当前工作目录会被用于代替长度为零的字符串。</P>
+<P>例如，在 POSIX 上：</P>
+<PRE><CODE class="lang-js">path.relative('/data/orandea/test/aaa', '/data/orandea/impl/bbb')
+// 返回: '../../impl/bbb'
+</CODE></PRE>
+<P>在 Windows 上：</P>
+<PRE><CODE class="lang-js">path.relative('C:\\orandea\\test\\aaa', 'C:\\orandea\\impl\\bbb')
+// 返回: '..\\..\\impl\\bbb'
+</CODE></PRE>
+<P>如果 <CODE>from</CODE> 或 <CODE>to</CODE> 不是一个字符串，则抛出 <A href="http://nodejs.cn/api/errors.html#errors_class_typeerror"><CODE>TypeError</CODE></A>。</P>
+<H2>path.resolve([...paths])<SPAN><A class="mark" id="path_path_resolve_paths" 
+href="http://nodejs.cn/api/path.html#path_path_resolve_paths">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/path.html#path_path_resolve_paths">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/path/path_resolve_paths.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.3.4</SPAN> </DIV>
+<UL>
+  <LI><CODE>...paths</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  一个路径或路径片段的序列</LI>
+  <LI>返回: <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A></LI></UL>
+<P><CODE>path.resolve()</CODE> 方法会把一个路径或路径片段的序列解析为一个绝对路径。</P>
+<P>给定的路径的序列是从右往左被处理的，后面每个 <CODE>path</CODE> 被依次解析，直到构造完成一个绝对路径。
+ 例如，给定的路径片段的序列为：<CODE>/foo</CODE>、<CODE>/bar</CODE>、<CODE>baz</CODE>，则调用 
+<CODE>path.resolve('/foo', '/bar', 'baz')</CODE> 会返回 <CODE>/bar/baz</CODE>。</P>
+<P>如果处理完全部给定的 <CODE>path</CODE> 片段后还未生成一个绝对路径，则当前工作目录会被用上。</P>
+<P>生成的路径是规范化后的，且末尾的斜杠会被删除，除非路径被解析为根目录。</P>
+<P>长度为零的 <CODE>path</CODE> 片段会被忽略。</P>
+<P>如果没有传入 <CODE>path</CODE> 片段，则 <CODE>path.resolve()</CODE> 会返回当前工作目录的绝对路径。</P>
+<P>例子：</P>
+<PRE><CODE class="lang-js">path.resolve('/foo/bar', './baz')
+// 返回: '/foo/bar/baz'
+
+path.resolve('/foo/bar', '/tmp/file/')
+// 返回: '/tmp/file'
+
+path.resolve('wwwroot', 'static_files/png/', '../gif/image.gif')
+// 如果当前工作目录为 /home/myself/node，
+// 则返回 '/home/myself/node/wwwroot/static_files/gif/image.gif'
+</CODE></PRE>
+<P>如果任何参数不是一个字符串，则抛出 <A href="http://nodejs.cn/api/errors.html#errors_class_typeerror"><CODE>TypeError</CODE></A>。</P>
+<H2>path.sep<SPAN><A class="mark" id="path_path_sep" href="http://nodejs.cn/api/path.html#path_path_sep">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/path.html#path_path_sep">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/path/path_sep.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.7.9</SPAN> </DIV>
+<UL>
+  <LI><A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A></LI></UL>
+<P>提供了平台特定的路径片段分隔符：</P>
+<UL>
+  <LI>Windows 上是 <CODE>\</CODE></LI>
+  <LI>POSIX 上是 <CODE>/</CODE></LI></UL>
+<P>例如，在 POSIX 上：</P>
+<PRE><CODE class="lang-js">'foo/bar/baz'.split(path.sep)
+// 返回: ['foo', 'bar', 'baz']
+</CODE></PRE>
+<P>在 Windows 上：</P>
+<PRE><CODE class="lang-js">'foo\\bar\\baz'.split(path.sep)
+// 返回: ['foo', 'bar', 'baz']
+</CODE></PRE>
+<H2>path.win32<SPAN><A class="mark" id="path_path_win32" href="http://nodejs.cn/api/path.html#path_path_win32">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/path.html#path_path_win32">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/path/path_win32.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.11.15</SPAN> </DIV>
+<UL>
+  <LI><A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">&lt;Object&gt;</A></LI></UL>
+<P><CODE>path.win32</CODE> 属性提供了 <CODE>path</CODE> 方法针对 Windows 的实现。</P>
+<P>注意：在 Windows 上，斜杠字符（<CODE>/</CODE>）和反斜杠字符（<CODE>\</CODE>）都可作为路径分隔符；
+ 但返回值中只用到反斜杠（<CODE>\</CODE>）。</P></DIV></DIV></DIV><!-- 搜索弹窗 -->   
+<DIV id="modal_search_bg"></DIV>
+<DIV 
+id="modal_search"><INPUT id="modal_search_input" placeholder="API 快速搜索" value=""> 
+    
+<DIV id="modal_search_result"></DIV></DIV><!-- js -->   <!--[if lt IE 10]><script src="/static/lib/placeholders.js?20170426"></script><![endif]--> 
+  
+<SCRIPT src="path%20%20Node_js%20API%20文档_files/api.js"></SCRIPT>
+ </BODY></HTML>

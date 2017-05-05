@@ -1,0 +1,373 @@
+﻿<!DOCTYPE HTML>
+<!-- saved from url=(0029)http://nodejs.cn/api/url.html -->
+<!DOCTYPE html PUBLIC "" ""><HTML lang="zh-cmn-Hans"><HEAD><META 
+content="IE=11.0000" http-equiv="X-UA-Compatible">
+   
+<META charset="utf-8">   <TITLE>url | Node.js API 文档</TITLE>   <LINK href="url%20%20Node_js%20API%20文档_files/api.css" 
+rel="stylesheet">   <LINK href="/static/favicon.png" rel="icon" type="image/png" 
+sizes="32x32"> 
+<META name="GENERATOR" content="MSHTML 11.00.9600.18639"></HEAD> 
+<BODY class="alt apidoc" id="api-section-url">
+<DIV class="clearfix" id="content">
+<DIV class="interior" id="column2">
+<DIV class="interior" id="intro"><A href="http://nodejs.cn/">          Node.js 
+中文网         </A>         
+<DIV><INPUT id="search_input" placeholder="API 快速搜索" value="">         
+</DIV></DIV>
+<UL>
+  <LI><A class="nav-documentation" href="http://nodejs.cn/api/documentation.html">关于本文档</A></LI>
+  <LI><A class="nav-synopsis" 
+  href="http://nodejs.cn/api/synopsis.html">用法与例子</A></LI></UL>
+<DIV class="line"></DIV>
+<UL>
+  <LI><A class="nav-assert" href="http://nodejs.cn/api/assert.html">Assert 
+  (断言)</A></LI>
+  <LI><A class="nav-buffer" 
+  href="http://nodejs.cn/api/buffer.html">Buffer</A></LI>
+  <LI><A class="nav-addons" href="http://nodejs.cn/api/addons.html">C/C++ 
+  插件</A></LI>
+  <LI><A class="nav-child_process" href="http://nodejs.cn/api/child_process.html">Child 
+  Processes (子进程)</A></LI>
+  <LI><A class="nav-cluster" href="http://nodejs.cn/api/cluster.html">Cluster 
+  (集群)</A></LI>
+  <LI><A class="nav-cli" href="http://nodejs.cn/api/cli.html">CLI 
+  (命令行选项)</A></LI>
+  <LI><A class="nav-console" href="http://nodejs.cn/api/console.html">Console 
+  (控制台)</A></LI>
+  <LI><A class="nav-crypto" href="http://nodejs.cn/api/crypto.html">Crypto 
+  (加密)</A></LI>
+  <LI><A class="nav-debugger" href="http://nodejs.cn/api/debugger.html">Debugger 
+  (调试器)</A></LI>
+  <LI><A class="nav-dns" href="http://nodejs.cn/api/dns.html">DNS 
+  (域名服务器)</A></LI>
+  <LI><A class="nav-domain" href="http://nodejs.cn/api/domain.html">Domain 
+  (域)</A></LI>
+  <LI><A class="nav-errors" href="http://nodejs.cn/api/errors.html">Error 
+  (错误)</A></LI>
+  <LI><A class="nav-events" href="http://nodejs.cn/api/events.html">Events 
+  (事件)</A></LI>
+  <LI><A class="nav-fs" href="http://nodejs.cn/api/fs.html">File System 
+  (文件系统)</A></LI>
+  <LI><A class="nav-globals" href="http://nodejs.cn/api/globals.html">Global 
+  (全局变量)</A></LI>
+  <LI><A class="nav-http" href="http://nodejs.cn/api/http.html">HTTP</A></LI>
+  <LI><A class="nav-https" href="http://nodejs.cn/api/https.html">HTTPS</A></LI>
+  <LI><A class="nav-modules" href="http://nodejs.cn/api/modules.html">Module 
+  (模块)</A></LI>
+  <LI><A class="nav-net" href="http://nodejs.cn/api/net.html">Net (网络)</A></LI>
+  <LI><A class="nav-os" href="http://nodejs.cn/api/os.html">OS (操作系统)</A></LI>
+  <LI><A class="nav-path" href="http://nodejs.cn/api/path.html">Path 
+  (路径)</A></LI>
+  <LI><A class="nav-process" href="http://nodejs.cn/api/process.html">Process 
+  (进程)</A></LI>
+  <LI><A class="nav-punycode" 
+  href="http://nodejs.cn/api/punycode.html">Punycode</A></LI>
+  <LI><A class="nav-querystring" 
+  href="http://nodejs.cn/api/querystring.html">Query Strings (查询字符串)</A></LI>
+  <LI><A class="nav-readline" href="http://nodejs.cn/api/readline.html">Readline 
+  (逐行读取)</A></LI>
+  <LI><A class="nav-repl" href="http://nodejs.cn/api/repl.html">REPL 
+  (交互式解释器)</A></LI>
+  <LI><A class="nav-stream" href="http://nodejs.cn/api/stream.html">Stream 
+  (流)</A></LI>
+  <LI><A class="nav-string_decoder" href="http://nodejs.cn/api/string_decoder.html">String 
+  Decoder (字符串解码器)</A></LI>
+  <LI><A class="nav-timers" href="http://nodejs.cn/api/timers.html">Timer 
+  (定时器)</A></LI>
+  <LI><A class="nav-tls" href="http://nodejs.cn/api/tls.html">TLS 
+  (安全传输层)</A></LI>
+  <LI><A class="nav-tty" href="http://nodejs.cn/api/tty.html">TTY (终端)</A></LI>
+  <LI><A class="nav-dgram" href="http://nodejs.cn/api/dgram.html">UDP/Datagram 
+  (数据报)</A></LI>
+  <LI><A class="nav-url active" 
+href="http://nodejs.cn/api/url.html">URL</A></LI>
+  <LI><A class="nav-util" href="http://nodejs.cn/api/util.html">Util 
+  (实用工具)</A></LI>
+  <LI><A class="nav-v8" href="http://nodejs.cn/api/v8.html">V8</A></LI>
+  <LI><A class="nav-vm" href="http://nodejs.cn/api/vm.html">VM (虚拟机)</A></LI>
+  <LI><A class="nav-zlib" href="http://nodejs.cn/api/zlib.html">ZLIB 
+  (压缩)</A></LI></UL>
+<DIV class="line"></DIV></DIV>
+<DIV class="interior" id="column1" data-id="url"><HEADER>
+<H1>Node.js v6.10.3 文档</H1>
+<DIV id="gtoc">
+<P><A name="toc" href="http://nodejs.cn/api/">返回文档首页</A>             <!--<a href="/api/all.html">单页面显示</a> |--> 
+            <!--<a href="/api/url.json">JSON格式</a> |-->             <!--<a href="/api/en/url.html">查看英文版</a>--> 
+          </P></DIV>
+<HR>
+</HEADER>
+<DIV id="toc">
+<H2>目录</H2>
+<UL>
+  <LI><SPAN class="stability_2"><A 
+  href="http://nodejs.cn/api/url.html#url_url">url</A></SPAN>
+  <UL> 
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/url.html#url_url_strings_and_url_objects">URL 
+    字符串与 URL 对象</A></SPAN>
+    <UL> 
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/url.html#url_urlobject_href">urlObject.href</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/url.html#url_urlobject_protocol">urlObject.protocol</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/url.html#url_urlobject_slashes">urlObject.slashes</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/url.html#url_urlobject_host">urlObject.host</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/url.html#url_urlobject_auth">urlObject.auth</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/url.html#url_urlobject_hostname">urlObject.hostname</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/url.html#url_urlobject_port">urlObject.port</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/url.html#url_urlobject_pathname">urlObject.pathname</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/url.html#url_urlobject_search">urlObject.search</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/url.html#url_urlobject_path">urlObject.path</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/url.html#url_urlobject_query">urlObject.query</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/url.html#url_urlobject_hash">urlObject.hash</A></SPAN></LI></UL></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/url.html#url_url_format_urlobject">url.format(urlObject)</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/url.html#url_url_parse_urlstring_parsequerystring_slashesdenotehost">url.parse(urlString[, 
+    parseQueryString[, slashesDenoteHost]])</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/url.html#url_url_resolve_from_to">url.resolve(from, 
+    to)</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/url.html#url_escaped_characters">转义字符</A></SPAN></LI></UL></LI></UL></DIV>
+<DIV id="apicontent">
+<H1>url<SPAN><A class="mark" id="url_url" href="http://nodejs.cn/api/url.html#url_url">#</A></SPAN></H1>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/url.html#url_url">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/url/url.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<PRE class="api_stability api_stability_2"><A href="http://nodejs.cn/api/documentation.html#documentation_stability_index">稳定性: 2</A> - 稳定的</PRE>
+<P><CODE>url</CODE> 模块提供了一些实用函数，用于 URL 处理与解析。 可以通过以下方式使用：</P>
+<PRE><CODE class="lang-js">const url = require('url');
+</CODE></PRE>
+<H2>URL 字符串与 URL 对象<SPAN><A class="mark" id="url_url_strings_and_url_objects" 
+href="http://nodejs.cn/api/url.html#url_url_strings_and_url_objects">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/url.html#url_url_strings_and_url_objects">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/url/url_strings_and_url_objects.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P>一个 URL 字符串是一个结构化的字符串，它包含多个有意义的组成部分。 当被解析时，会返回一个 URL 对象，它包含每个组成部分作为属性。</P>
+<P>以下详情描述了一个解析后的 URL 的每个组成部分。
+ 例子，<CODE>'http://user:pass@host.com:8080/p/a/t/h?query=string#hash'</CODE>：</P>
+<PRE><CODE class="lang-txt">┌─────────────────────────────────────────────────────────────────────────────┐
+│                                    href                                     │
+├──────────┬┬───────────┬─────────────────┬───────────────────────────┬───────┤
+│ protocol ││   auth    │      host       │           path            │ hash  │
+│          ││           ├──────────┬──────┼──────────┬────────────────┤       │
+│          ││           │ hostname │ port │ pathname │     search     │       │
+│          ││           │          │      │          ├─┬──────────────┤       │
+│          ││           │          │      │          │ │    query     │       │
+"  http:   // user:pass @ host.com : 8080   /p/a/t/h  ?  query=string   #hash "
+│          ││           │          │      │          │ │              │       │
+└──────────┴┴───────────┴──────────┴──────┴──────────┴─┴──────────────┴───────┘
+(请忽略字符串中的空格，它们只是为了格式化)
+</CODE></PRE>
+<H3>urlObject.href<SPAN><A class="mark" id="url_urlobject_href" href="http://nodejs.cn/api/url.html#url_urlobject_href">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/url.html#url_urlobject_href">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/url/urlobject_href.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P><CODE>href</CODE> 属性是解析后的完整的 URL 字符串，<CODE>protocol</CODE> 和 
+<CODE>host</CODE> 都会被转换为小写的。</P>
+<P>例如：<CODE>'http://user:pass@host.com:8080/p/a/t/h?query=string#hash'</CODE></P>
+<H3>urlObject.protocol<SPAN><A class="mark" id="url_urlobject_protocol" href="http://nodejs.cn/api/url.html#url_urlobject_protocol">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/url.html#url_urlobject_protocol">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/url/urlobject_protocol.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P><CODE>protocol</CODE> 属性表明 URL 的小写的协议体制。</P>
+<P>例如：<CODE>'http:'</CODE></P>
+<H3>urlObject.slashes<SPAN><A class="mark" id="url_urlobject_slashes" href="http://nodejs.cn/api/url.html#url_urlobject_slashes">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/url.html#url_urlobject_slashes">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/url/urlobject_slashes.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P><CODE>slashes</CODE> 属性是一个 <CODE>boolean</CODE>，如果 <CODE>protocol</CODE> 
+中的冒号后面跟着两个 ASCII 斜杠字符（<CODE>/</CODE>），则值为 <CODE>true</CODE>。</P>
+<H3>urlObject.host<SPAN><A class="mark" id="url_urlobject_host" href="http://nodejs.cn/api/url.html#url_urlobject_host">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/url.html#url_urlobject_host">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/url/urlobject_host.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P><CODE>host</CODE> 属性是 URL 的完整的小写的主机部分，包括 <CODE>port</CODE>（如果有）。</P>
+<P>例如：<CODE>'host.com:8080'</CODE></P>
+<H3>urlObject.auth<SPAN><A class="mark" id="url_urlobject_auth" href="http://nodejs.cn/api/url.html#url_urlobject_auth">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/url.html#url_urlobject_auth">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/url/urlobject_auth.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P><CODE>auth</CODE> 属性是 URL 的用户名与密码部分。 该字符串跟在 <CODE>protocol</CODE> 
+和双斜杠（如果有）的后面，排在 <CODE>host</CODE> 部分的前面且被一个 ASCII 的 at 符号（<CODE>@</CODE>）分隔。
+ 该字符的格式为 <CODE>{username}[:{password}]</CODE>，<CODE>[:{password}]</CODE> 
+部分是可选的。</P>
+<P>例如：<CODE>'user:pass'</CODE></P>
+<H3>urlObject.hostname<SPAN><A class="mark" id="url_urlobject_hostname" href="http://nodejs.cn/api/url.html#url_urlobject_hostname">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/url.html#url_urlobject_hostname">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/url/urlobject_hostname.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P><CODE>hostname</CODE> 属性是 <CODE>host</CODE> 组成部分排除 <CODE>port</CODE> 
+之后的小写的主机名部分。</P>
+<P>例如：<CODE>'host.com'</CODE></P>
+<H3>urlObject.port<SPAN><A class="mark" id="url_urlobject_port" href="http://nodejs.cn/api/url.html#url_urlobject_port">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/url.html#url_urlobject_port">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/url/urlobject_port.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P><CODE>port</CODE> 属性是 <CODE>host</CODE> 组成部分中的数值型的端口部分。</P>
+<P>例如：<CODE>'8080'</CODE></P>
+<H3>urlObject.pathname<SPAN><A class="mark" id="url_urlobject_pathname" href="http://nodejs.cn/api/url.html#url_urlobject_pathname">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/url.html#url_urlobject_pathname">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/url/urlobject_pathname.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P><CODE>pathname</CODE> 属性包含 URL 的整个路径部分。 它跟在 <CODE>host</CODE> （包括 
+<CODE>port</CODE>）后面，排在 <CODE>query</CODE> 或 <CODE>hash</CODE> 组成部分的前面且被 ASCII 
+问号（<CODE>?</CODE>）或哈希字符（<CODE>#</CODE>）分隔。</P>
+<P>例如：<CODE>'/p/a/t/h'</CODE></P>
+<P>不会对路径字符串执行解码。</P>
+<H3>urlObject.search<SPAN><A class="mark" id="url_urlobject_search" href="http://nodejs.cn/api/url.html#url_urlobject_search">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/url.html#url_urlobject_search">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/url/urlobject_search.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P><CODE>search</CODE> 属性包含 URL 的整个查询字符串部分，包括开头的 ASCII 问号字符（<CODE>?</CODE>）。</P>
+<P>例如：<CODE>'?query=string'</CODE></P>
+<P>不会对查询字符串执行解码。</P>
+<H3>urlObject.path<SPAN><A class="mark" id="url_urlobject_path" href="http://nodejs.cn/api/url.html#url_urlobject_path">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/url.html#url_urlobject_path">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/url/urlobject_path.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P><CODE>path</CODE> 属性是一个 <CODE>pathname</CODE> 与 <CODE>search</CODE> 
+组成部分的串接。</P>
+<P>例如：<CODE>'/p/a/t/h?query=string'</CODE></P>
+<P>不会对 <CODE>path</CODE> 执行解码。</P>
+<H3>urlObject.query<SPAN><A class="mark" id="url_urlobject_query" href="http://nodejs.cn/api/url.html#url_urlobject_query">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/url.html#url_urlobject_query">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/url/urlobject_query.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P><CODE>query</CODE> 属性是不含开头 ASCII 问号（<CODE>?</CODE>）的查询字符串，或一个被 <A href="http://nodejs.cn/api/querystring.html"><CODE>querystring</CODE></A> 
+模块的 <CODE>parse()</CODE> 方法返回的对象。 <CODE>query</CODE> 属性是一个字符串还是一个对象是由传入 
+<CODE>url.parse()</CODE> 的 <CODE>parseQueryString</CODE> 参数决定的。</P>
+<P>例如：<CODE>'query=string'</CODE> or <CODE>{'query': 'string'}</CODE></P>
+<P>如果返回一个字符串，则不会对查询字符串执行解码。 如果返回一个对象，则键和值都会被解码。</P>
+<H3>urlObject.hash<SPAN><A class="mark" id="url_urlobject_hash" href="http://nodejs.cn/api/url.html#url_urlobject_hash">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/url.html#url_urlobject_hash">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/url/urlobject_hash.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P><CODE>hash</CODE> 属性包含 URL 的碎片部分，包括开头的 ASCII 哈希字符（<CODE>#</CODE>）。</P>
+<P>例如：<CODE>'#hash'</CODE></P>
+<H2>url.format(urlObject)<SPAN><A class="mark" id="url_url_format_urlobject" 
+href="http://nodejs.cn/api/url.html#url_url_format_urlobject">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/url.html#url_url_format_urlobject">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/url/url_format_urlobject.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.25</SPAN> </DIV>
+<UL>
+  <LI><CODE>urlObject</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">&lt;Object&gt;</A> 
+  | <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  一个 URL 对象（就像 <CODE>url.parse()</CODE> 返回的）。 如果是一个字符串，则通过 
+  <CODE>url.parse()</CODE> 转换为一个对象。</LI></UL>
+<P><CODE>url.format()</CODE> 方法返回一个从 <CODE>urlObject</CODE> 格式化后的 URL 字符串。</P>
+<P>如果 <CODE>urlObject</CODE> 不是一个对象或字符串，则 <CODE>url.parse()</CODE> 抛出 <A href="http://nodejs.cn/api/errors.html#errors_class_typeerror"><CODE>TypeError</CODE></A>。</P>
+<P>格式化过程如下：</P>
+<UL>
+  <LI>创建一个新的空字符串 <CODE>result</CODE>。</LI>
+  <LI>如果 <CODE>urlObject.protocol</CODE> 是一个字符串，则它会被原样添加到 
+  <CODE>result</CODE>。</LI>
+  <LI>否则，如果 <CODE>urlObject.protocol</CODE> 不是 <CODE>undefined</CODE> 
+  也不是一个字符串，则抛出 <A 
+  href="http://nodejs.cn/api/errors.html#errors_class_error"><CODE>Error</CODE></A>。</LI>
+  <LI>对于不是以 <CODE>:</CODE> 结束的 <CODE>urlObject.protocol</CODE>，<CODE>:</CODE> 
+  会被添加到 <CODE>result</CODE>。</LI>
+  <LI>如果以下条件之一为真，则 <CODE>//</CODE> 会被添加到 <CODE>result</CODE>：
+  <UL>
+    <LI><CODE>urlObject.slashes</CODE> 属性为真；</LI>
+    <LI><CODE>urlObject.protocol</CODE> 以 
+    <CODE>http</CODE>、<CODE>https</CODE>、<CODE>ftp</CODE>、<CODE>gopher</CODE> 或 
+    <CODE>file</CODE> 开头；</LI></UL></LI>
+  <LI>如果 <CODE>urlObject.auth</CODE> 属性的值为真，且 <CODE>urlObject.host</CODE> 或 
+  <CODE>urlObject.hostname</CODE> 不为 <CODE>undefined</CODE>，则 
+  <CODE>urlObject.auth</CODE> 会被添加到 <CODE>result</CODE>，且后面带上 
+  <CODE>@</CODE>。</LI>
+  <LI>如果 <CODE>urlObject.host</CODE> 属性为 <CODE>undefined</CODE>，则：
+  <UL>
+    <LI>如果 <CODE>urlObject.hostname</CODE> 是一个字符串，则它会被添加到 
+    <CODE>result</CODE>。</LI>
+    <LI>否则，如果 <CODE>urlObject.hostname</CODE> 不是 <CODE>undefined</CODE> 
+    也不是一个字符串，则抛出 <A 
+    href="http://nodejs.cn/api/errors.html#errors_class_error"><CODE>Error</CODE></A>。</LI>
+    <LI>如果 <CODE>urlObject.port</CODE> 属性的值为真，且 <CODE>urlObject.hostname</CODE> 
+    不为 <CODE>undefined</CODE>：
+    <UL>
+      <LI><CODE>:</CODE> 会被添加到 <CODE>result</CODE>。</LI>
+      <LI><CODE>urlObject.port</CODE> 的值会被添加到 
+  <CODE>result</CODE>。</LI></UL></LI></UL></LI>
+  <LI>否则，如果 <CODE>urlObject.host</CODE> 属性的值为真，则 <CODE>urlObject.host</CODE> 
+  的值会被添加到 <CODE>result</CODE>。</LI>
+  <LI>如果 <CODE>urlObject.pathname</CODE> 属性是一个字符串且不是一个空字符串：
+  <UL>
+    <LI>如果 <CODE>urlObject.pathname</CODE> 不是以 <CODE>/</CODE> 开头，则 
+    <CODE>/</CODE> 会被添加到 <CODE>result</CODE>。</LI>
+    <LI><CODE>urlObject.pathname</CODE> 的值会被添加到 
+<CODE>result</CODE>。</LI></UL></LI>
+  <LI>否则，如果 <CODE>urlObject.pathname</CODE> 不是 <CODE>undefined</CODE> 
+  也不是一个字符串，则抛出 <A 
+  href="http://nodejs.cn/api/errors.html#errors_class_error"><CODE>Error</CODE></A>。</LI>
+  <LI>如果 <CODE>urlObject.search</CODE> 属性为 <CODE>undefined</CODE> 且 
+  <CODE>urlObject.query</CODE> 属性是一个 <CODE>Object</CODE>，则 <CODE>?</CODE> 会被添加到 
+  <CODE>result</CODE>，后面跟上把 <CODE>urlObject.query</CODE> 的值传入 <A href="http://nodejs.cn/api/querystring.html"><CODE>querystring</CODE></A> 
+  模块的 <CODE>stringify()</CODE> 方法的调用结果。</LI>
+  <LI>否则，如果 <CODE>urlObject.search</CODE> 是一个字符串：
+  <UL>
+    <LI>如果 <CODE>urlObject.search</CODE> 的值不是以 <CODE>?</CODE> 开头，则 
+    <CODE>?</CODE> 会被添加到 <CODE>result</CODE>。</LI>
+    <LI><CODE>urlObject.search</CODE> 的值会被添加到 <CODE>result</CODE>。</LI></UL></LI>
+  <LI>否则，如果 <CODE>urlObject.search</CODE> 不是 <CODE>undefined</CODE> 也不是一个字符串，则抛出 
+  <A 
+  href="http://nodejs.cn/api/errors.html#errors_class_error"><CODE>Error</CODE></A>。</LI>
+  <LI>如果 <CODE>urlObject.hash</CODE> 属性是一个字符串：
+  <UL>
+    <LI>如果 <CODE>urlObject.hash</CODE> 的值不是以 <CODE>#</CODE> 开头，则 <CODE>#</CODE> 
+    会被添加到 <CODE>result</CODE>。</LI>
+    <LI><CODE>urlObject.hash</CODE> 的值会被添加到 <CODE>result</CODE>。</LI></UL></LI>
+  <LI>否则，如果 <CODE>urlObject.hash</CODE> 属性不是 <CODE>undefined</CODE> 也不是一个字符串，则抛出 
+  <A 
+  href="http://nodejs.cn/api/errors.html#errors_class_error"><CODE>Error</CODE></A>。</LI>
+  <LI>返回 <CODE>result</CODE>。</LI></UL>
+<H2>url.parse(urlString[, parseQueryString[, slashesDenoteHost]])<SPAN><A class="mark" 
+id="url_url_parse_urlstring_parsequerystring_slashesdenotehost" href="http://nodejs.cn/api/url.html#url_url_parse_urlstring_parsequerystring_slashesdenotehost">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/url.html#url_url_parse_urlstring_parsequerystring_slashesdenotehost">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/url/url_parse_urlstring_parsequerystring_slashesdenotehost.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.25</SPAN> </DIV>
+<UL>
+  <LI><CODE>urlString</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  要解析的 URL 字符串。</LI>
+  <LI><CODE>parseQueryString</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type">&lt;Boolean&gt;</A> 
+  如果为 <CODE>true</CODE>，则 <CODE>query</CODE> 属性总会通过 <A href="http://nodejs.cn/api/querystring.html"><CODE>querystring</CODE></A> 
+  模块的 <CODE>parse()</CODE> 方法生成一个对象。 如果为 <CODE>false</CODE>，则返回的 URL 对象上的 
+  <CODE>query</CODE> 属性会是一个未解析、未解码的字符串。 默认为 <CODE>false</CODE>。</LI>
+  <LI><CODE>slashesDenoteHost</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type">&lt;Boolean&gt;</A> 
+  如果为 <CODE>true</CODE>，则 <CODE>//</CODE> 之后至下一个 <CODE>/</CODE> 之前的字符串会被解析作为 
+  <CODE>host</CODE>。 例如，<CODE>//foo/bar</CODE> 会被解析为 <CODE>{host: 'foo', 
+  pathname: '/bar'}</CODE> 而不是 <CODE>{pathname: '//foo/bar'}</CODE>。 默认为 
+  <CODE>false</CODE>。</LI></UL>
+<P><CODE>url.parse()</CODE> 方法会解析一个 URL 字符串并返回一个 URL 对象。</P>
+<H2>url.resolve(from, to)<SPAN><A class="mark" id="url_url_resolve_from_to" 
+href="http://nodejs.cn/api/url.html#url_url_resolve_from_to">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/url.html#url_url_resolve_from_to">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/url/url_resolve_from_to.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.25</SPAN> </DIV>
+<UL>
+  <LI><CODE>from</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  解析时相对的基本 URL。</LI>
+  <LI><CODE>to</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  要解析的超链接 URL。</LI></UL>
+<P><CODE>url.resolve()</CODE> 方法会以一种 Web 浏览器解析超链接的方式把一个目标 URL 解析成相对于一个基础 
+URL。</P>
+<P>例子：</P>
+<PRE><CODE class="lang-js">url.resolve('/one/two/three', 'four')         // '/one/two/four'
+url.resolve('http://example.com/', '/one')    // 'http://example.com/one'
+url.resolve('http://example.com/one', '/two') // 'http://example.com/two'
+</CODE></PRE>
+<H2>转义字符<SPAN><A class="mark" id="url_escaped_characters" href="http://nodejs.cn/api/url.html#url_escaped_characters">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/url.html#url_escaped_characters">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/url/escaped_characters.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P>URL 只被允许包含一个特定范围的字符串。 URL 对象的属性中的空格（<CODE>' '</CODE>）和以下字符会被自动转义。</P>
+<PRE><CODE class="lang-txt">&lt; &gt; " ` \r \n \t { } | \ ^ '
+</CODE></PRE>
+<P>例如，ASCII 空格字符（<CODE>' '</CODE>）被编码成 <CODE>%20</CODE>。 ASCII 
+斜杠字符（<CODE>/</CODE>）被编码成 <CODE>%3C</CODE>。</P></DIV></DIV></DIV><!-- 搜索弹窗 -->   
+<DIV id="modal_search_bg"></DIV>
+<DIV 
+id="modal_search"><INPUT id="modal_search_input" placeholder="API 快速搜索" value=""> 
+    
+<DIV id="modal_search_result"></DIV></DIV><!-- js -->   <!--[if lt IE 10]><script src="/static/lib/placeholders.js?20170426"></script><![endif]--> 
+  
+<SCRIPT src="url%20%20Node_js%20API%20文档_files/api.js"></SCRIPT>
+ </BODY></HTML>

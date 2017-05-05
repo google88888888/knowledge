@@ -1,0 +1,374 @@
+﻿<!DOCTYPE HTML>
+<!-- saved from url=(0033)http://nodejs.cn/api/console.html -->
+<!DOCTYPE html PUBLIC "" ""><HTML lang="zh-cmn-Hans"><HEAD><META 
+content="IE=11.0000" http-equiv="X-UA-Compatible">
+   
+<META charset="utf-8">   <TITLE>console | Node.js API 文档</TITLE>   <LINK href="console%20%20Node_js%20API%20文档_files/api.css" 
+rel="stylesheet">   <LINK href="/static/favicon.png" rel="icon" type="image/png" 
+sizes="32x32"> 
+<META name="GENERATOR" content="MSHTML 11.00.9600.18639"></HEAD> 
+<BODY class="alt apidoc" id="api-section-console">
+<DIV class="clearfix" id="content">
+<DIV class="interior" id="column2">
+<DIV class="interior" id="intro"><A href="http://nodejs.cn/">          Node.js 
+中文网         </A>         
+<DIV><INPUT id="search_input" placeholder="API 快速搜索" value="">         
+</DIV></DIV>
+<UL>
+  <LI><A class="nav-documentation" href="http://nodejs.cn/api/documentation.html">关于本文档</A></LI>
+  <LI><A class="nav-synopsis" 
+  href="http://nodejs.cn/api/synopsis.html">用法与例子</A></LI></UL>
+<DIV class="line"></DIV>
+<UL>
+  <LI><A class="nav-assert" href="http://nodejs.cn/api/assert.html">Assert 
+  (断言)</A></LI>
+  <LI><A class="nav-buffer" 
+  href="http://nodejs.cn/api/buffer.html">Buffer</A></LI>
+  <LI><A class="nav-addons" href="http://nodejs.cn/api/addons.html">C/C++ 
+  插件</A></LI>
+  <LI><A class="nav-child_process" href="http://nodejs.cn/api/child_process.html">Child 
+  Processes (子进程)</A></LI>
+  <LI><A class="nav-cluster" href="http://nodejs.cn/api/cluster.html">Cluster 
+  (集群)</A></LI>
+  <LI><A class="nav-cli" href="http://nodejs.cn/api/cli.html">CLI 
+  (命令行选项)</A></LI>
+  <LI><A class="nav-console active" 
+  href="http://nodejs.cn/api/console.html">Console (控制台)</A></LI>
+  <LI><A class="nav-crypto" href="http://nodejs.cn/api/crypto.html">Crypto 
+  (加密)</A></LI>
+  <LI><A class="nav-debugger" href="http://nodejs.cn/api/debugger.html">Debugger 
+  (调试器)</A></LI>
+  <LI><A class="nav-dns" href="http://nodejs.cn/api/dns.html">DNS 
+  (域名服务器)</A></LI>
+  <LI><A class="nav-domain" href="http://nodejs.cn/api/domain.html">Domain 
+  (域)</A></LI>
+  <LI><A class="nav-errors" href="http://nodejs.cn/api/errors.html">Error 
+  (错误)</A></LI>
+  <LI><A class="nav-events" href="http://nodejs.cn/api/events.html">Events 
+  (事件)</A></LI>
+  <LI><A class="nav-fs" href="http://nodejs.cn/api/fs.html">File System 
+  (文件系统)</A></LI>
+  <LI><A class="nav-globals" href="http://nodejs.cn/api/globals.html">Global 
+  (全局变量)</A></LI>
+  <LI><A class="nav-http" href="http://nodejs.cn/api/http.html">HTTP</A></LI>
+  <LI><A class="nav-https" href="http://nodejs.cn/api/https.html">HTTPS</A></LI>
+  <LI><A class="nav-modules" href="http://nodejs.cn/api/modules.html">Module 
+  (模块)</A></LI>
+  <LI><A class="nav-net" href="http://nodejs.cn/api/net.html">Net (网络)</A></LI>
+  <LI><A class="nav-os" href="http://nodejs.cn/api/os.html">OS (操作系统)</A></LI>
+  <LI><A class="nav-path" href="http://nodejs.cn/api/path.html">Path 
+  (路径)</A></LI>
+  <LI><A class="nav-process" href="http://nodejs.cn/api/process.html">Process 
+  (进程)</A></LI>
+  <LI><A class="nav-punycode" 
+  href="http://nodejs.cn/api/punycode.html">Punycode</A></LI>
+  <LI><A class="nav-querystring" 
+  href="http://nodejs.cn/api/querystring.html">Query Strings (查询字符串)</A></LI>
+  <LI><A class="nav-readline" href="http://nodejs.cn/api/readline.html">Readline 
+  (逐行读取)</A></LI>
+  <LI><A class="nav-repl" href="http://nodejs.cn/api/repl.html">REPL 
+  (交互式解释器)</A></LI>
+  <LI><A class="nav-stream" href="http://nodejs.cn/api/stream.html">Stream 
+  (流)</A></LI>
+  <LI><A class="nav-string_decoder" href="http://nodejs.cn/api/string_decoder.html">String 
+  Decoder (字符串解码器)</A></LI>
+  <LI><A class="nav-timers" href="http://nodejs.cn/api/timers.html">Timer 
+  (定时器)</A></LI>
+  <LI><A class="nav-tls" href="http://nodejs.cn/api/tls.html">TLS 
+  (安全传输层)</A></LI>
+  <LI><A class="nav-tty" href="http://nodejs.cn/api/tty.html">TTY (终端)</A></LI>
+  <LI><A class="nav-dgram" href="http://nodejs.cn/api/dgram.html">UDP/Datagram 
+  (数据报)</A></LI>
+  <LI><A class="nav-url" href="http://nodejs.cn/api/url.html">URL</A></LI>
+  <LI><A class="nav-util" href="http://nodejs.cn/api/util.html">Util 
+  (实用工具)</A></LI>
+  <LI><A class="nav-v8" href="http://nodejs.cn/api/v8.html">V8</A></LI>
+  <LI><A class="nav-vm" href="http://nodejs.cn/api/vm.html">VM (虚拟机)</A></LI>
+  <LI><A class="nav-zlib" href="http://nodejs.cn/api/zlib.html">ZLIB 
+  (压缩)</A></LI></UL>
+<DIV class="line"></DIV></DIV>
+<DIV class="interior" id="column1" data-id="console"><HEADER>
+<H1>Node.js v6.10.3 文档</H1>
+<DIV id="gtoc">
+<P><A name="toc" href="http://nodejs.cn/api/">返回文档首页</A>             <!--<a href="/api/all.html">单页面显示</a> |--> 
+            <!--<a href="/api/console.json">JSON格式</a> |-->             <!--<a href="/api/en/console.html">查看英文版</a>--> 
+          </P></DIV>
+<HR>
+</HEADER>
+<DIV id="toc">
+<H2>目录</H2>
+<UL>
+  <LI><SPAN class="stability_2"><A href="http://nodejs.cn/api/console.html#console_console">console 
+  (控制台)</A></SPAN>
+  <UL> 
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/console.html#console_class_console">Console 
+    类</A></SPAN>
+    <UL> 
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/console.html#console_new_console_stdout_stderr">new 
+      Console(stdout[, stderr])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/console.html#console_console_assert_value_message_args">console.assert(value[, 
+      message][, ...args])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/console.html#console_console_dir_obj_options">console.dir(obj[, 
+      options])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/console.html#console_console_error_data_args">console.error([data][, 
+      ...args])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/console.html#console_console_info_data_args">console.info([data][, 
+      ...args])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/console.html#console_console_log_data_args">console.log([data][, 
+      ...args])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/console.html#console_console_time_label">console.time(label)</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/console.html#console_console_timeend_label">console.timeEnd(label)</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/console.html#console_console_trace_message_args">console.trace(message[, 
+      ...args])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/console.html#console_console_warn_data_args">console.warn([data][, 
+      ...args])</A></SPAN></LI></UL></LI></UL></LI></UL></DIV>
+<DIV id="apicontent">
+<H1>console (控制台)<SPAN><A class="mark" id="console_console" href="http://nodejs.cn/api/console.html#console_console">#</A></SPAN></H1>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/console.html#console_console">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/console/console.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<PRE class="api_stability api_stability_2"><A href="http://nodejs.cn/api/documentation.html#documentation_stability_index">稳定性: 2</A> - 稳定的</PRE>
+<P><CODE>console</CODE> 模块提供了一个简单的调试控制台，它与 Web 浏览器提供的 JavaScript 控制台的机制类似。</P>
+<P>该模块导出两个特定组件：</P>
+<UL>
+  <LI>一个 <CODE>Console</CODE> 类，包含 <CODE>console.log()</CODE> 、 
+  <CODE>console.error()</CODE> 和 <CODE>console.warn()</CODE> 等方法，可以用于写入到任何 
+  Node.js 流。</LI>
+  <LI>一个全局的 <CODE>console</CODE> 实例，用于写入 <A href="http://nodejs.cn/api/process.html#process_process_stdout"><CODE>process.stdout</CODE></A> 
+  和 <A 
+  href="http://nodejs.cn/api/process.html#process_process_stderr"><CODE>process.stderr</CODE></A>。
+   全局的 <CODE>console</CODE> 使用时无需调用 <CODE>require('console')</CODE>。</LI></UL>
+<P>注意：全局的 console 对象的方法既不总是同步的（如浏览器中类似的 API），也不总是异步的（如其他 Node.js 流）。 详见 <A href="http://nodejs.cn/api/process.html#process_a_note_on_process_i_o">关于 
+process I/O</A>。</P>
+<P>例子：使用全局的 <CODE>console</CODE>：</P>
+<PRE><CODE class="lang-js">console.log('hello world');
+// 打印: hello world 到 stdout
+console.log('hello %s', 'world');
+// 打印: hello world 到 stdout
+console.error(new Error('错误信息'));
+// 打印: [Error: 错误信息] 到 stderr
+
+const name = 'Will Robinson';
+console.warn(`Danger ${name}! Danger!`);
+// 打印: Danger Will Robinson! Danger! 到 stderr
+</CODE></PRE>
+<P>例子：使用 <CODE>Console</CODE> 类：</P>
+<PRE><CODE class="lang-js">const out = getStreamSomehow();
+const err = getStreamSomehow();
+const myConsole = new console.Console(out, err);
+
+myConsole.log('hello world');
+// 打印: hello world 到 out
+myConsole.log('hello %s', 'world');
+// 打印: hello world 到 out
+myConsole.error(new Error('错误信息'));
+// 打印: [Error: 错误信息] 到 err
+
+const name = 'Will Robinson';
+myConsole.warn(`Danger ${name}! Danger!`);
+// 打印: Danger Will Robinson! Danger! 到 err
+</CODE></PRE>
+<H2>Console 类<SPAN><A class="mark" id="console_class_console" href="http://nodejs.cn/api/console.html#console_class_console">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/console.html#console_class_console">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/console/class_console.md" 
+target="_blank" rel="nofollow">参与翻译</A></P><!--type=class--> 
+<P><CODE>Console</CODE> 类可用于创建一个具有可配置的输出流的简单记录器，可以通过 
+<CODE>require('console').Console</CODE> 或 <CODE>console.Console</CODE> 使用：</P>
+<PRE><CODE class="lang-js">const Console = require('console').Console;
+const Console = console.Console;
+</CODE></PRE>
+<H3>new Console(stdout[, stderr])<SPAN><A class="mark" id="console_new_console_stdout_stderr" 
+href="http://nodejs.cn/api/console.html#console_new_console_stdout_stderr">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/console.html#console_new_console_stdout_stderr">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/console/new_console_stdout_stderr.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P>通过传入一个或两个可写流实例，创建一个新的 <CODE>Console</CODE> 对象。 <CODE>stdout</CODE> 
+是一个可写流，用于打印日志或输出信息。 <CODE>stderr</CODE> 用于输出警告或错误。 如果没有传入 <CODE>stderr</CODE> 
+，则警告或错误输出会被发送到 <CODE>stdout</CODE> 。</P>
+<PRE><CODE class="lang-js">const output = fs.createWriteStream('./stdout.log');
+const errorOutput = fs.createWriteStream('./stderr.log');
+// 自定义的简单记录器
+const logger = new Console(output, errorOutput);
+// 像 console 一样使用
+const count = 5;
+logger.log('count: %d', count);
+// stdout.log 中打印: count 5
+</CODE></PRE>
+<P>全局的 <CODE>console</CODE> 是一个特殊的 <CODE>Console</CODE> 实例，它的输出会发送到 <A href="http://nodejs.cn/api/process.html#process_process_stdout"><CODE>process.stdout</CODE></A> 
+和 <A 
+href="http://nodejs.cn/api/process.html#process_process_stderr"><CODE>process.stderr</CODE></A>。
+ 相当于调用：</P>
+<PRE><CODE class="lang-js">new Console(process.stdout, process.stderr);
+</CODE></PRE>
+<H3>console.assert(value[, message][, ...args])<SPAN><A class="mark" id="console_console_assert_value_message_args" 
+href="http://nodejs.cn/api/console.html#console_console_assert_value_message_args">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/console.html#console_console_assert_value_message_args">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/console/console_assert_value_message_args.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.101</SPAN> </DIV>
+<P>一个简单的断言测试，验证 <CODE>value</CODE> 是否为真。 如果不为真，则抛出 <CODE>AssertionError</CODE>。
+ 如果提供了 <CODE>message</CODE>，则使用 <A href="http://nodejs.cn/api/util.html#util_util_format_format_args"><CODE>util.format()</CODE></A> 
+格式化并作为错误信息使用。</P>
+<PRE><CODE class="lang-js">console.assert(true, 'does nothing');
+// 通过
+console.assert(false, 'Whoops %s', 'didn\'t work');
+// AssertionError: Whoops didn't work
+</CODE></PRE>
+<P>注意：Node.js 中的 <CODE>console.assert()</CODE> 方法与<A href="https://developer.mozilla.org/en-US/docs/Web/API/console/assert">在浏览器中</A>的 
+<CODE>console.assert()</CODE> 方法的实现是不一样的。</P>
+<P>具体地说，在浏览器中，用非真的断言调用 <CODE>console.assert()</CODE> 会导致 <CODE>message</CODE> 
+被打印到控制台但不会中断后续代码的执行。 而在 Node.js 中，非真的断言会导致抛出 <CODE>AssertionError</CODE>。</P>
+<P>可以通过扩展 Node.js 的 <CODE>console</CODE> 并重写 <CODE>console.assert()</CODE> 
+方法来实现与浏览器中类似的功能。</P>
+<P>例子，创建一个简单的模块，并扩展与重写了 Node.js 中 <CODE>console</CODE> 的默认行为。</P>
+<PRE><CODE class="lang-js">'use strict';
+
+// 用一个新的不带补丁的 assert 实现来创建一个简单的 console 扩展。
+const myConsole = Object.create(console, {
+  assert: {
+    value: function assert(assertion, message, ...args) {
+      try {
+        console.assert(assertion, message, ...args);
+      } catch (err) {
+        console.error(err.stack);
+      }
+    },
+    configurable: true,
+    enumerable: true,
+    writable: true,
+  },
+});
+
+module.exports = myConsole;
+</CODE></PRE>
+<P>然后可以用来直接替换内置的 console：</P>
+<PRE><CODE class="lang-js">const console = require('./myConsole');
+console.assert(false, '会打印这个消息，但不会抛出错误');
+console.log('这个也会打印');
+</CODE></PRE>
+<H3>console.dir(obj[, options])<SPAN><A class="mark" id="console_console_dir_obj_options" 
+href="http://nodejs.cn/api/console.html#console_console_dir_obj_options">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/console.html#console_console_dir_obj_options">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/console/console_dir_obj_options.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.101</SPAN> </DIV>
+<P>在 <CODE>obj</CODE> 上使用 <A href="http://nodejs.cn/api/util.html#util_util_inspect_object_options"><CODE>util.inspect()</CODE></A> 
+并打印结果字符串到 <CODE>stdout</CODE>。 该函数会绕过任何定义在 <CODE>obj</CODE> 上的自定义的 
+<CODE>inspect()</CODE> 函数。 可选的 <CODE>options</CODE> 对象可以传入用于改变被格式化的字符串：</P>
+<UL>
+  <LI>
+  <P><CODE>showHidden</CODE> - 如果为 <CODE>true</CODE>，则该对象中的不可枚举属性和 symbol 
+  属性也会显示。默认为 <CODE>false</CODE>。</P></LI>
+  <LI>
+  <P><CODE>depth</CODE> - 告诉 <A href="http://nodejs.cn/api/util.html#util_util_inspect_object_options"><CODE>util.inspect()</CODE></A> 
+  函数当格式化对象时要递归多少次。 这对于检查较大的复杂对象很有用。 默认为 <CODE>2</CODE>。 设为 <CODE>null</CODE> 
+  可无限递归。</P></LI>
+  <LI>
+  <P><CODE>colors</CODE> - 如果为 <CODE>true</CODE>，则输出会带有 ANSI 颜色代码。 默认为 
+  <CODE>false</CODE>。 颜色是可定制的，详见<A href="http://nodejs.cn/api/util.html#util_customizing_util_inspect_colors">定制 
+  <CODE>util.inspect()</CODE> 颜色</A>。</P></LI></UL>
+<H3>console.error([data][, ...args])<SPAN><A class="mark" id="console_console_error_data_args" 
+href="http://nodejs.cn/api/console.html#console_console_error_data_args">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/console.html#console_console_error_data_args">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/console/console_error_data_args.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.100</SPAN> </DIV>
+<P>打印到 <CODE>stderr</CODE>，并带上换行符。 可以传入多个参数，第一个参数作为主要信息，其他参数作为类似于 <A href="http://man7.org/linux/man-pages/man3/printf.3.html">printf(3)</A> 
+中的代替值（参数都会传给 <A href="http://nodejs.cn/api/util.html#util_util_format_format_args"><CODE>util.format()</CODE></A>）。</P>
+<PRE><CODE class="lang-js">const code = 5;
+console.error('error #%d', code);
+// 打印: error #5 到 stderr
+console.error('error', code);
+// 打印: error 5 到 stderr
+</CODE></PRE>
+<P>如果在第一个字符串中没有找到格式化元素（如 <CODE>%d</CODE>），则在每个参数上调用 <A href="http://nodejs.cn/api/util.html#util_util_inspect_object_options"><CODE>util.inspect()</CODE></A> 
+并将结果字符串值拼在一起。 详见 <A href="http://nodejs.cn/api/util.html#util_util_format_format_args"><CODE>util.format()</CODE></A>。</P>
+<H3>console.info([data][, ...args])<SPAN><A class="mark" id="console_console_info_data_args" 
+href="http://nodejs.cn/api/console.html#console_console_info_data_args">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/console.html#console_console_info_data_args">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/console/console_info_data_args.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.100</SPAN> </DIV>
+<P><CODE>console.info()</CODE> 函数是 <A href="http://nodejs.cn/api/console.html#console_console_log_data_args"><CODE>console.log()</CODE></A> 
+的一个别名。</P>
+<H3>console.log([data][, ...args])<SPAN><A class="mark" id="console_console_log_data_args" 
+href="http://nodejs.cn/api/console.html#console_console_log_data_args">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/console.html#console_console_log_data_args">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/console/console_log_data_args.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.100</SPAN> </DIV>
+<P>打印到 <CODE>stdout</CODE>，并带上换行符。 可以传入多个参数，第一个参数作为主要信息，其他参数作为类似于 <A href="http://man7.org/linux/man-pages/man3/printf.3.html">printf(3)</A> 
+中的代替值（参数都会传给 <A href="http://nodejs.cn/api/util.html#util_util_format_format_args"><CODE>util.format()</CODE></A>）。</P>
+<PRE><CODE class="lang-js">const count = 5;
+console.log('count: %d', count);
+// 打印: count: 5 到 stdout
+console.log('count:', count);
+// 打印: count: 5 到 stdout
+</CODE></PRE>
+<P>如果在第一个字符串中没有找到格式化元素（如 <CODE>%d</CODE>），则在每个参数上调用 <A href="http://nodejs.cn/api/util.html#util_util_inspect_object_options"><CODE>util.inspect()</CODE></A> 
+并将结果字符串值拼在一起。 详见 <A href="http://nodejs.cn/api/util.html#util_util_format_format_args"><CODE>util.format()</CODE></A>。</P>
+<H3>console.time(label)<SPAN><A class="mark" id="console_console_time_label" 
+href="http://nodejs.cn/api/console.html#console_console_time_label">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/console.html#console_console_time_label">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/console/console_time_label.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.104</SPAN> </DIV>
+<P>启动一个定时器，用以计算一个操作的持续时间。 定时器由一个唯一的 <CODE>label</CODE> 标识。 当调用 <A href="http://nodejs.cn/api/console.html#console_console_timeend_label"><CODE>console.timeEnd()</CODE></A> 
+时，可以使用相同的 <CODE>label</CODE> 来停止定时器，并以毫秒为单位将持续时间输出到 <CODE>stdout</CODE>。
+ 定时器持续时间精确到亚毫秒。</P>
+<H3>console.timeEnd(label)<SPAN><A class="mark" id="console_console_timeend_label" 
+href="http://nodejs.cn/api/console.html#console_console_timeend_label">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/console.html#console_console_timeend_label">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/console/console_timeend_label.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.104</SPAN> </DIV>
+<P>停止之前通过调用 <A href="http://nodejs.cn/api/console.html#console_console_time_label"><CODE>console.time()</CODE></A> 
+启动的定时器，并打印结果到 <CODE>stdout</CODE>：</P>
+<PRE><CODE class="lang-js">console.time('100-elements');
+for (let i = 0; i &lt; 100; i++) {
+  ;
+}
+console.timeEnd('100-elements');
+// 打印 100-elements: 225.438ms
+</CODE></PRE>
+<P>注意：从 Node.js v6.0.0 开始，<CODE>console.timeEnd()</CODE> 删除了计时器以避免泄漏。
+ 在旧版本上，计时器依然保留。 它允许 <CODE>console.timeEnd()</CODE> 可以多次调用同一标签。
+ 此功能是非计划中的，不再被支持。</P>
+<H3>console.trace(message[, ...args])<SPAN><A class="mark" id="console_console_trace_message_args" 
+href="http://nodejs.cn/api/console.html#console_console_trace_message_args">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/console.html#console_console_trace_message_args">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/console/console_trace_message_args.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.104</SPAN> </DIV>
+<P>打印字符串 <CODE>'Trace :'</CODE> 到 <CODE>stderr</CODE> ，并通过 <A href="http://nodejs.cn/api/util.html#util_util_format_format_args"><CODE>util.format()</CODE></A> 
+格式化消息与堆栈跟踪在代码中的当前位置。</P>
+<PRE><CODE class="lang-js">console.trace('Show me');
+// 打印: (堆栈跟踪会根据被调用的跟踪的位置而变化)
+//  Trace: Show me
+//    at repl:2:9
+//    at REPLServer.defaultEval (repl.js:248:27)
+//    at bound (domain.js:287:14)
+//    at REPLServer.runBound [as eval] (domain.js:300:12)
+//    at REPLServer.&lt;anonymous&gt; (repl.js:412:12)
+//    at emitOne (events.js:82:20)
+//    at REPLServer.emit (events.js:169:7)
+//    at REPLServer.Interface._onLine (readline.js:210:10)
+//    at REPLServer.Interface._line (readline.js:549:8)
+//    at REPLServer.Interface._ttyWrite (readline.js:826:14)
+</CODE></PRE>
+<H3>console.warn([data][, ...args])<SPAN><A class="mark" id="console_console_warn_data_args" 
+href="http://nodejs.cn/api/console.html#console_console_warn_data_args">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/console.html#console_console_warn_data_args">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/console/console_warn_data_args.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.100</SPAN> </DIV>
+<P><CODE>console.warn()</CODE> 函数是 <A href="http://nodejs.cn/api/console.html#console_console_error_data_args"><CODE>console.error()</CODE></A> 
+的一个别名。</P></DIV></DIV></DIV><!-- 搜索弹窗 -->   
+<DIV id="modal_search_bg"></DIV>
+<DIV 
+id="modal_search"><INPUT id="modal_search_input" placeholder="API 快速搜索" value=""> 
+    
+<DIV id="modal_search_result"></DIV></DIV><!-- js -->   <!--[if lt IE 10]><script src="/static/lib/placeholders.js?20170426"></script><![endif]--> 
+  
+<SCRIPT src="console%20%20Node_js%20API%20文档_files/api.js"></SCRIPT>
+ </BODY></HTML>

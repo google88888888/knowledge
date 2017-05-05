@@ -1,0 +1,377 @@
+﻿<!DOCTYPE HTML>
+<!-- saved from url=(0031)http://nodejs.cn/api/https.html -->
+<!DOCTYPE html PUBLIC "" ""><HTML lang="zh-cmn-Hans"><HEAD><META 
+content="IE=11.0000" http-equiv="X-UA-Compatible">
+   
+<META charset="utf-8">   <TITLE>https | Node.js API 文档</TITLE>   <LINK href="https%20%20Node_js%20API%20文档_files/api.css" 
+rel="stylesheet">   <LINK href="/static/favicon.png" rel="icon" type="image/png" 
+sizes="32x32"> 
+<META name="GENERATOR" content="MSHTML 11.00.9600.18639"></HEAD> 
+<BODY class="alt apidoc" id="api-section-https">
+<DIV class="clearfix" id="content">
+<DIV class="interior" id="column2">
+<DIV class="interior" id="intro"><A href="http://nodejs.cn/">          Node.js 
+中文网         </A>         
+<DIV><INPUT id="search_input" placeholder="API 快速搜索" value="">         
+</DIV></DIV>
+<UL>
+  <LI><A class="nav-documentation" href="http://nodejs.cn/api/documentation.html">关于本文档</A></LI>
+  <LI><A class="nav-synopsis" 
+  href="http://nodejs.cn/api/synopsis.html">用法与例子</A></LI></UL>
+<DIV class="line"></DIV>
+<UL>
+  <LI><A class="nav-assert" href="http://nodejs.cn/api/assert.html">Assert 
+  (断言)</A></LI>
+  <LI><A class="nav-buffer" 
+  href="http://nodejs.cn/api/buffer.html">Buffer</A></LI>
+  <LI><A class="nav-addons" href="http://nodejs.cn/api/addons.html">C/C++ 
+  插件</A></LI>
+  <LI><A class="nav-child_process" href="http://nodejs.cn/api/child_process.html">Child 
+  Processes (子进程)</A></LI>
+  <LI><A class="nav-cluster" href="http://nodejs.cn/api/cluster.html">Cluster 
+  (集群)</A></LI>
+  <LI><A class="nav-cli" href="http://nodejs.cn/api/cli.html">CLI 
+  (命令行选项)</A></LI>
+  <LI><A class="nav-console" href="http://nodejs.cn/api/console.html">Console 
+  (控制台)</A></LI>
+  <LI><A class="nav-crypto" href="http://nodejs.cn/api/crypto.html">Crypto 
+  (加密)</A></LI>
+  <LI><A class="nav-debugger" href="http://nodejs.cn/api/debugger.html">Debugger 
+  (调试器)</A></LI>
+  <LI><A class="nav-dns" href="http://nodejs.cn/api/dns.html">DNS 
+  (域名服务器)</A></LI>
+  <LI><A class="nav-domain" href="http://nodejs.cn/api/domain.html">Domain 
+  (域)</A></LI>
+  <LI><A class="nav-errors" href="http://nodejs.cn/api/errors.html">Error 
+  (错误)</A></LI>
+  <LI><A class="nav-events" href="http://nodejs.cn/api/events.html">Events 
+  (事件)</A></LI>
+  <LI><A class="nav-fs" href="http://nodejs.cn/api/fs.html">File System 
+  (文件系统)</A></LI>
+  <LI><A class="nav-globals" href="http://nodejs.cn/api/globals.html">Global 
+  (全局变量)</A></LI>
+  <LI><A class="nav-http" href="http://nodejs.cn/api/http.html">HTTP</A></LI>
+  <LI><A class="nav-https active" 
+  href="http://nodejs.cn/api/https.html">HTTPS</A></LI>
+  <LI><A class="nav-modules" href="http://nodejs.cn/api/modules.html">Module 
+  (模块)</A></LI>
+  <LI><A class="nav-net" href="http://nodejs.cn/api/net.html">Net (网络)</A></LI>
+  <LI><A class="nav-os" href="http://nodejs.cn/api/os.html">OS (操作系统)</A></LI>
+  <LI><A class="nav-path" href="http://nodejs.cn/api/path.html">Path 
+  (路径)</A></LI>
+  <LI><A class="nav-process" href="http://nodejs.cn/api/process.html">Process 
+  (进程)</A></LI>
+  <LI><A class="nav-punycode" 
+  href="http://nodejs.cn/api/punycode.html">Punycode</A></LI>
+  <LI><A class="nav-querystring" 
+  href="http://nodejs.cn/api/querystring.html">Query Strings (查询字符串)</A></LI>
+  <LI><A class="nav-readline" href="http://nodejs.cn/api/readline.html">Readline 
+  (逐行读取)</A></LI>
+  <LI><A class="nav-repl" href="http://nodejs.cn/api/repl.html">REPL 
+  (交互式解释器)</A></LI>
+  <LI><A class="nav-stream" href="http://nodejs.cn/api/stream.html">Stream 
+  (流)</A></LI>
+  <LI><A class="nav-string_decoder" href="http://nodejs.cn/api/string_decoder.html">String 
+  Decoder (字符串解码器)</A></LI>
+  <LI><A class="nav-timers" href="http://nodejs.cn/api/timers.html">Timer 
+  (定时器)</A></LI>
+  <LI><A class="nav-tls" href="http://nodejs.cn/api/tls.html">TLS 
+  (安全传输层)</A></LI>
+  <LI><A class="nav-tty" href="http://nodejs.cn/api/tty.html">TTY (终端)</A></LI>
+  <LI><A class="nav-dgram" href="http://nodejs.cn/api/dgram.html">UDP/Datagram 
+  (数据报)</A></LI>
+  <LI><A class="nav-url" href="http://nodejs.cn/api/url.html">URL</A></LI>
+  <LI><A class="nav-util" href="http://nodejs.cn/api/util.html">Util 
+  (实用工具)</A></LI>
+  <LI><A class="nav-v8" href="http://nodejs.cn/api/v8.html">V8</A></LI>
+  <LI><A class="nav-vm" href="http://nodejs.cn/api/vm.html">VM (虚拟机)</A></LI>
+  <LI><A class="nav-zlib" href="http://nodejs.cn/api/zlib.html">ZLIB 
+  (压缩)</A></LI></UL>
+<DIV class="line"></DIV></DIV>
+<DIV class="interior" id="column1" data-id="https"><HEADER>
+<H1>Node.js v6.10.3 文档</H1>
+<DIV id="gtoc">
+<P><A name="toc" href="http://nodejs.cn/api/">返回文档首页</A>             <!--<a href="/api/all.html">单页面显示</a> |--> 
+            <!--<a href="/api/https.json">JSON格式</a> |-->             <!--<a href="/api/en/https.html">查看英文版</a>--> 
+          </P></DIV>
+<HR>
+</HEADER>
+<DIV id="toc">
+<H2>目录</H2>
+<UL>
+  <LI><SPAN class="stability_2"><A href="http://nodejs.cn/api/https.html#https_https">https</A></SPAN>
+  <UL> 
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/https.html#https_class_https_agent">https.Agent 
+    类</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/https.html#https_class_https_server">https.Server 
+    类</A></SPAN>
+    <UL> 
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/https.html#https_server_settimeout_msecs_callback">server.setTimeout(msecs, 
+      callback)</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/https.html#https_server_timeout">server.timeout</A></SPAN></LI></UL></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/https.html#https_https_createserver_options_requestlistener">https.createServer(options[, 
+    requestListener])</A></SPAN>
+    <UL> 
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/https.html#https_server_close_callback">server.close([callback])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/https.html#https_server_listen_handle_callback">server.listen(handle[, 
+      callback])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/https.html#https_server_listen_path_callback">server.listen(path[, 
+      callback])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/https.html#https_server_listen_port_host_backlog_callback">server.listen(port[, 
+      host][, backlog][, callback])</A></SPAN></LI></UL></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/https.html#https_https_get_options_callback">https.get(options, 
+    callback)</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/https.html#https_https_globalagent">https.globalAgent</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/https.html#https_https_request_options_callback">https.request(options, 
+    callback)</A></SPAN></LI></UL></LI></UL></DIV>
+<DIV id="apicontent">
+<H1>https<SPAN><A class="mark" id="https_https" href="http://nodejs.cn/api/https.html#https_https">#</A></SPAN></H1>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/https.html#https_https">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/https/https.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<PRE class="api_stability api_stability_2"><A href="http://nodejs.cn/api/documentation.html#documentation_stability_index">稳定性: 2</A> - 稳定的</PRE>
+<P>HTTPS 是 HTTP 基于 TLS/SSL 的版本。在 Node.js 中，它被实现为一个独立的模块。</P>
+<H2>https.Agent 类<SPAN><A class="mark" id="https_class_https_agent" href="http://nodejs.cn/api/https.html#https_class_https_agent">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/https.html#https_class_https_agent">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/https/class_https_agent.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.4.5</SPAN> </DIV>
+<P>HTTPS 的一个类似于 <A 
+href="http://nodejs.cn/api/http.html#http_class_http_agent"><CODE>http.Agent</CODE></A> 
+的代理对象。查看 <A href="http://nodejs.cn/api/https.html#https_https_request_options_callback"><CODE>https.request()</CODE></A> 
+获取更多信息。</P>
+<H2>https.Server 类<SPAN><A class="mark" id="https_class_https_server" href="http://nodejs.cn/api/https.html#https_class_https_server">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/https.html#https_class_https_server">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/https/class_https_server.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.3.4</SPAN> </DIV>
+<P>这个类是 <CODE>tls.Server</CODE> 的子类，跟 <A href="http://nodejs.cn/api/http.html#http_class_http_server"><CODE>http.Server</CODE></A> 
+一样触发事件。查看<A 
+href="http://nodejs.cn/api/http.html#http_class_http_server"><CODE>http.Server</CODE></A> 
+获取更多信息。</P>
+<H3>server.setTimeout(msecs, callback)<SPAN><A class="mark" id="https_server_settimeout_msecs_callback" 
+href="http://nodejs.cn/api/https.html#https_server_settimeout_msecs_callback">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/https.html#https_server_settimeout_msecs_callback">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/https/server_settimeout_msecs_callback.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.11.2</SPAN> </DIV>
+<P>查看 <A href="http://nodejs.cn/api/http.html#http_server_settimeout_msecs_callback"><CODE>http.Server#setTimeout()</CODE></A>。</P>
+<H3>server.timeout<SPAN><A class="mark" id="https_server_timeout" href="http://nodejs.cn/api/https.html#https_server_timeout">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/https.html#https_server_timeout">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/https/server_timeout.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.11.2</SPAN> </DIV>
+<P>查看 <A 
+href="http://nodejs.cn/api/http.html#http_server_timeout"><CODE>http.Server#timeout</CODE></A>。</P>
+<H2>https.createServer(options[, requestListener])<SPAN><A class="mark" id="https_https_createserver_options_requestlistener" 
+href="http://nodejs.cn/api/https.html#https_https_createserver_options_requestlistener">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/https.html#https_https_createserver_options_requestlistener">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/https/https_createserver_options_requestlistener.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.3.4</SPAN> </DIV>
+<P>返回一个新的 HTTPS 网络服务器对象。 参数 <CODE>options</CODE> 类似于 <A href="http://nodejs.cn/api/tls.html#tls_tls_createserver_options_secureconnectionlistener"><CODE>tls.createServer()</CODE></A>。
+ 参数 <CODE>requestListener</CODE> 是一个自动被加到 <CODE>'request'</CODE> 事件中的函数。</P>
+<P>例子:</P>
+<PRE><CODE class="lang-js">// curl -k https://localhost:8000/
+const https = require('https');
+const fs = require('fs');
+
+const options = {
+  key: fs.readFileSync('test/fixtures/keys/agent2-key.pem'),
+  cert: fs.readFileSync('test/fixtures/keys/agent2-cert.pem')
+};
+
+https.createServer(options, (req, res) =&gt; {
+  res.writeHead(200);
+  res.end('hello world\n');
+}).listen(8000);
+</CODE></PRE>
+<P>或者</P>
+<PRE><CODE class="lang-js">const https = require('https');
+const fs = require('fs');
+
+const options = {
+  pfx: fs.readFileSync('test/fixtures/test_cert.pfx'),
+  passphrase: 'sample'
+};
+
+https.createServer(options, (req, res) =&gt; {
+  res.writeHead(200);
+  res.end('hello world\n');
+}).listen(8000);
+</CODE></PRE>
+<H3>server.close([callback])<SPAN><A class="mark" id="https_server_close_callback" 
+href="http://nodejs.cn/api/https.html#https_server_close_callback">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/https.html#https_server_close_callback">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/https/server_close_callback.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.90</SPAN> </DIV>
+<P>查看 <A 
+href="http://nodejs.cn/api/http.html#http_server_close_callback"><CODE>http.close()</CODE></A> 
+获取细节。</P>
+<H3>server.listen(handle[, callback])<SPAN><A class="mark" id="https_server_listen_handle_callback" 
+href="http://nodejs.cn/api/https.html#https_server_listen_handle_callback">#</A></SPAN></H3>
+<H3>server.listen(path[, callback])<SPAN><A class="mark" id="https_server_listen_path_callback" 
+href="http://nodejs.cn/api/https.html#https_server_listen_path_callback">#</A></SPAN></H3>
+<H3>server.listen(port[, host][, backlog][, callback])<SPAN><A class="mark" id="https_server_listen_port_host_backlog_callback" 
+href="http://nodejs.cn/api/https.html#https_server_listen_port_host_backlog_callback">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/https.html#https_server_listen_port_host_backlog_callback">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/https/server_listen_port_host_backlog_callback.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P>查看 <A href="http://nodejs.cn/api/http.html#http_server_listen_port_hostname_backlog_callback"><CODE>http.listen()</CODE></A> 
+获取细节。</P>
+<H2>https.get(options, callback)<SPAN><A class="mark" id="https_https_get_options_callback" 
+href="http://nodejs.cn/api/https.html#https_https_get_options_callback">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/https.html#https_https_get_options_callback">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/https/https_get_options_callback.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.3.6</SPAN> </DIV>
+<P>类似 <A 
+href="http://nodejs.cn/api/http.html#http_http_get_options_callback"><CODE>http.get()</CODE></A>，但是用于 
+HTTPS。</P>
+<P>参数 <CODE>options</CODE> 可以是一个对象或是一个字符串。 如果参数 <CODE>options</CODE> 是一个字符串, 
+它自动被 <A href="http://nodejs.cn/api/url.html#url_url_parse_urlstring_parsequerystring_slashesdenotehost"><CODE>url.parse()</CODE></A> 
+所解析。</P>
+<P>例子:</P>
+<PRE><CODE class="lang-js">const https = require('https');
+
+https.get('https://encrypted.google.com/', (res) =&gt; {
+  console.log('状态码：', res.statusCode);
+  console.log('请求头：', res.headers);
+
+  res.on('data', (d) =&gt; {
+    process.stdout.write(d);
+  });
+
+}).on('error', (e) =&gt; {
+  console.error(e);
+});
+</CODE></PRE>
+<H2>https.globalAgent<SPAN><A class="mark" id="https_https_globalagent" href="http://nodejs.cn/api/https.html#https_https_globalagent">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/https.html#https_https_globalagent">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/https/https_globalagent.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.5.9</SPAN> </DIV>
+<P><A 
+href="http://nodejs.cn/api/https.html#https_class_https_agent"><CODE>https.Agent</CODE></A> 
+的全局实例，用于所有 HTTPS 客户端请求。</P>
+<H2>https.request(options, callback)<SPAN><A class="mark" id="https_https_request_options_callback" 
+href="http://nodejs.cn/api/https.html#https_https_request_options_callback">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/https.html#https_https_request_options_callback">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/https/https_request_options_callback.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.3.6</SPAN> </DIV>
+<P>向一个安全的服务器发起一个请求。</P>
+<P>参数 <CODE>options</CODE> 可以是一个对象或是一个字符串。 如果参数 <CODE>options</CODE> 是一个字符串, 
+它自动被 <A href="http://nodejs.cn/api/url.html#url_url_parse_urlstring_parsequerystring_slashesdenotehost"><CODE>url.parse()</CODE></A> 
+所解析。</P>
+<P>所有来自 <A href="http://nodejs.cn/api/http.html#http_http_request_options_callback"><CODE>http.request()</CODE></A> 
+的参数都是可用的。</P>
+<P>例子:</P>
+<PRE><CODE class="lang-js">const https = require('https');
+
+const options = {
+  hostname: 'encrypted.google.com',
+  port: 443,
+  path: '/',
+  method: 'GET'
+};
+
+const req = https.request(options, (res) =&gt; {
+  console.log('状态码：', res.statusCode);
+  console.log('请求头：', res.headers);
+
+  res.on('data', (d) =&gt; {
+    process.stdout.write(d);
+  });
+});
+
+req.on('error', (e) =&gt; {
+  console.error(e);
+});
+req.end();
+</CODE></PRE>
+<P><CODE>options</CODE> 参数可以有以下选择：</P>
+<UL>
+  <LI><CODE>host</CODE>: 一个处理请求的服务器的域名或者IP地址，默认是 <CODE>loaclhost</CODE>。</LI>
+  <LI><CODE>hostname</CODE>: <CODE>host</CODE> 的别名。为了更好地支持 
+  <CODE>url.parse()</CODE>，<CODE>hostname</CODE> 比 <CODE>host</CODE> 
+更被推荐使用。</LI>
+  <LI><CODE>family</CODE>: 用于解析 <CODE>host</CODE> and <CODE>hostname</CODE> 的 IP 
+  地址族。 <CODE>4</CODE> 或者 <CODE>6</CODE> 都是有效数值。当不被指定时，IPv4 和 IPv6 都将被使用。</LI>
+  <LI><CODE>port</CODE>: 远程服务器的端口。默认是 443。</LI>
+  <LI><CODE>localAddress</CODE>: 用来绑定网络连接的本地接口。</LI>
+  <LI><CODE>socketPath</CODE>: Unix 域 Socket（使用 host:port 或者 socketPath）。</LI>
+  <LI><CODE>method</CODE>: 一个用来指定 HTTP 请求方法的字符串。默认是 <CODE>'GET'</CODE>。</LI>
+  <LI><CODE>path</CODE>: 请求路径。默认是<CODE>'/'</CODE>。如果有的话，应该包含请求字符串。 例如 
+  <CODE>'/index.html?page=12'</CODE>。当请求路径包含非法字符的时候，将抛出异常。目前只有空格字符被拒绝，但是未来可能会有改变。</LI>
+  <LI><CODE>headers</CODE>: 一个包含请求头的对象。</LI>
+  <LI><CODE>auth</CODE>: 基本认证，例如 <CODE>'user:password'</CODE> 来计算认证头。</LI>
+  <LI><CODE>agent</CODE>: 控制 <A href="http://nodejs.cn/api/https.html#https_class_https_agent"><CODE>Agent</CODE></A> 
+  的行为。当用代理时，请求默认是<CODE>Connection: keep-alive</CODE>。可能的值有:
+  <UL>
+    <LI><CODE>undefined</CODE> (默认): 这个主机和端口使用 <A href="http://nodejs.cn/api/https.html#https_https_globalagent"><CODE>globalAgent</CODE></A>。</LI>
+    <LI><CODE>Agent</CODE> 对象: 显式地在 <CODE>Agent</CODE> 中用传进来的参数。</LI>
+    <LI><CODE>false</CODE>: 不对连接池使用 Agent, 默认是 <CODE>Connection: 
+    close</CODE>。</LI></UL></LI></UL>
+<P>下面是来自 <A href="http://nodejs.cn/api/tls.html#tls_tls_connect_options_callback"><CODE>tls.connect()</CODE></A> 
+的参数，它也可以被设置为:</P>
+<UL>
+  <LI><CODE>pfx</CODE>: 证书, 用于 SSL 的私钥和 CA 证书。默认是 <CODE>null</CODE>。</LI>
+  <LI><CODE>key</CODE>: 用于 SSL 的私钥。默认是 <CODE>null</CODE>。</LI>
+  <LI><CODE>passphrase</CODE>: 用于私钥或是 pfx 的密码字符串。默认是 <CODE>null</CODE>。</LI>
+  <LI><CODE>cert</CODE>: 公共 x509 证书。默认是 <CODE>null</CODE>。</LI>
+  <LI><CODE>ca</CODE>: 一个字符串、<A href="http://nodejs.cn/api/buffer.html#buffer_buffer"><CODE>Buffer</CODE></A>、字符串数组、或 
+  PEM 格式的可信赖证书的 <A 
+  href="http://nodejs.cn/api/buffer.html#buffer_buffer"><CODE>Buffer</CODE></A>。 
+   如果这被忽略，那么著名的根证书将被使用，比如说 VeriSign 数字证书。这些被用来授权连接。</LI>
+  <LI><CODE>ciphers</CODE>: 一个用来描述要使用或排除的密码的字符串。 查看 <A href="https://www.openssl.org/docs/man1.0.2/apps/ciphers.html#CIPHER-LIST-FORMAT">https://www.openssl.org/docs/man1.0.2/apps/ciphers.html#CIPHER-LIST-FORMAT</A> 
+  获取格式的细节。</LI>
+  <LI><CODE>rejectUnauthorized</CODE>: 如果设置为 <CODE>true</CODE>, 
+  服务器证书根据CA提供的列表来进行验证。  如果验证失败的话，一个 <CODE>'error'</CODE> 事件将被触发。 验证发生在连接层次, 
+  <EM>早于</EM> HTTP请求的发送。默认是 <CODE>true</CODE>。</LI>
+  <LI><CODE>secureProtocol</CODE>: 使用的 SSL 方法， 例如 <CODE>SSLv3_method</CODE> 
+  来强制使用 SSL 版本 3。 可能的值取决于安装的 OpenSSL 的版本，它被定义在 <A href="https://www.openssl.org/docs/man1.0.2/ssl/ssl.html#DEALING-WITH-PROTOCOL-METHODS"><CODE>SSL_METHODS</CODE></A> 
+  常数中。</LI>
+  <LI><CODE>servername</CODE>: SNI (Server Name Indication) TLS 扩展的服务器名。</LI></UL>
+<P>为了确定这些参数, 用一个定制的 <A href="http://nodejs.cn/api/https.html#https_class_https_agent"><CODE>Agent</CODE></A>。</P>
+<P>例子:</P>
+<PRE><CODE class="lang-js">const options = {
+  hostname: 'encrypted.google.com',
+  port: 443,
+  path: '/',
+  method: 'GET',
+  key: fs.readFileSync('test/fixtures/keys/agent2-key.pem'),
+  cert: fs.readFileSync('test/fixtures/keys/agent2-cert.pem')
+};
+options.agent = new https.Agent(options);
+
+const req = https.request(options, (res) =&gt; {
+  // ...
+});
+</CODE></PRE>
+<P>也可以不对连接池使用 <CODE>Agent</CODE>。</P>
+<P>例子:</P>
+<PRE><CODE class="lang-js">const options = {
+  hostname: 'encrypted.google.com',
+  port: 443,
+  path: '/',
+  method: 'GET',
+  key: fs.readFileSync('test/fixtures/keys/agent2-key.pem'),
+  cert: fs.readFileSync('test/fixtures/keys/agent2-cert.pem'),
+  agent: false
+};
+
+const req = https.request(options, (res) =&gt; {
+  // ...
+});
+</CODE></PRE></DIV></DIV></DIV><!-- 搜索弹窗 --> 
+  
+<DIV id="modal_search_bg"></DIV>
+<DIV 
+id="modal_search"><INPUT id="modal_search_input" placeholder="API 快速搜索" value=""> 
+    
+<DIV id="modal_search_result"></DIV></DIV><!-- js -->   <!--[if lt IE 10]><script src="/static/lib/placeholders.js?20170426"></script><![endif]--> 
+  
+<SCRIPT src="https%20%20Node_js%20API%20文档_files/api.js"></SCRIPT>
+ </BODY></HTML>

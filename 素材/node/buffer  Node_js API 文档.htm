@@ -1,0 +1,2567 @@
+﻿<!DOCTYPE HTML>
+<!-- saved from url=(0032)http://nodejs.cn/api/buffer.html -->
+<!DOCTYPE html PUBLIC "" ""><HTML lang="zh-cmn-Hans"><HEAD><META 
+content="IE=11.0000" http-equiv="X-UA-Compatible">
+   
+<META charset="utf-8">   <TITLE>buffer | Node.js API 文档</TITLE>   <LINK href="buffer%20%20Node_js%20API%20文档_files/api.css" 
+rel="stylesheet">   <LINK href="/static/favicon.png" rel="icon" type="image/png" 
+sizes="32x32"> 
+<META name="GENERATOR" content="MSHTML 11.00.9600.18639"></HEAD> 
+<BODY class="alt apidoc" id="api-section-buffer">
+<DIV class="clearfix" id="content">
+<DIV class="interior" id="column2">
+<DIV class="interior" id="intro"><A href="http://nodejs.cn/">          Node.js 
+中文网         </A>         
+<DIV><INPUT id="search_input" placeholder="API 快速搜索" value="">         
+</DIV></DIV>
+<UL>
+  <LI><A class="nav-documentation" href="http://nodejs.cn/api/documentation.html">关于本文档</A></LI>
+  <LI><A class="nav-synopsis" 
+  href="http://nodejs.cn/api/synopsis.html">用法与例子</A></LI></UL>
+<DIV class="line"></DIV>
+<UL>
+  <LI><A class="nav-assert" href="http://nodejs.cn/api/assert.html">Assert 
+  (断言)</A></LI>
+  <LI><A class="nav-buffer active" 
+  href="http://nodejs.cn/api/buffer.html">Buffer</A></LI>
+  <LI><A class="nav-addons" href="http://nodejs.cn/api/addons.html">C/C++ 
+  插件</A></LI>
+  <LI><A class="nav-child_process" href="http://nodejs.cn/api/child_process.html">Child 
+  Processes (子进程)</A></LI>
+  <LI><A class="nav-cluster" href="http://nodejs.cn/api/cluster.html">Cluster 
+  (集群)</A></LI>
+  <LI><A class="nav-cli" href="http://nodejs.cn/api/cli.html">CLI 
+  (命令行选项)</A></LI>
+  <LI><A class="nav-console" href="http://nodejs.cn/api/console.html">Console 
+  (控制台)</A></LI>
+  <LI><A class="nav-crypto" href="http://nodejs.cn/api/crypto.html">Crypto 
+  (加密)</A></LI>
+  <LI><A class="nav-debugger" href="http://nodejs.cn/api/debugger.html">Debugger 
+  (调试器)</A></LI>
+  <LI><A class="nav-dns" href="http://nodejs.cn/api/dns.html">DNS 
+  (域名服务器)</A></LI>
+  <LI><A class="nav-domain" href="http://nodejs.cn/api/domain.html">Domain 
+  (域)</A></LI>
+  <LI><A class="nav-errors" href="http://nodejs.cn/api/errors.html">Error 
+  (错误)</A></LI>
+  <LI><A class="nav-events" href="http://nodejs.cn/api/events.html">Events 
+  (事件)</A></LI>
+  <LI><A class="nav-fs" href="http://nodejs.cn/api/fs.html">File System 
+  (文件系统)</A></LI>
+  <LI><A class="nav-globals" href="http://nodejs.cn/api/globals.html">Global 
+  (全局变量)</A></LI>
+  <LI><A class="nav-http" href="http://nodejs.cn/api/http.html">HTTP</A></LI>
+  <LI><A class="nav-https" href="http://nodejs.cn/api/https.html">HTTPS</A></LI>
+  <LI><A class="nav-modules" href="http://nodejs.cn/api/modules.html">Module 
+  (模块)</A></LI>
+  <LI><A class="nav-net" href="http://nodejs.cn/api/net.html">Net (网络)</A></LI>
+  <LI><A class="nav-os" href="http://nodejs.cn/api/os.html">OS (操作系统)</A></LI>
+  <LI><A class="nav-path" href="http://nodejs.cn/api/path.html">Path 
+  (路径)</A></LI>
+  <LI><A class="nav-process" href="http://nodejs.cn/api/process.html">Process 
+  (进程)</A></LI>
+  <LI><A class="nav-punycode" 
+  href="http://nodejs.cn/api/punycode.html">Punycode</A></LI>
+  <LI><A class="nav-querystring" 
+  href="http://nodejs.cn/api/querystring.html">Query Strings (查询字符串)</A></LI>
+  <LI><A class="nav-readline" href="http://nodejs.cn/api/readline.html">Readline 
+  (逐行读取)</A></LI>
+  <LI><A class="nav-repl" href="http://nodejs.cn/api/repl.html">REPL 
+  (交互式解释器)</A></LI>
+  <LI><A class="nav-stream" href="http://nodejs.cn/api/stream.html">Stream 
+  (流)</A></LI>
+  <LI><A class="nav-string_decoder" href="http://nodejs.cn/api/string_decoder.html">String 
+  Decoder (字符串解码器)</A></LI>
+  <LI><A class="nav-timers" href="http://nodejs.cn/api/timers.html">Timer 
+  (定时器)</A></LI>
+  <LI><A class="nav-tls" href="http://nodejs.cn/api/tls.html">TLS 
+  (安全传输层)</A></LI>
+  <LI><A class="nav-tty" href="http://nodejs.cn/api/tty.html">TTY (终端)</A></LI>
+  <LI><A class="nav-dgram" href="http://nodejs.cn/api/dgram.html">UDP/Datagram 
+  (数据报)</A></LI>
+  <LI><A class="nav-url" href="http://nodejs.cn/api/url.html">URL</A></LI>
+  <LI><A class="nav-util" href="http://nodejs.cn/api/util.html">Util 
+  (实用工具)</A></LI>
+  <LI><A class="nav-v8" href="http://nodejs.cn/api/v8.html">V8</A></LI>
+  <LI><A class="nav-vm" href="http://nodejs.cn/api/vm.html">VM (虚拟机)</A></LI>
+  <LI><A class="nav-zlib" href="http://nodejs.cn/api/zlib.html">ZLIB 
+  (压缩)</A></LI></UL>
+<DIV class="line"></DIV></DIV>
+<DIV class="interior" id="column1" data-id="buffer"><HEADER>
+<H1>Node.js v6.10.3 文档</H1>
+<DIV id="gtoc">
+<P><A name="toc" href="http://nodejs.cn/api/">返回文档首页</A>             <!--<a href="/api/all.html">单页面显示</a> |--> 
+            <!--<a href="/api/buffer.json">JSON格式</a> |-->             <!--<a href="/api/en/buffer.html">查看英文版</a>--> 
+          </P></DIV>
+<HR>
+</HEADER>
+<DIV id="toc">
+<H2>目录</H2>
+<UL>
+  <LI><SPAN class="stability_2"><A href="http://nodejs.cn/api/buffer.html#buffer_buffer">Buffer</A></SPAN>
+  <UL> 
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_buffer_from_buffer_alloc_and_buffer_allocunsafe"><CODE>Buffer.from()</CODE>, 
+    <CODE>Buffer.alloc()</CODE>, and 
+<CODE>Buffer.allocUnsafe()</CODE></A></SPAN>
+    <UL> 
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_the_zero_fill_buffers_command_line_option"><CODE>--zero-fill-buffers</CODE> 
+      命令行选项</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_what_makes_buffer_allocunsafe_and_buffer_allocunsafeslow_unsafe">是什么令 
+      <CODE>Buffer.allocUnsafe()</CODE> 和 <CODE>Buffer.allocUnsafeSlow()</CODE> 
+      不安全？</A></SPAN></LI></UL></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_buffers_and_character_encodings">Buffer 
+    与字符编码</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_buffers_and_typedarray">Buffer 
+    与 TypedArray</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_buffers_and_es6_iteration">Buffer 
+    与 ES6 迭代器</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_class_buffer">Buffer 
+    类</A></SPAN>
+    <UL> 
+      <LI><SPAN class="stability_0"><A href="http://nodejs.cn/api/buffer.html#buffer_new_buffer_array">new 
+      Buffer(array)</A></SPAN></LI>
+      <LI><SPAN class="stability_0"><A href="http://nodejs.cn/api/buffer.html#buffer_new_buffer_buffer">new 
+      Buffer(buffer)</A></SPAN></LI>
+      <LI><SPAN class="stability_0"><A href="http://nodejs.cn/api/buffer.html#buffer_new_buffer_arraybuffer_byteoffset_length">new 
+      Buffer(arrayBuffer[, byteOffset [, length]])</A></SPAN></LI>
+      <LI><SPAN class="stability_0"><A href="http://nodejs.cn/api/buffer.html#buffer_new_buffer_size">new 
+      Buffer(size)</A></SPAN></LI>
+      <LI><SPAN class="stability_0"><A href="http://nodejs.cn/api/buffer.html#buffer_new_buffer_string_encoding">new 
+      Buffer(string[, encoding])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_class_method_buffer_alloc_size_fill_encoding">类方法：Buffer.alloc(size[, 
+      fill[, encoding]])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_class_method_buffer_allocunsafe_size">类方法：Buffer.allocUnsafe(size)</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_class_method_buffer_allocunsafeslow_size">类方法：Buffer.allocUnsafeSlow(size)</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_class_method_buffer_bytelength_string_encoding">类方法：Buffer.byteLength(string[, 
+      encoding])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_class_method_buffer_compare_buf1_buf2">类方法：Buffer.compare(buf1, 
+      buf2)</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_class_method_buffer_concat_list_totallength">类方法：Buffer.concat(list[, 
+      totalLength])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_class_method_buffer_from_array">类方法：Buffer.from(array)</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_class_method_buffer_from_arraybuffer_byteoffset_length">类方法：Buffer.from(arrayBuffer[, 
+      byteOffset[, length]])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_class_method_buffer_from_buffer">类方法：Buffer.from(buffer)</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_class_method_buffer_from_string_encoding">类方法：Buffer.from(string[, 
+      encoding])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_class_method_buffer_isbuffer_obj">类方法：Buffer.isBuffer(obj)</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_class_method_buffer_isencoding_encoding">类方法：Buffer.isEncoding(encoding)</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_class_property_buffer_poolsize">类属性：Buffer.poolSize</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_buf_index">buf[index]</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_buf_compare_target_targetstart_targetend_sourcestart_sourceend">buf.compare(target[, 
+      targetStart[, targetEnd[, sourceStart[, sourceEnd]]]])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_buf_copy_target_targetstart_sourcestart_sourceend">buf.copy(target[, 
+      targetStart[, sourceStart[, sourceEnd]]])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_buf_entries">buf.entries()</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_buf_equals_otherbuffer">buf.equals(otherBuffer)</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_buf_fill_value_offset_end_encoding">buf.fill(value[, 
+      offset[, end]][, encoding])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_buf_indexof_value_byteoffset_encoding">buf.indexOf(value[, 
+      byteOffset][, encoding])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_buf_includes_value_byteoffset_encoding">buf.includes(value[, 
+      byteOffset][, encoding])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_buf_keys">buf.keys()</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_buf_lastindexof_value_byteoffset_encoding">buf.lastIndexOf(value[, 
+      byteOffset][, encoding])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_buf_length">buf.length</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_buf_readdoublebe_offset_noassert">buf.readDoubleBE(offset[, 
+      noAssert])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_buf_readdoublele_offset_noassert">buf.readDoubleLE(offset[, 
+      noAssert])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_buf_readfloatbe_offset_noassert">buf.readFloatBE(offset[, 
+      noAssert])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_buf_readfloatle_offset_noassert">buf.readFloatLE(offset[, 
+      noAssert])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_buf_readint8_offset_noassert">buf.readInt8(offset[, 
+      noAssert])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_buf_readint16be_offset_noassert">buf.readInt16BE(offset[, 
+      noAssert])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_buf_readint16le_offset_noassert">buf.readInt16LE(offset[, 
+      noAssert])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_buf_readint32be_offset_noassert">buf.readInt32BE(offset[, 
+      noAssert])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_buf_readint32le_offset_noassert">buf.readInt32LE(offset[, 
+      noAssert])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_buf_readintbe_offset_bytelength_noassert">buf.readIntBE(offset, 
+      byteLength[, noAssert])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_buf_readintle_offset_bytelength_noassert">buf.readIntLE(offset, 
+      byteLength[, noAssert])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_buf_readuint8_offset_noassert">buf.readUInt8(offset[, 
+      noAssert])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_buf_readuint16be_offset_noassert">buf.readUInt16BE(offset[, 
+      noAssert])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_buf_readuint16le_offset_noassert">buf.readUInt16LE(offset[, 
+      noAssert])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_buf_readuint32be_offset_noassert">buf.readUInt32BE(offset[, 
+      noAssert])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_buf_readuint32le_offset_noassert">buf.readUInt32LE(offset[, 
+      noAssert])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_buf_readuintbe_offset_bytelength_noassert">buf.readUIntBE(offset, 
+      byteLength[, noAssert])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_buf_readuintle_offset_bytelength_noassert">buf.readUIntLE(offset, 
+      byteLength[, noAssert])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_buf_slice_start_end">buf.slice([start[, 
+      end]])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_buf_swap16">buf.swap16()</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_buf_swap32">buf.swap32()</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_buf_swap64">buf.swap64()</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_buf_tostring_encoding_start_end">buf.toString([encoding[, 
+      start[, end]]])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_buf_tojson">buf.toJSON()</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_buf_values">buf.values()</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_buf_write_string_offset_length_encoding">buf.write(string[, 
+      offset[, length]][, encoding])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_buf_writedoublebe_value_offset_noassert">buf.writeDoubleBE(value, 
+      offset[, noAssert])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_buf_writedoublele_value_offset_noassert">buf.writeDoubleLE(value, 
+      offset[, noAssert])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_buf_writefloatbe_value_offset_noassert">buf.writeFloatBE(value, 
+      offset[, noAssert])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_buf_writefloatle_value_offset_noassert">buf.writeFloatLE(value, 
+      offset[, noAssert])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_buf_writeint8_value_offset_noassert">buf.writeInt8(value, 
+      offset[, noAssert])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_buf_writeint16be_value_offset_noassert">buf.writeInt16BE(value, 
+      offset[, noAssert])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_buf_writeint16le_value_offset_noassert">buf.writeInt16LE(value, 
+      offset[, noAssert])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_buf_writeint32be_value_offset_noassert">buf.writeInt32BE(value, 
+      offset[, noAssert])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_buf_writeint32le_value_offset_noassert">buf.writeInt32LE(value, 
+      offset[, noAssert])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_buf_writeintbe_value_offset_bytelength_noassert">buf.writeIntBE(value, 
+      offset, byteLength[, noAssert])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_buf_writeintle_value_offset_bytelength_noassert">buf.writeIntLE(value, 
+      offset, byteLength[, noAssert])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_buf_writeuint8_value_offset_noassert">buf.writeUInt8(value, 
+      offset[, noAssert])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_buf_writeuint16be_value_offset_noassert">buf.writeUInt16BE(value, 
+      offset[, noAssert])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_buf_writeuint16le_value_offset_noassert">buf.writeUInt16LE(value, 
+      offset[, noAssert])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_buf_writeuint32be_value_offset_noassert">buf.writeUInt32BE(value, 
+      offset[, noAssert])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_buf_writeuint32le_value_offset_noassert">buf.writeUInt32LE(value, 
+      offset[, noAssert])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_buf_writeuintbe_value_offset_bytelength_noassert">buf.writeUIntBE(value, 
+      offset, byteLength[, noAssert])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_buf_writeuintle_value_offset_bytelength_noassert">buf.writeUIntLE(value, 
+      offset, byteLength[, noAssert])</A></SPAN></LI></UL></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_buffer_inspect_max_bytes">buffer.INSPECT_MAX_BYTES</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/buffer.html#buffer_buffer_kmaxlength">buffer.kMaxLength</A></SPAN></LI>
+    <LI><SPAN class="stability_0"><A href="http://nodejs.cn/api/buffer.html#buffer_class_slowbuffer">SlowBuffer 
+    类</A></SPAN>
+    <UL> 
+      <LI><SPAN class="stability_0"><A href="http://nodejs.cn/api/buffer.html#buffer_new_slowbuffer_size">new 
+      SlowBuffer(size)</A></SPAN></LI></UL></LI></UL></LI></UL></DIV>
+<DIV id="apicontent">
+<H1>Buffer<SPAN><A class="mark" id="buffer_buffer" href="http://nodejs.cn/api/buffer.html#buffer_buffer">#</A></SPAN></H1>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_buffer">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/buffer.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<PRE class="api_stability api_stability_2"><A href="http://nodejs.cn/api/documentation.html#documentation_stability_index">稳定性: 2</A> - 稳定的</PRE>
+<P>在 ECMAScript 2015 (ES6) 引入 <A href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray"><CODE>TypedArray</CODE></A> 
+之前，JavaScript 语言没有读取或操作二进制数据流的机制。 <CODE>Buffer</CODE> 类被引入作为 Node.js API 
+的一部分，使其可以在 TCP 流和文件系统操作等场景中处理二进制数据流。</P>
+<P>现在 <A href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray"><CODE>TypedArray</CODE></A> 
+已经被添加进 ES6 中，<CODE>Buffer</CODE> 类以一种更优与更适合 Node.js 用例的方式实现了 <A href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array"><CODE>Uint8Array</CODE></A> 
+API。</P>
+<P><CODE>Buffer</CODE> 类的实例类似于整数数组，除了其是大小固定的、且在 V8 堆外分配物理内存。 <CODE>Buffer</CODE> 
+的大小在其创建时就已确定，且不能调整大小。</P>
+<P><CODE>Buffer</CODE> 类在 Node.js 中是一个全局变量，因此无需 
+<CODE>require('buffer').Buffer</CODE>。</P>
+<P>例子：</P>
+<PRE><CODE class="lang-js">// 创建一个长度为 10、且用 0 填充的 Buffer。
+const buf1 = Buffer.alloc(10);
+
+// 创建一个长度为 10、且用 0x1 填充的 Buffer。 
+const buf2 = Buffer.alloc(10, 1);
+
+// 创建一个长度为 10、且未初始化的 Buffer。
+// 这个方法比调用 Buffer.alloc() 更快，
+// 但返回的 Buffer 实例可能包含旧数据，
+// 因此需要使用 fill() 或 write() 重写。
+const buf3 = Buffer.allocUnsafe(10);
+
+// 创建一个包含 [0x1, 0x2, 0x3] 的 Buffer。
+const buf4 = Buffer.from([1, 2, 3]);
+
+// 创建一个包含 UTF-8 字节数组 [0x74, 0xc3, 0xa9, 0x73, 0x74] 的 Buffer。
+const buf5 = Buffer.from('tést');
+
+// 创建一个包含 Latin-1 字节数组 [0x74, 0xe9, 0x73, 0x74] 的 Buffer。
+const buf6 = Buffer.from('tést', 'latin-1');
+</CODE></PRE>
+<H2><CODE>Buffer.from()</CODE>, <CODE>Buffer.alloc()</CODE>, and 
+<CODE>Buffer.allocUnsafe()</CODE><SPAN><A class="mark" id="buffer_buffer_from_buffer_alloc_and_buffer_allocunsafe" 
+href="http://nodejs.cn/api/buffer.html#buffer_buffer_from_buffer_alloc_and_buffer_allocunsafe">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_buffer_from_buffer_alloc_and_buffer_allocunsafe">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/buffer_from_buffer_alloc_and_buffer_allocunsafe.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P>在 Node.js v6 之前的版本中，<CODE>Buffer</CODE> 实例是通过 <CODE>Buffer</CODE> 
+构造函数创建的，它根据提供的参数返回不同的 <CODE>Buffer</CODE>：</P>
+<UL>
+  <LI>传一个数值作为第一个参数给 <CODE>Buffer()</CODE>（如 <CODE>new 
+  Buffer(10)</CODE>），则分配一个指定大小的新建的 <CODE>Buffer</CODE> 对象。 分配给这种 
+  <CODE>Buffer</CODE> 实例的内存是<STRONG>没有</STRONG>初始化的，且<STRONG>可能包含敏感数据</STRONG>。
+   这种 <CODE>Buffer</CODE> 实例<STRONG>必须手动地</STRONG>被初始化，可以使用 <A href="http://nodejs.cn/api/buffer.html#buffer_buf_fill_value_offset_end_encoding"><CODE>buf.fill(0)</CODE></A> 
+  或写满这个 <CODE>Buffer</CODE>。
+   虽然这种行为是为了提高性能而<STRONG>有意为之的</STRONG>，但开发经验表明，创建一个快速但未初始化的 <CODE>Buffer</CODE> 
+  与创建一个慢点但更安全的 <CODE>Buffer</CODE> 之间需要有更明确的区分。</LI>
+  <LI>传一个字符串、数组、或 <CODE>Buffer</CODE> 作为第一个参数，则将所传对象的数据拷贝到 <CODE>Buffer</CODE> 
+  中。</LI>
+  <LI>传入一个 <A href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer"><CODE>ArrayBuffer</CODE></A>，则返回一个与给定的 
+  <A href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer"><CODE>ArrayBuffer</CODE></A> 
+  共享所分配内存的 <CODE>Buffer</CODE>。</LI></UL>
+<P>因为 <CODE>new Buffer()</CODE> 的行为会根据所传入的第一个参数的值的数据类型而明显地改变，所以如果应用程序没有正确地校验传给 
+<CODE>new Buffer()</CODE> 的参数、或未能正确地初始化新分配的 <CODE>Buffer</CODE> 
+的内容，就有可能在无意中为他们的代码引入安全性与可靠性问题。</P>
+<P>为了使 <CODE>Buffer</CODE> 实例的创建更可靠、更不容易出错，各种 <CODE>new Buffer()</CODE> 构造函数已被 
+<STRONG>废弃</STRONG>，并由 <CODE>Buffer.from()</CODE>、<A href="http://nodejs.cn/api/buffer.html#buffer_class_method_buffer_alloc_size_fill_encoding"><CODE>Buffer.alloc()</CODE></A>、和 
+<A href="http://nodejs.cn/api/buffer.html#buffer_class_method_buffer_allocunsafe_size"><CODE>Buffer.allocUnsafe()</CODE></A> 
+方法替代。</P>
+<P><STRONG>开发者们应当把所有正在使用的 <CODE>new Buffer()</CODE> 构造函数迁移到这些新的 API 
+上。</STRONG></P>
+<UL>
+  <LI><A href="http://nodejs.cn/api/buffer.html#buffer_class_method_buffer_from_array"><CODE>Buffer.from(array)</CODE></A> 
+  返回一个新建的包含所提供的字节数组的副本的 <CODE>Buffer</CODE>。</LI>
+  <LI><A href="http://nodejs.cn/api/buffer.html#buffer_class_method_buffer_from_arraybuffer_byteoffset_length"><CODE>Buffer.from(arrayBuffer[, 
+  byteOffset [, length]])</CODE></A> 返回一个新建的与给定的 <A href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer"><CODE>ArrayBuffer</CODE></A> 
+  共享同一内存的 <CODE>Buffer</CODE>。</LI>
+  <LI><A href="http://nodejs.cn/api/buffer.html#buffer_class_method_buffer_from_buffer"><CODE>Buffer.from(buffer)</CODE></A> 
+  返回一个新建的包含所提供的 <CODE>Buffer</CODE> 的内容的副本的 <CODE>Buffer</CODE>。</LI>
+  <LI><A href="http://nodejs.cn/api/buffer.html#buffer_class_method_buffer_from_string_encoding"><CODE>Buffer.from(string[, 
+  encoding])</CODE></A> 返回一个新建的包含所提供的字符串的副本的 <CODE>Buffer</CODE>。</LI>
+  <LI><A href="http://nodejs.cn/api/buffer.html#buffer_class_method_buffer_alloc_size_fill_encoding"><CODE>Buffer.alloc(size[, 
+  fill[, encoding]])</CODE></A> 返回一个指定大小的被填满的 <CODE>Buffer</CODE> 实例。 这个方法会明显地比 
+  <A href="http://nodejs.cn/api/buffer.html#buffer_class_method_buffer_allocunsafe_size"><CODE>Buffer.allocUnsafe(size)</CODE></A> 
+  慢，但可确保新创建的 <CODE>Buffer</CODE> 实例绝不会包含旧的和潜在的敏感数据。</LI>
+  <LI><A href="http://nodejs.cn/api/buffer.html#buffer_class_method_buffer_allocunsafe_size"><CODE>Buffer.allocUnsafe(size)</CODE></A> 
+  与 <A href="http://nodejs.cn/api/buffer.html#buffer_class_method_buffer_allocunsafeslow_size"><CODE>Buffer.allocUnsafeSlow(size)</CODE></A> 
+  返回一个新建的指定 <CODE>size</CODE> 的 
+  <CODE>Buffer</CODE>，但它的内容<STRONG>必须</STRONG>被初始化，可以使用 <A href="http://nodejs.cn/api/buffer.html#buffer_buf_fill_value_offset_end_encoding"><CODE>buf.fill(0)</CODE></A> 
+  或完全写满。</LI></UL>
+<P>如果 <CODE>size</CODE> 小于或等于 <A href="http://nodejs.cn/api/buffer.html#buffer_class_property_buffer_poolsize"><CODE>Buffer.poolSize</CODE></A> 
+的一半，则 <A href="http://nodejs.cn/api/buffer.html#buffer_class_method_buffer_allocunsafe_size"><CODE>Buffer.allocUnsafe()</CODE></A> 
+返回的 <CODE>Buffer</CODE> 实例<STRONG>可能</STRONG>会被分配进一个共享的内部内存池。</P>
+<H3><CODE>--zero-fill-buffers</CODE> 命令行选项<SPAN><A class="mark" id="buffer_the_zero_fill_buffers_command_line_option" 
+href="http://nodejs.cn/api/buffer.html#buffer_the_zero_fill_buffers_command_line_option">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_the_zero_fill_buffers_command_line_option">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/the_zero_fill_buffers_command_line_option.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v5.10.0</SPAN> </DIV>
+<P>Node.js 可以在一开始就使用 <CODE>--zero-fill-buffers</CODE> 命令行选项强制所有使用 <CODE>new 
+Buffer(size)</CODE> 、<A href="http://nodejs.cn/api/buffer.html#buffer_class_method_buffer_allocunsafe_size"><CODE>Buffer.allocUnsafe()</CODE></A> 
+、<A href="http://nodejs.cn/api/buffer.html#buffer_class_method_buffer_allocunsafeslow_size"><CODE>Buffer.allocUnsafeSlow()</CODE></A> 
+或 <CODE>new SlowBuffer(size)</CODE> 新分配的 <CODE>Buffer</CODE> 实例在创建时<STRONG>自动用 0 
+填充</STRONG>。
+ 使用这个选项会<STRONG>改变</STRONG>这些方法的<STRONG>默认行为</STRONG>，且<STRONG>对性能有明显的影响</STRONG>。
+ 建议只在需要强制新分配的 <CODE>Buffer</CODE> 实例不能包含潜在的敏感数据时才使用 
+<CODE>--zero-fill-buffers</CODE> 选项。</P>
+<P>例子：</P>
+<PRE><CODE class="lang-txt">$ node --zero-fill-buffers
+&gt; Buffer.allocUnsafe(5);
+&lt;Buffer 00 00 00 00 00&gt;
+</CODE></PRE>
+<H3>是什么令 <CODE>Buffer.allocUnsafe()</CODE> 和 
+<CODE>Buffer.allocUnsafeSlow()</CODE> 不安全？<SPAN><A class="mark" id="buffer_what_makes_buffer_allocunsafe_and_buffer_allocunsafeslow_unsafe" 
+href="http://nodejs.cn/api/buffer.html#buffer_what_makes_buffer_allocunsafe_and_buffer_allocunsafeslow_unsafe">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_what_makes_buffer_allocunsafe_and_buffer_allocunsafeslow_unsafe">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/what_makes_buffer_allocunsafe_and_buffer_allocunsafeslow_unsafe.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P>当调用 <A href="http://nodejs.cn/api/buffer.html#buffer_class_method_buffer_allocunsafe_size"><CODE>Buffer.allocUnsafe()</CODE></A> 
+和 <A href="http://nodejs.cn/api/buffer.html#buffer_class_method_buffer_allocunsafeslow_size"><CODE>Buffer.allocUnsafeSlow()</CODE></A> 
+时，被分配的内存段是<STRONG>未初始化的</STRONG>（没有用 0 填充）。
+ 虽然这样的设计使得内存的分配非常快，但已分配的内存段可能包含潜在的敏感旧数据。 使用通过 <A href="http://nodejs.cn/api/buffer.html#buffer_class_method_buffer_allocunsafe_size"><CODE>Buffer.allocUnsafe()</CODE></A> 
+创建的没有被<STRONG>完全</STRONG>重写内存的 <CODE>Buffer</CODE> ，在 <CODE>Buffer</CODE> 
+内存可读的情况下，可能泄露它的旧数据。</P>
+<P>虽然使用 <A href="http://nodejs.cn/api/buffer.html#buffer_class_method_buffer_allocunsafe_size"><CODE>Buffer.allocUnsafe()</CODE></A> 
+有明显的性能优势，但必须额外<STRONG>小心</STRONG>，以避免给应用程序引入安全漏洞。</P>
+<H2>Buffer 与字符编码<SPAN><A class="mark" id="buffer_buffers_and_character_encodings" 
+href="http://nodejs.cn/api/buffer.html#buffer_buffers_and_character_encodings">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_buffers_and_character_encodings">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/buffers_and_character_encodings.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P><CODE>Buffer</CODE> 实例一般用于表示编码字符的序列，比如 UTF-8 、 UCS2 、 Base64 、或十六进制编码的数据。
+ 通过使用显式的字符编码，就可以在 <CODE>Buffer</CODE> 实例与普通的 JavaScript 字符串之间进行相互转换。</P>
+<P>例子：</P>
+<PRE><CODE class="lang-js">const buf = Buffer.from('hello world', 'ascii');
+
+// 输出 68656c6c6f20776f726c64
+console.log(buf.toString('hex'));
+
+// 输出 aGVsbG8gd29ybGQ=
+console.log(buf.toString('base64'));
+</CODE></PRE>
+<P>Node.js 目前支持的字符编码包括：</P>
+<UL>
+  <LI>
+  <P><CODE>'ascii'</CODE> - 仅支持 7 位 ASCII 数据。如果设置去掉高位的话，这种编码是非常快的。</P></LI>
+  <LI>
+  <P><CODE>'utf8'</CODE> - 多字节编码的 Unicode 字符。许多网页和其他文档格式都使用 UTF-8 。</P></LI>
+  <LI>
+  <P><CODE>'utf16le'</CODE> - 2 或 4 个字节，小字节序编码的 Unicode 字符。支持代理对（U+10000 至 
+  U+10FFFF）。</P></LI>
+  <LI>
+  <P><CODE>'ucs2'</CODE> - <CODE>'utf16le'</CODE> 的别名。</P></LI>
+  <LI>
+  <P><CODE>'base64'</CODE> - Base64 编码。当从字符串创建 <CODE>Buffer</CODE> 时，按照 <A href="https://tools.ietf.org/html/rfc4648#section-5">RFC4648 
+  第 5 章</A>的规定，这种编码也将正确地接受“URL 与文件名安全字母表”。</P></LI>
+  <LI>
+  <P><CODE>'latin1'</CODE> - 一种把 <CODE>Buffer</CODE> 编码成一字节编码的字符串的方式（由 IANA 定义在 
+  <A href="https://tools.ietf.org/html/rfc1345">RFC1345</A> 第 63 页，用作 Latin-1 
+  补充块与 C0/C1 控制码）。</P></LI>
+  <LI>
+  <P><CODE>'binary'</CODE> - <CODE>'latin1'</CODE> 的别名。</P></LI>
+  <LI>
+  <P><CODE>'hex'</CODE> - 将每个字节编码为两个十六进制字符。</P></LI></UL>
+<P><STRONG>注意</STRONG>：现代浏览器遵循 <A 
+href="https://encoding.spec.whatwg.org/">WHATWG 规范</A> 将 'latin1' 和 ISO-8859-1 
+别名为 win-1252。 这意味着当进行例如 <CODE>http.get()</CODE> 这样的操作时，如果返回的字符编码是 WHATWG 
+规范列表中的，则有可能服务器真的返回 win-1252 编码的数据，此时使用 <CODE>'latin1'</CODE> 字符编码可能会错误地解码数据。</P>
+<H2>Buffer 与 TypedArray<SPAN><A class="mark" id="buffer_buffers_and_typedarray" 
+href="http://nodejs.cn/api/buffer.html#buffer_buffers_and_typedarray">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_buffers_and_typedarray">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/buffers_and_typedarray.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P><CODE>Buffer</CODE> 实例也是 <A href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array"><CODE>Uint8Array</CODE></A> 
+实例。 但是与 ECMAScript 2015 中的 TypedArray 规范还是有些微妙的不同。 例如，当 <A href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer/slice"><CODE>ArrayBuffer#slice()</CODE></A> 
+创建一个切片的副本时，<A 
+href="http://nodejs.cn/api/buffer.html#buffer_buf_slice_start_end"><CODE>Buffer#slice()</CODE></A> 
+的实现是在现有的 <CODE>Buffer</CODE> 上不经过拷贝直接进行创建，这也使得 <A href="http://nodejs.cn/api/buffer.html#buffer_buf_slice_start_end"><CODE>Buffer#slice()</CODE></A> 
+更高效。</P>
+<P>遵循以下注意事项，也可以从一个 <CODE>Buffer</CODE> 创建一个新的 <A href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray"><CODE>TypedArray</CODE></A> 
+实例：</P>
+<OL>
+  <LI>
+  <P><CODE>Buffer</CODE> 对象的内存是拷贝到 <A href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray"><CODE>TypedArray</CODE></A> 
+  的，而不是共享的。</P></LI>
+  <LI>
+  <P><CODE>Buffer</CODE> 对象的内存是被解析为一个明确元素的数组，而不是一个目标类型的字节数组。 也就是说，<CODE>new 
+  Uint32Array(Buffer.from([1, 2, 3, 4]))</CODE> 会创建一个包含 <CODE>[1, 2, 3, 
+  4]</CODE> 四个元素的 <A href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array"><CODE>Uint32Array</CODE></A>，而不是一个只包含一个元素 
+  <CODE>[0x1020304]</CODE> 或 <CODE>[0x4030201]</CODE> 的 <A href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array"><CODE>Uint32Array</CODE></A> 
+  。</P></LI></OL>
+<P>也可以通过 TypeArray 对象的 <CODE>.buffer</CODE> 属性创建一个新建的且与 <A href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray"><CODE>TypedArray</CODE></A> 
+实例共享同一分配内存的 <CODE>Buffer</CODE> 。</P>
+<P>例子：</P>
+<PRE><CODE class="lang-js">const arr = new Uint16Array(2);
+
+arr[0] = 5000;
+arr[1] = 4000;
+
+// 拷贝 `arr` 的内容
+const buf1 = Buffer.from(arr);
+
+// 与 `arr` 共享内存
+const buf2 = Buffer.from(arr.buffer);
+
+// 输出: &lt;Buffer 88 a0&gt;
+console.log(buf1);
+
+// 输出: &lt;Buffer 88 13 a0 0f&gt;
+console.log(buf2);
+
+arr[1] = 6000;
+
+// 输出: &lt;Buffer 88 a0&gt;
+console.log(buf1);
+
+// 输出: &lt;Buffer 88 13 70 17&gt;
+console.log(buf2);
+</CODE></PRE>
+<P>注意，当使用 <A href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray"><CODE>TypedArray</CODE></A> 
+的 <CODE>.buffer</CODE> 创建 <CODE>Buffer</CODE> 时，也可以通过传入 <CODE>byteOffset</CODE> 
+和 <CODE>length</CODE> 参数只使用 <A href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer"><CODE>ArrayBuffer</CODE></A> 
+的一部分。</P>
+<P>例子：</P>
+<PRE><CODE class="lang-js">const arr = new Uint16Array(20);
+const buf = Buffer.from(arr.buffer, 0, 16);
+
+// 输出: 16
+console.log(buf.length);
+</CODE></PRE>
+<P><CODE>Buffer.from()</CODE> 和 <A href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray/from"><CODE>TypedArray.from()</CODE></A> 
+有着不同的签名与实现。 具体而言，<A href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray"><CODE>TypedArray</CODE></A> 
+的变种接受第二个参数，在类型数组的每个元素上调用一次映射函数：</P>
+<UL>
+  <LI><CODE>TypedArray.from(source[, mapFn[, thisArg]])</CODE></LI></UL>
+<P><CODE>Buffer.from()</CODE> 方法不支持使用映射函数：</P>
+<UL>
+  <LI><A href="http://nodejs.cn/api/buffer.html#buffer_class_method_buffer_from_array"><CODE>Buffer.from(array)</CODE></A></LI>
+  <LI><A href="http://nodejs.cn/api/buffer.html#buffer_class_method_buffer_from_buffer"><CODE>Buffer.from(buffer)</CODE></A></LI>
+  <LI><A href="http://nodejs.cn/api/buffer.html#buffer_class_method_buffer_from_arraybuffer_byteoffset_length"><CODE>Buffer.from(arrayBuffer[, 
+  byteOffset [, length]])</CODE></A></LI>
+  <LI><A href="http://nodejs.cn/api/buffer.html#buffer_class_method_buffer_from_string_encoding"><CODE>Buffer.from(string[, 
+  encoding])</CODE></A></LI></UL>
+<H2>Buffer 与 ES6 迭代器<SPAN><A class="mark" id="buffer_buffers_and_es6_iteration" 
+href="http://nodejs.cn/api/buffer.html#buffer_buffers_and_es6_iteration">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_buffers_and_es6_iteration">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/buffers_and_es6_iteration.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P><CODE>Buffer</CODE> 实例可以使用 ECMAScript 2015 (ES6) 的 <CODE>for..of</CODE> 
+语法进行遍历。</P>
+<P>例子：</P>
+<PRE><CODE class="lang-js">const buf = Buffer.from([1, 2, 3]);
+
+// 输出:
+//   1
+//   2
+//   3
+for (const b of buf) {
+  console.log(b);
+}
+</CODE></PRE>
+<P>此外，<A 
+href="http://nodejs.cn/api/buffer.html#buffer_buf_values"><CODE>buf.values()</CODE></A> 
+、<A 
+href="http://nodejs.cn/api/buffer.html#buffer_buf_keys"><CODE>buf.keys()</CODE></A> 
+和 <A 
+href="http://nodejs.cn/api/buffer.html#buffer_buf_entries"><CODE>buf.entries()</CODE></A> 
+方法可用于创建迭代器。</P>
+<H2>Buffer 类<SPAN><A class="mark" id="buffer_class_buffer" href="http://nodejs.cn/api/buffer.html#buffer_class_buffer">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_class_buffer">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/class_buffer.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P><CODE>Buffer</CODE> 类是一个全局变量类型，用来直接处理二进制数据的。 它能够使用多种方式构建。</P>
+<H3>new Buffer(array)<SPAN><A class="mark" id="buffer_new_buffer_array" href="http://nodejs.cn/api/buffer.html#buffer_new_buffer_array">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_new_buffer_array">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/new_buffer_array.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>废弃于: v6.0.0 </SPAN> </DIV>
+<PRE class="api_stability api_stability_0"><A href="http://nodejs.cn/api/documentation.html#documentation_stability_index">稳定性: 0</A> - 废弃的: 使用 <A href="http://nodejs.cn/api/buffer.html#buffer_class_method_buffer_from_array"><CODE>Buffer.from(array)</CODE></A> 代替。</PRE>
+<UL>
+  <LI><CODE>array</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">&lt;Array&gt;</A> 
+  An array of bytes to copy from</LI></UL>
+<P>Allocates a new <CODE>Buffer</CODE> using an <CODE>array</CODE> of 
+octets.</P>
+<P>Example:</P>
+<PRE><CODE class="lang-js">// Creates a new Buffer containing the UTF-8 bytes of the string 'buffer'
+const buf = new Buffer([0x62, 0x75, 0x66, 0x66, 0x65, 0x72]);
+</CODE></PRE>
+<H3>new Buffer(buffer)<SPAN><A class="mark" id="buffer_new_buffer_buffer" href="http://nodejs.cn/api/buffer.html#buffer_new_buffer_buffer">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_new_buffer_buffer">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/new_buffer_buffer.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>废弃于: v6.0.0 </SPAN> </DIV>
+<PRE class="api_stability api_stability_0"><A href="http://nodejs.cn/api/documentation.html#documentation_stability_index">稳定性: 0</A> - 废弃的: 使用 <A href="http://nodejs.cn/api/buffer.html#buffer_class_method_buffer_from_buffer"><CODE>Buffer.from(buffer)</CODE></A> 代替。</PRE>
+<UL>
+  <LI><CODE>buffer</CODE> <A class="type" href="http://nodejs.cn/api/buffer.html#buffer_class_buffer">&lt;Buffer&gt;</A> 
+  An existing <CODE>Buffer</CODE> to copy data from</LI></UL>
+<P>Copies the passed <CODE>buffer</CODE> data onto a new <CODE>Buffer</CODE> 
+instance.</P>
+<P>Example:</P>
+<PRE><CODE class="lang-js">const buf1 = new Buffer('buffer');
+const buf2 = new Buffer(buf1);
+
+buf1[0] = 0x61;
+
+// Prints: auffer
+console.log(buf1.toString());
+
+// Prints: buffer
+console.log(buf2.toString());
+</CODE></PRE>
+<H3>new Buffer(arrayBuffer[, byteOffset [, length]])<SPAN><A class="mark" id="buffer_new_buffer_arraybuffer_byteoffset_length" 
+href="http://nodejs.cn/api/buffer.html#buffer_new_buffer_arraybuffer_byteoffset_length">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_new_buffer_arraybuffer_byteoffset_length">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/new_buffer_arraybuffer_byteoffset_length.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>废弃于: v6.0.0 </SPAN> </DIV>
+<PRE class="api_stability api_stability_0"><A href="http://nodejs.cn/api/documentation.html#documentation_stability_index">稳定性: 0</A> - 废弃的: 使用 <A href="http://nodejs.cn/api/buffer.html#buffer_class_method_buffer_from_arraybuffer_byteoffset_length"><CODE>Buffer.from(arrayBuffer[, byteOffset [, length]])</CODE></A> 代替。</PRE>
+<UL>
+  <LI><CODE>arrayBuffer</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">&lt;ArrayBuffer&gt;</A> 
+  An <A href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer"><CODE>ArrayBuffer</CODE></A> 
+  or the <CODE>.buffer</CODE> property of a <A href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray"><CODE>TypedArray</CODE></A>.</LI>
+  <LI><CODE>byteOffset</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  Index of first byte to expose. <STRONG>Default:</STRONG> <CODE>0</CODE></LI>
+  <LI><CODE>length</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  Number of bytes to expose. <STRONG>Default:</STRONG> <CODE>arrayBuffer.length 
+  - byteOffset</CODE></LI></UL>
+<P>This creates a view of the <A href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer"><CODE>ArrayBuffer</CODE></A> 
+without copying the underlying memory. For example, when passed a reference to 
+the <CODE>.buffer</CODE> property of a <A href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray"><CODE>TypedArray</CODE></A> 
+instance, the newly created <CODE>Buffer</CODE> will share the same allocated 
+memory as the <A href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray"><CODE>TypedArray</CODE></A>.</P>
+<P>The optional <CODE>byteOffset</CODE> and <CODE>length</CODE> arguments 
+specify a memory range within the <CODE>arrayBuffer</CODE> that will be shared 
+by the <CODE>Buffer</CODE>.</P>
+<P>Example:</P>
+<PRE><CODE class="lang-js">const arr = new Uint16Array(2);
+
+arr[0] = 5000;
+arr[1] = 4000;
+
+// Shares memory with `arr`
+const buf = new Buffer(arr.buffer);
+
+// Prints: &lt;Buffer 88 13 a0 0f&gt;
+console.log(buf);
+
+// Changing the original Uint16Array changes the Buffer also
+arr[1] = 6000;
+
+// Prints: &lt;Buffer 88 13 70 17&gt;
+console.log(buf);
+</CODE></PRE>
+<H3>new Buffer(size)<SPAN><A class="mark" id="buffer_new_buffer_size" href="http://nodejs.cn/api/buffer.html#buffer_new_buffer_size">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_new_buffer_size">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/new_buffer_size.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>废弃于: v6.0.0 </SPAN> </DIV>
+<PRE class="api_stability api_stability_0"><A href="http://nodejs.cn/api/documentation.html#documentation_stability_index">稳定性: 0</A> - 废弃的: 使用 <A href="http://nodejs.cn/api/buffer.html#buffer_class_method_buffer_alloc_size_fill_encoding"><CODE>Buffer.alloc()</CODE></A> 代替（或 <A href="http://nodejs.cn/api/buffer.html#buffer_class_method_buffer_allocunsafe_size"><CODE>Buffer.allocUnsafe()</CODE></A>）。</PRE>
+<UL>
+  <LI><CODE>size</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  The desired length of the new <CODE>Buffer</CODE></LI></UL>
+<P>Allocates a new <CODE>Buffer</CODE> of <CODE>size</CODE> bytes.  The 
+<CODE>size</CODE> must be less than or equal to the value of <A href="http://nodejs.cn/api/buffer.html#buffer_buffer_kmaxlength"><CODE>buffer.kMaxLength</CODE></A>. 
+Otherwise, a <A 
+href="http://nodejs.cn/api/errors.html#errors_class_rangeerror"><CODE>RangeError</CODE></A> 
+is thrown. A zero-length <CODE>Buffer</CODE> will be created if <CODE>size &lt;= 
+0</CODE>.</P>
+<P>Unlike <A href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer"><CODE>ArrayBuffers</CODE></A>, 
+the underlying memory for <CODE>Buffer</CODE> instances created in this way is 
+<EM>not initialized</EM>. The contents of a newly created <CODE>Buffer</CODE>
+ are unknown and <EM>could contain sensitive data</EM>. Use <A href="http://nodejs.cn/api/buffer.html#buffer_class_method_buffer_alloc_size_fill_encoding"><CODE>Buffer.alloc(size)</CODE></A> 
+instead to initialize a <CODE>Buffer</CODE> to zeroes.</P>
+<P>Example:</P>
+<PRE><CODE class="lang-js">const buf = new Buffer(10);
+
+// Prints: (contents may vary): &lt;Buffer 48 21 4b 00 00 00 00 00 30 dd&gt;
+console.log(buf);
+
+buf.fill(0);
+
+// Prints: &lt;Buffer 00 00 00 00 00 00 00 00 00 00&gt;
+console.log(buf);
+</CODE></PRE>
+<H3>new Buffer(string[, encoding])<SPAN><A class="mark" id="buffer_new_buffer_string_encoding" 
+href="http://nodejs.cn/api/buffer.html#buffer_new_buffer_string_encoding">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_new_buffer_string_encoding">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/new_buffer_string_encoding.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>废弃于: v6.0.0 </SPAN> </DIV>
+<PRE class="api_stability api_stability_0"><A href="http://nodejs.cn/api/documentation.html#documentation_stability_index">稳定性: 0</A> - 废弃的: 使用 <A href="http://nodejs.cn/api/buffer.html#buffer_class_method_buffer_from_string_encoding"><CODE>Buffer.from(string[, encoding])</CODE></A> 代替。</PRE>
+<UL>
+  <LI><CODE>string</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  String to encode</LI>
+  <LI><CODE>encoding</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  The encoding of <CODE>string</CODE>. <STRONG>Default:</STRONG> 
+  <CODE>'utf8'</CODE></LI></UL>
+<P>Creates a new <CODE>Buffer</CODE> containing the given JavaScript string 
+<CODE>string</CODE>. If provided, the <CODE>encoding</CODE> parameter identifies 
+the character encoding of <CODE>string</CODE>.</P>
+<P>Examples:</P>
+<PRE><CODE class="lang-js">const buf1 = new Buffer('this is a tést');
+
+// Prints: this is a tést
+console.log(buf1.toString());
+
+// Prints: this is a tC)st
+console.log(buf1.toString('ascii'));
+
+
+const buf2 = new Buffer('7468697320697320612074c3a97374', 'hex');
+
+// Prints: this is a tést
+console.log(buf2.toString());
+</CODE></PRE>
+<H3>类方法：Buffer.alloc(size[, fill[, encoding]])<SPAN><A class="mark" id="buffer_class_method_buffer_alloc_size_fill_encoding" 
+href="http://nodejs.cn/api/buffer.html#buffer_class_method_buffer_alloc_size_fill_encoding">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_class_method_buffer_alloc_size_fill_encoding">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/class_method_buffer_alloc_size_fill_encoding.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v5.10.0</SPAN> </DIV>
+<UL>
+  <LI><CODE>size</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  新建的 <CODE>Buffer</CODE> 期望的长度</LI>
+  <LI><CODE>fill</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  | <A class="type" 
+  href="http://nodejs.cn/api/buffer.html#buffer_class_buffer">&lt;Buffer&gt;</A> 
+  | <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  用来预填充新建的 <CODE>Buffer</CODE> 的值。 <STRONG>默认:</STRONG> <CODE>0</CODE></LI>
+  <LI><CODE>encoding</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  如果 <CODE>fill</CODE> 是字符串，则该值是它的字符编码。 <STRONG>默认:</STRONG> 
+  <CODE>'utf8'</CODE></LI></UL>
+<P>分配一个大小为 <CODE>size</CODE> 字节的新建的 <CODE>Buffer</CODE> 。 如果 <CODE>fill</CODE> 为 
+<CODE>undefined</CODE> ，则该 <CODE>Buffer</CODE> 会用 <STRONG>0 填充</STRONG>。</P>
+<P>例子：</P>
+<PRE><CODE class="lang-js">const buf = Buffer.alloc(5);
+
+// 输出: &lt;Buffer 00 00 00 00 00&gt;
+console.log(buf);
+</CODE></PRE>
+<P><CODE>size</CODE> 必须小于或等于 <A href="http://nodejs.cn/api/buffer.html#buffer_buffer_kmaxlength"><CODE>buffer.kMaxLength</CODE></A> 
+的值，否则会抛出 <A 
+href="http://nodejs.cn/api/errors.html#errors_class_rangeerror"><CODE>RangeError</CODE></A> 
+错误。 如果 <CODE>size</CODE> 小于或等于0，则创建一个长度为0的 <CODE>Buffer</CODE> 。</P>
+<P>如果指定了 <CODE>fill</CODE> ，则会调用 <A href="http://nodejs.cn/api/buffer.html#buffer_buf_fill_value_offset_end_encoding"><CODE>buf.fill(fill)</CODE></A> 
+初始化分配的 <CODE>Buffer</CODE> 。</P>
+<P>例子：</P>
+<PRE><CODE class="lang-js">const buf = Buffer.alloc(5, 'a');
+
+// 输出: &lt;Buffer 61 61 61 61 61&gt;
+console.log(buf);
+</CODE></PRE>
+<P>如果同时指定了 <CODE>fill</CODE> 和 <CODE>encoding</CODE> ，则会调用 <A href="http://nodejs.cn/api/buffer.html#buffer_buf_fill_value_offset_end_encoding"><CODE>buf.fill(fill, 
+encoding)</CODE></A> 初始化分配的 <CODE>Buffer</CODE> 。</P>
+<P>例子：</P>
+<PRE><CODE class="lang-js">const buf = Buffer.alloc(11, 'aGVsbG8gd29ybGQ=', 'base64');
+
+// 输出: &lt;Buffer 68 65 6c 6c 6f 20 77 6f 72 6c 64&gt;
+console.log(buf);
+</CODE></PRE>
+<P>调用 <A href="http://nodejs.cn/api/buffer.html#buffer_class_method_buffer_alloc_size_fill_encoding"><CODE>Buffer.alloc()</CODE></A> 
+会明显地比另一个方法 <A href="http://nodejs.cn/api/buffer.html#buffer_class_method_buffer_allocunsafe_size"><CODE>Buffer.allocUnsafe()</CODE></A> 
+慢，但是能确保新建的 <CODE>Buffer</CODE> 实例的内容<STRONG>不会包含敏感数据</STRONG>。</P>
+<P>如果 <CODE>size</CODE> 不是一个数值，则抛出 <CODE>TypeError</CODE> 错误。</P>
+<H3>类方法：Buffer.allocUnsafe(size)<SPAN><A class="mark" id="buffer_class_method_buffer_allocunsafe_size" 
+href="http://nodejs.cn/api/buffer.html#buffer_class_method_buffer_allocunsafe_size">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_class_method_buffer_allocunsafe_size">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/class_method_buffer_allocunsafe_size.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v5.10.0</SPAN> </DIV>
+<UL>
+  <LI><CODE>size</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  新建的 <CODE>Buffer</CODE> 期望的长度</LI></UL>
+<P>分配一个大小为 <CODE>size</CODE> 字节的新建的<STRONG>没有用0填充</STRONG>的 <CODE>Buffer</CODE> 
+。 <CODE>size</CODE> 必须小于或等于 <A href="http://nodejs.cn/api/buffer.html#buffer_buffer_kmaxlength"><CODE>buffer.kMaxLength</CODE></A> 
+的值，否则将抛出 <A 
+href="http://nodejs.cn/api/errors.html#errors_class_rangeerror"><CODE>RangeError</CODE></A> 
+错误。 如果 <CODE>size</CODE> 小于或等于0，则创建一个长度为0的 <CODE>Buffer</CODE> 。</P>
+<P>以这种方式创建的 <CODE>Buffer</CODE> 实例的底层内存是<STRONG>未初始化</STRONG>的。 新创建的 
+<CODE>Buffer</CODE> 的内容是未知的，且<STRONG>可能包含敏感数据</STRONG>。 可以使用 <A href="http://nodejs.cn/api/buffer.html#buffer_buf_fill_value_offset_end_encoding"><CODE>buf.fill(0)</CODE></A> 
+初始化 <CODE>Buffer</CODE> 实例为0。</P>
+<P>例子：</P>
+<PRE><CODE class="lang-js">const buf = Buffer.allocUnsafe(10);
+
+// 输出: (内容可能不同): &lt;Buffer a0 8b 28 3f 01 00 00 00 50 32&gt;
+console.log(buf);
+
+buf.fill(0);
+
+// 输出: &lt;Buffer 00 00 00 00 00 00 00 00 00 00&gt;
+console.log(buf);
+</CODE></PRE>
+<P>如果 <CODE>size</CODE> 不是一个数值，则抛出 <CODE>TypeError</CODE> 错误。</P>
+<P>注意，<CODE>Buffer</CODE> 模块会预分配一个大小为 <A href="http://nodejs.cn/api/buffer.html#buffer_class_property_buffer_poolsize"><CODE>Buffer.poolSize</CODE></A> 
+的内部 <CODE>Buffer</CODE> 实例作为快速分配池， 用于使用 <A href="http://nodejs.cn/api/buffer.html#buffer_class_method_buffer_allocunsafe_size"><CODE>Buffer.allocUnsafe()</CODE></A> 
+新创建的 <CODE>Buffer</CODE> 实例，以及废弃的 <CODE>new Buffer(size)</CODE> 构造器， 仅限于当 
+<CODE>size</CODE> 小于或等于 <CODE>Buffer.poolSize &gt;&gt; 1</CODE> （<A href="http://nodejs.cn/api/buffer.html#buffer_class_property_buffer_poolsize"><CODE>Buffer.poolSize</CODE></A> 
+除以2后的最大整数值）。</P>
+<P>对这个预分配的内部内存池的使用，是调用 <CODE>Buffer.alloc(size, fill)</CODE> 和 
+<CODE>Buffer.allocUnsafe(size).fill(fill)</CODE> 的关键区别。 具体地说，如果 
+<CODE>size</CODE> 小于或等于 <A href="http://nodejs.cn/api/buffer.html#buffer_class_property_buffer_poolsize"><CODE>Buffer.poolSize</CODE></A> 
+的一半，则 <CODE>Buffer.alloc(size, fill)</CODE> <STRONG>不会</STRONG>使用这个内部的 
+<CODE>Buffer</CODE> 池，而 <CODE>Buffer.allocUnsafe(size).fill(fill)</CODE> 
+<STRONG>会</STRONG>使用这个内部的 <CODE>Buffer</CODE> 池。 当应用程序需要 <A href="http://nodejs.cn/api/buffer.html#buffer_class_method_buffer_allocunsafe_size"><CODE>Buffer.allocUnsafe()</CODE></A> 
+提供额外的性能时，这个细微的区别是非常重要的。</P>
+<H3>类方法：Buffer.allocUnsafeSlow(size)<SPAN><A class="mark" id="buffer_class_method_buffer_allocunsafeslow_size" 
+href="http://nodejs.cn/api/buffer.html#buffer_class_method_buffer_allocunsafeslow_size">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_class_method_buffer_allocunsafeslow_size">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/class_method_buffer_allocunsafeslow_size.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v5.10.0</SPAN> </DIV>
+<UL>
+  <LI><CODE>size</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  新建的 <CODE>Buffer</CODE> 期望的长度</LI></UL>
+<P>分配一个大小为 <CODE>size</CODE> 字节的新建的<STRONG>没有用0填充</STRONG>的非池 
+<CODE>Buffer</CODE> 。 <CODE>size</CODE> 必须小于或等于 <A href="http://nodejs.cn/api/buffer.html#buffer_buffer_kmaxlength"><CODE>buffer.kMaxLength</CODE></A> 
+的值，否则将抛出 <A 
+href="http://nodejs.cn/api/errors.html#errors_class_rangeerror"><CODE>RangeError</CODE></A> 
+错误。 如果 <CODE>size</CODE> 小于或等于0，则创建一个长度为0的 <CODE>Buffer</CODE> 。</P>
+<P>以这种方式创建的 <CODE>Buffer</CODE> 实例的底层内存是<STRONG>未初始化</STRONG>的。 新创建的 
+<CODE>Buffer</CODE> 的内容是未知的，且<STRONG>可能包含敏感数据</STRONG>。 可以使用 <A href="http://nodejs.cn/api/buffer.html#buffer_buf_fill_value_offset_end_encoding"><CODE>buf.fill(0)</CODE></A> 
+初始化 <CODE>Buffer</CODE> 实例为0。</P>
+<P>当使用 <A href="http://nodejs.cn/api/buffer.html#buffer_class_method_buffer_allocunsafe_size"><CODE>Buffer.allocUnsafe()</CODE></A> 
+分配新建的 <CODE>Buffer</CODE> 时，当分配的内存小于 4KB 时，默认会从一个单一的预分配的 <CODE>Buffer</CODE> 
+切割出来。 这使得应用程序可以避免垃圾回收机制因创建太多独立分配的 <CODE>Buffer</CODE> 实例而过度使用。
+ 这个方法通过像大多数持久对象一样消除追踪与清理的需求，改善了性能与内存使用。</P>
+<P>当然，在开发者可能需要在不确定的时间段从内存池保留一小块内存的情况下，使用 <CODE>Buffer.allocUnsafeSlow()</CODE> 
+创建一个非池的 <CODE>Buffer</CODE> 实例然后拷贝出相关的位元是合适的做法。</P>
+<P>例子：</P>
+<PRE><CODE class="lang-js">// 需要保留一小块内存块
+const store = [];
+
+socket.on('readable', () =&gt; {
+  const data = socket.read();
+
+  // 为保留的数据分配内存
+  const sb = Buffer.allocUnsafeSlow(10);
+
+  // 拷贝数据进新分配的内存
+  data.copy(sb, 0, 0, 10);
+
+  store.push(sb);
+});
+</CODE></PRE>
+<P><CODE>Buffer.allocUnsafeSlow()</CODE> 
+应当仅仅作为开发者已经在他们的应用程序中观察到过度的内存保留之后的终极手段使用。</P>
+<P>如果 <CODE>size</CODE> 不是一个数值，则抛出 <CODE>TypeError</CODE> 错误。</P>
+<H3>类方法：Buffer.byteLength(string[, encoding])<SPAN><A class="mark" id="buffer_class_method_buffer_bytelength_string_encoding" 
+href="http://nodejs.cn/api/buffer.html#buffer_class_method_buffer_bytelength_string_encoding">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_class_method_buffer_bytelength_string_encoding">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/class_method_buffer_bytelength_string_encoding.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.90</SPAN> </DIV>
+<UL>
+  <LI><CODE>string</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  | <A class="type" 
+  href="http://nodejs.cn/api/buffer.html#buffer_class_buffer">&lt;Buffer&gt;</A> 
+  | <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray">&lt;TypedArray&gt;</A> 
+  | <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView">&lt;DataView&gt;</A> 
+  | <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">&lt;ArrayBuffer&gt;</A> 
+  要计算长度的值</LI>
+  <LI><CODE>encoding</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  如果 <CODE>string</CODE> 是字符串，则这是它的字符编码。 <STRONG>默认:</STRONG> 
+  <CODE>'utf8'</CODE></LI>
+  <LI>返回: <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  <CODE>string</CODE> 包含的字节数</LI></UL>
+<P>返回一个字符串的实际字节长度。 这与 <A href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/length"><CODE>String.prototype.length</CODE></A> 
+不同，因为那返回字符串的<STRONG>字符</STRONG>数。</P>
+<P><EM>Note</EM> that for <CODE>'base64'</CODE> and <CODE>'hex'</CODE>, this 
+function assumes valid input. For strings that contain non-Base64/Hex-encoded 
+data (e.g. whitespace), the return value might be greater than the length of a 
+<CODE>Buffer</CODE> created from the string.</P>
+<P>例子：</P>
+<PRE><CODE class="lang-js">const str = '\u00bd + \u00bc = \u00be';
+
+// 输出: ½ + ¼ = ¾: 9 个字符, 12 个字节
+console.log(`${str}: ${str.length} 个字符, ` +
+            `${Buffer.byteLength(str, 'utf8')} 个字节`);
+</CODE></PRE>
+<P>当 <CODE>string</CODE> 是一个 <CODE>Buffer</CODE>/<A href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView"><CODE>DataView</CODE></A>/<A 
+href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray"><CODE>TypedArray</CODE></A>/<A 
+href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer"><CODE>ArrayBuffer</CODE></A> 
+时，返回实际的字节长度。</P>
+<P>否则，会转换为 <CODE>String</CODE> 并返回字符串的字节长度。</P>
+<H3>类方法：Buffer.compare(buf1, buf2)<SPAN><A class="mark" id="buffer_class_method_buffer_compare_buf1_buf2" 
+href="http://nodejs.cn/api/buffer.html#buffer_class_method_buffer_compare_buf1_buf2">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_class_method_buffer_compare_buf1_buf2">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/class_method_buffer_compare_buf1_buf2.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.11.13</SPAN> </DIV>
+<UL>
+  <LI><CODE>buf1</CODE> <A class="type" href="http://nodejs.cn/api/buffer.html#buffer_class_buffer">&lt;Buffer&gt;</A></LI>
+  <LI><CODE>buf2</CODE> <A class="type" href="http://nodejs.cn/api/buffer.html#buffer_class_buffer">&lt;Buffer&gt;</A></LI>
+  <LI>Returns: <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A></LI></UL>
+<P>比较 <CODE>buf1</CODE> 和 <CODE>buf2</CODE> ，通常用于 <CODE>Buffer</CODE> 实例数组的排序。
+ 相当于调用 <A href="http://nodejs.cn/api/buffer.html#buffer_buf_compare_target_targetstart_targetend_sourcestart_sourceend"><CODE>buf1.compare(buf2)</CODE></A> 
+。</P>
+<P>例子：</P>
+<PRE><CODE class="lang-js">const buf1 = Buffer.from('1234');
+const buf2 = Buffer.from('0123');
+const arr = [buf1, buf2];
+
+// 输出: [ &lt;Buffer 30 31 32 33&gt;, &lt;Buffer 31 32 33 34&gt; ]
+// (结果相当于: [buf2, buf1])
+console.log(arr.sort(Buffer.compare));
+</CODE></PRE>
+<H3>类方法：Buffer.concat(list[, totalLength])<SPAN><A class="mark" id="buffer_class_method_buffer_concat_list_totallength" 
+href="http://nodejs.cn/api/buffer.html#buffer_class_method_buffer_concat_list_totallength">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_class_method_buffer_concat_list_totallength">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/class_method_buffer_concat_list_totallength.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.7.11</SPAN> </DIV>
+<UL>
+  <LI><CODE>list</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">&lt;Array&gt;</A> 
+  要合并的 <CODE>Buffer</CODE> 实例的数组</LI>
+  <LI><CODE>totalLength</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  合并时 <CODE>list</CODE> 中 <CODE>Buffer</CODE> 实例的总长度</LI>
+  <LI>返回: <A class="type" href="http://nodejs.cn/api/buffer.html#buffer_class_buffer">&lt;Buffer&gt;</A></LI></UL>
+<P>返回一个合并了 <CODE>list</CODE> 中所有 <CODE>Buffer</CODE> 实例的新建的 <CODE>Buffer</CODE> 
+。</P>
+<P>如果 <CODE>list</CODE> 中没有元素、或 <CODE>totalLength</CODE> 为 0 ，则返回一个新建的长度为 0 的 
+<CODE>Buffer</CODE> 。</P>
+<P>如果没有提供 <CODE>totalLength</CODE> ，则从 <CODE>list</CODE> 中的 <CODE>Buffer</CODE> 
+实例计算得到。 为了计算 <CODE>totalLength</CODE> 会导致需要执行额外的循环，所以提供明确的长度会运行更快。</P>
+<P>例子：从一个包含三个 <CODE>Buffer</CODE> 实例的数组创建为一个单一的 <CODE>Buffer</CODE>。</P>
+<PRE><CODE class="lang-js">const buf1 = Buffer.alloc(10);
+const buf2 = Buffer.alloc(14);
+const buf3 = Buffer.alloc(18);
+const totalLength = buf1.length + buf2.length + buf3.length;
+
+// 输出: 42
+console.log(totalLength);
+
+const bufA = Buffer.concat([buf1, buf2, buf3], totalLength);
+
+// 输出: &lt;Buffer 00 00 00 00 ...&gt;
+console.log(bufA);
+
+// 输出: 42
+console.log(bufA.length);
+</CODE></PRE>
+<H3>类方法：Buffer.from(array)<SPAN><A class="mark" id="buffer_class_method_buffer_from_array" 
+href="http://nodejs.cn/api/buffer.html#buffer_class_method_buffer_from_array">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_class_method_buffer_from_array">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/class_method_buffer_from_array.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v5.10.0</SPAN> </DIV>
+<UL>
+  <LI><CODE>array</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">&lt;Array&gt;</A></LI></UL>
+<P>通过一个八位字节的 <CODE>array</CODE> 创建一个新的 <CODE>Buffer</CODE> 。</P>
+<P>例子：</P>
+<PRE><CODE class="lang-js">// 创建一个新的包含字符串 'buffer' 的 UTF-8 字节的 Buffer
+const buf = Buffer.from([0x62, 0x75, 0x66, 0x66, 0x65, 0x72]);
+</CODE></PRE>
+<P>如果 <CODE>array</CODE> 不是一个数组，则抛出 <CODE>TypeError</CODE> 错误。</P>
+<H3>类方法：Buffer.from(arrayBuffer[, byteOffset[, length]])<SPAN><A class="mark" 
+id="buffer_class_method_buffer_from_arraybuffer_byteoffset_length" href="http://nodejs.cn/api/buffer.html#buffer_class_method_buffer_from_arraybuffer_byteoffset_length">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_class_method_buffer_from_arraybuffer_byteoffset_length">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/class_method_buffer_from_arraybuffer_byteoffset_length.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v5.10.0</SPAN> </DIV>
+<UL>
+  <LI><CODE>arrayBuffer</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer">&lt;ArrayBuffer&gt;</A> 
+  一个 <A href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer"><CODE>ArrayBuffer</CODE></A>，或一个 
+  <A href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray"><CODE>TypedArray</CODE></A> 
+  的 <CODE>.buffer</CODE> 属性。</LI>
+  <LI><CODE>byteOffset</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  开始拷贝的索引。默认为 <CODE>0</CODE>。</LI>
+  <LI><CODE>length</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  拷贝的字节数。默认为 <CODE>arrayBuffer.length - byteOffset</CODE>。</LI></UL>
+<P>This creates a view of the <A href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer"><CODE>ArrayBuffer</CODE></A> 
+without copying the underlying memory.  例如，当传入一个 <A href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray"><CODE>TypedArray</CODE></A> 
+实例的 <CODE>.buffer</CODE> 属性的引用时，这个新建的 <CODE>Buffer</CODE> 会像 <A href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray"><CODE>TypedArray</CODE></A> 
+那样共享同一分配的内存。</P>
+<P>例子：</P>
+<PRE><CODE class="lang-js">const arr = new Uint16Array(2);
+
+arr[0] = 5000;
+arr[1] = 4000;
+
+// 与 `arr` 共享内存
+const buf = Buffer.from(arr.buffer);
+
+// 输出: &lt;Buffer 88 13 a0 0f&gt;
+console.log(buf);
+
+// 改变原始的 Uint16Array 也会改变 Buffer
+arr[1] = 6000;
+
+// 输出: &lt;Buffer 88 13 70 17&gt;
+console.log(buf);
+</CODE></PRE>
+<P>可选的 <CODE>byteOffset</CODE> 和 <CODE>length</CODE> 参数指定将与 <CODE>Buffer</CODE> 
+共享的 <CODE>arrayBuffer</CODE> 的内存范围。</P>
+<P>例子：</P>
+<PRE><CODE class="lang-js">const ab = new ArrayBuffer(10);
+const buf = Buffer.from(ab, 0, 2);
+
+// 输出: 2
+console.log(buf.length);
+</CODE></PRE>
+<P>如果 <CODE>arrayBuffer</CODE> 不是一个 <A href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer"><CODE>ArrayBuffer</CODE></A>，则抛出 
+<CODE>TypeError</CODE> 错误。</P>
+<H3>类方法：Buffer.from(buffer)<SPAN><A class="mark" id="buffer_class_method_buffer_from_buffer" 
+href="http://nodejs.cn/api/buffer.html#buffer_class_method_buffer_from_buffer">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_class_method_buffer_from_buffer">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/class_method_buffer_from_buffer.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v5.10.0</SPAN> </DIV>
+<UL>
+  <LI><CODE>buffer</CODE> <A class="type" href="http://nodejs.cn/api/buffer.html#buffer_class_buffer">&lt;Buffer&gt;</A> 
+  一个要拷贝数据的已存在的 <CODE>Buffer</CODE></LI></UL>
+<P>将传入的 <CODE>buffer</CODE> 数据拷贝到一个新建的 <CODE>Buffer</CODE> 实例。</P>
+<P>例子：</P>
+<PRE><CODE class="lang-js">const buf1 = Buffer.from('buffer');
+const buf2 = Buffer.from(buf1);
+
+buf1[0] = 0x61;
+
+// 输出: auffer
+console.log(buf1.toString());
+
+// 输出: buffer
+console.log(buf2.toString());
+</CODE></PRE>
+<P>如果 <CODE>buffer</CODE> 不是一个 <CODE>Buffer</CODE>，则抛出 <CODE>TypeError</CODE> 
+错误。</P>
+<H3>类方法：Buffer.from(string[, encoding])<SPAN><A class="mark" id="buffer_class_method_buffer_from_string_encoding" 
+href="http://nodejs.cn/api/buffer.html#buffer_class_method_buffer_from_string_encoding">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_class_method_buffer_from_string_encoding">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/class_method_buffer_from_string_encoding.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v5.10.0</SPAN> </DIV>
+<UL>
+  <LI><CODE>string</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  要编码的字符串</LI>
+  <LI><CODE>encoding</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  <CODE>string</CODE> 的字符编码。 <STRONG>默认:</STRONG> <CODE>'utf8'</CODE></LI></UL>
+<P>新建一个包含所给的 JavaScript 字符串 <CODE>string</CODE> 的 <CODE>Buffer</CODE> 。 
+<CODE>encoding</CODE> 参数指定 <CODE>string</CODE> 的字符编码。</P>
+<P>例子：</P>
+<PRE><CODE class="lang-js">const buf1 = Buffer.from('this is a tést');
+
+// 输出: this is a tést
+console.log(buf1.toString());
+
+// 输出: this is a tC)st
+console.log(buf1.toString('ascii'));
+
+
+const buf2 = Buffer.from('7468697320697320612074c3a97374', 'hex');
+
+// 输出: this is a tést
+console.log(buf2.toString());
+</CODE></PRE>
+<P>如果 <CODE>string</CODE> 不是一个字符串，则抛出 <CODE>TypeError</CODE> 错误。</P>
+<H3>类方法：Buffer.isBuffer(obj)<SPAN><A class="mark" id="buffer_class_method_buffer_isbuffer_obj" 
+href="http://nodejs.cn/api/buffer.html#buffer_class_method_buffer_isbuffer_obj">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_class_method_buffer_isbuffer_obj">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/class_method_buffer_isbuffer_obj.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.101</SPAN> </DIV>
+<UL>
+  <LI><CODE>obj</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">&lt;Object&gt;</A></LI>
+  <LI>返回: <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type">&lt;Boolean&gt;</A></LI></UL>
+<P>如果 <CODE>obj</CODE> 是一个 <CODE>Buffer</CODE> 则返回 <CODE>true</CODE> ，否则返回 
+<CODE>false</CODE> 。</P>
+<H3>类方法：Buffer.isEncoding(encoding)<SPAN><A class="mark" id="buffer_class_method_buffer_isencoding_encoding" 
+href="http://nodejs.cn/api/buffer.html#buffer_class_method_buffer_isencoding_encoding">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_class_method_buffer_isencoding_encoding">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/class_method_buffer_isencoding_encoding.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.9.1</SPAN> </DIV>
+<UL>
+  <LI><CODE>encoding</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  一个要检查的字符编码名称</LI>
+  <LI>返回: <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type">&lt;Boolean&gt;</A></LI></UL>
+<P>如果 <CODE>encoding</CODE> 是一个支持的字符编码则返回 <CODE>true</CODE>，否则返回 
+<CODE>false</CODE> 。</P>
+<H3>类属性：Buffer.poolSize<SPAN><A class="mark" id="buffer_class_property_buffer_poolsize" 
+href="http://nodejs.cn/api/buffer.html#buffer_class_property_buffer_poolsize">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_class_property_buffer_poolsize">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/class_property_buffer_poolsize.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.11.3</SPAN> </DIV>
+<UL>
+  <LI><A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  <STRONG>默认:</STRONG> <CODE>8192</CODE></LI></UL>
+<P>这是用于决定预分配的、内部 <CODE>Buffer</CODE> 实例池的大小的字节数。 这个值可以修改。</P>
+<H3>buf[index]<SPAN><A class="mark" id="buffer_buf_index" href="http://nodejs.cn/api/buffer.html#buffer_buf_index">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_buf_index">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/buf_index.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"></DIV>
+<P>索引操作符 <CODE>[index]</CODE> 可用于获取或设置 <CODE>buf</CODE> 中指定 <CODE>index</CODE> 
+位置的八位字节。 这个值指向的是单个字节，所以合法的值范围是的 <CODE>0x00</CODE> 至 <CODE>0xFF</CODE>（十六进制），或 
+<CODE>0</CODE> 至 <CODE>255</CODE>（十进制）。</P>
+<P>该操作符继承自 <CODE>Uint8Array</CODE>，所以它对越界访问的处理与 <CODE>UInt8Array</CODE> 
+相同（也就是说，获取时返回 <CODE>undefined</CODE>，设置时什么也不做）。</P>
+<P>例如：拷贝一个 ASCII 字符串到一个 <CODE>Buffer</CODE>，每次一个字节。</P>
+<PRE><CODE class="lang-js">const str = 'Node.js';
+const buf = Buffer.allocUnsafe(str.length);
+
+for (let i = 0; i &lt; str.length ; i++) {
+  buf[i] = str.charCodeAt(i);
+}
+
+// 输出: Node.js
+console.log(buf.toString('ascii'));
+</CODE></PRE>
+<H3>buf.compare(target[, targetStart[, targetEnd[, sourceStart[, 
+sourceEnd]]]])<SPAN><A class="mark" id="buffer_buf_compare_target_targetstart_targetend_sourcestart_sourceend" 
+href="http://nodejs.cn/api/buffer.html#buffer_buf_compare_target_targetstart_targetend_sourcestart_sourceend">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_buf_compare_target_targetstart_targetend_sourcestart_sourceend">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/buf_compare_target_targetstart_targetend_sourcestart_sourceend.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.11.13</SPAN> </DIV>
+<UL>
+  <LI><CODE>target</CODE> <A class="type" href="http://nodejs.cn/api/buffer.html#buffer_class_buffer">&lt;Buffer&gt;</A> 
+  要比较的 <CODE>Buffer</CODE></LI>
+  <LI><CODE>targetStart</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  <CODE>target</CODE> 中开始对比的偏移量。 <STRONG>默认:</STRONG> <CODE>0</CODE></LI>
+  <LI><CODE>targetEnd</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  <CODE>target</CODE> 中结束对比的偏移量（不包含）。 当 <CODE>targetStart</CODE> 为 
+  <CODE>undefined</CODE> 时忽略。 <STRONG>默认:</STRONG> 
+  <CODE>target.length</CODE></LI>
+  <LI><CODE>sourceStart</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  <CODE>buf</CODE> 中开始对比的偏移量。 当 <CODE>targetStart</CODE> 为 
+  <CODE>undefined</CODE> 时忽略。 <STRONG>默认:</STRONG> <CODE>0</CODE></LI>
+  <LI><CODE>sourceEnd</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  <CODE>buf</CODE> 中结束对比的偏移量（不包含）。 当 <CODE>targetStart</CODE> 为 
+  <CODE>undefined</CODE> 时忽略。 <STRONG>默认:</STRONG> <A href="http://nodejs.cn/api/buffer.html#buffer_buf_length"><CODE>buf.length</CODE></A></LI>
+  <LI>返回: <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A></LI></UL>
+<P>比较 <CODE>buf</CODE> 与 <CODE>target</CODE>，返回表明 <CODE>buf</CODE> 在排序上是否排在 
+<CODE>target</CODE> 之前、或之后、或相同。 对比是基于各自 <CODE>Buffer</CODE> 实际的字节序列。</P>
+<UL>
+  <LI>如果 <CODE>target</CODE> 与 <CODE>buf</CODE> 相同，则返回 <CODE>0</CODE> 。</LI>
+  <LI>如果 <CODE>target</CODE> 排在 <CODE>buf</CODE> <STRONG>前面</STRONG>，则返回 
+  <CODE>1</CODE> 。</LI>
+  <LI>如果 <CODE>target</CODE> 排在 <CODE>buf</CODE> <STRONG>后面</STRONG>，则返回 
+  <CODE>-1</CODE> 。</LI></UL>
+<P>例子：</P>
+<PRE><CODE class="lang-js">const buf1 = Buffer.from('ABC');
+const buf2 = Buffer.from('BCD');
+const buf3 = Buffer.from('ABCD');
+
+// 输出: 0
+console.log(buf1.compare(buf1));
+
+// 输出: -1
+console.log(buf1.compare(buf2));
+
+// 输出: -1
+console.log(buf1.compare(buf3));
+
+// 输出: 1
+console.log(buf2.compare(buf1));
+
+// 输出: 1
+console.log(buf2.compare(buf3));
+
+// 输出: [ &lt;Buffer 41 42 43&gt;, &lt;Buffer 41 42 43 44&gt;, &lt;Buffer 42 43 44&gt; ]
+// (结果相当于: [buf1, buf3, buf2])
+console.log([buf1, buf2, buf3].sort(Buffer.compare));
+</CODE></PRE>
+<P>可选的  <CODE>targetStart</CODE> 、 <CODE>targetEnd</CODE> 、 
+<CODE>sourceStart</CODE> 与 <CODE>sourceEnd</CODE> 参数可用于分别在 <CODE>target</CODE> 与 
+<CODE>buf</CODE> 中限制对比在指定的范围内。</P>
+<P>例子：</P>
+<PRE><CODE class="lang-js">const buf1 = Buffer.from([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+const buf2 = Buffer.from([5, 6, 7, 8, 9, 1, 2, 3, 4]);
+
+// 输出: 0
+console.log(buf1.compare(buf2, 5, 9, 0, 4));
+
+// 输出: -1
+console.log(buf1.compare(buf2, 0, 6, 4));
+
+// 输出: 1
+console.log(buf1.compare(buf2, 5, 6, 5));
+</CODE></PRE>
+<P>如果 <CODE>targetStart &lt; 0</CODE> 、 <CODE>sourceStart &lt; 0</CODE> 、 
+<CODE>targetEnd &gt; target.byteLength</CODE> 或 <CODE>sourceEnd &gt; 
+source.byteLength</CODE>，则抛出 <CODE>RangeError</CODE> 错误。</P>
+<H3>buf.copy(target[, targetStart[, sourceStart[, sourceEnd]]])<SPAN><A class="mark" 
+id="buffer_buf_copy_target_targetstart_sourcestart_sourceend" href="http://nodejs.cn/api/buffer.html#buffer_buf_copy_target_targetstart_sourcestart_sourceend">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_buf_copy_target_targetstart_sourcestart_sourceend">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/buf_copy_target_targetstart_sourcestart_sourceend.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.90</SPAN> </DIV>
+<UL>
+  <LI><CODE>target</CODE> <A class="type" href="http://nodejs.cn/api/buffer.html#buffer_class_buffer">&lt;Buffer&gt;</A> 
+  | <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array">&lt;Uint8Array&gt;</A> 
+  要拷贝进的 <CODE>Buffer</CODE> 或 <A href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array"><CODE>Uint8Array</CODE></A>。</LI>
+  <LI><CODE>targetStart</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  <CODE>target</CODE> 中开始拷贝进的偏移量。 <STRONG>默认:</STRONG> <CODE>0</CODE></LI>
+  <LI><CODE>sourceStart</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  <CODE>buf</CODE> 中开始拷贝的偏移量。 当 <CODE>targetStart</CODE> 为 
+  <CODE>undefined</CODE> 时忽略。 <STRONG>默认:</STRONG> <CODE>0</CODE></LI>
+  <LI><CODE>sourceEnd</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  <CODE>buf</CODE> 中结束拷贝的偏移量（不包含）。 当 <CODE>sourceStart</CODE> 为 
+  <CODE>undefined</CODE> 时忽略。 <STRONG>默认:</STRONG> <A href="http://nodejs.cn/api/buffer.html#buffer_buf_length"><CODE>buf.length</CODE></A></LI>
+  <LI>返回: <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  被拷贝的字节数。</LI></UL>
+<P>拷贝 <CODE>buf</CODE> 的一个区域的数据到 <CODE>target</CODE> 的一个区域，即便 
+<CODE>target</CODE> 的内存区域与 <CODE>buf</CODE> 的重叠。</P>
+<P>例子：创建两个 <CODE>Buffer</CODE> 实例 <CODE>buf1</CODE> 与 <CODE>buf2</CODE> ，并拷贝 
+<CODE>buf1</CODE> 中第 16 个至第 19 个字节到 <CODE>buf2</CODE> 第 8 个字节起。</P>
+<PRE><CODE class="lang-js">const buf1 = Buffer.allocUnsafe(26);
+const buf2 = Buffer.allocUnsafe(26).fill('!');
+
+for (let i = 0 ; i &lt; 26 ; i++) {
+  // 97 是 'a' 的十进制 ASCII 值
+  buf1[i] = i + 97;
+}
+
+buf1.copy(buf2, 8, 16, 20);
+
+// 输出: !!!!!!!!qrst!!!!!!!!!!!!!
+console.log(buf2.toString('ascii', 0, 25));
+</CODE></PRE>
+<P>例子：创建一个 <CODE>Buffer</CODE> ，并拷贝同一 <CODE>Buffer</CODE> 中一个区域的数据到另一个重叠的区域。</P>
+<PRE><CODE class="lang-js">const buf = Buffer.allocUnsafe(26);
+
+for (let i = 0 ; i &lt; 26 ; i++) {
+  // 97 是 'a' 的十进制 ASCII 值
+  buf[i] = i + 97;
+}
+
+buf.copy(buf, 0, 4, 10);
+
+// 输出: efghijghijklmnopqrstuvwxyz
+console.log(buf.toString());
+</CODE></PRE>
+<H3>buf.entries()<SPAN><A class="mark" id="buffer_buf_entries" href="http://nodejs.cn/api/buffer.html#buffer_buf_entries">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_buf_entries">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/buf_entries.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v1.1.0</SPAN> </DIV>
+<UL>
+  <LI>返回: <SPAN class="type">&lt;Iterator&gt;</SPAN></LI></UL>
+<P>从 <CODE>buf</CODE> 的内容中，创建并返回一个 <CODE>[index, byte]</CODE> 形式的<A href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols">迭代器</A>。</P>
+<P>例子：记录一个 <CODE>Buffer</CODE> 全部的内容。</P>
+<PRE><CODE class="lang-js">const buf = Buffer.from('buffer');
+
+// 输出:
+//   [0, 98]
+//   [1, 117]
+//   [2, 102]
+//   [3, 102]
+//   [4, 101]
+//   [5, 114]
+for (const pair of buf.entries()) {
+  console.log(pair);
+}
+</CODE></PRE>
+<H3>buf.equals(otherBuffer)<SPAN><A class="mark" id="buffer_buf_equals_otherbuffer" 
+href="http://nodejs.cn/api/buffer.html#buffer_buf_equals_otherbuffer">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_buf_equals_otherbuffer">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/buf_equals_otherbuffer.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.11.13</SPAN> </DIV>
+<UL>
+  <LI><CODE>otherBuffer</CODE> <A class="type" href="http://nodejs.cn/api/buffer.html#buffer_class_buffer">&lt;Buffer&gt;</A> 
+  要比较的 <CODE>Buffer</CODE></LI>
+  <LI>返回: <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type">&lt;Boolean&gt;</A></LI></UL>
+<P>如果 <CODE>buf</CODE> 与 <CODE>otherBuffer</CODE> 具有完全相同的字节，则返回 
+<CODE>true</CODE>，否则返回 <CODE>false</CODE>。</P>
+<P>例子：</P>
+<PRE><CODE class="lang-js">const buf1 = Buffer.from('ABC');
+const buf2 = Buffer.from('414243', 'hex');
+const buf3 = Buffer.from('ABCD');
+
+// 输出: true
+console.log(buf1.equals(buf2));
+
+// 输出: false
+console.log(buf1.equals(buf3));
+</CODE></PRE>
+<H3>buf.fill(value[, offset[, end]][, encoding])<SPAN><A class="mark" id="buffer_buf_fill_value_offset_end_encoding" 
+href="http://nodejs.cn/api/buffer.html#buffer_buf_fill_value_offset_end_encoding">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_buf_fill_value_offset_end_encoding">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/buf_fill_value_offset_end_encoding.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.5.0</SPAN> </DIV>
+<UL>
+  <LI><CODE>value</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  | <A class="type" 
+  href="http://nodejs.cn/api/buffer.html#buffer_class_buffer">&lt;Buffer&gt;</A> 
+  | <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  用来填充 <CODE>buf</CODE> 的值</LI>
+  <LI><CODE>offset</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  开始填充 <CODE>buf</CODE> 的位置。<STRONG>默认:</STRONG> <CODE>0</CODE></LI>
+  <LI><CODE>end</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  结束填充 <CODE>buf</CODE> 的位置（不包含）。<STRONG>默认:</STRONG> <A href="http://nodejs.cn/api/buffer.html#buffer_buf_length"><CODE>buf.length</CODE></A></LI>
+  <LI><CODE>encoding</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  如果 <CODE>value</CODE> 是一个字符串，则这是它的字符编码。 <STRONG>默认:</STRONG> 
+  <CODE>'utf8'</CODE></LI>
+  <LI>返回: <A class="type" href="http://nodejs.cn/api/buffer.html#buffer_class_buffer">&lt;Buffer&gt;</A> 
+  <CODE>buf</CODE> 的引用</LI></UL>
+<P>如果未指定 <CODE>offset</CODE> 和 <CODE>end</CODE>，则填充整个 <CODE>buf</CODE>。 这个简化使得一个 
+<CODE>Buffer</CODE> 的创建与填充可以在一行内完成。</P>
+<P>例子：用 ASCII 字符 <CODE>'h'</CODE> 填充 <CODE>Buffer</CODE>。</P>
+<PRE><CODE class="lang-js">const b = Buffer.allocUnsafe(50).fill('h');
+
+// 输出: hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+console.log(b.toString());
+</CODE></PRE>
+<P><CODE>value</CODE> 如果不是一个字符串或整数，则会被强行转换为 <CODE>uint32</CODE> 值。</P>
+<P>If the final write of a <CODE>fill()</CODE> operation falls on a multi-byte 
+character, then only the first bytes of that character that fit into 
+<CODE>buf</CODE> are written. 如果 <CODE>fill()</CODE> 操作的最后一次写入的是一个多字节字符，则只有字符中适合 
+<CODE>buf</CODE> 的第一个字节会被写入。</P>
+<P>例子：用一个两个字节的字符填充 <CODE>Buffer</CODE>。</P>
+<PRE><CODE class="lang-js">// 输出: &lt;Buffer c8 a2 c8&gt;
+console.log(Buffer.allocUnsafe(3).fill('\u0222'));
+</CODE></PRE>
+<H3>buf.indexOf(value[, byteOffset][, encoding])<SPAN><A class="mark" id="buffer_buf_indexof_value_byteoffset_encoding" 
+href="http://nodejs.cn/api/buffer.html#buffer_buf_indexof_value_byteoffset_encoding">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_buf_indexof_value_byteoffset_encoding">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/buf_indexof_value_byteoffset_encoding.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v1.5.0</SPAN> </DIV>
+<UL>
+  <LI><CODE>value</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  | <A class="type" 
+  href="http://nodejs.cn/api/buffer.html#buffer_class_buffer">&lt;Buffer&gt;</A> 
+  | <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  要搜索的值</LI>
+  <LI><CODE>byteOffset</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  <CODE>buf</CODE> 中开始搜索的位置。<STRONG>默认:</STRONG> <CODE>0</CODE></LI>
+  <LI><CODE>encoding</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  如果 <CODE>value</CODE> 是一个字符串，则这是它的字符编码。 <STRONG>默认:</STRONG> 
+  <CODE>'utf8'</CODE></LI>
+  <LI>返回: <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  <CODE>buf</CODE> 中 <CODE>value</CODE> 首次出现的索引，如果 <CODE>buf</CODE> 没包含 
+  <CODE>value</CODE> 则返回 <CODE>-1</CODE></LI></UL>
+<P>如果 <CODE>value</CODE> 是：</P>
+<UL>
+  <LI>字符串，则 <CODE>value</CODE> 根据 <CODE>encoding</CODE> 的字符编码进行解析。</LI>
+  <LI><CODE>Buffer</CODE>，则 <CODE>value</CODE> 会被作为一个整体使用。如果要比较部分 
+  <CODE>Buffer</CODE> 可使用 <A href="http://nodejs.cn/api/buffer.html#buffer_buf_slice_start_end"><CODE>buf.slice()</CODE></A>。</LI>
+  <LI>数值, 则 <CODE>value</CODE> 会解析为一个 <CODE>0</CODE> 至 <CODE>255</CODE> 
+  之间的无符号八位整数值。</LI></UL>
+<P>例子：</P>
+<PRE><CODE class="lang-js">const buf = Buffer.from('this is a buffer');
+
+// 输出: 0
+console.log(buf.indexOf('this'));
+
+// 输出: 2
+console.log(buf.indexOf('is'));
+
+// 输出: 8
+console.log(buf.indexOf(Buffer.from('a buffer')));
+
+// 输出: 8
+// (97 是 'a' 的十进制 ASCII 值)
+console.log(buf.indexOf(97));
+
+// 输出: -1
+console.log(buf.indexOf(Buffer.from('a buffer example')));
+
+// 输出: 8
+console.log(buf.indexOf(Buffer.from('a buffer example').slice(0, 8)));
+
+
+const utf16Buffer = Buffer.from('\u039a\u0391\u03a3\u03a3\u0395', 'ucs2');
+
+// 输出: 4
+console.log(utf16Buffer.indexOf('\u03a3', 0, 'ucs2'));
+
+// 输出: 6
+console.log(utf16Buffer.indexOf('\u03a3', -4, 'ucs2'));
+</CODE></PRE>
+<P>If <CODE>value</CODE> is not a string, number, or <CODE>Buffer</CODE>, this 
+method will throw a <CODE>TypeError</CODE>. If <CODE>value</CODE> is a number, 
+it will be coerced to a valid byte value, an integer between 0 and 255.</P>
+<P>If <CODE>byteOffset</CODE> is not a number, it will be coerced to a number. 
+Any arguments that coerce to <CODE>NaN</CODE> or 0, like <CODE>{}</CODE>, 
+<CODE>[]</CODE>, <CODE>null</CODE> or <CODE>undefined</CODE>, will search the 
+whole buffer. This behavior matches <A href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/indexOf"><CODE>String#indexOf()</CODE></A>.</P>
+<PRE><CODE class="lang-js">const b = Buffer.from('abcdef');
+
+// Passing a value that's a number, but not a valid byte
+// Prints: 2, equivalent to searching for 99 or 'c'
+console.log(b.indexOf(99.9));
+console.log(b.indexOf(256 + 99));
+
+// Passing a byteOffset that coerces to NaN or 0
+// Prints: 1, searching the whole buffer
+console.log(b.indexOf('b', undefined));
+console.log(b.indexOf('b', {}));
+console.log(b.indexOf('b', null));
+console.log(b.indexOf('b', []));
+</CODE></PRE>
+<H3>buf.includes(value[, byteOffset][, encoding])<SPAN><A class="mark" id="buffer_buf_includes_value_byteoffset_encoding" 
+href="http://nodejs.cn/api/buffer.html#buffer_buf_includes_value_byteoffset_encoding">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_buf_includes_value_byteoffset_encoding">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/buf_includes_value_byteoffset_encoding.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v5.3.0</SPAN> </DIV>
+<UL>
+  <LI><CODE>value</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  | <A class="type" 
+  href="http://nodejs.cn/api/buffer.html#buffer_class_buffer">&lt;Buffer&gt;</A> 
+  | <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  要搜索的值</LI>
+  <LI><CODE>byteOffset</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  <CODE>buf</CODE> 中开始搜索的位置。<STRONG>默认:</STRONG> <CODE>0</CODE></LI>
+  <LI><CODE>encoding</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  如果 <CODE>value</CODE> 是一个字符串，则这是它的字符编码。 <STRONG>默认:</STRONG> 
+  <CODE>'utf8'</CODE></LI>
+  <LI>返回: <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type">&lt;Boolean&gt;</A> 
+  如果 <CODE>buf</CODE> 找到 <CODE>value</CODE>，则返回 <CODE>true</CODE>，否则返回 
+  <CODE>false</CODE></LI></UL>
+<P>相当于 <A href="http://nodejs.cn/api/buffer.html#buffer_buf_indexof_value_byteoffset_encoding"><CODE>buf.indexOf() 
+!== -1</CODE></A>。</P>
+<P>例子：</P>
+<PRE><CODE class="lang-js">const buf = Buffer.from('this is a buffer');
+
+// 输出: true
+console.log(buf.includes('this'));
+
+// 输出: true
+console.log(buf.includes('is'));
+
+// 输出: true
+console.log(buf.includes(Buffer.from('a buffer')));
+
+// 输出: true
+// (97 是 'a' 的十进制 ASCII 值)
+console.log(buf.includes(97));
+
+// 输出: false
+console.log(buf.includes(Buffer.from('a buffer example')));
+
+// 输出: true
+console.log(buf.includes(Buffer.from('a buffer example').slice(0, 8)));
+
+// 输出: false
+console.log(buf.includes('this', 4));
+</CODE></PRE>
+<H3>buf.keys()<SPAN><A class="mark" id="buffer_buf_keys" href="http://nodejs.cn/api/buffer.html#buffer_buf_keys">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_buf_keys">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/buf_keys.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v1.1.0</SPAN> </DIV>
+<UL>
+  <LI>返回: <SPAN class="type">&lt;Iterator&gt;</SPAN></LI></UL>
+<P>创建并返回一个包含 <CODE>buf</CODE> 键名（索引）的<A href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols">迭代器</A>。</P>
+<P>例子：</P>
+<PRE><CODE class="lang-js">const buf = Buffer.from('buffer');
+
+// 输出:
+//   0
+//   1
+//   2
+//   3
+//   4
+//   5
+for (const key of buf.keys()) {
+  console.log(key);
+}
+</CODE></PRE>
+<H3>buf.lastIndexOf(value[, byteOffset][, encoding])<SPAN><A class="mark" id="buffer_buf_lastindexof_value_byteoffset_encoding" 
+href="http://nodejs.cn/api/buffer.html#buffer_buf_lastindexof_value_byteoffset_encoding">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_buf_lastindexof_value_byteoffset_encoding">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/buf_lastindexof_value_byteoffset_encoding.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v6.0.0</SPAN> </DIV>
+<UL>
+  <LI><CODE>value</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  | <A class="type" 
+  href="http://nodejs.cn/api/buffer.html#buffer_class_buffer">&lt;Buffer&gt;</A> 
+  | <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  要搜索的值</LI>
+  <LI><CODE>byteOffset</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  <CODE>buf</CODE> 中开始搜索的位置。 <STRONG>默认:</STRONG> <A href="http://nodejs.cn/api/buffer.html#buffer_buf_length"><CODE>buf.length</CODE></A><CODE>- 
+  1</CODE></LI>
+  <LI><CODE>encoding</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  如果 <CODE>value</CODE> 是一个字符串，则这是它的字符编码。 <STRONG>默认:</STRONG> 
+  <CODE>'utf8'</CODE></LI>
+  <LI>返回: <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  <CODE>buf</CODE> 中 <CODE>value</CODE> 最后一次出现的索引，如果 <CODE>buf</CODE> 没包含 
+  <CODE>value</CODE> 则返回 <CODE>-1</CODE></LI></UL>
+<P>与 <A href="http://nodejs.cn/api/buffer.html#buffer_buf_indexof_value_byteoffset_encoding"><CODE>buf.indexOf()</CODE></A> 
+类似，除了 <CODE>buf</CODE> 是从后往前搜索而不是从前往后。</P>
+<P>例子：</P>
+<PRE><CODE class="lang-js">const buf = Buffer.from('this buffer is a buffer');
+
+// 输出: 0
+console.log(buf.lastIndexOf('this'));
+
+// 输出: 17
+console.log(buf.lastIndexOf('buffer'));
+
+// 输出: 17
+console.log(buf.lastIndexOf(Buffer.from('buffer')));
+
+// 输出: 15
+// (97 是 'a' 的十进制 ASCII 值)
+console.log(buf.lastIndexOf(97));
+
+// 输出: -1
+console.log(buf.lastIndexOf(Buffer.from('yolo')));
+
+// 输出: 5
+console.log(buf.lastIndexOf('buffer', 5));
+
+// 输出: -1
+console.log(buf.lastIndexOf('buffer', 4));
+
+
+const utf16Buffer = Buffer.from('\u039a\u0391\u03a3\u03a3\u0395', 'ucs2');
+
+// 输出: 6
+console.log(utf16Buffer.lastIndexOf('\u03a3', undefined, 'ucs2'));
+
+// 输出: 4
+console.log(utf16Buffer.lastIndexOf('\u03a3', -5, 'ucs2'));
+</CODE></PRE>
+<P>If <CODE>value</CODE> is not a string, number, or <CODE>Buffer</CODE>, this 
+method will throw a <CODE>TypeError</CODE>. If <CODE>value</CODE> is a number, 
+it will be coerced to a valid byte value, an integer between 0 and 255.</P>
+<P>If <CODE>byteOffset</CODE> is not a number, it will be coerced to a number. 
+Any arguments that coerce to <CODE>NaN</CODE>, like <CODE>{}</CODE> or 
+<CODE>undefined</CODE>, will search the whole buffer. This behavior matches <A 
+href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/lastIndexOf"><CODE>String#lastIndexOf()</CODE></A>.</P>
+<PRE><CODE class="lang-js">const b = Buffer.from('abcdef');
+
+// Passing a value that's a number, but not a valid byte
+// Prints: 2, equivalent to searching for 99 or 'c'
+console.log(b.lastIndexOf(99.9));
+console.log(b.lastIndexOf(256 + 99));
+
+// Passing a byteOffset that coerces to NaN
+// Prints: 1, searching the whole buffer
+console.log(b.lastIndexOf('b', undefined));
+console.log(b.lastIndexOf('b', {}));
+
+// Passing a byteOffset that coerces to 0
+// Prints: -1, equivalent to passing 0
+console.log(b.lastIndexOf('b', null));
+console.log(b.lastIndexOf('b', []));
+</CODE></PRE>
+<H3>buf.length<SPAN><A class="mark" id="buffer_buf_length" href="http://nodejs.cn/api/buffer.html#buffer_buf_length">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_buf_length">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/buf_length.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.90</SPAN> </DIV>
+<UL>
+  <LI><A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A></LI></UL>
+<P>返回 <CODE>buf</CODE> 在字节数上分配的内存量。 注意，这并不一定反映 <CODE>buf</CODE> 内可用的数据量。</P>
+<P>例子：创建一个 <CODE>Buffer</CODE> 并写入一个较短的 ASCII 字符串。</P>
+<PRE><CODE class="lang-js">const buf = Buffer.alloc(1234);
+
+// 输出: 1234
+console.log(buf.length);
+
+buf.write('some string', 0, 'ascii');
+
+// 输出: 1234
+console.log(buf.length);
+</CODE></PRE>
+<P>虽然 <CODE>length</CODE> 属性不是不可变的，但改变 <CODE>length</CODE> 的值可能会导致不确定、不一致的行为。
+ 那些希望修改一个 <CODE>Buffer</CODE> 的长度的应用程序应当将 <CODE>length</CODE> 视为只读的，且使用 <A href="http://nodejs.cn/api/buffer.html#buffer_buf_slice_start_end"><CODE>buf.slice()</CODE></A> 
+创建一个新的 <CODE>Buffer</CODE>。</P>
+<P>例子：</P>
+<PRE><CODE class="lang-js">let buf = Buffer.allocUnsafe(10);
+
+buf.write('abcdefghj', 0, 'ascii');
+
+// 输出: 10
+console.log(buf.length);
+
+buf = buf.slice(0, 5);
+
+// 输出: 5
+console.log(buf.length);
+</CODE></PRE>
+<H3>buf.readDoubleBE(offset[, noAssert])<SPAN><A class="mark" id="buffer_buf_readdoublebe_offset_noassert" 
+href="http://nodejs.cn/api/buffer.html#buffer_buf_readdoublebe_offset_noassert">#</A></SPAN></H3>
+<H3>buf.readDoubleLE(offset[, noAssert])<SPAN><A class="mark" id="buffer_buf_readdoublele_offset_noassert" 
+href="http://nodejs.cn/api/buffer.html#buffer_buf_readdoublele_offset_noassert">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_buf_readdoublele_offset_noassert">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/buf_readdoublele_offset_noassert.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.11.15</SPAN> </DIV>
+<UL>
+  <LI><CODE>offset</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  开始读取的位置，必须满足：<CODE>0 &lt;= offset &lt;= buf.length - 8</CODE></LI>
+  <LI><CODE>noAssert</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type">&lt;Boolean&gt;</A> 
+  是否跳过 <CODE>offset</CODE> 检验？<STRONG>默认:</STRONG> <CODE>false</CODE></LI>
+  <LI>返回: <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Number&gt;</A></LI></UL>
+<P>用指定的尾数格式（<CODE>readDoubleBE()</CODE> 返回大尾数，<CODE>readDoubleLE()</CODE> 
+返回小尾数）从 <CODE>buf</CODE> 中指定的 <CODE>offset</CODE> 读取一个64位双精度值。</P>
+<P>设置 <CODE>noAssert</CODE> 为 <CODE>true</CODE> 则 <CODE>offset</CODE> 可超出 
+<CODE>buf</CODE> 的末尾，但后果是不确定的。</P>
+<P>例子：</P>
+<PRE><CODE class="lang-js">const buf = Buffer.from([1, 2, 3, 4, 5, 6, 7, 8]);
+
+// 输出: 8.20788039913184e-304
+console.log(buf.readDoubleBE());
+
+// 输出: 5.447603722011605e-270
+console.log(buf.readDoubleLE());
+
+// 抛出异常: RangeError: Index out of range
+console.log(buf.readDoubleLE(1));
+
+// 警告: 读取超出 buffer 的末尾！
+// 这会导致内存区段错误！不要这么做！
+console.log(buf.readDoubleLE(1, true));
+</CODE></PRE>
+<H3>buf.readFloatBE(offset[, noAssert])<SPAN><A class="mark" id="buffer_buf_readfloatbe_offset_noassert" 
+href="http://nodejs.cn/api/buffer.html#buffer_buf_readfloatbe_offset_noassert">#</A></SPAN></H3>
+<H3>buf.readFloatLE(offset[, noAssert])<SPAN><A class="mark" id="buffer_buf_readfloatle_offset_noassert" 
+href="http://nodejs.cn/api/buffer.html#buffer_buf_readfloatle_offset_noassert">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_buf_readfloatle_offset_noassert">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/buf_readfloatle_offset_noassert.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.11.15</SPAN> </DIV>
+<UL>
+  <LI><CODE>offset</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  开始读取的位置，必须满足：<CODE>0 &lt;= offset &lt;= buf.length - 4</CODE></LI>
+  <LI><CODE>noAssert</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type">&lt;Boolean&gt;</A> 
+  是否跳过 <CODE>offset</CODE> 检验？<STRONG>默认:</STRONG> <CODE>false</CODE></LI>
+  <LI>返回: <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Number&gt;</A></LI></UL>
+<P>用指定的尾数格式（<CODE>readFloatBE()</CODE> 返回大尾数，<CODE>readFloatLE()</CODE> 返回小尾数）从 
+<CODE>buf</CODE> 中指定的 <CODE>offset</CODE> 读取一个32位浮点值。</P>
+<P>设置 <CODE>noAssert</CODE> 为 <CODE>true</CODE> 则 <CODE>offset</CODE> 可超出 
+<CODE>buf</CODE> 的末尾，但后果是不确定的。</P>
+<P>例子：</P>
+<PRE><CODE class="lang-js">const buf = Buffer.from([1, 2, 3, 4]);
+
+// 输出: 2.387939260590663e-38
+console.log(buf.readFloatBE());
+
+// 输出: 1.539989614439558e-36
+console.log(buf.readFloatLE());
+
+// 抛出异常: RangeError: Index out of range
+console.log(buf.readFloatLE(1));
+
+// 警告: 读取超出 buffer 的末尾！
+// 这会导致内存区段错误！不要这么做！
+console.log(buf.readFloatLE(1, true));
+</CODE></PRE>
+<H3>buf.readInt8(offset[, noAssert])<SPAN><A class="mark" id="buffer_buf_readint8_offset_noassert" 
+href="http://nodejs.cn/api/buffer.html#buffer_buf_readint8_offset_noassert">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_buf_readint8_offset_noassert">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/buf_readint8_offset_noassert.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.5.0</SPAN> </DIV>
+<UL>
+  <LI><CODE>offset</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  开始读取的位置，必须满足：<CODE>0 &lt;= offset &lt;= buf.length - 1</CODE></LI>
+  <LI><CODE>noAssert</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type">&lt;Boolean&gt;</A> 
+  是否跳过 <CODE>offset</CODE> 检验？<STRONG>默认:</STRONG> <CODE>false</CODE></LI>
+  <LI>返回: <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A></LI></UL>
+<P>从 <CODE>buf</CODE> 中指定的 <CODE>offset</CODE> 读取一个有符号的8位整数值。</P>
+<P>设置 <CODE>noAssert</CODE> 为 <CODE>true</CODE> 则 <CODE>offset</CODE> 可超出 
+<CODE>buf</CODE> 的末尾，但后果是不确定的。</P>
+<P>从 <CODE>Buffer</CODE> 中读取的整数值会被解析为二进制补码值。</P>
+<P>例子：</P>
+<PRE><CODE class="lang-js">const buf = Buffer.from([-1, 5]);
+
+// 输出: -1
+console.log(buf.readInt8(0));
+
+// 输出: 5
+console.log(buf.readInt8(1));
+
+// 抛出异常: RangeError: Index out of range
+console.log(buf.readInt8(2));
+</CODE></PRE>
+<H3>buf.readInt16BE(offset[, noAssert])<SPAN><A class="mark" id="buffer_buf_readint16be_offset_noassert" 
+href="http://nodejs.cn/api/buffer.html#buffer_buf_readint16be_offset_noassert">#</A></SPAN></H3>
+<H3>buf.readInt16LE(offset[, noAssert])<SPAN><A class="mark" id="buffer_buf_readint16le_offset_noassert" 
+href="http://nodejs.cn/api/buffer.html#buffer_buf_readint16le_offset_noassert">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_buf_readint16le_offset_noassert">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/buf_readint16le_offset_noassert.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.5.5</SPAN> </DIV>
+<UL>
+  <LI><CODE>offset</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  开始读取的位置，必须满足：<CODE>0 &lt;= offset &lt;= buf.length - 2</CODE></LI>
+  <LI><CODE>noAssert</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type">&lt;Boolean&gt;</A> 
+  是否跳过 <CODE>offset</CODE> 检验？<STRONG>默认:</STRONG> <CODE>false</CODE></LI>
+  <LI>返回: <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A></LI></UL>
+<P>用指定的尾数格式（<CODE>readInt16BE()</CODE> 返回大尾数，<CODE>readInt16LE()</CODE> 返回小尾数）从 
+<CODE>buf</CODE> 中指定的 <CODE>offset</CODE> 读取一个有符号的16位整数值。</P>
+<P>设置 <CODE>noAssert</CODE> 为 <CODE>true</CODE> 则 <CODE>offset</CODE> 可超出 
+<CODE>buf</CODE> 的末尾，但后果是不确定的。</P>
+<P>从 <CODE>Buffer</CODE> 中读取的整数值会被解析为二进制补码值。</P>
+<P>例子：</P>
+<PRE><CODE class="lang-js">const buf = Buffer.from([0, 5]);
+
+// 输出: 5
+console.log(buf.readInt16BE());
+
+// 输出: 1280
+console.log(buf.readInt16LE());
+
+// 抛出异常: RangeError: Index out of range
+console.log(buf.readInt16LE(1));
+</CODE></PRE>
+<H3>buf.readInt32BE(offset[, noAssert])<SPAN><A class="mark" id="buffer_buf_readint32be_offset_noassert" 
+href="http://nodejs.cn/api/buffer.html#buffer_buf_readint32be_offset_noassert">#</A></SPAN></H3>
+<H3>buf.readInt32LE(offset[, noAssert])<SPAN><A class="mark" id="buffer_buf_readint32le_offset_noassert" 
+href="http://nodejs.cn/api/buffer.html#buffer_buf_readint32le_offset_noassert">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_buf_readint32le_offset_noassert">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/buf_readint32le_offset_noassert.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.5.5</SPAN> </DIV>
+<UL>
+  <LI><CODE>offset</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  开始读取的位置，必须满足：<CODE>0 &lt;= offset &lt;= buf.length - 4</CODE></LI>
+  <LI><CODE>noAssert</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type">&lt;Boolean&gt;</A> 
+  是否跳过 <CODE>offset</CODE> 检验？<STRONG>默认:</STRONG> <CODE>false</CODE></LI>
+  <LI>返回: <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A></LI></UL>
+<P>用指定的尾数格式（<CODE>readInt32BE()</CODE> 返回大尾数，<CODE>readInt32LE()</CODE> 返回小尾数）从 
+<CODE>buf</CODE> 中指定的 <CODE>offset</CODE> 读取一个有符号的32位整数值。</P>
+<P>设置 <CODE>noAssert</CODE> 为 <CODE>true</CODE> 则 <CODE>offset</CODE> 可超出 
+<CODE>buf</CODE> 的末尾，但后果是不确定的。</P>
+<P>从 <CODE>Buffer</CODE> 中读取的整数值会被解析为二进制补码值。</P>
+<P>例子：</P>
+<PRE><CODE class="lang-js">const buf = Buffer.from([0, 0, 0, 5]);
+
+// 输出: 5
+console.log(buf.readInt32BE());
+
+// 输出: 83886080
+console.log(buf.readInt32LE());
+
+// 抛出异常: RangeError: Index out of range
+console.log(buf.readInt32LE(1));
+</CODE></PRE>
+<H3>buf.readIntBE(offset, byteLength[, noAssert])<SPAN><A class="mark" id="buffer_buf_readintbe_offset_bytelength_noassert" 
+href="http://nodejs.cn/api/buffer.html#buffer_buf_readintbe_offset_bytelength_noassert">#</A></SPAN></H3>
+<H3>buf.readIntLE(offset, byteLength[, noAssert])<SPAN><A class="mark" id="buffer_buf_readintle_offset_bytelength_noassert" 
+href="http://nodejs.cn/api/buffer.html#buffer_buf_readintle_offset_bytelength_noassert">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_buf_readintle_offset_bytelength_noassert">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/buf_readintle_offset_bytelength_noassert.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.11.15</SPAN> </DIV>
+<UL>
+  <LI><CODE>offset</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  开始读取的位置，必须满足：<CODE>0 &lt;= offset &lt;= buf.length - byteLength</CODE></LI>
+  <LI><CODE>byteLength</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  要读取的字节数。必须满足：<CODE>0 &lt; byteLength &lt;= 6</CODE></LI>
+  <LI><CODE>noAssert</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type">&lt;Boolean&gt;</A> 
+  是否跳过 <CODE>offset</CODE> 和 <CODE>byteLength</CODE> 校验？ <STRONG>默认:</STRONG> 
+  <CODE>false</CODE></LI>
+  <LI>返回: <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A></LI></UL>
+<P>从 <CODE>buf</CODE> 中指定的 <CODE>offset</CODE> 读取 <CODE>byteLength</CODE> 
+个字节，且读取的值会被解析为二进制补码值。 最高支持48位精度。</P>
+<P>设置 <CODE>noAssert</CODE> 为 <CODE>true</CODE> 则 <CODE>offset</CODE> 可超出 
+<CODE>buf</CODE> 的末尾，但后果是不确定的。</P>
+<P>例子：</P>
+<PRE><CODE class="lang-js">const buf = Buffer.from([0x12, 0x34, 0x56, 0x78, 0x90, 0xab]);
+
+// 输出: -546f87a9cbee
+console.log(buf.readIntLE(0, 6).toString(16));
+
+// 输出: 1234567890ab
+console.log(buf.readIntBE(0, 6).toString(16));
+
+// 抛出异常: RangeError: Index out of range
+console.log(buf.readIntBE(1, 6).toString(16));
+</CODE></PRE>
+<H3>buf.readUInt8(offset[, noAssert])<SPAN><A class="mark" id="buffer_buf_readuint8_offset_noassert" 
+href="http://nodejs.cn/api/buffer.html#buffer_buf_readuint8_offset_noassert">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_buf_readuint8_offset_noassert">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/buf_readuint8_offset_noassert.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.5.0</SPAN> </DIV>
+<UL>
+  <LI><CODE>offset</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  开始读取的位置，必须满足：<CODE>0 &lt;= offset &lt;= buf.length - 1</CODE></LI>
+  <LI><CODE>noAssert</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type">&lt;Boolean&gt;</A> 
+  是否跳过 <CODE>offset</CODE> 检验？<STRONG>默认:</STRONG> <CODE>false</CODE></LI>
+  <LI>返回: <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A></LI></UL>
+<P>从 <CODE>buf</CODE> 中指定的 <CODE>offset</CODE> 读取一个无符号的8位整数值。</P>
+<P>设置 <CODE>noAssert</CODE> 为 <CODE>true</CODE> 则 <CODE>offset</CODE> 可超出 
+<CODE>buf</CODE> 的末尾，但后果是不确定的。</P>
+<P>例子：</P>
+<PRE><CODE class="lang-js">const buf = Buffer.from([1, -2]);
+
+// 输出: 1
+console.log(buf.readUInt8(0));
+
+// 输出: 254
+console.log(buf.readUInt8(1));
+
+// 抛出异常: RangeError: Index out of range
+console.log(buf.readUInt8(2));
+</CODE></PRE>
+<H3>buf.readUInt16BE(offset[, noAssert])<SPAN><A class="mark" id="buffer_buf_readuint16be_offset_noassert" 
+href="http://nodejs.cn/api/buffer.html#buffer_buf_readuint16be_offset_noassert">#</A></SPAN></H3>
+<H3>buf.readUInt16LE(offset[, noAssert])<SPAN><A class="mark" id="buffer_buf_readuint16le_offset_noassert" 
+href="http://nodejs.cn/api/buffer.html#buffer_buf_readuint16le_offset_noassert">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_buf_readuint16le_offset_noassert">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/buf_readuint16le_offset_noassert.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.5.5</SPAN> </DIV>
+<UL>
+  <LI><CODE>offset</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  开始读取的位置，必须满足：<CODE>0 &lt;= offset &lt;= buf.length - 2</CODE></LI>
+  <LI><CODE>noAssert</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type">&lt;Boolean&gt;</A> 
+  是否跳过 <CODE>offset</CODE> 检验？<STRONG>默认:</STRONG> <CODE>false</CODE></LI>
+  <LI>返回: <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A></LI></UL>
+<P>用指定的尾数格式（<CODE>readUInt16BE()</CODE> 返回大尾数，<CODE>readUInt16LE()</CODE> 
+返回小尾数）从 <CODE>buf</CODE> 中指定的 <CODE>offset</CODE> 读取一个无符号的16位整数值。</P>
+<P>设置 <CODE>noAssert</CODE> 为 <CODE>true</CODE> 则 <CODE>offset</CODE> 可超出 
+<CODE>buf</CODE> 的末尾，但后果是不确定的。</P>
+<P>例子：</P>
+<PRE><CODE class="lang-js">const buf = Buffer.from([0x12, 0x34, 0x56]);
+
+// 输出: 1234
+console.log(buf.readUInt16BE(0).toString(16));
+
+// 输出: 3412
+console.log(buf.readUInt16LE(0).toString(16));
+
+// 输出: 3456
+console.log(buf.readUInt16BE(1).toString(16));
+
+// 输出: 5634
+console.log(buf.readUInt16LE(1).toString(16));
+
+// 抛出异常: RangeError: Index out of range
+console.log(buf.readUInt16LE(2).toString(16));
+</CODE></PRE>
+<H3>buf.readUInt32BE(offset[, noAssert])<SPAN><A class="mark" id="buffer_buf_readuint32be_offset_noassert" 
+href="http://nodejs.cn/api/buffer.html#buffer_buf_readuint32be_offset_noassert">#</A></SPAN></H3>
+<H3>buf.readUInt32LE(offset[, noAssert])<SPAN><A class="mark" id="buffer_buf_readuint32le_offset_noassert" 
+href="http://nodejs.cn/api/buffer.html#buffer_buf_readuint32le_offset_noassert">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_buf_readuint32le_offset_noassert">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/buf_readuint32le_offset_noassert.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.5.5</SPAN> </DIV>
+<UL>
+  <LI><CODE>offset</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  开始读取的位置，必须满足：<CODE>0 &lt;= offset &lt;= buf.length - 4</CODE></LI>
+  <LI><CODE>noAssert</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type">&lt;Boolean&gt;</A> 
+  是否跳过 <CODE>offset</CODE> 检验？<STRONG>默认:</STRONG> <CODE>false</CODE></LI>
+  <LI>返回: <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A></LI></UL>
+<P>用指定的尾数格式（<CODE>readUInt32BE()</CODE> 返回大尾数，<CODE>readUInt32LE()</CODE> 
+返回小尾数）从 <CODE>buf</CODE> 中指定的 <CODE>offset</CODE> 读取一个无符号的32位整数值。</P>
+<P>设置 <CODE>noAssert</CODE> 为 <CODE>true</CODE> 则 <CODE>offset</CODE> 可超出 
+<CODE>buf</CODE> 的末尾，但后果是不确定的。</P>
+<P>例子：</P>
+<PRE><CODE class="lang-js">const buf = Buffer.from([0x12, 0x34, 0x56, 0x78]);
+
+// 输出: 12345678
+console.log(buf.readUInt32BE(0).toString(16));
+
+// 输出: 78563412
+console.log(buf.readUInt32LE(0).toString(16));
+
+// 抛出异常: RangeError: Index out of range
+console.log(buf.readUInt32LE(1).toString(16));
+</CODE></PRE>
+<H3>buf.readUIntBE(offset, byteLength[, noAssert])<SPAN><A class="mark" id="buffer_buf_readuintbe_offset_bytelength_noassert" 
+href="http://nodejs.cn/api/buffer.html#buffer_buf_readuintbe_offset_bytelength_noassert">#</A></SPAN></H3>
+<H3>buf.readUIntLE(offset, byteLength[, noAssert])<SPAN><A class="mark" id="buffer_buf_readuintle_offset_bytelength_noassert" 
+href="http://nodejs.cn/api/buffer.html#buffer_buf_readuintle_offset_bytelength_noassert">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_buf_readuintle_offset_bytelength_noassert">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/buf_readuintle_offset_bytelength_noassert.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.11.15</SPAN> </DIV>
+<UL>
+  <LI><CODE>offset</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  开始读取的位置，必须满足：<CODE>0 &lt;= offset &lt;= buf.length - byteLength</CODE></LI>
+  <LI><CODE>byteLength</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  要读取的字节数。必须满足：<CODE>0 &lt; byteLength &lt;= 6</CODE></LI>
+  <LI><CODE>noAssert</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type">&lt;Boolean&gt;</A> 
+  是否跳过 <CODE>offset</CODE> 和 <CODE>byteLength</CODE> 校验？ <STRONG>默认:</STRONG> 
+  <CODE>false</CODE></LI>
+  <LI>返回: <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A></LI></UL>
+<P>从 <CODE>buf</CODE> 中指定的 <CODE>offset</CODE> 读取 <CODE>byteLength</CODE> 
+个字节，且读取的值会被解析为无符号的整数。 最高支持48位精度。</P>
+<P>设置 <CODE>noAssert</CODE> 为 <CODE>true</CODE> 则 <CODE>offset</CODE> 可超出 
+<CODE>buf</CODE> 的末尾，但后果是不确定的。</P>
+<P>例子：</P>
+<PRE><CODE class="lang-js">const buf = Buffer.from([0x12, 0x34, 0x56, 0x78, 0x90, 0xab]);
+
+// 输出: 1234567890ab
+console.log(buf.readUIntBE(0, 6).toString(16));
+
+// 输出: ab9078563412
+console.log(buf.readUIntLE(0, 6).toString(16));
+
+//抛出异常: RangeError: Index out of range
+console.log(buf.readUIntBE(1, 6).toString(16));
+</CODE></PRE>
+<H3>buf.slice([start[, end]])<SPAN><A class="mark" id="buffer_buf_slice_start_end" 
+href="http://nodejs.cn/api/buffer.html#buffer_buf_slice_start_end">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_buf_slice_start_end">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/buf_slice_start_end.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.3.0</SPAN> </DIV>
+<UL>
+  <LI><CODE>start</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  新建的 <CODE>Buffer</CODE> 开始的位置。 <STRONG>默认:</STRONG> <CODE>0</CODE></LI>
+  <LI><CODE>end</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  新建的 <CODE>Buffer</CODE> 结束的位置（不包含）。 <STRONG>默认:</STRONG> <A href="http://nodejs.cn/api/buffer.html#buffer_buf_length"><CODE>buf.length</CODE></A></LI>
+  <LI>返回: <A class="type" href="http://nodejs.cn/api/buffer.html#buffer_class_buffer">&lt;Buffer&gt;</A></LI></UL>
+<P>返回一个指向相同原始内存的新建的 <CODE>Buffer</CODE>，但做了偏移且通过 <CODE>start</CODE> 和 
+<CODE>end</CODE> 索引进行裁剪。</P>
+<P><STRONG>注意，修改这个新建的 <CODE>Buffer</CODE> 切片，也会同时修改原始的 <CODE>Buffer</CODE> 
+的内存，因为这两个对象所分配的内存是重叠的。</STRONG></P>
+<P>例子：创建一个包含 ASCII 字母表的 <CODE>Buffer</CODE>，并进行切片，然后修改原始 <CODE>Buffer</CODE> 
+上的一个字节。</P>
+<PRE><CODE class="lang-js">const buf1 = Buffer.allocUnsafe(26);
+
+for (let i = 0 ; i &lt; 26 ; i++) {
+  // 97 是 'a' 的十进制 ASCII 值 
+  buf1[i] = i + 97;
+}
+
+const buf2 = buf1.slice(0, 3);
+
+// 输出: abc
+console.log(buf2.toString('ascii', 0, buf2.length));
+
+buf1[0] = 33;
+
+// 输出: !bc
+console.log(buf2.toString('ascii', 0, buf2.length));
+</CODE></PRE>
+<P>指定负的索引会导致切片的生成是相对于 <CODE>buf</CODE> 的末尾而不是开头。</P>
+<P>例子：</P>
+<PRE><CODE class="lang-js">const buf = Buffer.from('buffer');
+
+// 输出: buffe
+// (相当于 buf.slice(0, 5))
+console.log(buf.slice(-6, -1).toString());
+
+// 输出: buff
+// (相当于 buf.slice(0, 4))
+console.log(buf.slice(-6, -2).toString());
+
+// 输出: uff
+// (相当于 buf.slice(1, 4))
+console.log(buf.slice(-5, -2).toString());
+</CODE></PRE>
+<H3>buf.swap16()<SPAN><A class="mark" id="buffer_buf_swap16" href="http://nodejs.cn/api/buffer.html#buffer_buf_swap16">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_buf_swap16">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/buf_swap16.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v5.10.0</SPAN> </DIV>
+<UL>
+  <LI>返回: <A class="type" href="http://nodejs.cn/api/buffer.html#buffer_class_buffer">&lt;Buffer&gt;</A> 
+  <CODE>buf</CODE> 的引用</LI></UL>
+<P>将 <CODE>buf</CODE> 解析为一个无符号16位的整数数组，并且以字节顺序原地进行交换。 如果 <A href="http://nodejs.cn/api/buffer.html#buffer_buf_length"><CODE>buf.length</CODE></A> 
+不是2的倍数，则抛出 <CODE>RangeError</CODE> 错误。</P>
+<P>例子：</P>
+<PRE><CODE class="lang-js">const buf1 = Buffer.from([0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8]);
+
+// 输出: &lt;Buffer 01 02 03 04 05 06 07 08&gt;
+console.log(buf1);
+
+buf1.swap16();
+
+// 输出: &lt;Buffer 02 01 04 03 06 05 08 07&gt;
+console.log(buf1);
+
+
+const buf2 = Buffer.from([0x1, 0x2, 0x3]);
+
+// 抛出异常: RangeError: Buffer size must be a multiple of 16-bits
+buf2.swap16();
+</CODE></PRE>
+<H3>buf.swap32()<SPAN><A class="mark" id="buffer_buf_swap32" href="http://nodejs.cn/api/buffer.html#buffer_buf_swap32">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_buf_swap32">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/buf_swap32.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v5.10.0</SPAN> </DIV>
+<UL>
+  <LI>返回: <A class="type" href="http://nodejs.cn/api/buffer.html#buffer_class_buffer">&lt;Buffer&gt;</A> 
+  <CODE>buf</CODE> 的引用</LI></UL>
+<P>将 <CODE>buf</CODE> 解析为一个无符号32位的整数数组，并且以字节顺序原地进行交换。 如果 <A href="http://nodejs.cn/api/buffer.html#buffer_buf_length"><CODE>buf.length</CODE></A> 
+不是4的倍数，则抛出 <CODE>RangeError</CODE> 错误。</P>
+<P>例子：</P>
+<PRE><CODE class="lang-js">const buf1 = Buffer.from([0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8]);
+
+// 输出: &lt;Buffer 01 02 03 04 05 06 07 08&gt;
+console.log(buf1);
+
+buf1.swap32();
+
+// 输出: &lt;Buffer 04 03 02 01 08 07 06 05&gt;
+console.log(buf1);
+
+
+const buf2 = Buffer.from([0x1, 0x2, 0x3]);
+
+// 抛出异常: RangeError: Buffer size must be a multiple of 32-bits
+buf2.swap32();
+</CODE></PRE>
+<H3>buf.swap64()<SPAN><A class="mark" id="buffer_buf_swap64" href="http://nodejs.cn/api/buffer.html#buffer_buf_swap64">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_buf_swap64">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/buf_swap64.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v6.3.0</SPAN> </DIV>
+<UL>
+  <LI>返回: <A class="type" href="http://nodejs.cn/api/buffer.html#buffer_class_buffer">&lt;Buffer&gt;</A> 
+  <CODE>buf</CODE> 的引用</LI></UL>
+<P>将 <CODE>buf</CODE> 解析为一个64位的数值数组，并且以字节顺序原地进行交换。 如果 <A href="http://nodejs.cn/api/buffer.html#buffer_buf_length"><CODE>buf.length</CODE></A> 
+不是8的倍数，则抛出 <CODE>RangeError</CODE> 错误。</P>
+<P>例子：</P>
+<PRE><CODE class="lang-js">const buf1 = Buffer.from([0x1, 0x2, 0x3, 0x4, 0x5, 0x6, 0x7, 0x8]);
+
+// 输出: &lt;Buffer 01 02 03 04 05 06 07 08&gt;
+console.log(buf1);
+
+buf1.swap64();
+
+// 输出: &lt;Buffer 08 07 06 05 04 03 02 01&gt;
+console.log(buf1);
+
+
+const buf2 = Buffer.from([0x1, 0x2, 0x3]);
+
+// 抛出异常: RangeError: Buffer size must be a multiple of 64-bits
+buf2.swap64();
+</CODE></PRE>
+<P>注意，JavaScript 不能编码64位整数。 该方法是用来处理64位浮点数的。</P>
+<H3>buf.toString([encoding[, start[, end]]])<SPAN><A class="mark" id="buffer_buf_tostring_encoding_start_end" 
+href="http://nodejs.cn/api/buffer.html#buffer_buf_tostring_encoding_start_end">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_buf_tostring_encoding_start_end">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/buf_tostring_encoding_start_end.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.90</SPAN> </DIV>
+<UL>
+  <LI><CODE>encoding</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  解码使用的字符编码。<STRONG>默认:</STRONG> <CODE>'utf8'</CODE></LI>
+  <LI><CODE>start</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  开始解码的字节偏移量。<STRONG>默认:</STRONG> <CODE>0</CODE></LI>
+  <LI><CODE>end</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  结束解码的字节偏移量（不包含）。 <STRONG>默认:</STRONG> <A href="http://nodejs.cn/api/buffer.html#buffer_buf_length"><CODE>buf.length</CODE></A></LI>
+  <LI>返回: <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A></LI></UL>
+<P>根据 <CODE>encoding</CODE> 指定的字符编码解码 <CODE>buf</CODE> 成一个字符串。 
+<CODE>start</CODE> 和 <CODE>end</CODE> 可传入用于只解码 <CODE>buf</CODE> 的一部分。</P>
+<P>例子：</P>
+<PRE><CODE class="lang-js">const buf1 = Buffer.allocUnsafe(26);
+
+for (let i = 0 ; i &lt; 26 ; i++) {
+  // 97 是 'a' 的十进制 ASCII 值
+  buf1[i] = i + 97;
+}
+
+// 输出: abcdefghijklmnopqrstuvwxyz
+console.log(buf1.toString('ascii'));
+
+// 输出: abcde
+console.log(buf1.toString('ascii', 0, 5));
+
+
+const buf2 = Buffer.from('tést');
+
+// 输出: 74c3a97374
+console.log(buf2.toString('hex'));
+
+// 输出: té
+console.log(buf2.toString('utf8', 0, 3));
+
+// 输出: té
+console.log(buf2.toString(undefined, 0, 3));
+</CODE></PRE>
+<H3>buf.toJSON()<SPAN><A class="mark" id="buffer_buf_tojson" href="http://nodejs.cn/api/buffer.html#buffer_buf_tojson">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_buf_tojson">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/buf_tojson.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.9.2</SPAN> </DIV>
+<UL>
+  <LI>返回: <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">&lt;Object&gt;</A></LI></UL>
+<P>返回 <CODE>buf</CODE> 的 JSON 格式。 当字符串化一个 <CODE>Buffer</CODE> 实例时，<A href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify"><CODE>JSON.stringify()</CODE></A> 
+会隐式地调用该函数。</P>
+<P>例子：</P>
+<PRE><CODE class="lang-js">const buf = Buffer.from([0x1, 0x2, 0x3, 0x4, 0x5]);
+const json = JSON.stringify(buf);
+
+// 输出: {"type":"Buffer","data":[1,2,3,4,5]}
+console.log(json);
+
+const copy = JSON.parse(json, (key, value) =&gt; {
+  return value &amp;&amp; value.type === 'Buffer'
+    ? Buffer.from(value.data)
+    : value;
+});
+
+// 输出: &lt;Buffer 01 02 03 04 05&gt;
+console.log(copy);
+</CODE></PRE>
+<H3>buf.values()<SPAN><A class="mark" id="buffer_buf_values" href="http://nodejs.cn/api/buffer.html#buffer_buf_values">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_buf_values">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/buf_values.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v1.1.0</SPAN> </DIV>
+<UL>
+  <LI>返回: <SPAN class="type">&lt;Iterator&gt;</SPAN></LI></UL>
+<P>创建并返回一个包含 <CODE>buf</CODE> 的值（字节）的<A href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols">迭代器</A>。
+ 当 <CODE>Buffer</CODE> 使用 <CODE>for..of</CODE> 时会自动调用该函数。</P>
+<P>例子：</P>
+<PRE><CODE class="lang-js">const buf = Buffer.from('buffer');
+
+// 输出:
+//   98
+//   117
+//   102
+//   102
+//   101
+//   114
+for (const value of buf.values()) {
+  console.log(value);
+}
+
+// 输出:
+//   98
+//   117
+//   102
+//   102
+//   101
+//   114
+for (const value of buf) {
+  console.log(value);
+}
+</CODE></PRE>
+<H3>buf.write(string[, offset[, length]][, encoding])<SPAN><A class="mark" id="buffer_buf_write_string_offset_length_encoding" 
+href="http://nodejs.cn/api/buffer.html#buffer_buf_write_string_offset_length_encoding">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_buf_write_string_offset_length_encoding">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/buf_write_string_offset_length_encoding.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.90</SPAN> </DIV>
+<UL>
+  <LI><CODE>string</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  要写入 <CODE>buf</CODE> 的字符串</LI>
+  <LI><CODE>offset</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  开始写入 <CODE>string</CODE> 的位置。<STRONG>默认:</STRONG> <CODE>0</CODE></LI>
+  <LI><CODE>length</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  要写入的字节数。<STRONG>默认:</STRONG> <CODE>buf.length - offset</CODE></LI>
+  <LI><CODE>encoding</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  <CODE>string</CODE> 的字符编码。<STRONG>默认:</STRONG> <CODE>'utf8'</CODE></LI>
+  <LI>返回: <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  写入的字节数</LI></UL>
+<P>根据 <CODE>encoding</CODE> 的字符编码写入 <CODE>string</CODE> 到 <CODE>buf</CODE> 中的 
+<CODE>offset</CODE> 位置。 <CODE>length</CODE> 参数是写入的字节数。 如果 <CODE>buf</CODE> 
+没有足够的空间保存整个字符串，则只会写入 <CODE>string</CODE> 的一部分。 只部分解码的字符不会被写入。</P>
+<P>例子：</P>
+<PRE><CODE class="lang-js">const buf = Buffer.allocUnsafe(256);
+
+const len = buf.write('\u00bd + \u00bc = \u00be', 0);
+
+// 输出: 12 个字节: ½ + ¼ = ¾
+console.log(`${len} 个字节: ${buf.toString('utf8', 0, len)}`);
+</CODE></PRE>
+<H3>buf.writeDoubleBE(value, offset[, noAssert])<SPAN><A class="mark" id="buffer_buf_writedoublebe_value_offset_noassert" 
+href="http://nodejs.cn/api/buffer.html#buffer_buf_writedoublebe_value_offset_noassert">#</A></SPAN></H3>
+<H3>buf.writeDoubleLE(value, offset[, noAssert])<SPAN><A class="mark" id="buffer_buf_writedoublele_value_offset_noassert" 
+href="http://nodejs.cn/api/buffer.html#buffer_buf_writedoublele_value_offset_noassert">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_buf_writedoublele_value_offset_noassert">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/buf_writedoublele_value_offset_noassert.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.11.15</SPAN> </DIV>
+<UL>
+  <LI><CODE>value</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Number&gt;</A> 
+  要写入 <CODE>buf</CODE> 的数值</LI>
+  <LI><CODE>offset</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  开始写入的位置，必须满足：<CODE>0 &lt;= offset &lt;= buf.length - 8</CODE></LI>
+  <LI><CODE>noAssert</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type">&lt;Boolean&gt;</A> 
+  是否跳过 <CODE>value</CODE> 和 <CODE>offset</CODE> 检验？<STRONG>默认:</STRONG> 
+  <CODE>false</CODE></LI>
+  <LI>返回: <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  <CODE>offset</CODE> 加上写入的字节数</LI></UL>
+<P>用指定的尾数格式（<CODE>writeDoubleBE()</CODE> 写入大尾数，<CODE>writeDoubleLE()</CODE> 
+写入小尾数）写入 <CODE>value</CODE> 到 <CODE>buf</CODE> 中指定的 <CODE>offset</CODE> 位置。 
+<CODE>value</CODE> 应当是一个有效的64位双精度值。 当 <CODE>value</CODE> 
+不是一个64位双精度值时，反应是不确定的。</P>
+<P>设置 <CODE>noAssert</CODE> 为 <CODE>true</CODE> 则 <CODE>value</CODE> 的编码形式可超出 
+<CODE>buf</CODE> 的末尾，但后果是不确定的。</P>
+<P>例子：</P>
+<PRE><CODE class="lang-js">const buf = Buffer.allocUnsafe(8);
+
+buf.writeDoubleBE(0xdeadbeefcafebabe, 0);
+
+// 输出: &lt;Buffer 43 eb d5 b7 dd f9 5f d7&gt;
+console.log(buf);
+
+buf.writeDoubleLE(0xdeadbeefcafebabe, 0);
+
+// 输出: &lt;Buffer d7 5f f9 dd b7 d5 eb 43&gt;
+console.log(buf);
+</CODE></PRE>
+<H3>buf.writeFloatBE(value, offset[, noAssert])<SPAN><A class="mark" id="buffer_buf_writefloatbe_value_offset_noassert" 
+href="http://nodejs.cn/api/buffer.html#buffer_buf_writefloatbe_value_offset_noassert">#</A></SPAN></H3>
+<H3>buf.writeFloatLE(value, offset[, noAssert])<SPAN><A class="mark" id="buffer_buf_writefloatle_value_offset_noassert" 
+href="http://nodejs.cn/api/buffer.html#buffer_buf_writefloatle_value_offset_noassert">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_buf_writefloatle_value_offset_noassert">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/buf_writefloatle_value_offset_noassert.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.11.15</SPAN> </DIV>
+<UL>
+  <LI><CODE>value</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Number&gt;</A> 
+  要写入 <CODE>buf</CODE> 的数值</LI>
+  <LI><CODE>offset</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  开始写入的位置，必须满足：<CODE>0 &lt;= offset &lt;= buf.length - 4</CODE></LI>
+  <LI><CODE>noAssert</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type">&lt;Boolean&gt;</A> 
+  是否跳过 <CODE>value</CODE> 和 <CODE>offset</CODE> 检验？<STRONG>默认:</STRONG> 
+  <CODE>false</CODE></LI>
+  <LI>返回: <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  <CODE>offset</CODE> 加上写入的字节数</LI></UL>
+<P>用指定的尾数格式（<CODE>writeFloatBE()</CODE> 写入大尾数，<CODE>writeFloatLE()</CODE> 
+写入小尾数）写入 <CODE>value</CODE> 到 <CODE>buf</CODE> 中指定的 <CODE>offset</CODE> 位置。 
+<CODE>value</CODE> 应当是一个有效的32位浮点值。 当 <CODE>value</CODE> 不是一个32位浮点值时，反应是不确定的。</P>
+<P>设置 <CODE>noAssert</CODE> 为 <CODE>true</CODE> 则 <CODE>value</CODE> 的编码形式可超出 
+<CODE>buf</CODE> 的末尾，但后果是不确定的。</P>
+<P>例子：</P>
+<PRE><CODE class="lang-js">const buf = Buffer.allocUnsafe(4);
+
+buf.writeFloatBE(0xcafebabe, 0);
+
+// 输出: &lt;Buffer 4f 4a fe bb&gt;
+console.log(buf);
+
+buf.writeFloatLE(0xcafebabe, 0);
+
+// 输出: &lt;Buffer bb fe 4a 4f&gt;
+console.log(buf);
+</CODE></PRE>
+<H3>buf.writeInt8(value, offset[, noAssert])<SPAN><A class="mark" id="buffer_buf_writeint8_value_offset_noassert" 
+href="http://nodejs.cn/api/buffer.html#buffer_buf_writeint8_value_offset_noassert">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_buf_writeint8_value_offset_noassert">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/buf_writeint8_value_offset_noassert.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.5.0</SPAN> </DIV>
+<UL>
+  <LI><CODE>value</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  要写入 <CODE>buf</CODE> 的数值</LI>
+  <LI><CODE>offset</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  开始写入的位置，必须满足：<CODE>0 &lt;= offset &lt;= buf.length - 1</CODE></LI>
+  <LI><CODE>noAssert</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type">&lt;Boolean&gt;</A> 
+  是否跳过 <CODE>value</CODE> 和 <CODE>offset</CODE> 检验？<STRONG>默认:</STRONG> 
+  <CODE>false</CODE></LI>
+  <LI>返回: <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  <CODE>offset</CODE> 加上写入的字节数</LI></UL>
+<P>写入 <CODE>value</CODE> 到 <CODE>buf</CODE> 中指定的 <CODE>offset</CODE> 位置。 
+<CODE>value</CODE> 应当是一个有效的有符号的8位整数。 当 <CODE>value</CODE> 
+不是一个有符号的8位整数时，反应是不确定的。</P>
+<P>设置 <CODE>noAssert</CODE> 为 <CODE>true</CODE> 则 <CODE>value</CODE> 的编码形式可超出 
+<CODE>buf</CODE> 的末尾，但后果是不确定的。</P>
+<P><CODE>value</CODE> 会被解析并写入为二进制补码值。</P>
+<P>例子：</P>
+<PRE><CODE class="lang-js">const buf = Buffer.allocUnsafe(2);
+
+buf.writeInt8(2, 0);
+buf.writeInt8(-2, 1);
+
+// 输出: &lt;Buffer 02 fe&gt;
+console.log(buf);
+</CODE></PRE>
+<H3>buf.writeInt16BE(value, offset[, noAssert])<SPAN><A class="mark" id="buffer_buf_writeint16be_value_offset_noassert" 
+href="http://nodejs.cn/api/buffer.html#buffer_buf_writeint16be_value_offset_noassert">#</A></SPAN></H3>
+<H3>buf.writeInt16LE(value, offset[, noAssert])<SPAN><A class="mark" id="buffer_buf_writeint16le_value_offset_noassert" 
+href="http://nodejs.cn/api/buffer.html#buffer_buf_writeint16le_value_offset_noassert">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_buf_writeint16le_value_offset_noassert">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/buf_writeint16le_value_offset_noassert.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.5.5</SPAN> </DIV>
+<UL>
+  <LI><CODE>value</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  要写入 <CODE>buf</CODE> 的数值</LI>
+  <LI><CODE>offset</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  开始写入的位置，必须满足：<CODE>0 &lt;= offset &lt;= buf.length - 2</CODE></LI>
+  <LI><CODE>noAssert</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type">&lt;Boolean&gt;</A> 
+  是否跳过 <CODE>value</CODE> 和 <CODE>offset</CODE> 检验？<STRONG>默认:</STRONG> 
+  <CODE>false</CODE></LI>
+  <LI>返回: <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  <CODE>offset</CODE> 加上写入的字节数</LI></UL>
+<P>用指定的尾数格式（<CODE>writeInt16BE()</CODE> 写入大尾数，<CODE>writeInt16LE()</CODE> 
+写入小尾数）写入 <CODE>value</CODE> 到 <CODE>buf</CODE> 中指定的 <CODE>offset</CODE> 位置。 
+<CODE>value</CODE> 应当是一个有效的有符号的16位整数。 当 <CODE>value</CODE> 
+不是一个有符号的16位整数时，反应是不确定的。</P>
+<P>设置 <CODE>noAssert</CODE> 为 <CODE>true</CODE> 则 <CODE>value</CODE> 的编码形式可超出 
+<CODE>buf</CODE> 的末尾，但后果是不确定的。</P>
+<P><CODE>value</CODE> 会被解析并写入为二进制补码值。</P>
+<P>例子：</P>
+<PRE><CODE class="lang-js">const buf = Buffer.allocUnsafe(4);
+
+buf.writeInt16BE(0x0102, 0);
+buf.writeInt16LE(0x0304, 2);
+
+// 输出: &lt;Buffer 01 02 04 03&gt;
+console.log(buf);
+</CODE></PRE>
+<H3>buf.writeInt32BE(value, offset[, noAssert])<SPAN><A class="mark" id="buffer_buf_writeint32be_value_offset_noassert" 
+href="http://nodejs.cn/api/buffer.html#buffer_buf_writeint32be_value_offset_noassert">#</A></SPAN></H3>
+<H3>buf.writeInt32LE(value, offset[, noAssert])<SPAN><A class="mark" id="buffer_buf_writeint32le_value_offset_noassert" 
+href="http://nodejs.cn/api/buffer.html#buffer_buf_writeint32le_value_offset_noassert">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_buf_writeint32le_value_offset_noassert">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/buf_writeint32le_value_offset_noassert.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.5.5</SPAN> </DIV>
+<UL>
+  <LI><CODE>value</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  要写入 <CODE>buf</CODE> 的数值</LI>
+  <LI><CODE>offset</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  开始写入的位置，必须满足：<CODE>0 &lt;= offset &lt;= buf.length - 4</CODE></LI>
+  <LI><CODE>noAssert</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type">&lt;Boolean&gt;</A> 
+  是否跳过 <CODE>value</CODE> 和 <CODE>offset</CODE> 检验？<STRONG>默认:</STRONG> 
+  <CODE>false</CODE></LI>
+  <LI>返回: <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  <CODE>offset</CODE> 加上写入的字节数</LI></UL>
+<P>用指定的尾数格式（<CODE>writeInt32BE()</CODE> 写入大尾数，<CODE>writeInt32LE()</CODE> 
+写入小尾数）写入 <CODE>value</CODE> 到 <CODE>buf</CODE> 中指定的 <CODE>offset</CODE> 位置。 
+<CODE>value</CODE> 应当是一个有效的有符号的32位整数。 当 <CODE>value</CODE> 
+不是一个有符号的32位整数时，反应是不确定的。</P>
+<P>设置 <CODE>noAssert</CODE> 为 <CODE>true</CODE> 则 <CODE>value</CODE> 的编码形式可超出 
+<CODE>buf</CODE> 的末尾，但后果是不确定的。</P>
+<P><CODE>value</CODE> 会被解析并写入为二进制补码值。</P>
+<P>例子：</P>
+<PRE><CODE class="lang-js">const buf = Buffer.allocUnsafe(8);
+
+buf.writeInt32BE(0x01020304, 0);
+buf.writeInt32LE(0x05060708, 4);
+
+// 输出: &lt;Buffer 01 02 03 04 08 07 06 05&gt;
+console.log(buf);
+</CODE></PRE>
+<H3>buf.writeIntBE(value, offset, byteLength[, noAssert])<SPAN><A class="mark" 
+id="buffer_buf_writeintbe_value_offset_bytelength_noassert" href="http://nodejs.cn/api/buffer.html#buffer_buf_writeintbe_value_offset_bytelength_noassert">#</A></SPAN></H3>
+<H3>buf.writeIntLE(value, offset, byteLength[, noAssert])<SPAN><A class="mark" 
+id="buffer_buf_writeintle_value_offset_bytelength_noassert" href="http://nodejs.cn/api/buffer.html#buffer_buf_writeintle_value_offset_bytelength_noassert">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_buf_writeintle_value_offset_bytelength_noassert">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/buf_writeintle_value_offset_bytelength_noassert.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.11.15</SPAN> </DIV>
+<UL>
+  <LI><CODE>value</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  要写入 <CODE>buf</CODE> 的数值</LI>
+  <LI><CODE>offset</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  开始写入的位置，必须满足：<CODE>0 &lt;= offset &lt;= buf.length - byteLength</CODE></LI>
+  <LI><CODE>byteLength</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  要写入的字节数，必须满足：<CODE>0 &lt; byteLength &lt;= 6</CODE></LI>
+  <LI><CODE>noAssert</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type">&lt;Boolean&gt;</A> 
+  是否跳过 <CODE>value</CODE>、<CODE>offset</CODE> 和 <CODE>byteLength</CODE> 
+  检验？<STRONG>默认:</STRONG> <CODE>false</CODE></LI>
+  <LI>返回: <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  <CODE>offset</CODE> 加上写入的字节数</LI></UL>
+<P>写入 <CODE>value</CODE> 中的 <CODE>byteLength</CODE> 个字节到 <CODE>buf</CODE> 中指定的 
+<CODE>offset</CODE> 位置。 最高支持48位精度。 当 <CODE>value</CODE> 不是一个有符号的整数时，反应是不确定的。</P>
+<P>设置 <CODE>noAssert</CODE> 为 <CODE>true</CODE> 则 <CODE>value</CODE> 的编码形式可超出 
+<CODE>buf</CODE> 的末尾，但后果是不确定的。</P>
+<P>例子：</P>
+<PRE><CODE class="lang-js">const buf = Buffer.allocUnsafe(6);
+
+buf.writeUIntBE(0x1234567890ab, 0, 6);
+
+// 输出: &lt;Buffer 12 34 56 78 90 ab&gt;
+console.log(buf);
+
+buf.writeUIntLE(0x1234567890ab, 0, 6);
+
+// 输出: &lt;Buffer ab 90 78 56 34 12&gt;
+console.log(buf);
+</CODE></PRE>
+<H3>buf.writeUInt8(value, offset[, noAssert])<SPAN><A class="mark" id="buffer_buf_writeuint8_value_offset_noassert" 
+href="http://nodejs.cn/api/buffer.html#buffer_buf_writeuint8_value_offset_noassert">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_buf_writeuint8_value_offset_noassert">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/buf_writeuint8_value_offset_noassert.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.5.0</SPAN> </DIV>
+<UL>
+  <LI><CODE>value</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  要写入 <CODE>buf</CODE> 的数值</LI>
+  <LI><CODE>offset</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  开始写入的位置，必须满足：<CODE>0 &lt;= offset &lt;= buf.length - 1</CODE></LI>
+  <LI><CODE>noAssert</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type">&lt;Boolean&gt;</A> 
+  是否跳过 <CODE>value</CODE> 和 <CODE>offset</CODE> 检验？<STRONG>默认:</STRONG> 
+  <CODE>false</CODE></LI>
+  <LI>返回: <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  <CODE>offset</CODE> 加上写入的字节数</LI></UL>
+<P>写入 <CODE>value</CODE> 到 <CODE>buf</CODE> 中指定的 <CODE>offset</CODE> 位置。 
+<CODE>value</CODE> 应当是一个有效的无符号的8位整数。 当 <CODE>value</CODE> 
+不是一个无符号的8位整数时，反应是不确定的。</P>
+<P>设置 <CODE>noAssert</CODE> 为 <CODE>true</CODE> 则 <CODE>value</CODE> 的编码形式可超出 
+<CODE>buf</CODE> 的末尾，但后果是不确定的。</P>
+<P>例子：</P>
+<PRE><CODE class="lang-js">const buf = Buffer.allocUnsafe(4);
+
+buf.writeUInt8(0x3, 0);
+buf.writeUInt8(0x4, 1);
+buf.writeUInt8(0x23, 2);
+buf.writeUInt8(0x42, 3);
+
+// 输出: &lt;Buffer 03 04 23 42&gt;
+console.log(buf);
+</CODE></PRE>
+<H3>buf.writeUInt16BE(value, offset[, noAssert])<SPAN><A class="mark" id="buffer_buf_writeuint16be_value_offset_noassert" 
+href="http://nodejs.cn/api/buffer.html#buffer_buf_writeuint16be_value_offset_noassert">#</A></SPAN></H3>
+<H3>buf.writeUInt16LE(value, offset[, noAssert])<SPAN><A class="mark" id="buffer_buf_writeuint16le_value_offset_noassert" 
+href="http://nodejs.cn/api/buffer.html#buffer_buf_writeuint16le_value_offset_noassert">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_buf_writeuint16le_value_offset_noassert">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/buf_writeuint16le_value_offset_noassert.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.5.5</SPAN> </DIV>
+<UL>
+  <LI><CODE>value</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  要写入 <CODE>buf</CODE> 的数值</LI>
+  <LI><CODE>offset</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  开始写入的位置，必须满足：<CODE>0 &lt;= offset &lt;= buf.length - 2</CODE></LI>
+  <LI><CODE>noAssert</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type">&lt;Boolean&gt;</A> 
+  是否跳过 <CODE>value</CODE> 和 <CODE>offset</CODE> 检验？<STRONG>默认:</STRONG> 
+  <CODE>false</CODE></LI>
+  <LI>返回: <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  <CODE>offset</CODE> 加上写入的字节数</LI></UL>
+<P>用指定的尾数格式（<CODE>writeUInt16BE()</CODE> 写入大尾数，<CODE>writeUInt16LE()</CODE> 
+写入小尾数）写入 <CODE>value</CODE> 到 <CODE>buf</CODE> 中指定的 <CODE>offset</CODE> 位置。 
+<CODE>value</CODE> 应当是一个有效的无符号的16位整数。 当 <CODE>value</CODE> 
+不是一个无符号的16位整数时，反应是不确定的。</P>
+<P>设置 <CODE>noAssert</CODE> 为 <CODE>true</CODE> 则 <CODE>value</CODE> 的编码形式可超出 
+<CODE>buf</CODE> 的末尾，但后果是不确定的。</P>
+<P>例子：</P>
+<PRE><CODE class="lang-js">const buf = Buffer.allocUnsafe(4);
+
+buf.writeUInt16BE(0xdead, 0);
+buf.writeUInt16BE(0xbeef, 2);
+
+// 输出: &lt;Buffer de ad be ef&gt;
+console.log(buf);
+
+buf.writeUInt16LE(0xdead, 0);
+buf.writeUInt16LE(0xbeef, 2);
+
+// 输出: &lt;Buffer ad de ef be&gt;
+console.log(buf);
+</CODE></PRE>
+<H3>buf.writeUInt32BE(value, offset[, noAssert])<SPAN><A class="mark" id="buffer_buf_writeuint32be_value_offset_noassert" 
+href="http://nodejs.cn/api/buffer.html#buffer_buf_writeuint32be_value_offset_noassert">#</A></SPAN></H3>
+<H3>buf.writeUInt32LE(value, offset[, noAssert])<SPAN><A class="mark" id="buffer_buf_writeuint32le_value_offset_noassert" 
+href="http://nodejs.cn/api/buffer.html#buffer_buf_writeuint32le_value_offset_noassert">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_buf_writeuint32le_value_offset_noassert">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/buf_writeuint32le_value_offset_noassert.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.5.5</SPAN> </DIV>
+<UL>
+  <LI><CODE>value</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  要写入 <CODE>buf</CODE> 的数值</LI>
+  <LI><CODE>offset</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  开始写入的位置，必须满足：<CODE>0 &lt;= offset &lt;= buf.length - 4</CODE></LI>
+  <LI><CODE>noAssert</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type">&lt;Boolean&gt;</A> 
+  是否跳过 <CODE>value</CODE> 和 <CODE>offset</CODE> 检验？<STRONG>默认:</STRONG> 
+  <CODE>false</CODE></LI>
+  <LI>返回: <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  <CODE>offset</CODE> 加上写入的字节数</LI></UL>
+<P>用指定的尾数格式（<CODE>writeUInt32BE()</CODE> 写入大尾数，<CODE>writeUInt32LE()</CODE> 
+写入小尾数）写入 <CODE>value</CODE> 到 <CODE>buf</CODE> 中指定的 <CODE>offset</CODE> 位置。 
+<CODE>value</CODE> 应当是一个有效的无符号的32位整数。 当 <CODE>value</CODE> 
+不是一个无符号的32位整数时，反应是不确定的。</P>
+<P>设置 <CODE>noAssert</CODE> 为 <CODE>true</CODE> 则 <CODE>value</CODE> 的编码形式可超出 
+<CODE>buf</CODE> 的末尾，但后果是不确定的。</P>
+<P>例子：</P>
+<PRE><CODE class="lang-js">const buf = Buffer.allocUnsafe(4);
+
+buf.writeUInt32BE(0xfeedface, 0);
+
+// 输出: &lt;Buffer fe ed fa ce&gt;
+console.log(buf);
+
+buf.writeUInt32LE(0xfeedface, 0);
+
+// 输出: &lt;Buffer ce fa ed fe&gt;
+console.log(buf);
+</CODE></PRE>
+<H3>buf.writeUIntBE(value, offset, byteLength[, noAssert])<SPAN><A class="mark" 
+id="buffer_buf_writeuintbe_value_offset_bytelength_noassert" href="http://nodejs.cn/api/buffer.html#buffer_buf_writeuintbe_value_offset_bytelength_noassert">#</A></SPAN></H3>
+<H3>buf.writeUIntLE(value, offset, byteLength[, noAssert])<SPAN><A class="mark" 
+id="buffer_buf_writeuintle_value_offset_bytelength_noassert" href="http://nodejs.cn/api/buffer.html#buffer_buf_writeuintle_value_offset_bytelength_noassert">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_buf_writeuintle_value_offset_bytelength_noassert">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/buf_writeuintle_value_offset_bytelength_noassert.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.5.5</SPAN> </DIV>
+<UL>
+  <LI><CODE>value</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  要写入 <CODE>buf</CODE> 的数值</LI>
+  <LI><CODE>offset</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  开始写入的位置，必须满足：<CODE>0 &lt;= offset &lt;= buf.length - byteLength</CODE></LI>
+  <LI><CODE>byteLength</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  要写入的字节数，必须满足：<CODE>0 &lt; byteLength &lt;= 6</CODE></LI>
+  <LI><CODE>noAssert</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type">&lt;Boolean&gt;</A> 
+  是否跳过 <CODE>value</CODE>、<CODE>offset</CODE> 和 <CODE>byteLength</CODE> 
+  检验？<STRONG>默认:</STRONG> <CODE>false</CODE></LI>
+  <LI>返回: <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  <CODE>offset</CODE> 加上写入的字节数</LI></UL>
+<P>写入 <CODE>value</CODE> 中的 <CODE>byteLength</CODE> 个字节到 <CODE>buf</CODE> 中指定的 
+<CODE>offset</CODE> 位置。 最高支持48位精度。 当 <CODE>value</CODE> 不是一个无符号的整数时，反应是不确定的。</P>
+<P>设置 <CODE>noAssert</CODE> 为 <CODE>true</CODE> 则 <CODE>value</CODE> 的编码形式可超出 
+<CODE>buf</CODE> 的末尾，但后果是不确定的。</P>
+<P>例子：</P>
+<PRE><CODE class="lang-js">const buf = Buffer.allocUnsafe(6);
+
+buf.writeUIntBE(0x1234567890ab, 0, 6);
+
+// 输出: &lt;Buffer 12 34 56 78 90 ab&gt;
+console.log(buf);
+
+buf.writeUIntLE(0x1234567890ab, 0, 6);
+
+// 输出: &lt;Buffer ab 90 78 56 34 12&gt;
+console.log(buf);
+</CODE></PRE>
+<H2>buffer.INSPECT_MAX_BYTES<SPAN><A class="mark" id="buffer_buffer_inspect_max_bytes" 
+href="http://nodejs.cn/api/buffer.html#buffer_buffer_inspect_max_bytes">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_buffer_inspect_max_bytes">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/buffer_inspect_max_bytes.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.5.4</SPAN> </DIV>
+<UL>
+  <LI><A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  <STRONG>默认:</STRONG> <CODE>50</CODE></LI></UL>
+<P>当调用 <CODE>buf.inspect()</CODE> 时返回的最大字节数。 可以被用户模块重写。 详见 <A href="http://nodejs.cn/api/util.html#util_util_inspect_object_options"><CODE>util.inspect()</CODE></A> 
+了解更多 <CODE>buf.inspect()</CODE> 的行为。</P>
+<P>注意，这个属性是在通过 <CODE>require('buffer')</CODE> 返回的 <CODE>buffer</CODE> 模块上，而不是在 
+<CODE>Buffer</CODE> 的全局变量或 <CODE>Buffer</CODE> 实例上。</P>
+<H2>buffer.kMaxLength<SPAN><A class="mark" id="buffer_buffer_kmaxlength" href="http://nodejs.cn/api/buffer.html#buffer_buffer_kmaxlength">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_buffer_kmaxlength">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/buffer_kmaxlength.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v3.0.0</SPAN> </DIV>
+<UL>
+  <LI><A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  分配给单个 <CODE>Buffer</CODE> 实例的最大内存</LI></UL>
+<P>在32位架构上，该值为 <CODE>(2^30)-1</CODE> (~1GB)。 在64位架构上，该值为 <CODE>(2^31)-1</CODE> 
+(~2GB)。</P>
+<H2>SlowBuffer 类<SPAN><A class="mark" id="buffer_class_slowbuffer" href="http://nodejs.cn/api/buffer.html#buffer_class_slowbuffer">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_class_slowbuffer">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/class_slowbuffer.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>废弃于: v6.0.0 </SPAN> </DIV>
+<PRE class="api_stability api_stability_0"><A href="http://nodejs.cn/api/documentation.html#documentation_stability_index">稳定性: 0</A> - 废弃的: 使用 <A href="http://nodejs.cn/api/buffer.html#buffer_class_method_buffer_allocunsafeslow_size"><CODE>Buffer.allocUnsafeSlow()</CODE></A> 代替。</PRE>
+<P>Returns an un-pooled <CODE>Buffer</CODE>.</P>
+<P>In order to avoid the garbage collection overhead of creating many 
+individually allocated <CODE>Buffer</CODE> instances, by default allocations 
+under 4KB are sliced from a single larger allocated object. This approach 
+improves both performance and memory usage since v8 does not need to track and 
+cleanup as many <CODE>Persistent</CODE> objects.</P>
+<P>In the case where a developer may need to retain a small chunk of memory from 
+a pool for an indeterminate amount of time, it may be appropriate to create an
+ un-pooled <CODE>Buffer</CODE> instance using <CODE>SlowBuffer</CODE> then copy 
+out the relevant bits.</P>
+<P>Example:</P>
+<PRE><CODE class="lang-js">// Need to keep around a few small chunks of memory
+const store = [];
+
+socket.on('readable', () =&gt; {
+  const data = socket.read();
+
+  // Allocate for retained data
+  const sb = SlowBuffer(10);
+
+  // Copy the data into the new allocation
+  data.copy(sb, 0, 0, 10);
+
+  store.push(sb);
+});
+</CODE></PRE>
+<P>Use of <CODE>SlowBuffer</CODE> should be used only as a last resort 
+<EM>after</EM> a developer has observed undue memory retention in their 
+applications.</P>
+<H3>new SlowBuffer(size)<SPAN><A class="mark" id="buffer_new_slowbuffer_size" 
+href="http://nodejs.cn/api/buffer.html#buffer_new_slowbuffer_size">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/buffer.html#buffer_new_slowbuffer_size">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/buffer/new_slowbuffer_size.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>废弃于: v6.0.0 </SPAN> </DIV>
+<PRE class="api_stability api_stability_0"><A href="http://nodejs.cn/api/documentation.html#documentation_stability_index">稳定性: 0</A> - 废弃的: 使用 <A href="http://nodejs.cn/api/buffer.html#buffer_class_method_buffer_allocunsafeslow_size"><CODE>Buffer.allocUnsafeSlow()</CODE></A> 代替。</PRE>
+<UL>
+  <LI><CODE>size</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Integer&gt;</A> 
+  The desired length of the new <CODE>SlowBuffer</CODE></LI></UL>
+<P>Allocates a new <CODE>SlowBuffer</CODE> of <CODE>size</CODE> bytes. The 
+<CODE>size</CODE> must be less than or equal to the value of <A href="http://nodejs.cn/api/buffer.html#buffer_buffer_kmaxlength"><CODE>buffer.kMaxLength</CODE></A>. 
+Otherwise, a <A 
+href="http://nodejs.cn/api/errors.html#errors_class_rangeerror"><CODE>RangeError</CODE></A> 
+is thrown. A zero-length <CODE>Buffer</CODE> will be created if <CODE>size &lt;= 
+0</CODE>.</P>
+<P>The underlying memory for <CODE>SlowBuffer</CODE> instances is <EM>not 
+initialized</EM>. The contents of a newly created <CODE>SlowBuffer</CODE> are 
+unknown and could contain sensitive data. Use <A href="http://nodejs.cn/api/buffer.html#buffer_buf_fill_value_offset_end_encoding"><CODE>buf.fill(0)</CODE></A> 
+to initialize a <CODE>SlowBuffer</CODE> to zeroes.</P>
+<P>Example:</P>
+<PRE><CODE class="lang-js">const SlowBuffer = require('buffer').SlowBuffer;
+
+const buf = new SlowBuffer(5);
+
+// Prints: (contents may vary): &lt;Buffer 78 e0 82 02 01&gt;
+console.log(buf);
+
+buf.fill(0);
+
+// Prints: &lt;Buffer 00 00 00 00 00&gt;
+console.log(buf);
+</CODE></PRE></DIV></DIV></DIV><!-- 搜索弹窗 --> 
+  
+<DIV id="modal_search_bg"></DIV>
+<DIV 
+id="modal_search"><INPUT id="modal_search_input" placeholder="API 快速搜索" value=""> 
+    
+<DIV id="modal_search_result"></DIV></DIV><!-- js -->   <!--[if lt IE 10]><script src="/static/lib/placeholders.js?20170426"></script><![endif]--> 
+  
+<SCRIPT src="buffer%20%20Node_js%20API%20文档_files/api.js"></SCRIPT>
+ </BODY></HTML>

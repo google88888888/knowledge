@@ -1,0 +1,577 @@
+﻿<!DOCTYPE HTML>
+<!-- saved from url=(0063)http://nodejs.cn/api/assert.html -->
+<!DOCTYPE html PUBLIC "" ""><HTML lang="zh-cmn-Hans"><HEAD><META 
+content="IE=11.0000" http-equiv="X-UA-Compatible">
+   
+<META charset="utf-8">   <TITLE>assert | Node.js API 文档</TITLE>   <LINK href="assert%20%20Node_js%20API%20文档_files/api.css" 
+rel="stylesheet">   <LINK href="/static/favicon.png" rel="icon" type="image/png" 
+sizes="32x32"> 
+<META name="GENERATOR" content="MSHTML 11.00.9600.18639"></HEAD> 
+<BODY class="alt apidoc" id="api-section-assert">
+<DIV class="clearfix" id="content">
+<DIV class="interior" id="column2">
+<DIV class="interior" id="intro"><A href="http://nodejs.cn/">          Node.js 
+中文网         </A>         
+<DIV><INPUT id="search_input" placeholder="API 快速搜索" value="">         
+</DIV></DIV>
+<UL>
+  <LI><A class="nav-documentation" href="http://nodejs.cn/api/documentation.html">关于本文档</A></LI>
+  <LI><A class="nav-synopsis" 
+  href="http://nodejs.cn/api/synopsis.html">用法与例子</A></LI></UL>
+<DIV class="line"></DIV>
+<UL>
+  <LI><A class="nav-assert active" 
+  href="http://nodejs.cn/api/assert.html">Assert (断言)</A></LI>
+  <LI><A class="nav-buffer" 
+  href="http://nodejs.cn/api/buffer.html">Buffer</A></LI>
+  <LI><A class="nav-addons" href="http://nodejs.cn/api/addons.html">C/C++ 
+  插件</A></LI>
+  <LI><A class="nav-child_process" href="http://nodejs.cn/api/child_process.html">Child 
+  Processes (子进程)</A></LI>
+  <LI><A class="nav-cluster" href="http://nodejs.cn/api/cluster.html">Cluster 
+  (集群)</A></LI>
+  <LI><A class="nav-cli" href="http://nodejs.cn/api/cli.html">CLI 
+  (命令行选项)</A></LI>
+  <LI><A class="nav-console" href="http://nodejs.cn/api/console.html">Console 
+  (控制台)</A></LI>
+  <LI><A class="nav-crypto" href="http://nodejs.cn/api/crypto.html">Crypto 
+  (加密)</A></LI>
+  <LI><A class="nav-debugger" href="http://nodejs.cn/api/debugger.html">Debugger 
+  (调试器)</A></LI>
+  <LI><A class="nav-dns" href="http://nodejs.cn/api/dns.html">DNS 
+  (域名服务器)</A></LI>
+  <LI><A class="nav-domain" href="http://nodejs.cn/api/domain.html">Domain 
+  (域)</A></LI>
+  <LI><A class="nav-errors" href="http://nodejs.cn/api/errors.html">Error 
+  (错误)</A></LI>
+  <LI><A class="nav-events" href="http://nodejs.cn/api/events.html">Events 
+  (事件)</A></LI>
+  <LI><A class="nav-fs" href="http://nodejs.cn/api/fs.html">File System 
+  (文件系统)</A></LI>
+  <LI><A class="nav-globals" href="http://nodejs.cn/api/globals.html">Global 
+  (全局变量)</A></LI>
+  <LI><A class="nav-http" href="http://nodejs.cn/api/http.html">HTTP</A></LI>
+  <LI><A class="nav-https" href="http://nodejs.cn/api/https.html">HTTPS</A></LI>
+  <LI><A class="nav-modules" href="http://nodejs.cn/api/modules.html">Module 
+  (模块)</A></LI>
+  <LI><A class="nav-net" href="http://nodejs.cn/api/net.html">Net (网络)</A></LI>
+  <LI><A class="nav-os" href="http://nodejs.cn/api/os.html">OS (操作系统)</A></LI>
+  <LI><A class="nav-path" href="http://nodejs.cn/api/path.html">Path 
+  (路径)</A></LI>
+  <LI><A class="nav-process" href="http://nodejs.cn/api/process.html">Process 
+  (进程)</A></LI>
+  <LI><A class="nav-punycode" 
+  href="http://nodejs.cn/api/punycode.html">Punycode</A></LI>
+  <LI><A class="nav-querystring" 
+  href="http://nodejs.cn/api/querystring.html">Query Strings (查询字符串)</A></LI>
+  <LI><A class="nav-readline" href="http://nodejs.cn/api/readline.html">Readline 
+  (逐行读取)</A></LI>
+  <LI><A class="nav-repl" href="http://nodejs.cn/api/repl.html">REPL 
+  (交互式解释器)</A></LI>
+  <LI><A class="nav-stream" href="http://nodejs.cn/api/stream.html">Stream 
+  (流)</A></LI>
+  <LI><A class="nav-string_decoder" href="http://nodejs.cn/api/string_decoder.html">String 
+  Decoder (字符串解码器)</A></LI>
+  <LI><A class="nav-timers" href="http://nodejs.cn/api/timers.html">Timer 
+  (定时器)</A></LI>
+  <LI><A class="nav-tls" href="http://nodejs.cn/api/tls.html">TLS 
+  (安全传输层)</A></LI>
+  <LI><A class="nav-tty" href="http://nodejs.cn/api/tty.html">TTY (终端)</A></LI>
+  <LI><A class="nav-dgram" href="http://nodejs.cn/api/dgram.html">UDP/Datagram 
+  (数据报)</A></LI>
+  <LI><A class="nav-url" href="http://nodejs.cn/api/url.html">URL</A></LI>
+  <LI><A class="nav-util" href="http://nodejs.cn/api/util.html">Util 
+  (实用工具)</A></LI>
+  <LI><A class="nav-v8" href="http://nodejs.cn/api/v8.html">V8</A></LI>
+  <LI><A class="nav-vm" href="http://nodejs.cn/api/vm.html">VM (虚拟机)</A></LI>
+  <LI><A class="nav-zlib" href="http://nodejs.cn/api/zlib.html">ZLIB 
+  (压缩)</A></LI></UL>
+<DIV class="line"></DIV></DIV>
+<DIV class="interior" id="column1" data-id="assert"><HEADER>
+<H1>Node.js v6.10.3 文档</H1>
+<DIV id="gtoc">
+<P><A name="toc" href="http://nodejs.cn/api/">返回文档首页</A>             <!--<a href="/api/all.html">单页面显示</a> |--> 
+            <!--<a href="/api/assert.json">JSON格式</a> |-->             <!--<a href="/api/en/assert.html">查看英文版</a>--> 
+          </P></DIV>
+<HR>
+</HEADER>
+<DIV id="toc">
+<H2>目录</H2>
+<UL>
+  <LI><SPAN class="stability_2"><A href="http://nodejs.cn/api/assert.html#assert_assert">assert 
+  (断言)</A></SPAN>
+  <UL> 
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/assert.html#assert_assert_value_message">assert(value[, 
+    message])</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/assert.html#assert_assert_deepequal_actual_expected_message">assert.deepEqual(actual, 
+    expected[, message])</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/assert.html#assert_assert_deepstrictequal_actual_expected_message">assert.deepStrictEqual(actual, 
+    expected[, message])</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/assert.html#assert_assert_doesnotthrow_block_error_message">assert.doesNotThrow(block[, 
+    error][, message])</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/assert.html#assert_assert_equal_actual_expected_message">assert.equal(actual, 
+    expected[, message])</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/assert.html#assert_assert_fail_actual_expected_message_operator">assert.fail(actual, 
+    expected, message, operator)</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/assert.html#assert_assert_iferror_value">assert.ifError(value)</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/assert.html#assert_assert_notdeepequal_actual_expected_message">assert.notDeepEqual(actual, 
+    expected[, message])</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/assert.html#assert_assert_notdeepstrictequal_actual_expected_message">assert.notDeepStrictEqual(actual, 
+    expected[, message])</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/assert.html#assert_assert_notequal_actual_expected_message">assert.notEqual(actual, 
+    expected[, message])</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/assert.html#assert_assert_notstrictequal_actual_expected_message">assert.notStrictEqual(actual, 
+    expected[, message])</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/assert.html#assert_assert_ok_value_message">assert.ok(value[, 
+    message])</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/assert.html#assert_assert_strictequal_actual_expected_message">assert.strictEqual(actual, 
+    expected[, message])</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/assert.html#assert_assert_throws_block_error_message">assert.throws(block[, 
+    error][, message])</A></SPAN></LI></UL></LI></UL></DIV>
+<DIV id="apicontent">
+<H1>assert (断言)<SPAN><A class="mark" id="assert_assert" href="http://nodejs.cn/api/assert.html#assert_assert">#</A></SPAN></H1>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/assert.html#assert_assert">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/assert/assert.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<PRE class="api_stability api_stability_2"><A href="http://nodejs.cn/api/documentation.html#documentation_stability_index">稳定性: 2</A> - 稳定的</PRE>
+<P><CODE>assert</CODE> 模块提供了一组简单的断言测试集合，可被用于测试不变量。</P>
+<H2>assert(value[, message])<SPAN><A class="mark" id="assert_assert_value_message" 
+href="http://nodejs.cn/api/assert.html#assert_assert_value_message">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/assert.html#assert_assert_value_message">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/assert/assert_value_message.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.5.9</SPAN> </DIV>
+<UL>
+  <LI><CODE>value</CODE> <SPAN class="type">&lt;any&gt;</SPAN></LI>
+  <LI><CODE>message</CODE> <SPAN class="type">&lt;any&gt;</SPAN></LI></UL>
+<P><A 
+href="http://nodejs.cn/api/assert.html#assert_assert_ok_value_message"><CODE>assert.ok()</CODE></A> 
+的别名。</P>
+<H2>assert.deepEqual(actual, expected[, message])<SPAN><A class="mark" id="assert_assert_deepequal_actual_expected_message" 
+href="http://nodejs.cn/api/assert.html#assert_assert_deepequal_actual_expected_message">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/assert.html#assert_assert_deepequal_actual_expected_message">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/assert/assert_deepequal_actual_expected_message.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.21</SPAN> </DIV>
+<UL>
+  <LI><CODE>actual</CODE> <SPAN class="type">&lt;any&gt;</SPAN></LI>
+  <LI><CODE>expected</CODE> <SPAN class="type">&lt;any&gt;</SPAN></LI>
+  <LI><CODE>message</CODE> <SPAN class="type">&lt;any&gt;</SPAN></LI></UL>
+<P>测试 <CODE>actual</CODE> 参数与 <CODE>expected</CODE> 参数是否深度相等。
+ 原始值使用相等运算符（<CODE>==</CODE>）比较。</P>
+<P>只比较可枚举的自身属性。 <CODE>deepEqual()</CODE> 不比较对象的原型、连接符、或不可枚举的属性。 这可能会导致一些意料之外的结果。
+ 例如，下面的例子不会抛出 <CODE>AssertionError</CODE>，因为 <A href="http://nodejs.cn/api/errors.html#errors_class_error">Error</A> 
+对象的属性是不可枚举的：</P>
+<PRE><CODE class="lang-js">// 注意：这不会抛出 AssertionError！
+assert.deepEqual(Error('a'), Error('b'));
+</CODE></PRE>
+<P>深度相等意味着子对象的可枚举的自身属性也会被比较：</P>
+<PRE><CODE class="lang-js">const assert = require('assert');
+
+const obj1 = {
+  a : {
+    b : 1
+  }
+};
+const obj2 = {
+  a : {
+    b : 2
+  }
+};
+const obj3 = {
+  a : {
+    b : 1
+  }
+};
+const obj4 = Object.create(obj1);
+
+assert.deepEqual(obj1, obj1);
+// 通过，对象与自身相等
+
+assert.deepEqual(obj1, obj2);
+// 抛出 AssertionError: { a: { b: 1 } } deepEqual { a: { b: 2 } }
+// b 的值不同
+
+assert.deepEqual(obj1, obj3);
+// 通过，两个对象相等
+
+assert.deepEqual(obj1, obj4);
+// 抛出 AssertionError: { a: { b: 1 } } deepEqual {}
+// 原型会被忽略
+</CODE></PRE>
+<P>如果两个值不相等，则抛出一个带有 <CODE>message</CODE> 属性的 <CODE>AssertionError</CODE>，其中 
+<CODE>message</CODE> 属性的值等于传入的 <CODE>message</CODE> 参数的值。 如果 
+<CODE>message</CODE> 参数为 <CODE>undefined</CODE>，则赋予默认的错误信息。</P>
+<H2>assert.deepStrictEqual(actual, expected[, message])<SPAN><A class="mark" id="assert_assert_deepstrictequal_actual_expected_message" 
+href="http://nodejs.cn/api/assert.html#assert_assert_deepstrictequal_actual_expected_message">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/assert.html#assert_assert_deepstrictequal_actual_expected_message">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/assert/assert_deepstrictequal_actual_expected_message.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v1.2.0</SPAN> </DIV>
+<UL>
+  <LI><CODE>actual</CODE> <SPAN class="type">&lt;any&gt;</SPAN></LI>
+  <LI><CODE>expected</CODE> <SPAN class="type">&lt;any&gt;</SPAN></LI>
+  <LI><CODE>message</CODE> <SPAN class="type">&lt;any&gt;</SPAN></LI></UL>
+<P>大多数情况下与 <CODE>assert.deepEqual()</CODE> 一样，但有两个例外。
+ 首先，原始值使用全等运算符（<CODE>===</CODE>）比较。 其次，对象的比较包括检查它们的原型是否全等。</P>
+<PRE><CODE class="lang-js">const assert = require('assert');
+
+assert.deepEqual({a:1}, {a:'1'});
+// 通过，因为 1 == '1'
+
+assert.deepStrictEqual({a:1}, {a:'1'});
+// 抛出 AssertionError: { a: 1 } deepStrictEqual { a: '1' }
+// 因为 1 !== '1' 使用全等运算符
+</CODE></PRE>
+<P>如果两个值不相等，则抛出一个带有 <CODE>message</CODE> 属性的 <CODE>AssertionError</CODE>，其中 
+<CODE>message</CODE> 属性的值等于传入的 <CODE>message</CODE> 参数的值。 如果 
+<CODE>message</CODE> 参数为 <CODE>undefined</CODE>，则赋予默认的错误信息。</P>
+<H2>assert.doesNotThrow(block[, error][, message])<SPAN><A class="mark" id="assert_assert_doesnotthrow_block_error_message" 
+href="http://nodejs.cn/api/assert.html#assert_assert_doesnotthrow_block_error_message">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/assert.html#assert_assert_doesnotthrow_block_error_message">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/assert/assert_doesnotthrow_block_error_message.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.21</SPAN> </DIV>
+<UL>
+  <LI><CODE>block</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">&lt;Function&gt;</A></LI>
+  <LI><CODE>error</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp">&lt;RegExp&gt;</A> 
+  | <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">&lt;Function&gt;</A></LI>
+  <LI><CODE>message</CODE> <SPAN class="type">&lt;any&gt;</SPAN></LI></UL>
+<P>断言 <CODE>block</CODE> 函数不会抛出错误。 查看 <A href="http://nodejs.cn/api/assert.html#assert_assert_throws_block_error_message">assert.throws()</A> 
+了解更多。</P>
+<P>当 <CODE>assert.doesNotThrow()</CODE> 被调用时，它会立即调用 <CODE>block</CODE> 函数。</P>
+<P>如果抛出错误且错误类型与 <CODE>error</CODE> 参数指定的相同，则抛出 <CODE>AssertionError</CODE>。
+ 如果错误类型不相同，或 <CODE>error</CODE> 参数是 <CODE>undefined</CODE>，则错误会被抛回给调用者。</P>
+<P>以下例子会抛出 <A 
+href="http://nodejs.cn/api/errors.html#errors_class_typeerror">TypeError</A>，因为在断言中没有匹配的错误类型：</P>
+<PRE><CODE class="lang-js">assert.doesNotThrow(
+  () =&gt; {
+    throw new TypeError('错误');
+  },
+  SyntaxError
+);
+</CODE></PRE>
+<P>以下例子会抛出一个带有 <CODE>Got unwanted exception (TypeError)..</CODE> 信息的 
+<CODE>AssertionError</CODE>：</P>
+<PRE><CODE class="lang-js">assert.doesNotThrow(
+  () =&gt; {
+    throw new TypeError('错误');
+  },
+  TypeError
+);
+</CODE></PRE>
+<P>如果抛出了 <CODE>AssertionError</CODE> 且有给 <CODE>message</CODE> 参数传值，则 
+<CODE>message</CODE> 的值会被附加到 <CODE>AssertionError</CODE> 的信息中：</P>
+<PRE><CODE class="lang-js">assert.doesNotThrow(
+  () =&gt; {
+    throw new TypeError('错误');
+  },
+  TypeError,
+  '抛出错误'
+);
+// 抛出 AssertionError: Got unwanted exception (TypeError). 抛出错误
+</CODE></PRE>
+<H2>assert.equal(actual, expected[, message])<SPAN><A class="mark" id="assert_assert_equal_actual_expected_message" 
+href="http://nodejs.cn/api/assert.html#assert_assert_equal_actual_expected_message">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/assert.html#assert_assert_equal_actual_expected_message">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/assert/assert_equal_actual_expected_message.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.21</SPAN> </DIV>
+<UL>
+  <LI><CODE>actual</CODE> <SPAN class="type">&lt;any&gt;</SPAN></LI>
+  <LI><CODE>expected</CODE> <SPAN class="type">&lt;any&gt;</SPAN></LI>
+  <LI><CODE>message</CODE> <SPAN class="type">&lt;any&gt;</SPAN></LI></UL>
+<P>使用相等运算符（<CODE>==</CODE>）测试 <CODE>actual</CODE> 参数与 <CODE>expected</CODE> 
+参数是否相等。</P>
+<PRE><CODE class="lang-js">const assert = require('assert');
+
+assert.equal(1, 1);
+// 通过，1 == 1
+assert.equal(1, '1');
+// 通过，1 == '1'
+
+assert.equal(1, 2);
+// 抛出 AssertionError: 1 == 2
+assert.equal({a: {b: 1}}, {a: {b: 1}});
+// 抛出 AssertionError: { a: { b: 1 } } == { a: { b: 1 } }
+</CODE></PRE>
+<P>如果两个值不相等，则抛出一个带有 <CODE>message</CODE> 属性的 <CODE>AssertionError</CODE>，其中 
+<CODE>message</CODE> 属性的值等于传入的 <CODE>message</CODE> 参数的值。 如果 
+<CODE>message</CODE> 参数为 <CODE>undefined</CODE>，则赋予默认的错误信息。</P>
+<H2>assert.fail(actual, expected, message, operator)<SPAN><A class="mark" id="assert_assert_fail_actual_expected_message_operator" 
+href="http://nodejs.cn/api/assert.html#assert_assert_fail_actual_expected_message_operator">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/assert.html#assert_assert_fail_actual_expected_message_operator">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/assert/assert_fail_actual_expected_message_operator.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.21</SPAN> </DIV>
+<UL>
+  <LI><CODE>actual</CODE> <SPAN class="type">&lt;any&gt;</SPAN></LI>
+  <LI><CODE>expected</CODE> <SPAN class="type">&lt;any&gt;</SPAN></LI>
+  <LI><CODE>message</CODE> <SPAN class="type">&lt;any&gt;</SPAN></LI>
+  <LI><CODE>operator</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A></LI></UL>
+<P>抛出 <CODE>AssertionError</CODE>。 如果 <CODE>message</CODE> 不存在，则错误信息会被设为 
+<CODE>actual</CODE> 的值加分隔符 <CODE>operator</CODE> 再加 <CODE>expected</CODE> 的值。
+ 否则，错误信息为 <CODE>message</CODE> 的值。</P>
+<PRE><CODE class="lang-js">const assert = require('assert');
+
+assert.fail(1, 2, undefined, '&gt;');
+// 抛出 AssertionError: 1 &gt; 2
+
+assert.fail(1, 2, '错误信息', '&gt;');
+// 抛出 AssertionError: 错误信息
+</CODE></PRE>
+<H2>assert.ifError(value)<SPAN><A class="mark" id="assert_assert_iferror_value" 
+href="http://nodejs.cn/api/assert.html#assert_assert_iferror_value">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/assert.html#assert_assert_iferror_value">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/assert/assert_iferror_value.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.97</SPAN> </DIV>
+<UL>
+  <LI><CODE>value</CODE> <SPAN class="type">&lt;any&gt;</SPAN></LI></UL>
+<P>如果 <CODE>value</CODE> 为真，则抛出 <CODE>value</CODE>。 可用于测试回调函数的 
+<CODE>error</CODE> 参数。</P>
+<PRE><CODE class="lang-js">const assert = require('assert');
+
+assert.ifError(0);
+// 通过
+assert.ifError(1);
+// 抛出 1
+assert.ifError('error');
+// 抛出 'error'
+assert.ifError(new Error());
+// 抛出 Error
+</CODE></PRE>
+<H2>assert.notDeepEqual(actual, expected[, message])<SPAN><A class="mark" id="assert_assert_notdeepequal_actual_expected_message" 
+href="http://nodejs.cn/api/assert.html#assert_assert_notdeepequal_actual_expected_message">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/assert.html#assert_assert_notdeepequal_actual_expected_message">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/assert/assert_notdeepequal_actual_expected_message.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.21</SPAN> </DIV>
+<UL>
+  <LI><CODE>actual</CODE> <SPAN class="type">&lt;any&gt;</SPAN></LI>
+  <LI><CODE>expected</CODE> <SPAN class="type">&lt;any&gt;</SPAN></LI>
+  <LI><CODE>message</CODE> <SPAN class="type">&lt;any&gt;</SPAN></LI></UL>
+<P>测试是否不深度相等。 与 <A href="http://nodejs.cn/api/assert.html#assert_assert_deepequal_actual_expected_message"><CODE>assert.deepEqual()</CODE></A> 
+相反。</P>
+<PRE><CODE class="lang-js">const assert = require('assert');
+
+const obj1 = {
+  a : {
+    b : 1
+  }
+};
+const obj2 = {
+  a : {
+    b : 2
+  }
+};
+const obj3 = {
+  a : {
+    b : 1
+  }
+};
+const obj4 = Object.create(obj1);
+
+assert.notDeepEqual(obj1, obj1);
+// 抛出 AssertionError: { a: { b: 1 } } notDeepEqual { a: { b: 1 } }
+
+assert.notDeepEqual(obj1, obj2);
+// 通过，obj1 与 obj2 不深度相等
+
+assert.notDeepEqual(obj1, obj3);
+// 抛出 AssertionError: { a: { b: 1 } } notDeepEqual { a: { b: 1 } }
+
+assert.notDeepEqual(obj1, obj4);
+// 通过，obj1 与 obj4 不深度相等
+</CODE></PRE>
+<P>如果两个值深度相等，则抛出一个带有 <CODE>message</CODE> 属性的 <CODE>AssertionError</CODE>，其中 
+<CODE>message</CODE> 属性的值等于传入的 <CODE>message</CODE> 参数的值。 如果 
+<CODE>message</CODE> 参数为 <CODE>undefined</CODE>，则赋予默认的错误信息。</P>
+<H2>assert.notDeepStrictEqual(actual, expected[, message])<SPAN><A class="mark" 
+id="assert_assert_notdeepstrictequal_actual_expected_message" href="http://nodejs.cn/api/assert.html#assert_assert_notdeepstrictequal_actual_expected_message">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/assert.html#assert_assert_notdeepstrictequal_actual_expected_message">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/assert/assert_notdeepstrictequal_actual_expected_message.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v1.2.0</SPAN> </DIV>
+<UL>
+  <LI><CODE>actual</CODE> <SPAN class="type">&lt;any&gt;</SPAN></LI>
+  <LI><CODE>expected</CODE> <SPAN class="type">&lt;any&gt;</SPAN></LI>
+  <LI><CODE>message</CODE> <SPAN class="type">&lt;any&gt;</SPAN></LI></UL>
+<P>测试是否不深度全等。 与 <A href="http://nodejs.cn/api/assert.html#assert_assert_deepstrictequal_actual_expected_message"><CODE>assert.deepStrictEqual()</CODE></A> 
+相反。</P>
+<PRE><CODE class="lang-js">const assert = require('assert');
+
+assert.notDeepEqual({a:1}, {a:'1'});
+// 抛出 AssertionError: { a: 1 } notDeepEqual { a: '1' }
+
+assert.notDeepStrictEqual({a:1}, {a:'1'});
+// 通过
+</CODE></PRE>
+<P>如果两个值深度全等，则抛出一个带有 <CODE>message</CODE> 属性的 <CODE>AssertionError</CODE>，其中 
+<CODE>message</CODE> 属性的值等于传入的 <CODE>message</CODE> 参数的值。 如果 
+<CODE>message</CODE> 参数为 <CODE>undefined</CODE>，则赋予默认的错误信息。</P>
+<H2>assert.notEqual(actual, expected[, message])<SPAN><A class="mark" id="assert_assert_notequal_actual_expected_message" 
+href="http://nodejs.cn/api/assert.html#assert_assert_notequal_actual_expected_message">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/assert.html#assert_assert_notequal_actual_expected_message">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/assert/assert_notequal_actual_expected_message.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.21</SPAN> </DIV>
+<UL>
+  <LI><CODE>actual</CODE> <SPAN class="type">&lt;any&gt;</SPAN></LI>
+  <LI><CODE>expected</CODE> <SPAN class="type">&lt;any&gt;</SPAN></LI>
+  <LI><CODE>message</CODE> <SPAN class="type">&lt;any&gt;</SPAN></LI></UL>
+<P>使用不等运算符（<CODE>!=</CODE>）测试是否不相等。</P>
+<PRE><CODE class="lang-js">const assert = require('assert');
+
+assert.notEqual(1, 2);
+// 通过
+
+assert.notEqual(1, 1);
+// 抛出 AssertionError: 1 != 1
+
+assert.notEqual(1, '1');
+// 抛出 AssertionError: 1 != '1'
+</CODE></PRE>
+<P>如果两个值相等，则抛出一个带有 <CODE>message</CODE> 属性的 <CODE>AssertionError</CODE>，其中 
+<CODE>message</CODE> 属性的值等于传入的 <CODE>message</CODE> 参数的值。 如果 
+<CODE>message</CODE> 参数为 <CODE>undefined</CODE>，则赋予默认的错误信息。</P>
+<H2>assert.notStrictEqual(actual, expected[, message])<SPAN><A class="mark" id="assert_assert_notstrictequal_actual_expected_message" 
+href="http://nodejs.cn/api/assert.html#assert_assert_notstrictequal_actual_expected_message">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/assert.html#assert_assert_notstrictequal_actual_expected_message">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/assert/assert_notstrictequal_actual_expected_message.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.21</SPAN> </DIV>
+<UL>
+  <LI><CODE>actual</CODE> <SPAN class="type">&lt;any&gt;</SPAN></LI>
+  <LI><CODE>expected</CODE> <SPAN class="type">&lt;any&gt;</SPAN></LI>
+  <LI><CODE>message</CODE> <SPAN class="type">&lt;any&gt;</SPAN></LI></UL>
+<P>使用不全等运算符（<CODE>!==</CODE>）测试是否不全等。</P>
+<PRE><CODE class="lang-js">const assert = require('assert');
+
+assert.notStrictEqual(1, 2);
+// 通过
+
+assert.notStrictEqual(1, 1);
+// 抛出 AssertionError: 1 !== 1
+
+assert.notStrictEqual(1, '1');
+// 通过
+</CODE></PRE>
+<P>如果两个值全等，则抛出一个带有 <CODE>message</CODE> 属性的 <CODE>AssertionError</CODE>，其中 
+<CODE>message</CODE> 属性的值等于传入的 <CODE>message</CODE> 参数的值。 如果 
+<CODE>message</CODE> 参数为 <CODE>undefined</CODE>，则赋予默认的错误信息。</P>
+<H2>assert.ok(value[, message])<SPAN><A class="mark" id="assert_assert_ok_value_message" 
+href="http://nodejs.cn/api/assert.html#assert_assert_ok_value_message">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/assert.html#assert_assert_ok_value_message">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/assert/assert_ok_value_message.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.21</SPAN> </DIV>
+<UL>
+  <LI><CODE>value</CODE> <SPAN class="type">&lt;any&gt;</SPAN></LI>
+  <LI><CODE>message</CODE> <SPAN class="type">&lt;any&gt;</SPAN></LI></UL>
+<P>测试 <CODE>value</CODE> 是否为真值。 相当于 <CODE>assert.equal(!!value, true, 
+message)</CODE>。</P>
+<P>如果 <CODE>value</CODE> 不为真值，则抛出一个带有 <CODE>message</CODE> 属性的 
+<CODE>AssertionError</CODE>，其中 <CODE>message</CODE> 属性的值等于传入的 
+<CODE>message</CODE> 参数的值。 如果 <CODE>message</CODE> 参数为 
+<CODE>undefined</CODE>，则赋予默认的错误信息。</P>
+<PRE><CODE class="lang-js">const assert = require('assert');
+
+assert.ok(true);
+// 通过
+assert.ok(1);
+// 通过
+assert.ok(false);
+// 抛出 "AssertionError: false == true"
+assert.ok(0);
+// 抛出 "AssertionError: 0 == true"
+assert.ok(false, '不是真值');
+// 抛出 "AssertionError: 不是真值"
+</CODE></PRE>
+<H2>assert.strictEqual(actual, expected[, message])<SPAN><A class="mark" id="assert_assert_strictequal_actual_expected_message" 
+href="http://nodejs.cn/api/assert.html#assert_assert_strictequal_actual_expected_message">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/assert.html#assert_assert_strictequal_actual_expected_message">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/assert/assert_strictequal_actual_expected_message.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.21</SPAN> </DIV>
+<UL>
+  <LI><CODE>actual</CODE> <SPAN class="type">&lt;any&gt;</SPAN></LI>
+  <LI><CODE>expected</CODE> <SPAN class="type">&lt;any&gt;</SPAN></LI>
+  <LI><CODE>message</CODE> <SPAN class="type">&lt;any&gt;</SPAN></LI></UL>
+<P>使用全等运算符（<CODE>===</CODE>）测试是否全等。</P>
+<PRE><CODE class="lang-js">const assert = require('assert');
+
+assert.strictEqual(1, 2);
+// 抛出 AssertionError: 1 === 2
+
+assert.strictEqual(1, 1);
+// 通过
+
+assert.strictEqual(1, '1');
+// 抛出 AssertionError: 1 === '1'
+</CODE></PRE>
+<P>如果两个值不全等，则抛出一个带有 <CODE>message</CODE> 属性的 <CODE>AssertionError</CODE>，其中 
+<CODE>message</CODE> 属性的值等于传入的 <CODE>message</CODE> 参数的值。 如果 
+<CODE>message</CODE> 参数为 <CODE>undefined</CODE>，则赋予默认的错误信息。</P>
+<H2>assert.throws(block[, error][, message])<SPAN><A class="mark" id="assert_assert_throws_block_error_message" 
+href="http://nodejs.cn/api/assert.html#assert_assert_throws_block_error_message">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/assert.html#assert_assert_throws_block_error_message">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/assert/assert_throws_block_error_message.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.21</SPAN> </DIV>
+<UL>
+  <LI><CODE>block</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">&lt;Function&gt;</A></LI>
+  <LI><CODE>error</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp">&lt;RegExp&gt;</A> 
+  | <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">&lt;Function&gt;</A></LI>
+  <LI><CODE>message</CODE> <SPAN class="type">&lt;any&gt;</SPAN></LI></UL>
+<P>期望 <CODE>block</CODE> 函数抛出错误。</P>
+<P>如果指定了 <CODE>error</CODE>，<CODE>error</CODE> 可以是构造函数、<A href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions">正则表达式</A>、或自定义的验证函数。</P>
+<P>如果指定了 <CODE>message</CODE>，则当 <CODE>block</CODE> 不抛出错误时，<CODE>message</CODE> 
+会作为 <CODE>AssertionError</CODE> 的错误信息。</P>
+<P>例子，使用构造函数验证实例：</P>
+<PRE><CODE class="lang-js">assert.throws(
+  () =&gt; {
+    throw new Error('错误信息');
+  },
+  Error
+);
+</CODE></PRE>
+<P>例子，使用 <A href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions">正则表达式</A> 
+验证错误信息：</P>
+<PRE><CODE class="lang-js">assert.throws(
+  () =&gt; {
+    throw new Error('错误信息');
+  },
+  /错误/
+);
+</CODE></PRE>
+<P>例子，自定义的错误验证函数：</P>
+<PRE><CODE class="lang-js">assert.throws(
+  () =&gt; {
+    throw new Error('错误信息');
+  },
+  function(err) {
+    if ( (err instanceof Error) &amp;&amp; /错误/.test(err) ) {
+      return true;
+    }
+  },
+  '不是期望的错误'
+);
+</CODE></PRE>
+<P>注意，<CODE>error</CODE> 不能是一个字符串。 如果第二个参数是一个字符串，则视为省略 <CODE>error</CODE> 
+参数，传入的字符串会被用于 <CODE>message</CODE>。 这点比较容易搞错：</P>
+<PRE><CODE class="lang-js">// 这是错误的！不要这么做！
+assert.throws(myFunction, '错误', '没有抛出期望的信息');
+
+// 应该这么做。
+assert.throws(myFunction, /错误/, '没有抛出期望的信息');
+</CODE></PRE></DIV></DIV></DIV><!-- 搜索弹窗 --> 
+  
+<DIV id="modal_search_bg"></DIV>
+<DIV 
+id="modal_search"><INPUT id="modal_search_input" placeholder="API 快速搜索" value=""> 
+    
+<DIV id="modal_search_result"></DIV></DIV><!-- js -->   <!--[if lt IE 10]><script src="/static/lib/placeholders.js?20170426"></script><![endif]--> 
+  
+<SCRIPT src="assert%20%20Node_js%20API%20文档_files/api.js"></SCRIPT>
+ </BODY></HTML>

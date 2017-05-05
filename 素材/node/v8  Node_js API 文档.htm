@@ -1,0 +1,233 @@
+﻿<!DOCTYPE HTML>
+<!-- saved from url=(0028)http://nodejs.cn/api/v8.html -->
+<!DOCTYPE html PUBLIC "" ""><HTML lang="zh-cmn-Hans"><HEAD><META 
+content="IE=11.0000" http-equiv="X-UA-Compatible">
+   
+<META charset="utf-8">   <TITLE>v8 | Node.js API 文档</TITLE>   <LINK href="v8%20%20Node_js%20API%20文档_files/api.css" 
+rel="stylesheet">   <LINK href="/static/favicon.png" rel="icon" type="image/png" 
+sizes="32x32"> 
+<META name="GENERATOR" content="MSHTML 11.00.9600.18639"></HEAD> 
+<BODY class="alt apidoc" id="api-section-v8">
+<DIV class="clearfix" id="content">
+<DIV class="interior" id="column2">
+<DIV class="interior" id="intro"><A href="http://nodejs.cn/">          Node.js 
+中文网         </A>         
+<DIV><INPUT id="search_input" placeholder="API 快速搜索" value="">         
+</DIV></DIV>
+<UL>
+  <LI><A class="nav-documentation" href="http://nodejs.cn/api/documentation.html">关于本文档</A></LI>
+  <LI><A class="nav-synopsis" 
+  href="http://nodejs.cn/api/synopsis.html">用法与例子</A></LI></UL>
+<DIV class="line"></DIV>
+<UL>
+  <LI><A class="nav-assert" href="http://nodejs.cn/api/assert.html">Assert 
+  (断言)</A></LI>
+  <LI><A class="nav-buffer" 
+  href="http://nodejs.cn/api/buffer.html">Buffer</A></LI>
+  <LI><A class="nav-addons" href="http://nodejs.cn/api/addons.html">C/C++ 
+  插件</A></LI>
+  <LI><A class="nav-child_process" href="http://nodejs.cn/api/child_process.html">Child 
+  Processes (子进程)</A></LI>
+  <LI><A class="nav-cluster" href="http://nodejs.cn/api/cluster.html">Cluster 
+  (集群)</A></LI>
+  <LI><A class="nav-cli" href="http://nodejs.cn/api/cli.html">CLI 
+  (命令行选项)</A></LI>
+  <LI><A class="nav-console" href="http://nodejs.cn/api/console.html">Console 
+  (控制台)</A></LI>
+  <LI><A class="nav-crypto" href="http://nodejs.cn/api/crypto.html">Crypto 
+  (加密)</A></LI>
+  <LI><A class="nav-debugger" href="http://nodejs.cn/api/debugger.html">Debugger 
+  (调试器)</A></LI>
+  <LI><A class="nav-dns" href="http://nodejs.cn/api/dns.html">DNS 
+  (域名服务器)</A></LI>
+  <LI><A class="nav-domain" href="http://nodejs.cn/api/domain.html">Domain 
+  (域)</A></LI>
+  <LI><A class="nav-errors" href="http://nodejs.cn/api/errors.html">Error 
+  (错误)</A></LI>
+  <LI><A class="nav-events" href="http://nodejs.cn/api/events.html">Events 
+  (事件)</A></LI>
+  <LI><A class="nav-fs" href="http://nodejs.cn/api/fs.html">File System 
+  (文件系统)</A></LI>
+  <LI><A class="nav-globals" href="http://nodejs.cn/api/globals.html">Global 
+  (全局变量)</A></LI>
+  <LI><A class="nav-http" href="http://nodejs.cn/api/http.html">HTTP</A></LI>
+  <LI><A class="nav-https" href="http://nodejs.cn/api/https.html">HTTPS</A></LI>
+  <LI><A class="nav-modules" href="http://nodejs.cn/api/modules.html">Module 
+  (模块)</A></LI>
+  <LI><A class="nav-net" href="http://nodejs.cn/api/net.html">Net (网络)</A></LI>
+  <LI><A class="nav-os" href="http://nodejs.cn/api/os.html">OS (操作系统)</A></LI>
+  <LI><A class="nav-path" href="http://nodejs.cn/api/path.html">Path 
+  (路径)</A></LI>
+  <LI><A class="nav-process" href="http://nodejs.cn/api/process.html">Process 
+  (进程)</A></LI>
+  <LI><A class="nav-punycode" 
+  href="http://nodejs.cn/api/punycode.html">Punycode</A></LI>
+  <LI><A class="nav-querystring" 
+  href="http://nodejs.cn/api/querystring.html">Query Strings (查询字符串)</A></LI>
+  <LI><A class="nav-readline" href="http://nodejs.cn/api/readline.html">Readline 
+  (逐行读取)</A></LI>
+  <LI><A class="nav-repl" href="http://nodejs.cn/api/repl.html">REPL 
+  (交互式解释器)</A></LI>
+  <LI><A class="nav-stream" href="http://nodejs.cn/api/stream.html">Stream 
+  (流)</A></LI>
+  <LI><A class="nav-string_decoder" href="http://nodejs.cn/api/string_decoder.html">String 
+  Decoder (字符串解码器)</A></LI>
+  <LI><A class="nav-timers" href="http://nodejs.cn/api/timers.html">Timer 
+  (定时器)</A></LI>
+  <LI><A class="nav-tls" href="http://nodejs.cn/api/tls.html">TLS 
+  (安全传输层)</A></LI>
+  <LI><A class="nav-tty" href="http://nodejs.cn/api/tty.html">TTY (终端)</A></LI>
+  <LI><A class="nav-dgram" href="http://nodejs.cn/api/dgram.html">UDP/Datagram 
+  (数据报)</A></LI>
+  <LI><A class="nav-url" href="http://nodejs.cn/api/url.html">URL</A></LI>
+  <LI><A class="nav-util" href="http://nodejs.cn/api/util.html">Util 
+  (实用工具)</A></LI>
+  <LI><A class="nav-v8 active" href="http://nodejs.cn/api/v8.html">V8</A></LI>
+  <LI><A class="nav-vm" href="http://nodejs.cn/api/vm.html">VM (虚拟机)</A></LI>
+  <LI><A class="nav-zlib" href="http://nodejs.cn/api/zlib.html">ZLIB 
+  (压缩)</A></LI></UL>
+<DIV class="line"></DIV></DIV>
+<DIV class="interior" id="column1" data-id="v8"><HEADER>
+<H1>Node.js v6.10.3 文档</H1>
+<DIV id="gtoc">
+<P><A name="toc" href="http://nodejs.cn/api/">返回文档首页</A>             <!--<a href="/api/all.html">单页面显示</a> |--> 
+            <!--<a href="/api/v8.json">JSON格式</a> |-->             <!--<a href="/api/en/v8.html">查看英文版</a>--> 
+          </P></DIV>
+<HR>
+</HEADER>
+<DIV id="toc">
+<H2>目录</H2>
+<UL>
+  <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/v8.html#v8_v8">V8</A></SPAN>
+  <UL> 
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/v8.html#v8_v8_getheapstatistics">v8.getHeapStatistics()</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/v8.html#v8_v8_getheapspacestatistics">v8.getHeapSpaceStatistics()</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/v8.html#v8_v8_setflagsfromstring_string">v8.setFlagsFromString(string)</A></SPAN></LI></UL></LI></UL></DIV>
+<DIV id="apicontent">
+<H1>V8<SPAN><A class="mark" id="v8_v8" 
+href="http://nodejs.cn/api/v8.html#v8_v8">#</A></SPAN></H1>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/v8.html#v8_v8">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/v8/v8.md" target="_blank" 
+rel="nofollow">参与翻译</A></P>
+<P>The <CODE>v8</CODE> module exposes APIs that are specific to the version of 
+<A href="https://developers.google.com/v8/">V8</A> built into the Node.js 
+binary. It can be accessed using:</P>
+<PRE><CODE class="lang-js">const v8 = require('v8');
+</CODE></PRE>
+<P><EM>Note</EM>: The APIs and implementation are subject to change at any 
+time.</P>
+<H2>v8.getHeapStatistics()<SPAN><A class="mark" id="v8_v8_getheapstatistics" 
+href="http://nodejs.cn/api/v8.html#v8_v8_getheapstatistics">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/v8.html#v8_v8_getheapstatistics">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/v8/v8_getheapstatistics.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v1.0.0</SPAN> </DIV>
+<P>Returns an object with the following properties:</P>
+<UL>
+  <LI><CODE>total_heap_size</CODE> <SPAN class="type">&lt;number&gt;</SPAN></LI>
+  <LI><CODE>total_heap_size_executable</CODE> <SPAN 
+  class="type">&lt;number&gt;</SPAN></LI>
+  <LI><CODE>total_physical_size</CODE> <SPAN 
+  class="type">&lt;number&gt;</SPAN></LI>
+  <LI><CODE>total_available_size</CODE> <SPAN 
+  class="type">&lt;number&gt;</SPAN></LI>
+  <LI><CODE>used_heap_size</CODE> <SPAN class="type">&lt;number&gt;</SPAN></LI>
+  <LI><CODE>heap_size_limit</CODE> <SPAN 
+class="type">&lt;number&gt;</SPAN></LI></UL>
+<P>For example:</P>
+<PRE><CODE class="lang-js">{
+  total_heap_size: 7326976,
+  total_heap_size_executable: 4194304,
+  total_physical_size: 7326976,
+  total_available_size: 1152656,
+  used_heap_size: 3476208,
+  heap_size_limit: 1535115264
+}
+</CODE></PRE>
+<H2>v8.getHeapSpaceStatistics()<SPAN><A class="mark" id="v8_v8_getheapspacestatistics" 
+href="http://nodejs.cn/api/v8.html#v8_v8_getheapspacestatistics">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/v8.html#v8_v8_getheapspacestatistics">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/v8/v8_getheapspacestatistics.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v6.0.0</SPAN> </DIV>
+<P>Returns statistics about the V8 heap spaces, i.e. the segments which make up
+ the V8 heap. Neither the ordering of heap spaces, nor the availability of a
+ heap space can be guaranteed as the statistics are provided via the V8 <A href="https://v8docs.nodesource.com/node-5.0/d5/dda/classv8_1_1_isolate.html#ac673576f24fdc7a33378f8f57e1d13a4"><CODE>GetHeapSpaceStatistics</CODE></A> 
+function and may change from one V8 version to the next.</P>
+<P>The value returned is an array of objects containing the following 
+properties:</P>
+<UL>
+  <LI><CODE>space_name</CODE> <SPAN class="type">&lt;string&gt;</SPAN></LI>
+  <LI><CODE>space_size</CODE> <SPAN class="type">&lt;number&gt;</SPAN></LI>
+  <LI><CODE>space_used_size</CODE> <SPAN class="type">&lt;number&gt;</SPAN></LI>
+  <LI><CODE>space_available_size</CODE> <SPAN 
+  class="type">&lt;number&gt;</SPAN></LI>
+  <LI><CODE>physical_space_size</CODE> <SPAN 
+  class="type">&lt;number&gt;</SPAN></LI></UL>
+<P>For example:</P>
+<PRE><CODE class="lang-json">[
+  {
+    "space_name": "new_space",
+    "space_size": 2063872,
+    "space_used_size": 951112,
+    "space_available_size": 80824,
+    "physical_space_size": 2063872
+  },
+  {
+    "space_name": "old_space",
+    "space_size": 3090560,
+    "space_used_size": 2493792,
+    "space_available_size": 0,
+    "physical_space_size": 3090560
+  },
+  {
+    "space_name": "code_space",
+    "space_size": 1260160,
+    "space_used_size": 644256,
+    "space_available_size": 960,
+    "physical_space_size": 1260160
+  },
+  {
+    "space_name": "map_space",
+    "space_size": 1094160,
+    "space_used_size": 201608,
+    "space_available_size": 0,
+    "physical_space_size": 1094160
+  },
+  {
+    "space_name": "large_object_space",
+    "space_size": 0,
+    "space_used_size": 0,
+    "space_available_size": 1490980608,
+    "physical_space_size": 0
+  }
+]
+</CODE></PRE>
+<H2>v8.setFlagsFromString(string)<SPAN><A class="mark" id="v8_v8_setflagsfromstring_string" 
+href="http://nodejs.cn/api/v8.html#v8_v8_setflagsfromstring_string">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/v8.html#v8_v8_setflagsfromstring_string">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/v8/v8_setflagsfromstring_string.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v1.0.0</SPAN> </DIV>
+<P>The <CODE>v8.setFlagsFromString()</CODE> method can be used to 
+programmatically set V8 command line flags. This method should be used with 
+care. Changing settings after the VM has started may result in unpredictable 
+behavior, including crashes and data loss; or it may simply do nothing.</P>
+<P>The V8 options available for a version of Node.js may be determined by 
+running <CODE>node --v8-options</CODE>.  An unofficial, community-maintained 
+list of options and their effects is available <A href="https://github.com/thlorenz/v8-flags/blob/master/flags-0.11.md">here</A>.</P>
+<P>Usage:</P>
+<PRE><CODE class="lang-js">// Print GC events to stdout for one minute.
+const v8 = require('v8');
+v8.setFlagsFromString('--trace_gc');
+setTimeout(function() { v8.setFlagsFromString('--notrace_gc'); }, 60e3);
+</CODE></PRE></DIV></DIV></DIV><!-- 搜索弹窗 --> 
+  
+<DIV id="modal_search_bg"></DIV>
+<DIV 
+id="modal_search"><INPUT id="modal_search_input" placeholder="API 快速搜索" value=""> 
+    
+<DIV id="modal_search_result"></DIV></DIV><!-- js -->   <!--[if lt IE 10]><script src="/static/lib/placeholders.js?20170426"></script><![endif]--> 
+  
+<SCRIPT src="v8%20%20Node_js%20API%20文档_files/api.js"></SCRIPT>
+ </BODY></HTML>

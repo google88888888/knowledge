@@ -1,0 +1,183 @@
+﻿<!DOCTYPE HTML>
+<!-- saved from url=(0040)http://nodejs.cn/api/string_decoder.html -->
+<!DOCTYPE html PUBLIC "" ""><HTML lang="zh-cmn-Hans"><HEAD><META 
+content="IE=11.0000" http-equiv="X-UA-Compatible">
+   
+<META charset="utf-8">   <TITLE>string decoder | Node.js API 文档</TITLE>   <LINK 
+href="string%20decoder%20%20Node_js%20API%20文档_files/api.css" rel="stylesheet">  
+ <LINK href="/static/favicon.png" rel="icon" type="image/png" sizes="32x32"> 
+<META name="GENERATOR" content="MSHTML 11.00.9600.18639"></HEAD> 
+<BODY class="alt apidoc" id="api-section-string_decoder">
+<DIV class="clearfix" id="content">
+<DIV class="interior" id="column2">
+<DIV class="interior" id="intro"><A href="http://nodejs.cn/">          Node.js 
+中文网         </A>         
+<DIV><INPUT id="search_input" placeholder="API 快速搜索" value="">         
+</DIV></DIV>
+<UL>
+  <LI><A class="nav-documentation" href="http://nodejs.cn/api/documentation.html">关于本文档</A></LI>
+  <LI><A class="nav-synopsis" 
+  href="http://nodejs.cn/api/synopsis.html">用法与例子</A></LI></UL>
+<DIV class="line"></DIV>
+<UL>
+  <LI><A class="nav-assert" href="http://nodejs.cn/api/assert.html">Assert 
+  (断言)</A></LI>
+  <LI><A class="nav-buffer" 
+  href="http://nodejs.cn/api/buffer.html">Buffer</A></LI>
+  <LI><A class="nav-addons" href="http://nodejs.cn/api/addons.html">C/C++ 
+  插件</A></LI>
+  <LI><A class="nav-child_process" href="http://nodejs.cn/api/child_process.html">Child 
+  Processes (子进程)</A></LI>
+  <LI><A class="nav-cluster" href="http://nodejs.cn/api/cluster.html">Cluster 
+  (集群)</A></LI>
+  <LI><A class="nav-cli" href="http://nodejs.cn/api/cli.html">CLI 
+  (命令行选项)</A></LI>
+  <LI><A class="nav-console" href="http://nodejs.cn/api/console.html">Console 
+  (控制台)</A></LI>
+  <LI><A class="nav-crypto" href="http://nodejs.cn/api/crypto.html">Crypto 
+  (加密)</A></LI>
+  <LI><A class="nav-debugger" href="http://nodejs.cn/api/debugger.html">Debugger 
+  (调试器)</A></LI>
+  <LI><A class="nav-dns" href="http://nodejs.cn/api/dns.html">DNS 
+  (域名服务器)</A></LI>
+  <LI><A class="nav-domain" href="http://nodejs.cn/api/domain.html">Domain 
+  (域)</A></LI>
+  <LI><A class="nav-errors" href="http://nodejs.cn/api/errors.html">Error 
+  (错误)</A></LI>
+  <LI><A class="nav-events" href="http://nodejs.cn/api/events.html">Events 
+  (事件)</A></LI>
+  <LI><A class="nav-fs" href="http://nodejs.cn/api/fs.html">File System 
+  (文件系统)</A></LI>
+  <LI><A class="nav-globals" href="http://nodejs.cn/api/globals.html">Global 
+  (全局变量)</A></LI>
+  <LI><A class="nav-http" href="http://nodejs.cn/api/http.html">HTTP</A></LI>
+  <LI><A class="nav-https" href="http://nodejs.cn/api/https.html">HTTPS</A></LI>
+  <LI><A class="nav-modules" href="http://nodejs.cn/api/modules.html">Module 
+  (模块)</A></LI>
+  <LI><A class="nav-net" href="http://nodejs.cn/api/net.html">Net (网络)</A></LI>
+  <LI><A class="nav-os" href="http://nodejs.cn/api/os.html">OS (操作系统)</A></LI>
+  <LI><A class="nav-path" href="http://nodejs.cn/api/path.html">Path 
+  (路径)</A></LI>
+  <LI><A class="nav-process" href="http://nodejs.cn/api/process.html">Process 
+  (进程)</A></LI>
+  <LI><A class="nav-punycode" 
+  href="http://nodejs.cn/api/punycode.html">Punycode</A></LI>
+  <LI><A class="nav-querystring" 
+  href="http://nodejs.cn/api/querystring.html">Query Strings (查询字符串)</A></LI>
+  <LI><A class="nav-readline" href="http://nodejs.cn/api/readline.html">Readline 
+  (逐行读取)</A></LI>
+  <LI><A class="nav-repl" href="http://nodejs.cn/api/repl.html">REPL 
+  (交互式解释器)</A></LI>
+  <LI><A class="nav-stream" href="http://nodejs.cn/api/stream.html">Stream 
+  (流)</A></LI>
+  <LI><A class="nav-string_decoder active" href="http://nodejs.cn/api/string_decoder.html">String 
+  Decoder (字符串解码器)</A></LI>
+  <LI><A class="nav-timers" href="http://nodejs.cn/api/timers.html">Timer 
+  (定时器)</A></LI>
+  <LI><A class="nav-tls" href="http://nodejs.cn/api/tls.html">TLS 
+  (安全传输层)</A></LI>
+  <LI><A class="nav-tty" href="http://nodejs.cn/api/tty.html">TTY (终端)</A></LI>
+  <LI><A class="nav-dgram" href="http://nodejs.cn/api/dgram.html">UDP/Datagram 
+  (数据报)</A></LI>
+  <LI><A class="nav-url" href="http://nodejs.cn/api/url.html">URL</A></LI>
+  <LI><A class="nav-util" href="http://nodejs.cn/api/util.html">Util 
+  (实用工具)</A></LI>
+  <LI><A class="nav-v8" href="http://nodejs.cn/api/v8.html">V8</A></LI>
+  <LI><A class="nav-vm" href="http://nodejs.cn/api/vm.html">VM (虚拟机)</A></LI>
+  <LI><A class="nav-zlib" href="http://nodejs.cn/api/zlib.html">ZLIB 
+  (压缩)</A></LI></UL>
+<DIV class="line"></DIV></DIV>
+<DIV class="interior" id="column1" data-id="string_decoder"><HEADER>
+<H1>Node.js v6.10.3 文档</H1>
+<DIV id="gtoc">
+<P><A name="toc" href="http://nodejs.cn/api/">返回文档首页</A>             <!--<a href="/api/all.html">单页面显示</a> |--> 
+            <!--<a href="/api/string_decoder.json">JSON格式</a> |-->             <!--<a href="/api/en/string_decoder.html">查看英文版</a>--> 
+          </P></DIV>
+<HR>
+</HEADER>
+<DIV id="toc">
+<H2>目录</H2>
+<UL>
+  <LI><SPAN class="stability_2"><A href="http://nodejs.cn/api/string_decoder.html#string_decoder_string_decoder">string_decoder 
+  (字符串解码器)</A></SPAN>
+  <UL> 
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/string_decoder.html#string_decoder_class_new_stringdecoder_encoding">类: 
+    new StringDecoder([encoding])</A></SPAN>
+    <UL> 
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/string_decoder.html#string_decoder_stringdecoder_end_buffer">stringDecoder.end([buffer])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/string_decoder.html#string_decoder_stringdecoder_write_buffer">stringDecoder.write(buffer)</A></SPAN></LI></UL></LI></UL></LI></UL></DIV>
+<DIV id="apicontent">
+<H1>string_decoder (字符串解码器)<SPAN><A class="mark" id="string_decoder_string_decoder" 
+href="http://nodejs.cn/api/string_decoder.html#string_decoder_string_decoder">#</A></SPAN></H1>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/string_decoder.html#string_decoder_string_decoder">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/string_decoder/string_decoder.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<PRE class="api_stability api_stability_2"><A href="http://nodejs.cn/api/documentation.html#documentation_stability_index">稳定性: 2</A> - 稳定的</PRE>
+<P><CODE>string_decoder</CODE> 模块提供了一个 API，用于解码 <CODE>Buffer</CODE> 
+对象成字符串。它可以通过以下方式被使用：</P>
+<PRE><CODE class="lang-js">const StringDecoder = require('string_decoder').StringDecoder;
+</CODE></PRE>
+<P>以下例子展示了 <CODE>StringDecoder</CODE> 类的基本用法。</P>
+<PRE><CODE class="lang-js">const StringDecoder = require('string_decoder').StringDecoder;
+const decoder = new StringDecoder('utf8');
+
+const cent = Buffer.from([0xC2, 0xA2]);
+console.log(decoder.write(cent));
+
+const euro = Buffer.from([0xE2, 0x82, 0xAC]);
+console.log(decoder.write(euro));
+</CODE></PRE>
+<P>当一个 <CODE>Buffer</CODE> 实例被写入 <CODE>StringDecoder</CODE> 实例时，一个内部的 buffer 
+会被用于确保解码后的字符串不包含任何不完整的多字节字符。 不完整的多字节字符被保存在 buffer 中，直到下次调用 
+<CODE>stringDecoder.write()</CODE> 或直到 <CODE>stringDecoder.end()</CODE> 被调用。</P>
+<P>以下例子中，欧元符号（<CODE>€</CODE>）的三个 UTF-8 编码的字节被分成三次操作写入：</P>
+<PRE><CODE class="lang-js">const StringDecoder = require('string_decoder').StringDecoder;
+const decoder = new StringDecoder('utf8');
+
+decoder.write(Buffer.from([0xE2]));
+decoder.write(Buffer.from([0x82]));
+console.log(decoder.end(Buffer.from([0xAC])));
+</CODE></PRE>
+<H2>类: new StringDecoder([encoding])<SPAN><A class="mark" id="string_decoder_class_new_stringdecoder_encoding" 
+href="http://nodejs.cn/api/string_decoder.html#string_decoder_class_new_stringdecoder_encoding">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/string_decoder.html#string_decoder_class_new_stringdecoder_encoding">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/string_decoder/class_new_stringdecoder_encoding.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.99</SPAN> </DIV>
+<UL>
+  <LI><CODE>encoding</CODE> <SPAN class="type">&lt;string&gt;</SPAN> 
+  <CODE>StringDecoder</CODE> 使用的字符编码。默认为 <CODE>'utf8'</CODE>。</LI></UL>
+<P>创建一个新的 <CODE>StringDecoder</CODE> 实例。</P>
+<H3>stringDecoder.end([buffer])<SPAN><A class="mark" id="string_decoder_stringdecoder_end_buffer" 
+href="http://nodejs.cn/api/string_decoder.html#string_decoder_stringdecoder_end_buffer">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/string_decoder.html#string_decoder_stringdecoder_end_buffer">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/string_decoder/stringdecoder_end_buffer.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.9.3</SPAN> </DIV>
+<UL>
+  <LI><CODE>buffer</CODE> <A class="type" href="http://nodejs.cn/api/buffer.html#buffer_class_buffer">&lt;Buffer&gt;</A> 
+  一个包含了要解码的字节的 <CODE>Buffer</CODE>。</LI></UL>
+<P>以字符串的形式返回任何剩下的被保存在内部 buffer 中的字节。 不完整的 UTF-8 与 UTF-16 
+字符的字节会被替换成符合字符编码的替代字符。</P>
+<P>如果提供了 <CODE>buffer</CODE> 参数，则在返回剩余字节之前会再执行一次 
+<CODE>stringDecoder.write()</CODE>。</P>
+<H3>stringDecoder.write(buffer)<SPAN><A class="mark" id="string_decoder_stringdecoder_write_buffer" 
+href="http://nodejs.cn/api/string_decoder.html#string_decoder_stringdecoder_write_buffer">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/string_decoder.html#string_decoder_stringdecoder_write_buffer">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/string_decoder/stringdecoder_write_buffer.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.99</SPAN> </DIV>
+<UL>
+  <LI><CODE>buffer</CODE> <A class="type" href="http://nodejs.cn/api/buffer.html#buffer_class_buffer">&lt;Buffer&gt;</A> 
+  一个包含了要解码的字节的 <CODE>Buffer</CODE>。</LI></UL>
+<P>返回一个解码后的字符串，并确保 <CODE>Buffer</CODE> 末尾的任何不完整的多字节字符从返回的字符串中被过滤并保存在一个内部的 buffer 
+中用于下次调用 <CODE>stringDecoder.write()</CODE> 或 
+<CODE>stringDecoder.end()</CODE>。</P></DIV></DIV></DIV><!-- 搜索弹窗 -->   
+<DIV id="modal_search_bg"></DIV>
+<DIV 
+id="modal_search"><INPUT id="modal_search_input" placeholder="API 快速搜索" value=""> 
+    
+<DIV id="modal_search_result"></DIV></DIV><!-- js -->   <!--[if lt IE 10]><script src="/static/lib/placeholders.js?20170426"></script><![endif]--> 
+  
+<SCRIPT src="string%20decoder%20%20Node_js%20API%20文档_files/api.js"></SCRIPT>
+ </BODY></HTML>

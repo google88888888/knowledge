@@ -1,0 +1,961 @@
+﻿<!DOCTYPE HTML>
+<!-- saved from url=(0029)http://nodejs.cn/api/net.html -->
+<!DOCTYPE html PUBLIC "" ""><HTML lang="zh-cmn-Hans"><HEAD><META 
+content="IE=11.0000" http-equiv="X-UA-Compatible">
+   
+<META charset="utf-8">   <TITLE>net | Node.js API 文档</TITLE>   <LINK href="net%20%20Node_js%20API%20文档_files/api.css" 
+rel="stylesheet">   <LINK href="/static/favicon.png" rel="icon" type="image/png" 
+sizes="32x32"> 
+<META name="GENERATOR" content="MSHTML 11.00.9600.18639"></HEAD> 
+<BODY class="alt apidoc" id="api-section-net">
+<DIV class="clearfix" id="content">
+<DIV class="interior" id="column2">
+<DIV class="interior" id="intro"><A href="http://nodejs.cn/">          Node.js 
+中文网         </A>         
+<DIV><INPUT id="search_input" placeholder="API 快速搜索" value="">         
+</DIV></DIV>
+<UL>
+  <LI><A class="nav-documentation" href="http://nodejs.cn/api/documentation.html">关于本文档</A></LI>
+  <LI><A class="nav-synopsis" 
+  href="http://nodejs.cn/api/synopsis.html">用法与例子</A></LI></UL>
+<DIV class="line"></DIV>
+<UL>
+  <LI><A class="nav-assert" href="http://nodejs.cn/api/assert.html">Assert 
+  (断言)</A></LI>
+  <LI><A class="nav-buffer" 
+  href="http://nodejs.cn/api/buffer.html">Buffer</A></LI>
+  <LI><A class="nav-addons" href="http://nodejs.cn/api/addons.html">C/C++ 
+  插件</A></LI>
+  <LI><A class="nav-child_process" href="http://nodejs.cn/api/child_process.html">Child 
+  Processes (子进程)</A></LI>
+  <LI><A class="nav-cluster" href="http://nodejs.cn/api/cluster.html">Cluster 
+  (集群)</A></LI>
+  <LI><A class="nav-cli" href="http://nodejs.cn/api/cli.html">CLI 
+  (命令行选项)</A></LI>
+  <LI><A class="nav-console" href="http://nodejs.cn/api/console.html">Console 
+  (控制台)</A></LI>
+  <LI><A class="nav-crypto" href="http://nodejs.cn/api/crypto.html">Crypto 
+  (加密)</A></LI>
+  <LI><A class="nav-debugger" href="http://nodejs.cn/api/debugger.html">Debugger 
+  (调试器)</A></LI>
+  <LI><A class="nav-dns" href="http://nodejs.cn/api/dns.html">DNS 
+  (域名服务器)</A></LI>
+  <LI><A class="nav-domain" href="http://nodejs.cn/api/domain.html">Domain 
+  (域)</A></LI>
+  <LI><A class="nav-errors" href="http://nodejs.cn/api/errors.html">Error 
+  (错误)</A></LI>
+  <LI><A class="nav-events" href="http://nodejs.cn/api/events.html">Events 
+  (事件)</A></LI>
+  <LI><A class="nav-fs" href="http://nodejs.cn/api/fs.html">File System 
+  (文件系统)</A></LI>
+  <LI><A class="nav-globals" href="http://nodejs.cn/api/globals.html">Global 
+  (全局变量)</A></LI>
+  <LI><A class="nav-http" href="http://nodejs.cn/api/http.html">HTTP</A></LI>
+  <LI><A class="nav-https" href="http://nodejs.cn/api/https.html">HTTPS</A></LI>
+  <LI><A class="nav-modules" href="http://nodejs.cn/api/modules.html">Module 
+  (模块)</A></LI>
+  <LI><A class="nav-net active" href="http://nodejs.cn/api/net.html">Net 
+  (网络)</A></LI>
+  <LI><A class="nav-os" href="http://nodejs.cn/api/os.html">OS (操作系统)</A></LI>
+  <LI><A class="nav-path" href="http://nodejs.cn/api/path.html">Path 
+  (路径)</A></LI>
+  <LI><A class="nav-process" href="http://nodejs.cn/api/process.html">Process 
+  (进程)</A></LI>
+  <LI><A class="nav-punycode" 
+  href="http://nodejs.cn/api/punycode.html">Punycode</A></LI>
+  <LI><A class="nav-querystring" 
+  href="http://nodejs.cn/api/querystring.html">Query Strings (查询字符串)</A></LI>
+  <LI><A class="nav-readline" href="http://nodejs.cn/api/readline.html">Readline 
+  (逐行读取)</A></LI>
+  <LI><A class="nav-repl" href="http://nodejs.cn/api/repl.html">REPL 
+  (交互式解释器)</A></LI>
+  <LI><A class="nav-stream" href="http://nodejs.cn/api/stream.html">Stream 
+  (流)</A></LI>
+  <LI><A class="nav-string_decoder" href="http://nodejs.cn/api/string_decoder.html">String 
+  Decoder (字符串解码器)</A></LI>
+  <LI><A class="nav-timers" href="http://nodejs.cn/api/timers.html">Timer 
+  (定时器)</A></LI>
+  <LI><A class="nav-tls" href="http://nodejs.cn/api/tls.html">TLS 
+  (安全传输层)</A></LI>
+  <LI><A class="nav-tty" href="http://nodejs.cn/api/tty.html">TTY (终端)</A></LI>
+  <LI><A class="nav-dgram" href="http://nodejs.cn/api/dgram.html">UDP/Datagram 
+  (数据报)</A></LI>
+  <LI><A class="nav-url" href="http://nodejs.cn/api/url.html">URL</A></LI>
+  <LI><A class="nav-util" href="http://nodejs.cn/api/util.html">Util 
+  (实用工具)</A></LI>
+  <LI><A class="nav-v8" href="http://nodejs.cn/api/v8.html">V8</A></LI>
+  <LI><A class="nav-vm" href="http://nodejs.cn/api/vm.html">VM (虚拟机)</A></LI>
+  <LI><A class="nav-zlib" href="http://nodejs.cn/api/zlib.html">ZLIB 
+  (压缩)</A></LI></UL>
+<DIV class="line"></DIV></DIV>
+<DIV class="interior" id="column1" data-id="net"><HEADER>
+<H1>Node.js v6.10.3 文档</H1>
+<DIV id="gtoc">
+<P><A name="toc" href="http://nodejs.cn/api/">返回文档首页</A>             <!--<a href="/api/all.html">单页面显示</a> |--> 
+            <!--<a href="/api/net.json">JSON格式</a> |-->             <!--<a href="/api/en/net.html">查看英文版</a>--> 
+          </P></DIV>
+<HR>
+</HEADER>
+<DIV id="toc">
+<H2>目录</H2>
+<UL>
+  <LI><SPAN class="stability_2"><A 
+  href="http://nodejs.cn/api/net.html#net_net">net (网络)</A></SPAN>
+  <UL> 
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/net.html#net_class_net_server">net.Server 
+    类</A></SPAN>
+    <UL> 
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/net.html#net_event_close">'close' 
+      事件</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/net.html#net_event_connection">'connection' 
+      事件</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/net.html#net_event_error">'error' 
+      事件</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/net.html#net_event_listening">'listening' 
+      事件</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/net.html#net_server_address">server.address()</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/net.html#net_server_close_callback">server.close([callback])</A></SPAN></LI>
+      <LI><SPAN class="stability_0"><A href="http://nodejs.cn/api/net.html#net_server_connections">server.connections</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/net.html#net_server_getconnections_callback">server.getConnections(callback)</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/net.html#net_server_listen_handle_backlog_callback">server.listen(handle[, 
+      backlog][, callback])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/net.html#net_server_listen_options_callback">server.listen(options[, 
+      callback])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/net.html#net_server_listen_path_backlog_callback">server.listen(path[, 
+      backlog][, callback])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/net.html#net_server_listen_port_hostname_backlog_callback">server.listen([port][, 
+      hostname][, backlog][, callback])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/net.html#net_server_listening">server.listening</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/net.html#net_server_maxconnections">server.maxConnections</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/net.html#net_server_ref">server.ref()</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/net.html#net_server_unref">server.unref()</A></SPAN></LI></UL></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/net.html#net_class_net_socket">net.Socket 
+    类</A></SPAN>
+    <UL> 
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/net.html#net_new_net_socket_options">new 
+      net.Socket([options])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/net.html#net_event_close_1">'close' 
+      事件</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/net.html#net_event_connect">'connect' 
+      事件</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/net.html#net_event_data">'data' 
+      事件</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/net.html#net_event_drain">'drain' 
+      事件</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/net.html#net_event_end">'end' 
+      事件</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/net.html#net_event_error_1">'error' 
+      事件</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/net.html#net_event_lookup">'lookup' 
+      事件</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/net.html#net_event_timeout">'timeout' 
+      事件</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/net.html#net_socket_address">socket.address()</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/net.html#net_socket_buffersize">socket.bufferSize</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/net.html#net_socket_bytesread">socket.bytesRead</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/net.html#net_socket_byteswritten">socket.bytesWritten</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/net.html#net_socket_connect_options_connectlistener">socket.connect(options[, 
+      connectListener])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/net.html#net_socket_connect_path_connectlistener">socket.connect(path[, 
+      connectListener])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/net.html#net_socket_connect_port_host_connectlistener">socket.connect(port[, 
+      host][, connectListener])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/net.html#net_socket_connecting">socket.connecting</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/net.html#net_socket_destroy_exception">socket.destroy([exception])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/net.html#net_socket_destroyed">socket.destroyed</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/net.html#net_socket_end_data_encoding">socket.end([data][, 
+      encoding])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/net.html#net_socket_localaddress">socket.localAddress</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/net.html#net_socket_localport">socket.localPort</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/net.html#net_socket_pause">socket.pause()</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/net.html#net_socket_ref">socket.ref()</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/net.html#net_socket_remoteaddress">socket.remoteAddress</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/net.html#net_socket_remotefamily">socket.remoteFamily</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/net.html#net_socket_remoteport">socket.remotePort</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/net.html#net_socket_resume">socket.resume()</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/net.html#net_socket_setencoding_encoding">socket.setEncoding([encoding])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/net.html#net_socket_setkeepalive_enable_initialdelay">socket.setKeepAlive([enable][, 
+      initialDelay])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/net.html#net_socket_setnodelay_nodelay">socket.setNoDelay([noDelay])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/net.html#net_socket_settimeout_timeout_callback">socket.setTimeout(timeout[, 
+      callback])</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/net.html#net_socket_unref">socket.unref()</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/net.html#net_socket_write_data_encoding_callback">socket.write(data[, 
+      encoding][, callback])</A></SPAN></LI></UL></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/net.html#net_net_connect_options_connectlistener">net.connect(options[, 
+    connectListener])</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/net.html#net_net_connect_path_connectlistener">net.connect(path[, 
+    connectListener])</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/net.html#net_net_connect_port_host_connectlistener">net.connect(port[, 
+    host][, connectListener])</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/net.html#net_net_createconnection_options_connectlistener">net.createConnection(options[, 
+    connectListener])</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/net.html#net_net_createconnection_path_connectlistener">net.createConnection(path[, 
+    connectListener])</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/net.html#net_net_createconnection_port_host_connectlistener">net.createConnection(port[, 
+    host][, connectListener])</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/net.html#net_net_createserver_options_connectionlistener">net.createServer([options][, 
+    connectionListener])</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/net.html#net_net_isip_input">net.isIP(input)</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/net.html#net_net_isipv4_input">net.isIPv4(input)</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/net.html#net_net_isipv6_input">net.isIPv6(input)</A></SPAN></LI></UL></LI></UL></DIV>
+<DIV id="apicontent">
+<H1>net (网络)<SPAN><A class="mark" id="net_net" href="http://nodejs.cn/api/net.html#net_net">#</A></SPAN></H1>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/net.html#net_net">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/net/net.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<PRE class="api_stability api_stability_2"><A href="http://nodejs.cn/api/documentation.html#documentation_stability_index">稳定性: 2</A> - 稳定的</PRE>
+<P><CODE>net</CODE> 模块给你提供了一个异步的网络封装. 它包含创建服务器和客户端（称为流）的功能。你可以这样使用这个模块 
+<CODE>require('net');</CODE>.</P>
+<H2>net.Server 类<SPAN><A class="mark" id="net_class_net_server" href="http://nodejs.cn/api/net.html#net_class_net_server">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/net.html#net_class_net_server">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/net/class_net_server.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.90</SPAN> </DIV>
+<P>本类用于创建TCP或本地服务器.</P>
+<P><CODE>net.Server</CODE> 是一个有着以下事件的<A href="http://nodejs.cn/api/events.html#events_class_eventemitter"><CODE>EventEmitter</CODE></A> 
+:</P>
+<H3>'close' 事件<SPAN><A class="mark" id="net_event_close" href="http://nodejs.cn/api/net.html#net_event_close">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/net.html#net_event_close">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/net/event_close.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.5.0</SPAN> </DIV>
+<P>当服务器关闭时被触发。注意：如果还有连接存在的话，直到所有的连接都关闭时，这个事件才被触发。</P>
+<H3>'connection' 事件<SPAN><A class="mark" id="net_event_connection" href="http://nodejs.cn/api/net.html#net_event_connection">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/net.html#net_event_connection">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/net/event_connection.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.90</SPAN> </DIV>
+<UL>
+  <LI><A class="type" 
+  href="http://nodejs.cn/api/net.html#net_class_net_socket">&lt;net.Socket&gt;</A> 
+  连接对象</LI></UL>
+<P>当一个新连接建立的时候被触发。<CODE>socket</CODE>是<CODE>net.Socket</CODE>的一个实例.</P>
+<H3>'error' 事件<SPAN><A class="mark" id="net_event_error" href="http://nodejs.cn/api/net.html#net_event_error">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/net.html#net_event_error">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/net/event_error.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.90</SPAN> </DIV>
+<UL>
+  <LI><A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error">&lt;Error&gt;</A></LI></UL>
+<P>当错误发生时触发。 不像 <A 
+href="http://nodejs.cn/api/net.html#net_class_net_socket"><CODE>net.Socket</CODE></A>，<A 
+href="http://nodejs.cn/api/net.html#net_event_close"><CODE>'close'</CODE></A> 
+事件不会紧接该事件触发，除非 <A 
+href="http://nodejs.cn/api/net.html#net_server_close_callback"><CODE>server.close()</CODE></A> 
+被手动调用。 可在 <A href="http://nodejs.cn/api/net.html#net_server_listen_port_hostname_backlog_callback"><CODE>server.listen()</CODE></A> 
+的讨论中查看相关例子。</P>
+<H3>'listening' 事件<SPAN><A class="mark" id="net_event_listening" href="http://nodejs.cn/api/net.html#net_event_listening">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/net.html#net_event_listening">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/net/event_listening.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.90</SPAN> </DIV>
+<P>当调用<CODE>server.listen</CODE>后，服务器被绑定时触发.</P>
+<H3>server.address()<SPAN><A class="mark" id="net_server_address" href="http://nodejs.cn/api/net.html#net_server_address">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/net.html#net_server_address">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/net/server_address.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.90</SPAN> </DIV>
+<P>操作系统返回绑定的服务器的IP地址， IP地址协议簇，端口号 . 当查看一个系统赋予的IP地址时，有利于发现被分配给了哪个端口号。
+ 返回对象的以下属性<CODE>port</CODE>, <CODE>family</CODE>, and <CODE>address</CODE> : 
+<CODE>{ port: 12346, family: 'IPv4', address: '127.0.0.1' }</CODE></P>
+<P>例子:</P>
+<PRE><CODE class="lang-js">const server = net.createServer((socket) =&gt; {
+  socket.end('goodbye\n');
+}).on('error', (err) =&gt; {
+  // handle errors here
+  throw err;
+});
+
+// grab a random port.
+server.listen(() =&gt; {
+  console.log('opened server on', server.address());
+});
+</CODE></PRE>
+<P>直到<CODE>'listening'</CODE> 事件被触发后，才可以调用<CODE>server.address()</CODE> .</P>
+<H3>server.close([callback])<SPAN><A class="mark" id="net_server_close_callback" 
+href="http://nodejs.cn/api/net.html#net_server_close_callback">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/net.html#net_server_close_callback">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/net/server_close_callback.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.90</SPAN> </DIV>
+<P>使服务器停止接受新连接，只保持现存的连接。这个函数是异步的，当所有连接 断开时，服务器关闭并且发出<A href="http://nodejs.cn/api/net.html#net_event_close"><CODE>'close'</CODE></A>事件。一旦<CODE>'close'</CODE>事件发生，可选的 
+<CODE>callback</CODE>参数将被调用。不像<CODE>'close'</CODE>事件一样，它将在错误之后被调用，因为
+ 它唯一的缘由是服务器还没打开呢，就被关闭。</P>
+<H3>server.connections<SPAN><A class="mark" id="net_server_connections" href="http://nodejs.cn/api/net.html#net_server_connections">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/net.html#net_server_connections">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/net/server_connections.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.2.0</SPAN> <SPAN>废弃于: v0.9.7 </SPAN> 
+</DIV>
+<PRE class="api_stability api_stability_0"><A href="http://nodejs.cn/api/documentation.html#documentation_stability_index">稳定性: 0</A> - 废弃的: 使用 <A href="http://nodejs.cn/api/net.html#net_server_getconnections_callback"><CODE>server.getConnections()</CODE></A> 代替。</PRE>
+<P>服务器上现在同时存在的连接的数目.</P>
+<P>当用<A href="http://nodejs.cn/api/child_process.html#child_process_child_process_fork_modulepath_args_options"><CODE>child_process.fork()</CODE></A>向一个子进程发出socket连接时，这将变成<CODE>null</CODE>。
+ 当poll新进程和获取活着的连接的数目时，可以用异步的<CODE>server.getConnections</CODE> 代替.</P>
+<H3>server.getConnections(callback)<SPAN><A class="mark" id="net_server_getconnections_callback" 
+href="http://nodejs.cn/api/net.html#net_server_getconnections_callback">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/net.html#net_server_getconnections_callback">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/net/server_getconnections_callback.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.9.7</SPAN> </DIV>
+<P>异步的获取服务器当前共同存在的连接的数目。 当sockets被发送forks时工作。</P>
+<P>Callback参数可以是<CODE>err</CODE> 或者 <CODE>count</CODE>。</P>
+<H3>server.listen(handle[, backlog][, callback])<SPAN><A class="mark" id="net_server_listen_handle_backlog_callback" 
+href="http://nodejs.cn/api/net.html#net_server_listen_handle_backlog_callback">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/net.html#net_server_listen_handle_backlog_callback">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/net/server_listen_handle_backlog_callback.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.5.10</SPAN> </DIV>
+<UL>
+  <LI><CODE>handle</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">&lt;Object&gt;</A></LI>
+  <LI><CODE>backlog</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Number&gt;</A></LI>
+  <LI><CODE>callback</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">&lt;Function&gt;</A></LI></UL>
+<P><CODE>handle</CODE> 对象可以被设置为服务器或者是socket（任何有着下标<CODE>_handle</CODE>属性的对象）, 
+或者一个 <CODE>{fd: &lt;n&gt;}</CODE> 对象.</P>
+<P>这可能会导致服务器在特定的handle上接受连接， 但是它被认为文件描述器或者处理器已经被绑定到一个端口或者socket域上。</P>
+<P>Windows系统不支持监听文件描述器。</P>
+<P>这个函数是异步的。当服务器已经被绑定时， <A href="http://nodejs.cn/api/net.html#net_event_listening"><CODE>'listening'</CODE></A> 
+事件将被触发. 最后一个参数<CODE>callback</CODE>将被添加为 <A href="http://nodejs.cn/api/net.html#net_event_listening"><CODE>'listening'</CODE></A>事件的一个监听器 
+.</P>
+<P><CODE>backlog</CODE> 参数表现的同 <A href="http://nodejs.cn/api/net.html#net_server_listen_port_hostname_backlog_callback"><CODE>server.listen([port][, 
+hostname][, backlog][, callback])</CODE></A>一样.</P>
+<H3>server.listen(options[, callback])<SPAN><A class="mark" id="net_server_listen_options_callback" 
+href="http://nodejs.cn/api/net.html#net_server_listen_options_callback">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/net.html#net_server_listen_options_callback">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/net/server_listen_options_callback.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.11.14</SPAN> </DIV>
+<UL>
+  <LI><CODE>options</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">&lt;Object&gt;</A> 
+  - 必须. 支持以下参数：
+  <UL>
+    <LI><CODE>port</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Number&gt;</A> 
+    - 可选.</LI>
+    <LI><CODE>host</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+    - 可选.</LI>
+    <LI><CODE>backlog</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Number&gt;</A> 
+    - 可选.</LI>
+    <LI><CODE>path</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+    - 可选.</LI>
+    <LI><CODE>exclusive</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type">&lt;Boolean&gt;</A> 
+    - 可选.</LI></UL></LI>
+  <LI><CODE>callback</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">&lt;Function&gt;</A> 
+  - 可选.</LI></UL>
+<P><CODE>port</CODE>, <CODE>host</CODE>, 和 <CODE>backlog</CODE> 是 
+<CODE>options</CODE> 的参数, 可选的 callback 函数, 表现的好像它们在调用 <A href="http://nodejs.cn/api/net.html#net_server_listen_port_hostname_backlog_callback"><CODE>server.listen([port][, 
+hostname][, backlog][, callback])</CODE></A>. 另外,  <CODE>path</CODE> 
+参数可以用于确定UNIX套接字。</P>
+<P>如果 <CODE>exclusive</CODE> 是 <CODE>false</CODE> (默认), 
+那么cluster的worker对象将利用相同的基础处理方法， 允许共享连接处理机制。当<CODE>exclusive</CODE> 是 
+<CODE>true</CODE>, 处理方法不被共享，企图共享端口将导致错误。 下面是一个监听专用端口的例子：</P>
+<PRE><CODE class="lang-js">server.listen({
+  host: 'localhost',
+  port: 80,
+  exclusive: true
+});
+</CODE></PRE>
+<P><EM>注意</EM>: <CODE>server.listen()</CODE> 方法可能被多次调用. 每个随后的 调用将利用提供的参数 
+<EM>重新打开</EM> 服务器。</P>
+<H3>server.listen(path[, backlog][, callback])<SPAN><A class="mark" id="net_server_listen_path_backlog_callback" 
+href="http://nodejs.cn/api/net.html#net_server_listen_path_backlog_callback">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/net.html#net_server_listen_path_backlog_callback">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/net/server_listen_path_backlog_callback.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.90</SPAN> </DIV>
+<UL>
+  <LI><CODE>path</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A></LI>
+  <LI><CODE>backlog</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Number_type">&lt;Number&gt;</A></LI>
+  <LI><CODE>callback</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">&lt;Function&gt;</A></LI></UL>
+<P>在给定的<CODE>path</CODE>路径上，开启一个监听连接的本地socket服务器。</P>
+<P>这个函数是异步的. 当服务器被已经绑定时<A href="http://nodejs.cn/api/net.html#net_event_listening"><CODE>'listening'</CODE></A> 
+事件将被触发。最后一个参数 <CODE>callback</CODE> 将被添加为<A href="http://nodejs.cn/api/net.html#net_event_listening"><CODE>'listening'</CODE></A>事件的监听器.</P>
+<P>在UNIX上, 本地域通常被称为UNIX域. 路径是文件系统路径名。
+ 它被截断至<CODE>sizeof(sockaddr_un.sun_path)</CODE>个字节，减去一。
+ 它根据操作系统的不同，在91和107个字节之间变动。典型的值为在Linux上 为107，在OS 
+X上为103.路径遵循相同的命名规则和权限检查，这会在文件生成的时候进行， 可以在文件系统中可视，并且<EM>直到不连接的时候才被允许</EM>。</P>
+<P>在Windows系统上，本地域用具名管道实现。路径<EM>必须</EM>是<CODE>\\?\pipe\</CODE>或<CODE>\\.\pipe\</CODE>的入口。
+ 任何字符都是允许的，但是有一些处理可能会影响管道的名字，例如解析<CODE>..</CODE>序列。
+ 无论表现如何，管道命名空间是平的。管道<EM>不允许</EM>被移除，当他们的最后一个引用被关闭的时候。
+ 不要忘记JavaScript字符串转义需要路径用双斜线，例如</P>
+<PRE><CODE class="lang-js">net.createServer().listen(
+    path.join('\\\\?\\pipe', process.cwd(), 'myctl'));
+</CODE></PRE>
+<P><CODE>backlog</CODE>参数表现地跟 <A href="http://nodejs.cn/api/net.html#net_server_listen_port_hostname_backlog_callback"><CODE>server.listen([port][, 
+hostname][, backlog][, callback])</CODE></A>一样。</P>
+<P><EM>注意</EM>: <CODE>server.listen()</CODE>方法可以被多次调用。每个随后的调用将
+ 用提供的参数<EM>重新打开</EM>服务器.</P>
+<H3>server.listen([port][, hostname][, backlog][, callback])<SPAN><A class="mark" 
+id="net_server_listen_port_hostname_backlog_callback" href="http://nodejs.cn/api/net.html#net_server_listen_port_hostname_backlog_callback">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/net.html#net_server_listen_port_hostname_backlog_callback">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/net/server_listen_port_hostname_backlog_callback.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.90</SPAN> </DIV>
+<P>在特定的<CODE>port</CODE>和<CODE>hostname</CODE>开始接受连接. 
+如果<CODE>hostname</CODE>被省略，当IPv6可用的时候，服务器将 接受所有的IPv6地址(<CODE>::</CODE>)或者所有的 
+IPv4 地址 (<CODE>0.0.0.0</CODE>)。省略端口参数，或者用的端口值为<CODE>0</CODE>，
+ 将被操作系统赋予一个任意的端口，这可以在<CODE>'listening'</CODE>事件被触发后，用<CODE>server.address().port</CODE> 
+来获取。</P>
+<P>Backlog 是等待连接的队列长度的最大值。实际的长度在Linux上将由操作系统通过系统设置如 
+<CODE>tcp_max_syn_backlog</CODE> 和 <CODE>somaxconn</CODE> 
+来确定。默认值为511（而不是512）。</P>
+<P>这个函数是异步的。网服务器被绑定时，<A 
+href="http://nodejs.cn/api/net.html#net_event_listening"><CODE>'listening'</CODE></A>事件被触发。最后一个参数， 
+<CODE>callback</CODE>将被加做<A href="http://nodejs.cn/api/net.html#net_event_listening"><CODE>'listening'</CODE></A>事件的监听器。</P>
+<P>一些用户运行的一个问题是得到<CODE>EADDRINUSE</CODE>错误。这意味这另一个服务器已经运行在请求的端口。
+ 处理这个问题的一个方式是等待一秒再次尝试运行：</P>
+<PRE><CODE class="lang-js">server.on('error', (e) =&gt; {
+  if (e.code == 'EADDRINUSE') {
+    console.log('Address in use, retrying...');
+    setTimeout(() =&gt; {
+      server.close();
+      server.listen(PORT, HOST);
+    }, 1000);
+  }
+});
+</CODE></PRE>
+<P>(注意: Node.js中所有的socket都被设置为<CODE>SO_REUSEADDR</CODE>.)</P>
+<P><EM>注意</EM>: <CODE>server.listen()</CODE>方法可以被多次调用。每个随后的调用将
+ 用提供的参数<EM>重新打开</EM>服务器.</P>
+<H3>server.listening<SPAN><A class="mark" id="net_server_listening" href="http://nodejs.cn/api/net.html#net_server_listening">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/net.html#net_server_listening">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/net/server_listening.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v5.7.0</SPAN> </DIV>
+<P>一个布尔值，代表服务器是否在监听连接。</P>
+<H3>server.maxConnections<SPAN><A class="mark" id="net_server_maxconnections" 
+href="http://nodejs.cn/api/net.html#net_server_maxconnections">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/net.html#net_server_maxconnections">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/net/server_maxconnections.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.2.0</SPAN> </DIV>
+<P>设定这个属性，当服务器的连接超过此值时，新的连接将被拒绝。</P>
+<P>一旦连接已经用<A href="http://nodejs.cn/api/child_process.html#child_process_child_process_fork_modulepath_args_options"><CODE>child_process.fork()</CODE></A>被发送到子进程时，它不被推荐使用。</P>
+<H3>server.ref()<SPAN><A class="mark" id="net_server_ref" href="http://nodejs.cn/api/net.html#net_server_ref">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/net.html#net_server_ref">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/net/server_ref.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.9.1</SPAN> </DIV>
+<P>与<CODE>unref</CODE>相反, 在一个原先是<CODE>unref</CODE>的服务器上调用 <CODE>ref</CODE> 
+将<EM>不会</EM>允许程序退出 
+ 即使它是唯一剩下的服务器（默认行为）。如果服务器已经是<CODE>ref</CODE>的了，再次调用<CODE>ref</CODE>将 不会产生效果。</P>
+<P>返回<CODE>server</CODE>.</P>
+<H3>server.unref()<SPAN><A class="mark" id="net_server_unref" href="http://nodejs.cn/api/net.html#net_server_unref">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/net.html#net_server_unref">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/net/server_unref.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.9.1</SPAN> </DIV>
+<P>在服务器上调用 <CODE>unref</CODE>将允许程序当这是事件系统中唯一存活的服务器时退出。
+ 如果服务器已经是<CODE>unref</CODE>，再次调用<CODE>unref</CODE>没有任何效应.</P>
+<P>返回<CODE>server</CODE>.</P>
+<H2>net.Socket 类<SPAN><A class="mark" id="net_class_net_socket" href="http://nodejs.cn/api/net.html#net_class_net_socket">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/net.html#net_class_net_socket">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/net/class_net_socket.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.3.4</SPAN> </DIV>
+<P>这个对象是TCP或者本地socket的一个抽象。<CODE>net.Socket</CODE>实例实现了
+ 一个双工流接口。它们可以由用户创建用于客户端（和<A href="http://nodejs.cn/api/net.html#net_socket_connect_options_connectlistener"><CODE>connect()</CODE></A>），
+ 或者是由Node.js创建，用于通过一个服务器的<CODE>'connection'</CODE>事件传参给用户。</P>
+<H3>new net.Socket([options])<SPAN><A class="mark" id="net_new_net_socket_options" 
+href="http://nodejs.cn/api/net.html#net_new_net_socket_options">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/net.html#net_new_net_socket_options">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/net/new_net_socket_options.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.3.4</SPAN> </DIV>
+<P>构造一个新的socket对象。</P>
+<P><CODE>options</CODE> 是一个对象，有着以下默认值:</P>
+<PRE><CODE class="lang-js">{
+  fd: null,
+  allowHalfOpen: false,
+  readable: false,
+  writable: false
+}
+</CODE></PRE>
+<P><CODE>fd</CODE> 允许你指定socket的存在的文件描述器。 设定 <CODE>readable</CODE> 和/或 
+<CODE>writable</CODE> 为 <CODE>true</CODE> 来允许在这个socket上进行读和/或写。 (注意: 只有当 
+<CODE>fd</CODE> 被传参时，才工作). 关于 <CODE>allowHalfOpen</CODE>, 请参照 <A href="http://nodejs.cn/api/net.html#net_net_createserver_options_connectionlistener"><CODE>net.createServer()</CODE></A> 
+和 <A href="http://nodejs.cn/api/net.html#net_event_end"><CODE>'end'</CODE></A> 
+事件.</P>
+<P><CODE>net.Socket</CODE> 是 <A href="http://nodejs.cn/api/events.html#events_class_eventemitter"><CODE>EventEmitter</CODE></A> 
+实例，有以下事件:</P>
+<H3>'close' 事件<SPAN><A class="mark" id="net_event_close_1" href="http://nodejs.cn/api/net.html#net_event_close_1">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/net.html#net_event_close_1">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/net/event_close_1.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.90</SPAN> </DIV>
+<UL>
+  <LI><CODE>had_error</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type">&lt;Boolean&gt;</A> 
+  <CODE>true</CODE> 如果socket有传输错误的话。</LI></UL>
+<P>一旦socket完全关闭时被触发。参数<CODE>had_error</CODE>是一个布尔值，代表socket关闭是否是由于传输错误。</P>
+<H3>'connect' 事件<SPAN><A class="mark" id="net_event_connect" href="http://nodejs.cn/api/net.html#net_event_connect">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/net.html#net_event_connect">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/net/event_connect.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.90</SPAN> </DIV>
+<P>当socket连接完全建立时，被触发。 详细请看<A href="http://nodejs.cn/api/net.html#net_socket_connect_options_connectlistener"><CODE>connect()</CODE></A>.</P>
+<H3>'data' 事件<SPAN><A class="mark" id="net_event_data" href="http://nodejs.cn/api/net.html#net_event_data">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/net.html#net_event_data">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/net/event_data.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.90</SPAN> </DIV>
+<UL>
+  <LI><A class="type" href="http://nodejs.cn/api/buffer.html#buffer_class_buffer">&lt;Buffer&gt;</A></LI></UL>
+<P>当接收到数据时被触发。 参数 <CODE>data</CODE> 是 <CODE>Buffer</CODE> 或者 <CODE>String</CODE> 
+类型。 数据的编码由<CODE>socket.setEncoding()</CODE>设定。（查看 <A href="http://nodejs.cn/api/stream.html#stream_class_stream_readable">Readable 
+Stream</A>一节获取更多信息）</P>
+<P>注意：如果当<CODE>Socket</CODE>触发<CODE>'data'</CODE>事件时，没有监听器在监听，这导致 
+<STRONG>数据可能会丢失</STRONG>。</P>
+<H3>'drain' 事件<SPAN><A class="mark" id="net_event_drain" href="http://nodejs.cn/api/net.html#net_event_drain">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/net.html#net_event_drain">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/net/event_drain.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.90</SPAN> </DIV>
+<P>当写入缓存为空时被触发。可以被用于降速上传。</P>
+<P>查看：<CODE>socket.write()</CODE>的返回值。</P>
+<H3>'end' 事件<SPAN><A class="mark" id="net_event_end" href="http://nodejs.cn/api/net.html#net_event_end">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/net.html#net_event_end">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/net/event_end.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.90</SPAN> </DIV>
+<P>当socket连接的另一端发出FIN包时被触发。</P>
+<P>默认情况下(<CODE>allowHalfOpen == false</CODE>)，socket连接一旦将要写完写队列，就会破坏
+ 它的文件描述器。然而，通过设置<CODE>allowHalfOpen == true</CODE>，socket将不会自动的结束它
+ 这一端，并且允许用户写入任意大小的数据，并且附加说明用户需要手动的调用<CODE>end()</CODE>在他们那一端。</P>
+<H3>'error' 事件<SPAN><A class="mark" id="net_event_error_1" href="http://nodejs.cn/api/net.html#net_event_error_1">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/net.html#net_event_error_1">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/net/event_error_1.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.90</SPAN> </DIV>
+<UL>
+  <LI><A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error">&lt;Error&gt;</A></LI></UL>
+<P>当错误发生时被触发。<CODE>'close'</CODE>事件将在之后被直接触发。</P>
+<H3>'lookup' 事件<SPAN><A class="mark" id="net_event_lookup" href="http://nodejs.cn/api/net.html#net_event_lookup">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/net.html#net_event_lookup">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/net/event_lookup.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.11.3</SPAN> </DIV>
+<P>在解析域名之后，进行连接之前被触发。  不能用于UNIX sockets. </P>
+<UL>
+  <LI><CODE>err</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error">&lt;Error&gt;</A> 
+  | <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Null_type">&lt;Null&gt;</A> 
+  错误对象.  查看 <A href="http://nodejs.cn/api/dns.html#dns_dns_lookup_hostname_options_callback"><CODE>dns.lookup()</CODE></A>.</LI>
+  <LI><CODE>address</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  IP地址.</LI>
+  <LI><CODE>family</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  | <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Null_type">&lt;Null&gt;</A> 
+  IP地址类型.  See <A href="http://nodejs.cn/api/dns.html#dns_dns_lookup_hostname_options_callback"><CODE>dns.lookup()</CODE></A>.</LI>
+  <LI><CODE>host</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  域名.</LI></UL>
+<H3>'timeout' 事件<SPAN><A class="mark" id="net_event_timeout" href="http://nodejs.cn/api/net.html#net_event_timeout">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/net.html#net_event_timeout">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/net/event_timeout.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.90</SPAN> </DIV>
+<P>当socket在不活动中超时时被触发。这仅仅表明socket已经处于关闭中，用户需要手动关闭连接。 </P>
+<P>查看更多: <A href="http://nodejs.cn/api/net.html#net_socket_settimeout_timeout_callback"><CODE>socket.setTimeout()</CODE></A></P>
+<H3>socket.address()<SPAN><A class="mark" id="net_socket_address" href="http://nodejs.cn/api/net.html#net_socket_address">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/net.html#net_socket_address">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/net/socket_address.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.90</SPAN> </DIV>
+<P>返回操作系统报告的绑定的socket的IP地址，IP地址族和端口。 返回有着以下三个属性的对象，例如 <CODE>{ port: 12346, 
+family: 'IPv4', address: '127.0.0.1' }</CODE></P>
+<H3>socket.bufferSize<SPAN><A class="mark" id="net_socket_buffersize" href="http://nodejs.cn/api/net.html#net_socket_buffersize">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/net.html#net_socket_buffersize">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/net/socket_buffersize.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.3.8</SPAN> </DIV>
+<P><CODE>net.Socket</CODE> 有这样的一个性质，即 <CODE>socket.write()</CODE> 
+总是在运行。这是为了帮助用户运行地更快。 计算机不能总是保持一定量的数据写入socket--网络连接肯能会变慢。Node.js将内部的把要写入socket的
+ 数据排队，然后在可能的时候将之通过网络发出。(在内部，它在socket文件描述器上轮询，等待可写）</P>
+<P>这样内部缓存的结果是使用的内存将增长。这个性质表明了当前缓存的等待被发送的字符的数量。
+ （字符的数量近似与等待被写的字节的数目，但是缓存中可能包含字符串，字符串是懒散编码的， 因此字节的确切的数目是未知的）</P>
+<P>体验过大的或增长的<CODE>bufferSize</CODE>的用户应该在他们的程序中试图用<A href="http://nodejs.cn/api/net.html#net_socket_pause"><CODE>pause()</CODE></A>和<A 
+href="http://nodejs.cn/api/net.html#net_socket_resume"><CODE>resume()</CODE></A>
+ "限制" 数据的增长。</P>
+<H3>socket.bytesRead<SPAN><A class="mark" id="net_socket_bytesread" href="http://nodejs.cn/api/net.html#net_socket_bytesread">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/net.html#net_socket_bytesread">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/net/socket_bytesread.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.5.3</SPAN> </DIV>
+<P>收到的字节的数量.</P>
+<H3>socket.bytesWritten<SPAN><A class="mark" id="net_socket_byteswritten" href="http://nodejs.cn/api/net.html#net_socket_byteswritten">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/net.html#net_socket_byteswritten">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/net/socket_byteswritten.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.5.3</SPAN> </DIV>
+<P>发送的字节的数量.</P>
+<H3>socket.connect(options[, connectListener])<SPAN><A class="mark" id="net_socket_connect_options_connectlistener" 
+href="http://nodejs.cn/api/net.html#net_socket_connect_options_connectlistener">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/net.html#net_socket_connect_options_connectlistener">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/net/socket_connect_options_connectlistener.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.90</SPAN> </DIV>
+<P>根据给定的socket参数，打开连接.</P>
+<P>对于TCP socket, <CODE>options</CODE>参数应该是一个对象，它确定了:</P>
+<UL>
+  <LI>
+  <P><CODE>port</CODE>: 客户端应该连接的端口(必须).</P></LI>
+  <LI>
+  <P><CODE>host</CODE>: 客户端应该连接的host主机. 默认为<CODE>'localhost'</CODE>.</P></LI>
+  <LI>
+  <P><CODE>localAddress</CODE>: 为了网络连接应该绑定的本地接口。</P></LI>
+  <LI>
+  <P><CODE>localPort</CODE>: 为了网络连接应该绑定的本地端口.</P></LI>
+  <LI>
+  <P><CODE>family</CODE> : IP地址族的.默认为 <CODE>4</CODE>.</P></LI>
+  <LI>
+  <P><CODE>hints</CODE>: <A href="http://nodejs.cn/api/dns.html#dns_supported_getaddrinfo_flags"><CODE>dns.lookup()</CODE> 
+  hints</A>. 默认为 <CODE>0</CODE>.</P></LI>
+  <LI>
+  <P><CODE>lookup</CODE> : 可定制查询函数. 默认为 <CODE>dns.lookup</CODE>.</P></LI></UL>
+<P>对于本地域socket, <CODE>options</CODE> 参数 应当是一个参数，它确定了:</P>
+<UL>
+  <LI><CODE>path</CODE>: 客户端应该连接的路径 (必须).</LI></UL>
+<P>正常地，这个方法不是必要的，因为<CODE>net.createConnection</CODE>打开了socket。 
+ 如果你要实现自己定制的socket才用这个方法。</P>
+<P>这个函数是异步的。当<A 
+href="http://nodejs.cn/api/net.html#net_event_connect"><CODE>'connect'</CODE></A>事件被触发时，socket已经建立。
+ 如果有一个问题连接，<CODE>'connect'</CODE>事件将不会被触发，有异常的<A href="http://nodejs.cn/api/net.html#net_event_error_1"><CODE>'error'</CODE></A>事件
+ 将被触发。</P>
+<P><CODE>connectListener</CODE>参数将被添加为<A href="http://nodejs.cn/api/net.html#net_event_connect"><CODE>'connect'</CODE></A>事件的监听器。</P>
+<H3>socket.connect(path[, connectListener])<SPAN><A class="mark" id="net_socket_connect_path_connectlistener" 
+href="http://nodejs.cn/api/net.html#net_socket_connect_path_connectlistener">#</A></SPAN></H3>
+<H3>socket.connect(port[, host][, connectListener])<SPAN><A class="mark" id="net_socket_connect_port_host_connectlistener" 
+href="http://nodejs.cn/api/net.html#net_socket_connect_port_host_connectlistener">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/net.html#net_socket_connect_port_host_connectlistener">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/net/socket_connect_port_host_connectlistener.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.90</SPAN> </DIV>
+<P>作为<A href="http://nodejs.cn/api/net.html#net_socket_connect_options_connectlistener"><CODE>socket.connect(options[, 
+connectListener])</CODE></A>, options参数有<CODE>{port: port, host: host}</CODE> 或者 
+<CODE>{path: path}</CODE>.</P>
+<H3>socket.connecting<SPAN><A class="mark" id="net_socket_connecting" href="http://nodejs.cn/api/net.html#net_socket_connecting">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/net.html#net_socket_connecting">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/net/socket_connecting.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v6.1.0</SPAN> </DIV>
+<P>如果是 <CODE>true</CODE> - <A href="http://nodejs.cn/api/net.html#net_socket_connect_options_connectlistener"><CODE>socket.connect(options[, 
+connectListener])</CODE></A> 被调用， 并且还没有完成。 在触发<CODE>connect</CODE>事件和/或调用<A 
+href="http://nodejs.cn/api/net.html#net_socket_connect_options_connectlistener"><CODE>socket.connect(options[, 
+connectListener])</CODE></A> 的回调函数之前，将被设置为<CODE>false</CODE> 。</P>
+<H3>socket.destroy([exception])<SPAN><A class="mark" id="net_socket_destroy_exception" 
+href="http://nodejs.cn/api/net.html#net_socket_destroy_exception">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/net.html#net_socket_destroy_exception">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/net/socket_destroy_exception.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.90</SPAN> </DIV>
+<P>确保没有更多的I/O操作在这个socket上。只有必要的以防出错（解析错误等等）。</P>
+<P>如果<CODE>exception</CODE>被指定，<A href="http://nodejs.cn/api/net.html#net_event_error_1"><CODE>'error'</CODE></A>将被触发并且，任何监听此事件的监听器都会收到 
+<CODE>exception</CODE>为参数。</P>
+<H3>socket.destroyed<SPAN><A class="mark" id="net_socket_destroyed" href="http://nodejs.cn/api/net.html#net_socket_destroyed">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/net.html#net_socket_destroyed">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/net/socket_destroyed.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P>一个布尔值，表明连接是否被破坏。一旦连接被破坏， 就没有数据可以用它来传输。</P>
+<H3>socket.end([data][, encoding])<SPAN><A class="mark" id="net_socket_end_data_encoding" 
+href="http://nodejs.cn/api/net.html#net_socket_end_data_encoding">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/net.html#net_socket_end_data_encoding">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/net/socket_end_data_encoding.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.90</SPAN> </DIV>
+<P>半关闭socket. 即它将发送一个FIN包. 服务器仍然可能发送一些数据。</P>
+<P>如果<CODE>data</CODE>是指定的，它等价于调用<CODE>socket.write(data, encoding)</CODE>，
+ 之后在调用<CODE>socket.end()</CODE>.</P>
+<H3>socket.localAddress<SPAN><A class="mark" id="net_socket_localaddress" href="http://nodejs.cn/api/net.html#net_socket_localaddress">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/net.html#net_socket_localaddress">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/net/socket_localaddress.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.9.6</SPAN> </DIV>
+<P>远程客户端连接的本地IP地址的字符串表示。 例如, 如果你监听<CODE>'0.0.0.0'</CODE> 而客户端连接的是 
+<CODE>'192.168.1.1'</CODE>, 最后的值是 <CODE>'192.168.1.1'</CODE>.</P>
+<H3>socket.localPort<SPAN><A class="mark" id="net_socket_localport" href="http://nodejs.cn/api/net.html#net_socket_localport">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/net.html#net_socket_localport">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/net/socket_localport.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.9.6</SPAN> </DIV>
+<P>本地端口的数字表示. 例如, <CODE>80</CODE> 或者 <CODE>21</CODE>.</P>
+<H3>socket.pause()<SPAN><A class="mark" id="net_socket_pause" href="http://nodejs.cn/api/net.html#net_socket_pause">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/net.html#net_socket_pause">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/net/socket_pause.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P>暂停读取数据。意味着, <A 
+href="http://nodejs.cn/api/net.html#net_event_data"><CODE>'data'</CODE></A> 
+事件将不会被触发. 对上传进行限制时有用.</P>
+<H3>socket.ref()<SPAN><A class="mark" id="net_socket_ref" href="http://nodejs.cn/api/net.html#net_socket_ref">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/net.html#net_socket_ref">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/net/socket_ref.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.9.1</SPAN> </DIV>
+<P>与<CODE>unref</CODE>相反, 在一个原先是<CODE>unref</CODE>的socket上调用 <CODE>ref</CODE> 
+将<EM>不会</EM>允许程序退出 
+ 即使它是唯一剩下的socket（默认行为）。如果socket已经是<CODE>ref</CODE>的了，再次调用<CODE>ref</CODE>将
+ 不会产生效果。</P>
+<P>返回<CODE>socket</CODE>.</P>
+<H3>socket.remoteAddress<SPAN><A class="mark" id="net_socket_remoteaddress" 
+href="http://nodejs.cn/api/net.html#net_socket_remoteaddress">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/net.html#net_socket_remoteaddress">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/net/socket_remoteaddress.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.5.10</SPAN> </DIV>
+<P>远程IP地址的字符串表示. 例如, <CODE>'74.125.127.100'</CODE> 或者 
+<CODE>'2001:4860:a005::68'</CODE>. 如果socket 
+被破坏掉的话（比如，客户端失去连接），值可能是<CODE>undefined</CODE>.</P>
+<H3>socket.remoteFamily<SPAN><A class="mark" id="net_socket_remotefamily" href="http://nodejs.cn/api/net.html#net_socket_remotefamily">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/net.html#net_socket_remotefamily">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/net/socket_remotefamily.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.11.14</SPAN> </DIV>
+<P>远程IP地址簇的字符串表示. <CODE>'IPv4'</CODE> 或 <CODE>'IPv6'</CODE>.</P>
+<H3>socket.remotePort<SPAN><A class="mark" id="net_socket_remoteport" href="http://nodejs.cn/api/net.html#net_socket_remoteport">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/net.html#net_socket_remoteport">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/net/socket_remoteport.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.5.10</SPAN> </DIV>
+<P>远程端口的数字表示.例如, <CODE>80</CODE> or <CODE>21</CODE>.</P>
+<H3>socket.resume()<SPAN><A class="mark" id="net_socket_resume" href="http://nodejs.cn/api/net.html#net_socket_resume">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/net.html#net_socket_resume">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/net/socket_resume.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P>在调用<A 
+href="http://nodejs.cn/api/net.html#net_socket_pause"><CODE>pause()</CODE></A>之后恢复读取.</P>
+<H3>socket.setEncoding([encoding])<SPAN><A class="mark" id="net_socket_setencoding_encoding" 
+href="http://nodejs.cn/api/net.html#net_socket_setencoding_encoding">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/net.html#net_socket_setencoding_encoding">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/net/socket_setencoding_encoding.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.90</SPAN> </DIV>
+<P>把socket的编码设置为<A href="http://nodejs.cn/api/stream.html#stream_class_stream_readable">Readable 
+Stream</A>. 查看 <A href="http://nodejs.cn/api/stream.html#stream_readable_setencoding_encoding"><CODE>stream.setEncoding()</CODE></A> 
+获取更多信息.</P>
+<H3>socket.setKeepAlive([enable][, initialDelay])<SPAN><A class="mark" id="net_socket_setkeepalive_enable_initialdelay" 
+href="http://nodejs.cn/api/net.html#net_socket_setkeepalive_enable_initialdelay">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/net.html#net_socket_setkeepalive_enable_initialdelay">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/net/socket_setkeepalive_enable_initialdelay.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.92</SPAN> </DIV>
+<P>允许/禁止keep-alive功能, 并且可选地在第一个keep-alive探针发送到空闲的socket上 之前，设置初始时延。 
+<CODE>enable</CODE>默认是<CODE>false</CODE>.</P>
+<P>设置 <CODE>initialDelay</CODE>(毫秒)来设置在最后一个包收到之后和第一个keep-alive探针之前
+ 的时延。设置初始时延为0将不改变默认设置的值。值默认为0.</P>
+<P>返回 <CODE>socket</CODE>.</P>
+<H3>socket.setNoDelay([noDelay])<SPAN><A class="mark" id="net_socket_setnodelay_nodelay" 
+href="http://nodejs.cn/api/net.html#net_socket_setnodelay_nodelay">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/net.html#net_socket_setnodelay_nodelay">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/net/socket_setnodelay_nodelay.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.90</SPAN> </DIV>
+<P>禁止Nagele算法。默认TCP连接使用Nagle算法，它们在发送数据之前先缓存。
+ 设置<CODE>noDelay</CODE>为<CODE>true</CODE>将在<CODE>socket.write()</CODE>每次被调用时，立即发送数据。 
+<CODE>noDelay</CODE> 默认为 <CODE>true</CODE>.</P>
+<P>返回 <CODE>socket</CODE>.</P>
+<H3>socket.setTimeout(timeout[, callback])<SPAN><A class="mark" id="net_socket_settimeout_timeout_callback" 
+href="http://nodejs.cn/api/net.html#net_socket_settimeout_timeout_callback">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/net.html#net_socket_settimeout_timeout_callback">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/net/socket_settimeout_timeout_callback.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.90</SPAN> </DIV>
+<P>在不活动的socket<CODE>timeout</CODE>几毫秒之后，设置socket为超时。
+ 默认，<CODE>net.Socket</CODE>没有超时。</P>
+<P>当一个空闲的超时被触发时，socket将收到<A href="http://nodejs.cn/api/net.html#net_event_timeout"><CODE>'timeout'</CODE></A>事件，但是连接并不会停止。
+ 用户必须手动的<A 
+href="http://nodejs.cn/api/net.html#net_socket_end_data_encoding"><CODE>end()</CODE></A>或者<A 
+href="http://nodejs.cn/api/net.html#net_socket_destroy_exception"><CODE>destroy()</CODE></A>这个socket。</P>
+<P>如果<CODE>timeout</CODE>的值为0，那么存在的空闲的超时将被禁止。</P>
+<P>可选的<CODE>callback</CODE>参数将被添加为<A href="http://nodejs.cn/api/net.html#net_event_timeout"><CODE>'timeout'</CODE></A>事件的一次行监听器。</P>
+<P>返回<CODE>socket</CODE>.</P>
+<H3>socket.unref()<SPAN><A class="mark" id="net_socket_unref" href="http://nodejs.cn/api/net.html#net_socket_unref">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/net.html#net_socket_unref">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/net/socket_unref.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.9.1</SPAN> </DIV>
+<P>在socket上调用 <CODE>unref</CODE>将允许程序当这是事件系统中唯一存活的socket时退出。
+ 如果socket已经是<CODE>unref</CODE>，再次调用<CODE>unref</CODE>没有任何效应.</P>
+<P>返回 <CODE>socket</CODE>.</P>
+<H3>socket.write(data[, encoding][, callback])<SPAN><A class="mark" id="net_socket_write_data_encoding_callback" 
+href="http://nodejs.cn/api/net.html#net_socket_write_data_encoding_callback">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/net.html#net_socket_write_data_encoding_callback">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/net/socket_write_data_encoding_callback.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.90</SPAN> </DIV>
+<P>在socket上发送数据。第二个参数制定字符串的编码格式--默认是UTF8编码。</P>
+<P>如果全部数据被成功地清空到内核缓存，返回<CODE>true</CODE>。如果全部或部分数据在用户内存中形成队列，将
+ 返回<CODE>false</CODE>。 当buffer再次空白时，<A href="http://nodejs.cn/api/net.html#net_event_drain"><CODE>'drain'</CODE></A> 
+事件将被触发。</P>
+<P>当数据最终被写出时（这可能不是立即发生的），可选的<CODE>callback</CODE>参数将被执行。</P>
+<H2>net.connect(options[, connectListener])<SPAN><A class="mark" id="net_net_connect_options_connectlistener" 
+href="http://nodejs.cn/api/net.html#net_net_connect_options_connectlistener">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/net.html#net_net_connect_options_connectlistener">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/net/net_connect_options_connectlistener.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.7.0</SPAN> </DIV>
+<P>一个生产器函数，将返回一个新的 <A 
+href="http://nodejs.cn/api/net.html#net_class_net_socket"><CODE>net.Socket</CODE></A> 
+并且自动的根据所提供的<CODE>options</CODE> 参数进行连接。</P>
+<P>options参数将被传递到<A 
+href="http://nodejs.cn/api/net.html#net_class_net_socket"><CODE>net.Socket</CODE></A>构造函数和<A 
+href="http://nodejs.cn/api/net.html#net_socket_connect_options_connectlistener"><CODE>socket.connect</CODE></A>方法两个地方。</P>
+<P><CODE>connectListener</CODE>参数将一次被用作监听器来监听<A href="http://nodejs.cn/api/net.html#net_event_connect"><CODE>'connect'</CODE></A>事件。</P>
+<P>下面有一个例子来阐述之前描述过的响应服务器的客户端的用法</P>
+<PRE><CODE class="lang-js">const net = require('net');
+const client = net.connect({port: 8124}, () =&gt; {
+  // 'connect' listener
+  console.log('connected to server!');
+  client.write('world!\r\n');
+});
+client.on('data', (data) =&gt; {
+  console.log(data.toString());
+  client.end();
+});
+client.on('end', () =&gt; {
+  console.log('disconnected from server');
+});
+</CODE></PRE>
+<P>为了连接<CODE>/tmp/echo.sock</CODE>的socket，第二行应改为</P>
+<PRE><CODE class="lang-js">const client = net.connect({path: '/tmp/echo.sock'});
+</CODE></PRE>
+<H2>net.connect(path[, connectListener])<SPAN><A class="mark" id="net_net_connect_path_connectlistener" 
+href="http://nodejs.cn/api/net.html#net_net_connect_path_connectlistener">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/net.html#net_net_connect_path_connectlistener">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/net/net_connect_path_connectlistener.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.90</SPAN> </DIV>
+<P>一个生成器函数，返回一个新的 Unix <A href="http://nodejs.cn/api/net.html#net_class_net_socket"><CODE>net.Socket</CODE></A> 
+并且自动的 连接到所提供的<CODE>path</CODE>参数.</P>
+<P><CODE>connectListener</CODE>参数将一次被用作监听器来监听<A href="http://nodejs.cn/api/net.html#net_event_connect"><CODE>'connect'</CODE></A>事件。</P>
+<H2>net.connect(port[, host][, connectListener])<SPAN><A class="mark" id="net_net_connect_port_host_connectlistener" 
+href="http://nodejs.cn/api/net.html#net_net_connect_port_host_connectlistener">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/net.html#net_net_connect_port_host_connectlistener">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/net/net_connect_port_host_connectlistener.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.90</SPAN> </DIV>
+<P>一个生成器函数，返回一个新的 Unix <A href="http://nodejs.cn/api/net.html#net_class_net_socket"><CODE>net.Socket</CODE></A> 
+并且自动的 连接到所提供的 <CODE>port</CODE>和<CODE>host</CODE>参数.</P>
+<P>如果<CODE>host</CODE>被省略，<CODE>'localhost'</CODE> 将被默认使用。</P>
+<P><CODE>connectListener</CODE>参数将一次被用作监听器来监听<A href="http://nodejs.cn/api/net.html#net_event_connect"><CODE>'connect'</CODE></A>事件。</P>
+<H2>net.createConnection(options[, connectListener])<SPAN><A class="mark" id="net_net_createconnection_options_connectlistener" 
+href="http://nodejs.cn/api/net.html#net_net_createconnection_options_connectlistener">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/net.html#net_net_createconnection_options_connectlistener">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/net/net_createconnection_options_connectlistener.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.90</SPAN> </DIV>
+<P>一个生产器函数，将返回一个新的 <A 
+href="http://nodejs.cn/api/net.html#net_class_net_socket"><CODE>net.Socket</CODE></A> 
+并且自动的根据所提供的<CODE>options</CODE> 参数进行连接。</P>
+<P>options参数将被传递到<A 
+href="http://nodejs.cn/api/net.html#net_class_net_socket"><CODE>net.Socket</CODE></A>构造函数和<A 
+href="http://nodejs.cn/api/net.html#net_socket_connect_options_connectlistener"><CODE>socket.connect</CODE></A>方法两个地方。</P>
+<P>在socket创建之后，连接建立之前，传递<CODE>timeout</CODE>作为参数将调用<A href="http://nodejs.cn/api/net.html#net_socket_settimeout_timeout_callback"><CODE>socket.setTimeout()</CODE></A>。</P>
+<P><CODE>connectListener</CODE>参数将一次被用作监听器来监听<A href="http://nodejs.cn/api/net.html#net_event_connect"><CODE>'connect'</CODE></A>事件。</P>
+<P>Following is an example of a client of the echo server described in the <A 
+href="http://nodejs.cn/api/net.html#net_net_createserver_options_connectionlistener"><CODE>net.createServer()</CODE></A> 
+section:</P>
+<PRE><CODE class="lang-js">const net = require('net');
+const client = net.createConnection({port: 8124}, () =&gt; {
+  //'connect' listener
+  console.log('connected to server!');
+  client.write('world!\r\n');
+});
+client.on('data', (data) =&gt; {
+  console.log(data.toString());
+  client.end();
+});
+client.on('end', () =&gt; {
+  console.log('disconnected from server');
+});
+</CODE></PRE>
+<P>为了连接<CODE>/tmp/echo.sock</CODE>的socket，第二行应改为</P>
+<PRE><CODE class="lang-js">const client = net.connect({path: '/tmp/echo.sock'});
+</CODE></PRE>
+<H2>net.createConnection(path[, connectListener])<SPAN><A class="mark" id="net_net_createconnection_path_connectlistener" 
+href="http://nodejs.cn/api/net.html#net_net_createconnection_path_connectlistener">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/net.html#net_net_createconnection_path_connectlistener">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/net/net_createconnection_path_connectlistener.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.90</SPAN> </DIV>
+<P>一个生成器函数，返回一个新的 Unix <A href="http://nodejs.cn/api/net.html#net_class_net_socket"><CODE>net.Socket</CODE></A> 
+并且自动的 连接到所提供的<CODE>path</CODE>参数.</P>
+<P><CODE>connectListener</CODE>参数将一次被用作监听器来监听<A href="http://nodejs.cn/api/net.html#net_event_connect"><CODE>'connect'</CODE></A>事件。</P>
+<H2>net.createConnection(port[, host][, connectListener])<SPAN><A class="mark" 
+id="net_net_createconnection_port_host_connectlistener" href="http://nodejs.cn/api/net.html#net_net_createconnection_port_host_connectlistener">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/net.html#net_net_createconnection_port_host_connectlistener">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/net/net_createconnection_port_host_connectlistener.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.90</SPAN> </DIV>
+<P>一个生成器函数，返回一个新的 Unix <A href="http://nodejs.cn/api/net.html#net_class_net_socket"><CODE>net.Socket</CODE></A> 
+并且自动的 连接到所提供的 <CODE>port</CODE>和<CODE>host</CODE>参数.</P>
+<P>如果<CODE>host</CODE>被省略，<CODE>'localhost'</CODE> 将被默认使用。</P>
+<P><CODE>connectListener</CODE>参数将一次被用作监听器来监听<A href="http://nodejs.cn/api/net.html#net_event_connect"><CODE>'connect'</CODE></A>事件。</P>
+<H2>net.createServer([options][, connectionListener])<SPAN><A class="mark" id="net_net_createserver_options_connectionlistener" 
+href="http://nodejs.cn/api/net.html#net_net_createserver_options_connectionlistener">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/net.html#net_net_createserver_options_connectionlistener">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/net/net_createserver_options_connectionlistener.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.5.0</SPAN> </DIV>
+<P>创建一个新的服务器。<CODE>connectionListener</CODE> 参数将一次被用作监听器来监听<A href="http://nodejs.cn/api/net.html#net_event_connection"><CODE>'connection'</CODE></A>事件。</P>
+<P><CODE>options</CODE> 是一个对象，有以下默认属性:</P>
+<PRE><CODE class="lang-js">{
+  allowHalfOpen: false,
+  pauseOnConnect: false
+}
+</CODE></PRE>
+<P>如果 <CODE>allowHalfOpen</CODE> 是 <CODE>true</CODE>, 
+那么socket不会自动的发送一个FIN包，即使socket的另一端 发送了FIN包。socket变成不可读但是可写的。你应该显式地调用 <A href="http://nodejs.cn/api/net.html#net_socket_end_data_encoding"><CODE>end()</CODE></A> 
+方法。 查看 <A 
+href="http://nodejs.cn/api/net.html#net_event_end"><CODE>'end'</CODE></A>事件获取更多信息。</P>
+<P>如果 <CODE>pauseOnConnect</CODE> 是 <CODE>true</CODE>, 那么与每个连入的连接的socket将会暂停，
+ 并且不能从其中读取任何数据。这允许将在进程中传递的连接不会被原始进程读取数据。  为了从暂停的socket中开始读取数据，调用<A href="http://nodejs.cn/api/net.html#net_socket_resume"><CODE>resume()</CODE></A>.</P>
+<P>下面有关于响应服务器的一个例子，监听连接的8124端口。</P>
+<PRE><CODE class="lang-js">const net = require('net');
+const server = net.createServer((c) =&gt; {
+  // 'connection' listener
+  console.log('client connected');
+  c.on('end', () =&gt; {
+    console.log('client disconnected');
+  });
+  c.write('hello\r\n');
+  c.pipe(c);
+});
+server.on('error', (err) =&gt; {
+  throw err;
+});
+server.listen(8124, () =&gt; {
+  console.log('server bound');
+});
+</CODE></PRE>
+<P>通过<CODE>telnet</CODE>来进行测试:</P>
+<PRE><CODE class="lang-console">$ telnet localhost 8124
+</CODE></PRE>
+<P>为了监听 <CODE>/tmp/echo.sock</CODE>socket，从倒数第三行起，应改为</P>
+<PRE><CODE class="lang-js">server.listen('/tmp/echo.sock', () =&gt; {
+  console.log('server bound');
+});
+</CODE></PRE>
+<P>用<CODE>nc</CODE> 来连接UNIX域socket服务器:</P>
+<PRE><CODE class="lang-console">$ nc -U /tmp/echo.sock
+</CODE></PRE>
+<H2>net.isIP(input)<SPAN><A class="mark" id="net_net_isip_input" href="http://nodejs.cn/api/net.html#net_net_isip_input">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/net.html#net_net_isip_input">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/net/net_isip_input.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.3.0</SPAN> </DIV>
+<P>测试输入是否是IP地址。如果是非法字符串，返回0； 如果是IPv4地址，返回4，如果是IPv6地址，返回6.</P>
+<H2>net.isIPv4(input)<SPAN><A class="mark" id="net_net_isipv4_input" href="http://nodejs.cn/api/net.html#net_net_isipv4_input">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/net.html#net_net_isipv4_input">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/net/net_isipv4_input.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.3.0</SPAN> </DIV>
+<P>如果输入是IPv4地址的话，返回true, 否则返回false。</P>
+<H2>net.isIPv6(input)<SPAN><A class="mark" id="net_net_isipv6_input" href="http://nodejs.cn/api/net.html#net_net_isipv6_input">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/net.html#net_net_isipv6_input">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/net/net_isipv6_input.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.3.0</SPAN> </DIV>
+<P>如果输入是IPv6地址的话，返回true, 否则返回false。</P></DIV></DIV></DIV><!-- 搜索弹窗 -->   
+<DIV id="modal_search_bg"></DIV>
+<DIV 
+id="modal_search"><INPUT id="modal_search_input" placeholder="API 快速搜索" value=""> 
+    
+<DIV id="modal_search_result"></DIV></DIV><!-- js -->   <!--[if lt IE 10]><script src="/static/lib/placeholders.js?20170426"></script><![endif]--> 
+  
+<SCRIPT src="net%20%20Node_js%20API%20文档_files/api.js"></SCRIPT>
+ </BODY></HTML>

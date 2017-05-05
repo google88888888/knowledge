@@ -1,0 +1,623 @@
+﻿<!DOCTYPE HTML>
+<!-- saved from url=(0030)http://nodejs.cn/api/repl.html -->
+<!DOCTYPE html PUBLIC "" ""><HTML lang="zh-cmn-Hans"><HEAD><META 
+content="IE=11.0000" http-equiv="X-UA-Compatible">
+   
+<META charset="utf-8">   <TITLE>repl | Node.js API 文档</TITLE>   <LINK href="repl%20%20Node_js%20API%20文档_files/api.css" 
+rel="stylesheet">   <LINK href="/static/favicon.png" rel="icon" type="image/png" 
+sizes="32x32"> 
+<META name="GENERATOR" content="MSHTML 11.00.9600.18639"></HEAD> 
+<BODY class="alt apidoc" id="api-section-repl">
+<DIV class="clearfix" id="content">
+<DIV class="interior" id="column2">
+<DIV class="interior" id="intro"><A href="http://nodejs.cn/">          Node.js 
+中文网         </A>         
+<DIV><INPUT id="search_input" placeholder="API 快速搜索" value="">         
+</DIV></DIV>
+<UL>
+  <LI><A class="nav-documentation" href="http://nodejs.cn/api/documentation.html">关于本文档</A></LI>
+  <LI><A class="nav-synopsis" 
+  href="http://nodejs.cn/api/synopsis.html">用法与例子</A></LI></UL>
+<DIV class="line"></DIV>
+<UL>
+  <LI><A class="nav-assert" href="http://nodejs.cn/api/assert.html">Assert 
+  (断言)</A></LI>
+  <LI><A class="nav-buffer" 
+  href="http://nodejs.cn/api/buffer.html">Buffer</A></LI>
+  <LI><A class="nav-addons" href="http://nodejs.cn/api/addons.html">C/C++ 
+  插件</A></LI>
+  <LI><A class="nav-child_process" href="http://nodejs.cn/api/child_process.html">Child 
+  Processes (子进程)</A></LI>
+  <LI><A class="nav-cluster" href="http://nodejs.cn/api/cluster.html">Cluster 
+  (集群)</A></LI>
+  <LI><A class="nav-cli" href="http://nodejs.cn/api/cli.html">CLI 
+  (命令行选项)</A></LI>
+  <LI><A class="nav-console" href="http://nodejs.cn/api/console.html">Console 
+  (控制台)</A></LI>
+  <LI><A class="nav-crypto" href="http://nodejs.cn/api/crypto.html">Crypto 
+  (加密)</A></LI>
+  <LI><A class="nav-debugger" href="http://nodejs.cn/api/debugger.html">Debugger 
+  (调试器)</A></LI>
+  <LI><A class="nav-dns" href="http://nodejs.cn/api/dns.html">DNS 
+  (域名服务器)</A></LI>
+  <LI><A class="nav-domain" href="http://nodejs.cn/api/domain.html">Domain 
+  (域)</A></LI>
+  <LI><A class="nav-errors" href="http://nodejs.cn/api/errors.html">Error 
+  (错误)</A></LI>
+  <LI><A class="nav-events" href="http://nodejs.cn/api/events.html">Events 
+  (事件)</A></LI>
+  <LI><A class="nav-fs" href="http://nodejs.cn/api/fs.html">File System 
+  (文件系统)</A></LI>
+  <LI><A class="nav-globals" href="http://nodejs.cn/api/globals.html">Global 
+  (全局变量)</A></LI>
+  <LI><A class="nav-http" href="http://nodejs.cn/api/http.html">HTTP</A></LI>
+  <LI><A class="nav-https" href="http://nodejs.cn/api/https.html">HTTPS</A></LI>
+  <LI><A class="nav-modules" href="http://nodejs.cn/api/modules.html">Module 
+  (模块)</A></LI>
+  <LI><A class="nav-net" href="http://nodejs.cn/api/net.html">Net (网络)</A></LI>
+  <LI><A class="nav-os" href="http://nodejs.cn/api/os.html">OS (操作系统)</A></LI>
+  <LI><A class="nav-path" href="http://nodejs.cn/api/path.html">Path 
+  (路径)</A></LI>
+  <LI><A class="nav-process" href="http://nodejs.cn/api/process.html">Process 
+  (进程)</A></LI>
+  <LI><A class="nav-punycode" 
+  href="http://nodejs.cn/api/punycode.html">Punycode</A></LI>
+  <LI><A class="nav-querystring" 
+  href="http://nodejs.cn/api/querystring.html">Query Strings (查询字符串)</A></LI>
+  <LI><A class="nav-readline" href="http://nodejs.cn/api/readline.html">Readline 
+  (逐行读取)</A></LI>
+  <LI><A class="nav-repl active" href="http://nodejs.cn/api/repl.html">REPL 
+  (交互式解释器)</A></LI>
+  <LI><A class="nav-stream" href="http://nodejs.cn/api/stream.html">Stream 
+  (流)</A></LI>
+  <LI><A class="nav-string_decoder" href="http://nodejs.cn/api/string_decoder.html">String 
+  Decoder (字符串解码器)</A></LI>
+  <LI><A class="nav-timers" href="http://nodejs.cn/api/timers.html">Timer 
+  (定时器)</A></LI>
+  <LI><A class="nav-tls" href="http://nodejs.cn/api/tls.html">TLS 
+  (安全传输层)</A></LI>
+  <LI><A class="nav-tty" href="http://nodejs.cn/api/tty.html">TTY (终端)</A></LI>
+  <LI><A class="nav-dgram" href="http://nodejs.cn/api/dgram.html">UDP/Datagram 
+  (数据报)</A></LI>
+  <LI><A class="nav-url" href="http://nodejs.cn/api/url.html">URL</A></LI>
+  <LI><A class="nav-util" href="http://nodejs.cn/api/util.html">Util 
+  (实用工具)</A></LI>
+  <LI><A class="nav-v8" href="http://nodejs.cn/api/v8.html">V8</A></LI>
+  <LI><A class="nav-vm" href="http://nodejs.cn/api/vm.html">VM (虚拟机)</A></LI>
+  <LI><A class="nav-zlib" href="http://nodejs.cn/api/zlib.html">ZLIB 
+  (压缩)</A></LI></UL>
+<DIV class="line"></DIV></DIV>
+<DIV class="interior" id="column1" data-id="repl"><HEADER>
+<H1>Node.js v6.10.3 文档</H1>
+<DIV id="gtoc">
+<P><A name="toc" href="http://nodejs.cn/api/">返回文档首页</A>             <!--<a href="/api/all.html">单页面显示</a> |--> 
+            <!--<a href="/api/repl.json">JSON格式</a> |-->             <!--<a href="/api/en/repl.html">查看英文版</a>--> 
+          </P></DIV>
+<HR>
+</HEADER>
+<DIV id="toc">
+<H2>目录</H2>
+<UL>
+  <LI><SPAN class="stability_2"><A href="http://nodejs.cn/api/repl.html#repl_repl">repl 
+  (交互式解释器)</A></SPAN>
+  <UL> 
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/repl.html#repl_design_and_features">设计与特性</A></SPAN>
+    <UL> 
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/repl.html#repl_commands_and_special_keys">命令与特殊键</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/repl.html#repl_default_evaluation">默认的解释器</A></SPAN>
+      <UL> 
+        <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/repl.html#repl_javascript_expressions">JavaScript 
+        表达式</A></SPAN></LI>
+        <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/repl.html#repl_global_and_local_scope">全局作用域与局部作用域</A></SPAN></LI>
+        <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/repl.html#repl_accessing_core_node_js_modules">访问 
+        Node.js 核心模块</A></SPAN></LI>
+        <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/repl.html#repl_assignment_of_the_underscore_variable"><CODE>_</CODE>（下划线）变量的赋值</A></SPAN></LI></UL></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/repl.html#repl_custom_evaluation_functions">自定义的解释函数</A></SPAN>
+      <UL> 
+        <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/repl.html#repl_recoverable_errors">可恢复的错误</A></SPAN></LI></UL></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/repl.html#repl_customizing_repl_output">自定义 
+      REPL 输出</A></SPAN></LI></UL></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/repl.html#repl_class_replserver">REPLServer 
+    类</A></SPAN>
+    <UL> 
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/repl.html#repl_event_exit">'exit' 
+      事件</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/repl.html#repl_event_reset">'reset' 
+      事件</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/repl.html#repl_replserver_definecommand_keyword_cmd">replServer.defineCommand(keyword, 
+      cmd)</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/repl.html#repl_replserver_displayprompt_preservecursor">replServer.displayPrompt([preserveCursor])</A></SPAN></LI></UL></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/repl.html#repl_repl_start_options">repl.start([options])</A></SPAN></LI>
+    <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/repl.html#repl_the_node_js_repl">Node.js 
+    的 REPL</A></SPAN>
+    <UL> 
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/repl.html#repl_environment_variable_options">环境变量选项</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/repl.html#repl_persistent_history">历史记录</A></SPAN>
+      <UL> 
+        <LI><SPAN class="stability_0"><A href="http://nodejs.cn/api/repl.html#repl_node_repl_history_file">NODE_REPL_HISTORY_FILE</A></SPAN></LI></UL></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/repl.html#repl_using_the_node_js_repl_with_advanced_line_editors">在高级的行编辑器中使用 
+      Node.js REPL</A></SPAN></LI>
+      <LI><SPAN class="stability_undefined"><A href="http://nodejs.cn/api/repl.html#repl_starting_multiple_repl_instances_against_a_single_running_instance">在一个 
+      Node.js 实例中启动多个 REPL 实例</A></SPAN></LI></UL></LI></UL></LI></UL></DIV>
+<DIV id="apicontent">
+<H1>repl (交互式解释器)<SPAN><A class="mark" id="repl_repl" href="http://nodejs.cn/api/repl.html#repl_repl">#</A></SPAN></H1>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/repl.html#repl_repl">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/repl/repl.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<PRE class="api_stability api_stability_2"><A href="http://nodejs.cn/api/documentation.html#documentation_stability_index">稳定性: 2</A> - 稳定的</PRE>
+<P><CODE>repl</CODE> 模块提供了一种“读取-求值-输出”循环（REPL）的实现，它可作为一个独立的程序或嵌入到其他应用中。
+ 可以通过以下方式使用它：</P>
+<PRE><CODE class="lang-js">const repl = require('repl');
+</CODE></PRE>
+<H2>设计与特性<SPAN><A class="mark" id="repl_design_and_features" href="http://nodejs.cn/api/repl.html#repl_design_and_features">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/repl.html#repl_design_and_features">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/repl/design_and_features.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P><CODE>repl</CODE> 模块导出了 <CODE>repl.REPLServer</CODE> 类。 当 
+<CODE>repl.REPLServer</CODE> 实例运行时，它接收用户输入的每一行，根据用户定义的解释函数解释这些输入，然后输出结果。 输入可以是 
+<CODE>stdin</CODE>，输出可以是 <CODE>stdout</CODE>，或者也可以连接到其他任何 Node.js <A href="http://nodejs.cn/api/stream.html">流</A>。</P>
+<P><CODE>repl.REPLServer</CODE> 实例支持输入的自动补全、精简 Emacs 风格的行编辑、多行输入、ANSI 风格的输出、当前 
+REPL 会话状态的保存与恢复、错误校正、以及可定制的解释函数。</P>
+<H3>命令与特殊键<SPAN><A class="mark" id="repl_commands_and_special_keys" href="http://nodejs.cn/api/repl.html#repl_commands_and_special_keys">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/repl.html#repl_commands_and_special_keys">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/repl/commands_and_special_keys.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P>所有 REPL 的实例都支持下列特殊命令：</P>
+<UL>
+  <LI><CODE>.break</CODE> - 在输入一个多行表达式的过程中，输入 <CODE>.break</CODE> 命令（或按下 
+  <CODE>&lt;ctrl&gt;-C</CODE> 组合键）将终止表达式的继续输入。</LI>
+  <LI><CODE>.clear</CODE> - 重置 REPL 的 <CODE>context</CODE> 
+  为一个空对象，并清除当前正输入的所有多行表达式。</LI>
+  <LI><CODE>.exit</CODE> - 关闭输入输出流，退出 REPL。</LI>
+  <LI><CODE>.help</CODE> - 显示特定命令的帮助列表。</LI>
+  <LI><CODE>.save</CODE> - 保存当前 REPL 会话到一个文件： <CODE>&gt; .save 
+  ./file/to/save.js</CODE></LI>
+  <LI><CODE>.load</CODE> - 读取一个文件到当前 REPL 会话。 <CODE>&gt; .load 
+  ./file/to/load.js</CODE></LI>
+  <LI><CODE>.editor</CODE> 进入编辑模式（<CODE>&lt;ctrl&gt;-D</CODE> 
+  完成，<CODE>&lt;ctrl&gt;-C</CODE> 取消）</LI></UL>
+<PRE><CODE class="lang-js">&gt; .editor
+// 进入编辑模式（^D 完成，^C 取消）
+function welcome(name) {
+  return `你好 ${name}！`;
+}
+
+welcome('Node.js 用户');
+
+// ^D
+'你好 Node.js 用户！'
+&gt;
+</CODE></PRE>
+<P>REPL 中下列按键组合有特殊作用：</P>
+<UL>
+  <LI><CODE>&lt;ctrl&gt;-C</CODE> - 当按下一次时，与 <CODE>.break</CODE> 
+  命令的效果一样。当在空白行按下两次时，与 <CODE>.exit</CODE> 命令的效果一样。</LI>
+  <LI><CODE>&lt;ctrl&gt;-D</CODE> - 与 <CODE>.exit</CODE> 命令的效果一样。</LI>
+  <LI><CODE>&lt;tab&gt;</CODE> - 
+  当在空白行按下时，显示全局和本地作用域内的变量。当在输入时按下，显示相关的自动补全选项。</LI></UL>
+<H3>默认的解释器<SPAN><A class="mark" id="repl_default_evaluation" href="http://nodejs.cn/api/repl.html#repl_default_evaluation">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/repl.html#repl_default_evaluation">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/repl/default_evaluation.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P>默认情况下，所有 <CODE>repl.REPLServer</CODE> 实例使用了一个解释函数，它可以解释 JavaScript 表达式、提供对 
+Node.js 内置模块的访问。 当 <CODE>repl.REPLServer</CODE> 
+实例被创建时可以传入一个替换的解释函数，覆盖其默认的功能。</P>
+<H4>JavaScript 表达式<SPAN><A class="mark" id="repl_javascript_expressions" href="http://nodejs.cn/api/repl.html#repl_javascript_expressions">#</A></SPAN></H4>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/repl.html#repl_javascript_expressions">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/repl/javascript_expressions.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P>默认的解释器支持直接解释 JavaScript 表达式：</P>
+<PRE><CODE class="lang-js">&gt; 1 + 1
+2
+&gt; var m = 2
+undefined
+&gt; m + 1
+3
+</CODE></PRE>
+<P>除非在块级作用域中（如 <CODE>{...}</CODE>）或函数中，否则变量不管是隐式地声明还是使用 <CODE>var</CODE> 
+关键字声明，都是声明在全局作用域中。</P>
+<H4>全局作用域与局部作用域<SPAN><A class="mark" id="repl_global_and_local_scope" href="http://nodejs.cn/api/repl.html#repl_global_and_local_scope">#</A></SPAN></H4>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/repl.html#repl_global_and_local_scope">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/repl/global_and_local_scope.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P>默认的解释器提供了获取存在于全局作用域中的任何变量的途径。 可以通过给每个 <CODE>REPLServer</CODE> 绑定的 
+<CODE>context</CODE> 对象指定变量，来显式地把变量暴露给 REPL。 例如：</P>
+<PRE><CODE class="lang-js">const repl = require('repl');
+var msg = 'message';
+
+repl.start('&gt; ').context.m = msg;
+</CODE></PRE>
+<P><CODE>context</CODE> 对象的属性表现为 REPL 中的局部变量：</P>
+<PRE><CODE class="lang-js">$ node repl_test.js
+&gt; m
+'message'
+</CODE></PRE>
+<P>注意，默认情况下 <CODE>context</CODE> 的属性不是只读的。 要指定只读的全局变量，<CODE>context</CODE> 
+的属性必须使用 <CODE>Object.defineProperty()</CODE> 来定义:</P>
+<PRE><CODE class="lang-js">const repl = require('repl');
+var msg = 'message';
+
+const r = repl.start('&gt; ');
+Object.defineProperty(r.context, 'm', {
+  configurable: false,
+  enumerable: true,
+  value: msg
+});
+</CODE></PRE>
+<H4>访问 Node.js 核心模块<SPAN><A class="mark" id="repl_accessing_core_node_js_modules" 
+href="http://nodejs.cn/api/repl.html#repl_accessing_core_node_js_modules">#</A></SPAN></H4>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/repl.html#repl_accessing_core_node_js_modules">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/repl/accessing_core_node_js_modules.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P>默认的解释器会自动加载被调用的 Node.js 核心模块到 REPL 环境中。 例如，除非被声明为一个全局变量或一个有限范围的变量，否则输入 
+<CODE>fs</CODE> 会被解释为 <CODE>global.fs = require('fs')</CODE>。</P>
+<PRE><CODE class="lang-js">&gt; fs.createReadStream('./some/file');
+</CODE></PRE>
+<H4><CODE>_</CODE>（下划线）变量的赋值<SPAN><A class="mark" id="repl_assignment_of_the_underscore_variable" 
+href="http://nodejs.cn/api/repl.html#repl_assignment_of_the_underscore_variable">#</A></SPAN></H4>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/repl.html#repl_assignment_of_the_underscore_variable">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/repl/assignment_of_the_underscore_variable.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P>默认的解释器会把最近一次解释的表达式的结果赋值给变量 <CODE>_</CODE> （下划线）。</P>
+<PRE><CODE class="lang-js">&gt; [ 'a', 'b', 'c' ]
+[ 'a', 'b', 'c' ]
+&gt; _.length
+3
+&gt; _ += 1
+4
+</CODE></PRE>
+<P>显式地设置 <CODE>_</CODE> 为某个值能禁用该特性。</P>
+<H3>自定义的解释函数<SPAN><A class="mark" id="repl_custom_evaluation_functions" href="http://nodejs.cn/api/repl.html#repl_custom_evaluation_functions">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/repl.html#repl_custom_evaluation_functions">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/repl/custom_evaluation_functions.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P>当创建一个新的 <CODE>repl.REPLServer</CODE> 时，可以提供一个自定义的解释函数。 这可以用于实现完全定制化的 REPL 
+应用。</P>
+<P>例子，一个执行文本翻译的 REPL：</P>
+<PRE><CODE class="lang-js">const repl = require('repl');
+const Translator = require('translator').Translator;
+
+const myTranslator = new Translator('en', 'fr');
+
+function myEval(cmd, context, filename, callback) {
+  callback(null, myTranslator.translate(cmd));
+}
+
+repl.start({prompt: '&gt; ', eval: myEval});
+</CODE></PRE>
+<H4>可恢复的错误<SPAN><A class="mark" id="repl_recoverable_errors" href="http://nodejs.cn/api/repl.html#repl_recoverable_errors">#</A></SPAN></H4>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/repl.html#repl_recoverable_errors">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/repl/recoverable_errors.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P>当用户正在 REPL 中输入时，按下 <CODE>&lt;enter&gt;</CODE> 键会把当前行的输入发送到 <CODE>eval</CODE> 
+函数。 为了支持多行输入，<CODE>eval</CODE> 函数可以返回一个 <CODE>repl.Recoverable</CODE> 
+实例给提供的回调函数：</P>
+<PRE><CODE class="lang-js">function eval(cmd, context, filename, callback) {
+  var result;
+  try {
+    result = vm.runInThisContext(cmd);
+  } catch (e) {
+    if (isRecoverableError(e)) {
+      return callback(new repl.Recoverable(e));
+    }
+  }
+  callback(null, result);
+}
+
+function isRecoverableError(error) {
+  if (error.name === 'SyntaxError') {
+    return /^(Unexpected end of input|Unexpected token)/.test(error.message);
+  }
+  return false;
+}
+</CODE></PRE>
+<H3>自定义 REPL 输出<SPAN><A class="mark" id="repl_customizing_repl_output" href="http://nodejs.cn/api/repl.html#repl_customizing_repl_output">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/repl.html#repl_customizing_repl_output">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/repl/customizing_repl_output.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P>默认情况下，在把输出写入到提供的可写流（默认为 
+<CODE>process.stdout</CODE>）之前，<CODE>repl.REPLServer</CODE> 实例会使用 <A href="http://nodejs.cn/api/util.html#util_util_inspect_object_options"><CODE>util.inspect()</CODE></A> 
+方法对输出进行格式化。 使用 <CODE>util.inspect()</CODE> 方法时，<CODE>useColors</CODE> 
+选项可被指定是否在建立默认输出器时使用 ANSI 风格的代码给输出上色。</P>
+<P>在构造时，通过在 <CODE>writer</CODE> 选项传入一个新的函数，可以完全地自定义一个 
+<CODE>repl.REPLServer</CODE> 实例的输出。 例子，把输入的任何文本转换为大写：</P>
+<PRE><CODE class="lang-js">const repl = require('repl');
+
+const r = repl.start({prompt: '&gt;', eval: myEval, writer: myWriter});
+
+function myEval(cmd, context, filename, callback) {
+  callback(null,cmd);
+}
+
+function myWriter(output) {
+  return output.toUpperCase();
+}
+</CODE></PRE>
+<H2>REPLServer 类<SPAN><A class="mark" id="repl_class_replserver" href="http://nodejs.cn/api/repl.html#repl_class_replserver">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/repl.html#repl_class_replserver">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/repl/class_replserver.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.91</SPAN> </DIV>
+<P><CODE>repl.REPLServer</CODE> 类继承自 <A href="http://nodejs.cn/api/readline.html#readline_class_interface"><CODE>readline.Interface</CODE></A> 
+类。 <CODE>repl.REPLServer</CODE> 的实例由 <CODE>repl.start()</CODE> 方法创建，不能直接使用 
+JavaScript 的 <CODE>new</CODE> 关键字创建。</P>
+<H3>'exit' 事件<SPAN><A class="mark" id="repl_event_exit" href="http://nodejs.cn/api/repl.html#repl_event_exit">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/repl.html#repl_event_exit">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/repl/event_exit.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.7.7</SPAN> </DIV>
+<P>当接收到 <CODE>.exit</CODE> 命令、或按下两次 <CODE>&lt;ctrl&gt;-C</CODE> 发出 
+<CODE>SIGINT</CODE> 信号、或按下 <CODE>&lt;ctrl&gt;-D</CODE> 发出 <CODE>'end'</CODE> 
+信号而使 REPL 被退出时，触发 <CODE>'exit'</CODE> 事件。 监听器的回调函数被调用时不带任何参数。</P>
+<PRE><CODE class="lang-js">replServer.on('exit', () =&gt; {
+  console.log('从 REPL 接收到 "exit" 事件！');
+  process.exit();
+});
+</CODE></PRE>
+<H3>'reset' 事件<SPAN><A class="mark" id="repl_event_reset" href="http://nodejs.cn/api/repl.html#repl_event_reset">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/repl.html#repl_event_reset">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/repl/event_reset.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.11.0</SPAN> </DIV>
+<P>当 REPL 的上下文被重置时，触发 <CODE>'reset'</CODE> 事件。 每当接收到 <CODE>.clear</CODE> 
+命令时会触发该事件，除非 REPL 正在使用默认的解释器并且 <CODE>repl.REPLServer</CODE> 实例被创建时 
+<CODE>useGlobal</CODE> 选项被设为 <CODE>true</CODE>。 监听器的回调函数被调用时会带上 
+<CODE>context</CODE> 对象作为惟一的参数。</P>
+<P>这主要被用于重新初始化 REPL 上下文，使之达到某些预定义的状态，如下面的例子：</P>
+<PRE><CODE class="lang-js">const repl = require('repl');
+
+function initializeContext(context) {
+  context.m = 'test';
+}
+
+var r = repl.start({prompt: '&gt;'});
+initializeContext(r.context);
+
+r.on('reset', initializeContext);
+</CODE></PRE>
+<P>当代码被执行时，全局的 <CODE>'m'</CODE> 变量可以被修改，但随后的 <CODE>.clear</CODE> 
+命令会把它重置回初始值：</P>
+<PRE><CODE class="lang-js">$ ./node example.js
+&gt;m
+'test'
+&gt;m = 1
+1
+&gt;m
+1
+&gt;.clear
+Clearing context...
+&gt;m
+'test'
+&gt;
+</CODE></PRE>
+<H3>replServer.defineCommand(keyword, cmd)<SPAN><A class="mark" id="repl_replserver_definecommand_keyword_cmd" 
+href="http://nodejs.cn/api/repl.html#repl_replserver_definecommand_keyword_cmd">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/repl.html#repl_replserver_definecommand_keyword_cmd">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/repl/replserver_definecommand_keyword_cmd.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.3.0</SPAN> </DIV>
+<UL>
+  <LI><CODE>keyword</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  命令关键字（开头不带 <CODE>.</CODE> 字符）。</LI>
+  <LI><CODE>cmd</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">&lt;Object&gt;</A> 
+  | <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">&lt;Function&gt;</A> 
+  当命令被执行时调用的函数。</LI></UL>
+<P><CODE>replServer.defineCommand()</CODE> 方法用于添加新的前缀为 <CODE>.</CODE> 的命令到 REPL 
+实例。 这些命令通过输入一个 <CODE>.</CODE> 加 <CODE>keyword</CODE> 来调用。 <CODE>cmd</CODE> 
+可以是一个函数或一个具有以下属性的对象：</P>
+<UL>
+  <LI><CODE>help</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+  当键入 <CODE>.help</CODE> 时显示的帮助说明（可选）。</LI>
+  <LI><CODE>action</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">&lt;Function&gt;</A> 
+  要执行的函数，可接受一个字符串参数。</LI></UL>
+<P>例子，添加两个新命令到 REPL 实例：</P>
+<PRE><CODE class="lang-js">const repl = require('repl');
+
+var replServer = repl.start({prompt: '&gt; '});
+replServer.defineCommand('sayhello', {
+  help: '打招呼',
+  action: function(name) {
+    this.lineParser.reset();
+    this.bufferedCommand = '';
+    console.log(`你好，${name}！`);
+    this.displayPrompt();
+  }
+});
+replServer.defineCommand('saybye', function() {
+  console.log('再见！');
+  this.close();
+});
+</CODE></PRE>
+<P>在 REPL 实例中使用新的命令：</P>
+<PRE><CODE class="lang-txt">&gt; .sayhello Node.js中文网
+你好，Node.js中文网！
+&gt; .saybye
+再见！
+</CODE></PRE>
+<H3>replServer.displayPrompt([preserveCursor])<SPAN><A class="mark" id="repl_replserver_displayprompt_preservecursor" 
+href="http://nodejs.cn/api/repl.html#repl_replserver_displayprompt_preservecursor">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/repl.html#repl_replserver_displayprompt_preservecursor">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/repl/replserver_displayprompt_preservecursor.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.91</SPAN> </DIV>
+<UL>
+  <LI><CODE>preserveCursor</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#Boolean_type">&lt;Boolean&gt;</A></LI></UL>
+<P><CODE>replServer.displayPrompt()</CODE> 方法会让 REPL 实例做好用户输入的准备，打印配置的 
+<CODE>prompt</CODE> 到 <CODE>output</CODE> 中新的一行，然后返回 <CODE>input</CODE> 
+等待新的输入。</P>
+<P>当正在键入多行输入时，会打印省略号而不是提示符。</P>
+<P>当 <CODE>preserveCursor</CODE> 为 <CODE>true</CODE> 时，游标位置不会被复位到 
+<CODE>0</CODE>。</P>
+<P><CODE>replServer.displayPrompt</CODE> 方法主要被使用 
+<CODE>replServer.defineCommand()</CODE> 方法注册的命令的 <CODE>action</CODE> 函数调用。</P>
+<H2>repl.start([options])<SPAN><A class="mark" id="repl_repl_start_options" 
+href="http://nodejs.cn/api/repl.html#repl_repl_start_options">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/repl.html#repl_repl_start_options">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/repl/repl_start_options.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v0.1.91</SPAN> </DIV>
+<UL>
+  <LI><CODE>options</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">&lt;Object&gt;</A> 
+  | <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A>
+  <UL> 
+    <LI><CODE>prompt</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures#String_type">&lt;String&gt;</A> 
+    要显示的输入提示符。默认为 <CODE>&gt;</CODE>。</LI>
+    <LI><CODE>input</CODE> <SPAN class="type">&lt;Readable&gt;</SPAN> REPL 
+    输入要被读取的可读流。默认为 <CODE>process.stdin</CODE>。</LI>
+    <LI><CODE>output</CODE> <SPAN class="type">&lt;Writable&gt;</SPAN> REPL 
+    输出要被写入的可写流。默认为 <CODE>process.stdout</CODE>。</LI>
+    <LI><CODE>terminal</CODE> <SPAN class="type">&lt;boolean&gt;</SPAN> 如果为 
+    <CODE>true</CODE>，则指定 <CODE>output</CODE> 应被当作一个 TTY 终端，并且可以使用 ANSI/VT100 
+    转义码写入。 默认值为初始化时 <CODE>output</CODE> 流的 <CODE>isTTY</CODE> 属性的值。</LI>
+    <LI><CODE>eval</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">&lt;Function&gt;</A> 
+    当解释每行输入时使用的函数。默认为 JavaScript <CODE>eval()</CODE> 函数的异步封装。 <CODE>eval</CODE> 
+    函数出错时会返回 <CODE>repl.Recoverable</CODE>，表明输入不完整并提示用户完成输入。</LI>
+    <LI><CODE>useColors</CODE> <SPAN class="type">&lt;boolean&gt;</SPAN> 如果为 
+    <CODE>true</CODE>，则指定默认的 <CODE>writer</CODE> 函数可以在 REPL 输出中包含 ANSI 颜色风格。
+     如果提供了自定义的 <CODE>writer</CODE> 函数，则该参数无效。 默认为 REPL 实例的 <CODE>terminal</CODE> 
+    属性的值。</LI>
+    <LI><CODE>useGlobal</CODE> <SPAN class="type">&lt;boolean&gt;</SPAN> 如果为 
+    <CODE>true</CODE>，则指定默认的解释函数使用 JavaScript <CODE>global</CODE> 作为上下文，而不是为 
+    REPL 实例创建一个新的独立的上下文。 默认为 <CODE>false</CODE>。</LI>
+    <LI><CODE>ignoreUndefined</CODE> <SPAN class="type">&lt;boolean&gt;</SPAN> 
+    如果为 <CODE>true</CODE>，则指定默认的输出器不会输出命令返回的 <CODE>undefined</CODE> 值。 默认为 
+    <CODE>false</CODE>。</LI>
+    <LI><CODE>writer</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">&lt;Function&gt;</A> 
+    在写入到 <CODE>output</CODE> 之前，该函数被调用用来格式化每个命令的输出。 默认为 <A href="http://nodejs.cn/api/util.html#util_util_inspect_object_options"><CODE>util.inspect()</CODE></A>。</LI>
+    <LI><CODE>completer</CODE> <A class="type" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">&lt;Function&gt;</A> 
+    可选的函数，用来自定义 Tab 键的自动补全。 详见 <A href="http://nodejs.cn/api/readline.html#readline_use_of_the_completer_function"><CODE>readline.InterfaceCompleter</CODE></A>。</LI>
+    <LI><CODE>replMode</CODE> - 一个标志位，指定默认的解释器使用严格模式、默认模式、或混合模式中的哪一种来执行 
+    JavaScript 命令。 可选的值有：
+    <UL>
+      <LI><CODE>repl.REPL_MODE_SLOPPY</CODE> - 使用默认模式解释表达式。</LI>
+      <LI><CODE>repl.REPL_MODE_STRICT</CODE> - 使用严格模式解释表达式。该模式等同于在每个 repl 声明前加上 
+      <CODE>'use strict'</CODE>。</LI>
+      <LI><CODE>repl.REPL_MODE_MAGIC</CODE> - 
+      先尝试使用默认模式解释表达式，如果表达式解释出错，再使用严格模式重试。</LI></UL></LI>
+    <LI><CODE>breakEvalOnSigint</CODE> - 当接收到 <CODE>SIGINT</CODE> 时停止解释当前代码，比如按下 
+    <CODE>Ctrl+C</CODE>。 不能与自定义的 <CODE>eval</CODE> 函数同时使用。 默认为 
+    <CODE>false</CODE>。</LI></UL></LI></UL>
+<P><CODE>repl.start()</CODE> 方法创建并启动一个 <CODE>repl.REPLServer</CODE> 实例。</P>
+<P>如果 <CODE>options</CODE> 是一个字符串，则它指定了输入提示符：</P>
+<PRE><CODE class="lang-js">const repl = require('repl');
+
+// 一个 Unix 风格的提示符
+repl.start('$ ');
+</CODE></PRE>
+<H2>Node.js 的 REPL<SPAN><A class="mark" id="repl_the_node_js_repl" href="http://nodejs.cn/api/repl.html#repl_the_node_js_repl">#</A></SPAN></H2>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/repl.html#repl_the_node_js_repl">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/repl/the_node_js_repl.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P>Node.js 自身也使用 <CODE>repl</CODE> 模块为执行 JavaScript 代码提供交互接口。 可以通过不带任何参数（或使用 
+<CODE>-i</CODE> 参数）地执行 Node.js 二进制文件来使用它：</P>
+<PRE><CODE class="lang-js">$ node
+&gt; a = [1, 2, 3];
+[ 1, 2, 3 ]
+&gt; a.forEach((v) =&gt; {
+...   console.log(v);
+...   });
+1
+2
+3
+</CODE></PRE>
+<H3>环境变量选项<SPAN><A class="mark" id="repl_environment_variable_options" href="http://nodejs.cn/api/repl.html#repl_environment_variable_options">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/repl.html#repl_environment_variable_options">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/repl/environment_variable_options.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P>使用以下环境变量，可以自定义 Node.js REPL 的各种行为：</P>
+<UL>
+  <LI><CODE>NODE_REPL_HISTORY</CODE> - 当给定了一个有效的路径，则 REPL 
+  的历史记录将被保存到指定的文件，而不是用户目录下的 <CODE>.node_repl_history</CODE> 文件。 设为 
+  <CODE>""</CODE> 将禁用 REPL 历史记录。 值两头的空格键会被去掉。</LI>
+  <LI><CODE>NODE_REPL_HISTORY_SIZE</CODE> - 默认为 
+  <CODE>1000</CODE>。控制历史记录的最大行数。必须是正数。</LI>
+  <LI><CODE>NODE_REPL_MODE</CODE> - 可以是 <CODE>sloppy</CODE>、<CODE>strict</CODE> 
+  或 <CODE>magic</CODE>。 默认为 <CODE>magic</CODE>，在严格模式中会自动运行 "strict mode only" 
+  声明。</LI></UL>
+<H3>历史记录<SPAN><A class="mark" id="repl_persistent_history" href="http://nodejs.cn/api/repl.html#repl_persistent_history">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/repl.html#repl_persistent_history">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/repl/persistent_history.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P>默认情况下，Node.js REPL 模块会把 <CODE>node</CODE> REPL 会话之间的历史记录保存到用户目录中的 
+<CODE>.node_repl_history</CODE> 文件。 修改环境变量 <CODE>NODE_REPL_HISTORY=""</CODE> 
+可以禁用该功能。</P>
+<H4>NODE_REPL_HISTORY_FILE<SPAN><A class="mark" id="repl_node_repl_history_file" 
+href="http://nodejs.cn/api/repl.html#repl_node_repl_history_file">#</A></SPAN></H4>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/repl.html#repl_node_repl_history_file">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/repl/node_repl_history_file.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<DIV class="api_metadata"><SPAN>新增于: v2.0.0</SPAN> <SPAN>废弃于: v3.0.0 </SPAN> 
+</DIV>
+<PRE class="api_stability api_stability_0"><A href="http://nodejs.cn/api/documentation.html#documentation_stability_index">稳定性: 0</A> - 废弃的: 使用 <A href="http://nodejs.cn/api/repl.html#repl_environment_variable_options">NODE_REPL_HISTORY</A> 代替。</PRE>
+<P>Node.js/io.js v2.x 之前，REPL 的历史记录使用 <CODE>NODE_REPL_HISTORY_FILE</CODE> 
+变量来控制，且历史记录以 JSON 格式保存。 该变量已被废弃，旧的 JSON 格式的 REPL 历史记录文件会被自动转换为一种精简的纯文本格式。
+ 这个新的文件会被保存到用户目录下或由 <CODE>NODE_REPL_HISTORY</CODE> 变量定义的目录下，详见<A href="http://nodejs.cn/api/repl.html#repl_environment_variable_options">环境变量选项</A>。</P>
+<H3>在高级的行编辑器中使用 Node.js REPL<SPAN><A class="mark" id="repl_using_the_node_js_repl_with_advanced_line_editors" 
+href="http://nodejs.cn/api/repl.html#repl_using_the_node_js_repl_with_advanced_line_editors">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/repl.html#repl_using_the_node_js_repl_with_advanced_line_editors">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/repl/using_the_node_js_repl_with_advanced_line_editors.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P>对于高级的行编辑器，可以使用环境变量 <CODE>NODE_NO_READLINE=1</CODE> 来启动 Node.js。
+ 这会以标准的终端配置来启动主 REPL 和调试 REPL，可以使用 <CODE>rlwrap</CODE>。</P>
+<P>例如，你可以在你的 bashrc 文件中添加：</P>
+<PRE><CODE class="lang-text">alias node="env NODE_NO_READLINE=1 rlwrap node"
+</CODE></PRE>
+<H3>在一个 Node.js 实例中启动多个 REPL 实例<SPAN><A class="mark" id="repl_starting_multiple_repl_instances_against_a_single_running_instance" 
+href="http://nodejs.cn/api/repl.html#repl_starting_multiple_repl_instances_against_a_single_running_instance">#</A></SPAN></H3>
+<P style="font-size: 12px; margin-top: -1em;"><A href="http://nodejs.cn/api/en/repl.html#repl_starting_multiple_repl_instances_against_a_single_running_instance">查看英文版</A> 
+/ <A href="https://github.com/nodejscn/node-api-cn/edit/master/repl/starting_multiple_repl_instances_against_a_single_running_instance.md" 
+target="_blank" rel="nofollow">参与翻译</A></P>
+<P>可以在一个 Node.js 实例中创建并运行多个 REPL 实例，它们共享一个 <CODE>global</CODE> 对象但有独立的 I/O 
+接口。</P>
+<P>例子，在 <CODE>stdin</CODE>、Unix socket、和 TCP socket 上分别提供了独立的 REPL：</P>
+<PRE><CODE class="lang-js">const net = require('net');
+const repl = require('repl');
+var connections = 0;
+
+repl.start({
+  prompt: 'Node.js 使用 stdin&gt; ',
+  input: process.stdin,
+  output: process.stdout
+});
+
+net.createServer((socket) =&gt; {
+  connections += 1;
+  repl.start({
+    prompt: 'Node.js 使用 Unix socket&gt; ',
+    input: socket,
+    output: socket
+  }).on('exit', () =&gt; {
+    socket.end();
+  });
+}).listen('/tmp/node-repl-sock');
+
+net.createServer((socket) =&gt; {
+  connections += 1;
+  repl.start({
+    prompt: 'Node.js 使用 TCP socket&gt; ',
+    input: socket,
+    output: socket
+  }).on('exit', () =&gt; {
+    socket.end();
+  });
+}).listen(5001);
+</CODE></PRE>
+<P>从命令行运行这个应用会在 stdin 上启动一个 REPL。 其他 REPL 客户端可以通过 Unix socket 或 TCP socket 进行连接。
+ 例如，可以使用 <CODE>telnet</CODE> 连接到 TCP socket，使用 <CODE>socat</CODE> 连接到 Unix 
+socket 或 TCP socket。</P>
+<P>通过从一个基于 Unix socket 的服务器（而不是 stdin）启动一个 REPL，可以连接到一个长期运行的 Node.js 
+进程而无需重启它。</P>
+<P>例子，在一个 <CODE>net.Server</CODE> 实例和一个 <CODE>net.Socket</CODE> 
+实例上运行一个全特性的（<CODE>terminal</CODE>）REPL，详见：<A href="https://gist.github.com/2209310">https://gist.github.com/2209310</A></P>
+<P>例子，在 <A href="http://man7.org/linux/man-pages/man1/curl.1.html">curl(1)</A> 
+上运行一个 REPL 实例，详见：<A 
+href="https://gist.github.com/2053342">https://gist.github.com/2053342</A></P></DIV></DIV></DIV><!-- 搜索弹窗 --> 
+  
+<DIV id="modal_search_bg"></DIV>
+<DIV 
+id="modal_search"><INPUT id="modal_search_input" placeholder="API 快速搜索" value=""> 
+    
+<DIV id="modal_search_result"></DIV></DIV><!-- js -->   <!--[if lt IE 10]><script src="/static/lib/placeholders.js?20170426"></script><![endif]--> 
+  
+<SCRIPT src="repl%20%20Node_js%20API%20文档_files/api.js"></SCRIPT>
+ </BODY></HTML>
