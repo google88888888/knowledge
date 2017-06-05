@@ -1,0 +1,1074 @@
+html {
+	margin: 0px; padding: 0px; border: currentColor; border-image: none; text-align: left; color: rgb(17, 17, 17); font-style: normal; font-weight: normal; text-decoration: none; list-style-type: none;
+}
+body {
+	margin: 0px; padding: 0px; border: currentColor; border-image: none; text-align: left; color: rgb(17, 17, 17); font-style: normal; font-weight: normal; text-decoration: none; list-style-type: none;
+}
+div {
+	margin: 0px; padding: 0px; border: currentColor; border-image: none; text-align: left; color: rgb(17, 17, 17); font-style: normal; font-weight: normal; text-decoration: none; list-style-type: none;
+}
+span {
+	margin: 0px; padding: 0px; border: currentColor; border-image: none; text-align: left; color: rgb(17, 17, 17); font-style: normal; font-weight: normal; text-decoration: none; list-style-type: none;
+}
+object {
+	margin: 0px; padding: 0px; border: currentColor; border-image: none; text-align: left; color: rgb(17, 17, 17); font-style: normal; font-weight: normal; text-decoration: none; list-style-type: none;
+}
+iframe {
+	margin: 0px; padding: 0px; border: currentColor; border-image: none; text-align: left; color: rgb(17, 17, 17); font-style: normal; font-weight: normal; text-decoration: none; list-style-type: none;
+}
+h1 {
+	margin: 0px; padding: 0px; border: currentColor; border-image: none; text-align: left; color: rgb(17, 17, 17); font-style: normal; font-weight: normal; text-decoration: none; list-style-type: none;
+}
+h2 {
+	margin: 0px; padding: 0px; border: currentColor; border-image: none; text-align: left; color: rgb(17, 17, 17); font-style: normal; font-weight: normal; text-decoration: none; list-style-type: none;
+}
+h3 {
+	margin: 0px; padding: 0px; border: currentColor; border-image: none; text-align: left; color: rgb(17, 17, 17); font-style: normal; font-weight: normal; text-decoration: none; list-style-type: none;
+}
+h4 {
+	margin: 0px; padding: 0px; border: currentColor; border-image: none; text-align: left; color: rgb(17, 17, 17); font-style: normal; font-weight: normal; text-decoration: none; list-style-type: none;
+}
+h5 {
+	margin: 0px; padding: 0px; border: currentColor; border-image: none; text-align: left; color: rgb(17, 17, 17); font-style: normal; font-weight: normal; text-decoration: none; list-style-type: none;
+}
+h6 {
+	margin: 0px; padding: 0px; border: currentColor; border-image: none; text-align: left; color: rgb(17, 17, 17); font-style: normal; font-weight: normal; text-decoration: none; list-style-type: none;
+}
+p {
+	margin: 0px; padding: 0px; border: currentColor; border-image: none; text-align: left; color: rgb(17, 17, 17); font-style: normal; font-weight: normal; text-decoration: none; list-style-type: none;
+}
+blockquote {
+	margin: 0px; padding: 0px; border: currentColor; border-image: none; text-align: left; color: rgb(17, 17, 17); font-style: normal; font-weight: normal; text-decoration: none; list-style-type: none;
+}
+pre {
+	margin: 0px; padding: 0px; border: currentColor; border-image: none; text-align: left; color: rgb(17, 17, 17); font-style: normal; font-weight: normal; text-decoration: none; list-style-type: none;
+}
+a {
+	margin: 0px; padding: 0px; border: currentColor; border-image: none; text-align: left; color: rgb(17, 17, 17); font-style: normal; font-weight: normal; text-decoration: none; list-style-type: none;
+}
+abbr {
+	margin: 0px; padding: 0px; border: currentColor; border-image: none; text-align: left; color: rgb(17, 17, 17); font-style: normal; font-weight: normal; text-decoration: none; list-style-type: none;
+}
+acronym {
+	margin: 0px; padding: 0px; border: currentColor; border-image: none; text-align: left; color: rgb(17, 17, 17); font-style: normal; font-weight: normal; text-decoration: none; list-style-type: none;
+}
+address {
+	margin: 0px; padding: 0px; border: currentColor; border-image: none; text-align: left; color: rgb(17, 17, 17); font-style: normal; font-weight: normal; text-decoration: none; list-style-type: none;
+}
+code {
+	margin: 0px; padding: 0px; border: currentColor; border-image: none; text-align: left; color: rgb(17, 17, 17); font-style: normal; font-weight: normal; text-decoration: none; list-style-type: none;
+}
+del {
+	margin: 0px; padding: 0px; border: currentColor; border-image: none; text-align: left; color: rgb(17, 17, 17); font-style: normal; font-weight: normal; text-decoration: none; list-style-type: none;
+}
+dfn {
+	margin: 0px; padding: 0px; border: currentColor; border-image: none; text-align: left; color: rgb(17, 17, 17); font-style: normal; font-weight: normal; text-decoration: none; list-style-type: none;
+}
+em {
+	margin: 0px; padding: 0px; border: currentColor; border-image: none; text-align: left; color: rgb(17, 17, 17); font-style: normal; font-weight: normal; text-decoration: none; list-style-type: none;
+}
+img {
+	margin: 0px; padding: 0px; border: currentColor; border-image: none; text-align: left; color: rgb(17, 17, 17); font-style: normal; font-weight: normal; text-decoration: none; list-style-type: none;
+}
+q {
+	margin: 0px; padding: 0px; border: currentColor; border-image: none; text-align: left; color: rgb(17, 17, 17); font-style: normal; font-weight: normal; text-decoration: none; list-style-type: none;
+}
+dl {
+	margin: 0px; padding: 0px; border: currentColor; border-image: none; text-align: left; color: rgb(17, 17, 17); font-style: normal; font-weight: normal; text-decoration: none; list-style-type: none;
+}
+dt {
+	margin: 0px; padding: 0px; border: currentColor; border-image: none; text-align: left; color: rgb(17, 17, 17); font-style: normal; font-weight: normal; text-decoration: none; list-style-type: none;
+}
+dd {
+	margin: 0px; padding: 0px; border: currentColor; border-image: none; text-align: left; color: rgb(17, 17, 17); font-style: normal; font-weight: normal; text-decoration: none; list-style-type: none;
+}
+ol {
+	margin: 0px; padding: 0px; border: currentColor; border-image: none; text-align: left; color: rgb(17, 17, 17); font-style: normal; font-weight: normal; text-decoration: none; list-style-type: none;
+}
+ul {
+	margin: 0px; padding: 0px; border: currentColor; border-image: none; text-align: left; color: rgb(17, 17, 17); font-style: normal; font-weight: normal; text-decoration: none; list-style-type: none;
+}
+li {
+	margin: 0px; padding: 0px; border: currentColor; border-image: none; text-align: left; color: rgb(17, 17, 17); font-style: normal; font-weight: normal; text-decoration: none; list-style-type: none;
+}
+tt {
+	margin: 0px; padding: 0px; border: currentColor; border-image: none; text-align: left; color: rgb(17, 17, 17); font-style: normal; font-weight: normal; text-decoration: none; list-style-type: none;
+}
+fieldset {
+	margin: 0px; padding: 0px; border: currentColor; border-image: none; text-align: left; color: rgb(17, 17, 17); font-style: normal; font-weight: normal; text-decoration: none; list-style-type: none;
+}
+form {
+	margin: 0px; padding: 0px; border: currentColor; border-image: none; text-align: left; color: rgb(17, 17, 17); font-style: normal; font-weight: normal; text-decoration: none; list-style-type: none;
+}
+label {
+	margin: 0px; padding: 0px; border: currentColor; border-image: none; text-align: left; color: rgb(17, 17, 17); font-style: normal; font-weight: normal; text-decoration: none; list-style-type: none;
+}
+legend {
+	margin: 0px; padding: 0px; border: currentColor; border-image: none; text-align: left; color: rgb(17, 17, 17); font-style: normal; font-weight: normal; text-decoration: none; list-style-type: none;
+}
+table {
+	margin: 0px; padding: 0px; border: currentColor; border-image: none; text-align: left; color: rgb(17, 17, 17); font-style: normal; font-weight: normal; text-decoration: none; list-style-type: none;
+}
+caption {
+	margin: 0px; padding: 0px; border: currentColor; border-image: none; text-align: left; color: rgb(17, 17, 17); font-style: normal; font-weight: normal; text-decoration: none; list-style-type: none;
+}
+tbody {
+	margin: 0px; padding: 0px; border: currentColor; border-image: none; text-align: left; color: rgb(17, 17, 17); font-style: normal; font-weight: normal; text-decoration: none; list-style-type: none;
+}
+tfoot {
+	margin: 0px; padding: 0px; border: currentColor; border-image: none; text-align: left; color: rgb(17, 17, 17); font-style: normal; font-weight: normal; text-decoration: none; list-style-type: none;
+}
+thead {
+	margin: 0px; padding: 0px; border: currentColor; border-image: none; text-align: left; color: rgb(17, 17, 17); font-style: normal; font-weight: normal; text-decoration: none; list-style-type: none;
+}
+tr {
+	margin: 0px; padding: 0px; border: currentColor; border-image: none; text-align: left; color: rgb(17, 17, 17); font-style: normal; font-weight: normal; text-decoration: none; list-style-type: none;
+}
+th {
+	margin: 0px; padding: 0px; border: currentColor; border-image: none; text-align: left; color: rgb(17, 17, 17); font-style: normal; font-weight: normal; text-decoration: none; list-style-type: none;
+}
+td {
+	margin: 0px; padding: 0px; border: currentColor; border-image: none; text-align: left; color: rgb(17, 17, 17); font-style: normal; font-weight: normal; text-decoration: none; list-style-type: none;
+}
+body {
+	margin: 0px; padding: 0px; width: 98%; color: rgb(17, 17, 17); line-height: 1.8em; letter-spacing: -0.01em; font-family: Georgia, serif; font-size: 62.5%; word-spacing: 0.2em; background-color: rgb(245, 245, 213);
+}
+body.mobile {
+	font-size: 60%;
+}
+body.two-columns.mobile {
+	font-size: 100%;
+}
+@media all and (max-width:30rem)
+{
+body {
+	font-size: 60%;
+}
+body.two-columns.mobile {
+	font-size: 60%;
+}
+}
+h1 {
+	font-size: 2.88em;
+}
+h2 {
+	line-height: 1.35em; font-size: 2.88em;
+}
+body.mobile h2 {
+	font-size: 2em;
+}
+@media all and (max-width:30rem)
+{
+h2 {
+	font-size: 2em;
+}
+}
+h3 {
+	font-size: 1.87em;
+}
+h4 {
+	font-size: 1.5em;
+}
+ul li {
+	list-style-type: square;
+}
+ol li {
+	list-style-type: decimal; list-style-position: inside;
+}
+img {
+	border: 2px solid rgb(0, 57, 138); border-image: none;
+}
+strong {
+	font-weight: 800;
+}
+p {
+	line-height: 220%; font-size: 1.6em;
+}
+li {
+	line-height: 220%; font-size: 1.6em;
+}
+input {
+	font-size: 1.13em;
+}
+textarea {
+	font-size: 1.13em;
+}
+select {
+	font-size: 1.03em;
+}
+button {
+	font-size: 1.03em;
+}
+#container {
+	margin: 0px auto; padding: 1em; background-color: rgb(245, 245, 213);
+}
+body.one-column #container {
+	width: 65%; min-width: 640px; max-width: 960px;
+}
+body.two-columns #container {
+	width: 85%; min-width: 780px; max-width: 1260px;
+}
+body.one-column.mobile #container {
+	width: 98%; overflow: hidden; min-width: 0px;
+}
+body.two-columns.mobile #container {
+	width: 98%; overflow: hidden; min-width: 0px;
+}
+@media all and (max-width:48rem)
+{
+#container {
+	padding: 0.5em;
+}
+body.one-column #container {
+	width: 98%; overflow: hidden; min-width: 0px;
+}
+body.two-columns #container {
+	width: 98%; overflow: hidden; min-width: 0px;
+}
+}
+#header {
+	width: 100%;
+}
+#header {
+	margin: 1em; height: 5em; border-bottom-color: rgb(211, 211, 211); border-bottom-width: 1px; border-bottom-style: solid; float: left;
+}
+#header h1 {
+	color: rgb(85, 102, 119); font-size: 1.8em; margin-top: 0.9em;
+}
+#header #header-description {
+	color: rgb(85, 102, 119); font-size: 1.8em; margin-top: 0.9em;
+}
+#header div#header-name {
+	color: rgb(85, 102, 119); font-size: 1.8em; margin-top: 0.9em;
+}
+#header h1 {
+	float: left;
+}
+#header div#header-name {
+	float: left;
+}
+#header #feed_icon {
+	margin-right: 1%; margin-left: 1%; float: right;
+}
+#header #google_search {
+	margin-right: 1%; margin-left: 1%; float: right;
+}
+#header #feed_icon {
+	transition:transform 0.4s ease-in; margin-top: 0.9em; transform: rotate(5deg); -webkit-transform: rotate(5deg); -moz-transform: rotate(5deg); -o-transform: rotate(5deg); -webkit-transition: -webkit-transform .4s ease-in; -moz-transition: -moz-transform .4s ease-in; -o-transition: -o-transform .4s ease-in;
+}
+#header #feed_icon:hover {
+	transform: rotate(275deg); -webkit-transform: rotate(275deg); -moz-transform: rotate(275deg); -o-transform: rotate(275deg);
+}
+#header #google_search {
+	margin: 1.3em 1em; padding: 0px; width: 201px; height: 2.4em; position: relative; background-image: url("images/searchtop.gif"); background-repeat: no-repeat;
+}
+#header #google_search form {
+	display: inline;
+}
+#header #google_search .searchbox {
+	border: 0px currentColor; border-image: none; left: 1px; top: 0px; width: 180px; height: 24px; position: absolute; background-color: transparent;
+}
+#header #google_search .searchbox_submit {
+	border: 0px currentColor; border-image: none; left: 176px; top: 0px; width: 29px; height: 25px; position: absolute; background-color: transparent;
+}
+#header a {
+	color: orange;
+}
+#footer img {
+	border: currentColor; border-image: none;
+}
+body.mobile #header #feed_icon {
+	display: none;
+}
+body.mobile #header #google_search {
+	display: none;
+}
+@media all and (max-width:30rem)
+{
+#header #feed_icon {
+	display: none;
+}
+#header #google_search {
+	display: none;
+}
+}
+body.mobile #header {
+	margin: 0px 1em 1em; height: 3em; max-width: 95%;
+}
+body.mobile #header h1 {
+	margin-top: 0.5em;
+}
+body.mobile #header #header-description {
+	margin-top: 0.5em;
+}
+body.mobile #header div#header-name {
+	margin-top: 0.5em;
+}
+@media all and (max-width:48rem)
+{
+#header {
+	margin: 0px 2em 1em; height: 3em; max-width: 95%;
+}
+#header h1 {
+	margin-top: 0.5em;
+}
+#header #header-description {
+	margin-top: 0.5em;
+}
+#header div#header-name {
+	margin-top: 0.5em;
+}
+}
+#content {
+	margin: 1.5em 1em 1em; clear: both;
+}
+#content h1 {
+	margin: 0.4em 0px 0.2em; padding: 0px 0px 0.2em; color: rgb(0, 0, 0); letter-spacing: -0.03em; font-weight: 500; border-bottom-color: rgb(211, 211, 211); border-bottom-width: 1px; border-bottom-style: solid;
+}
+h2 {
+	margin: 0.4em 0px 0.2em; padding: 0px 0px 0.2em; color: rgb(0, 0, 0); letter-spacing: -0.03em; font-weight: 500; border-bottom-color: rgb(211, 211, 211); border-bottom-width: 1px; border-bottom-style: solid;
+}
+h3 {
+	margin: 0.4em 0px 0.2em; padding: 0px 0px 0.2em; color: rgb(0, 0, 0); letter-spacing: -0.03em; font-weight: 500; border-bottom-color: rgb(211, 211, 211); border-bottom-width: 1px; border-bottom-style: solid;
+}
+#content a:link {
+	color: rgb(85, 102, 119);
+}
+#content a:visited {
+	color: rgb(85, 102, 119);
+}
+#content a:hover {
+	color: rgb(102, 85, 68);
+}
+#content .email {
+	color: rgb(85, 102, 119);
+}
+.one-column #alpha {
+	width: 100%;
+}
+.one-column #alpha h1 {
+	line-height: 250%; font-family: "Trebuchet MS", Arial, "Lucida Grande", Verdana, Lucida, Helvetica, sans-serif;
+}
+body.one-column #content #alpha {
+	padding-top: 0.5em;
+}
+body.one-column #content #alpha p {
+	line-height: 180%; margin-top: 1em; margin-left: 0.8em;
+}
+body.one-column #content #alpha .asset-content a:link {
+	color: rgb(34, 52, 114);
+}
+body.one-column #content #alpha .asset-content a:visited {
+	color: rgb(68, 0, 102);
+}
+body.one-column #content #alpha .asset-content a:hover {
+	color: rgb(208, 53, 0);
+}
+body.one-column #content #alpha .asset-content a:active {
+	color: rgb(154, 44, 6);
+}
+body.one-column #content #alpha .asset-content img {
+	border-radius: 1em; border: 0.3em solid rgb(224, 223, 204); border-image: none; -moz-border-radius: 1em; -webkit-border-radius: 1em;
+}
+body.one-column.mobile #content #alpha .asset-content img {
+	border: 0.15em solid rgb(224, 223, 204); border-image: none; overflow: auto; max-width: 95%;
+}
+@media all and (max-width:48rem)
+{
+body.one-column #content #alpha .asset-content img {
+	border: 0.15em solid rgb(224, 223, 204); border-image: none; overflow: auto; max-width: 95%;
+}
+}
+body.one-column #content #alpha .asset-content h2 {
+	margin-top: 1.5em;
+}
+body.one-column #content #alpha .asset-content h3 {
+	margin-top: 1.5em;
+}
+body.one-column #content #alpha .asset-content ul {
+	margin-left: 4em;
+}
+body.one-column #content #alpha .asset-content ol {
+	margin-left: 4em;
+}
+body.one-column #content #alpha .asset-content table {
+	margin-left: 4em;
+}
+body.one-column.mobile #content #alpha .asset-content ul {
+	margin-left: 1.5em;
+}
+body.one-column.mobile #content #alpha .asset-content ol {
+	margin-left: 1.5em;
+}
+body.one-column.mobile #content #alpha .asset-content table {
+	margin-left: 1.5em;
+}
+@media all and (max-width:48rem)
+{
+body.one-column #content #alpha .asset-content ul {
+	margin-left: 1.5em;
+}
+body.one-column #content #alpha .asset-content ol {
+	margin-left: 1.5em;
+}
+body.one-column #content #alpha .asset-content table {
+	margin-left: 1.5em;
+}
+}
+body.one-column #content #alpha .asset-content table {
+	border: 1px solid rgb(43, 43, 43); border-image: none; width: 90%; font-family: verdana,arial,sans-serif; border-collapse: collapse;
+}
+body.one-column #content #alpha .asset-content table td {
+	padding: 0.6em; border: 1px solid rgb(102, 102, 102); border-image: none; font-size: 1.4em;
+}
+body.one-column #content #alpha .asset-content table th {
+	padding: 0.6em; border: 1px solid rgb(102, 102, 102); font-size: 1.4em; background-color: rgb(222, 222, 222);
+}
+body.one-column #content #alpha ul#entry-folder span.folder-tag {
+	color: green;
+}
+body.one-column #content #alpha p code {
+	margin: auto 3px; border-radius: 5px; padding-right: 5px; padding-left: 5px; font-size: 120%; display: inline-block; background-color: pink;
+}
+body.one-column #content #alpha p a code {
+	transition:1s; text-decoration: underline;
+}
+body.one-column #content #alpha p a code:hover {
+	color: white; text-decoration: none; background-color: deeppink;
+}
+body.two-columns #content #alpha {
+	width: 64%; margin-left: 3%; float: left; min-width: 470px; max-width: 740px;
+}
+body.two-columns #content #beta {
+	padding: 0.6em; border-radius: 20px; width: 24%; overflow: hidden; margin-right: 3%; margin-bottom: 1em; float: right; min-width: 180px; max-width: 300px; -moz-border-radius: 20px; -webkit-border-radius: 20px;
+}
+body.two-columns.mobile #content #alpha {
+	width: 95%; float: left; min-width: 0px; max-width: none;
+}
+body.two-columns.mobile #content #beta {
+	width: 95%; float: left; min-width: 0px; max-width: none;
+}
+@media all and (max-width:48rem)
+{
+body.two-columns #content #alpha {
+	width: 95%; float: left; min-width: 0px; max-width: none;
+}
+body.two-columns #content #beta {
+	width: 95%; float: left; min-width: 0px; max-width: none;
+}
+}
+body.two-columns #content #alpha h1 {
+	margin: 0px 0px 1em; padding: 0.5em 1em; border-radius: 10px; color: rgb(85, 102, 119); font-size: 1.6em; font-weight: bold; border-bottom-color: currentColor; border-bottom-width: medium; border-bottom-style: none; background-color: rgb(170, 210, 240); -moz-border-radius: 10px; -webkit-border-radius: 10px;
+}
+body.two-columns #content #alpha h1 a {
+	color: rgb(85, 102, 119); font-weight: 500; text-decoration: underline;
+}
+body.two-columns #content #alpha h2 {
+	line-height: 180%; font-family: "Trebuchet MS", Arial, "Lucida Grande", Verdana, Lucida, Helvetica, sans-serif; font-size: 2.88em; margin-bottom: 0.5em;
+}
+body.two-columns #content #alpha h2 a:link {
+	color: rgb(0, 0, 0); font-weight: 500;
+}
+body.two-columns #content #alpha h2 a:visited {
+	color: rgb(0, 0, 0); font-weight: 500;
+}
+body.two-columns #content #alpha .asset-header #asset-tags {
+	color: gray; padding-right: 2em; margin-top: -1em; float: right;
+}
+body.two-columns #content #alpha .asset-header #asset-tags p {
+	font-size: 1.44em;
+}
+body.two-columns #content #alpha .asset-header #asset-tags a {
+	color: orange;
+}
+body.two-columns #content #alpha .asset-body p {
+	font-size: 180%;
+}
+body.two-columns #content .content-nav {
+	margin: 0px 2em -3em; padding: 0px; top: -5em; color: gray; float: right; position: relative;
+}
+body.two-columns #content .content-nav p {
+	font-size: 1.44em;
+}
+body.two-columns #content .content-nav a {
+	color: rgb(85, 102, 119); text-decoration: underline;
+}
+body.two-columns #content #alpha h2 a {
+	color: rgb(51, 102, 153); text-decoration: none;
+}
+body.two-columns #content #alpha h2 a:hover {
+	color: rgb(4, 99, 128);
+}
+body.two-columns #content #alpha .asset-body {
+	margin: 1em 1.5em; color: rgb(43, 43, 43); clear: both;
+}
+body.two-columns #content #alpha .asset-more-link {
+	margin: 1em 1.5em; color: rgb(43, 43, 43); clear: both;
+}
+body.two-columns #content #alpha .asset-body a {
+	color: rgb(0, 0, 0); text-decoration: underline;
+}
+body.two-columns #content #alpha .asset-body a:hover {
+	color: rgb(17, 34, 51);
+}
+body.two-columns #content #alpha .asset-more-link a:hover {
+	color: rgb(17, 34, 51);
+}
+body.two-columns #content #alpha .asset-more-link a {
+	color: green;
+}
+body.two-columns #content #alpha .asset-footer {
+	padding-left: 2em; margin-top: 1em; border-top-color: rgb(211, 211, 211); border-top-width: 1px; border-top-style: solid;
+}
+body.two-columns #content #alpha .asset-footer p {
+	font-size: 1.2em;
+}
+.asset-footer span {
+	color: rgb(61, 61, 61);
+}
+.asset-footer abbr {
+	color: rgb(61, 61, 61);
+}
+body.two-columns #content #alpha .module-content {
+	margin-left: 2em;
+}
+body.two-columns #content #beta p {
+	font-size: 1.44em;
+}
+body.two-columns #content #beta li {
+	font-size: 1.44em;
+}
+body.two-columns #content #beta li ul {
+	font-size: 69.4%;
+}
+body.two-columns #content .module-content a {
+	color: rgb(0, 0, 0); text-decoration: underline;
+}
+body.two-columns #content .module-content ul {
+	list-style-type: square;
+}
+body.two-columns #content #alpha .module h2 {
+	margin: 0.5em 0.4em 0.1em; padding: 0.3em 0.5em; clear: both; font-size: 1.8em; font-weight: bold; border-bottom-color: rgb(211, 211, 211); border-bottom-width: 1px; border-bottom-style: solid;
+}
+.module {
+	margin-bottom: 1em;
+}
+.module h2 {
+	font-size: 1.8em;
+}
+.module h3 {
+	text-align: center; font-size: 1.4em;
+}
+.module table {
+	margin: auto; width: 90%; font-size: 1.02em;
+}
+.module td {
+	padding: 0em 0.2em;
+}
+.module p {
+	margin-left: 1em;
+}
+.module ul {
+	margin-left: 1em;
+}
+.module li {
+	margin-left: 1em;
+}
+.module button {
+	width: 4em; height: 2em; text-align: center;
+}
+#beta .module {
+	padding: 1em; border-radius: 1em; background-color: rgb(222, 235, 247);
+}
+body.two-columns #content #alpha #homepage h3 {
+	font-size: 2.2em; font-weight: 500; margin-top: 2em;
+}
+body.two-columns #content #alpha #homepage ul {
+	margin-left: 4em;
+}
+body.two-columns #content #alpha #homepage ul li {
+	color: rgba(0, 0, 0, 0.5);
+}
+body.two-columns #content #alpha #homepage ul li span {
+	color: rgba(0, 0, 0, 0.5);
+}
+body.two-columns.mobile #content #alpha #homepage ul {
+	margin-left: 2em;
+}
+body.two-columns.mobile #content #alpha #homepage ul li span {
+	display: none;
+}
+@media all and (max-width:48rem)
+{
+body.two-columns #content #alpha #homepage ul {
+	margin-left: 2em;
+}
+body.two-columns #content #alpha #homepage ul li span {
+	display: none;
+}
+}
+#homepage #homepage-alpha {
+	width: 58%; float: left;
+}
+#homepage #homepage-beta {
+	width: 34%; margin-left: 3%; float: left;
+}
+body.mobile #homepage #homepage-alpha {
+	width: 95%; margin-left: 0px; float: left;
+}
+body.mobile #homepage #homepage-beta {
+	width: 95%; margin-left: 0px; float: left;
+}
+@media all and (max-width:30rem)
+{
+#homepage #homepage-alpha {
+	width: 95%; margin-left: 0px; float: left;
+}
+#homepage #homepage-beta {
+	width: 95%; margin-left: 0px; float: left;
+}
+}
+body.two-columns #content #homepage .module-content li {
+	line-height: 180%; font-size: 1.44em; margin-left: 1em;
+}
+body.two-columns #alpha #homepage-beta .module h2 {
+	border-bottom-color: currentColor; border-bottom-width: medium; border-bottom-style: none;
+}
+body.two-columns #homepage #homepage-beta .module-content {
+	padding: 0.3em; border-top-color: rgb(211, 211, 211); border-left-color: rgb(211, 211, 211); border-top-width: 1px; border-left-width: 1px; border-top-style: solid; border-left-style: solid;
+}
+body.two-columns.mobile #homepage_pos img {
+	overflow: auto; max-width: 100%;
+}
+@media all and (max-width:48rem)
+{
+body.two-columns #homepage_pos img {
+	overflow: auto; max-width: 100%;
+}
+}
+#footer {
+	margin: 0px 1em; color: rgb(211, 211, 211); line-height: 1.2; padding-top: 0px; clear: both; border-top-color: rgb(211, 211, 211); border-top-width: 1px; border-top-style: solid;
+}
+#footer p {
+	font-size: 1.6em;
+}
+#foot-content {
+	float: right;
+}
+#footer a {
+	color: gray;
+}
+#footer p {
+	margin: 0px 2em; padding: 0.3em; text-align: right; color: gray;
+}
+.mt-main-index #alpha #photo {
+	margin: 0em 2em; padding: 0px; width: 120px;
+}
+.mt-main-index #alpha #photo p {
+	margin: 0px; padding: 0px; text-align: center; color: gray; font-size: 1.58em;
+}
+.mt-main-index #alpha #photo img {
+	padding: 0.3em; border: 1px solid rgb(51, 102, 153); border-image: none; width: 100px; background-color: rgb(255, 255, 255);
+}
+#content #search_form img {
+	border: currentColor; border-image: none;
+}
+#content #search_form #search_input_box {
+	border: 1px solid rgb(51, 102, 153); border-image: none;
+}
+#content #search_form #search_button {
+	width: 4em; height: 2em; text-align: center;
+}
+body.one-column #content #alpha div.entry-asset {
+	padding-bottom: 1em; border-bottom-color: rgb(211, 211, 211); border-bottom-width: 1px; border-bottom-style: solid;
+}
+body.one-column #content #alpha div.asset-nav {
+	margin: 0px 0px 1em; padding: 0.3em 0.5em; border-radius: 1em; border: 1px solid rgb(220, 220, 220); border-image: none; color: rgb(252, 178, 151); font-weight: bold; box-shadow: inset 0px 1px 0px 0px #eeeeee; text-shadow: 1px 1px 0px #eeeeee; background-color: rgb(170, 210, 240); -moz-border-radius: 1em; -webkit-border-radius: 1em; -moz-box-shadow: inset 0px 1px 0px 0px #eeeeee; -webkit-box-shadow: inset 0px 1px 0px 0px #eeeeee;
+}
+body.one-column #content #alpha div.asset-footer {
+	margin: 0px 0px 1em; padding: 0.3em 0.5em; border-radius: 1em; border: 1px solid rgb(220, 220, 220); border-image: none; color: rgb(252, 178, 151); font-weight: bold; box-shadow: inset 0px 1px 0px 0px #eeeeee; text-shadow: 1px 1px 0px #eeeeee; background-color: rgb(170, 210, 240); -moz-border-radius: 1em; -webkit-border-radius: 1em; -moz-box-shadow: inset 0px 1px 0px 0px #eeeeee; -webkit-box-shadow: inset 0px 1px 0px 0px #eeeeee;
+}
+body.one-column #content #alpha div.asset-nav::after {
+	height: 0px; clear: both; display: block; content: "\0020";
+}
+body.one-column #content #alpha div.asset-nav {
+	-ms-zoom: 1;
+}
+body.one-column #content #alpha div.asset-footer {
+	padding: 1.5em; border: 1px solid rgb(211, 211, 211); border-image: none; margin-top: 2em; background-color: rgb(222, 235, 247);
+}
+body.one-column #content #alpha div.asset-footer h3 {
+	color: rgb(85, 102, 119); font-size: 1.92em; font-weight: bold; border-bottom-color: gray; border-bottom-width: 1px; border-bottom-style: solid;
+}
+body.one-column #content #alpha div.asset-footer ul {
+	padding-right: 2em; padding-left: 2em;
+}
+body.one-column #content #alpha div.asset-footer li {
+	color: rgb(85, 102, 119);
+}
+body.one-column #content #alpha div.asset-nav * {
+	display: inline;
+}
+body.one-column #content #alpha div.asset-nav a {
+	color: green;
+}
+body.one-column #content #alpha div.asset-nav div.entry-location {
+	width: 20em; overflow: hidden; float: right; white-space: nowrap;
+}
+body.one-column #content #alpha div.asset-nav div.entry-location li {
+	display: block; list-style-type: none;
+}
+body.one-column #content #alpha div.asset-nav div.entry-location a {
+	color: rgb(85, 102, 119); font-size: 95%; text-decoration: underline;
+}
+body.one-column.mobile #content #alpha div.asset-nav div.entry-location {
+	display: none;
+}
+@media all and (max-width:30rem)
+{
+body.one-column #content #alpha div.asset-nav div.entry-location {
+	display: none;
+}
+}
+body.one-column #content #alpha div.asset-meta {
+	margin: 1.5em auto 2em; line-height: 0.8;
+}
+body.one-column #content #alpha div.asset-meta * {
+	color: rgb(85, 102, 119);
+}
+body.one-column #content #alpha div.asset-content a {
+	color: rgb(17, 34, 51); text-decoration: underline;
+}
+body.one-column #content #alpha div.asset-content a:visited {
+	color: rgb(17, 34, 51);
+}
+body.one-column #content #alpha div.asset-content blockquote {
+	margin: 2em; padding: 1em; border-radius: 1em; border: 0.3em solid rgb(224, 223, 204); overflow: auto; font-family: Consolas, Monaco, "Andale Mono", monospace; text-shadow: 0px 1px white; background-color: rgb(245, 242, 240); -moz-border-radius: 1em; -webkit-border-radius: 1em;
+}
+body.one-column.mobile #content #alpha div.asset-content blockquote {
+	border-width: 0.15em; margin: 1em; padding: 0.5em 1em; border-radius: 1em; -moz-border-radius: 1em; -webkit-border-radius: 1em;
+}
+@media all and (max-width:48rem)
+{
+body.one-column #content #alpha div.asset-content blockquote {
+	border-width: 0.15em; margin: 1em; padding: 0.5em 1em; border-radius: 1em; -moz-border-radius: 1em; -webkit-border-radius: 1em;
+}
+}
+#googlead2 {
+	margin: 0px auto; text-align: center;
+}
+#related_entries {
+	margin-top: 4em;
+}
+#entry_utility {
+	margin-top: 4em;
+}
+#gd1 {
+	margin-top: 4em;
+}
+#related_entries ul {
+	margin-left: 2em;
+}
+#entry_utility ul {
+	margin-left: 3em;
+}
+#related_entries ul a {
+	text-decoration: underline;
+}
+#entry_utility ul a {
+	text-decoration: underline;
+}
+#entry_utility ul input {
+	border: 1px solid rgb(211, 211, 211); border-image: none;
+}
+#entry_utility ul img {
+	border: currentColor; border-image: none;
+}
+#related_entries li div.entry-body {
+	padding-left: 0.4em; margin-left: 1em; border-left-color: gray; border-left-width: 0.4em; border-left-style: solid;
+}
+#gd1-inner {
+	width: 100%; max-width: 100%;
+}
+div#gd1-left {
+	width: 49%; display: inline;
+}
+div#gd1-right {
+	width: 49%; display: inline;
+}
+div#gd1-left {
+	float: left;
+}
+div#gd1-right {
+	float: right;
+}
+#gd1-inner img {
+	width: 100%; max-width: 100%;
+}
+#sup-post-2 p img {
+	width: 100%; max-width: 100%;
+}
+body.mobile #gd1 div#gd1-inner {
+	width: 98%; max-width: 98%;
+}
+body.mobile div#gd1-left {
+	margin: 0.5em auto; width: 98%; float: none; display: block;
+}
+body.mobile div#gd1-right {
+	margin: 0.5em auto; width: 98%; float: none; display: block;
+}
+body.mobile div#gd1-left a {
+	text-align: center; display: block;
+}
+body.mobile div#gd1-right a {
+	text-align: center; display: block;
+}
+body.mobile div#gd1-left img {
+	overflow: auto; max-width: 100%;
+}
+body.mobile div#gd1-right img {
+	overflow: auto; max-width: 100%;
+}
+body.mobile #sup-post-2 p {
+	padding: 26.67% 0px 0px; width: 98%; height: 0px; overflow: hidden; display: block; position: relative;
+}
+body.mobile #sup-post-2 p img {
+	margin: auto; left: 0px; top: 0px; right: 0px; bottom: 0px; display: block; position: absolute; max-height: 100%; max-width: 100%;
+}
+@media all and (max-width:48rem)
+{
+#gd1 div#gd1-inner {
+	width: 98%; max-width: 98%;
+}
+div#gd1-left {
+	margin: 0.5em auto; width: 98%; float: none; display: block;
+}
+div#gd1-right {
+	margin: 0.5em auto; width: 98%; float: none; display: block;
+}
+div#gd1-left a {
+	text-align: center; display: block;
+}
+div#gd1-right a {
+	text-align: center; display: block;
+}
+div#gd1-left img {
+	overflow: auto; max-width: 100%;
+}
+div#gd1-right img {
+	overflow: auto; max-width: 100%;
+}
+#sup-post-2 p {
+	padding: 26.67% 0px 0px; width: 98%; height: 0px; overflow: hidden; display: block; position: relative;
+}
+#sup-post-2 p img {
+	margin: auto; left: 0px; top: 0px; right: 0px; bottom: 0px; display: block; position: absolute; max-height: 100%; max-width: 100%;
+}
+}
+body.one-column #content #alpha #comments {
+	clear: both; margin-top: 2em;
+}
+body.one-column #content #alpha #comments h2 {
+	padding-top: 2em;
+}
+body.one-column #content #alpha #comments a {
+	text-decoration: underline;
+}
+body.one-column #content #alpha #comments .comment {
+	border-bottom-color: rgb(211, 211, 211); border-bottom-width: 1px; border-bottom-style: dashed;
+}
+body.one-column #content #alpha #comments .comment-header {
+	margin-top: 1.6em;
+}
+body.one-column #content #alpha #comments .comment-header * {
+	color: rgb(43, 43, 43); font-weight: 700;
+}
+body.one-column #content #alpha #comments .asset-meta {
+	margin: 0.6em 0px;
+}
+body.one-column #content #alpha #comments .comment-content {
+	font-size: 0.9em; margin-left: 1em; line-hieght: 180%;
+}
+body.one-column #content #alpha #comments .comment-content blockquote {
+	margin: 2em; padding: 2em; border-radius: 1em; font-size: 0.9em; background-color: rgb(224, 223, 204); -moz-border-radius: 1em; -webkit-border-radius: 1em;
+}
+body.one-column #content #alpha #comments .comment-content blockquote pre {
+	font-size: 1.6em; font-weight: 700; margin-bottom: 1.5em;
+}
+body.one-column #content #alpha #comments .comment-footer {
+	width: 40%; margin-left: 55%;
+}
+body.one-column #content #alpha #comments .comment-footer p {
+	font-size: 1.2em; _font-size: 1.2em;
+}
+body.one-column #content #alpha #comments .comment-footer * {
+	color: black;
+}
+body.one-column #content #alpha #comments #comments-open input {
+	padding: 0.4em 0.3em; border: 1px solid rgb(211, 211, 211); border-image: none; line-height: 1.2; margin-top: 0px; background-color: rgb(245, 244, 223);
+}
+body.one-column #content #alpha #comments #comments-open p {
+	margin: 0.4em;
+}
+body.one-column #content #alpha #comments #comments-open textarea {
+	padding: 0.5em; border: 1px solid rgb(211, 211, 211); border-image: none; width: 90%; background-color: rgb(245, 244, 223);
+}
+body.one-column #content #alpha #comments #comments-open input#comment-submit {
+	padding: 0.2em 3em; width: 10em; text-align: center;
+}
+span.hint {
+	color: gray;
+}
+body.one-column #content #alpha #comments :target#comment-last {
+	animation:target-fade 4s; -webkit-animation: target-fade 4s 1; -moz-animation: target-fade 4s 1;
+}
+body.one-column #content #alpha #comments #comments-open div#wait input {
+	background-color: rgb(255, 255, 221);
+}
+body.one-column #content #alpha #comments #comments-open div#wait * {
+	color: rgb(43, 43, 43); background-color: rgb(255, 255, 221);
+}
+body.one-column.mobile #content #alpha #comments .comment-footer {
+	display: none;
+}
+@media all and (max-width:48rem)
+{
+body.one-column #content #alpha #comments .comment-footer {
+	display: none;
+}
+}
+code[class*='language-'] {
+	text-align: left; color: black; font-family: Consolas, Monaco, "Andale Mono", monospace; font-size: 1.2em; word-spacing: normal; white-space: pre; direction: ltr; text-shadow: 0px 1px white; -ms-hyphens: none; -moz-tab-size: 4; -o-tab-size: 4; tab-size: 4; -webkit-hyphens: none; -moz-hyphens: none; hyphens: none;
+}
+pre[class*='language-'] {
+	text-align: left; color: black; font-family: Consolas, Monaco, "Andale Mono", monospace; font-size: 1.2em; word-spacing: normal; white-space: pre; direction: ltr; text-shadow: 0px 1px white; -ms-hyphens: none; -moz-tab-size: 4; -o-tab-size: 4; tab-size: 4; -webkit-hyphens: none; -moz-hyphens: none; hyphens: none;
+}
+pre[class*='language-']::selection {
+	background: rgb(179, 212, 252); text-shadow: none;
+}
+pre[class*='language-'] ::selection {
+	background: rgb(179, 212, 252); text-shadow: none;
+}
+code[class*='language-']::selection {
+	background: rgb(179, 212, 252); text-shadow: none;
+}
+code[class*='language-'] ::selection {
+	background: rgb(179, 212, 252); text-shadow: none;
+}
+@media print
+{
+code[class*='language-'] {
+	text-shadow: none;
+}
+pre[class*='language-'] {
+	text-shadow: none;
+}
+#header {
+	display: none;
+}
+.asset-header {
+	display: none;
+}
+#gegz1 {
+	display: none;
+}
+#sup-post-2 {
+	display: none;
+}
+#gd1 {
+	display: none;
+}
+#comments {
+	display: none;
+}
+}
+pre[class*='language-'] {
+	padding: 0em 0em 0.5em; overflow: auto;
+}
+:not(pre) > code[class*='language-'] {
+	background: rgb(245, 242, 240);
+}
+pre[class*='language-'] {
+	background: rgb(245, 242, 240);
+}
+:not(pre) > code[class*='language-'] {
+	padding: 0.1em; border-radius: 0.3em;
+}
+.comment.token {
+	color: slategray;
+}
+.prolog.token {
+	color: slategray;
+}
+.doctype.token {
+	color: slategray;
+}
+.cdata.token {
+	color: slategray;
+}
+.punctuation.token {
+	color: rgb(153, 153, 153);
+}
+.namespace {
+	opacity: 0.7;
+}
+.property.token {
+	color: rgb(153, 0, 85);
+}
+.tag.token {
+	color: rgb(153, 0, 85);
+}
+.boolean.token {
+	color: rgb(153, 0, 85);
+}
+.number.token {
+	color: rgb(153, 0, 85);
+}
+.selector.token {
+	color: rgb(102, 153, 0);
+}
+.attr-name.token {
+	color: rgb(102, 153, 0);
+}
+.string.token {
+	color: rgb(102, 153, 0);
+}
+.operator.token {
+	background: hsla(0, 0%, 100%, 0.5); color: rgb(166, 127, 89);
+}
+.entity.token {
+	background: hsla(0, 0%, 100%, 0.5); color: rgb(166, 127, 89);
+}
+.url.token {
+	background: hsla(0, 0%, 100%, 0.5); color: rgb(166, 127, 89);
+}
+.language-css .string.token {
+	background: hsla(0, 0%, 100%, 0.5); color: rgb(166, 127, 89);
+}
+.style .string.token {
+	background: hsla(0, 0%, 100%, 0.5); color: rgb(166, 127, 89);
+}
+.atrule.token {
+	color: rgb(0, 119, 170);
+}
+.attr-value.token {
+	color: rgb(0, 119, 170);
+}
+.keyword.token {
+	color: rgb(0, 119, 170);
+}
+.regex.token {
+	color: rgb(238, 153, 0);
+}
+.important.token {
+	color: rgb(238, 153, 0);
+}
+.important.token {
+	font-weight: bold;
+}
+.entity.token {
+	cursor: help;
+}
+.token a {
+	color: inherit;
+}

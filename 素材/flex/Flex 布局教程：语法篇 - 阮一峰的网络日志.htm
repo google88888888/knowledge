@@ -1,0 +1,2585 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0056)http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><HTML 
+id="sixapart-standard" xmlns="http://www.w3.org/1999/xhtml"><HEAD><META 
+content="IE=11.0000" http-equiv="X-UA-Compatible">
+     
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+<META name="GENERATOR" content="MSHTML 11.00.9600.18666"> 
+<META name="viewport" content="width=device-width, initial-scale=1"> <LINK href="Flex%20布局教程：语法篇%20-%20阮一峰的网络日志_files/styles.css" 
+rel="stylesheet" type="text/css"> <LINK title="Home" href="http://www.ruanyifeng.com/blog/" 
+rel="start"> <LINK title="Recent Entries" href="http://feeds.feedburner.com/ruanyifeng" 
+rel="alternate" type="application/atom+xml"> 
+<SCRIPT src="Flex%20布局教程：语法篇%20-%20阮一峰的网络日志_files/mt.js" type="text/javascript"></SCRIPT>
+ <!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="http://www.ruanyifeng.com/blog/2007/01/guestbook.html">
+<dc:title>卡尔维诺中文站留言板</dc:title>
+<dc:description>这个帖子专门用作卡尔维诺中文站的留言板，欢迎大家留言和提问。...</dc:description>
+<dc:creator>阮一峰</dc:creator>
+<dc:date>2007-01-04T18:54:26+08:00</dc:date>
+<license rdf:resource="http://creativecommons.org/licenses/by-nc-nd/3.0/" />
+</Work>
+<License rdf:about="http://creativecommons.org/licenses/by-nc-nd/3.0/">
+</License>
+</rdf:RDF>
+--> 
+        <LINK title="ES6 的功能侦测库 ES-Checker" href="http://www.ruanyifeng.com/blog/2015/06/es-checker.html" 
+rel="prev">     <LINK title="Flex 布局教程：实例篇" href="http://www.ruanyifeng.com/blog/2015/07/flex-examples.html" 
+rel="next">         <TITLE>Flex 布局教程：语法篇 - 阮一峰的网络日志</TITLE> </HEAD> 
+<BODY class="mt-entry-archive one-column" id="scrapbook">
+<SCRIPT>
+if (/mobile/i.test(navigator.userAgent) || /android/i.test(navigator.userAgent)) document.body.classList.add('mobile');
+
+window.addEventListener('load', function(event) {
+  setTimeout(function () {
+    hab('#sup-post-2');
+    hab('#gd1-inner');
+  }, 1000);
+});
+</SCRIPT>
+     
+<DIV id="container">
+<DIV id="container-inner">
+<DIV id="header">
+<DIV id="header-inner">
+<DIV id="header-content">
+<DIV id="header-name">阮一峰的网络日志 <SPAN id="site_location">» <A accesskey="1" href="http://www.ruanyifeng.com/blog/">首页</A></SPAN><SPAN 
+id="site_archive"> » <A 
+href="http://www.ruanyifeng.com/blog/archives.html">档案</A></SPAN> </DIV>
+<DIV id="google_search"><!-- SiteSearch Google --> 
+<FORM id="cse-search-box" action="http://www.ruanyifeng.com/blog/search.html">
+<DIV><INPUT name="cx" type="hidden" value="016304377626642577906:b_e9skaywzq">   
+  <INPUT name="cof" type="hidden" value="FORID:11">     <INPUT name="ie" type="hidden" value="UTF-8"> 
+        <INPUT name="q" class="searchbox" id="sbi" type="text" size="20">        
+ <INPUT name="sa" class="searchbox_submit" type="image" alt="搜索" src="Flex%20布局教程：语法篇%20-%20阮一峰的网络日志_files/top_search_submit.gif" 
+value="">       </DIV></FORM> <!-- SiteSearch Google --> </DIV>
+<DIV id="feed_icon"><A title="订阅Feed" 
+href="http://www.ruanyifeng.com/feed.html"><IMG style="border: 0pt currentColor; border-image: none;" 
+alt="" src=""> </A></DIV></DIV></DIV></DIV>
+<DIV id="content">
+<DIV id="content-inner">
+<DIV id="alpha">
+<DIV id="alpha-inner">
+<DIV class="entry-asset asset hentry" id="entry-1845">
+<DIV class="asset-header">
+<DIV class="asset-nav entry-nav">
+<DIV class="entry-location">
+<UL>
+  <LI>上一篇：<A title="ES6 的功能侦测库 ES-Checker" href="http://www.ruanyifeng.com/blog/2015/06/es-checker.html">ES6&nbsp;的功能侦测库&nbsp;</A></LI>
+  <LI>下一篇：<A title="Flex 布局教程：实例篇" href="http://www.ruanyifeng.com/blog/2015/07/flex-examples.html">Flex&nbsp;布局教程：实</A></LI></UL> 
+</DIV>
+<DIV class="entry-categories">
+<P>分类<SPAN class="delimiter">：</SPAN></P>                                        
+ 
+<UL>
+  <LI><A href="http://www.ruanyifeng.com/blog/developer/" 
+  rel="tag">开发者手册</A></LI>                                         </UL>           
+                          </DIV>                                                 
+</DIV></DIV><ARTICLE class="hentry">
+<H1 class="asset-name entry-title" id="page-title">Flex 布局教程：语法篇</H1>
+<DIV id="share_button" style="padding-top: 1em; padding-right: 2em; float: right;"></DIV>
+<DIV class="asset-meta">
+<P class="vcard author">作者： <A class="fn url" 
+href="http://www.ruanyifeng.com/">阮一峰</A></P>
+<P>日期： <A href="http://www.ruanyifeng.com/blog/2015/07/"><ABBR title="2015-07-10T11:39:15+08:00" 
+class="published">2015年7月10日</ABBR></A></P></DIV>
+<DIV class="asset-content entry-content" id="main-content"><!-- div class="asset-body" --> 
+                                        
+<P>网页布局（layout）是 CSS 的一个重点应用。</P><!-- /div -->                                   
+  <!-- div id="more" class="asset-more" -->                                      
+   
+<P><IMG title="" alt="" src="Flex%20布局教程：语法篇%20-%20阮一峰的网络日志_files/bg2015071001.gif"></P>
+<P>布局的传统解决方案，基于<A href="https://developer.mozilla.org/en-US/docs/Web/CSS/box_model">盒状模型</A>，依赖 
+<A 
+href="https://developer.mozilla.org/en-US/docs/Web/CSS/display"><CODE>display</CODE></A> 
+属性 + <A 
+href="https://developer.mozilla.org/en-US/docs/Web/CSS/position"><CODE>position</CODE></A>属性 
++ <A 
+href="https://developer.mozilla.org/en-US/docs/Web/CSS/float"><CODE>float</CODE></A>属性。它对于那些特殊布局非常不方便，比如，<A 
+href="https://css-tricks.com/centering-css-complete-guide/">垂直居中</A>就不容易实现。</P>
+<P><IMG title="" alt="" src="Flex%20布局教程：语法篇%20-%20阮一峰的网络日志_files/bg2015071002.png"></P>
+<P>2009年，W3C 提出了一种新的方案----Flex 
+布局，可以简便、完整、响应式地实现各种页面布局。目前，它已经得到了所有浏览器的支持，这意味着，现在就能很安全地使用这项功能。</P>
+<P><IMG title="" alt="" src="Flex%20布局教程：语法篇%20-%20阮一峰的网络日志_files/bg2015071003.jpg"></P>
+<P>Flex 布局将成为未来布局的首选方案。本文介绍它的语法，<A href="http://www.ruanyifeng.com/blog/2015/07/flex-examples.html">下一篇文章</A>给出常见布局的 
+Flex 写法。网友 <A href="http://vgee.cn/">JailBreak</A> 为本文的所有示例制作了 <A href="http://static.vgee.cn/static/index.html">Demo</A>，也可以参考。</P>
+<P>以下内容主要参考了下面两篇文章：<A href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">A 
+Complete Guide to Flexbox</A> 和 <A href="https://scotch.io/tutorials/a-visual-guide-to-css3-flexbox-properties">A 
+Visual Guide to CSS3 Flexbox Properties</A>。</P>
+<H2>一、Flex 布局是什么？</H2>
+<P>Flex 是 Flexible Box 的缩写，意为"弹性布局"，用来为盒状模型提供最大的灵活性。</P>
+<P>任何一个容器都可以指定为 Flex 布局。</P>
+<BLOCKQUOTE>
+<PRE><CODE class="language-css">
+.box{
+  display: flex;
+}
+</CODE></PRE></BLOCKQUOTE>
+<P>行内元素也可以使用 Flex 布局。</P>
+<BLOCKQUOTE>
+<PRE><CODE class="language-css">
+.box{
+  display: inline-flex;
+}
+</CODE></PRE></BLOCKQUOTE>
+<P>Webkit 内核的浏览器，必须加上<CODE>-webkit</CODE>前缀。</P>
+<BLOCKQUOTE>
+<PRE><CODE class="language-css">
+.box{
+  display: -webkit-flex; /* Safari */
+  display: flex;
+}
+</CODE></PRE></BLOCKQUOTE>
+<P>注意，设为 Flex 
+布局以后，子元素的<CODE>float</CODE>、<CODE>clear</CODE>和<CODE>vertical-align</CODE>属性将失效。</P>
+<H2>二、基本概念</H2>
+<P>采用 Flex 布局的元素，称为 Flex 容器（flex container），简称"容器"。它的所有子元素自动成为容器成员，称为 Flex 
+项目（flex item），简称"项目"。</P>
+<P><IMG title="" alt="" src="Flex%20布局教程：语法篇%20-%20阮一峰的网络日志_files/bg2015071004.png"></P>
+<P>容器默认存在两根轴：水平的主轴（main axis）和垂直的交叉轴（cross axis）。主轴的开始位置（与边框的交叉点）叫做<CODE>main 
+start</CODE>，结束位置叫做<CODE>main end</CODE>；交叉轴的开始位置叫做<CODE>cross 
+start</CODE>，结束位置叫做<CODE>cross end</CODE>。</P>
+<P>项目默认沿主轴排列。单个项目占据的主轴空间叫做<CODE>main size</CODE>，占据的交叉轴空间叫做<CODE>cross 
+size</CODE>。</P>
+<H2>三、容器的属性</H2>
+<P>以下6个属性设置在容器上。</P>
+<BLOCKQUOTE>
+  <UL>
+    <LI>flex-direction</LI>
+    <LI>flex-wrap</LI>
+    <LI>flex-flow</LI>
+    <LI>justify-content</LI>
+    <LI>align-items</LI>
+    <LI>align-content</LI></UL></BLOCKQUOTE>
+<H3>3.1 flex-direction属性</H3>
+<P><CODE>flex-direction</CODE>属性决定主轴的方向（即项目的排列方向）。</P>
+<BLOCKQUOTE>
+<PRE><CODE class="language-css">
+.box {
+  flex-direction: row | row-reverse | column | column-reverse;
+}
+</CODE></PRE></BLOCKQUOTE>
+<P><IMG title="" alt="" src="Flex%20布局教程：语法篇%20-%20阮一峰的网络日志_files/bg2015071005.png"></P>
+<P>它可能有4个值。</P>
+<BLOCKQUOTE>
+  <UL>
+    <LI><CODE>row</CODE>（默认值）：主轴为水平方向，起点在左端。</LI>
+    <LI><CODE>row-reverse</CODE>：主轴为水平方向，起点在右端。</LI>
+    <LI><CODE>column</CODE>：主轴为垂直方向，起点在上沿。</LI>
+    <LI><CODE>column-reverse</CODE>：主轴为垂直方向，起点在下沿。</LI></UL></BLOCKQUOTE>
+<H3>3.2 flex-wrap属性</H3>
+<P>默认情况下，项目都排在一条线（又称"轴线"）上。<CODE>flex-wrap</CODE>属性定义，如果一条轴线排不下，如何换行。</P>
+<P><IMG title="" alt="" src="Flex%20布局教程：语法篇%20-%20阮一峰的网络日志_files/bg2015071006.png"></P>
+<BLOCKQUOTE>
+<PRE><CODE class="language-css">
+.box{
+  flex-wrap: nowrap | wrap | wrap-reverse;
+}
+</CODE></PRE></BLOCKQUOTE>
+<P>它可能取三个值。</P>
+<P>（1）<CODE>nowrap</CODE>（默认）：不换行。</P>
+<P><IMG title="" alt="" src="Flex%20布局教程：语法篇%20-%20阮一峰的网络日志_files/bg2015071007.png"></P>
+<P>（2）<CODE>wrap</CODE>：换行，第一行在上方。</P>
+<P><IMG title="" alt="" src="Flex%20布局教程：语法篇%20-%20阮一峰的网络日志_files/bg2015071008.jpg"></P>
+<P>（3）<CODE>wrap-reverse</CODE>：换行，第一行在下方。</P>
+<P><IMG title="" alt="" src="Flex%20布局教程：语法篇%20-%20阮一峰的网络日志_files/bg2015071009.jpg"></P>
+<H3>3.3 flex-flow</H3>
+<P><CODE>flex-flow</CODE>属性是<CODE>flex-direction</CODE>属性和<CODE>flex-wrap</CODE>属性的简写形式，默认值为<CODE>row 
+nowrap</CODE>。</P>
+<BLOCKQUOTE>
+<PRE><CODE class="language-css">
+.box {
+  flex-flow: &lt;flex-direction&gt; || &lt;flex-wrap&gt;;
+}
+</CODE></PRE></BLOCKQUOTE>
+<H3>3.4 justify-content属性</H3>
+<P><CODE>justify-content</CODE>属性定义了项目在主轴上的对齐方式。</P>
+<BLOCKQUOTE>
+<PRE><CODE class="language-css">
+.box {
+  justify-content: flex-start | flex-end | center | space-between | space-around;
+}
+</CODE></PRE></BLOCKQUOTE>
+<P><IMG title="" alt="" src="Flex%20布局教程：语法篇%20-%20阮一峰的网络日志_files/bg2015071010.png"></P>
+<P>它可能取5个值，具体对齐方式与轴的方向有关。下面假设主轴为从左到右。</P>
+<BLOCKQUOTE>
+  <UL>
+    <LI><CODE>flex-start</CODE>（默认值）：左对齐</LI>
+    <LI><CODE>flex-end</CODE>：右对齐</LI>
+    <LI><CODE>center</CODE>： 居中</LI>
+    <LI><CODE>space-between</CODE>：两端对齐，项目之间的间隔都相等。</LI>
+    <LI><CODE>space-around</CODE>：每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍。</LI></UL></BLOCKQUOTE>
+<H3>3.5 align-items属性</H3>
+<P><CODE>align-items</CODE>属性定义项目在交叉轴上如何对齐。</P>
+<BLOCKQUOTE>
+<PRE><CODE class="language-css">
+.box {
+  align-items: flex-start | flex-end | center | baseline | stretch;
+}
+</CODE></PRE></BLOCKQUOTE>
+<P><IMG title="" alt="" src="Flex%20布局教程：语法篇%20-%20阮一峰的网络日志_files/bg2015071011.png"></P>
+<P>它可能取5个值。具体的对齐方式与交叉轴的方向有关，下面假设交叉轴从上到下。</P>
+<BLOCKQUOTE>
+  <UL>
+    <LI><CODE>flex-start</CODE>：交叉轴的起点对齐。</LI>
+    <LI><CODE>flex-end</CODE>：交叉轴的终点对齐。</LI>
+    <LI><CODE>center</CODE>：交叉轴的中点对齐。</LI>
+    <LI><CODE>baseline</CODE>: 项目的第一行文字的基线对齐。</LI>
+    <LI><CODE>stretch</CODE>（默认值）：如果项目未设置高度或设为auto，将占满整个容器的高度。</LI></UL></BLOCKQUOTE>
+<H3>3.6 align-content属性</H3>
+<P><CODE>align-content</CODE>属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。</P>
+<BLOCKQUOTE>
+<PRE><CODE class="language-css">
+.box {
+  align-content: flex-start | flex-end | center | space-between | space-around | stretch;
+}
+</CODE></PRE></BLOCKQUOTE>
+<P><IMG title="" alt="" src="Flex%20布局教程：语法篇%20-%20阮一峰的网络日志_files/bg2015071012.png"></P>
+<P>该属性可能取6个值。</P>
+<BLOCKQUOTE>
+  <UL>
+    <LI><CODE>flex-start</CODE>：与交叉轴的起点对齐。</LI>
+    <LI><CODE>flex-end</CODE>：与交叉轴的终点对齐。</LI>
+    <LI><CODE>center</CODE>：与交叉轴的中点对齐。</LI>
+    <LI><CODE>space-between</CODE>：与交叉轴两端对齐，轴线之间的间隔平均分布。</LI>
+    <LI><CODE>space-around</CODE>：每根轴线两侧的间隔都相等。所以，轴线之间的间隔比轴线与边框的间隔大一倍。</LI>
+    <LI><CODE>stretch</CODE>（默认值）：轴线占满整个交叉轴。</LI></UL></BLOCKQUOTE>
+<H3>四、项目的属性</H3>
+<P>以下6个属性设置在项目上。</P>
+<BLOCKQUOTE>
+  <UL>
+    <LI><CODE>order</CODE></LI>
+    <LI><CODE>flex-grow</CODE></LI>
+    <LI><CODE>flex-shrink</CODE></LI>
+    <LI><CODE>flex-basis</CODE></LI>
+    <LI><CODE>flex</CODE></LI>
+    <LI><CODE>align-self</CODE></LI></UL></BLOCKQUOTE>
+<H3>4.1 order属性</H3>
+<P><CODE>order</CODE>属性定义项目的排列顺序。数值越小，排列越靠前，默认为0。</P>
+<BLOCKQUOTE>
+<PRE><CODE class="language-css">
+.item {
+  order: &lt;integer&gt;;
+}
+</CODE></PRE></BLOCKQUOTE>
+<P><IMG title="" alt="" src="Flex%20布局教程：语法篇%20-%20阮一峰的网络日志_files/bg2015071013.png"></P>
+<H3>4.2 flex-grow属性</H3>
+<P><CODE>flex-grow</CODE>属性定义项目的放大比例，默认为<CODE>0</CODE>，即如果存在剩余空间，也不放大。</P>
+<BLOCKQUOTE>
+<PRE><CODE class="language-css">
+.item {
+  flex-grow: &lt;number&gt;; /* default 0 */
+}
+</CODE></PRE></BLOCKQUOTE>
+<P><IMG title="" alt="" src="Flex%20布局教程：语法篇%20-%20阮一峰的网络日志_files/bg2015071014.png"></P>
+<P>如果所有项目的<CODE>flex-grow</CODE>属性都为1，则它们将等分剩余空间（如果有的话）。如果一个项目的<CODE>flex-grow</CODE>属性为2，其他项目都为1，则前者占据的剩余空间将比其他项多一倍。</P>
+<H3>4.3 flex-shrink属性</H3>
+<P><CODE>flex-shrink</CODE>属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。</P>
+<BLOCKQUOTE>
+<PRE><CODE class="language-css">
+.item {
+  flex-shrink: &lt;number&gt;; /* default 1 */
+}
+</CODE></PRE></BLOCKQUOTE>
+<P><IMG title="" alt="" src="Flex%20布局教程：语法篇%20-%20阮一峰的网络日志_files/bg2015071015.jpg"></P>
+<P>如果所有项目的<CODE>flex-shrink</CODE>属性都为1，当空间不足时，都将等比例缩小。如果一个项目的<CODE>flex-shrink</CODE>属性为0，其他项目都为1，则空间不足时，前者不缩小。</P>
+<P>负值对该属性无效。</P>
+<H3>4.4 flex-basis属性</H3>
+<P><CODE>flex-basis</CODE>属性定义了在分配多余空间之前，项目占据的主轴空间（main 
+size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为<CODE>auto</CODE>，即项目的本来大小。</P>
+<BLOCKQUOTE>
+<PRE><CODE class="language-css">
+.item {
+  flex-basis: &lt;length&gt; | auto; /* default auto */
+}
+</CODE></PRE></BLOCKQUOTE>
+<P>它可以设为跟<CODE>width</CODE>或<CODE>height</CODE>属性一样的值（比如350px），则项目将占据固定空间。</P>
+<H3>4.5 flex属性</H3>
+<P><CODE>flex</CODE>属性是<CODE>flex-grow</CODE>, <CODE>flex-shrink</CODE> 和 
+<CODE>flex-basis</CODE>的简写，默认值为<CODE>0 1 auto</CODE>。后两个属性可选。</P>
+<BLOCKQUOTE>
+<PRE><CODE class="language-css">
+.item {
+  flex: none | [ &lt;'flex-grow'&gt; &lt;'flex-shrink'&gt;? || &lt;'flex-basis'&gt; ]
+}
+</CODE></PRE></BLOCKQUOTE>
+<P>该属性有两个快捷值：<CODE>auto</CODE> (<CODE>1 1 auto</CODE>) 和 none (<CODE>0 0 
+auto</CODE>)。</P>
+<P>建议优先使用这个属性，而不是单独写三个分离的属性，因为浏览器会推算相关值。</P>
+<H3>4.6 align-self属性</H3>
+<P><CODE>align-self</CODE>属性允许单个项目有与其他项目不一样的对齐方式，可覆盖<CODE>align-items</CODE>属性。默认值为<CODE>auto</CODE>，表示继承父元素的<CODE>align-items</CODE>属性，如果没有父元素，则等同于<CODE>stretch</CODE>。</P>
+<BLOCKQUOTE>
+<PRE><CODE class="language-css">
+.item {
+  align-self: auto | flex-start | flex-end | center | baseline | stretch;
+}
+</CODE></PRE></BLOCKQUOTE>
+<P><IMG title="" alt="" src="Flex%20布局教程：语法篇%20-%20阮一峰的网络日志_files/bg2015071016.png"></P>
+<P>该属性可能取6个值，除了auto，其他都与align-items属性完全一致。</P>
+<P>（完）</P><!-- /div -->                                 </DIV>
+<SCRIPT src="Flex%20布局教程：语法篇%20-%20阮一峰的网络日志_files/newwindow.js" type="text/javascript"></SCRIPT>
+                                 
+<DIV class="asset-footer">
+<H3>文档信息</H3>
+<UL>
+  <LI>版权声明：自由转载-非商用-非衍生-保持署名（<A href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</A>）</LI>
+  <LI>发表日期： <ABBR title="2015-07-10T11:39:15+08:00" 
+  class="published">2015年7月10日</ABBR></LI>
+  <LI>更多内容： <A href="http://www.ruanyifeng.com/blog/archives.html" target="_blank"> 
+  档案</A>  »  <A href="http://www.ruanyifeng.com/blog/developer/">开发者手册</A> </LI>
+  <LI>博客文集：<A href="http://road.ruanyifeng.com/" target="_blank">《前方的路》</A>，<A 
+  href="https://ruanyf.github.io/survivor" target="_blank">《未来世界的幸存者》</A></LI>
+  <LI>社交媒体：<A href="https://twitter.com/ruanyf" target="_blank"><IMG style="border: 0px currentColor; border-image: none;" 
+  src=""> twitter</A>，<A href="http://weibo.com/ruanyf" target="_blank"><IMG 
+  style="border: 0px currentColor; border-image: none;" src=""> weibo</A></LI>
+  <LI>Feed订阅： <A href="http://www.ruanyifeng.com/feed.html" target="_blank"><IMG 
+  style="border: 0px currentColor; border-image: none;" 
+src=""></A></LI></UL></DIV></ARTICLE></DIV>
+<DIV id="sup-post-2" style="width: 100%; display: inline-block !important;">
+<P style="text-align: center;"><A href="http://www.zhufengpeixun.cn/jscourse/new/js/index.html?ref=ruanyifeng.com" 
+target="_blank"><IMG style="border: currentColor; border-image: none;" alt="珠峰培训" 
+src="Flex%20布局教程：语法篇%20-%20阮一峰的网络日志_files/sup_zhufeng_page.png"></A></P>
+<P style="text-align: center;"><A title="优达学城" href="https://cn.udacity.com/ruanyfbanner/" 
+target="_blank"><IMG style="border: currentColor; border-image: none; display: block !important;" 
+alt="优达学城" src="Flex%20布局教程：语法篇%20-%20阮一峰的网络日志_files/uda_banner_ryf.jpg"></A> 
+</P></DIV>
+<DIV id="related_entries">
+<H2>相关文章</H2>
+<UL>
+  <LI><STRONG>2017.05.27: <A href="http://www.ruanyifeng.com/blog/2017/05/server-sent_events.html">Server-Sent 
+  Events 教程</A></STRONG>                            
+  <DIV class="entry-body">                              服务器向浏览器推送信息，除了 
+  WebSocket，还有一种方法：Server-Sent Events（以下简称 SSE）。本文介绍它的用法。                        
+      </DIV></LI>
+  <LI><STRONG>2017.05.15: <A href="http://www.ruanyifeng.com/blog/2017/05/websocket.html">WebSocket 
+  教程</A></STRONG>                            
+  <DIV class="entry-body">WebSocket 是一种网络通信协议，很多高级功能都需要它。                        
+      </DIV></LI>
+  <LI><STRONG>2017.05.09: <A href="http://www.ruanyifeng.com/blog/2017/05/css-variables.html">CSS 
+  变量教程</A></STRONG>                            
+  <DIV class="entry-body">                              今年三月，微软宣布 Edge 浏览器将支持 
+  CSS 变量。                            </DIV></LI>
+  <LI><STRONG>2017.05.02: <A href="http://www.ruanyifeng.com/blog/2017/05/fish_shell.html">Fish 
+  shell 入门教程</A></STRONG>                            
+  <DIV class="entry-body">                              
+  命令行是程序员的必备技能。图形界面虽然好看，解决问题还是要靠命令行。                            
+</DIV></LI></UL></DIV>
+<DIV id="gd1" style="display: block !important;">
+<H2>广告<A href="http://www.ruanyifeng.com/support.html">（购买广告位）</A></H2>
+<DIV id="gd1-inner">
+<DIV id="gd1-left"><A href="http://www.miaov.com/?utm_source=ruanyifeng&amp;" 
+target="_blank" alt="妙味课堂"><IMG style="border: currentColor; border-image: none; display: block !important;" 
+alt="妙味课堂" 
+src="Flex%20布局教程：语法篇%20-%20阮一峰的网络日志_files/sup_miaov_201703.jpg"></A><BR><A 
+title="FunDebug" href="https://fundebug.com/?utm_source=ruanyifeng" target="_blank"><IMG 
+style="border: currentColor; border-image: none; display: block !important;" 
+alt="FunDebug" src="Flex%20布局教程：语法篇%20-%20阮一峰的网络日志_files/fundebug_js_promotion.jpeg"></A></DIV>
+<DIV id="gd1-right"><A title="海棠学院" href="http://apeclass.cn/1212/index.html?utm_source=ruanyifeng" 
+target="_blank"><IMG style="border: currentColor; border-image: none; display: block !important;" 
+alt="海棠学院" 
+src="Flex%20布局教程：语法篇%20-%20阮一峰的网络日志_files/sup_apeclass_300.png"></A><BR><A 
+title="BitTiger" href="https://www.bittiger.io/home?utm_source=ruanyifeng&amp;utm_medium=ruanyifeng&amp;utm_content=ruanyifenggeneral" 
+target="_blank"><IMG style="border: currentColor; border-image: none;" alt="BitTiger" 
+src="Flex%20布局教程：语法篇%20-%20阮一峰的网络日志_files/sup_bittiger_3.jpg"></A></DIV></DIV></DIV>
+<DIV class="comments" id="comments">
+<H2 class="comments-header">留言（126条）</H2>
+<DIV class="comments-content" id="comments-content" style="clear: left;">
+<DIV class="comment" id="comment-350724">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">云墨雪</SPAN> 说：                 
+</SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-350724">
+<P>坐个沙发, ie10的普及率还有待观望啊..</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="July 10, 2015  1:04 PM" class="published">2015年7月10日 
+13:04</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-350724">#</A> 
+| <A title="引用云墨雪的这条留言" onclick="return CommentQuote('comment-quote-350724','云墨雪');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-350725">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author"><A title="http://wyqbailey.github.io" 
+href="http://wyqbailey.github.io/" target="_blank" rel="nofollow">王永起</A></SPAN> 
+说：                 </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-350725">
+<P>四、容器的属性，应该是“项目的属性”吧？</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="July 10, 2015  1:10 PM" class="published">2015年7月10日 
+13:10</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-350725">#</A> 
+| <A title="引用王永起的这条留言" onclick="return CommentQuote('comment-quote-350725','王永起');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-350726">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">阮一峰</SPAN> 说：                 
+</SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-350726">
+<P>@王永起，</P>
+<P>谢谢指出，已经改正。</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="July 10, 2015  1:19 PM" class="published">2015年7月10日 
+13:19</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-350726">#</A> 
+| <A title="引用阮一峰的这条留言" onclick="return CommentQuote('comment-quote-350726','阮一峰');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-350731">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">一月31</SPAN>  说：               
+  </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-350731">
+<P>好文章，简单明了。</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="July 10, 2015  2:58 PM" class="published">2015年7月10日 
+14:58</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-350731">#</A> 
+| <A title="引用一月31的这条留言" onclick="return CommentQuote('comment-quote-350731','一月31');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-350732">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">Henry</SPAN>  说：              
+   </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-350732">
+<P>听说博主是搞经济出身的，居然没有一篇经济类的文章，真想问博主炒股不？</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="July 10, 2015  3:04 PM" class="published">2015年7月10日 
+15:04</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-350732">#</A> 
+| <A title="引用Henry的这条留言" onclick="return CommentQuote('comment-quote-350732','Henry');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-350734">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author"><A title="http://chshouyu.com" 
+href="http://chshouyu.com/" target="_blank" rel="nofollow">chshouyu</A></SPAN>  
+说：                 </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-350734">
+<P>现在介绍有点晚了吧-_-#</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="July 10, 2015  3:08 PM" class="published">2015年7月10日 
+15:08</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-350734">#</A> 
+| <A title="引用chshouyu的这条留言" onclick="return CommentQuote('comment-quote-350734','chshouyu');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-350735">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author"><A title="http://overtrue.me" 
+href="http://overtrue.me/" target="_blank" rel="nofollow">Overtrue</A></SPAN>  
+说：                 </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-350735">
+<P>赞，终于在您这儿看明白了，谢谢！</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="July 10, 2015  4:26 PM" class="published">2015年7月10日 
+16:26</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-350735">#</A> 
+| <A title="引用Overtrue的这条留言" onclick="return CommentQuote('comment-quote-350735','Overtrue');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-350739">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author"><A title="http://chenjia.info" 
+href="http://chenjia.info/" target="_blank" rel="nofollow">chenjia404</A></SPAN> 
+ 说：                 </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-350739">
+<P>谢谢分享，新的开发技术，使我们开发者越来越方便了。</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="July 10, 2015  5:31 PM" class="published">2015年7月10日 
+17:31</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-350739">#</A> 
+| <A title="引用chenjia404的这条留言" onclick="return CommentQuote('comment-quote-350739','chenjia404');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-350741">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">shikelong</SPAN>  说：          
+       </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-350741">
+<P>flex布局除了响应不同页面之外，还有什么优点呢？</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="July 10, 2015  6:14 PM" class="published">2015年7月10日 
+18:14</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-350741">#</A> 
+| <A title="引用shikelong的这条留言" onclick="return CommentQuote('comment-quote-350741','shikelong');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-350742">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author"><A title="http://www.reekly.com/" 
+href="http://www.reekly.com/" target="_blank" rel="nofollow">KevinSu</A></SPAN>  
+说：                 </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-350742">
+<P>简单明了，配图很赞！</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="July 10, 2015  7:24 PM" class="published">2015年7月10日 
+19:24</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-350742">#</A> 
+| <A title="引用KevinSu的这条留言" onclick="return CommentQuote('comment-quote-350742','KevinSu');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-350753">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author"><A title="http://quant67.com/" 
+href="http://quant67.com/" target="_blank" 
+rel="nofollow">liaotonglang</A></SPAN>  说：                 </SPAN> 
+</P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-350753">
+<P>看标题还以为是讲编译器，兴冲冲点进来。不过并不失望，最近做课程设计正好需要这个。博主配图好漂亮。</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="July 11, 2015 11:31 AM" class="published">2015年7月11日 
+11:31</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-350753">#</A> 
+| <A title="引用liaotonglang的这条留言" onclick="return CommentQuote('comment-quote-350753','liaotonglang');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-350762">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author"><A title="http://solicomo.com" 
+href="http://solicomo.com/" target="_blank" rel="nofollow">Soli</A></SPAN>  说：   
+              </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-350762">
+<P>属性名字起的很别扭哈。</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="July 11, 2015 10:48 PM" class="published">2015年7月11日 
+22:48</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-350762">#</A> 
+| <A title="引用Soli的这条留言" onclick="return CommentQuote('comment-quote-350762','Soli');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-350763">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">imskull</SPAN>  说：            
+     </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-350763">
+<P>多谢，很不错的文章，一直都用Polymer预定义的flex排版（"layout horizontal 
+center"这样），看完才知道原来flex还有其它这些功能。</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="July 11, 2015 11:50 PM" class="published">2015年7月11日 
+23:50</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-350763">#</A> 
+| <A title="引用imskull的这条留言" onclick="return CommentQuote('comment-quote-350763','imskull');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-350777">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author"><A title="http://zx1986.github.io" 
+href="http://zx1986.github.io/" target="_blank" rel="nofollow">張旭</A></SPAN> 说：  
+               </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-350777">
+<P>wow! 這傢伙太實用了!<BR>grid layout framework 不知道是否會重寫了</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="July 13, 2015  2:13 PM" class="published">2015年7月13日 
+14:13</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-350777">#</A> 
+| <A title="引用張旭的这条留言" onclick="return CommentQuote('comment-quote-350777','張旭');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-350821">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">WINE</SPAN>  说：               
+  </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-350821">
+<P>长见识了</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="July 15, 2015  9:48 AM" class="published">2015年7月15日 
+09:48</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-350821">#</A> 
+| <A title="引用WINE的这条留言" onclick="return CommentQuote('comment-quote-350821','WINE');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-350823">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">temp</SPAN>  说：               
+  </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-350823">
+<P>进了阿里，写文章不精致了。</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="July 15, 2015 10:37 AM" class="published">2015年7月15日 
+10:37</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-350823">#</A> 
+| <A title="引用temp的这条留言" onclick="return CommentQuote('comment-quote-350823','temp');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-350929">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author"><A title="http://www.junqing.ren" 
+href="http://www.junqing.ren/" target="_blank" rel="nofollow">大个</A></SPAN> 说：   
+              </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-350929">
+<P>阮大神啊，flex-basis，这个属性的作用是优先级高于width的width吗？它除了设置宽度的作用还有什么用处？（宽度指的是水平方向，如果是垂直方向就是height了）。</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="July 20, 2015  4:56 PM" class="published">2015年7月20日 
+16:56</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-350929">#</A> 
+| <A title="引用大个的这条留言" onclick="return CommentQuote('comment-quote-350929','大个');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-350954">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">longfei</SPAN>  说：            
+     </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-350954">
+<P>阮老师，那个item的flex-grow属性，我写了个demo<BR>CSS:<BR>body{margin:0;}<BR>ul,li{margin:0; 
+padding:0;}<BR>li{list-style-type:none;}<BR>#list{border:2px solid gold; 
+height:500px; display:flex; flex-direction:row;}<BR>#list 
+li{font-family:"microsoft yahei"; font-size:50px; background:#C00; color:#fff; 
+margin:2px; flex-grow:1;}<BR>#list li:nth-child(2){flex-grow:2;}</P>
+<P>&lt;ul id="list"&gt;<BR>    &lt;li&gt;test1&lt;/li&gt;<BR>    
+&lt;li&gt;test2&lt;/li&gt;<BR>    &lt;li&gt;test3&lt;/li&gt;<BR>
+&lt;/ul&gt;<BR>结果第2个li所占的宽度并不是其它li的2倍，为什么呢？比其它两个要大，但不足2倍。</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="July 22, 2015 11:50 AM" class="published">2015年7月22日 
+11:50</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-350954">#</A> 
+| <A title="引用longfei的这条留言" onclick="return CommentQuote('comment-quote-350954','longfei');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-350958">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">夜幕下的猫</SPAN> 说：               
+  </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-350958">
+<P>写的非常好！我用来弄我的 zhihu-daily-reader 布局了，嘿嘿！</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="July 22, 2015  3:52 PM" class="published">2015年7月22日 
+15:52</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-350958">#</A> 
+| <A title="引用夜幕下的猫的这条留言" onclick="return CommentQuote('comment-quote-350958','夜幕下的猫');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-350959">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">阮一峰</SPAN> 说：                 
+</SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-350959">
+<P>@longfei:</P>
+<P>flex-basis都设为0，因为flex-grow定义的是，剩余空间分配的比例关系。</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="July 22, 2015  4:06 PM" class="published">2015年7月22日 
+16:06</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-350959">#</A> 
+| <A title="引用阮一峰的这条留言" onclick="return CommentQuote('comment-quote-350959','阮一峰');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-351154">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author"><A title="http://www.victoryan.cn" 
+href="http://www.victoryan.cn/" target="_blank" rel="nofollow">victor</A></SPAN> 
+ 说：                 </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-351154">
+<P>兼容性是大问题！</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="August  6, 2015  2:32 PM" class="published">2015年8月 6日 
+14:32</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-351154">#</A> 
+| <A title="引用victor的这条留言" onclick="return CommentQuote('comment-quote-351154','victor');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-351282">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">coffce</SPAN>  说：             
+    </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-351282">
+<P>Nice！看了这篇文后我写了个基于flex的栅格布局库 flex-layout<BR><A href="https://github.com/Coffcer/flex-layout" 
+rel="nofollow">https://github.com/Coffcer/flex-layout</A></P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="August 17, 2015  9:49 AM" class="published">2015年8月17日 
+09:49</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-351282">#</A> 
+| <A title="引用coffce的这条留言" onclick="return CommentQuote('comment-quote-351282','coffce');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-351351">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author"><A title="http://www.dubbofeng.com" 
+href="http://www.dubbofeng.com/" target="_blank" rel="nofollow">dubbo</A></SPAN> 
+ 说：                 </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-351351">
+<P>有了这个以后可以真正的告别table了。</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="August 21, 2015  7:41 AM" class="published">2015年8月21日 
+07:41</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-351351">#</A> 
+| <A title="引用dubbo的这条留言" onclick="return CommentQuote('comment-quote-351351','dubbo');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-351445">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">夜愿</SPAN> 说：                 
+</SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-351445">
+<P>阮老师，align-items：flex-start和align-items:flex:end 的图弄反了</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="August 26, 2015  2:00 PM" class="published">2015年8月26日 
+14:00</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-351445">#</A> 
+| <A title="引用夜愿的这条留言" onclick="return CommentQuote('comment-quote-351445','夜愿');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-351802">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">第二梦</SPAN> 说：                 
+</SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-351802">
+<P>您发表的每篇文章,都是那么的善于理解,一目了然,看着很轻松并且感觉学到了知识;非常感觉,看了您的很多文章觉得不评论支持一下过意不去.</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="September 21, 2015  1:34 AM" class="published">2015年9月21日 
+01:34</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-351802">#</A> 
+| <A title="引用第二梦的这条留言" onclick="return CommentQuote('comment-quote-351802','第二梦');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-351835">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">广州哈哥</SPAN> 说：                
+ </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-351835">
+<P>阮老师，您好，我是0基础开始学习flex,今天看了你的这篇博文，发现有个地方好像你给弄反了。就是justify-content和align-items这两个属性。我试过了，其实，前者是设置项目在交叉轴上的对齐方式的，而后者是设置项目在主轴上的对齐方式的。</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="September 23, 2015 10:10 PM" class="published">2015年9月23日 
+22:10</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-351835">#</A> 
+| <A title="引用广州哈哥的这条留言" onclick="return CommentQuote('comment-quote-351835','广州哈哥');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-351840">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">六翼</SPAN> 说：                 
+</SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-351840">
+<BLOCKQUOTE>
+<PRE>引用阮一峰的发言：</PRE>
+  <P>@longfei:</P>
+  <P>flex-basis都设为0，因为flex-grow定义的是，剩余空间分配的比例关系。</P></BLOCKQUOTE>
+<P>那请问不设为0的时候它是多少呢？看您的原文里是“auto”，但这个auto是怎么计算的？</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="September 24, 2015  9:58 AM" class="published">2015年9月24日 
+09:58</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-351840">#</A> 
+| <A title="引用六翼的这条留言" onclick="return CommentQuote('comment-quote-351840','六翼');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-352065">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">ixoixo</SPAN>  说：             
+    </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-352065">
+<P>能不能好好解释下flex-grow  flex-shrink  flex-basis的用法，网上的各种解释感觉都不好理解</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="October  9, 2015 11:07 PM" class="published">2015年10月 9日 
+23:07</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-352065">#</A> 
+| <A title="引用ixoixo的这条留言" onclick="return CommentQuote('comment-quote-352065','ixoixo');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-352463">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">年华果腹</SPAN> 说：                
+ </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-352463">
+<P>想学习flex的相关知识，找了几篇文章大概看了一下，觉得都不满意，突然在google上发现文章后面带有阮老师标识的文章，于是默默把其他的几篇文章的tab都关了</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="October 30, 2015  1:20 PM" class="published">2015年10月30日 
+13:20</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-352463">#</A> 
+| <A title="引用年华果腹的这条留言" onclick="return CommentQuote('comment-quote-352463','年华果腹');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-352599">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author"><A title="http://www.cong-cong.cn" 
+href="http://www.cong-cong.cn/" target="_blank" rel="nofollow">phc</A></SPAN>  
+说：                 </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-352599">
+<BLOCKQUOTE>
+<PRE>引用广州哈哥的发言：</PRE>
+  <P>阮老师，您好，我是0基础开始学习flex,今天看了你的这篇博文，发现有个地方好像你给弄反了。就是justify-content和align-items这两个属性。我试过了，其实，前者是设置项目在交叉轴上的对齐方式的，而后者是设置项目在主轴上的对齐方式的。</P></BLOCKQUOTE>
+<P>我不知道自己理解的对不对，但是我觉得主轴的话也就是项目的排布方向，加入是水平排布，那么交叉轴即是垂直方向的，设置align-items:stretch；的话确实是在垂直方向上拉伸的，那align-itmes就是设置交叉轴的吧</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="November  5, 2015  5:34 PM" class="published">2015年11月 5日 
+17:34</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-352599">#</A> 
+| <A title="引用phc的这条留言" onclick="return CommentQuote('comment-quote-352599','phc');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-352605">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">大海的子民</SPAN> 说：               
+  </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-352605">
+<P>如果我把子元素按照固定像素来分配，是否可以（就是替换现在的float布局），还是子元素用width吗？</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="November  5, 2015  9:32 PM" class="published">2015年11月 5日 
+21:32</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-352605">#</A> 
+| <A title="引用大海的子民的这条留言" onclick="return CommentQuote('comment-quote-352605','大海的子民');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-352717">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">Jasmine</SPAN>  说：            
+     </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-352717">
+<P>很好用的布局，学习了！</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="November 11, 2015  3:19 PM" class="published">2015年11月11日 
+15:19</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-352717">#</A> 
+| <A title="引用Jasmine的这条留言" onclick="return CommentQuote('comment-quote-352717','Jasmine');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-353257">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author"><A title="http://zy21.xyz" 
+href="http://zy21.xyz/" target="_blank" rel="nofollow">Citrus</A></SPAN>  说：     
+            </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-353257">
+<P>多次过来学习，非常感谢。</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="December 12, 2015 12:31 PM" class="published">2015年12月12日 
+12:31</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-353257">#</A> 
+| <A title="引用Citrus的这条留言" onclick="return CommentQuote('comment-quote-353257','Citrus');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-353259">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author"><A title="http://proforz.com" 
+href="http://proforz.com/" target="_blank" rel="nofollow">professorz</A></SPAN>  
+说：                 </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-353259">
+<P>flex-direction 图片顺序和文字顺序是不是不一样呀。</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="December 12, 2015  5:35 PM" class="published">2015年12月12日 
+17:35</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-353259">#</A> 
+| <A title="引用professorz的这条留言" onclick="return CommentQuote('comment-quote-353259','professorz');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-353454">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">ppYoung</SPAN>  说：            
+     </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-353454">
+<P>原来是css-tricks上的文章翻译过来的，为什么不做说明<BR>
+传送门：https://css-tricks.com/snippets/css/a-guide-to-flexbox/</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="December 22, 2015 11:37 AM" class="published">2015年12月22日 
+11:37</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-353454">#</A> 
+| <A title="引用ppYoung的这条留言" onclick="return CommentQuote('comment-quote-353454','ppYoung');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-353661">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author"><A title="http://www.cnblogs.com/U-can/" 
+href="http://www.cnblogs.com/U-can/" target="_blank" 
+rel="nofollow">巫婆</A></SPAN> 说：                 </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-353661">
+<P>我每次写项目的时候也考虑过用flex布局，但是有的手机上显示不谦容。我到现在都不知道该怎么解决。</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="December 30, 2015  5:51 PM" class="published">2015年12月30日 
+17:51</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-353661">#</A> 
+| <A title="引用巫婆的这条留言" onclick="return CommentQuote('comment-quote-353661','巫婆');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-353673">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">wcg </SPAN>  说：               
+  </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-353673">
+<P>@mixin flex(){<BR>  display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 
+*/<BR>  display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) 
+*/<BR>  display: -ms-flexbox;      /* TWEENER - IE 10 */<BR>  display: 
+-webkit-flex;     /* NEW - Chrome */<BR>  display: flex;             /* NEW, 
+Spec - Opera 12.1, Firefox 20+ */<BR>}<BR>body{<BR>  @include flex();<BR>  flex: 
+1;<BR>  justify-content: center;<BR>  align-items: center;<BR>  flex-direction: 
+column;<BR>}<BR>#main{<BR>  @include flex();<BR>  height: 400px;<BR>  width: 
+1200px;<BR>  background-color: red;<BR>}<BR>div #main 并不会居中</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="December 31, 2015  3:42 PM" class="published">2015年12月31日 
+15:42</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-353673">#</A> 
+| <A title="引用wcg 的这条留言" onclick="return CommentQuote('comment-quote-353673','wcg ');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-353827">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">lomin</SPAN>  说：              
+   </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-353827">
+<P>想问一下，微信的内置浏览器是不是不支持这个属性啊。。我写了一个。在电脑上用chrome浏览器有用。在微信上没用了</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="January  7, 2016 10:04 AM" class="published">2016年1月 7日 
+10:04</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-353827">#</A> 
+| <A title="引用lomin的这条留言" onclick="return CommentQuote('comment-quote-353827','lomin');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-353896">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">wing-kai</SPAN>  说：           
+      </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-353896">
+<BLOCKQUOTE>
+<PRE>引用lomin的发言：</PRE>
+  <P>想问一下，微信的内置浏览器是不是不支持这个属性啊。。我写了一个。在电脑上用chrome浏览器有用。在微信上没用了</P></BLOCKQUOTE>
+<P>微信的话用display: box</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="January  9, 2016  1:01 PM" class="published">2016年1月 9日 
+13:01</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-353896">#</A> 
+| <A title="引用wing-kai的这条留言" onclick="return CommentQuote('comment-quote-353896','wing-kai');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-353929">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">littelbowl</SPAN>  说：         
+        </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-353929">
+<P>感谢科普，跟着demo学习下来很有收获。</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="January 11, 2016  3:20 PM" class="published">2016年1月11日 
+15:20</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-353929">#</A> 
+| <A title="引用littelbowl的这条留言" onclick="return CommentQuote('comment-quote-353929','littelbowl');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-354315">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">小天312</SPAN>  说：              
+   </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-354315">
+<P>移动端的兼容应该没有什么大问题了吧。可以在团队开发时候推广了吧？</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="January 25, 2016  5:37 PM" class="published">2016年1月25日 
+17:37</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-354315">#</A> 
+| <A title="引用小天312的这条留言" onclick="return CommentQuote('comment-quote-354315','小天312');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-354390">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">Silvers · Rayleigh</SPAN>  说： 
+                </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-354390">
+<BLOCKQUOTE>
+<PRE>引用longfei的发言：</PRE>
+  <P>阮老师，那个item的flex-grow属性，我写了个demo<BR>CSS:<BR>body{margin:0;}<BR>
+  ul,li{margin:0; padding:0;}<BR>li{list-style-type:none;}<BR>#list{border:2px 
+  solid gold; height:500px; display:flex; flex-direction:row;}<BR>#list 
+  li{font-family:"microsoft yahei"; font-size:50px; background:#C00; color:#fff; 
+  margin:2px; flex-grow:1;}<BR>#list li:nth-child(2){flex-grow:2;}</P>
+  <P>&lt;ul id="list"&gt;<BR>&lt;li&gt;test1&lt;/li&gt;<BR>
+  &lt;li&gt;test2&lt;/li&gt;<BR>&lt;li&gt;test3&lt;/li&gt;<BR>
+  &lt;/ul&gt;<BR>结果第2个li所占的宽度并不是其它li的2倍，为什么呢？比其它两个要大，但不足2倍。</P></BLOCKQUOTE>
+<P>这里是你理解错了，3个 li 平分下来每个是1/3。<BR>你想实现的2个相等，1个宽度是其他2个的两倍实际上就是4个 li 
+平分，其中2个合并成1个，所以每个 li 是1/4，也就是#list li:nth-child(2){flex-grow:3;}</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="January 30, 2016  4:28 PM" class="published">2016年1月30日 
+16:28</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-354390">#</A> 
+| <A title="引用Silvers · Rayleigh的这条留言" onclick="return CommentQuote('comment-quote-354390','Silvers · Rayleigh');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-354391">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">Silvers · Rayleigh</SPAN>  说： 
+                </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-354391">
+<BLOCKQUOTE>
+<PRE>引用巫婆的发言：</PRE>
+  <P>我每次写项目的时候也考虑过用flex布局，但是有的手机上显示不谦容。我到现在都不知道该怎么解决。</P></BLOCKQUOTE>
+<P>不兼容可以用 display:box 试试看</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="January 30, 2016  4:29 PM" class="published">2016年1月30日 
+16:29</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-354391">#</A> 
+| <A title="引用Silvers · Rayleigh的这条留言" onclick="return CommentQuote('comment-quote-354391','Silvers · Rayleigh');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-354413">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">村小闹</SPAN> 说：                 
+</SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-354413">
+<BLOCKQUOTE>
+<PRE>引用广州哈哥的发言：</PRE>
+  <P>阮老师，您好，我是0基础开始学习flex,今天看了你的这篇博文，发现有个地方好像你给弄反了。就是justify-content和align-items这两个属性。我试过了，其实，前者是设置项目在交叉轴上的对齐方式的，而后者是设置项目在主轴上的对齐方式的。</P></BLOCKQUOTE>
+<P>是你自己弄错了好吧~</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="February  1, 2016  3:29 PM" class="published">2016年2月 1日 
+15:29</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-354413">#</A> 
+| <A title="引用村小闹的这条留言" onclick="return CommentQuote('comment-quote-354413','村小闹');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-354684">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">无双</SPAN> 说：                 
+</SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-354684">
+<P><A href="http://flexboxin5.com/" 
+rel="nofollow">http://flexboxin5.com/</A><BR>博士哥与我本科生一站</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="February 28, 2016  4:13 PM" class="published">2016年2月28日 
+16:13</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-354684">#</A> 
+| <A title="引用无双的这条留言" onclick="return CommentQuote('comment-quote-354684','无双');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-354744">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author"><A title="https://jingsam.github.io/" 
+href="https://jingsam.github.io/" target="_blank" 
+rel="nofollow">jingsam</A></SPAN>  说：                 </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-354744">
+<P>3.1 节关于 flex-direction 的部分，代码和图不是一一对应的。</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="March  3, 2016  2:12 PM" class="published">2016年3月 3日 
+14:12</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-354744">#</A> 
+| <A title="引用jingsam的这条留言" onclick="return CommentQuote('comment-quote-354744','jingsam');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-354763">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">大果子</SPAN> 说：                 
+</SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-354763">
+<P>我就看看能不能发表成功</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="March  4, 2016 10:46 AM" class="published">2016年3月 4日 
+10:46</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-354763">#</A> 
+| <A title="引用大果子的这条留言" onclick="return CommentQuote('comment-quote-354763','大果子');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-355116">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">cc</SPAN>  说：                 
+</SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-355116">
+<P>flex-wrap: wrap;<BR>在微信内置浏览器中无效！</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="March 19, 2016 12:25 PM" class="published">2016年3月19日 
+12:25</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-355116">#</A> 
+| <A title="引用cc的这条留言" onclick="return CommentQuote('comment-quote-355116','cc');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-355117">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">cc</SPAN>  说：                 
+</SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-355117">
+<BLOCKQUOTE>
+<PRE>引用cc的发言：</PRE>
+  <P>flex-wrap: wrap;<BR>在微信内置浏览器中无效！</P></BLOCKQUOTE>
+<P><BR>autoprefixer({browsers: ['last 10 version']})<BR>这样都无效！</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="March 19, 2016 12:26 PM" class="published">2016年3月19日 
+12:26</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-355117">#</A> 
+| <A title="引用cc的这条留言" onclick="return CommentQuote('comment-quote-355117','cc');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-355118">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">cc</SPAN>  说：                 
+</SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-355118">
+<BLOCKQUOTE>
+<PRE>引用cc的发言：</PRE>
+  <P></P>
+  <P><BR>autoprefixer({browsers: ['last 10 version']})<BR>这样都无效！</P></BLOCKQUOTE>
+<P>换个写法吧，历史的倒退！shit!</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="March 19, 2016 12:27 PM" class="published">2016年3月19日 
+12:27</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-355118">#</A> 
+| <A title="引用cc的这条留言" onclick="return CommentQuote('comment-quote-355118','cc');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-355256">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">SHUSHU</SPAN>  说：             
+    </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-355256">
+<P>谢谢老师讲解，之前的一些困惑现在看明白了</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="March 25, 2016  1:55 PM" class="published">2016年3月25日 
+13:55</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-355256">#</A> 
+| <A title="引用SHUSHU的这条留言" onclick="return CommentQuote('comment-quote-355256','SHUSHU');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-355475">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">杨继坤</SPAN> 说：                 
+</SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-355475">
+<P>厉害</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="April  7, 2016  5:03 PM" class="published">2016年4月 7日 
+17:03</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-355475">#</A> 
+| <A title="引用杨继坤的这条留言" onclick="return CommentQuote('comment-quote-355475','杨继坤');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-355517">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author"><A title="http://yanhaijing.com" 
+href="http://yanhaijing.com/" target="_blank" 
+rel="nofollow">yanhaijing</A></SPAN>  说：                 </SPAN> 
+</P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-355517">
+<P>棒棒的</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="April  9, 2016  6:46 PM" class="published">2016年4月 9日 
+18:46</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-355517">#</A> 
+| <A title="引用yanhaijing的这条留言" onclick="return CommentQuote('comment-quote-355517','yanhaijing');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-355570">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author"><A title="http://geakw.github.io" 
+href="http://geakw.github.io/" target="_blank" rel="nofollow">wlq</A></SPAN>  说： 
+                </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-355570">
+<P>阮老师，item翻译成项目感觉怪怪的，没有直接用item好理解点</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="April 12, 2016 10:56 AM" class="published">2016年4月12日 
+10:56</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-355570">#</A> 
+| <A title="引用wlq的这条留言" onclick="return CommentQuote('comment-quote-355570','wlq');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-355650">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">麦当真</SPAN> 说：                 
+</SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-355650">
+<P>一峰老师，我简直不能更加感激您，也非常崇拜您。哇唔，我猜您已经将技术看作是艺术了吧！！！现在好多程序员生活都比较枯燥（我猜他们和我一样，嘻嘻）（每天都很忙，技术更新快，提升自己的技术还要完成项目），灵魂也很干涸（因为很忙，所以太少的时间感受生活，去吸取技术之外的东西来滋养我们的灵魂）。然而每次看您的博文，我就感觉自己经历了一场与艺术的邂逅，不仅学习了知识，还让我得以短暂的放松，让我的心灵经历了一次奇妙的旅行，然后再元气满满，整装继续上路。非常感谢您的分享，您无私的指引，以及心灵的关怀。</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="April 14, 2016 11:14 AM" class="published">2016年4月14日 
+11:14</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-355650">#</A> 
+| <A title="引用麦当真的这条留言" onclick="return CommentQuote('comment-quote-355650','麦当真');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-355930">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">MZ</SPAN>  说：                 
+</SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-355930">
+<BLOCKQUOTE>
+<PRE>引用阮一峰的发言：</PRE>
+  <P>@longfei:</P>
+  <P>flex-basis都设为0，因为flex-grow定义的是，剩余空间分配的比例关系。</P></BLOCKQUOTE>
+<P>flex-basis设为0，那项目的初始大小是多大？</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="April 27, 2016  8:21 PM" class="published">2016年4月27日 
+20:21</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-355930">#</A> 
+| <A title="引用MZ的这条留言" onclick="return CommentQuote('comment-quote-355930','MZ');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-355965">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">善心法西斯</SPAN> 说：               
+  </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-355965">
+<P>很清楚，一目了然</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="April 28, 2016 11:58 PM" class="published">2016年4月28日 
+23:58</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-355965">#</A> 
+| <A title="引用善心法西斯的这条留言" onclick="return CommentQuote('comment-quote-355965','善心法西斯');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-356167">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">曾胜荣</SPAN> 说：                 
+</SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-356167">
+<P>请问flex在任何浏览器都能用吗，有没有兼容性的问题</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="May 11, 2016 12:28 AM" class="published">2016年5月11日 00:28</ABBR> 
+| <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-356167">#</A> 
+| <A title="引用曾胜荣的这条留言" onclick="return CommentQuote('comment-quote-356167','曾胜荣');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-356228">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">赖俊杰</SPAN> 说：                 
+</SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-356228">
+<P>老师的文章写得总是那么易懂</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="May 13, 2016  5:07 PM" class="published">2016年5月13日 17:07</ABBR> 
+| <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-356228">#</A> 
+| <A title="引用赖俊杰的这条留言" onclick="return CommentQuote('comment-quote-356228','赖俊杰');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-356317">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">林明哲</SPAN> 说：                 
+</SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-356317">
+<P>图片很好！点赞。flex在安卓原生开发上也有了支持库。https://github.com/google/flexbox-layout</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="May 16, 2016  4:55 PM" class="published">2016年5月16日 16:55</ABBR> 
+| <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-356317">#</A> 
+| <A title="引用林明哲的这条留言" onclick="return CommentQuote('comment-quote-356317','林明哲');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-356328">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">Christopher</SPAN>  说：        
+         </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-356328">
+<P>前端自学者受用了，谢谢！</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="May 16, 2016 11:12 PM" class="published">2016年5月16日 23:12</ABBR> 
+| <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-356328">#</A> 
+| <A title="引用Christopher的这条留言" onclick="return CommentQuote('comment-quote-356328','Christopher');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-356417">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">walle</SPAN>  说：              
+   </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-356417">
+<P>好的老师不仅要学会知识，还要讲得通俗易懂，阮老师就是这样的老师</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="May 19, 2016  3:24 PM" class="published">2016年5月19日 15:24</ABBR> 
+| <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-356417">#</A> 
+| <A title="引用walle的这条留言" onclick="return CommentQuote('comment-quote-356417','walle');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-356630">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">react-native-android</SPAN>  
+说：                 </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-356630">
+<P>flex-direction这个属性的默认值是row吗？这样的话是不是默认情况下，item就是横向排列了。但是。我在做的过程中发现，如果不写flex-direction属性的话，item是竖向排列的</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="May 26, 2016 10:46 AM" class="published">2016年5月26日 10:46</ABBR> 
+| <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-356630">#</A> 
+| <A title="引用react-native-android的这条留言" onclick="return CommentQuote('comment-quote-356630','react-native-android');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-357332">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">laoyur</SPAN>  说：             
+    </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-357332">
+<P>还是没看明白align-content跟justify-content的区别  :(</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="June  7, 2016  8:17 PM" class="published">2016年6月 7日 
+20:17</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-357332">#</A> 
+| <A title="引用laoyur的这条留言" onclick="return CommentQuote('comment-quote-357332','laoyur');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-359825">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">落雨收柴</SPAN> 说：                
+ </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-359825">
+<P>老师，怎样使用flex布局使得两个组件的一部分重叠</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="June 27, 2016  5:39 PM" class="published">2016年6月27日 
+17:39</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-359825">#</A> 
+| <A title="引用落雨收柴的这条留言" onclick="return CommentQuote('comment-quote-359825','落雨收柴');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-359862">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">石海伟</SPAN> 说：                 
+</SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-359862">
+<BLOCKQUOTE>
+<PRE>引用longfei的发言：</PRE>
+  <P>阮老师，那个item的flex-grow属性，我写了个demo<BR>CSS:<BR>body{margin:0;}<BR>
+  ul,li{margin:0; padding:0;}<BR>li{list-style-type:none;}<BR>#list{border:2px 
+  solid gold; height:500px; display:flex; flex-direction:row;}<BR>#list 
+  li{font-family:"microsoft yahei"; font-size:50px; background:#C00; color:#fff; 
+  margin:2px; flex-grow:1;}<BR>#list li:nth-child(2){flex-grow:2;}</P>
+  <P>&lt;ul id="list"&gt;<BR>&lt;li&gt;test1&lt;/li&gt;<BR>
+  &lt;li&gt;test2&lt;/li&gt;<BR>&lt;li&gt;test3&lt;/li&gt;<BR>
+  &lt;/ul&gt;<BR>结果第2个li所占的宽度并不是其它li的2倍，为什么呢？比其它两个要大，但不足2倍。</P></BLOCKQUOTE>
+<P>好像是按多余空间算的</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="June 28, 2016  3:57 PM" class="published">2016年6月28日 
+15:57</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-359862">#</A> 
+| <A title="引用石海伟的这条留言" onclick="return CommentQuote('comment-quote-359862','石海伟');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-359865">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">两仪</SPAN> 说：                 
+</SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-359865">
+<P> 玉峰老师的博客真写的通熟易懂     点赞一个</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="June 28, 2016 11:24 PM" class="published">2016年6月28日 
+23:24</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-359865">#</A> 
+| <A title="引用两仪的这条留言" onclick="return CommentQuote('comment-quote-359865','两仪');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-359896">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">卓</SPAN> 说：                 
+</SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-359896">
+<BLOCKQUOTE>
+<PRE>引用石海伟的发言：</PRE>
+  <P></P>
+  <P>好像是按多余空间算的</P></BLOCKQUOTE>
+<P>一共有三个li元素，flex-grow:2即当前元素宽度为 父元素的2/3   并不是其他元素的两倍</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="June 29, 2016  4:08 PM" class="published">2016年6月29日 
+16:08</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-359896">#</A> 
+| <A title="引用卓的这条留言" onclick="return CommentQuote('comment-quote-359896','卓');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-359897">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">卓</SPAN> 说：                 
+</SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-359897">
+<BLOCKQUOTE>
+<PRE>引用longfei的发言：</PRE>
+  <P>阮老师，那个item的flex-grow属性，我写了个demo<BR>CSS:<BR>body{margin:0;}<BR>
+  ul,li{margin:0; padding:0;}<BR>li{list-style-type:none;}<BR>#list{border:2px 
+  solid gold; height:500px; display:flex; flex-direction:row;}<BR>#list 
+  li{font-family:"microsoft yahei"; font-size:50px; background:#C00; color:#fff; 
+  margin:2px; flex-grow:1;}<BR>#list li:nth-child(2){flex-grow:2;}</P>
+  <P>&lt;ul id="list"&gt;<BR>&lt;li&gt;test1&lt;/li&gt;<BR>
+  &lt;li&gt;test2&lt;/li&gt;<BR>&lt;li&gt;test3&lt;/li&gt;<BR>
+  &lt;/ul&gt;<BR>结果第2个li所占的宽度并不是其它li的2倍，为什么呢？比其它两个要大，但不足2倍。</P></BLOCKQUOTE>
+<P>一共有三个li元素，flex-grow:2即当前元素宽度为 父元素的2/3 并不是其他元素的两倍</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="June 29, 2016  4:09 PM" class="published">2016年6月29日 
+16:09</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-359897">#</A> 
+| <A title="引用卓的这条留言" onclick="return CommentQuote('comment-quote-359897','卓');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-359991">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">Mr.Luo</SPAN>  说：             
+    </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-359991">
+<P>默认好像是flex-wrap: wrap;</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="July  1, 2016  4:17 PM" class="published">2016年7月 1日 
+16:17</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-359991">#</A> 
+| <A title="引用Mr.Luo的这条留言" onclick="return CommentQuote('comment-quote-359991','Mr.Luo');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-360189">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">卓</SPAN> 说：                 
+</SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-360189">
+<P>请问: 针对此属性 justify-content: space-between 
+3个元素为一行排列，最后多余的两个多余的元素如何让它靠左排布，事实上是左右排布了，表面看就是中间空了个元素，请看demo</P>  1  2  3  4  5 
+<P>.container {width: 400px;display: flex;justify-content: 
+space-between;flex-flow: row wrap;<BR>}</P>
+<P>span {width: 110px;background-color: #f60;border-radius: 5px;margin-top: 
+10px;padding: 10px;<BR>}<BR></P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="July  5, 2016 10:47 AM" class="published">2016年7月 5日 
+10:47</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-360189">#</A> 
+| <A title="引用卓的这条留言" onclick="return CommentQuote('comment-quote-360189','卓');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-360190">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">卓</SPAN> 说：                 
+</SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-360190">
+<BLOCKQUOTE>
+<PRE>引用卓的发言：</PRE>
+  <P>请问: 针对此属性 justify-content: space-between 
+  3个元素为一行排列，最后多余的两个多余的元素如何让它靠左排布，事实上是左右排布了，表面看就是中间空了个元素，请看demo</P>
+  <P><BR>1<BR>2<BR>3<BR>4<BR>5</P>
+  <P><BR>.container {width: 400px;display: flex;justify-content: 
+  space-between;flex-flow: row wrap;<BR>}</P>
+  <P>span {width: 110px;background-color: #f60;border-radius: 5px;margin-top: 
+  10px;padding: 10px;<BR>}</P>
+  <P><BR></P></BLOCKQUOTE>
+<P></P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="July  5, 2016 10:49 AM" class="published">2016年7月 5日 
+10:49</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-360190">#</A> 
+| <A title="引用卓的这条留言" onclick="return CommentQuote('comment-quote-360190','卓');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-360443">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">键盘侠</SPAN> 说：                 
+</SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-360443">
+<P>我只想说这个css3的新属性flex局势一个巨坑，谁用谁知道。安卓低端机完全不支持</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="July  9, 2016  5:16 PM" class="published">2016年7月 9日 
+17:16</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-360443">#</A> 
+| <A title="引用键盘侠的这条留言" onclick="return CommentQuote('comment-quote-360443','键盘侠');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-360450">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">Yac</SPAN>  说：                
+ </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-360450">
+<P>目前发现一个问题，和@卓貌似是一个问题：<BR>父元素：justify-content: 
+space-between<BR>在每排3个元素一共5个元素情况下，第五个元素怎么实现居中？<BR>
+现在的效果是第1、2、3元素正常，4元素居左，5元素居右</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="July 10, 2016  3:19 AM" class="published">2016年7月10日 
+03:19</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-360450">#</A> 
+| <A title="引用Yac的这条留言" onclick="return CommentQuote('comment-quote-360450','Yac');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-360471">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">肖德华</SPAN> 说：                 
+</SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-360471">
+<P>UC浏览器设置flex：1；盒子里面加入文字 弹性盒子会被撑开要怎么解决，其他浏览器都是正常的</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="July 10, 2016  5:10 PM" class="published">2016年7月10日 
+17:10</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-360471">#</A> 
+| <A title="引用肖德华的这条留言" onclick="return CommentQuote('comment-quote-360471','肖德华');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-360612">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">zw</SPAN>  说：                 
+</SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-360612">
+<P>不得不说，看了半天外文网站， 不如看十分钟阮大师的。</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="July 13, 2016  4:42 PM" class="published">2016年7月13日 
+16:42</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-360612">#</A> 
+| <A title="引用zw的这条留言" onclick="return CommentQuote('comment-quote-360612','zw');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-360644">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">liangwang</SPAN>  说：          
+       </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-360644">
+<P>"Webkit内核的浏览器，必须加上-webkit前缀。“， 我测试了下safari和chrome，都不需要的。</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="July 14, 2016 10:34 AM" class="published">2016年7月14日 
+10:34</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-360644">#</A> 
+| <A title="引用liangwang的这条留言" onclick="return CommentQuote('comment-quote-360644','liangwang');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-360645">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">liangwang</SPAN>  说：          
+       </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-360645">
+<P>问下，支付宝是否已经有页面部署了flex的布局？ 
+似乎各大浏览器，除了chrome支持的都不是特别好，比如IE8就，FireFox46之前的，Safari9.1之前的都不支持</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="July 14, 2016 10:46 AM" class="published">2016年7月14日 
+10:46</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-360645">#</A> 
+| <A title="引用liangwang的这条留言" onclick="return CommentQuote('comment-quote-360645','liangwang');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-360865">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">孟泰德</SPAN> 说：                 
+</SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-360865">
+<BLOCKQUOTE>
+<PRE>引用liangwang的发言：</PRE>
+  <P>"Webkit内核的浏览器，必须加上-webkit前缀。“， 我测试了下safari和chrome，都不需要的。</P></BLOCKQUOTE>
+<P>在ios8及以下的版本中就需要了</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="July 19, 2016  1:12 PM" class="published">2016年7月19日 
+13:12</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-360865">#</A> 
+| <A title="引用孟泰德的这条留言" onclick="return CommentQuote('comment-quote-360865','孟泰德');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-361733">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author"><A title="http://vec.moe" 
+href="http://vec.moe/" target="_blank" rel="nofollow">vec</A></SPAN>  说：         
+        </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-361733">
+<P>太好了，总算是弄明白了，谢谢博主！</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="August  5, 2016 12:18 AM" class="published">2016年8月 5日 
+00:18</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-361733">#</A> 
+| <A title="引用vec的这条留言" onclick="return CommentQuote('comment-quote-361733','vec');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-361750">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">前端小菜</SPAN> 说：                
+ </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-361750">
+<P>怎么用flex实现footer一直存在在屏幕下方 不随滚动消失</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="August  5, 2016 10:51 AM" class="published">2016年8月 5日 
+10:51</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-361750">#</A> 
+| <A title="引用前端小菜的这条留言" onclick="return CommentQuote('comment-quote-361750','前端小菜');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-361759">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">zhishaofei3</SPAN>  说：        
+         </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-361759">
+<BLOCKQUOTE>
+<PRE>引用Silvers · Rayleigh的发言：</PRE>
+  <P></P>
+  <P>这里是你理解错了，3个 li 平分下来每个是1/3。<BR>你想实现的2个相等，1个宽度是其他2个的两倍实际上就是4个 li 
+  平分，其中2个合并成1个，所以每个 li 是1/4，也就是#list 
+li:nth-child(2){flex-grow:3;}</P></BLOCKQUOTE>
+<P><BR>3也不行吧？</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="August  5, 2016  1:11 PM" class="published">2016年8月 5日 
+13:11</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-361759">#</A> 
+| <A title="引用zhishaofei3的这条留言" onclick="return CommentQuote('comment-quote-361759','zhishaofei3');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-361761">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">zhishaofei3</SPAN>  说：        
+         </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-361761">
+<BLOCKQUOTE>
+<PRE>引用longfei的发言：</PRE>
+  <P>阮老师，那个item的flex-grow属性，我写了个demo<BR>CSS:<BR>body{margin:0;}<BR>
+  ul,li{margin:0; padding:0;}<BR>li{list-style-type:none;}<BR>#list{border:2px 
+  solid gold; height:500px; display:flex; flex-direction:row;}<BR>#list 
+  li{font-family:"microsoft yahei"; font-size:50px; background:#C00; color:#fff; 
+  margin:2px; flex-grow:1;}<BR>#list li:nth-child(2){flex-grow:2;}</P>
+  <P>&lt;ul id="list"&gt;<BR>&lt;li&gt;test1&lt;/li&gt;<BR>
+  &lt;li&gt;test2&lt;/li&gt;<BR>&lt;li&gt;test3&lt;/li&gt;<BR>
+  &lt;/ul&gt;<BR>结果第2个li所占的宽度并不是其它li的2倍，为什么呢？比其它两个要大，但不足2倍。</P></BLOCKQUOTE>
+<P>是按剩余空间算的，因为你里面有文字，所以刨去了文字宽度，你去掉文字就好了</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="August  5, 2016  2:08 PM" class="published">2016年8月 5日 
+14:08</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-361761">#</A> 
+| <A title="引用zhishaofei3的这条留言" onclick="return CommentQuote('comment-quote-361761','zhishaofei3');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-362540">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">zousjun</SPAN>  说：            
+     </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-362540">
+<BLOCKQUOTE>
+<PRE>引用zhishaofei3的发言：</PRE>
+  <P>是按剩余空间算的，因为你里面有文字，所以刨去了文字宽度，你去掉文字就好了</P></BLOCKQUOTE>
+<P>这里是必须先除去每个元素实际占有的大小之后，然后按照你设置的比例来分配空间，h</P>
+<P>还有默认空间应该是flex-grow： 1，而不是flex-grow： 0；</P>
+<BLOCKQUOTE>
+<PRE>&lt;ul id="list"&gt;
+  &lt;li&gt;test1&lt;/li&gt;
+  &lt;li&gt;test2&lt;/li&gt;
+  &lt;li&gt;test3&lt;/li&gt;
+&lt;/ul&gt;
+</PRE></BLOCKQUOTE>
+<BLOCKQUOTE>
+<PRE>body{margin:0;}
+	ul,li{ margin:0; padding:0;}
+	li{ list-style-type:none;}
+	#list{ border:2px solid gold; height:500px; display:flex; flex-direction:row;}
+	#list li {
+		width: 120px;
+	}
+	#list li{font-family:"microsoft yahei"; font-size:50px; background:#C00; color:#fff; margin:2px; flex-grow:1;}
+	#list li:nth-child(2){flex-grow:2;}
+	#list li:nth-child(3){
+		flex-grow: 0;
+	}
+</PRE></BLOCKQUOTE>
+<P>你可以比较一下两段代码的不同</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="August 17, 2016  6:27 PM" class="published">2016年8月17日 
+18:27</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-362540">#</A> 
+| <A title="引用zousjun的这条留言" onclick="return CommentQuote('comment-quote-362540','zousjun');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-363136">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">微风</SPAN> 说：                 
+</SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-363136">
+<P>苹果手机的IOS8系统不支持flex布局，有什么好方法吗？</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="August 25, 2016  4:48 PM" class="published">2016年8月25日 
+16:48</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-363136">#</A> 
+| <A title="引用微风的这条留言" onclick="return CommentQuote('comment-quote-363136','微风');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-364156">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">小汤</SPAN> 说：                 
+</SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-364156">
+<P>不错，容易明白，大神就是大神</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="September  9, 2016  3:15 PM" class="published">2016年9月 9日 
+15:15</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-364156">#</A> 
+| <A title="引用小汤的这条留言" onclick="return CommentQuote('comment-quote-364156','小汤');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-364512">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author"><A title="http://felbry.github.io" 
+href="http://felbry.github.io/" target="_blank" rel="nofollow">felbry</A></SPAN> 
+ 说：                 </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-364512">
+<P>今天实践过程中发现了一个理解误区，就是刚开始把justify-content误认为是指定水平对齐方式（其实针对的是主轴），而align-items是指定垂直对齐方式。而指定主轴需要用到flex-direction(默认为水平)。不过后来想想，假使指定主轴为竖直的话，那主轴和交叉轴是不是就是一样了？还有那个align-content说的是针对多根轴线，是不是就意味着如果主轴指定为column，就是主轴和交叉轴一样是一根线了，如果主轴为默认，那么当主轴和交叉轴的对齐方式一样的话，直接用一个align-content属性就ok了？</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="September 14, 2016  3:44 PM" class="published">2016年9月14日 
+15:44</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-364512">#</A> 
+| <A title="引用felbry的这条留言" onclick="return CommentQuote('comment-quote-364512','felbry');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-365898">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">lavender</SPAN>  说：           
+      </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-365898">
+<P>很明了，很直观，感谢博主~</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="October  8, 2016  2:25 PM" class="published">2016年10月 8日 
+14:25</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-365898">#</A> 
+| <A title="引用lavender的这条留言" onclick="return CommentQuote('comment-quote-365898','lavender');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-366014">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">家兴</SPAN> 说：                 
+</SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-366014">
+<P>flex-direction: row | row-reverse | column | column-reverse;</P>
+<P>这部分的描述和下面的配图，容易误导一些新手哈</P>
+<P>可能会造成 row = 下图第一个 依次的顺序</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="October 10, 2016 11:11 AM" class="published">2016年10月10日 
+11:11</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-366014">#</A> 
+| <A title="引用家兴的这条留言" onclick="return CommentQuote('comment-quote-366014','家兴');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-367470">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author"><A title="http://123.56.108.61" 
+href="http://123.56.108.61/" target="_blank" rel="nofollow">张宝</A></SPAN> 说：     
+            </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-367470">
+<P>“四、项目的属性”这个标题的字体小了，之前同种标题都是,应该是H2</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="October 31, 2016 12:40 PM" class="published">2016年10月31日 
+12:40</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-367470">#</A> 
+| <A title="引用张宝的这条留言" onclick="return CommentQuote('comment-quote-367470','张宝');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-367515">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">cnwhy</SPAN>  说：              
+   </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-367515">
+<P>在我测试中有这样的感觉,还请指正<BR>1.当主轴设置的是水平方向时(row,row-reverse)方向还和容器的dir属有关; 
+<BR>flex-direction 的方向是相对dir设置的方向来设置的.</P>
+<P>2.交叉轴的方向(默认和主轴换行的方向一至),flex-wrap: wrap-reverse; 会改变交叉轴的方向</P>
+<P>demo: <A href="http://sandbox.runjs.cn/show/zkqimsj5" 
+rel="nofollow">http://sandbox.runjs.cn/show/zkqimsj5</A></P>
+<P><BR></P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="November  1, 2016  6:17 PM" class="published">2016年11月 1日 
+18:17</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-367515">#</A> 
+| <A title="引用cnwhy的这条留言" onclick="return CommentQuote('comment-quote-367515','cnwhy');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-368187">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">良心的荒野开拓者</SPAN> 说：            
+     </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-368187">
+<BLOCKQUOTE>
+<PRE>引用phc的发言：</PRE>
+  <P></P>
+  <P>我不知道自己理解的对不对，但是我觉得主轴的话也就是项目的排布方向，加入是水平排布，那么交叉轴即是垂直方向的，设置align-items:stretch；的话确实是在垂直方向上拉伸的，那align-itmes就是设置交叉轴的吧</P></BLOCKQUOTE></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="November 11, 2016  2:37 PM" class="published">2016年11月11日 
+14:37</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-368187">#</A> 
+| <A title="引用良心的荒野开拓者的这条留言" onclick="return CommentQuote('comment-quote-368187','良心的荒野开拓者');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-369832">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author"><A title="http://www.leosam.com" 
+href="http://www.leosam.com/" target="_blank" rel="nofollow">LeoHsia</A></SPAN>  
+说：                 </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-369832">
+<P>真的非常感谢！解决了从入行以来一直面临的垂直居中的大问题，在很多应用场景中可以实现。虽然负面性还有待发掘，真的是非常感谢博主！！！</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="December  5, 2016 10:45 PM" class="published">2016年12月 5日 
+22:45</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-369832">#</A> 
+| <A title="引用LeoHsia的这条留言" onclick="return CommentQuote('comment-quote-369832','LeoHsia');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-370287">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">螃蟹</SPAN> 说：                 
+</SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-370287">
+<P>感谢阮老师无私教诲</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="December 13, 2016 10:36 AM" class="published">2016年12月13日 
+10:36</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-370287">#</A> 
+| <A title="引用螃蟹的这条留言" onclick="return CommentQuote('comment-quote-370287','螃蟹');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-370505">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">Cody Constant</SPAN>  说：      
+           </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-370505">
+<P>以前一直对flex模糊不清，终于决定攻破它，打开了好几篇教程，看完阮老师的后，彻底会用啦！谢谢您</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="December 17, 2016  3:24 PM" class="published">2016年12月17日 
+15:24</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-370505">#</A> 
+| <A title="引用Cody Constant的这条留言" onclick="return CommentQuote('comment-quote-370505','Cody Constant');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-370887">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">dfb</SPAN>  说：                
+ </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-370887">
+<P>我有个等高布局不懂，就是左边有一张1000多px高的图片，右边为文字区域。</P>
+<P>怎么让其当右边文字区域的高度小于浏览器高度时，左边的图片高度为浏览器高度，<BR>
+当右边文字区域的高度大于浏览器高度时，则左边的图片的高度为右边文字区域的高度？</P>
+<P>要求是：不用js控制，还有不能把左边的图片当背景图来使用</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="December 23, 2016  9:51 AM" class="published">2016年12月23日 
+09:51</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-370887">#</A> 
+| <A title="引用dfb的这条留言" onclick="return CommentQuote('comment-quote-370887','dfb');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-371122">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">flowplay</SPAN>  说：           
+      </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-371122">
+<P>flex-grow, 
+flex-shrink,flex-basis可能不好理解，补充下，这里指的空间是主轴空间，是水平的还是垂直的，依flex-direction而定</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="December 26, 2016  9:47 PM" class="published">2016年12月26日 
+21:47</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-371122">#</A> 
+| <A title="引用flowplay的这条留言" onclick="return CommentQuote('comment-quote-371122','flowplay');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-371645">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author"><A title="http://vinceok.com" 
+href="http://vinceok.com/" target="_blank" rel="nofollow">vinceok</A></SPAN>  说： 
+                </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-371645">
+<BLOCKQUOTE>
+<PRE>引用zhishaofei3的发言：</PRE>
+  <P></P>
+  <P>是按剩余空间算的，因为你里面有文字，所以刨去了文字宽度，你去掉文字就好了</P></BLOCKQUOTE>
+<BLOCKQUOTE>
+<PRE>引用Silvers · Rayleigh的发言：</PRE>
+  <P></P>
+  <P>这里是你理解错了，3个 li 平分下来每个是1/3。<BR>你想实现的2个相等，1个宽度是其他2个的两倍实际上就是4个 li 
+  平分，其中2个合并成1个，所以每个 li 是1/4，也就是#list 
+li:nth-child(2){flex-grow:3;}</P></BLOCKQUOTE>
+<P>你说的很对，博主没有说清楚</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="January  6, 2017 10:40 AM" class="published">2017年1月 6日 
+10:40</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-371645">#</A> 
+| <A title="引用vinceok的这条留言" onclick="return CommentQuote('comment-quote-371645','vinceok');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-371815">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">炉石不传说</SPAN> 说：               
+  </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-371815">
+<BLOCKQUOTE>
+<PRE>引用chshouyu的发言：</PRE>
+  <P>现在介绍有点晚了吧-_-#</P></BLOCKQUOTE>
+<P>不晚，我就是刚刚来学习的，因为小程序出来了，学习一下布局</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="January  9, 2017  2:25 PM" class="published">2017年1月 9日 
+14:25</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-371815">#</A> 
+| <A title="引用炉石不传说的这条留言" onclick="return CommentQuote('comment-quote-371815','炉石不传说');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-371868">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">The One</SPAN>  说：            
+     </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-371868">
+<BLOCKQUOTE>
+<PRE>引用Silvers · Rayleigh的发言：</PRE>
+  <P></P>
+  <P>这里是你理解错了，3个 li 平分下来每个是1/3。<BR>你想实现的2个相等，1个宽度是其他2个的两倍实际上就是4个 li 
+  平分，其中2个合并成1个，所以每个 li 是1/4，也就是#list 
+li:nth-child(2){flex-grow:3;}</P></BLOCKQUOTE>
+<P>flex-grow分的是剩余的空间你要看你内容之外的空间</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="January 10, 2017 10:44 AM" class="published">2017年1月10日 
+10:44</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-371868">#</A> 
+| <A title="引用The One的这条留言" onclick="return CommentQuote('comment-quote-371868','The One');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-372311">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">lightbee</SPAN>  说：           
+      </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-372311">
+<BLOCKQUOTE>
+<PRE>引用广州哈哥的发言：</PRE>
+  <P>阮老师，您好，我是0基础开始学习flex,今天看了你的这篇博文，发现有个地方好像你给弄反了。就是justify-content和align-items这两个属性。我试过了，其实，前者是设置项目在交叉轴上的对齐方式的，而后者是设置项目在主轴上的对齐方式的。</P></BLOCKQUOTE>
+<P>没有错啊，你再试试看，或者是你理解错了吧。<BR></P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="January 26, 2017 12:03 AM" class="published">2017年1月26日 
+00:03</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-372311">#</A> 
+| <A title="引用lightbee的这条留言" onclick="return CommentQuote('comment-quote-372311','lightbee');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-372583">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">ReedSUN</SPAN>  说：            
+     </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-372583">
+<P>阮老师，在align-content属性中，您说 `align-content属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。` 
+一开始我没太看明白，后来才发现这里说的应该是多行的对齐方式。我觉得在这里用行代替轴线更容易解释整个属性。</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="February  9, 2017 12:53 AM" class="published">2017年2月 9日 
+00:53</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-372583">#</A> 
+| <A title="引用ReedSUN的这条留言" onclick="return CommentQuote('comment-quote-372583','ReedSUN');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-372829">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">Sherry</SPAN>  说：             
+    </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-372829">
+<P>四、项目的属性       应该是h2标签吧，现在用的是h3标签</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="February 13, 2017 11:04 AM" class="published">2017年2月13日 
+11:04</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-372829">#</A> 
+| <A title="引用Sherry的这条留言" onclick="return CommentQuote('comment-quote-372829','Sherry');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-373014">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author"><A title="http://www.iamspring.cn" 
+href="http://www.iamspring.cn/" target="_blank" rel="nofollow">我叫春</A></SPAN> 说： 
+                </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-373014">
+<P>使用align-content属性，如何定义多轴？<BR>求html代码，或者align-content的Demo</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="February 17, 2017  9:54 AM" class="published">2017年2月17日 
+09:54</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-373014">#</A> 
+| <A title="引用我叫春的这条留言" onclick="return CommentQuote('comment-quote-373014','我叫春');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-373021">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">雨辰</SPAN> 说：                 
+</SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-373021">
+<P>这篇是我看到讲得最好的一篇</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="February 17, 2017  2:44 PM" class="published">2017年2月17日 
+14:44</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-373021">#</A> 
+| <A title="引用雨辰的这条留言" onclick="return CommentQuote('comment-quote-373021','雨辰');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-373036">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">lihsai0</SPAN>  说：            
+     </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-373036">
+<P>尝试了一下flex+单行省略号，发现盒子被撑开好多。</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="February 17, 2017 10:44 PM" class="published">2017年2月17日 
+22:44</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-373036">#</A> 
+| <A title="引用lihsai0的这条留言" onclick="return CommentQuote('comment-quote-373036','lihsai0');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-373244">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author"><A title="http://mp.imemin.com" 
+href="http://mp.imemin.com/" target="_blank" rel="nofollow">艺米</A></SPAN> 说：     
+            </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-373244">
+<P>您好，我试了一下align-content，将其设置成stretch，并不会把每行拉伸，填满容器高度。而是在每行下面留有相同高度的空白。能否确认一下？</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="February 21, 2017  6:59 PM" class="published">2017年2月21日 
+18:59</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-373244">#</A> 
+| <A title="引用艺米的这条留言" onclick="return CommentQuote('comment-quote-373244','艺米');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-373273">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author"><A title="http://asdasd" 
+href="http://asdasd/" target="_blank" rel="nofollow">前段之路</A></SPAN> 说：          
+       </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-373273">
+<P>非常好~讲的清楚明白</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="February 22, 2017 11:43 AM" class="published">2017年2月22日 
+11:43</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-373273">#</A> 
+| <A title="引用前段之路的这条留言" onclick="return CommentQuote('comment-quote-373273','前段之路');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-373280">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">冬天</SPAN> 说：                 
+</SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-373280">
+<P>每次看到您的内容， 我嘴里默默来了一个句 阮大神~~~  </P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="February 22, 2017  2:33 PM" class="published">2017年2月22日 
+14:33</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-373280">#</A> 
+| <A title="引用冬天的这条留言" onclick="return CommentQuote('comment-quote-373280','冬天');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-373284">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">全栈攻城狮</SPAN> 说：               
+  </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-373284">
+<P>每个例子都照着敲了一遍，真赞。敲完之后，对flex布局了解的也就差不多了。谢谢阮大神，如果不是你，我还困在MDN的文档里，犯糊涂呢。哈哈哈</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="February 22, 2017  3:47 PM" class="published">2017年2月22日 
+15:47</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-373284">#</A> 
+| <A title="引用全栈攻城狮的这条留言" onclick="return CommentQuote('comment-quote-373284','全栈攻城狮');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-374224">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">夏目比丘</SPAN> 说：                
+ </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-374224">
+<P>谢谢阮老师，您传授给我们的知识让我们收获很多</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="March  8, 2017  6:07 PM" class="published">2017年3月 8日 
+18:07</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-374224">#</A> 
+| <A title="引用夏目比丘的这条留言" onclick="return CommentQuote('comment-quote-374224','夏目比丘');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-374584">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">youkelike</SPAN>  说：          
+       </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-374584">
+<P>"多根轴线的对齐方式" 是不是指出现了多行item的情况，每行一根轴线，多行item就有多根轴线？</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="March 12, 2017  6:04 PM" class="published">2017年3月12日 
+18:04</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-374584">#</A> 
+| <A title="引用youkelike的这条留言" onclick="return CommentQuote('comment-quote-374584','youkelike');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-375499">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">liaokai</SPAN>  说：            
+     </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-375499">
+<P>浏览这篇文章就是一次赏心悦目的浏览体验，配图清爽明了，真希望我以后看到的文章都有这么好的浏览体验</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="March 27, 2017 11:23 AM" class="published">2017年3月27日 
+11:23</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-375499">#</A> 
+| <A title="引用liaokai的这条留言" onclick="return CommentQuote('comment-quote-375499','liaokai');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-375792">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">JoKer</SPAN>  说：              
+   </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-375792">
+<P>我测试加入了  align-items: flex-start;  子标签加入了align-self: flex-end; 惊人的发现 在不同的浏览器  
+flex-end  和flex-start 效果不一样  这要如何解决？我放在谷歌和Edege里 效果居然上下相反  </P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="April  1, 2017  5:17 PM" class="published">2017年4月 1日 
+17:17</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-375792">#</A> 
+| <A title="引用JoKer的这条留言" onclick="return CommentQuote('comment-quote-375792','JoKer');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-375868">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author"><A title="http://leehao.xyz" 
+href="http://leehao.xyz/" target="_blank" rel="nofollow">leon</A></SPAN>  说：     
+            </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-375868">
+<P>老师写的文章真的很清晰，期待您的续作。</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="April  4, 2017  3:53 PM" class="published">2017年4月 4日 
+15:53</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-375868">#</A> 
+| <A title="引用leon的这条留言" onclick="return CommentQuote('comment-quote-375868','leon');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-376211">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">Rachel</SPAN>  说：             
+    </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-376211">
+<P>老师的文章和配图很赞！</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="April 12, 2017  4:08 PM" class="published">2017年4月12日 
+16:08</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-376211">#</A> 
+| <A title="引用Rachel的这条留言" onclick="return CommentQuote('comment-quote-376211','Rachel');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-376313">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author"><A title="https://daocaoren2008.github.io/" 
+href="https://daocaoren2008.github.io/" target="_blank" 
+rel="nofollow">王骞</A></SPAN> 说：                 </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-376313">
+<P>总结的真好，条理清晰，便于理解和记忆。真是个有思想的人</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="April 14, 2017  4:47 PM" class="published">2017年4月14日 
+16:47</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-376313">#</A> 
+| <A title="引用王骞的这条留言" onclick="return CommentQuote('comment-quote-376313','王骞');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-376818">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author"><A title="http://blog.pyshell.cn" 
+href="http://blog.pyshell.cn/" target="_blank" rel="nofollow">leon</A></SPAN>  
+说：                 </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-376818">
+<P>仔细过了一遍真的很方便.</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="May  1, 2017 10:30 PM" class="published">2017年5月 1日 22:30</ABBR> 
+| <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-376818">#</A> 
+| <A title="引用leon的这条留言" onclick="return CommentQuote('comment-quote-376818','leon');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-377001">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">牧羊人</SPAN> 说：                 
+</SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-377001">
+<P>有事没事就逛阮老师的博客，受益匪浅。</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="May 10, 2017  9:04 AM" class="published">2017年5月10日 09:04</ABBR> 
+| <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-377001">#</A> 
+| <A title="引用牧羊人的这条留言" onclick="return CommentQuote('comment-quote-377001','牧羊人');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-377209">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author"><A title="http://并没有个人网址_(:з」∠)_" 
+href="http://并没有个人网址_(:з」∠)_" target="_blank" rel="nofollow">京川啟继FE</A></SPAN>  
+说：                 </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-377209">
+<P>一讲就懂，很棒，超棒，非常棒；<BR>哪怕有些玩家吐槽进了阿里文章变得不精致了；这篇文章也远比网上泛滥的各种云里雾里的资料有用得多。<BR>
+感谢大大的分享√</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="May 16, 2017  7:58 PM" class="published">2017年5月16日 19:58</ABBR> 
+| <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-377209">#</A> 
+| <A title="引用京川啟继FE的这条留言" onclick="return CommentQuote('comment-quote-377209','京川啟继FE');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-377379">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author"><A title="http://vgee.cn" 
+href="http://vgee.cn/" target="_blank" rel="nofollow">JailBreak</A></SPAN>  说：   
+              </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-377379">
+<P>将文章中提及的布局 全部实现了一遍，源码：</P>
+<P><A href="https://github.com/JailBreakC/flex-box-demo" 
+rel="nofollow">https://github.com/JailBreakC/flex-box-demo</A></P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="May 23, 2017  2:27 PM" class="published">2017年5月23日 14:27</ABBR> 
+| <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-377379">#</A> 
+| <A title="引用JailBreak的这条留言" onclick="return CommentQuote('comment-quote-377379','JailBreak');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-377391">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author"><A title="https://blog.plcent.com" 
+href="https://blog.plcent.com/" target="_blank" 
+rel="nofollow">nollyup</A></SPAN>  说：                 </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-377391">
+<P>非常好的文章，详细明了</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="May 23, 2017  5:03 PM" class="published">2017年5月23日 17:03</ABBR> 
+| <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-377391">#</A> 
+| <A title="引用nollyup的这条留言" onclick="return CommentQuote('comment-quote-377391','nollyup');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-377403">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">阮一峰</SPAN> 说：                 
+</SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-377403">
+<P>@JailBreak：</P>
+<P>赞！ 我要把它加到教程里面。</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="May 24, 2017  7:29 AM" class="published">2017年5月24日 07:29</ABBR> 
+| <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-377403">#</A> 
+| <A title="引用阮一峰的这条留言" onclick="return CommentQuote('comment-quote-377403','阮一峰');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-377458">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author"><A title="http://www.huangmingxian.me" 
+href="http://www.huangmingxian.me/" target="_blank" 
+rel="nofollow">Zen</A></SPAN>  说：                 </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-377458">
+<P>我也来做点贡献，看完阮一峰老师的教学文章，临时做了个 flex 布局动态测试的 demo，支持 flex 所有的属性测试，希望能对大家有所帮助</P>
+<P>演示地址 : <A href="https://ihuangmx.gitbooks.io/front-demo/content/zen-flex-demo.html#flex-布局在线测试" 
+rel="nofollow">https://ihuangmx.gitbooks.io/front-demo/content/zen-flex-demo.html#flex-布局在线测试</A></P>
+<P>源码：https://github.com/ihuangmx/zen-flex-online</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="May 25, 2017  5:16 PM" class="published">2017年5月25日 17:16</ABBR> 
+| <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-377458">#</A> 
+| <A title="引用Zen的这条留言" onclick="return CommentQuote('comment-quote-377458','Zen');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-377620">
+<DIV class="inner">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author"><A title="http://vgee.cn" 
+href="http://vgee.cn/" target="_blank" rel="nofollow">JailBreak</A></SPAN>  说：   
+              </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-377620">
+<P>@阮一峰：</P>
+<P>哈哈，多谢阮老师！</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="June  1, 2017  4:08 PM" class="published">2017年6月 1日 
+16:08</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-377620">#</A> 
+| <A title="引用JailBreak的这条留言" onclick="return CommentQuote('comment-quote-377620','JailBreak');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV>
+<DIV class="comment" id="comment-377625">
+<DIV class="inner" id="comment-last">
+<DIV class="comment-header">
+<DIV class="asset-meta">
+<P><SPAN class="byline"><SPAN class="vcard author">laiqi</SPAN>  说：              
+   </SPAN> </P></DIV></DIV>
+<DIV class="comment-content" id="comment-quote-377625">
+<P>阮一峰老师的教学文章真的太棒了，感谢有您，指路明灯</P></DIV>
+<DIV class="comment-footer">
+<DIV class="comment-footer-inner">
+<P><ABBR title="June  1, 2017  6:34 PM" class="published">2017年6月 1日 
+18:34</ABBR> | <A href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-377625">#</A> 
+| <A title="引用laiqi的这条留言" onclick="return CommentQuote('comment-quote-377625','laiqi');" 
+href="http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html#comment-text">引用</A> 
+</P></DIV></DIV></DIV></DIV></DIV>
+<DIV class="comments-open" id="comments-open">
+<H2 class="comments-open-header">我要发表看法</H2>
+<DIV class="comments-open-content">
+<DIV id="comment-greeting"></DIV>
+<FORM name="comments_form" id="comments-form" onsubmit="return pleaseWait();" 
+action="http://www.ruanyifeng.com/cgi-bin/mtos/mt-comments.cgi" 
+method="post"><INPUT name="static" type="hidden" value="1">                 
+<INPUT name="entry_id" type="hidden" value="1845">                 <INPUT name="__lang" type="hidden" value="en"> 
+                <INPUT name="parent_id" id="comment-parent-id" type="hidden">    
+             <INPUT name="armor" type="hidden" value="1">                 
+<INPUT name="preview" type="hidden">                 <INPUT name="sid" type="hidden"> 
+                
+<DIV id="comments-open-data">
+<DIV id="comments-open-text">
+<P><LABEL for="comment-text">您的留言                    （HTML标签部分可用）</LABEL></P>
+<P><TEXTAREA name="text" id="comment-text" rows="10" cols="50"></TEXTAREA></P></DIV>
+<DIV id="comment-form-name">
+<P><LABEL for="comment-author">您的大名：</LABEL></P>
+<P><INPUT name="author" id="comment-author" size="30">  <SPAN 
+class="hint">«-必填</SPAN></P></DIV>
+<DIV id="comment-form-email">
+<P><LABEL for="comment-email">电子邮件：</LABEL></P>
+<P><INPUT name="email" id="comment-email" size="30">  <SPAN 
+class="hint">«-必填，不公开</SPAN></P></DIV>
+<DIV id="comment-form-url">
+<P><LABEL for="comment-url">个人网址：</LABEL></P>
+<P><INPUT name="url" id="comment-url" size="30">  <SPAN 
+class="hint">«-我信任你，不会填写广告链接</SPAN></P></DIV>
+<DIV id="comment-form-remember-me">
+<P><LABEL for="comment-bake-cookie">记住个人信息？</LABEL><INPUT name="bakecookie" id="comment-bake-cookie" 
+accesskey="r" onclick="!this.checked?forgetMe(document.comments_form):rememberMe(document.comments_form)" 
+type="checkbox" value="1"></P></DIV></DIV>
+<DIV id="comment-form-reply" style="display: none;"><INPUT name="comment_reply" 
+id="comment-reply" onclick="mtSetCommentParentID()" type="checkbox" value="">    
+                 <LABEL id="comment-reply-label" for="comment-reply"></LABEL>    
+             </DIV>
+<DIV id="comments-open-captcha"></DIV>
+<DIV id="comments-open-footer">
+<DIV id="wait" style="display: none;">
+<P><STRONG>正在发表您的评论，请稍候</STRONG></P>
+<P><INPUT name="percent" style="text-align: center; color: black; font-family: Arial;" type="text" size="3"> 
+          <INPUT name="chart" style="padding: 0px; color: black; font-family: Arial; font-weight: bolder;" type="text" size="46"> 
+</P></DIV>
+<P><INPUT name="post" id="comment-submit" accesskey="s" type="submit" value="发表"> 
+ <SPAN class="hint">«- 
+点击按钮</SPAN></P></DIV></FORM></DIV></DIV></DIV></DIV></DIV></DIV></DIV>
+<SCRIPT src="Flex%20布局教程：语法篇%20-%20阮一峰的网络日志_files/prism.js" type="text/javascript"></SCRIPT>
+             
+<DIV id="footer">
+<DIV id="footer-inner">
+<DIV id="footer-content">
+<P><A href="http://www.ruanyifeng.com/contact.html">联系方式</A> | 2003 - 2017 
+<SCRIPT>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46829782-1', 'ruanyifeng.com');
+  ga('send', 'pageview');
+
+</SCRIPT>
+ <!-- Site Meter --> <A href="http://sm3.sitemeter.com/stats.asp?site=sm3bomoocom" 
+target="_top"><IMG alt="Site Meter" src="Flex%20布局教程：语法篇%20-%20阮一峰的网络日志_files/meter.gif" 
+border="0"></A> <!-- Copyright (c)2009 Site Meter --> </P></DIV></DIV></DIV>
+<DIV id="share_button_proto" style="display: none;"><A class="bshareDiv" href="http://www.bshare.cn/share">分享按钮</A> 
+<SCRIPT src="Flex%20布局教程：语法篇%20-%20阮一峰的网络日志_files/buttonLite.js" type="text/javascript" charset="utf-8"></SCRIPT>
+ 
+<SCRIPT type="text/javascript" charset="utf-8">
+bShare.addEntry({
+    title: document.getElementById("page-title").innerHTML,
+url:window.location.href
+});
+</SCRIPT>
+ </DIV>
+<SCRIPT>
+document.getElementById("share_button").innerHTML=document.getElementById("share_button_proto").innerHTML;
+</SCRIPT>
+         </DIV></DIV></BODY></HTML>
