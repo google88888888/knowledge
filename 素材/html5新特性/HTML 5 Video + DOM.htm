@@ -1,0 +1,262 @@
+<!DOCTYPE HTML>
+<!-- saved from url=(0053)http://www.w3school.com.cn/html5/html_5_video_dom.asp -->
+<!DOCTYPE html PUBLIC "" ""><HTML lang="zh-cn"><HEAD><META content="IE=11.0000" 
+http-equiv="X-UA-Compatible">
+ 
+<META charset="gb2312"> 
+<META name="robots" content="all"> 
+<META name="author" content="w3school.com.cn"> <LINK href="HTML%205%20Video%20+%20DOM_files/c5.css" 
+rel="stylesheet" type="text/css"> <LINK href="/favicon.ico" rel="shortcut icon" 
+type="image/x-icon"> <TITLE>HTML 5 Video + DOM</TITLE> 
+<STYLE type="text/css">
+button {
+font-size:12px;
+font-family:Verdana, Arial, Helvetica, sans-serif;
+}
+div#maincontent div.btn_ctrl, div#maincontent div.mov_area, div#maincontent div.video_example {
+margin:0;
+padding:0;
+text-align:center;
+border:none;
+}
+</STYLE>
+ 
+<META name="GENERATOR" content="MSHTML 11.00.9600.18666"></HEAD> 
+<BODY class="html">
+<DIV id="wrapper">
+<DIV id="header"><A title="w3school 在线教程" style="float: left;" href="http://www.w3school.com.cn/index.html">w3school 
+在线教程</A>
+<DIV id="ad_head">
+<SCRIPT type="text/javascript"><!--
+google_ad_client = "pub-3381531532877742";
+/* 728x90, 创建于 08-12-1 */
+google_ad_slot = "7423315034";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</SCRIPT>
+ 
+<SCRIPT src="HTML%205%20Video%20+%20DOM_files/f.txt" type="text/javascript"></SCRIPT>
+ </DIV></DIV>
+<DIV id="navfirst">
+<UL id="menu">
+  <LI id="h"><A title="HTML 系列教程" href="http://www.w3school.com.cn/h.asp">HTML 
+  系列教程</A></LI>
+  <LI id="b"><A title="浏览器脚本教程" 
+  href="http://www.w3school.com.cn/b.asp">浏览器脚本</A></LI>
+  <LI id="s"><A title="服务器脚本教程" 
+  href="http://www.w3school.com.cn/s.asp">服务器脚本</A></LI>
+  <LI id="d"><A title="ASP.NET 教程" 
+  href="http://www.w3school.com.cn/d.asp">ASP.NET 教程</A></LI>
+  <LI id="x"><A title="XML 系列教程" href="http://www.w3school.com.cn/x.asp">XML 
+  系列教程</A></LI>
+  <LI id="ws"><A title="Web Services 系列教程" href="http://www.w3school.com.cn/ws.asp">Web 
+  Services 系列教程</A></LI>
+  <LI id="w"><A title="建站手册" 
+  href="http://www.w3school.com.cn/w.asp">建站手册</A></LI></UL></DIV>
+<DIV id="navsecond">
+<DIV id="course">
+<H2>HTML5 教程</H2>
+<UL>
+  <LI><A title="HTML5 教程" 
+  href="http://www.w3school.com.cn/html5/index.asp">HTML5 教程</A></LI>
+  <LI><A title="HTML5 简介" href="http://www.w3school.com.cn/html5/html_5_intro.asp">HTML5 
+  简介</A></LI>
+  <LI><A title="HTML5 视频" href="http://www.w3school.com.cn/html5/html_5_video.asp">HTML5 
+  视频</A></LI>
+  <LI class="currentLink"><A title="HTML5 Video + DOM" href="http://www.w3school.com.cn/html5/html_5_video_dom.asp">HTML5 
+  视频/DOM</A></LI>
+  <LI><A title="HTML5 音频" href="http://www.w3school.com.cn/html5/html_5_audio.asp">HTML5 
+  音频</A></LI>
+  <LI><A title="HTML5 拖放" href="http://www.w3school.com.cn/html5/html_5_draganddrop.asp">HTML5 
+  拖放</A></LI>
+  <LI><A title="HTML5 Canvas" href="http://www.w3school.com.cn/html5/html_5_canvas.asp">HTML5 
+  画布</A></LI>
+  <LI><A title="HTML5 内联 SVG" href="http://www.w3school.com.cn/html5/html_5_svg.asp">HTML5 
+  SVG</A></LI>
+  <LI><A title="HTML5 Canvas vs. SVG" href="http://www.w3school.com.cn/html5/html_5_canvas_vs_svg.asp">HTML5 
+  画布 vs SVG</A></LI>
+  <LI><A title="HTML5 地理定位" href="http://www.w3school.com.cn/html5/html_5_geolocation.asp">HTML5 
+  地理定位</A></LI>
+  <LI><A title="HTML5 Web 存储" href="http://www.w3school.com.cn/html5/html_5_webstorage.asp">HTML5 
+  Web 存储</A></LI>
+  <LI><A title="HTML 5 应用程序缓存" href="http://www.w3school.com.cn/html5/html_5_app_cache.asp">HTML5 
+  应用缓存</A></LI>
+  <LI><A title="HTML5 Web Workers" href="http://www.w3school.com.cn/html5/html_5_webworkers.asp">HTML5 
+  Web Workers</A></LI>
+  <LI><A title="HTML5 服务器发送事件" href="http://www.w3school.com.cn/html5/html_5_serversentevents.asp">HTML5 
+  服务器发送事件</A></LI></UL>
+<H2>HTML5 表单</H2>
+<UL>
+  <LI><A title="HTML5 Input 类型" href="http://www.w3school.com.cn/html5/html_5_form_input_types.asp">HTML5 
+  输入类型</A></LI>
+  <LI><A title="HTML5 表单元素" href="http://www.w3school.com.cn/html5/html_5_form_elements.asp">HTML5 
+  表单元素</A></LI>
+  <LI><A title="HTML5 表单属性" href="http://www.w3school.com.cn/html5/html_5_form_attributes.asp">HTML5 
+  表单属性</A></LI></UL>
+<H2>HTML5 测验</H2>
+<UL>
+  <LI><A title="HTML5 测验" 
+  href="http://www.w3school.com.cn/html5/html5_quiz.asp">HTML5 测验</A></LI></UL>
+<H2>HTML5 参考手册</H2>
+<UL>
+  <LI><A title="HTML5 参考手册" href="http://www.w3school.com.cn/html5/html5_reference.asp">HTML5 
+  标签</A></LI>
+  <LI><A title="HTML5 标准属性" href="http://www.w3school.com.cn/html5/html5_ref_standardattributes.asp">HTML5 
+  属性</A></LI>
+  <LI><A title="HTML5 事件属性" href="http://www.w3school.com.cn/html5/html5_ref_eventattributes.asp">HTML5 
+  事件</A></LI>
+  <LI><A title="HTML5 Audio/Video DOM 属性" href="http://www.w3school.com.cn/html5/html5_ref_audio_video_dom.asp">HTML5 
+  视频/音频</A></LI>
+  <LI><A title="HTML5 Canvas 参考手册" href="http://www.w3school.com.cn/html5/html5_ref_canvas.asp">HTML5 
+  画布</A></LI>
+  <LI><A title="HTML 元素和有效的 DTD" href="http://www.w3school.com.cn/html5/html5_ref_dtd.asp">HTML 
+  有效 DTD</A></LI></UL></DIV></DIV>
+<DIV id="maincontent">
+<H1>HTML 5 Video + DOM</H1>
+<DIV id="tpn">
+<UL class="prenext">
+  <LI class="pre"><A title="HTML5 视频" href="http://www.w3school.com.cn/html5/html_5_video.asp">HTML5 
+  视频</A></LI>
+  <LI class="next"><A title="HTML5 音频" href="http://www.w3school.com.cn/html5/html_5_audio.asp">HTML5 
+  音频</A></LI></UL></DIV>
+<DIV>
+<H2>HTML5 &lt;video&gt; - 使用 DOM 进行控制</H2>
+<P>HTML5 &lt;video&gt; 元素同样拥有方法、属性和事件。</P>
+<P>其中的方法用于播放、暂停以及加载等。其中的属性（比如时长、音量等）可以被读取或设置。其中的 DOM 事件能够通知您，比方说，&lt;video&gt; 
+元素开始播放、已暂停，已停止，等等。</P>
+<P>下例中简单的方法，向我们演示了如何使用 &lt;video&gt; 元素，读取并设置属性，以及如何调用方法。</P>
+<H3>实例</H3>
+<P>为视频创建简单的播放/暂停以及调整尺寸控件：</P>
+<DIV class="video_example"><BR>
+<DIV class="btn_ctrl"><BUTTON onclick="playPause()">播放/暂停</BUTTON>   <BUTTON 
+onclick="makeBig()">大</BUTTON>   <BUTTON onclick="makeNormal()">中</BUTTON>   
+<BUTTON onclick="makeSmall()">小</BUTTON>   </DIV><BR><BR>
+<DIV class="mov_area"><VIDEO width="420" id="video1"><SOURCE src="http://www.w3schools.com/html5/mov_bbb.mp4" 
+type="video/mp4">     <SOURCE src="/example/html5/mov_bbb.ogg" type="video/ogg"> 
+   Your browser does not support HTML5 video.   </VIDEO>   </DIV></DIV>
+<SCRIPT type="text/javascript"> 
+var myVideo=document.getElementById("video1"); 
+
+function playPause()
+{ 
+if (myVideo.paused) 
+  myVideo.play(); 
+else 
+  myVideo.pause(); 
+} 
+
+function makeBig()
+{ 
+myVideo.width=580; 
+} 
+
+function makeSmall()
+{ 
+myVideo.width=320; 
+} 
+
+function makeNormal()
+{ 
+myVideo.width=480; 
+} 
+</SCRIPT>
+ 
+<P>上面的例子调用了两个方法：play() 和 pause()。它同时使用了两个属性：paused 和 width。</P>
+<P class="tiy"><A href="http://www.w3school.com.cn/tiy/t.asp?f=html5_video_dom" 
+target="_blank">亲自试一试</A></P></DIV>
+<DIV>
+<H2>HTML5 &lt;video&gt; - 方法、属性以及事件</H2>
+<P>下面列出了大多数浏览器支持的视频方法、属性和事件：</P>
+<TABLE class="dataintable">
+  <TBODY>
+  <TR>
+    <TH style="width: 33%;">方法</TH>
+    <TH style="width: 33%;">属性</TH>
+    <TH>事件</TH></TR>
+  <TR>
+    <TD>play()</TD>
+    <TD>currentSrc</TD>
+    <TD>play</TD></TR>
+  <TR>
+    <TD>pause()</TD>
+    <TD>currentTime</TD>
+    <TD>pause</TD></TR>
+  <TR>
+    <TD>load()</TD>
+    <TD>videoWidth</TD>
+    <TD>progress</TD></TR>
+  <TR>
+    <TD>canPlayType</TD>
+    <TD>videoHeight</TD>
+    <TD>error</TD></TR>
+  <TR>
+    <TD>&nbsp;</TD>
+    <TD>duration</TD>
+    <TD>timeupdate</TD></TR>
+  <TR>
+    <TD>&nbsp;</TD>
+    <TD>ended</TD>
+    <TD>ended</TD></TR>
+  <TR>
+    <TD>&nbsp;</TD>
+    <TD>error</TD>
+    <TD>abort</TD></TR>
+  <TR>
+    <TD>&nbsp;</TD>
+    <TD>paused</TD>
+    <TD>empty</TD></TR>
+  <TR>
+    <TD>&nbsp;</TD>
+    <TD>muted</TD>
+    <TD>emptied</TD></TR>
+  <TR>
+    <TD>&nbsp;</TD>
+    <TD>seeking</TD>
+    <TD>waiting</TD></TR>
+  <TR>
+    <TD>&nbsp;</TD>
+    <TD>volume</TD>
+    <TD>loadedmetadata</TD></TR>
+  <TR>
+    <TD>&nbsp;</TD>
+    <TD>height</TD>
+    <TD>&nbsp;</TD></TR>
+  <TR>
+    <TD>&nbsp;</TD>
+    <TD>width</TD>
+    <TD>&nbsp;</TD></TR></TBODY></TABLE>
+<P class="note"><SPAN>注释：</SPAN>在所有属性中，只有 videoWidth 和 videoHeight 
+属性是立即可用的。在视频的元数据已加载后，其他属性才可用。</P></DIV>
+<DIV id="bpn">
+<UL class="prenext">
+  <LI class="pre"><A title="HTML5 视频" href="http://www.w3school.com.cn/html5/html_5_video.asp">HTML5 
+  视频</A></LI>
+  <LI class="next"><A title="HTML5 音频" href="http://www.w3school.com.cn/html5/html_5_audio.asp">HTML5 
+  音频</A></LI></UL></DIV></DIV>
+<DIV id="sidebar">
+<DIV id="tools">
+<H5 id="tools_reference"><A 
+href="http://www.w3school.com.cn/tags/index.asp">HTML5 参考手册</A></H5>
+<H5 id="tools_quiz"><A 
+href="http://www.w3school.com.cn/html5/html5_quiz.asp">HTML5 测验</A></H5></DIV>
+<DIV id="ad">
+<SCRIPT type="text/javascript"><!--
+google_ad_client = "ca-pub-3381531532877742";
+/* sidebar-160x600 */
+google_ad_slot = "3772569310";
+google_ad_width = 160;
+google_ad_height = 600;
+//-->
+</SCRIPT>
+ 
+<SCRIPT src="HTML%205%20Video%20+%20DOM_files/f.txt" type="text/javascript"></SCRIPT>
+ </DIV></DIV>
+<DIV id="footer">
+<P id="p1"><SPAN>W3School 提供的内容仅用于培训。我们不保证内容的正确性。通过使用本站内容随之而来的风险与本站无关。</SPAN> 
+<BR>W3School 简体中文版的所有内容仅供测试，对任何法律问题及风险不承担任何责任。 </P>
+<P id="p2">当使用本站时，代表您已接受了本站的<A title="关于使用" href="http://www.w3school.com.cn/about/about_use.asp">使用条款</A>和<A 
+title="关于隐私" 
+href="http://www.w3school.com.cn/about/about_privacy.asp">隐私条款</A>。版权所有，保留一切权利。
+ 赞助商：<A title="上海赢科投资有限公司" href="http://www.yktz.net/">上海赢科投资有限公司</A>。 <A href="http://www.miitbeian.gov.cn/">蒙ICP备06004630号</A> 
+</P></DIV></DIV></BODY></HTML>

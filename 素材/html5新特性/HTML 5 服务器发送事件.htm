@@ -1,0 +1,232 @@
+<!DOCTYPE HTML>
+<!-- saved from url=(0060)http://www.w3school.com.cn/html5/html_5_serversentevents.asp -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><META content="IE=11.0000" 
+http-equiv="X-UA-Compatible">
+ 
+<META http-equiv="Content-Type" content="text/html; charset=gb2312"> 
+<META http-equiv="Content-Language" content="zh-cn"> 
+<META name="robots" content="all"> 
+<META name="author" content="w3school.com.cn"> 
+<META name="Copyright" content="Copyright W3school.com.cn All Rights Reserved."> 
+<META name="MSSmartTagsPreventParsing" content="true"> 
+<META http-equiv="imagetoolbar" content="false"> <LINK href="HTML%205%20服务器发送事件_files/c5.css" 
+rel="stylesheet" type="text/css"> <LINK href="/favicon.ico" rel="shortcut icon" 
+type="image/x-icon"> <TITLE>HTML 5 服务器发送事件</TITLE> 
+<META name="GENERATOR" content="MSHTML 11.00.9600.18666"></HEAD> 
+<BODY class="html">
+<DIV id="wrapper">
+<DIV id="header"><A title="w3school 在线教程" style="float: left;" href="http://www.w3school.com.cn/index.html">w3school 
+在线教程</A>
+<DIV id="ad_head">
+<SCRIPT type="text/javascript"><!--
+google_ad_client = "pub-3381531532877742";
+/* 728x90, 创建于 08-12-1 */
+google_ad_slot = "7423315034";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</SCRIPT>
+ 
+<SCRIPT src="HTML%205%20服务器发送事件_files/f.txt" type="text/javascript"></SCRIPT>
+ </DIV></DIV>
+<DIV id="navfirst">
+<UL id="menu">
+  <LI id="h"><A title="HTML 系列教程" href="http://www.w3school.com.cn/h.asp">HTML 
+  系列教程</A></LI>
+  <LI id="b"><A title="浏览器脚本教程" 
+  href="http://www.w3school.com.cn/b.asp">浏览器脚本</A></LI>
+  <LI id="s"><A title="服务器脚本教程" 
+  href="http://www.w3school.com.cn/s.asp">服务器脚本</A></LI>
+  <LI id="d"><A title="ASP.NET 教程" 
+  href="http://www.w3school.com.cn/d.asp">ASP.NET 教程</A></LI>
+  <LI id="x"><A title="XML 系列教程" href="http://www.w3school.com.cn/x.asp">XML 
+  系列教程</A></LI>
+  <LI id="ws"><A title="Web Services 系列教程" href="http://www.w3school.com.cn/ws.asp">Web 
+  Services 系列教程</A></LI>
+  <LI id="w"><A title="建站手册" 
+  href="http://www.w3school.com.cn/w.asp">建站手册</A></LI></UL></DIV>
+<DIV id="navsecond">
+<DIV id="course">
+<H2>HTML5 教程</H2>
+<UL>
+  <LI><A title="HTML5 教程" 
+  href="http://www.w3school.com.cn/html5/index.asp">HTML5 教程</A></LI>
+  <LI><A title="HTML5 简介" href="http://www.w3school.com.cn/html5/html_5_intro.asp">HTML5 
+  简介</A></LI>
+  <LI><A title="HTML5 视频" href="http://www.w3school.com.cn/html5/html_5_video.asp">HTML5 
+  视频</A></LI>
+  <LI><A title="HTML5 Video + DOM" href="http://www.w3school.com.cn/html5/html_5_video_dom.asp">HTML5 
+  视频/DOM</A></LI>
+  <LI><A title="HTML5 音频" href="http://www.w3school.com.cn/html5/html_5_audio.asp">HTML5 
+  音频</A></LI>
+  <LI><A title="HTML5 拖放" href="http://www.w3school.com.cn/html5/html_5_draganddrop.asp">HTML5 
+  拖放</A></LI>
+  <LI><A title="HTML5 Canvas" href="http://www.w3school.com.cn/html5/html_5_canvas.asp">HTML5 
+  画布</A></LI>
+  <LI><A title="HTML5 内联 SVG" href="http://www.w3school.com.cn/html5/html_5_svg.asp">HTML5 
+  SVG</A></LI>
+  <LI><A title="HTML5 Canvas vs. SVG" href="http://www.w3school.com.cn/html5/html_5_canvas_vs_svg.asp">HTML5 
+  画布 vs SVG</A></LI>
+  <LI><A title="HTML5 地理定位" href="http://www.w3school.com.cn/html5/html_5_geolocation.asp">HTML5 
+  地理定位</A></LI>
+  <LI><A title="HTML5 Web 存储" href="http://www.w3school.com.cn/html5/html_5_webstorage.asp">HTML5 
+  Web 存储</A></LI>
+  <LI><A title="HTML 5 应用程序缓存" href="http://www.w3school.com.cn/html5/html_5_app_cache.asp">HTML5 
+  应用缓存</A></LI>
+  <LI><A title="HTML5 Web Workers" href="http://www.w3school.com.cn/html5/html_5_webworkers.asp">HTML5 
+  Web Workers</A></LI>
+  <LI class="currentLink"><A title="HTML5 服务器发送事件" href="http://www.w3school.com.cn/html5/html_5_serversentevents.asp">HTML5 
+  服务器发送事件</A></LI></UL>
+<H2>HTML5 表单</H2>
+<UL>
+  <LI><A title="HTML5 Input 类型" href="http://www.w3school.com.cn/html5/html_5_form_input_types.asp">HTML5 
+  输入类型</A></LI>
+  <LI><A title="HTML5 表单元素" href="http://www.w3school.com.cn/html5/html_5_form_elements.asp">HTML5 
+  表单元素</A></LI>
+  <LI><A title="HTML5 表单属性" href="http://www.w3school.com.cn/html5/html_5_form_attributes.asp">HTML5 
+  表单属性</A></LI></UL>
+<H2>HTML5 测验</H2>
+<UL>
+  <LI><A title="HTML5 测验" 
+  href="http://www.w3school.com.cn/html5/html5_quiz.asp">HTML5 测验</A></LI></UL>
+<H2>HTML5 参考手册</H2>
+<UL>
+  <LI><A title="HTML5 参考手册" href="http://www.w3school.com.cn/html5/html5_reference.asp">HTML5 
+  标签</A></LI>
+  <LI><A title="HTML5 标准属性" href="http://www.w3school.com.cn/html5/html5_ref_standardattributes.asp">HTML5 
+  属性</A></LI>
+  <LI><A title="HTML5 事件属性" href="http://www.w3school.com.cn/html5/html5_ref_eventattributes.asp">HTML5 
+  事件</A></LI>
+  <LI><A title="HTML5 Audio/Video DOM 属性" href="http://www.w3school.com.cn/html5/html5_ref_audio_video_dom.asp">HTML5 
+  视频/音频</A></LI>
+  <LI><A title="HTML5 Canvas 参考手册" href="http://www.w3school.com.cn/html5/html5_ref_canvas.asp">HTML5 
+  画布</A></LI>
+  <LI><A title="HTML 元素和有效的 DTD" href="http://www.w3school.com.cn/html5/html5_ref_dtd.asp">HTML 
+  有效 DTD</A></LI></UL></DIV></DIV>
+<DIV id="maincontent">
+<H1>HTML 5 服务器发送事件</H1>
+<DIV id="tpn">
+<UL class="prenext">
+  <LI class="pre"><A title="HTML5 Web Workers" href="http://www.w3school.com.cn/html5/html_5_webworkers.asp">HTML5 
+  Web Workers</A></LI>
+  <LI class="next"><A title="HTML5 Input 类型" href="http://www.w3school.com.cn/html5/html_5_form_input_types.asp">HTML5 
+  输入类型</A></LI></UL></DIV>
+<DIV id="intro">
+<P><STRONG>HTML5 服务器发送事件（server-sent event）允许网页获得来自服务器的更新。</STRONG></P></DIV>
+<DIV>
+<H2>Server-Sent 事件 - 单向消息传递</H2>
+<P>Server-Sent 事件指的是网页自动获取来自服务器的更新。</P>
+<P>以前也可能做到这一点，前提是网页不得不询问是否有可用的更新。通过服务器发送事件，更新能够自动到达。</P>
+<P>例子：Facebook/Twitter 更新、估价更新、新的博文、赛事结果等。</P></DIV>
+<DIV>
+<H2>浏览器支持</H2>
+<P>所有主流浏览器均支持服务器发送事件，除了 Internet Explorer。</P></DIV>
+<DIV>
+<H2>接收 Server-Sent 事件通知</H2>
+<P>EventSource 对象用于接收服务器发送事件通知：</P>
+<H3>实例</H3>
+<PRE>var source=new EventSource("demo_sse.php");
+source.onmessage=function(event)
+  {
+  document.getElementById("result").innerHTML+=event.data + "&lt;br /&gt;";
+  };
+</PRE>
+<P class="tiy"><A href="http://www.w3school.com.cn/tiy/t.asp?f=html5_sse" 
+target="_blank">亲自试一试</A></P>
+<P>例子解释：</P>
+<UL>
+  <LI>创建一个新的 EventSource 对象，然后规定发送更新的页面的 URL（本例中是 "demo_sse.php"）</LI>
+  <LI>每接收到一次更新，就会发生 onmessage 事件</LI>
+  <LI>当 onmessage 事件发生时，把已接收的数据推入 id 为 "result" 的元素中</LI></UL></DIV>
+<DIV>
+<H2>检测 Server-Sent 事件支持</H2>
+<P>在上面的 TIY 实例中，我们编写了一段额外的代码来检测服务器发送事件的浏览器支持情况：</P>
+<PRE>if(typeof(EventSource)!=="undefined")
+  {
+  <SPAN>// Yes! Server-sent events support!
+  // Some code.....</SPAN>
+  }
+else
+  {
+  <SPAN>// Sorry! No server-sent events support..</SPAN>
+  }
+</PRE></DIV>
+<DIV>
+<H2>服务器端代码实例</H2>
+<P>为了让上面的例子可以运行，您还需要能够发送数据更新的服务器（比如 PHP 和 ASP）。</P>
+<P>服务器端事件流的语法是非常简单的。把 "Content-Type" 报头设置为 
+"text/event-stream"。现在，您可以开始发送事件流了。</P>
+<H3>PHP 代码 (demo_sse.php)：</H3>
+<PRE>&lt;?php
+header('Content-Type: text/event-stream');
+header('Cache-Control: no-cache');
+
+$time = date('r');
+echo "data: The server time is: {$time}\n\n";
+flush();
+?&gt;
+</PRE>
+<H3>ASP 代码 (VB) (demo_sse.asp):</H3>
+<PRE>&lt;%
+Response.ContentType="text/event-stream"
+Response.Expires=-1
+Response.Write("data: " &amp; now())
+Response.Flush()
+%&gt;
+</PRE>
+<P>代码解释：</P>
+<UL>
+  <LI>把报头 "Content-Type" 设置为 "text/event-stream"</LI>
+  <LI>规定不对页面进行缓存</LI>
+  <LI>输出发送日期（始终以 "data: " 开头）</LI>
+  <LI>向网页刷新输出数据</LI></UL></DIV>
+<DIV>
+<H2>EventSource 对象</H2>
+<P>在上面的例子中，我们使用 onmessage 事件来获取消息。不过还可以使用其他事件：</P>
+<TABLE class="dataintable">
+  <TBODY>
+  <TR>
+    <TH>事件</TH>
+    <TH>描述</TH></TR>
+  <TR>
+    <TD>onopen</TD>
+    <TD>当通往服务器的连接被打开</TD></TR>
+  <TR>
+    <TD>onmessage</TD>
+    <TD>当接收到消息</TD></TR>
+  <TR>
+    <TD>onerror</TD>
+    <TD>当错误发生</TD></TR></TBODY></TABLE></DIV>
+<DIV id="bpn">
+<UL class="prenext">
+  <LI class="pre"><A title="HTML5 Web Workers" href="http://www.w3school.com.cn/html5/html_5_webworkers.asp">HTML5 
+  Web Workers</A></LI>
+  <LI class="next"><A title="HTML5 Input 类型" href="http://www.w3school.com.cn/html5/html_5_form_input_types.asp">HTML5 
+  输入类型</A></LI></UL></DIV></DIV>
+<DIV id="sidebar">
+<DIV id="tools">
+<H5 id="tools_reference"><A 
+href="http://www.w3school.com.cn/tags/index.asp">HTML5 参考手册</A></H5>
+<H5 id="tools_quiz"><A 
+href="http://www.w3school.com.cn/html5/html5_quiz.asp">HTML5 测验</A></H5></DIV>
+<DIV id="ad">
+<SCRIPT type="text/javascript"><!--
+google_ad_client = "ca-pub-3381531532877742";
+/* sidebar-160x600 */
+google_ad_slot = "3772569310";
+google_ad_width = 160;
+google_ad_height = 600;
+//-->
+</SCRIPT>
+ 
+<SCRIPT src="HTML%205%20服务器发送事件_files/f.txt" type="text/javascript"></SCRIPT>
+ </DIV></DIV>
+<DIV id="footer">
+<P id="p1"><SPAN>W3School 提供的内容仅用于培训。我们不保证内容的正确性。通过使用本站内容随之而来的风险与本站无关。</SPAN> 
+<BR>W3School 简体中文版的所有内容仅供测试，对任何法律问题及风险不承担任何责任。 </P>
+<P id="p2">当使用本站时，代表您已接受了本站的<A title="关于使用" href="http://www.w3school.com.cn/about/about_use.asp">使用条款</A>和<A 
+title="关于隐私" 
+href="http://www.w3school.com.cn/about/about_privacy.asp">隐私条款</A>。版权所有，保留一切权利。
+ 赞助商：<A title="上海赢科投资有限公司" href="http://www.yktz.net/">上海赢科投资有限公司</A>。 <A href="http://www.miitbeian.gov.cn/">蒙ICP备06004630号</A> 
+</P></DIV></DIV></BODY></HTML>

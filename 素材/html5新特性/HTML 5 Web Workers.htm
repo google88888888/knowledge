@@ -1,0 +1,293 @@
+<!DOCTYPE HTML>
+<!-- saved from url=(0054)http://www.w3school.com.cn/html5/html_5_webworkers.asp -->
+<!DOCTYPE html PUBLIC "" ""><HTML lang="zh-cn"><HEAD><META content="IE=11.0000" 
+http-equiv="X-UA-Compatible">
+ 
+<META charset="gb2312"> 
+<META name="robots" content="all"> 
+<META name="author" content="w3school.com.cn"> <LINK href="HTML%205%20Web%20Workers_files/c5.css" 
+rel="stylesheet" type="text/css"> <LINK href="/favicon.ico" rel="shortcut icon" 
+type="image/x-icon"> <TITLE>HTML 5 Web Workers</TITLE> 
+<META name="GENERATOR" content="MSHTML 11.00.9600.18666"></HEAD> 
+<BODY class="html">
+<DIV id="wrapper">
+<DIV id="header"><A title="w3school 在线教程" style="float: left;" href="http://www.w3school.com.cn/index.html">w3school 
+在线教程</A>
+<DIV id="ad_head">
+<SCRIPT type="text/javascript"><!--
+google_ad_client = "pub-3381531532877742";
+/* 728x90, 创建于 08-12-1 */
+google_ad_slot = "7423315034";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</SCRIPT>
+ 
+<SCRIPT src="HTML%205%20Web%20Workers_files/f.txt" type="text/javascript"></SCRIPT>
+ </DIV></DIV>
+<DIV id="navfirst">
+<UL id="menu">
+  <LI id="h"><A title="HTML 系列教程" href="http://www.w3school.com.cn/h.asp">HTML 
+  系列教程</A></LI>
+  <LI id="b"><A title="浏览器脚本教程" 
+  href="http://www.w3school.com.cn/b.asp">浏览器脚本</A></LI>
+  <LI id="s"><A title="服务器脚本教程" 
+  href="http://www.w3school.com.cn/s.asp">服务器脚本</A></LI>
+  <LI id="d"><A title="ASP.NET 教程" 
+  href="http://www.w3school.com.cn/d.asp">ASP.NET 教程</A></LI>
+  <LI id="x"><A title="XML 系列教程" href="http://www.w3school.com.cn/x.asp">XML 
+  系列教程</A></LI>
+  <LI id="ws"><A title="Web Services 系列教程" href="http://www.w3school.com.cn/ws.asp">Web 
+  Services 系列教程</A></LI>
+  <LI id="w"><A title="建站手册" 
+  href="http://www.w3school.com.cn/w.asp">建站手册</A></LI></UL></DIV>
+<DIV id="navsecond">
+<DIV id="course">
+<H2>HTML5 教程</H2>
+<UL>
+  <LI><A title="HTML5 教程" 
+  href="http://www.w3school.com.cn/html5/index.asp">HTML5 教程</A></LI>
+  <LI><A title="HTML5 简介" href="http://www.w3school.com.cn/html5/html_5_intro.asp">HTML5 
+  简介</A></LI>
+  <LI><A title="HTML5 视频" href="http://www.w3school.com.cn/html5/html_5_video.asp">HTML5 
+  视频</A></LI>
+  <LI><A title="HTML5 Video + DOM" href="http://www.w3school.com.cn/html5/html_5_video_dom.asp">HTML5 
+  视频/DOM</A></LI>
+  <LI><A title="HTML5 音频" href="http://www.w3school.com.cn/html5/html_5_audio.asp">HTML5 
+  音频</A></LI>
+  <LI><A title="HTML5 拖放" href="http://www.w3school.com.cn/html5/html_5_draganddrop.asp">HTML5 
+  拖放</A></LI>
+  <LI><A title="HTML5 Canvas" href="http://www.w3school.com.cn/html5/html_5_canvas.asp">HTML5 
+  画布</A></LI>
+  <LI><A title="HTML5 内联 SVG" href="http://www.w3school.com.cn/html5/html_5_svg.asp">HTML5 
+  SVG</A></LI>
+  <LI><A title="HTML5 Canvas vs. SVG" href="http://www.w3school.com.cn/html5/html_5_canvas_vs_svg.asp">HTML5 
+  画布 vs SVG</A></LI>
+  <LI><A title="HTML5 地理定位" href="http://www.w3school.com.cn/html5/html_5_geolocation.asp">HTML5 
+  地理定位</A></LI>
+  <LI><A title="HTML5 Web 存储" href="http://www.w3school.com.cn/html5/html_5_webstorage.asp">HTML5 
+  Web 存储</A></LI>
+  <LI><A title="HTML 5 应用程序缓存" href="http://www.w3school.com.cn/html5/html_5_app_cache.asp">HTML5 
+  应用缓存</A></LI>
+  <LI class="currentLink"><A title="HTML5 Web Workers" href="http://www.w3school.com.cn/html5/html_5_webworkers.asp">HTML5 
+  Web Workers</A></LI>
+  <LI><A title="HTML5 服务器发送事件" href="http://www.w3school.com.cn/html5/html_5_serversentevents.asp">HTML5 
+  服务器发送事件</A></LI></UL>
+<H2>HTML5 表单</H2>
+<UL>
+  <LI><A title="HTML5 Input 类型" href="http://www.w3school.com.cn/html5/html_5_form_input_types.asp">HTML5 
+  输入类型</A></LI>
+  <LI><A title="HTML5 表单元素" href="http://www.w3school.com.cn/html5/html_5_form_elements.asp">HTML5 
+  表单元素</A></LI>
+  <LI><A title="HTML5 表单属性" href="http://www.w3school.com.cn/html5/html_5_form_attributes.asp">HTML5 
+  表单属性</A></LI></UL>
+<H2>HTML5 测验</H2>
+<UL>
+  <LI><A title="HTML5 测验" 
+  href="http://www.w3school.com.cn/html5/html5_quiz.asp">HTML5 测验</A></LI></UL>
+<H2>HTML5 参考手册</H2>
+<UL>
+  <LI><A title="HTML5 参考手册" href="http://www.w3school.com.cn/html5/html5_reference.asp">HTML5 
+  标签</A></LI>
+  <LI><A title="HTML5 标准属性" href="http://www.w3school.com.cn/html5/html5_ref_standardattributes.asp">HTML5 
+  属性</A></LI>
+  <LI><A title="HTML5 事件属性" href="http://www.w3school.com.cn/html5/html5_ref_eventattributes.asp">HTML5 
+  事件</A></LI>
+  <LI><A title="HTML5 Audio/Video DOM 属性" href="http://www.w3school.com.cn/html5/html5_ref_audio_video_dom.asp">HTML5 
+  视频/音频</A></LI>
+  <LI><A title="HTML5 Canvas 参考手册" href="http://www.w3school.com.cn/html5/html5_ref_canvas.asp">HTML5 
+  画布</A></LI>
+  <LI><A title="HTML 元素和有效的 DTD" href="http://www.w3school.com.cn/html5/html5_ref_dtd.asp">HTML 
+  有效 DTD</A></LI></UL></DIV></DIV>
+<DIV id="maincontent">
+<H1>HTML 5 Web Workers</H1>
+<DIV id="tpn">
+<UL class="prenext">
+  <LI class="pre"><A title="HTML 5 应用程序缓存" href="http://www.w3school.com.cn/html5/html_5_app_cache.asp">HTML5 
+  应用缓存</A></LI>
+  <LI class="next"><A title="HTML5 服务器发送事件" href="http://www.w3school.com.cn/html5/html_5_serversentevents.asp">HTML5 
+  服务器发送事件</A></LI></UL></DIV>
+<DIV id="intro">
+<P><STRONG>web worker 是运行在后台的 JavaScript，不会影响页面的性能。</STRONG></P></DIV>
+<DIV>
+<H2>什么是 Web Worker？</H2>
+<P>当在 HTML 页面中执行脚本时，页面的状态是不可响应的，直到脚本已完成。</P>
+<P>web worker 是运行在后台的 JavaScript，独立于其他脚本，不会影响页面的性能。您可以继续做任何愿意做的事情：点击、选取内容等等，而此时 
+web worker 在后台运行。</P></DIV>
+<DIV>
+<H2>浏览器支持</H2>
+<P>所有主流浏览器均支持 web worker，除了 Internet Explorer。</P></DIV>
+<DIV>
+<H2>HTML5 Web Workers 实例</H2>
+<P>下面的例子创建了一个简单的 web worker，在后台计数：</P>
+<P>计数： <output id="result" style="font: bold 12px/normal Verdana, Arial, Helvetica, sans-serif; color: rgb(0, 0, 204); font-size-adjust: none; font-stretch: normal;"></output> 
+</P>
+<P><BUTTON style="font: 12px/normal Verdana, Arial, Helvetica, sans-serif; font-size-adjust: none; font-stretch: normal;" 
+onclick="startWorker()">启动 Worker</BUTTON> <BUTTON style="font: 12px/normal Verdana, Arial, Helvetica, sans-serif; font-size-adjust: none; font-stretch: normal;" 
+onclick="stopWorker()">停止 Worker</BUTTON> </P>
+<SCRIPT>
+var w;
+function startWorker()
+{
+if(typeof(Worker)!=="undefined")
+  {
+  if(typeof(w)=="undefined")
+  {
+  w=new Worker("/example/html5/demo_workers.js");
+  }
+  w.onmessage = function (event) {
+    document.getElementById("result").innerHTML=event.data;
+    };
+  }
+else
+  {
+  document.getElementById("result").innerHTML="Sorry, your browser does not support Web Workers...";
+  }
+}
+
+function stopWorker()
+{ 
+w.terminate();
+}
+</SCRIPT>
+ 
+<P class="tiy"><A href="http://www.w3school.com.cn/tiy/t.asp?f=html5_webworker" 
+target="_blank">亲自试一试</A></P></DIV>
+<DIV>
+<H2>检测 Web Worker 支持</H2>
+<P>在创建 web worker 之前，请检测用户的浏览器是否支持它：</P>
+<PRE>if(typeof(Worker)!=="undefined")
+  {
+  // Yes! Web worker support!
+  // Some code.....
+  }
+else
+  {
+  // Sorry! No Web Worker support..
+  }
+</PRE></DIV>
+<DIV>
+<H2>创建 web worker 文件</H2>
+<P>现在，让我们在一个外部 JavaScript 中创建我们的 web worker。</P>
+<P>在这里，我们创建了计数脚本。该脚本存储于 "demo_workers.js" 文件中：</P>
+<PRE>var i=0;
+
+function timedCount()
+{
+i=i+1;
+<CODE>postMessage(i);</CODE>
+setTimeout("timedCount()",500);
+}
+
+timedCount();
+</PRE>
+<P>以上代码中重要的部分是 <EM>postMessage()</EM> 方法 - 它用于向 HTML 页面传回一段消息。</P>
+<P class="note"><SPAN>注释：</SPAN>web worker 通常不用于如此简单的脚本，而是用于更耗费 CPU 
+资源的任务。</P></DIV>
+<DIV>
+<H2>创建 Web Worker 对象</H2>
+<P>我们已经有了 web worker 文件，现在我们需要从 HTML 页面调用它。</P>
+<P>下面的代码检测是否存在 worker，如果不存在，- 它会创建一个新的 web worker 对象，然后运行 "demo_workers.js" 
+中的代码：</P>
+<PRE>if(typeof(w)=="undefined")
+  {
+  w=new Worker("demo_workers.js");
+  }
+</PRE>
+<P>然后我们就可以从 web worker 发生和接收消息了。</P>
+<P>向 web worker 添加一个 "onmessage" 事件监听器：</P>
+<PRE>w.onmessage=function(event){
+document.getElementById("result").innerHTML=event.data;
+};
+</PRE>
+<P>当 web worker 传递消息时，会执行事件监听器中的代码。event.data 中存有来自 event.data 的数据。</P></DIV>
+<DIV>
+<H2>终止 Web Worker</H2>
+<P>当我们创建 web worker 对象后，它会继续监听消息（即使在外部脚本完成之后）直到其被终止为止。</P>
+<P>如需终止 web worker，并释放浏览器/计算机资源，请使用 terminate() 方法：</P>
+<PRE>w.terminate();</PRE></DIV>
+<DIV>
+<H2>完整的 Web Worker 实例代码</H2>
+<P>我们已经看到了 .js 文件中的 Worker 代码。下面是 HTML 页面的代码：</P>
+<H3>实例</H3>
+<PRE>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+
+&lt;p&gt;Count numbers: &lt;output id="result"&gt;&lt;/output&gt;&lt;/p&gt;
+&lt;button onclick="startWorker()"&gt;Start Worker&lt;/button&gt;
+&lt;button onclick="stopWorker()"&gt;Stop Worker&lt;/button&gt;
+&lt;br /&gt;&lt;br /&gt;
+
+&lt;script&gt;
+var w;
+
+function startWorker()
+{
+if(typeof(Worker)!=="undefined")
+{
+  if(typeof(w)=="undefined")
+    {
+    w=new Worker("demo_workers.js");
+    }
+  w.onmessage = function (event) {
+    document.getElementById("result").innerHTML=event.data;
+  };
+}
+else
+{
+document.getElementById("result").innerHTML="Sorry, your browser
+ does not support Web Workers...";
+}
+}
+
+function stopWorker()
+{
+w.terminate();
+}
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</PRE>
+<P class="tiy"><A href="http://www.w3school.com.cn/tiy/t.asp?f=html5_webworker" 
+target="_blank">亲自试一试</A></P></DIV>
+<DIV>
+<H2>Web Workers 和 DOM</H2>
+<P>由于 web worker 位于外部文件中，它们无法访问下例 JavaScript 对象：</P>
+<UL>
+  <LI>window 对象</LI>
+  <LI>document 对象</LI>
+  <LI>parent 对象</LI></UL></DIV>
+<DIV id="bpn">
+<UL class="prenext">
+  <LI class="pre"><A title="HTML 5 应用程序缓存" href="http://www.w3school.com.cn/html5/html_5_app_cache.asp">HTML5 
+  应用缓存</A></LI>
+  <LI class="next"><A title="HTML5 服务器发送事件" href="http://www.w3school.com.cn/html5/html_5_serversentevents.asp">HTML5 
+  服务器发送事件</A></LI></UL></DIV></DIV>
+<DIV id="sidebar">
+<DIV id="tools">
+<H5 id="tools_reference"><A 
+href="http://www.w3school.com.cn/tags/index.asp">HTML5 参考手册</A></H5>
+<H5 id="tools_quiz"><A 
+href="http://www.w3school.com.cn/html5/html5_quiz.asp">HTML5 测验</A></H5></DIV>
+<DIV id="ad">
+<SCRIPT type="text/javascript"><!--
+google_ad_client = "ca-pub-3381531532877742";
+/* sidebar-160x600 */
+google_ad_slot = "3772569310";
+google_ad_width = 160;
+google_ad_height = 600;
+//-->
+</SCRIPT>
+ 
+<SCRIPT src="HTML%205%20Web%20Workers_files/f.txt" type="text/javascript"></SCRIPT>
+ </DIV></DIV>
+<DIV id="footer">
+<P id="p1"><SPAN>W3School 提供的内容仅用于培训。我们不保证内容的正确性。通过使用本站内容随之而来的风险与本站无关。</SPAN> 
+<BR>W3School 简体中文版的所有内容仅供测试，对任何法律问题及风险不承担任何责任。 </P>
+<P id="p2">当使用本站时，代表您已接受了本站的<A title="关于使用" href="http://www.w3school.com.cn/about/about_use.asp">使用条款</A>和<A 
+title="关于隐私" 
+href="http://www.w3school.com.cn/about/about_privacy.asp">隐私条款</A>。版权所有，保留一切权利。
+ 赞助商：<A title="上海赢科投资有限公司" href="http://www.yktz.net/">上海赢科投资有限公司</A>。 <A href="http://www.miitbeian.gov.cn/">蒙ICP备06004630号</A> 
+</P></DIV></DIV></BODY></HTML>
