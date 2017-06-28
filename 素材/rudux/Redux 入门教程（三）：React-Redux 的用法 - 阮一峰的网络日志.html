@@ -1,0 +1,2681 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0081)http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" id="sixapart-standard"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+<meta name="generator" content="Movable Type  5.2.2">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="./Redux 入门教程（三）：React-Redux 的用法 - 阮一峰的网络日志_files/styles.css" type="text/css">
+<link rel="start" href="http://www.ruanyifeng.com/blog/" title="Home">
+<link rel="alternate" type="application/atom+xml" title="Recent Entries" href="http://feeds.feedburner.com/ruanyifeng">
+<script src="./Redux 入门教程（三）：React-Redux 的用法 - 阮一峰的网络日志_files/hm.js.下载"></script><script async="" src="./Redux 入门教程（三）：React-Redux 的用法 - 阮一峰的网络日志_files/analytics.js.下载"></script><script type="text/javascript" src="./Redux 入门教程（三）：React-Redux 的用法 - 阮一峰的网络日志_files/mt.js.下载"></script>
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="http://www.ruanyifeng.com/blog/2012/10/javascript_module.html">
+<dc:title>Javascript模块化编程（一）：模块的写法</dc:title>
+<dc:description>随着网站逐渐变成&quot;互联网应用程序&quot;，嵌入网页的Javascript代码越来越庞大，越来越复杂。...</dc:description>
+<dc:creator>阮一峰</dc:creator>
+<dc:date>2012-10-26T08:32:33+08:00</dc:date>
+<license rdf:resource="http://creativecommons.org/licenses/by-nc-nd/3.0/" />
+</Work>
+<License rdf:about="http://creativecommons.org/licenses/by-nc-nd/3.0/">
+</License>
+</rdf:RDF>
+-->
+
+
+    
+    <link rel="prev" href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_two_async_operations.html" title="Redux 入门教程（二）：中间件与异步操作">
+    <link rel="next" href="http://www.ruanyifeng.com/blog/2016/09/react-technology-stack.html" title="React 技术栈系列教程">
+    
+    <title>Redux 入门教程（三）：React-Redux 的用法 - 阮一峰的网络日志</title>
+<script src="./Redux 入门教程（三）：React-Redux 的用法 - 阮一峰的网络日志_files/bsStatic.js.下载" type="text/javascript" charset="utf-8"></script><script src="./Redux 入门教程（三）：React-Redux 的用法 - 阮一峰的网络日志_files/fingerprint2.min.js.下载" type="text/javascript" charset="utf-8"></script><script src="./Redux 入门教程（三）：React-Redux 的用法 - 阮一峰的网络日志_files/bs-engine.js.下载" type="text/javascript" charset="utf-8"></script><style type="text/css">a.bshareDiv,#bsPanel,#bsMorePanel,#bshareF{border:none;background:none;padding:0;margin:0;font:12px Helvetica,Calibri,Tahoma,Arial,宋体,sans-serif;line-height:14px;}#bsPanel div,#bsMorePanel div,#bshareF div{display:block;}.bsRlogo .bsPopupAwd,.bsRlogoSel .bsPopupAwd,.bsLogo .bsPopupAwd,.bsLogoSel .bsPopupAwd{line-height:16px !important;}a.bshareDiv div,#bsFloatTab div{*display:inline;zoom:1;display:inline-block;}a.bshareDiv img,a.bshareDiv div,a.bshareDiv span,a.bshareDiv a,#bshareF table,#bshareF tr,#bshareF td{text-decoration:none;background:none;margin:0;padding:0;border:none;line-height:1.2}a.bshareDiv span{display:inline;float:none;}div.buzzButton{cursor:pointer;font-weight:bold;}.buzzButton .shareCount a{color:#333}.bsStyle1 .shareCount a{color:#fff}span.bshareText{white-space:nowrap;}span.bshareText:hover{text-decoration:underline;}a.bshareDiv .bsPromo,div.bshare-custom .bsPromo{display:none;position:absolute;z-index:100;}a.bshareDiv .bsPromo.bsPromo1,div.bshare-custom .bsPromo.bsPromo1{width:51px;height:18px;top:-18px;left:0;line-height:16px;font-size:12px !important;font-weight:normal !important;color:#fff;text-align:center;background:url(http://static.bshare.cn/frame/images/bshare_box_sprite2.gif) no-repeat 0 -606px;}div.bshare-custom .bsPromo.bsPromo2{background:url(http://static.bshare.cn/frame/images/bshare_promo_sprite.gif) no-repeat;cursor:pointer;}</style><style type="text/css">.bsBox{display:none;z-index:100000001;font-size:12px;background:url(http://static.bshare.cn/frame/images//background-opaque-dark.gif) !important;padding:6px !important;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;}.bsClose{_overflow:hidden;cursor:pointer;position:absolute;z-index:10000000;color:#666;font-weight:bold;font-family:Helvetica,Arial;font-size:14px;line-height:20px;}.bsTop{color:#666;background:#f2f2f2;height:24px;line-height:24px;border-bottom:1px solid #e8e8e8;}.bsTop span{float:left;}.bsFrameDiv,#bsMorePanel{border:none;background:#fff;}.bsReturn{float:right;*margin-right:20px;margin-right:36px;text-align:right;cursor:pointer;line-height:24px;color:#666;opacity:0.5;}#bsReturn:hover{text-decoration:underline;opacity:1;}</style><script src="./Redux 入门教程（三）：React-Redux 的用法 - 阮一峰的网络日志_files/bsMore.js.下载" type="text/javascript" charset="utf-8"></script><script src="./Redux 入门教程（三）：React-Redux 的用法 - 阮一峰的网络日志_files/bshareS1.js.下载" type="text/javascript" charset="utf-8"></script><style type="text/css">div.bsClear{clear:both;height:0;line-height:0;overflow:hidden;font-size:0;}.bsSearchDiv{padding:5px 15px;background-color:#fafafa;}.bFind-wrapper-top{background:#fff;border-color:#ccc #aaa #aaa #ccc;border-style:solid;border-width:1px;height:16px;padding:4px;margin:0;}.bFind-wrapper-top input{padding:0 !important;border:none !important;box-shadow:none !important;line-height:16px !important;}.bFind-placeholder{background:url("http://static.bshare.cn/css/images/search-icon.gif") no-repeat;display:block;float:left;height:16px;width:16px;}.bFind{background:none;border:none;float:left;font-size:11px !important;height:16px !important;margin-left:3px;outline:none;padding:0;width:400px;}.bsPlatDiv{height:322px;background:#fff;overflow:auto;padding:0 15px;}#bsLogoList{display:block;list-style:none;overflow:hidden;margin:0;padding:0;}#bsLogoList li{float:left;display:inline-block;width:71px;text-align:center;font-size:12px;height:80px;margin:0 !important;}#bsLogoList .bsPlatIcon{cursor:pointer;display:block !important;text-align:center;}#bsLogoList .bsPlatImg{width:32px;height:32px;border:none !important;display:inline-block;}#bsLogoList .bsPlatImg:hover{-moz-border-radius:7px;-webkit-border-radius:7px;border-radius:7px;box-shadow:0 0 15px #a7a8ac;}#bsLogoList .bsPlatName{white-space:nowrap;text-overflow:ellipsis;overflow:hidden;text-align:center;color:#333 !important;margin-top:2px;line-height:140%;*width:70px;}#bsLogoList .bsPromoM{text-align:center;}.bsFooterDiv{height:24px;line-height:24px;padding:0 15px;border-top:1px solid #e8e8e8;background:#f2f2f2;text-align:right;}a.bsLogoLink{color:#666;}.bsLogoLink:hover{text-decoration:underline;}.bsPromoM{background:url(http://static.bshare.cn/frame/images//bshare_box_sprite2.gif) no-repeat top left;}.bsNew,.bsHot,.bsRec,.bsAwd{background-position:0 -552px;width:19px;margin:5px auto 1px;line-height:16px;height:18px;font-size:12px;color:#fff;overflow:hidden;}.bsNew{background-position:0 -570px;}.bsRec{width:30px;background-position:0 -588px;}.bsAwd{background:url(http://static.bshare.cn/frame/images//promot/promote.gif) no-repeat;}</style><script src="./Redux 入门教程（三）：React-Redux 的用法 - 阮一峰的网络日志_files/bshare_view" type="text/javascript" charset="utf-8"></script><style type="text/css">a.bsSiteLink{text-decoration:none;color:#666;}a.bsSiteLink:hover{text-decoration:underline;}a.bshareDiv{overflow:hidden;height:16px;line-height:18px;font-size:14px;color:#333;padding-left:0;}a.bshareDiv:hover{text-decoration:none;}div.bsTitle{padding:0 8px;border-bottom:1px solid #e8e8e8;color:#666;background:#f2f2f2;text-align:left;}div.buzzButton{cursor:pointer;}div.bsRlogo,div.bsRlogoSel{width:68px;float:left;margin:0;padding:2px 0;}div.bsRlogo a,div.bsRlogoSel a{float:left;}div.bsLogo,div.bsLogoSel{float:left;width:111px;text-align:left;height:auto;padding:2px 4px;margin:2px 0;white-space:nowrap;overflow:hidden;}div.bsLogoSel,div.bsRlogoSel{border:1px solid #ddd;background:#f1f1f1;}div.bsLogo,div.bsRlogo{border:1px solid #fff;background:#fff;}div.bsLogo a,div.bsLogoSel a{display:block;height:16px;line-height:16px;padding:0 0 0 24px;text-decoration:none;float:left;overflow:hidden;}div.bsLogoSel a,div.bsRlogoSel a{color:#000;border:none;}div.bsLogo a,div.bsRlogo a{color:#666;border:none;}div.bsLogoLink{width:121px;overflow:hidden;background:#FFF;float:left;margin:3px 0;}#bsLogin{float:right;text-align:right;overflow:hidden;height:100%;}#bsPanel{position:absolute;z-index:100000000;font-size:12px;width:258px;background:url(http://static.bshare.cn/frame/images/background-opaque-dark.png) !important;padding:6px !important;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;}div.bsClear{clear:both;height:0;line-height:0;font-size:0;overflow:hidden;}div.bsPopupAwd{background:url(http://static.bshare.cn/frame/images//bshare_box_sprite2.gif) no-repeat top left;background-position:0 -624px;width:18px;padding-left:3px;text-align:center;float:left;margin-left: 2px;height:15px;font-size:12px;color:#fff;overflow:hidden;}div.bsRlogo .bsPopupAwd,div.bsRlogoSel .bsPopupAwd{float:left;margin:5px 0 0 -14px;}</style><style type="text/css">a.bsSiteLink{text-decoration:none;color:#666;}a.bsSiteLink:hover{text-decoration:underline;}a.bshareDiv{overflow:hidden;height:16px;line-height:18px;font-size:14px;color:#333;padding-left:0;}a.bshareDiv:hover{text-decoration:none;}div.bsTitle{padding:0 8px;border-bottom:1px solid #e8e8e8;color:#666;background:#f2f2f2;text-align:left;}div.buzzButton{cursor:pointer;}div.bsRlogo,div.bsRlogoSel{width:68px;float:left;margin:0;padding:2px 0;}div.bsRlogo a,div.bsRlogoSel a{float:left;}div.bsLogo,div.bsLogoSel{float:left;width:111px;text-align:left;height:auto;padding:2px 4px;margin:2px 0;white-space:nowrap;overflow:hidden;}div.bsLogoSel,div.bsRlogoSel{border:1px solid #ddd;background:#f1f1f1;}div.bsLogo,div.bsRlogo{border:1px solid #fff;background:#fff;}div.bsLogo a,div.bsLogoSel a{display:block;height:16px;line-height:16px;padding:0 0 0 24px;text-decoration:none;float:left;overflow:hidden;}div.bsLogoSel a,div.bsRlogoSel a{color:#000;border:none;}div.bsLogo a,div.bsRlogo a{color:#666;border:none;}div.bsLogoLink{width:121px;overflow:hidden;background:#FFF;float:left;margin:3px 0;}#bsLogin{float:right;text-align:right;overflow:hidden;height:100%;}#bsPanel{position:absolute;z-index:100000000;font-size:12px;width:258px;background:url(http://static.bshare.cn/frame/images/background-opaque-dark.png) !important;padding:6px !important;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;}div.bsClear{clear:both;height:0;line-height:0;font-size:0;overflow:hidden;}div.bsPopupAwd{background:url(http://static.bshare.cn/frame/images//bshare_box_sprite2.gif) no-repeat top left;background-position:0 -624px;width:18px;padding-left:3px;text-align:center;float:left;margin-left: 2px;height:15px;font-size:12px;color:#fff;overflow:hidden;}div.bsRlogo .bsPopupAwd,div.bsRlogoSel .bsPopupAwd{float:left;margin:5px 0 0 -14px;}</style></head>
+<body id="scrapbook" class="mt-entry-archive one-column" rlt="1">
+<script>
+if (/mobile/i.test(navigator.userAgent) || /android/i.test(navigator.userAgent)) document.body.classList.add('mobile');
+
+window.addEventListener('load', function(event) {
+  setTimeout(function () {
+    hab('#sup-post-2');
+    hab('#gd1-inner');
+  }, 1000);
+});
+</script>
+    <div id="container">
+        <div id="container-inner">
+
+            <div id="header">
+    <div id="header-inner">
+        <div id="header-content">
+
+
+            <div id="header-name">阮一峰的网络日志 <span id="site_location"> » <a href="http://www.ruanyifeng.com/blog/" accesskey="1">首页</a></span><span id="site_archive"> » <a href="http://www.ruanyifeng.com/blog/archives.html">档案</a></span>
+</div>
+
+<div id="google_search">
+<!-- SiteSearch Google -->
+<form action="http://www.ruanyifeng.com/blog/search.html" id="cse-search-box">
+      <div>
+        <input type="hidden" name="cx" value="016304377626642577906:b_e9skaywzq">
+    <input type="hidden" name="cof" value="FORID:11">
+    <input type="hidden" name="ie" value="UTF-8">
+        <input type="text" name="q" size="20" class="searchbox" id="sbi" value="">
+        <input type="image" src="./Redux 入门教程（三）：React-Redux 的用法 - 阮一峰的网络日志_files/top_search_submit.gif" class="searchbox_submit" value="" alt="搜索" name="sa">
+      </div>
+    </form>
+<!-- SiteSearch Google -->
+</div>
+<div id="feed_icon">
+<a href="http://www.ruanyifeng.com/feed.html" title="订阅Feed">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAUzSURBVHjavFdbbFRVFF3nPjoz7dTWTittaW0jUDRAUqaNojyqREnEQKgfUj9MqqAmhqRt/OCD4CuY+Kckoh+aiGKC+gMJbdHoRysJ8dkhhmJLNdDKtJU+6GMK87j3Hs85d2Z6HzNtMYWb3Dn3NWftvfba+5xNYDl+e6Fkj6yqb/oDRbWq14vlPBLRKCITkxf0ROLt+hNjp1PPSRK4kA3vF1dXNRcWlyA2OQU9eos9opAkAiKxD+XkKO6t15aRWO7J/MgmAZU8MEgexgZHMX518Dh72sYMmVKShnxWuWHdHtxKIDIYTgMuDzgfmSOIQkYMpdUF8OY92Hytt4/jvkg47czzU16iQovM3QFwmNck+Yyduu7D6NA0Z6JR4THntFs9V4tWQg6Ui3s6MwKDncsFTnXKLJhDSeUK3AgPtyhccDzmVs999buRt/1Vm4i0od+hX7+MRG87jPGB/w1u8FPj9xEw7McVrnYuOCvtpjTth3J/nTg99c8LRhKhr6D3dTB5R24bXFwbMXBsyZzeoXaycEpJ95TB09AGX/NpqLVNtw8urnVzLvHjFNxiFqRy2OOHuqUVnue+ACkoWzo4O6lGzTmuHq6nPvY2m9rVqjrIK2rMEKxqyG5NPAKt+wjo0LklgfNxJkZMA3KJvqRUk3z5UFY3QH14P0h+WUY79HPvgv7VuSg4ZRGY1YgZgqXmORccF17sy2ehnf9AeO085K2HQFbtXBScj0LcpgF2cN+WV+DZ/LJQu6gD4R7oV7pBJwbSgtMvfiPoVp56DySwxm7EtkMs1WdAB7qzggsDJKQYsHucSkOudrkiCPWR/fA2nYCn8SNIK4NptSMyAu3sAdDRkIsJdfth0LzSrODUoPNZ4KI9SxJI5UHk7D4GdQfz2us31c7CoHMjRkKuDPHseCMrONVhNcDJwMJpKFVvg9L4OaTiNWm1x789KCqkrXhVBiEz0WYCT2nAzQAD1/vaETv1GrRfP4Vx5cfMNcDPwvP0h0DhanPym7OIf/+O67vcJ1/PCJ4KgdzaUP6Wz+dU+5yIL6fV+PsHGAOdwlPpvvUOyeeAVGyCdqkDNB6DPjsBSrnndfOGevOh3RhGItxvA+fX1CtbGFhgYUFkFMZPR6F1HnClHq8HyubWtJexX06CRmdt33hrd7nA7SFY4qoGpnYuOKcRykPPgDCBcsHx9Iv+fNL2PueBehCWUfYQIIMGLOCcOmXDXsh1+yCt35tUPfvzGFuSvzvoinXOxqa02qOhM6733nVP2MAdaej2XN11DPKjLZCD+yBvahGCo7JfTKAN9UD7s8Oe9zUNIhz8fWI8DG2k38WCFdxugANcXrvTVd1IEbuv3Jour7Hzn7jLMBNfKs7R3i67gRVrbeCOEDhinmWhAatsqdquM2XzHZINhK2cqTjHr/XZdVJUbgN3MWAVXKbSyg9jesRW2xP9di+lwrL5ojM3m2H/kG9hwcIA37c71W6wJdW2J2S5nrjYbq/t1AHAhJsKQeyfPvf6IMJgghPJhFZ4x0KlfLFvt22du45Au/A1SOlGc0P672XXwhLtOcM0kTTEMMd0qkVmMNXxMd/tsedUjInr4SQDgOfeXMSiN0FCL5WHah4L1qqYXPJOJlttd+a5M+YpcG5poLYKQ5f+6JJ4r8bbJYP47hq4r7QAs9PjYNhHJd4o8l5taiwuOpa7AS4XKqI/5NjJbTnaWK92nLdLuhQAJayRNMiygXPBeQN+Qbvu0zDc3y+aUzhbkGR73sI7ljvUnndx2q3t+X8CDAD66FtrIL864AAAAABJRU5ErkJggg==" alt="" style="border: 0pt none;">
+</a></div>
+
+        </div>
+    </div>
+</div>
+
+
+
+            <div id="content">
+                <div id="content-inner">
+
+
+                    <div id="alpha">
+                        <div id="alpha-inner">
+
+
+                            <div id="entry-1909" class="entry-asset asset hentry">
+                                <div class="asset-header">
+<div class="asset-nav entry-nav">
+
+<div class="entry-location">
+<ul>
+<li>上一篇：<a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_two_async_operations.html" title="Redux 入门教程（二）：中间件与异步操作">Redux&nbsp;入门教程（</a></li>
+<li>下一篇：<a href="http://www.ruanyifeng.com/blog/2016/09/react-technology-stack.html" title="React 技术栈系列教程">React&nbsp;技术栈系列</a></li>
+</ul>
+</div>
+
+
+    
+                                    <div class="entry-categories">
+                                        <p>分类<span class="delimiter">：</span></p>
+                                        <ul>
+                                            <li><a href="http://www.ruanyifeng.com/blog/javascript/" rel="tag">JavaScript</a></li>
+                                        </ul>
+                                    </div>
+    
+
+
+                                            
+</div>
+                                </div>
+<article class="hentry">
+                                    <h1 id="page-title" class="asset-name entry-title">Redux 入门教程（三）：React-Redux 的用法</h1>
+                                            <div id="share_button" style="float:right;padding-right:2em;padding-top:1em;">
+<a class="bshareDiv" href="http://www.bshare.cn/share" style="display: block; text-decoration: none; padding: 0px; margin: 0px; font-size: 12px; height: 21px; width: 51px;"><div class="bsPromo bsPromo1"></div><div class="buzzButton bsStyle10" style="height:21px;color:#333;;background:transparent url(http://static.bshare.cn/frame/images/button_custom10-zh-Orange.gif) no-repeat;text-align:center;width:51px;"></div><div style="clear:both;"></div></a>
+
+
+
+<script type="text/javascript" charset="utf-8" src="./Redux 入门教程（三）：React-Redux 的用法 - 阮一峰的网络日志_files/buttonLite.js.下载"></script>
+<script type="text/javascript" charset="utf-8">
+bShare.addEntry({
+    title: document.getElementById("page-title").innerHTML,
+url:window.location.href
+});
+</script>
+</div>
+                                    <div class="asset-meta">
+                                        
+
+                                            <p class="vcard author">作者： <a class="fn url" href="http://www.ruanyifeng.com/">阮一峰</a></p>
+                                    <p>日期： <a href="http://www.ruanyifeng.com/blog/2016/09/"><abbr class="published" title="2016-09-21T21:11:25+08:00">2016年9月21日</abbr></a></p>
+
+
+                                    </div>
+                                
+                                <div class="asset-content entry-content" id="main-content">
+
+                                    <!-- div class="asset-body" -->
+                                        <p>前两篇教程介绍了 Redux 的<a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_one_basic_usages.html" target="_blank">基本用法</a>和<a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_two_async_operations.html" target="_blank">异步操作</a>，今天是最后一部分，介绍如何在 React 项目中使用 Redux。</p>
+
+                                    <!-- /div -->
+
+
+                                    <!-- div id="more" class="asset-more" -->
+                                        <p>为了方便使用，Redux 的作者封装了一个 React 专用的库 <a href="https://github.com/reactjs/react-redux" target="_blank">React-Redux</a>，本文主要介绍它。</p>
+
+<p>这个库是可以选用的。实际项目中，你应该权衡一下，是直接使用 Redux，还是使用 React-Redux。后者虽然提供了便利，但是需要掌握额外的 API，并且要遵守它的组件拆分规范。</p>
+
+<p><img src="./Redux 入门教程（三）：React-Redux 的用法 - 阮一峰的网络日志_files/bg2016092101.jpg" alt="" title=""></p>
+
+<h2>一、UI 组件</h2>
+
+<p>React-Redux 将所有组件分成两大类：UI 组件（presentational component）和容器组件（container component）。</p>
+
+<p>UI 组件有以下几个特征。</p>
+
+<blockquote>
+  <ul>
+<li>只负责 UI 的呈现，不带有任何业务逻辑</li>
+<li>没有状态（即不使用<code>this.state</code>这个变量）</li>
+<li>所有数据都由参数（<code>this.props</code>）提供</li>
+<li>不使用任何 Redux 的 API</li>
+</ul>
+</blockquote>
+
+<p>下面就是一个 UI 组件的例子。</p>
+
+<blockquote><pre class=" language-javascript"><code class=" language-javascript">
+const Title <span class="token operator">=</span>
+  value <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token operator">&lt;</span>h1<span class="token operator">&gt;</span><span class="token punctuation">{</span>value<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>h1<span class="token operator">&gt;</span><span class="token punctuation">;</span>
+</code></pre></blockquote>
+
+<p>因为不含有状态，UI 组件又称为"纯组件"，即它纯函数一样，纯粹由参数决定它的值。</p>
+
+<h2>二、容器组件</h2>
+
+<p>容器组件的特征恰恰相反。</p>
+
+<blockquote>
+  <ul>
+<li>负责管理数据和业务逻辑，不负责 UI 的呈现</li>
+<li>带有内部状态</li>
+<li>使用 Redux 的 API</li>
+</ul>
+</blockquote>
+
+<p>总之，只要记住一句话就可以了：UI 组件负责 UI 的呈现，容器组件负责管理数据和逻辑。</p>
+
+<p>你可能会问，如果一个组件既有 UI 又有业务逻辑，那怎么办？回答是，将它拆分成下面的结构：外面是一个容器组件，里面包了一个UI 组件。前者负责与外部的通信，将数据传给后者，由后者渲染出视图。</p>
+
+<p>React-Redux 规定，所有的 UI 组件都由用户提供，容器组件则是由 React-Redux 自动生成。也就是说，用户负责视觉层，状态管理则是全部交给它。</p>
+
+<h2>三、connect()</h2>
+
+<p>React-Redux 提供<code>connect</code>方法，用于从 UI 组件生成容器组件。<code>connect</code>的意思，就是将这两种组件连起来。</p>
+
+<blockquote><pre class=" language-javascript"><code class=" language-javascript">
+import <span class="token punctuation">{</span> connect <span class="token punctuation">}</span> from <span class="token string">'react-redux'</span>
+const VisibleTodoList <span class="token operator">=</span> <span class="token function">connect<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">(</span>TodoList<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></blockquote>
+
+<p>上面代码中，<code>TodoList</code>是 UI 组件，<code>VisibleTodoList</code>就是由 React-Redux 通过<code>connect</code>方法自动生成的容器组件。</p>
+
+<p>但是，因为没有定义业务逻辑，上面这个容器组件毫无意义，只是 UI 组件的一个单纯的包装层。为了定义业务逻辑，需要给出下面两方面的信息。</p>
+
+<blockquote>
+  <p>（1）输入逻辑：外部的数据（即<code>state</code>对象）如何转换为 UI 组件的参数</p>
+
+<p>（2）输出逻辑：用户发出的动作如何变为 Action 对象，从 UI 组件传出去。</p>
+</blockquote>
+
+<p>因此，<code>connect</code>方法的完整 API 如下。</p>
+
+<blockquote><pre class=" language-javascript"><code class=" language-javascript">
+import <span class="token punctuation">{</span> connect <span class="token punctuation">}</span> from <span class="token string">'react-redux'</span>
+
+const VisibleTodoList <span class="token operator">=</span> <span class="token function">connect<span class="token punctuation">(</span></span>
+  mapStateToProps<span class="token punctuation">,</span>
+  mapDispatchToProps
+<span class="token punctuation">)</span><span class="token punctuation">(</span>TodoList<span class="token punctuation">)</span>
+</code></pre></blockquote>
+
+<p>上面代码中，<code>connect</code>方法接受两个参数：<code>mapStateToProps</code>和<code>mapDispatchToProps</code>。它们定义了 UI 组件的业务逻辑。前者负责输入逻辑，即将<code>state</code>映射到 UI 组件的参数（<code>props</code>），后者负责输出逻辑，即将用户对 UI 组件的操作映射成 Action。</p>
+
+<h3>四、mapStateToProps()</h3>
+
+<p><code>mapStateToProps</code>是一个函数。它的作用就是像它的名字那样，建立一个从（外部的）<code>state</code>对象到（UI 组件的）<code>props</code>对象的映射关系。</p>
+
+<p>作为函数，<code>mapStateToProps</code>执行后应该返回一个对象，里面的每一个键值对就是一个映射。请看下面的例子。</p>
+
+<blockquote><pre class=" language-javascript"><code class=" language-javascript">
+const mapStateToProps <span class="token operator">=</span> <span class="token punctuation">(</span>state<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">{</span>
+    todos<span class="token punctuation">:</span> <span class="token function">getVisibleTodos<span class="token punctuation">(</span></span>state<span class="token punctuation">.</span>todos<span class="token punctuation">,</span> state<span class="token punctuation">.</span>visibilityFilter<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></blockquote>
+
+<p>上面代码中，<code>mapStateToProps</code>是一个函数，它接受<code>state</code>作为参数，返回一个对象。这个对象有一个<code>todos</code>属性，代表 UI 组件的同名参数，后面的<code>getVisibleTodos</code>也是一个函数，可以从<code>state</code>算出 <code>todos</code> 的值。</p>
+
+<p>下面就是<code>getVisibleTodos</code>的一个例子，用来算出<code>todos</code>。</p>
+
+<blockquote><pre class=" language-javascript"><code class=" language-javascript">
+const getVisibleTodos <span class="token operator">=</span> <span class="token punctuation">(</span>todos<span class="token punctuation">,</span> filter<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+  switch <span class="token punctuation">(</span>filter<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    case <span class="token string">'SHOW_ALL'</span><span class="token punctuation">:</span>
+      <span class="token keyword">return</span> todos
+    case <span class="token string">'SHOW_COMPLETED'</span><span class="token punctuation">:</span>
+      <span class="token keyword">return</span> todos<span class="token punctuation">.</span><span class="token function">filter<span class="token punctuation">(</span></span>t <span class="token operator">=</span><span class="token operator">&gt;</span> t<span class="token punctuation">.</span>completed<span class="token punctuation">)</span>
+    case <span class="token string">'SHOW_ACTIVE'</span><span class="token punctuation">:</span>
+      <span class="token keyword">return</span> todos<span class="token punctuation">.</span><span class="token function">filter<span class="token punctuation">(</span></span>t <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token operator">!</span>t<span class="token punctuation">.</span>completed<span class="token punctuation">)</span>
+    default<span class="token punctuation">:</span>
+      <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">'Unknown filter: '</span> <span class="token operator">+</span> filter<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></blockquote>
+
+<p><code>mapStateToProps</code>会订阅 Store，每当<code>state</code>更新的时候，就会自动执行，重新计算 UI 组件的参数，从而触发 UI 组件的重新渲染。</p>
+
+<p><code>mapStateToProps</code>的第一个参数总是<code>state</code>对象，还可以使用第二个参数，代表容器组件的<code>props</code>对象。</p>
+
+<blockquote><pre class=" language-javascript"><code class=" language-javascript"><span class="token comment" spellcheck="true">
+// 容器组件的代码
+</span><span class="token comment" spellcheck="true">//    &lt;FilterLink filter="SHOW_ALL"&gt;
+</span><span class="token comment" spellcheck="true">//      All
+</span><span class="token comment" spellcheck="true">//    &lt;/FilterLink&gt;
+</span>
+const mapStateToProps <span class="token operator">=</span> <span class="token punctuation">(</span>state<span class="token punctuation">,</span> ownProps<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">{</span>
+    active<span class="token punctuation">:</span> ownProps<span class="token punctuation">.</span>filter <span class="token operator">===</span> state<span class="token punctuation">.</span>visibilityFilter
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></blockquote>
+
+<p>使用<code>ownProps</code>作为参数后，如果容器组件的参数发生变化，也会引发 UI 组件重新渲染。</p>
+
+<p><code>connect</code>方法可以省略<code>mapStateToProps</code>参数，那样的话，UI 组件就不会订阅Store，就是说 Store 的更新不会引起 UI 组件的更新。</p>
+
+<h2>五、mapDispatchToProps()</h2>
+
+<p><code>mapDispatchToProps</code>是<code>connect</code>函数的第二个参数，用来建立 UI 组件的参数到<code>store.dispatch</code>方法的映射。也就是说，它定义了哪些用户的操作应该当作 Action，传给 Store。它可以是一个函数，也可以是一个对象。</p>
+
+<p>如果<code>mapDispatchToProps</code>是一个函数，会得到<code>dispatch</code>和<code>ownProps</code>（容器组件的<code>props</code>对象）两个参数。</p>
+
+<blockquote><pre class=" language-javascript"><code class=" language-javascript">
+const mapDispatchToProps <span class="token operator">=</span> <span class="token punctuation">(</span>
+  dispatch<span class="token punctuation">,</span>
+  ownProps
+<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">{</span>
+    onClick<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+      <span class="token function">dispatch<span class="token punctuation">(</span></span><span class="token punctuation">{</span>
+        type<span class="token punctuation">:</span> <span class="token string">'SET_VISIBILITY_FILTER'</span><span class="token punctuation">,</span>
+        filter<span class="token punctuation">:</span> ownProps<span class="token punctuation">.</span>filter
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></blockquote>
+
+<p>从上面代码可以看到，<code>mapDispatchToProps</code>作为函数，应该返回一个对象，该对象的每个键值对都是一个映射，定义了 UI 组件的参数怎样发出 Action。</p>
+
+<p>如果<code>mapDispatchToProps</code>是一个对象，它的每个键名也是对应 UI 组件的同名参数，键值应该是一个函数，会被当作 Action creator ，返回的 Action 会由 Redux 自动发出。举例来说，上面的<code>mapDispatchToProps</code>写成对象就是下面这样。</p>
+
+<blockquote><pre class=" language-javascript"><code class=" language-javascript">
+const mapDispatchToProps <span class="token operator">=</span> <span class="token punctuation">{</span>
+  onClick<span class="token punctuation">:</span> <span class="token punctuation">(</span>filter<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+    type<span class="token punctuation">:</span> <span class="token string">'SET_VISIBILITY_FILTER'</span><span class="token punctuation">,</span>
+    filter<span class="token punctuation">:</span> filter
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></blockquote>
+
+<h2>六、&lt;Provider&gt; 组件</h2>
+
+<p><code>connect</code>方法生成容器组件以后，需要让容器组件拿到<code>state</code>对象，才能生成 UI 组件的参数。</p>
+
+<p>一种解决方法是将<code>state</code>对象作为参数，传入容器组件。但是，这样做比较麻烦，尤其是容器组件可能在很深的层级，一级级将<code>state</code>传下去就很麻烦。</p>
+
+<p>React-Redux 提供<code>Provider</code>组件，可以让容器组件拿到<code>state</code>。</p>
+
+<blockquote><pre class=" language-javascript"><code class=" language-javascript">
+import <span class="token punctuation">{</span> Provider <span class="token punctuation">}</span> from <span class="token string">'react-redux'</span>
+import <span class="token punctuation">{</span> createStore <span class="token punctuation">}</span> from <span class="token string">'redux'</span>
+import todoApp from <span class="token string">'./reducers'</span>
+import App from <span class="token string">'./components/App'</span>
+
+<span class="token keyword">let</span> store <span class="token operator">=</span> <span class="token function">createStore<span class="token punctuation">(</span></span>todoApp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">render<span class="token punctuation">(</span></span>
+  <span class="token operator">&lt;</span>Provider store<span class="token operator">=</span><span class="token punctuation">{</span>store<span class="token punctuation">}</span><span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>App <span class="token operator">/</span><span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span><span class="token operator">/</span>Provider<span class="token operator">&gt;</span><span class="token punctuation">,</span>
+  document<span class="token punctuation">.</span><span class="token function">getElementById<span class="token punctuation">(</span></span><span class="token string">'root'</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span>
+</code></pre></blockquote>
+
+<p>上面代码中，<code>Provider</code>在根组件外面包了一层，这样一来，<code>App</code>的所有子组件就默认都可以拿到<code>state</code>了。</p>
+
+<p>它的原理是<code>React</code>组件的<a href="https://facebook.github.io/react/docs/context.html" target="_blank"><code>context</code></a>属性，请看源码。</p>
+
+<blockquote><pre class=" language-javascript"><code class=" language-javascript">
+class <span class="token class-name">Provider</span> extends <span class="token class-name">Component</span> <span class="token punctuation">{</span>
+  <span class="token function">getChildContext<span class="token punctuation">(</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      store<span class="token punctuation">:</span> this<span class="token punctuation">.</span>props<span class="token punctuation">.</span>store
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">render<span class="token punctuation">(</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> this<span class="token punctuation">.</span>props<span class="token punctuation">.</span>children<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+Provider<span class="token punctuation">.</span>childContextTypes <span class="token operator">=</span> <span class="token punctuation">{</span>
+  store<span class="token punctuation">:</span> React<span class="token punctuation">.</span>PropTypes<span class="token punctuation">.</span>object
+<span class="token punctuation">}</span>
+</code></pre></blockquote>
+
+<p>上面代码中，<code>store</code>放在了上下文对象<code>context</code>上面。然后，子组件就可以从<code>context</code>拿到<code>store</code>，代码大致如下。</p>
+
+<blockquote><pre class=" language-javascript"><code class=" language-javascript">
+class <span class="token class-name">VisibleTodoList</span> extends <span class="token class-name">Component</span> <span class="token punctuation">{</span>
+  <span class="token function">componentDidMount<span class="token punctuation">(</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    const <span class="token punctuation">{</span> store <span class="token punctuation">}</span> <span class="token operator">=</span> this<span class="token punctuation">.</span>context<span class="token punctuation">;</span>
+    this<span class="token punctuation">.</span>unsubscribe <span class="token operator">=</span> store<span class="token punctuation">.</span><span class="token function">subscribe<span class="token punctuation">(</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span>
+      this<span class="token punctuation">.</span><span class="token function">forceUpdate<span class="token punctuation">(</span></span><span class="token punctuation">)</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">render<span class="token punctuation">(</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    const props <span class="token operator">=</span> this<span class="token punctuation">.</span>props<span class="token punctuation">;</span>
+    const <span class="token punctuation">{</span> store <span class="token punctuation">}</span> <span class="token operator">=</span> this<span class="token punctuation">.</span>context<span class="token punctuation">;</span>
+    const state <span class="token operator">=</span> store<span class="token punctuation">.</span><span class="token function">getState<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token comment" spellcheck="true"> // ...
+</span>  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+VisibleTodoList<span class="token punctuation">.</span>contextTypes <span class="token operator">=</span> <span class="token punctuation">{</span>
+  store<span class="token punctuation">:</span> React<span class="token punctuation">.</span>PropTypes<span class="token punctuation">.</span>object
+<span class="token punctuation">}</span>
+</code></pre></blockquote>
+
+<p><code>React-Redux</code>自动生成的容器组件的代码，就类似上面这样，从而拿到<code>store</code>。</p>
+
+<h2>七、实例：计数器</h2>
+
+<p>我们来看一个实例。下面是一个计数器组件，它是一个纯的 UI 组件。</p>
+
+<blockquote><pre class=" language-javascript"><code class=" language-javascript">
+class <span class="token class-name">Counter</span> extends <span class="token class-name">Component</span> <span class="token punctuation">{</span>
+  <span class="token function">render<span class="token punctuation">(</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    const <span class="token punctuation">{</span> value<span class="token punctuation">,</span> onIncreaseClick <span class="token punctuation">}</span> <span class="token operator">=</span> this<span class="token punctuation">.</span>props
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+      <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>span<span class="token operator">&gt;</span><span class="token punctuation">{</span>value<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">&gt;</span>
+        <span class="token operator">&lt;</span>button onClick<span class="token operator">=</span><span class="token punctuation">{</span>onIncreaseClick<span class="token punctuation">}</span><span class="token operator">&gt;</span>Increase<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+    <span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></blockquote>
+
+<p>上面代码中，这个 UI 组件有两个参数：<code>value</code>和<code>onIncreaseClick</code>。前者需要从<code>state</code>计算得到，后者需要向外发出 Action。</p>
+
+<p>接着，定义<code>value</code>到<code>state</code>的映射，以及<code>onIncreaseClick</code>到<code>dispatch</code>的映射。</p>
+
+<blockquote><pre class=" language-javascript"><code class=" language-javascript">
+<span class="token keyword">function</span> <span class="token function">mapStateToProps<span class="token punctuation">(</span></span>state<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> state<span class="token punctuation">.</span>count
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">mapDispatchToProps<span class="token punctuation">(</span></span>dispatch<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">{</span>
+    onIncreaseClick<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token function">dispatch<span class="token punctuation">(</span></span>increaseAction<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true">
+// Action Creator
+</span>const increaseAction <span class="token operator">=</span> <span class="token punctuation">{</span> type<span class="token punctuation">:</span> <span class="token string">'increase'</span> <span class="token punctuation">}</span>
+</code></pre></blockquote>
+
+<p>然后，使用<code>connect</code>方法生成容器组件。</p>
+
+<blockquote><pre class=" language-javascript"><code class=" language-javascript">
+const App <span class="token operator">=</span> <span class="token function">connect<span class="token punctuation">(</span></span>
+  mapStateToProps<span class="token punctuation">,</span>
+  mapDispatchToProps
+<span class="token punctuation">)</span><span class="token punctuation">(</span>Counter<span class="token punctuation">)</span>
+</code></pre></blockquote>
+
+<p>然后，定义这个组件的 Reducer。</p>
+
+<blockquote><pre class=" language-javascript"><code class=" language-javascript"><span class="token comment" spellcheck="true">
+// Reducer
+</span><span class="token keyword">function</span> <span class="token function">counter<span class="token punctuation">(</span></span>state <span class="token operator">=</span> <span class="token punctuation">{</span> count<span class="token punctuation">:</span> <span class="token number">0</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> action<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  const count <span class="token operator">=</span> state<span class="token punctuation">.</span>count
+  switch <span class="token punctuation">(</span>action<span class="token punctuation">.</span>type<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    case <span class="token string">'increase'</span><span class="token punctuation">:</span>
+      <span class="token keyword">return</span> <span class="token punctuation">{</span> count<span class="token punctuation">:</span> count <span class="token operator">+</span> <span class="token number">1</span> <span class="token punctuation">}</span>
+    default<span class="token punctuation">:</span>
+      <span class="token keyword">return</span> state
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></blockquote>
+
+<p>最后，生成<code>store</code>对象，并使用<code>Provider</code>在根组件外面包一层。</p>
+
+<blockquote><pre class=" language-javascript"><code class=" language-javascript">
+import <span class="token punctuation">{</span> loadState<span class="token punctuation">,</span> saveState <span class="token punctuation">}</span> from <span class="token string">'./localStorage'</span><span class="token punctuation">;</span>
+
+const persistedState <span class="token operator">=</span> <span class="token function">loadState<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+const store <span class="token operator">=</span> <span class="token function">createStore<span class="token punctuation">(</span></span>
+  todoApp<span class="token punctuation">,</span>
+  persistedState
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+store<span class="token punctuation">.</span><span class="token function">subscribe<span class="token punctuation">(</span></span><span class="token function">throttle<span class="token punctuation">(</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+  <span class="token function">saveState<span class="token punctuation">(</span></span><span class="token punctuation">{</span>
+    todos<span class="token punctuation">:</span> store<span class="token punctuation">.</span><span class="token function">getState<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">.</span>todos<span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+ReactDOM<span class="token punctuation">.</span><span class="token function">render<span class="token punctuation">(</span></span>
+  <span class="token operator">&lt;</span>Provider store<span class="token operator">=</span><span class="token punctuation">{</span>store<span class="token punctuation">}</span><span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>App <span class="token operator">/</span><span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span><span class="token operator">/</span>Provider<span class="token operator">&gt;</span><span class="token punctuation">,</span>
+  document<span class="token punctuation">.</span><span class="token function">getElementById<span class="token punctuation">(</span></span><span class="token string">'root'</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></blockquote>
+
+<p>完整的代码看<a href="https://github.com/jackielii/simplest-redux-example/blob/master/index.js" target="_blank">这里</a>。</p>
+
+<h2>八、React-Router 路由库</h2>
+
+<p>使用<code>React-Router</code>的项目，与其他项目没有不同之处，也是使用<code>Provider</code>在<code>Router</code>外面包一层，毕竟<code>Provider</code>的唯一功能就是传入<code>store</code>对象。</p>
+
+<blockquote><pre class=" language-javascript"><code class=" language-javascript">
+const Root <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> store <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">(</span>
+  <span class="token operator">&lt;</span>Provider store<span class="token operator">=</span><span class="token punctuation">{</span>store<span class="token punctuation">}</span><span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>Router<span class="token operator">&gt;</span>
+      <span class="token operator">&lt;</span>Route path<span class="token operator">=</span><span class="token string">"/"</span> component<span class="token operator">=</span><span class="token punctuation">{</span>App<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>Router<span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span><span class="token operator">/</span>Provider<span class="token operator">&gt;</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></blockquote>
+
+<p>（完）</p>
+
+                                    <!-- /div -->
+
+                                </div>
+    <script type="text/javascript" src="./Redux 入门教程（三）：React-Redux 的用法 - 阮一峰的网络日志_files/newwindow.js.下载"></script>
+                                <div class="asset-footer">
+
+<h3>文档信息</h3>
+<ul>
+<li>版权声明：自由转载-非商用-非衍生-保持署名（<a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）</li>
+<li>发表日期： <abbr class="published" title="2016-09-21T21:11:25+08:00">2016年9月21日</abbr></li>
+<li>更多内容： <a href="http://www.ruanyifeng.com/blog/archives.html" target="_blank"> 档案</a>  » 
+<a href="http://www.ruanyifeng.com/blog/javascript/"> JavaScript</a> 
+</li>
+<li>博客文集：<a href="http://road.ruanyifeng.com/" target="_blank">《前方的路》</a>，<a href="https://ruanyf.github.io/survivor" target="_blank">《未来世界的幸存者》</a></li>
+<li>社交媒体：<a href="https://twitter.com/ruanyf" target="_blank"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAk1JREFUeNqsVc9rE0EU/mZ3dhPNJl2bVIk/Km09aFBE8GLvnrwJXvwLxIsgCP4Fnit6E8Gb0IMHwUsL9SSNgiAoooJIpE1Joo1h82uT7IxvxmRN3Q32kAdvdrI773vfe+/bDTu9WioDcDAda3Ja8piepQ1avCkCeny0Y+R9KenKwOmHHLvPaKn7AtVOoO8dOWDCMpg+41gMQv5FNEJACgoE8MsPNLDBhgfoutMOsJDmWLmU037C4TApciljwQ/kHoohQxV06+wMXNvE7WINuaSpvdYVKLgWnl3O4zAxU3Z1IYVGT+B5qYWV9z2kbQaT/cOwTsxOUUYF+mB5Dkmi8HG3h2q9hxsFNwRTdvQgxxnXRrMvIdkEhllis/qtiWuLDm4WZnBlPoWnXz28LHdw0uGR7m9Wu3j0qYGEubfn4UlBfXO4gTZltRNMg9w9f0i7kNFxllsBlS0x75gYfxyWTBUjT2W5CSMSPBrQuG21+hiMDS8CeCzF8eSLp13uQ3Ab1IqMFZN8tFHPmgOBF99bYP8Be1Xp6t7OJszJgKpPSiZvaj7uf2hguz2IBQuozDvFH6RDBjuK9wdQDvt0nMpW+8efGyh5UcAeZb2+UcHbnz5Jx4wdlp4yJYU3kLiQtfBwOYeLc8nIwfXtNu69q2Oz4mMxbemYOOOjKarhvq51KUjg3GwiFPIuvcNF6pnSnWK0lOEabNLgQh1aJFAhlGB9rG110B2+oyRNPc0sZbRNFltmLKDKqj4Qrm1ojzOxDz2pyPQ0P7CK4c40/wJ+CzAAGYrXsvfFXR4AAAAASUVORK5CYII=" style="border:0;"> twitter</a>，<a href="http://weibo.com/ruanyf" target="_blank"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAAKT2lDQ1BQaG90b3Nob3AgSUNDIHByb2ZpbGUAAHjanVNnVFPpFj333vRCS4iAlEtvUhUIIFJCi4AUkSYqIQkQSoghodkVUcERRUUEG8igiAOOjoCMFVEsDIoK2AfkIaKOg6OIisr74Xuja9a89+bN/rXXPues852zzwfACAyWSDNRNYAMqUIeEeCDx8TG4eQuQIEKJHAAEAizZCFz/SMBAPh+PDwrIsAHvgABeNMLCADATZvAMByH/w/qQplcAYCEAcB0kThLCIAUAEB6jkKmAEBGAYCdmCZTAKAEAGDLY2LjAFAtAGAnf+bTAICd+Jl7AQBblCEVAaCRACATZYhEAGg7AKzPVopFAFgwABRmS8Q5ANgtADBJV2ZIALC3AMDOEAuyAAgMADBRiIUpAAR7AGDIIyN4AISZABRG8lc88SuuEOcqAAB4mbI8uSQ5RYFbCC1xB1dXLh4ozkkXKxQ2YQJhmkAuwnmZGTKBNA/g88wAAKCRFRHgg/P9eM4Ors7ONo62Dl8t6r8G/yJiYuP+5c+rcEAAAOF0ftH+LC+zGoA7BoBt/qIl7gRoXgugdfeLZrIPQLUAoOnaV/Nw+H48PEWhkLnZ2eXk5NhKxEJbYcpXff5nwl/AV/1s+X48/Pf14L7iJIEyXYFHBPjgwsz0TKUcz5IJhGLc5o9H/LcL//wd0yLESWK5WCoU41EScY5EmozzMqUiiUKSKcUl0v9k4t8s+wM+3zUAsGo+AXuRLahdYwP2SycQWHTA4vcAAPK7b8HUKAgDgGiD4c93/+8//UegJQCAZkmScQAAXkQkLlTKsz/HCAAARKCBKrBBG/TBGCzABhzBBdzBC/xgNoRCJMTCQhBCCmSAHHJgKayCQiiGzbAdKmAv1EAdNMBRaIaTcA4uwlW4Dj1wD/phCJ7BKLyBCQRByAgTYSHaiAFiilgjjggXmYX4IcFIBBKLJCDJiBRRIkuRNUgxUopUIFVIHfI9cgI5h1xGupE7yAAygvyGvEcxlIGyUT3UDLVDuag3GoRGogvQZHQxmo8WoJvQcrQaPYw2oefQq2gP2o8+Q8cwwOgYBzPEbDAuxsNCsTgsCZNjy7EirAyrxhqwVqwDu4n1Y8+xdwQSgUXACTYEd0IgYR5BSFhMWE7YSKggHCQ0EdoJNwkDhFHCJyKTqEu0JroR+cQYYjIxh1hILCPWEo8TLxB7iEPENyQSiUMyJ7mQAkmxpFTSEtJG0m5SI+ksqZs0SBojk8naZGuyBzmULCAryIXkneTD5DPkG+Qh8lsKnWJAcaT4U+IoUspqShnlEOU05QZlmDJBVaOaUt2ooVQRNY9aQq2htlKvUYeoEzR1mjnNgxZJS6WtopXTGmgXaPdpr+h0uhHdlR5Ol9BX0svpR+iX6AP0dwwNhhWDx4hnKBmbGAcYZxl3GK+YTKYZ04sZx1QwNzHrmOeZD5lvVVgqtip8FZHKCpVKlSaVGyovVKmqpqreqgtV81XLVI+pXlN9rkZVM1PjqQnUlqtVqp1Q61MbU2epO6iHqmeob1Q/pH5Z/YkGWcNMw09DpFGgsV/jvMYgC2MZs3gsIWsNq4Z1gTXEJrHN2Xx2KruY/R27iz2qqaE5QzNKM1ezUvOUZj8H45hx+Jx0TgnnKKeX836K3hTvKeIpG6Y0TLkxZVxrqpaXllirSKtRq0frvTau7aedpr1Fu1n7gQ5Bx0onXCdHZ4/OBZ3nU9lT3acKpxZNPTr1ri6qa6UbobtEd79up+6Ynr5egJ5Mb6feeb3n+hx9L/1U/W36p/VHDFgGswwkBtsMzhg8xTVxbzwdL8fb8VFDXcNAQ6VhlWGX4YSRudE8o9VGjUYPjGnGXOMk423GbcajJgYmISZLTepN7ppSTbmmKaY7TDtMx83MzaLN1pk1mz0x1zLnm+eb15vft2BaeFostqi2uGVJsuRaplnutrxuhVo5WaVYVVpds0atna0l1rutu6cRp7lOk06rntZnw7Dxtsm2qbcZsOXYBtuutm22fWFnYhdnt8Wuw+6TvZN9un2N/T0HDYfZDqsdWh1+c7RyFDpWOt6azpzuP33F9JbpL2dYzxDP2DPjthPLKcRpnVOb00dnF2e5c4PziIuJS4LLLpc+Lpsbxt3IveRKdPVxXeF60vWdm7Obwu2o26/uNu5p7ofcn8w0nymeWTNz0MPIQ+BR5dE/C5+VMGvfrH5PQ0+BZ7XnIy9jL5FXrdewt6V3qvdh7xc+9j5yn+M+4zw33jLeWV/MN8C3yLfLT8Nvnl+F30N/I/9k/3r/0QCngCUBZwOJgUGBWwL7+Hp8Ib+OPzrbZfay2e1BjKC5QRVBj4KtguXBrSFoyOyQrSH355jOkc5pDoVQfujW0Adh5mGLw34MJ4WHhVeGP45wiFga0TGXNXfR3ENz30T6RJZE3ptnMU85ry1KNSo+qi5qPNo3ujS6P8YuZlnM1VidWElsSxw5LiquNm5svt/87fOH4p3iC+N7F5gvyF1weaHOwvSFpxapLhIsOpZATIhOOJTwQRAqqBaMJfITdyWOCnnCHcJnIi/RNtGI2ENcKh5O8kgqTXqS7JG8NXkkxTOlLOW5hCepkLxMDUzdmzqeFpp2IG0yPTq9MYOSkZBxQqohTZO2Z+pn5mZ2y6xlhbL+xW6Lty8elQfJa7OQrAVZLQq2QqboVFoo1yoHsmdlV2a/zYnKOZarnivN7cyzytuQN5zvn//tEsIS4ZK2pYZLVy0dWOa9rGo5sjxxedsK4xUFK4ZWBqw8uIq2Km3VT6vtV5eufr0mek1rgV7ByoLBtQFr6wtVCuWFfevc1+1dT1gvWd+1YfqGnRs+FYmKrhTbF5cVf9go3HjlG4dvyr+Z3JS0qavEuWTPZtJm6ebeLZ5bDpaql+aXDm4N2dq0Dd9WtO319kXbL5fNKNu7g7ZDuaO/PLi8ZafJzs07P1SkVPRU+lQ27tLdtWHX+G7R7ht7vPY07NXbW7z3/T7JvttVAVVN1WbVZftJ+7P3P66Jqun4lvttXa1ObXHtxwPSA/0HIw6217nU1R3SPVRSj9Yr60cOxx++/p3vdy0NNg1VjZzG4iNwRHnk6fcJ3/ceDTradox7rOEH0x92HWcdL2pCmvKaRptTmvtbYlu6T8w+0dbq3nr8R9sfD5w0PFl5SvNUyWna6YLTk2fyz4ydlZ19fi753GDborZ752PO32oPb++6EHTh0kX/i+c7vDvOXPK4dPKy2+UTV7hXmq86X23qdOo8/pPTT8e7nLuarrlca7nuer21e2b36RueN87d9L158Rb/1tWeOT3dvfN6b/fF9/XfFt1+cif9zsu72Xcn7q28T7xf9EDtQdlD3YfVP1v+3Njv3H9qwHeg89HcR/cGhYPP/pH1jw9DBY+Zj8uGDYbrnjg+OTniP3L96fynQ89kzyaeF/6i/suuFxYvfvjV69fO0ZjRoZfyl5O/bXyl/erA6xmv28bCxh6+yXgzMV70VvvtwXfcdx3vo98PT+R8IH8o/2j5sfVT0Kf7kxmTk/8EA5jz/GMzLdsAAAAgY0hSTQAAeiUAAICDAAD5/wAAgOkAAHUwAADqYAAAOpgAABdvkl/FRgAABPZJREFUeNqMyXtM1WUcx/FnNTdreAVCEEThyEFUrM2kwkpS05qVl8rugVpRUelaJdZaWWktdZKHssImgV04osgBCbwAa2Whm6GWoXHxcD1wHiI4t9/z/H68+wO3av1R3+217/b+CFStsHq/W2V1HW+wOmq8VkeN/E+dR/7SUSOtrmOnLc93jxA6LsTw71XLrUsHsNwHsdxl/09HGVb7QawOF1bn4ZF26QDDsmqNsH7be9psKcJs+fy/tRZjXvwM//678BVdT6BsMarhxZHeug+reW+TMC84+s0LDv4tH7PZgdXqwGrLx7yYP9KaHISOvUCwYh3+4iUMOiIJVmSMbBfy+4X581Zp/ryVfzi/FfPXd1AntxNwvkvg6zfQZ7Zg/rIV8/x7qB9fJlT/JPrcm4SOPctg3ihCR5dhNu2QQjfmSt2Yi27MRf+Uiz67Ef1TLv7Ct5CPZtMzJ4N2243Ij7Kwmjdhnt+EUZeFr/BmhvYkoBqewl8yD9/eCejGTVLoUzlSn8pBn8xBn85B/fAcf7z6PJ7rl9KdNBdP6nwuJc2jL+9+jJrXGNr1On9seZHgkQ0ESq8l4EzBOLKMod1XoE6slUKfXCd1wxp0Qxb6RBYDLzxGz8xb8aSm05u2kL4bF9N902I89yzHe986PEseoGP2YjqfvpNQeTr+4rmEKucz6LgS9f1jUuiy+VIfvxvz1GoGN99Hz8wFeGan0zl3Ae4lK3A/vJb2x7PpWPEI3bevoHfJKtypt9H1UgbDZx5E//goofJF+AtmoasWSaG2jZE6P5zg9hQ8Nyyie1Y6rQ+vpafMhdHXx7BpgjWMr7sbT5kL9/IHcUck0X3LtfgLVqAP3YAumoHeHYvaPkYKlRcudf54Bh5KpjP5Fi69tplgIMCQabK/rIxtO3bgqqxkmJHzdXbRknYbrWIcrWEJ9D8RjXaMRe2ciNo5QQr1QYRUjnC8C1Nxr1pD0O/HFwyQmZmJ3W4nLS0Nm83G+vXrsSwLgP6vS2kWo/lNjKN57gTMTyJRH0Si8iZKoXZdI5Ujkt55SXRtfBuAffv2sXLlSpxOJ9nZ2SQkJBAWFobX6wVgoPooLWI0v4hxuFeFY30ahdoVhcqLkEJ9GCV1QRTehZNxZ9wPQNGXX5KZmUlbWxspKSkIIUhPT0dZFibQvSaHJjGKxujxBHZGoT+ehPpwEsoRIYUqmCR1YTTBd2NoGxtOz4Y3CPoDrNuwnuhpU7lq/HgW3LGU5l4P2h+g55XNnBOjORM/jsH3ozGLYlAFMag90ahPI6VQxZOlKo5BOyfjey+GliljaL0uA7l9D2f37uess5KBoyfwbvmIJnsajVePouXeCIKFsZglsajiyX8pvEYKoySm33DGYTjj0OVxhEri6N84kfalY2i/NRb3AhvNN0+i9Y4wPC+H4yuMxTocjzoYj7F/ymVxI/+ryH5huKaeMVzxGK54QuXT8B+y4atIZqB8Nt6SVDzFqXi+mIO39Dp+PziHwdIZDJVOJ3gogZArHsM1BcMVj1E+BcMVe1GY38auNqqnYdQkEKpOJPBNEv7DdnyVdnwVdoYqki+bge9wCv6qFAJVyQS/mU6oJhHjSCJG9VSM6kRUfXi2GK6fJYy6+CyjNrHRqLP1GbWJ0qizSfV39Tap6qdLVW+Xqt4ujfokadRdVpvgNWpt54y6qc8MV44Sfw4An+t+Gj1AKyYAAAAASUVORK5CYII=" style="border:0;"> weibo</a></li>
+<li>Feed订阅： <a href="http://www.ruanyifeng.com/feed.html" target="_blank"><img src="data:image/gif;base64,R0lGODlhFAAUANU2APV1GfmrePZ8IeR5VPq2ieNkLf7p3NpFJveCJ/NoFfibVPR1IexiJfvdzuZrNfXGuOhUEueTevaFOfzIpNxDGeZZJNU6IOubifiVTfOnid1aLuZpLOFSJf/28vJtIvGcefaLSd5kNu9iFv/z6//48//t4uFfLfNkCeJNGuGNc/rCof/+/PVxEeldI/V5KeKMbu9nIvB2OvzQtNxMKfOPXP///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAEAADYALAAAAAAUABQAAAb/QJstEjKZCsjCZsl0pIS2QWXaYsA8noVWIEAgFoNhhWNyMESi7Jbr/aZCFdRnZJAFJCwAt+vlOkwtEBk1hDUkExJ6bQJaGyYMLTQTDSOFHQF8jAseSFYiJwkuAQ2FE1xaHjBIMDAgARguJwABJIQTLJswDEgeIgSEJQQILAqVNQEiui1HHgkBhTUGCiwYtR0xLS0VJhtaEgoEBoQkGCfPNSoQY9xaCwAsCBPALgmkJA4cZN0CAAgY/PJqEIDwgVAECjM0bOAnwcAKGQJclKhRgoGDDjUeUDigkN8vQiBOfByAglSDAxw3IBCgYEU0FyJoEPpA4UGNDjMsaHDQR8EdPVYOMmQYQGHAhQgHLIRIsWAlgASsGMRBMWMGBQtYZ7yIsoBRKkhjOMxAiXJGGCEpHGxIYsSIhrcaQmy1EQQAOw==" style="border:0;"></a></li>
+
+</ul>
+                                </div>
+</article>
+                            </div>
+
+                        <div id="sup-post-2" style="display: inline-block ! important;width: 100%;">
+   <p style="text-align:center;"><a href="http://www.zhufengpeixun.cn/?ref=ruanyifeng.com" target="_blank"><img alt="珠峰培训" src="./Redux 入门教程（三）：React-Redux 的用法 - 阮一峰的网络日志_files/sup_zhufeng_page.png" style="border:none;"></a></p>
+   <p style="text-align:center;"><a href="https://cn.udacity.com/ruanyfbanner/" title="优达学城" target="_blank"><img alt="优达学城" src="./Redux 入门教程（三）：React-Redux 的用法 - 阮一峰的网络日志_files/uda_banner_ryf.jpg" style="border:none;display: block !important;"></a>
+</p>                         
+  </div>
+
+<div id="related_entries">
+<h2>相关文章</h2>
+<ul>
+
+<li><strong>2017.04.16: <a href="http://www.ruanyifeng.com/blog/2017/04/memory-leak.html">JavaScript 内存泄漏教程</a></strong>
+
+                           <div class="entry-body">
+                              一、什么是内存泄漏？
+
+程序的运行需要内存。只要程序提出要求，操作系统或者运行时（runtime）就必须供给内存。
+
+                           </div>
+
+</li>
+
+ 
+<li><strong>2017.03.18: <a href="http://www.ruanyifeng.com/blog/2017/03/reduce_transduce.html">Reduce 和 Transduce 的含义</a></strong>
+
+                           <div class="entry-body">
+                              学习函数式编程，必须掌握很多术语，否则根本看不懂文档。
+
+                           </div>
+
+</li>
+
+ 
+<li><strong>2017.03.13: <a href="http://www.ruanyifeng.com/blog/2017/03/pointfree.html">Pointfree 编程风格指南</a></strong>
+
+                           <div class="entry-body">
+                              本文要回答一个很重要的问题：函数式编程有什么用？
+
+                           </div>
+
+</li>
+
+ 
+<li><strong>2017.03.09: <a href="http://www.ruanyifeng.com/blog/2017/03/ramda.html">Ramda 函数库参考教程</a></strong>
+
+                           <div class="entry-body">
+                              学习函数式编程的过程中，我接触到了 Ramda.js。
+
+                           </div>
+
+</li>
+
+ 
+</ul>
+</div>
+
+
+<div id="gd1" style="display: block !important;">
+<h2>广告<a href="http://www.ruanyifeng.com/support.html">（购买广告位）</a></h2>
+<div id="gd1-inner">
+<div id="gd1-left">
+<a href="http://www.miaov.com/index.php/news/newsDetail/nid/135?utm_source=ruanyifeng&amp;" alt="妙味课堂" target="_blank"><img alt="妙味课堂" src="./Redux 入门教程（三）：React-Redux 的用法 - 阮一峰的网络日志_files/sup_miaov_201706.png" style="border:none;display: block !important;"></a>
+<br>
+<a href="https://fundebug.com/?utm_source=ruanyifeng" title="FunDebug" target="_blank"><img alt="FunDebug" src="./Redux 入门教程（三）：React-Redux 的用法 - 阮一峰的网络日志_files/fundebug_js_promotion.jpeg" style="border:none;display: block !important;"></a>
+</div>
+<div id="gd1-right">
+<a href="http://trial.ssbit.win/?from=ruanyifeng" title="倚天剑" target="_blank"><img alt="倚天剑" src="./Redux 入门教程（三）：React-Redux 的用法 - 阮一峰的网络日志_files/ruanyifeng.2k.1forth.banner.png" style="border:none;display: block !important;"></a>
+<br>
+<a title="BitTiger" href="https://www.bittiger.io/home?utm_source=ruanyifeng&amp;utm_medium=ruanyifeng&amp;utm_content=ruanyifenggeneral" target="_blank"><img alt="BitTiger" src="./Redux 入门教程（三）：React-Redux 的用法 - 阮一峰的网络日志_files/sup_bittiger_3.jpg" style="border:none;"></a>
+
+</div>
+</div>
+</div>
+                    
+
+                    <div id="comments" class="comments">
+
+
+    
+    
+        
+    <h2 class="comments-header">留言（55条）</h2>
+
+    <div id="comments-content" class="comments-content" style="clear: left;">
+        
+        <div id="comment-364914" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">羽风</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-364914">
+            <p>第三点的<br>
+三、conect()<br>
+拼写错了</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="September 22, 2016  9:49 AM">2016年9月22日 09:49</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-364914">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-text" title="引用羽风的这条留言" onclick="return CommentQuote(&#39;comment-quote-364914&#39;,&#39;羽风&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-364920" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">阮一峰</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-364920">
+            <p>@羽风：谢谢指出，已经改正。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="September 22, 2016 11:16 AM">2016年9月22日 11:16</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-364920">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-text" title="引用阮一峰的这条留言" onclick="return CommentQuote(&#39;comment-quote-364920&#39;,&#39;阮一峰&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-364921" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">Will</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-364921">
+            <p>有一点不是特别明白：</p>
+
+<p>store.subscribe(throttle(() =&gt; {<br>
+  saveState({<br>
+    todos: store.getState().todos,<br>
+  })<br>
+}, 1000))</p>
+
+<p>这里store.subscribe时，本来只要state有变化就会执行吧，为啥还要再使用throttle呢？<br>
+是有什么考虑吗？<br>
+</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="September 22, 2016 11:34 AM">2016年9月22日 11:34</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-364921">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-text" title="引用Will的这条留言" onclick="return CommentQuote(&#39;comment-quote-364921&#39;,&#39;Will&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-364922" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">Will</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-364922">
+            <p>哦，我理解了，是怕性能问题，避免调用太频繁。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="September 22, 2016 12:05 PM">2016年9月22日 12:05</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-364922">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-text" title="引用Will的这条留言" onclick="return CommentQuote(&#39;comment-quote-364922&#39;,&#39;Will&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-364927" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">冰冰</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-364927">
+            <p>简单明了，大赞~</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="September 22, 2016  2:46 PM">2016年9月22日 14:46</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-364927">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-text" title="引用冰冰的这条留言" onclick="return CommentQuote(&#39;comment-quote-364927&#39;,&#39;冰冰&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-364956" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://blog.sohappy.cc" href="http://blog.sohappy.cc/" target="_blank" rel="nofollow">Min</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-364956">
+            <p>‘容器组件则是由 React-React 自动生成’<br>
+这里应该是React-Redux</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="September 22, 2016  5:19 PM">2016年9月22日 17:19</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-364956">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-text" title="引用Min的这条留言" onclick="return CommentQuote(&#39;comment-quote-364956&#39;,&#39;Min&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-364960" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">爱吃土豆</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-364960">
+            <p>Redux 入门教程（三）真是通俗易懂，让我茅塞顿开,给阮老师点个赞！么么哒</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="September 22, 2016  5:37 PM">2016年9月22日 17:37</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-364960">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-text" title="引用爱吃土豆的这条留言" onclick="return CommentQuote(&#39;comment-quote-364960&#39;,&#39;爱吃土豆&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-364973" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">阮一峰</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-364973">
+            <p>@Min：谢谢指出，已经改正。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="September 22, 2016  7:48 PM">2016年9月22日 19:48</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-364973">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-text" title="引用阮一峰的这条留言" onclick="return CommentQuote(&#39;comment-quote-364973&#39;,&#39;阮一峰&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-365286" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">拖鞋酱</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-365286">
+            <p>之前在github上看了好几个入门教程,都不是很明白.<br>
+当时flux就是从阮老师这儿看懂的.给阮老师点赞.</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="September 27, 2016  9:56 PM">2016年9月27日 21:56</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-365286">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-text" title="引用拖鞋酱的这条留言" onclick="return CommentQuote(&#39;comment-quote-365286&#39;,&#39;拖鞋酱&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-365415" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://www.onmpw.com" href="http://www.onmpw.com/" target="_blank" rel="nofollow">迹忆</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-365415">
+            <p>给阮老师点个赞</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="September 29, 2016  4:37 PM">2016年9月29日 16:37</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-365415">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-text" title="引用迹忆的这条留言" onclick="return CommentQuote(&#39;comment-quote-365415&#39;,&#39;迹忆&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-365467" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://null" href="http://null/" target="_blank" rel="nofollow">丢丢</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-365467">
+            <p>峰哥可以搞一个大赏功能，想给你大赏都不知道往哪打</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="September 30, 2016 10:35 AM">2016年9月30日 10:35</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-365467">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-text" title="引用丢丢的这条留言" onclick="return CommentQuote(&#39;comment-quote-365467&#39;,&#39;丢丢&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-365479" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">小媒体</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-365479">
+            <p>很赞，多谢！阮老师的页面风格看着都比较权威。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="September 30, 2016  4:10 PM">2016年9月30日 16:10</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-365479">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-text" title="引用小媒体的这条留言" onclick="return CommentQuote(&#39;comment-quote-365479&#39;,&#39;小媒体&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-365729" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">McDu</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-365729">
+            <blockquote>这个对象有一个todos属性，代表 UI 组件的同名参数，
+这句话怎么理解？</blockquote>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="October  5, 2016  6:12 PM">2016年10月 5日 18:12</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-365729">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-text" title="引用McDu的这条留言" onclick="return CommentQuote(&#39;comment-quote-365729&#39;,&#39;McDu&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-366136" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">少安</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-366136">
+            <p>求下一篇有    react redux 后台渲染的文章啊</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="October 11, 2016  5:28 PM">2016年10月11日 17:28</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-366136">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-text" title="引用少安的这条留言" onclick="return CommentQuote(&#39;comment-quote-366136&#39;,&#39;少安&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-366140" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">tangyz</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-366140">
+            <p>最后使用Provider在根组件外面包一层的代码，用的是todo的，不是计算器的了</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="October 11, 2016  6:02 PM">2016年10月11日 18:02</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-366140">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-text" title="引用tangyz的这条留言" onclick="return CommentQuote(&#39;comment-quote-366140&#39;,&#39;tangyz&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-366367" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">BigBrother5</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-366367">
+            <p>感谢阮老师，茅塞顿开！</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="October 14, 2016  5:50 PM">2016年10月14日 17:50</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-366367">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-text" title="引用BigBrother5的这条留言" onclick="return CommentQuote(&#39;comment-quote-366367&#39;,&#39;BigBrother5&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-366370" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">bbfish</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-366370">
+            <blockquote>
+<pre>引用丢丢的发言：</pre>
+
+<p>峰哥可以搞一个大赏功能，想给你大赏都不知道往哪打</p>
+
+</blockquote>
+
+<p>支持，确实比其它的资料更容易懂</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="October 14, 2016  6:33 PM">2016年10月14日 18:33</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-366370">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-text" title="引用bbfish的这条留言" onclick="return CommentQuote(&#39;comment-quote-366370&#39;,&#39;bbfish&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-366377" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://masy.site" href="http://masy.site/" target="_blank" rel="nofollow">Kimi</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-366377">
+            <p>七：实例 计数器中</p>
+
+<pre>const store = createStore(
+  counter, //原为todoApp
+  persistedState
+);
+
+<p>store.subscribe(throttle(() =&gt; {<br>
+  saveState({<br>
+    //todos: store.getState().todos,<br>
+    count: store.getState().count<br>
+  })<br>
+}, 1000))<br>
+</p></pre>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="October 15, 2016  1:01 AM">2016年10月15日 01:01</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-366377">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-text" title="引用Kimi的这条留言" onclick="return CommentQuote(&#39;comment-quote-366377&#39;,&#39;Kimi&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-366678" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">山水一程</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-366678">
+            <p>React-Redux提供的例子：https://github.com/jackielii/simplest-redux-example 是用python运行的。我把例子代码放到webpack环境下了，地址：https://github.com/cag2050/react_redux_demo161019 ，需要的同学，可以看下。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="October 19, 2016  7:15 PM">2016年10月19日 19:15</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-366678">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-text" title="引用山水一程的这条留言" onclick="return CommentQuote(&#39;comment-quote-366678&#39;,&#39;山水一程&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-366686" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">chris</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-366686">
+            <p>请问store.subscribe和mapStateToProps有什么关系吗？</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="October 20, 2016 12:01 AM">2016年10月20日 00:01</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-366686">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-text" title="引用chris的这条留言" onclick="return CommentQuote(&#39;comment-quote-366686&#39;,&#39;chris&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-366743" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://暂无" href="http://xn--rgvyn/" target="_blank" rel="nofollow">刘俊杰</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-366743">
+            <p>阮一峰老师每篇关于react及其技术栈的文章都拯救了我。。！！！！！</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="October 20, 2016  2:03 PM">2016年10月20日 14:03</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-366743">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-text" title="引用刘俊杰的这条留言" onclick="return CommentQuote(&#39;comment-quote-366743&#39;,&#39;刘俊杰&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-367028" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://www.lemonleo.com" href="http://www.lemonleo.com/" target="_blank" rel="nofollow">lemonleo</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-367028">
+            <p>阮老师好~  想请教个问题： 当组件第一次渲染的时候  并没有看见哪里触发了dispatch，那是怎么更新的UI呢？  是react默认第一次会自动触发dispatch吗？</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="October 24, 2016  9:14 PM">2016年10月24日 21:14</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-367028">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-text" title="引用lemonleo的这条留言" onclick="return CommentQuote(&#39;comment-quote-367028&#39;,&#39;lemonleo&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-367157" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="https://github.com/BuptStEve" href="https://github.com/BuptStEve" target="_blank" rel="nofollow">steve young</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-367157">
+            <blockquote>
+<pre>引用chris的发言：</pre>
+
+<p>请问store.subscribe和mapStateToProps有什么关系吗？</p>
+
+</blockquote>
+
+<p>是在高阶组件（connect 函数返回的组件）里的 componentDidMount 订阅 store 更新，和 componentWillUnmount 取消订阅。（还有声明 contextTypes...）</p>
+
+<p>安利下我的学习笔记...～=￣ω￣=～</p>
+
+<p><a href="http://buptsteve.github.io/blog/2016/10/25/7.react-and-redux-learning-note-basics/" rel="nofollow">http://buptsteve.github.io/blog/2016/10/25/7.react-and-redux-learning-note-basics/</a></p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="October 26, 2016 11:09 PM">2016年10月26日 23:09</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-367157">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-text" title="引用steve young的这条留言" onclick="return CommentQuote(&#39;comment-quote-367157&#39;,&#39;steve young&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-367370" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">test</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-367370">
+            <p> <br>
+ AddTodo<br>
+像这种需要将input的内容dispatch出去的要如何划分成ui组件和容器组件呢？</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="October 30, 2016 12:38 PM">2016年10月30日 12:38</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-367370">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-text" title="引用test的这条留言" onclick="return CommentQuote(&#39;comment-quote-367370&#39;,&#39;test&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-367955" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">chris</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-367955">
+            <blockquote>
+<pre>引用steve young的发言：</pre>
+
+<p></p>
+
+<p>是在高阶组件（connect 函数返回的组件）里的 componentDidMount 订阅 store 更新，和 componentWillUnmount 取消订阅。（还有声明 contextTypes...）</p>
+
+<p>安利下我的学习笔记...～=￣ω￣=～</p>
+
+<p><a href="http://buptsteve.github.io/blog/2016/10/25/7.react-and-redux-learning-note-basics/" rel="nofollow">http://buptsteve.github.io/blog/2016/10/25/7.react-and-redux-learning-note-basics/</a></p>
+
+</blockquote>
+
+<p>感谢，关于官网的real-world示例，有一些问题，不知道可否请教下~</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="November  8, 2016  1:27 AM">2016年11月 8日 01:27</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-367955">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-text" title="引用chris的这条留言" onclick="return CommentQuote(&#39;comment-quote-367955&#39;,&#39;chris&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-368066" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">Grubby</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-368066">
+            <p>const mapDispatchToProps = {<br>
+  onClick: (filter) =&gt; {<br>
+    type: 'SET_VISIBILITY_FILTER',<br>
+    filter: filter<br>
+  };<br>
+}</p>
+
+<p>这一句的话，箭头函数返回一个对象对象不用（）包起来不会报错吗？</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="November  9, 2016  3:03 PM">2016年11月 9日 15:03</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-368066">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-text" title="引用Grubby的这条留言" onclick="return CommentQuote(&#39;comment-quote-368066&#39;,&#39;Grubby&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-368241" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">朱砂变</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-368241">
+            <p>mapStateToProps会订阅 Store，每当state更新的时候，就会自动执行，重新计算 UI 组件的参数，从而触发 UI 组件的重新渲染。</p>
+
+<p>阮老师，在react-redux v4.4.5版本的connect函数中，并没有找到mapStateToProps订阅Store的行为，请问您上面说的那句话该如何理解？</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="November 12, 2016  4:48 PM">2016年11月12日 16:48</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-368241">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-text" title="引用朱砂变的这条留言" onclick="return CommentQuote(&#39;comment-quote-368241&#39;,&#39;朱砂变&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-368805" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="https://github.com/zhongjie-chen" href="https://github.com/zhongjie-chen" target="_blank" rel="nofollow">czj</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-368805">
+            <p>比如一个简单的状态 现实隐藏某个组件 类似这种状态也要放到给redux管理吗 这个应该属于ui组件 具体在项目中应该如何划分呢？</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="November 20, 2016  8:27 PM">2016年11月20日 20:27</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-368805">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-text" title="引用czj的这条留言" onclick="return CommentQuote(&#39;comment-quote-368805&#39;,&#39;czj&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-370687" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://luckykun.com" href="http://luckykun.com/" target="_blank" rel="nofollow">jarson</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-370687">
+            <p>阮老师：mapStateToProps使用ownProps作为参数后，如果容器组件的参数发生变化，也会引发 UI 组件重新渲染。</p>
+
+<p>var num = 0;<br>
+ReactDom.render((<br>
+    &lt;Provider store={store}&gt;<br>
+        &lt;MyCounter num={num}/&gt;<br>
+    &lt;/Provider&gt;<br>
+), document.getElementById('app'));</p>
+
+<p>setTimeout(function() {<br>
+    num =1;<br>
+}, 1000)</p>
+
+<p><br>
+我这样测，发现，页面并没有渲染呀。希望老师抽空能解答一下，不胜感激！</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="December 20, 2016 11:41 AM">2016年12月20日 11:41</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-370687">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-text" title="引用jarson的这条留言" onclick="return CommentQuote(&#39;comment-quote-370687&#39;,&#39;jarson&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-371188" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">风一样的男人</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-371188">
+            <p>redux大法看的好吃力</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="December 28, 2016  1:59 AM">2016年12月28日 01:59</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-371188">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-text" title="引用风一样的男人的这条留言" onclick="return CommentQuote(&#39;comment-quote-371188&#39;,&#39;风一样的男人&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-371472" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">Peter</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-371472">
+            <p>乏味，且不明所以。感觉作者自己也不懂</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="January  2, 2017 10:58 PM">2017年1月 2日 22:58</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-371472">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-text" title="引用Peter的这条留言" onclick="return CommentQuote(&#39;comment-quote-371472&#39;,&#39;Peter&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-371703" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">Andy</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-371703">
+            <p>感谢阮老师的付出，阮老师的博文总是清晰易懂。</p>
+
+<p>阮老师为什么不在文章末尾放个支付宝或者微信的二维码呢？我想给阮老师买杯咖啡☕️ ~ 相信很多人也会有这想法的，毕竟我们从阮老师这里学到了很多~</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="January  7, 2017  4:12 PM">2017年1月 7日 16:12</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-371703">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-text" title="引用Andy的这条留言" onclick="return CommentQuote(&#39;comment-quote-371703&#39;,&#39;Andy&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-371988" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">qinicy</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-371988">
+            <p>最近对React-Native大感兴趣，大概地撸了一遍阮老师的博客，虽然不是前端出身，但理解起来不难，好文章。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="January 13, 2017  4:33 PM">2017年1月13日 16:33</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-371988">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-text" title="引用qinicy的这条留言" onclick="return CommentQuote(&#39;comment-quote-371988&#39;,&#39;qinicy&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-372018" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">高峰</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-372018">
+            <p>第三章说了异步操作，可是你 react-redux 里面没有说，怎么异步操作啊。是参照第二章吗？我现在使用react-redux 请教，怎么选择异步fetch 返回数据啊。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="January 16, 2017 12:05 PM">2017年1月16日 12:05</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-372018">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-text" title="引用高峰的这条留言" onclick="return CommentQuote(&#39;comment-quote-372018&#39;,&#39;高峰&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-372130" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">lilieming</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-372130">
+            <p>如果你省略这个 mapDispatchToProps 参数，默认情况下，dispatch 会注入到你的组件props 中。</p>
+
+<p><br>
+</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="January 19, 2017  9:10 PM">2017年1月19日 21:10</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-372130">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-text" title="引用lilieming的这条留言" onclick="return CommentQuote(&#39;comment-quote-372130&#39;,&#39;lilieming&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-372631" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">nicemayi</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-372631">
+            <p>请问阮老师， Counter例子中的createStore代码：</p>
+
+<p>const store = createStore(<br>
+  todoApp,<br>
+  persistedState<br>
+);</p>
+
+<p>是不是有问题？ createStore接受的第一个参数应该是reducer（本例中是counter）， 而不是UI组件。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="February 10, 2017  3:46 AM">2017年2月10日 03:46</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-372631">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-text" title="引用nicemayi的这条留言" onclick="return CommentQuote(&#39;comment-quote-372631&#39;,&#39;nicemayi&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-373123" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">张凯</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-373123">
+            <p>总觉得代码部分用粉红有点突兀，影响阅读，颜色是否可以弱化点</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="February 18, 2017 11:50 PM">2017年2月18日 23:50</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-373123">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-text" title="引用张凯的这条留言" onclick="return CommentQuote(&#39;comment-quote-373123&#39;,&#39;张凯&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-373153" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://istillhaveboobs.com" href="http://istillhaveboobs.com/" target="_blank" rel="nofollow">LeoEatle</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-373153">
+            <blockquote>
+<pre>引用nicemayi的发言：</pre>
+
+<p>请问阮老师， Counter例子中的createStore代码：</p>
+
+<p>const store = createStore(<br>
+todoApp,<br>
+persistedState<br>
+);</p>
+
+<p>是不是有问题？ createStore接受的第一个参数应该是reducer（本例中是counter）， 而不是UI组件。</p>
+
+</blockquote>
+
+<p>这里的createStore确实应该是传参数名错了</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="February 20, 2017  2:12 PM">2017年2月20日 14:12</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-373153">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-text" title="引用LeoEatle的这条留言" onclick="return CommentQuote(&#39;comment-quote-373153&#39;,&#39;LeoEatle&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-373300" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">张铮</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-373300">
+            <p>虽然没太看懂，打算再看一遍 ，谢谢阮老师的良心教程</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="February 22, 2017 11:09 PM">2017年2月22日 23:09</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-373300">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-text" title="引用张铮的这条留言" onclick="return CommentQuote(&#39;comment-quote-373300&#39;,&#39;张铮&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-373687" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">sophie</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-373687">
+            <p>const store = createStore(<br>
+todoApp,<br>
+persistedState<br>
+);</p>
+
+<p>这里的确不是Counter的代码，源代码大家可以看阮老师的源代码，应该是这样的：<br>
+// Store<br>
+const store = createStore(counter);</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="March  1, 2017  3:18 PM">2017年3月 1日 15:18</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-373687">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-text" title="引用sophie的这条留言" onclick="return CommentQuote(&#39;comment-quote-373687&#39;,&#39;sophie&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-373856" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">黎龙</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-373856">
+            <p>收益匪浅啊，感谢阮老师。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="March  3, 2017  5:50 PM">2017年3月 3日 17:50</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-373856">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-text" title="引用黎龙的这条留言" onclick="return CommentQuote(&#39;comment-quote-373856&#39;,&#39;黎龙&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-374720" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">sakop</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-374720">
+            <p>谈一下我阅读了阮老师三篇文章后的理解，很有可能是有偏差的，不足请指出，谢谢！</p>
+
+<p><br>
+阮老师上文中关于Provider的解释，缺少了对context的介绍，我补充一下吧：</p>
+
+<p>为了让子组件能够获得context属性，React强制要求根组件（此处为Provider组件）提供getChildContext实例方法，以及类属性childContextTypes。而子组件想要获取context，也必须定义类级别的Counter. contextTypes属性。定义是双向的，如果缺少了任何一块，子组件都获取不到context属性。</p>
+
+<p>我认为父组件的那块定义是在Provider的代码中实现的，而子组件的那部分是在connect方法中实现的。</p>
+
+<p>因此connect方法为Counter组件添加的context属性实质上是由Provider传下来的，这样在mapStatesToProps方法里的state参数实质上就是this.context.store.getState()方法获得的。</p>
+
+<p>然后看一下页面首次加载以及之后有互动行为之后整个逻辑的流程：</p>
+
+<p>当第一次渲染页面时，store里的初始state是怎么获得的呢？<br>
+代码一开始一般就是 <br>
+createStore(reducers,defaultParams)的调用，其中reducers可以使一个reducer，也可是redux.combineReducers过的reducer的集合。</p>
+
+<p>createStore方法会对每个reducer去dispatch一个action.type=@@redux/INIT类型的action，而这个action一般在reducer的代码里不会被handle，直接掉入default块，于是就返回了state的初始状态。</p>
+
+<p>然后一般就会ReactDom.render(将应用渲染出来，每个子组件的容器组件通过传入this.context.store.getState()方法获得的state对象, 以及容器组件上自带的ownProps给mapStatesToProperties方法，来构建props，最后将props应用到子组件的UI组件上。</p>
+
+<p>当在子组件上发生交互行为，如click时，mapDispatchToProps会定义click触发时应该dispatch哪一个action的映射。<br>
+然后store接收到这个action后会进行reduce，得到最新的state，然后再调用所有的子组件的mapStatesToProps方法生成新的props。<br>
+最后对Provider进行重新渲染，当然上面的事件计算出来的很多state可能都不会发生变化，所以diff算法不会去修改这些没有发生变化的组件，因此性能也比较好。<br>
+</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="March 14, 2017  4:02 PM">2017年3月14日 16:02</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-374720">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-text" title="引用sakop的这条留言" onclick="return CommentQuote(&#39;comment-quote-374720&#39;,&#39;sakop&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-374725" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">捕捉流星的孩子</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-374725">
+            <p>疑问开头的UI和container的划分：<br>
+（UI只负责呈现，不包含业务逻辑；container只负责业务逻辑不包含UI呈现）</p>
+
+<p>对于一个页面， 真的能划分只有UI和container两种组件吗？<br>
+假设一个页面对应一个container，我的情况是总会出现在页面级container下混合UI+其他container。。<br>
+求解。。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="March 14, 2017  6:11 PM">2017年3月14日 18:11</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-374725">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-text" title="引用捕捉流星的孩子的这条留言" onclick="return CommentQuote(&#39;comment-quote-374725&#39;,&#39;捕捉流星的孩子&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-374886" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">阿范</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-374886">
+            <p>请教大神或各位个问题，<br>
+在ui组件中，如果行为中需要传参该怎么做？<br>
+比如目前是 ;<br>
+但比如有多个button,需要sendClickAction时传递入参id，怎么做？</p>
+
+<p><br>
+</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="March 16, 2017 10:40 AM">2017年3月16日 10:40</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-374886">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-text" title="引用阿范的这条留言" onclick="return CommentQuote(&#39;comment-quote-374886&#39;,&#39;阿范&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-375289" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">前端小白白</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-375289">
+            <p>三篇看下来有点累，什么时候歇好了再来看，一峰老师写得好！</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="March 22, 2017  9:08 PM">2017年3月22日 21:08</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-375289">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-text" title="引用前端小白白的这条留言" onclick="return CommentQuote(&#39;comment-quote-375289&#39;,&#39;前端小白白&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-375749" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">皖林</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-375749">
+            <p>五的最后:<br>
+const mapDispatchToProps = {<br>
+  onClick: (filter) =&gt; {<br>
+    type: 'SET_VISIBILITY_FILTER',<br>
+    filter: filter<br>
+  };<br>
+}<br>
+onClick的返回值应该加上()。({type: xxx})</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="March 31, 2017  5:44 PM">2017年3月31日 17:44</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-375749">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-text" title="引用皖林的这条留言" onclick="return CommentQuote(&#39;comment-quote-375749&#39;,&#39;皖林&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-376416" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">finalljx</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-376416">
+            <p>建议阮一峰老师增加子组件如何通过context 获取到store的样例，对新手有较大帮助，我是看了官网文档之后才知道方法.<br>
+<a href="https://facebook.github.io/react/docs/context.html" rel="nofollow">https://facebook.github.io/react/docs/context.html</a></p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="April 18, 2017  3:31 PM">2017年4月18日 15:31</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-376416">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-text" title="引用finalljx的这条留言" onclick="return CommentQuote(&#39;comment-quote-376416&#39;,&#39;finalljx&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-376493" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">Woody</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-376493">
+            <blockquote>
+<pre>引用finalljx的发言：</pre>
+
+<p>建议阮一峰老师增加子组件如何通过context 获取到store的样例，对新手有较大帮助，我是看了官网文档之后才知道方法.<br>
+<a href="https://facebook.github.io/react/docs/context.html" rel="nofollow">https://facebook.github.io/react/docs/context.html</a></p>
+
+</blockquote>
+
+<p>貌似官方不建议使用context。<br>
+It is an experimental API and it is likely to break in future releases of React.</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="April 21, 2017  1:11 PM">2017年4月21日 13:11</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-376493">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-text" title="引用Woody的这条留言" onclick="return CommentQuote(&#39;comment-quote-376493&#39;,&#39;Woody&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-377061" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author"><a title="http://123.23.24.344" href="http://123.23.24.344/" target="_blank" rel="nofollow">Ajaxyz</a></span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-377061">
+            <p>阮大神讲的果然通俗易懂，解决了我多年的困惑！感谢老师</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="May 11, 2017  4:29 PM">2017年5月11日 16:29</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-377061">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-text" title="引用Ajaxyz的这条留言" onclick="return CommentQuote(&#39;comment-quote-377061&#39;,&#39;Ajaxyz&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-377075" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">weijie</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-377075">
+            <p>然道就我一个人看不懂嘛....</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="May 12, 2017 10:43 AM">2017年5月12日 10:43</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-377075">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-text" title="引用weijie的这条留言" onclick="return CommentQuote(&#39;comment-quote-377075&#39;,&#39;weijie&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-377237" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">xujun</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-377237">
+            <p>懵逼中。。。。继续第二遍</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="May 17, 2017  4:23 PM">2017年5月17日 16:23</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-377237">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-text" title="引用xujun的这条留言" onclick="return CommentQuote(&#39;comment-quote-377237&#39;,&#39;xujun&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-377721" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">Neil</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-377721">
+            <p>const mapDispatchToProps = {<br>
+  onClick: (filter) =&gt; {<br>
+    type: 'SET_VISIBILITY_FILTER',<br>
+    filter: filter<br>
+  };<br>
+}</p>
+
+<p>这个函数是不是应该写成<br>
+const mapDispatchToProps = {<br>
+  onClick: (filter) =&gt; ({<br>
+    type: 'SET_VISIBILITY_FILTER',<br>
+    filter: filter<br>
+  });<br>
+}</p>
+
+<p>箭头函数直接返回对象的话要加上括号</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="June  6, 2017  5:54 PM">2017年6月 6日 17:54</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-377721">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-text" title="引用Neil的这条留言" onclick="return CommentQuote(&#39;comment-quote-377721&#39;,&#39;Neil&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-377896" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">a</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-377896">
+            <p>    const { store } = this.context;</p>
+
+<p>然而并不行</p>
+
+<p>求ruan老师贴代码的时候保证可执行，免得误导人！</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="June 12, 2017  4:24 PM">2017年6月12日 16:24</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-377896">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-text" title="引用a的这条留言" onclick="return CommentQuote(&#39;comment-quote-377896&#39;,&#39;a&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-378243" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">cc</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-378243">
+            <p>最近在学react，看了很多，就这篇最有效，讲的太到位了。尤其是redux底层的原理，简直不能更赞。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="June 27, 2017 11:17 PM">2017年6月27日 23:17</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-378243">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-text" title="引用cc的这条留言" onclick="return CommentQuote(&#39;comment-quote-378243&#39;,&#39;cc&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-378264" class="comment">
+    <div id="comment-last" class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">花自飘凌水自流</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-378264">
+            <p>好屌啊!看着阮大神的代码,长大的!</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="June 28, 2017  1:28 PM">2017年6月28日 13:28</abbr>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-378264">#</a>
+ | <a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html#comment-text" title="引用花自飘凌水自流的这条留言" onclick="return CommentQuote(&#39;comment-quote-378264&#39;,&#39;花自飘凌水自流&#39;);">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    </div>
+        
+    
+
+
+    
+    
+    <div class="comments-open" id="comments-open">
+        <h2 class="comments-open-header">我要发表看法</h2>
+        <div class="comments-open-content">
+
+        
+            <div id="comment-greeting"></div>
+
+            <form method="post" action="http://www.ruanyifeng.com/cgi-bin/mtos/mt-comments.cgi" name="comments_form" id="comments-form" onsubmit="return pleaseWait();">
+                <input type="hidden" name="static" value="1">
+                <input type="hidden" name="entry_id" value="1909">
+                <input type="hidden" name="__lang" value="en">
+                <input type="hidden" name="parent_id" value="" id="comment-parent-id">
+                <input type="hidden" name="armor" value="1">
+                <input type="hidden" name="preview" value="">
+                <input type="hidden" name="sid" value="">
+                <div id="comments-open-data">
+            <div id="comments-open-text">
+                    <p><label for="comment-text">您的留言
+                    （HTML标签部分可用）</label></p>
+                    <p><textarea id="comment-text" name="text" rows="10" cols="50"></textarea></p>
+                </div>
+                    <div id="comment-form-name">
+                        <p><label for="comment-author">您的大名：</label></p>
+                        <p><input id="comment-author" name="author" size="30" value="">  <span class="hint"> «-必填</span></p>
+                    </div>
+                    <div id="comment-form-email">
+                        <p><label for="comment-email">电子邮件：</label></p>
+                        <p><input id="comment-email" name="email" size="30" value="">  <span class="hint"> «-必填，不公开</span></p>
+                    </div>
+                    <div id="comment-form-url">
+                        <p><label for="comment-url">个人网址：</label></p>
+                        <p><input id="comment-url" name="url" size="30" value="">  <span class="hint"> «-我信任你，不会填写广告链接</span></p>
+                    </div>
+                    <div id="comment-form-remember-me">
+                        <p>
+                        <label for="comment-bake-cookie">记住个人信息？</label><input type="checkbox" id="comment-bake-cookie" name="bakecookie" onclick="!this.checked?forgetMe(document.comments_form):rememberMe(document.comments_form)" value="1" accesskey="r"></p>
+                    </div>
+                </div>
+                    <div id="comment-form-reply" style="display:none">
+                    <input type="checkbox" id="comment-reply" name="comment_reply" value="" onclick="mtSetCommentParentID()">
+                    <label for="comment-reply" id="comment-reply-label"></label>
+                </div>
+                <div id="comments-open-captcha"></div>
+                <div id="comments-open-footer">
+<div id="wait" style="display:none;">
+<p><strong>正在发表您的评论，请稍候</strong></p>
+<p>
+<input type="text" name="percent" size="3" style="font-family:Arial; color:black;text-align:center; border-width:medium; border-style:none;">           
+<input type="text" name="chart" size="46" style="font-family:Arial;font-weight:bolder; color:black; padding:0px; border-style:none;">
+</p>
+</div>
+
+                    <p><input type="submit" accesskey="s" name="post" id="comment-submit" value="发表">  <span class="hint"> «- 点击按钮</span></p>
+                </div>
+            </form>
+
+
+        </div>
+    </div>
+
+    
+
+
+</div>
+
+
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        <script type="text/javascript" src="./Redux 入门教程（三）：React-Redux 的用法 - 阮一峰的网络日志_files/prism.js.下载"></script>
+
+            <div id="footer">
+    <div id="footer-inner">
+        <div id="footer-content">
+<p><a href="http://www.ruanyifeng.com/contact.html">联系方式</a> | 2003 - 2017
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46829782-1', 'ruanyifeng.com');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+<!-- Site Meter -->
+<a href="http://sm3.sitemeter.com/stats.asp?site=sm3bomoocom" target="_top">
+<img src="./Redux 入门教程（三）：React-Redux 的用法 - 阮一峰的网络日志_files/meter.asp.下载" alt="Site Meter" border="0"></a>
+
+<!-- Copyright (c)2009 Site Meter -->
+
+</p>
+
+        </div>
+    </div>
+</div>
+
+
+<div id="share_button_proto" style="display:none;">
+<a class="bshareDiv" href="http://www.bshare.cn/share" style="display: block; text-decoration: none; padding: 0px; margin: 0px; font-size: 12px; height: 21px; width: 51px;"><div class="bsPromo bsPromo1"></div><div class="buzzButton bsStyle10" style="height:21px;color:#333;;background:transparent url(http://static.bshare.cn/frame/images/button_custom10-zh-Orange.gif) no-repeat;text-align:center;width:51px;"></div><div style="clear:both;"></div></a>
+
+
+
+<script type="text/javascript" charset="utf-8" src="./Redux 入门教程（三）：React-Redux 的用法 - 阮一峰的网络日志_files/buttonLite.js.下载"></script>
+<script type="text/javascript" charset="utf-8">
+bShare.addEntry({
+    title: document.getElementById("page-title").innerHTML,
+url:window.location.href
+});
+</script>
+</div>
+
+<script>
+document.getElementById("share_button").innerHTML=document.getElementById("share_button_proto").innerHTML;
+</script>
+
+
+
+
+        </div>
+    </div>
+
+<div id="bsBox" class="bsBox"><div class="bsClose">X</div><div class="bsTop"><div class="bsReturn">选择其他平台 &gt;&gt;</div><span style="margin-left:15px;">分享到</span><span class="bsPlatName"></span></div><div class="bsFrameDiv"><iframe class="bShareFrame" name="bsFrame655" frameborder="0" scrolling="no" allowtransparency="true" src="./Redux 入门教程（三）：React-Redux 的用法 - 阮一峰的网络日志_files/saved_resource.html"></iframe></div><div id="bsMorePanel" style="display: none;"></div></div><div id="ads"></div><div id="bsPanelHolder"><div id="bsPanel" style="display:none;"><div class="bsTitle"><a style="float:left;height:20px;line-height:20px;font-weight:bold;" class="bsSiteLink" target="_blank" href="http://www.bshare.cn/intro">分享到...</a><a class="bsSiteLink" style="cursor:pointer;float:right;height:20px;line-height:20px;font-weight:bold;" onclick="document.getElementById(&#39;bsPanel&#39;).style.display=&#39;none&#39;;">X</a><div class="bsClear"></div></div><div class="bsClear"></div><div style="padding-left:8px;background:#fff;*height:218px;"><div style="height:47px;border-bottom:1px #ccc solid;padding:4px 0 4px 16px;margin-right:8px;_padding-left:12px;"><div class="bsRlogo" onmouseover="javascript:this.className=&#39;bsRlogoSel&#39;" onmouseout="javascript:this.className=&#39;bsRlogo&#39;"><a href="javascript:;" onclick="javascript:bShare.share(event,&#39;facebook&#39;);return false;" style="text-decoration:none;line-height:120%;"><div style="cursor:pointer;width:24px;height:24px;margin:0 18px 2px;background:url(http://static.bshare.cn/frame/images//logos/m2/facebook.gif) no-repeat;"></div><div style="cursor:pointer;text-align:center;width:60px;height:16px !important;overflow:hidden;color:inherit;white-space:nowrap;line-height:120% !important;">Facebook</div></a></div><div class="bsRlogo" onmouseover="javascript:this.className=&#39;bsRlogoSel&#39;" onmouseout="javascript:this.className=&#39;bsRlogo&#39;"><a href="javascript:;" onclick="javascript:bShare.share(event,&#39;twitter&#39;);return false;" style="text-decoration:none;line-height:120%;"><div style="cursor:pointer;width:24px;height:24px;margin:0 18px 2px;background:url(http://static.bshare.cn/frame/images//logos/m2/twitter.gif) no-repeat;"></div><div style="cursor:pointer;text-align:center;width:60px;height:16px !important;overflow:hidden;color:inherit;white-space:nowrap;line-height:120% !important;">Twitter</div></a></div><div class="bsRlogo" onmouseover="javascript:this.className=&#39;bsRlogoSel&#39;" onmouseout="javascript:this.className=&#39;bsRlogo&#39;"><a href="javascript:;" onclick="javascript:bShare.share(event,&#39;sinaminiblog&#39;);return false;" style="text-decoration:none;line-height:120%;"><div style="cursor:pointer;width:24px;height:24px;margin:0 18px 2px;background:url(http://static.bshare.cn/frame/images//logos/m2/sinaminiblog.gif) no-repeat;"></div><div style="cursor:pointer;text-align:center;width:60px;height:16px !important;overflow:hidden;color:inherit;white-space:nowrap;line-height:120% !important;">新浪微博</div></a></div></div><div class="bsLogoLink"><div class="bsLogo" onmouseover="javascript:this.className=&#39;bsLogoSel&#39;" onmouseout="javascript:this.className=&#39;bsLogo&#39;"><a href="javascript:;" title="微信" onclick="javascript:bShare.share(event,&#39;weixin&#39;);return false;" style="background:url(http://static.bshare.cn/frame/images//logos/s4/weixin.png) no-repeat;">微信</a></div><div class="bsLogo" onmouseover="javascript:this.className=&#39;bsLogoSel&#39;" onmouseout="javascript:this.className=&#39;bsLogo&#39;"><a href="javascript:;" title="腾讯微博" onclick="javascript:bShare.share(event,&#39;qqmb&#39;);return false;" style="background:url(http://static.bshare.cn/frame/images//slogos_sprite8.png) no-repeat 0 -1512px;">腾讯微博</a></div><div class="bsLogo" onmouseover="javascript:this.className=&#39;bsLogoSel&#39;" onmouseout="javascript:this.className=&#39;bsLogo&#39;"><a href="javascript:;" title="豆瓣网" onclick="javascript:bShare.share(event,&#39;douban&#39;);return false;" style="background:url(http://static.bshare.cn/frame/images//slogos_sprite8.png) no-repeat 0 -540px;">豆瓣网</a></div><div class="bsLogo" onmouseover="javascript:this.className=&#39;bsLogoSel&#39;" onmouseout="javascript:this.className=&#39;bsLogo&#39;"><a href="javascript:;" title="饭否" onclick="javascript:bShare.share(event,&#39;fanfou&#39;);return false;" style="background:url(http://static.bshare.cn/frame/images//slogos_sprite8.png) no-repeat 0 -666px;">饭否</a></div><div class="bsLogo" onmouseover="javascript:this.className=&#39;bsLogoSel&#39;" onmouseout="javascript:this.className=&#39;bsLogo&#39;"><a href="javascript:;" title="雪球" onclick="javascript:bShare.share(event,&#39;xueqiu&#39;);return false;" style="background:url(http://static.bshare.cn/frame/images//logos/s4/xueqiu.png) no-repeat;">雪球</a></div><div class="bsLogo" onmouseover="javascript:this.className=&#39;bsLogoSel&#39;" onmouseout="javascript:this.className=&#39;bsLogo&#39;"><a href="javascript:;" title="电子邮件" onclick="javascript:bShare.share(event,&#39;email&#39;);return false;" style="background:url(http://static.bshare.cn/frame/images//slogos_sprite8.png) no-repeat 0 -612px;">电子邮件</a></div></div><div class="bsLogoLink"><div class="bsLogo" onmouseover="javascript:this.className=&#39;bsLogoSel&#39;" onmouseout="javascript:this.className=&#39;bsLogo&#39;"><a href="javascript:;" title="Google+" onclick="javascript:bShare.share(event,&#39;gplus&#39;);return false;" style="background:url(http://static.bshare.cn/frame/images//logos/s4/gplus.png) no-repeat;">Google+</a></div><div class="bsLogo" onmouseover="javascript:this.className=&#39;bsLogoSel&#39;" onmouseout="javascript:this.className=&#39;bsLogo&#39;"><a href="javascript:;" title="QQ空间" onclick="javascript:bShare.share(event,&#39;qzone&#39;);return false;" style="background:url(http://static.bshare.cn/frame/images//slogos_sprite8.png) no-repeat 0 -1566px;">QQ空间</a></div><div class="bsLogo" onmouseover="javascript:this.className=&#39;bsLogoSel&#39;" onmouseout="javascript:this.className=&#39;bsLogo&#39;"><a href="javascript:;" title="QQ好友" onclick="javascript:bShare.share(event,&#39;qqim&#39;);return false;" style="background:url(http://static.bshare.cn/frame/images//logos/s4/qqim.png) no-repeat;">QQ好友</a></div><div class="bsLogo" onmouseover="javascript:this.className=&#39;bsLogoSel&#39;" onmouseout="javascript:this.className=&#39;bsLogo&#39;"><a href="javascript:;" title="Instapaper" onclick="javascript:bShare.share(event,&#39;instapaper&#39;);return false;" style="background:url(http://static.bshare.cn/frame/images//slogos_sprite8.png) no-repeat 0 -954px;">Instapaper</a></div><div class="bsLogo" onmouseover="javascript:this.className=&#39;bsLogoSel&#39;" onmouseout="javascript:this.className=&#39;bsLogo&#39;"><a href="javascript:;" title="美味书签" onclick="javascript:bShare.share(event,&#39;delicious&#39;);return false;" style="background:url(http://static.bshare.cn/frame/images//slogos_sprite8.png) no-repeat 0 -432px;">美味书签</a></div></div><div class="bsClear"></div></div><div style="height:20px;line-height:20px;padding:0 8px;border-top:1px solid #e8e8e8;color:#666;background:#f2f2f2;"><div class="buzzButton" style="float:left;">更多平台... <font style="font-weight:normal;">(133)</font></div><div id="bsPower" style="float:right;text-align:right;overflow:hidden;height:100%;"><a class="bsSiteLink" style="font-size:10px;vertical-align:text-bottom;line-height:24px;cursor:pointer;" href="http://www.bshare.cn/" target="_blank"><span style="font-size:10px;vertical-align:text-bottom;"><span style="color:#f60;">b</span>Share</span></a></div></div></div></div></body></html>
