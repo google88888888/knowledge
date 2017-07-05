@@ -1,0 +1,2008 @@
+<!DOCTYPE html>
+<!-- saved from url=(0039)http://www.expressjs.com.cn/3x/api.html -->
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>Express 3.x - API 中文手册</title>
+      
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      
+      <link rel="stylesheet" href="./16Express 3.x - API 中文手册_files/style.css">
+      <link rel="stylesheet" href="./16Express 3.x - API 中文手册_files/dropit.css">
+      <link rel="stylesheet" href="./16Express 3.x - API 中文手册_files/prism.css">
+      <link href="./16Express 3.x - API 中文手册_files/font-awesome.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="./16Express 3.x - API 中文手册_files/css">
+  
+      <script src="./16Express 3.x - API 中文手册_files/hm.js.下载"></script><script src="./16Express 3.x - API 中文手册_files/hm.js(1).下载"></script><script data-cfasync="false" src="./16Express 3.x - API 中文手册_files/jquery.min.js.下载"></script>
+      <script data-cfasync="false" src="./16Express 3.x - API 中文手册_files/app.js.下载"></script>
+      <script data-cfasync="false" src="./16Express 3.x - API 中文手册_files/retina.js.下载"></script>
+      <script data-cfasync="false" src="./16Express 3.x - API 中文手册_files/dropit.js.下载"></script>
+      <script data-cfasync="false" src="./16Express 3.x - API 中文手册_files/prism.js.下载"></script>
+      <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?1e9527683dc35951cb595bc55ece8e84";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();
+      </script></head>
+
+  <body rlt="1" class="">
+
+    <section class="content">
+
+      <header>
+        <div id="mobile-menu">
+            <div id="nav-button" class="fa fa-bars fa-2x button"></div>
+        </div>
+        <section id="logo"><a href="http://www.expressjs.com.cn/" class="express">Express</a>
+        </section>
+        <div id="navbar">
+            <ul id="navmenu">
+                <li><a href="http://www.expressjs.com.cn/" id="home-menu">首页</a></li>
+                <li>
+                    <ul id="getting-started-menu" class="menu dropit">
+                        <li class="dropit-trigger"><a href="http://www.expressjs.com.cn/starter/installing.html">入门</a>
+                            <ul class="dropit-submenu" style="display: none;">
+                                <li>
+                                  <a href="http://www.expressjs.com.cn/starter/installing.html">
+                                    安装
+                                  </a>
+                                </li>
+                                <li>
+                                  <a href="http://www.expressjs.com.cn/starter/hello-world.html">
+                                    Hello world
+                                  </a>
+                                </li>
+                                <li>
+                                <a href="http://www.expressjs.com.cn/starter/generator.html">
+                                  Express 应用生成器
+                                </a>
+                                </li>
+                                <li>
+                                  <a href="http://www.expressjs.com.cn/starter/basic-routing.html">
+                                    基本路由
+                                  </a>
+                                </li>
+                                <li>
+                                  <a href="http://www.expressjs.com.cn/starter/static-files.html">
+                                    静态文件
+                                  </a>
+                                </li>
+                                <li>
+                                  <a href="http://www.expressjs.com.cn/starter/faq.html">
+                                    常见问题
+                                  </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <ul id="guide-menu" class="menu dropit">
+                        <li class="dropit-trigger"><a href="http://www.expressjs.com.cn/guide/routing.html">使用指南</a>
+                            <ul class="dropit-submenu" style="display: none;">
+                                <li><a href="http://www.expressjs.com.cn/guide/routing.html">路由</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/guide/using-middleware.html">中间件</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/guide/using-template-engines.html">模板引擎</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/guide/error-handling.html">错误处理</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/guide/debugging.html">调试</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/guide/behind-proxies.html">为 Express 设置代理</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/guide/migrating-4.html">升级到 Express 4</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/guide/database-integration.html">数据库集成</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <ul id="application-menu" class="menu dropit">
+                        <li class="dropit-trigger"><a href="http://www.expressjs.com.cn/4x/api.html">API 中文手册</a>
+                            <ul class="dropit-submenu" style="display: none;">
+                                <li><a href="http://www.expressjs.com.cn/4x/api.html">4.x 版本</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/3x/api.html">3.x 版本</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <ul id="advanced-topics-menu" class="menu dropit">
+                        <li class="dropit-trigger"><a href="http://www.expressjs.com.cn/advanced/developing-template-engines.html">进阶话题</a>
+                            <ul class="dropit-submenu" style="display: none;">
+                                <li><a href="http://www.expressjs.com.cn/advanced/developing-template-engines.html">模板引擎</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/advanced/pm.html">进程管理器</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/advanced/security-updates.html">安全更新</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <ul id="resources-menu" class="menu dropit">
+                        <li class="dropit-trigger"><a href="http://www.expressjs.com.cn/resources/glossary.html">有用的资源</a>
+                            <ul class="dropit-submenu" style="display: none;">
+                                <li><a href="http://www.expressjs.com.cn/resources/glossary.html">术语表</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/resources/middleware.html">中间件</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/resources/community.html">社区</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/resources/books-blogs.html">书籍与博客</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/resources/applications.html">实例展示</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+      </header>    
+      <ul id="menu" class="active" style="height: 690px;">
+          <li><a href="http://www.expressjs.com.cn/3x/api.html#express" class="active">express()</a></li>
+          <li id="app-api"> <a href="http://www.expressjs.com.cn/3x/api.html#application" class="">Application</a>
+              <ul id="app-menu" class="">
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#app.set" class="">app.set()</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#app.get" class="">app.get()</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#app.enable" class="">app.enable()</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#app.disable" class="">app.disable()</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#app.enabled" class="">app.enabled()</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#app.disabled" class="">app.disabled()</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#app.configure" class="">app.configure()</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#app.use">app.use()</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#app-settings">application settings</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#app.engine">app.engine()</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#app.param">app.param()</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#app.VERB">application routing</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#app.all">app.all()</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#app.locals">app.locals</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#app.render">app.render()</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#app.routes">app.routes</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#app.listen">app.listen()</a>
+                  </li>
+              </ul>
+          </li>
+          <li id="req-api"> <a href="http://www.expressjs.com.cn/3x/api.html#request">Request</a>
+              <ul id="req-menu">
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#req.params">req.params</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#req.query">req.query</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#req.body">req.body</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#req.files">req.files</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#req.param">req.param()</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#req.route">req.route</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#req.cookies">req.cookies</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#req.signedCookies">req.signedCookies</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#req.get">req.get()</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#req.accepts">req.accepts()</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#req.accepted">req.accepted</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#req.is">req.is()</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#req.ip">req.ip</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#req.ips">req.ips</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#req.path">req.path</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#req.host">req.host</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#req.fresh">req.fresh</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#req.stale">req.stale</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#req.xhr">req.xhr</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#req.protocol">req.protocol</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#req.secure">req.secure</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#req.subdomains">req.subdomains</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#req.originalUrl">req.originalUrl</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#req.acceptedLanguages">req.acceptedLanguages</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#req.acceptedCharsets">req.acceptedCharsets</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#req.acceptsCharset">req.acceptsCharset()</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#req.acceptsLanguage">req.acceptsLanguage()</a>
+                  </li>
+              </ul>
+          </li>
+          <li id="res-api"> <a href="http://www.expressjs.com.cn/3x/api.html#response">Response</a>
+              <ul id="res-menu">
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#res.status">res.status()</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#res.set">res.set()</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#res.get">res.get()</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#res.cookie">res.cookie()</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#res.clearCookie">res.clearCookie()</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#res.redirect">res.redirect()</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#res.location">res.location()</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#res.charset">res.charset</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#res.send">res.send()</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#res.json">res.json()</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#res.jsonp">res.jsonp()</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#res.type">res.type()</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#res.format">res.format()</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#res.attachment">res.attachment()</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#res.sendfile">res.sendfile()</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#res.download">res.download()</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#res.links">res.links()</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#res.locals">res.locals</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#res.render">res.render()</a>
+                  </li>
+              </ul>
+          </li>
+          <li id="middleware-api"><a href="http://www.expressjs.com.cn/3x/api.html#middleware">Middleware</a>
+              <ul id="middleware-menu">
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#basicAuth">basicAuth()</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#bodyParser">bodyParser()</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#compress">compress()</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#cookieParser">cookieParser()</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#cookieSession">cookieSession()</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#csrf">csrf()</a>
+                  </li>
+                  <li><a href="http://www.expressjs.com.cn/3x/api.html#directory">directory()</a>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+
+      <div id="overlay"></div>
+
+      <div id="api-doc">
+
+  <div class="doc-box doc-warn">
+    <p><strong>对 Express 3.x 的技术支持即将结束</strong></p>
+
+    <p>这一版本系列将来仍会继续提供安全补丁和 bug 更新，直至 2015 年 7 月。强烈建议您升级到 Express 4.x 。</p>
+  </div>
+
+  <h1>Express 3.x API 中文手册</h1>
+
+  <p><a id="express" class="h2"></a></p>
+  <h2>express()</h2>
+
+  <p>Creates an Express application. The <code>express()</code> function is a top-level function exported by the <em>express</em> module.</p>
+
+  <pre class="  language-javascript"><code class="  language-javascript"><span class="token keyword">var</span> express <span class="token operator">=</span> <span class="token function">require<span class="token punctuation">(</span></span><span class="token string">'express'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> app <span class="token operator">=</span> <span class="token function">express<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+app<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>req<span class="token punctuation">,</span> res<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  res<span class="token punctuation">.</span><span class="token function">send<span class="token punctuation">(</span></span><span class="token string">'hello world'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+app<span class="token punctuation">.</span><span class="token function">listen<span class="token punctuation">(</span></span><span class="token number">3000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+  <p><a id="application" class="h2"></a></p>
+  <h2>Application</h2>
+
+  <section>
+    <h3 id="app.set">app.set(name, value)</h3>
+
+    <p>将设置项 <code>name</code> 的值设为 <code>value</code> 。</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">app<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span><span class="token string">'title'</span><span class="token punctuation">,</span> <span class="token string">'My Site'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+app<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'title'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// =&gt; "My Site"
+</span></code></pre>
+
+  </section>
+
+  <section>
+    <h3 id="app.get">app.get(name)</h3>
+
+    <p>获取设置项 <code>name</code> 的值。</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">app<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'title'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// =&gt; undefined
+</span>
+app<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span><span class="token string">'title'</span><span class="token punctuation">,</span> <span class="token string">'My Site'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+app<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'title'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// =&gt; "My Site"
+</span></code></pre>
+
+  </section>
+
+  <section>
+    <h3 id="app.enable">app.enable(name)</h3>
+
+    <p>将设置项 <code>name</code> 的值设为 <code>true</code> 。</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">app<span class="token punctuation">.</span><span class="token function">enable<span class="token punctuation">(</span></span><span class="token string">'trust proxy'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+app<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'trust proxy'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// =&gt; true
+</span></code></pre>
+
+  </section>
+
+  <section>
+    <h3 id="app.disable">app.disable(name)</h3>
+
+    <p>将设置项 <code>name</code> 的值设为 <code>false</code> 。</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">app<span class="token punctuation">.</span><span class="token function">disable<span class="token punctuation">(</span></span><span class="token string">'trust proxy'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+app<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'trust proxy'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// =&gt; false
+</span></code></pre>
+
+  </section>
+
+  <section>
+    <h3 id="app.enabled">app.enabled(name)</h3>
+
+    <p>检查设置项 <code>name</code> 是否已启用。</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">app<span class="token punctuation">.</span><span class="token function">enabled<span class="token punctuation">(</span></span><span class="token string">'trust proxy'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// =&gt; false
+</span>
+app<span class="token punctuation">.</span><span class="token function">enable<span class="token punctuation">(</span></span><span class="token string">'trust proxy'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+app<span class="token punctuation">.</span><span class="token function">enabled<span class="token punctuation">(</span></span><span class="token string">'trust proxy'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// =&gt; true
+</span></code></pre>
+
+  </section>
+
+  <section>
+    <h3 id="app.disabled">app.disabled(name)</h3>
+
+    <p>检查设置项 <code>name</code> 是否已禁用。</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">app<span class="token punctuation">.</span><span class="token function">disabled<span class="token punctuation">(</span></span><span class="token string">'trust proxy'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// =&gt; true
+</span>
+app<span class="token punctuation">.</span><span class="token function">enable<span class="token punctuation">(</span></span><span class="token string">'trust proxy'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+app<span class="token punctuation">.</span><span class="token function">disabled<span class="token punctuation">(</span></span><span class="token string">'trust proxy'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// =&gt; false
+</span></code></pre>
+
+  </section>
+
+  <section>
+    <h3 id="app.configure">app.configure([env], callback)</h3>
+
+    <p>当 <code>env</code> 和 <code>app.get('env')</code> (也就是 <code>process.env.NODE_ENV</code>) 匹配时, 调用 <code>callback</code> 。保留这个方法是出于历史原因，后面列出的 <code>if</code> 语句的代码其实更加高效、直接。使用 <code>app.set</code> 配合其它一些配置方法后,<em>没有</em>必要再使用这个方法。</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript"><span class="token comment" spellcheck="true">// 所有环境
+</span>app<span class="token punctuation">.</span><span class="token function">configure<span class="token punctuation">(</span></span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  app<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span><span class="token string">'title'</span><span class="token punctuation">,</span> <span class="token string">'My Application'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true">// 开发环境
+</span>app<span class="token punctuation">.</span><span class="token function">configure<span class="token punctuation">(</span></span><span class="token string">'development'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  app<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span><span class="token string">'db uri'</span><span class="token punctuation">,</span> <span class="token string">'localhost/dev'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true">// 只用于生产环境
+</span>app<span class="token punctuation">.</span><span class="token function">configure<span class="token punctuation">(</span></span><span class="token string">'production'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  app<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span><span class="token string">'db uri'</span><span class="token punctuation">,</span> <span class="token string">'n.n.n.n/prod'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+
+    <p>更高效且直接的代码如下：</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript"><span class="token comment" spellcheck="true">// 所有环境
+</span>app<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span><span class="token string">'title'</span><span class="token punctuation">,</span> <span class="token string">'My Application'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 只用于开发环境
+</span><span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token string">'development'</span> <span class="token operator">==</span> app<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'env'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  app<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span><span class="token string">'db uri'</span><span class="token punctuation">,</span> <span class="token string">'localhost/dev'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">// 只用于生产环境
+</span><span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token string">'production'</span> <span class="token operator">==</span> app<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'env'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  app<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span><span class="token string">'db uri'</span><span class="token punctuation">,</span> <span class="token string">'n.n.n.n/prod'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+
+  </section>
+
+  <section>
+    <h3 id="app.use">app.use([path], function)</h3>
+
+    <p>使用中间件 <code>function</code>，可选参数 <code>path</code> 默认是 “/”。</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript"><span class="token keyword">var</span> express <span class="token operator">=</span> <span class="token function">require<span class="token punctuation">(</span></span><span class="token string">'express'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> app <span class="token operator">=</span> <span class="token function">express<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 一个简单的 logger
+</span>app<span class="token punctuation">.</span><span class="token function">use<span class="token punctuation">(</span></span><span class="token keyword">function</span><span class="token punctuation">(</span>req<span class="token punctuation">,</span> res<span class="token punctuation">,</span> next<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log<span class="token punctuation">(</span></span><span class="token string">'%s %s'</span><span class="token punctuation">,</span> req<span class="token punctuation">.</span>method<span class="token punctuation">,</span> req<span class="token punctuation">.</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">next<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 响应
+</span>app<span class="token punctuation">.</span><span class="token function">use<span class="token punctuation">(</span></span><span class="token keyword">function</span><span class="token punctuation">(</span>req<span class="token punctuation">,</span> res<span class="token punctuation">,</span> next<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  res<span class="token punctuation">.</span><span class="token function">send<span class="token punctuation">(</span></span><span class="token string">'Hello World'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+app<span class="token punctuation">.</span><span class="token function">listen<span class="token punctuation">(</span></span><span class="token number">3000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+    <p>The “mount” path is stripped and is <strong>not</strong> visible
+to the middleware <code>function</code>. The main effect of this feature is that
+mounted middleware may operate without code changes regardless of its “prefix”
+pathname.</p>
+
+    <div class="doc-box doc-notice">
+      <p>A route will match any path, which follows its path immediately with either a “<code>/</code>” or a “<code>.</code>”. For example: <code>app.use('/apple', ...)</code> will match <em>/apple</em>, <em>/apple/images</em>, <em>/apple/images/news</em>, <em>/apple.html</em>, <em>/apple.html.txt</em>, and so on.</p>
+    </div>
+
+    <p>Here’s a concrete example, take the typical use-case of serving files in ./public
+using the <code>express.static()</code> middleware:</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript"><span class="token comment" spellcheck="true">// GET /javascripts/jquery.js
+</span><span class="token comment" spellcheck="true">// GET /style.css
+</span><span class="token comment" spellcheck="true">// GET /favicon.ico
+</span>app<span class="token punctuation">.</span><span class="token function">use<span class="token punctuation">(</span></span>express<span class="token punctuation">.</span><span class="token keyword">static</span><span class="token punctuation">(</span>__dirname <span class="token operator">+</span> <span class="token string">'/public'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+    <p>Say for example you wanted to prefix all static files with “/static”, you could
+use the “mounting” feature to support this. Mounted middleware functions are <em>not</em>
+invoked unless the <code>req.url</code> contains this prefix, at which point
+it is stripped when the function is invoked. This affects this function only,
+subsequent middleware will see <code>req.url</code> with “/static” included
+unless they are mounted as well.</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript"><span class="token comment" spellcheck="true">// GET /static/javascripts/jquery.js
+</span><span class="token comment" spellcheck="true">// GET /static/style.css
+</span><span class="token comment" spellcheck="true">// GET /static/favicon.ico
+</span>app<span class="token punctuation">.</span><span class="token function">use<span class="token punctuation">(</span></span><span class="token string">'/static'</span><span class="token punctuation">,</span> express<span class="token punctuation">.</span><span class="token keyword">static</span><span class="token punctuation">(</span>__dirname <span class="token operator">+</span> <span class="token string">'/public'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+    <p>The order of which middleware are “defined” using <code>app.use()</code> is
+very important, they are invoked sequentially, thus this defines middleware
+precedence. For example usually <code>express.logger()</code> is the very
+first middleware you would use, logging every request:</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">app<span class="token punctuation">.</span><span class="token function">use<span class="token punctuation">(</span></span>express<span class="token punctuation">.</span><span class="token function">logger<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+app<span class="token punctuation">.</span><span class="token function">use<span class="token punctuation">(</span></span>express<span class="token punctuation">.</span><span class="token keyword">static</span><span class="token punctuation">(</span>__dirname <span class="token operator">+</span> <span class="token string">'/public'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+app<span class="token punctuation">.</span><span class="token function">use<span class="token punctuation">(</span></span><span class="token keyword">function</span><span class="token punctuation">(</span>req<span class="token punctuation">,</span> res<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  res<span class="token punctuation">.</span><span class="token function">send<span class="token punctuation">(</span></span><span class="token string">'Hello'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+    <p>Now suppose you wanted to ignore logging requests for static files, but to
+continue logging routes and middleware defined after <code>logger()</code>,
+you would simply move <code>static()</code> above:</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">app<span class="token punctuation">.</span><span class="token function">use<span class="token punctuation">(</span></span>express<span class="token punctuation">.</span><span class="token keyword">static</span><span class="token punctuation">(</span>__dirname <span class="token operator">+</span> <span class="token string">'/public'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+app<span class="token punctuation">.</span><span class="token function">use<span class="token punctuation">(</span></span>express<span class="token punctuation">.</span><span class="token function">logger<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+app<span class="token punctuation">.</span><span class="token function">use<span class="token punctuation">(</span></span><span class="token keyword">function</span><span class="token punctuation">(</span>req<span class="token punctuation">,</span> res<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  res<span class="token punctuation">.</span><span class="token function">send<span class="token punctuation">(</span></span><span class="token string">'Hello'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+    <p>Another concrete example would be serving files from multiple directories,
+giving precedence to “./public” over the others:</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">app<span class="token punctuation">.</span><span class="token function">use<span class="token punctuation">(</span></span>express<span class="token punctuation">.</span><span class="token keyword">static</span><span class="token punctuation">(</span>__dirname <span class="token operator">+</span> <span class="token string">'/public'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+app<span class="token punctuation">.</span><span class="token function">use<span class="token punctuation">(</span></span>express<span class="token punctuation">.</span><span class="token keyword">static</span><span class="token punctuation">(</span>__dirname <span class="token operator">+</span> <span class="token string">'/files'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+app<span class="token punctuation">.</span><span class="token function">use<span class="token punctuation">(</span></span>express<span class="token punctuation">.</span><span class="token keyword">static</span><span class="token punctuation">(</span>__dirname <span class="token operator">+</span> <span class="token string">'/uploads'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+  </section>
+
+  <section>
+    <h3 id="app-settings">settings</h3>
+
+    <p>下面的内建的可以改变 Express 行为的设置：</p>
+
+    <ul>
+      <li><code>env</code> 运行时环境，默认为 process.env.NODE_ENV 或者 “development”</li>
+      <li><code>trust proxy</code> 激活反向代理，默认是未激活状态</li>
+      <li><code>jsonp callback name</code> 修改 ?callback= 的默认 callback 的名字</li>
+      <li><code>json replacer</code> JSON 替换时的回调, 默认为 null</li>
+      <li><code>json spaces</code> JSON 响应被格式化时的空格数量，开发环境下是 2 ，生产环境是 0</li>
+      <li><code>case sensitive routing</code> 路由的大小写敏感, 默认是关闭状态，”/Foo” 和 “/foo” 被认为是一样的</li>
+      <li><code>strict routing</code>路由的严格格式, 默认情况下 “/foo” 和 “/foo/” 被路由认为是一样的</li>
+      <li><code>view cache</code> E模板缓存，在生产环境中是默认开启的</li>
+      <li><code>view engine</code> 默认的模板引擎</li>
+      <li><code>views</code> 模板的目录, 默认是 “process.cwd() + ‘/views’”</li>
+    </ul>
+
+  </section>
+
+  <section>
+    <h3 id="app.engine">app.engine(ext, callback)</h3>
+
+    <p>注册模板引擎的 <code>callback</code> 用来处理 <code>ext</code> 扩展名的文件。</p>
+
+    <p>默认情况下, 根据文件扩展名 <code>require()</code> 加载相应的模板引擎。 比如你想渲染一个 “foo.jade” 文件，Express 会在内部执行下面的代码，然后会缓存 <code>require()</code> ，这样就可以提高后面操作的性能</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">app<span class="token punctuation">.</span><span class="token function">engine<span class="token punctuation">(</span></span><span class="token string">'jade'</span><span class="token punctuation">,</span> <span class="token function">require<span class="token punctuation">(</span></span><span class="token string">'jade'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__express<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+    <p>那些没有提供 <code>.__express</code> 的或者你想渲染一个文件的扩展名与模板引擎默认的不一致的时候，也可以用这个方法。比如你想用EJS模板引擎来处理 “.html” 后缀的文件:</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">app<span class="token punctuation">.</span><span class="token function">engine<span class="token punctuation">(</span></span><span class="token string">'html'</span><span class="token punctuation">,</span> <span class="token function">require<span class="token punctuation">(</span></span><span class="token string">'ejs'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>renderFile<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+    <p>这个例子中 EJS 提供了一个 <code>.renderFile()</code> 方法和 Express 预期的格式: <code>(path, options, callback)</code> 一致, 因此可以在内部给这个方法取一个别名 <code>ejs.__express</code> ，这样你就可以使用 “.ejs” 扩展而不需要做任何改动。</p>
+
+    <p>有些模板引擎没有遵循这种转换， 这里有一个小项目 <a href="https://github.com/visionmedia/consolidate.js">consolidate.js</a>专门把所有的node流行的模板引擎进行了包装，这样它们在 Express 内部看起来就一样了。</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript"><span class="token keyword">var</span> engines <span class="token operator">=</span> <span class="token function">require<span class="token punctuation">(</span></span><span class="token string">'consolidate'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+app<span class="token punctuation">.</span><span class="token function">engine<span class="token punctuation">(</span></span><span class="token string">'haml'</span><span class="token punctuation">,</span> engines<span class="token punctuation">.</span>haml<span class="token punctuation">)</span><span class="token punctuation">;</span>
+app<span class="token punctuation">.</span><span class="token function">engine<span class="token punctuation">(</span></span><span class="token string">'html'</span><span class="token punctuation">,</span> engines<span class="token punctuation">.</span>hogan<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+  </section>
+
+  <section>
+    <h3 id="app.param">app.param([name], callback)</h3>
+
+    <p>路由参数的处理逻辑。比如当 <code>:user</code>出现在一个路由路径中，你也许会自动载入加载用户的逻辑，并把它放置到 <code>req.user</code> , 或者校验一下输入的参数是否正确。</p>
+
+    <p>下面的代码片段展示了 <code>callback</code> 很像中间件，但是在参数里多加了一个值，这里名为 <code>id</code> 。它会尝试加载用户信息，然后赋值给 <code>req.user</code>, 否则就传递错误 <code>next(err)</code>。</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">app<span class="token punctuation">.</span><span class="token function">param<span class="token punctuation">(</span></span><span class="token string">'user'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>req<span class="token punctuation">,</span> res<span class="token punctuation">,</span> next<span class="token punctuation">,</span> id<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  User<span class="token punctuation">.</span><span class="token function">find<span class="token punctuation">(</span></span>id<span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> user<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">next<span class="token punctuation">(</span></span>err<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>user<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      req<span class="token punctuation">.</span>user <span class="token operator">=</span> user<span class="token punctuation">;</span>
+      <span class="token function">next<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      <span class="token function">next<span class="token punctuation">(</span></span><span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">'failed to load user'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+    <p>另外你也可以只传一个 <code>callback</code>, 这样你就有机会改变 <code>app.param()</code> API。
+比如 <a href="http://github.com/expressjs/express-params">express-params</a> 定义了下面的回调，这个允许你使用一个给定的正则去限制参数。</p>
+
+    <p>下面的这个例子有一点点高级，检查如果第二个参数是一个正则，返回一个很像上面的 “user” 参数例子行为的回调函数。</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">app<span class="token punctuation">.</span><span class="token function">param<span class="token punctuation">(</span></span><span class="token keyword">function</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> fn<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>fn <span class="token keyword">instanceof</span> <span class="token class-name">RegExp</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">function</span><span class="token punctuation">(</span>req<span class="token punctuation">,</span> res<span class="token punctuation">,</span> next<span class="token punctuation">,</span> val<span class="token punctuation">)</span><span class="token punctuation">{</span>
+      <span class="token keyword">var</span> captures<span class="token punctuation">;</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>captures <span class="token operator">=</span> fn<span class="token punctuation">.</span><span class="token function">exec<span class="token punctuation">(</span></span><span class="token function">String<span class="token punctuation">(</span></span>val<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        req<span class="token punctuation">.</span>params<span class="token punctuation">[</span>name<span class="token punctuation">]</span> <span class="token operator">=</span> captures<span class="token punctuation">;</span>
+        <span class="token function">next<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token function">next<span class="token punctuation">(</span></span><span class="token string">'route'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+    <p>这个函数现在可以非常有效的用来校验参数，或者提供正则捕获后的分组：</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">app<span class="token punctuation">.</span><span class="token function">param<span class="token punctuation">(</span></span><span class="token string">'id'</span><span class="token punctuation">,</span> <span class="token regex">/^\d+$/</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+app<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'/user/:id'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>req<span class="token punctuation">,</span> res<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  res<span class="token punctuation">.</span><span class="token function">send<span class="token punctuation">(</span></span><span class="token string">'user '</span> <span class="token operator">+</span> req<span class="token punctuation">.</span>params<span class="token punctuation">.</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+app<span class="token punctuation">.</span><span class="token function">param<span class="token punctuation">(</span></span><span class="token string">'range'</span><span class="token punctuation">,</span> <span class="token regex">/^(\w+)\.\.(\w+)?$/</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+app<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'/range/:range'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>req<span class="token punctuation">,</span> res<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">var</span> range <span class="token operator">=</span> req<span class="token punctuation">.</span>params<span class="token punctuation">.</span>range<span class="token punctuation">;</span>
+  res<span class="token punctuation">.</span><span class="token function">send<span class="token punctuation">(</span></span><span class="token string">'from '</span> <span class="token operator">+</span> range<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">' to '</span> <span class="token operator">+</span> range<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+  </section>
+
+  <section>
+    <h3 id="app.VERB">app.VERB(path, [callback...], callback)</h3>
+
+    <p>The <code>app.VERB()</code> methods provide the routing functionality
+in Express, where <strong>VERB</strong> is one of the HTTP verbs, such
+as <code>app.post()</code>. Multiple callbacks may be given, all are treated
+equally, and behave just like middleware, with the one exception that
+these callbacks may invoke <code>next('route')</code> to bypass the
+remaining route callback(s). This mechanism can be used to perform pre-conditions
+on a route then pass control to subsequent routes when there is no reason to proceed
+with the route matched.</p>
+
+    <p>The following snippet illustrates the most simple route definition possible. Express
+translates the path strings to regular expressions, used internally to match incoming requests.
+Query strings are <em>not</em> considered when peforming these matches, for example “GET /”
+would match the following route, as would “GET /?name=tobi”.</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">app<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>req<span class="token punctuation">,</span> res<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  res<span class="token punctuation">.</span><span class="token function">send<span class="token punctuation">(</span></span><span class="token string">'hello world'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+    <p>Regular expressions may also be used, and can be useful
+if you have very specific restraints, for example the following
+would match “GET /commits/71dbb9c” as well as “GET /commits/71dbb9c..4c084f9”.</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">app<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token regex">/^\/commits\/(\w+)(?:\.\.(\w+))?$/</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>req<span class="token punctuation">,</span> res<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">var</span> from <span class="token operator">=</span> req<span class="token punctuation">.</span>params<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token keyword">var</span> to <span class="token operator">=</span> req<span class="token punctuation">.</span>params<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">||</span> <span class="token string">'HEAD'</span><span class="token punctuation">;</span>
+  res<span class="token punctuation">.</span><span class="token function">send<span class="token punctuation">(</span></span><span class="token string">'commit range '</span> <span class="token operator">+</span> from <span class="token operator">+</span> <span class="token string">'..'</span> <span class="token operator">+</span> to<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+    <p>Several callbacks may also be passed, useful for re-using middleware
+that load resources, perform validations, etc.</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">app<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'/user/:id'</span><span class="token punctuation">,</span> user<span class="token punctuation">.</span>load<span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// ... 
+</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+
+    <p>These callbacks may be passed within arrays as well, these arrays are
+simply flattened when passed:</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript"><span class="token keyword">var</span> middleware <span class="token operator">=</span> <span class="token punctuation">[</span>loadForum<span class="token punctuation">,</span> loadThread<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+app<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'/forum/:fid/thread/:tid'</span><span class="token punctuation">,</span> middleware<span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// ...
+</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+app<span class="token punctuation">.</span><span class="token function">post<span class="token punctuation">(</span></span><span class="token string">'/forum/:fid/thread/:tid'</span><span class="token punctuation">,</span> middleware<span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// ...
+</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+
+  </section>
+
+  <section>
+    <h3 id="app.all">app.all(path, [callback...], callback)</h3>
+
+    <p>这个方法很像 <code>app.VERB()</code> , 但是它匹配所有的HTTP动作</p>
+
+    <p>比如你想把下面的路由放在所有其它路由之前，它需要所有从这个路由开始的加载验证，并且自动加载一个用户记住所有的回调都不应该被当作终点， <code>loadUser</code> 能够被当作一个任务，然后 <code>next()</code> 去匹配接下来的路由。</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">  app<span class="token punctuation">.</span><span class="token function">all<span class="token punctuation">(</span></span><span class="token string">'*'</span><span class="token punctuation">,</span> requireAuthentication<span class="token punctuation">,</span> loadUser<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+    <p>Or the equivalent:</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">  app<span class="token punctuation">.</span><span class="token function">all<span class="token punctuation">(</span></span><span class="token string">'*'</span><span class="token punctuation">,</span> requireAuthentication<span class="token punctuation">)</span>
+  app<span class="token punctuation">.</span><span class="token function">all<span class="token punctuation">(</span></span><span class="token string">'*'</span><span class="token punctuation">,</span> loadUser<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+    <p>另一个非常赞的例子是”全局“白名单函数。这里有一个例子跟前一个很像，但是它限制前缀为 “/api”:</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">  app<span class="token punctuation">.</span><span class="token function">all<span class="token punctuation">(</span></span><span class="token string">'/api/*'</span><span class="token punctuation">,</span> requireAuthentication<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+  </section>
+
+  <section>
+    <h3 id="app.locals">app.locals</h3>
+
+    <p>应用程序本地变量会附加给所有的在这个应用程序内渲染的模板。这是一个非常有用的模板函数，就像应用程序级数据一样。</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">app<span class="token punctuation">.</span>locals<span class="token punctuation">.</span>title <span class="token operator">=</span> <span class="token string">'My App'</span><span class="token punctuation">;</span>
+app<span class="token punctuation">.</span>locals<span class="token punctuation">.</span>strftime <span class="token operator">=</span> <span class="token function">require<span class="token punctuation">(</span></span><span class="token string">'strftime'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+    <p><code>app.locals</code> 对象是一个 JavaScript <code>Function</code>，执行的时候它会把属性合并到它自身，提供了一种简单展示已有对象作为本地变量的方法。</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">app<span class="token punctuation">.</span><span class="token function">locals<span class="token punctuation">(</span></span><span class="token punctuation">{</span>
+  title<span class="token punctuation">:</span> <span class="token string">'My App'</span><span class="token punctuation">,</span>
+  phone<span class="token punctuation">:</span> <span class="token string">'1-250-858-9990'</span><span class="token punctuation">,</span>
+  email<span class="token punctuation">:</span> <span class="token string">'me@myapp.com'</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+app<span class="token punctuation">.</span>locals<span class="token punctuation">.</span>title
+<span class="token comment" spellcheck="true">// =&gt; 'My App'
+</span>
+app<span class="token punctuation">.</span>locals<span class="token punctuation">.</span>email
+<span class="token comment" spellcheck="true">// =&gt; 'me@myapp.com'
+</span></code></pre>
+
+    <p><code>app.locals</code> 对象最终会是一个 Javascript 函数对象，你不可以使用 Functions 和 Objects 内置的属性，比如 <code>name、apply、bind、call、arguments、length、constructor</code>。</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">app<span class="token punctuation">.</span><span class="token function">locals<span class="token punctuation">(</span></span><span class="token punctuation">{</span>name<span class="token punctuation">:</span> <span class="token string">'My App'</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+app<span class="token punctuation">.</span>locals<span class="token punctuation">.</span>name
+<span class="token comment" spellcheck="true">// =&gt; 返回 'app.locals' 而不是 'My App' (app.locals 是一个函数 !)
+</span><span class="token comment" spellcheck="true">// =&gt; 如果 name 变量用在一个模板里，则返回一个 ReferenceError 。
+</span></code></pre>
+
+    <p>全部的保留字列表可以在很多规范里找到。 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference">JavaScript 规范</a> 介绍了原来的属性，有一些还会被现代的 JavaScript 引擎识别，<a href="http://www.ecma-international.org/ecma-262/5.1/">EcmaScript 规范</a> 在它的基础上，统一了值，添加了一些，删除了一些废弃的。如果感兴趣，可以看看 Functions 和 Objects 的属性值。</p>
+
+    <p>默认情况下Express只有一个应用程序级本地变量，它是 <code>settings</code>。</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">app<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span><span class="token string">'title'</span><span class="token punctuation">,</span> <span class="token string">'My App'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// 在 view 里使用 settings.title
+</span></code></pre>
+
+  </section>
+
+  <section>
+    <h3 id="app.render">app.render(view, [options], callback)</h3>
+
+    <p>渲染 <code>view</code> ， 回调函数 <code>callback</code> 用来处理返回的渲染后的字符串。这个是 <code>res.render()</code> 的应用程序级版本，它们的行为是一样的。</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">app<span class="token punctuation">.</span><span class="token function">render<span class="token punctuation">(</span></span><span class="token string">'email'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> html<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// ...
+</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+app<span class="token punctuation">.</span><span class="token function">render<span class="token punctuation">(</span></span><span class="token string">'email'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> name<span class="token punctuation">:</span> <span class="token string">'Tobi'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> html<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// ...
+</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+  </section>
+
+  <section>
+    <h3 id="app.routes">app.routes</h3>
+
+    <p>The <code>app.routes</code> 对象存储了所有的被 HTTP verb 定义路由。这个对象可以用在一些内部功能上，比如 Express 不仅用它来做路由分发，同时在没有 <code>app.options()</code> 定义的情况下用它来处理默认的</p>
+    <string>OPTIONS</string>
+    <p>行为。你的应用程序或者框架也可以很轻松的通过在这个对象里移除路由来达到删除路由的目的。</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">console<span class="token punctuation">.</span><span class="token function">log<span class="token punctuation">(</span></span>app<span class="token punctuation">.</span>routes<span class="token punctuation">)</span>
+
+<span class="token punctuation">{</span> <span class="token keyword">get</span><span class="token punctuation">:</span> 
+   <span class="token punctuation">[</span> <span class="token punctuation">{</span> path<span class="token punctuation">:</span> <span class="token string">'/'</span><span class="token punctuation">,</span>
+       method<span class="token punctuation">:</span> <span class="token string">'get'</span><span class="token punctuation">,</span>
+       callbacks<span class="token punctuation">:</span> <span class="token punctuation">[</span>Object<span class="token punctuation">]</span><span class="token punctuation">,</span>
+       keys<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+       regexp<span class="token punctuation">:</span> <span class="token regex">/^\/\/?$/i</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+     <span class="token punctuation">{</span> path<span class="token punctuation">:</span> <span class="token string">'/user/:id'</span><span class="token punctuation">,</span>
+       method<span class="token punctuation">:</span> <span class="token string">'get'</span><span class="token punctuation">,</span>
+       callbacks<span class="token punctuation">:</span> <span class="token punctuation">[</span>Object<span class="token punctuation">]</span><span class="token punctuation">,</span>
+       keys<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span> name<span class="token punctuation">:</span> <span class="token string">'id'</span><span class="token punctuation">,</span> optional<span class="token punctuation">:</span> <span class="token keyword">false</span> <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+       regexp<span class="token punctuation">:</span> <span class="token regex">/^\/user\/(?:([^\/]+?))\/?$/i</span> <span class="token punctuation">}</span> <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token keyword">delete</span><span class="token punctuation">:</span> 
+   <span class="token punctuation">[</span> <span class="token punctuation">{</span> path<span class="token punctuation">:</span> <span class="token string">'/user/:id'</span><span class="token punctuation">,</span>
+       method<span class="token punctuation">:</span> <span class="token string">'delete'</span><span class="token punctuation">,</span>
+       callbacks<span class="token punctuation">:</span> <span class="token punctuation">[</span>Object<span class="token punctuation">]</span><span class="token punctuation">,</span>
+       keys<span class="token punctuation">:</span> <span class="token punctuation">[</span>Object<span class="token punctuation">]</span><span class="token punctuation">,</span>
+       regexp<span class="token punctuation">:</span> <span class="token regex">/^\/user\/(?:([^\/]+?))\/?$/i</span> <span class="token punctuation">}</span> <span class="token punctuation">]</span> <span class="token punctuation">}</span>
+</code></pre>
+
+  </section>
+
+  <section>
+    <h3 id="app.listen">app.listen()</h3>
+
+    <p>在给定的主机和端口上监听请求，这个和 node 文档中的 <a href="http://nodejs.org/api/http.html#http_server_listen_port_hostname_backlog_callback">http.Server#listen()</a> 是一致的。</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript"><span class="token keyword">var</span> express <span class="token operator">=</span> <span class="token function">require<span class="token punctuation">(</span></span><span class="token string">'express'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> app <span class="token operator">=</span> <span class="token function">express<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+app<span class="token punctuation">.</span><span class="token function">listen<span class="token punctuation">(</span></span><span class="token number">3000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+    <p><code>express()</code> 返回的 <code>app</code> 实际上是一个 JavaScript 
+<code>Function</code>,它被设计为传给 node 的 http servers 作为处理请求的回调函数。因为 app 不是从 HTTP 或者 HTTPS 继承来的，它只是一个简单的回调函数，你可以以同一份代码同时处理 HTTP 和 HTTPS 版本的服务。</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript"><span class="token keyword">var</span> express <span class="token operator">=</span> <span class="token function">require<span class="token punctuation">(</span></span><span class="token string">'express'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> https <span class="token operator">=</span> <span class="token function">require<span class="token punctuation">(</span></span><span class="token string">'https'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> http <span class="token operator">=</span> <span class="token function">require<span class="token punctuation">(</span></span><span class="token string">'http'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> app <span class="token operator">=</span> <span class="token function">express<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+http<span class="token punctuation">.</span><span class="token function">createServer<span class="token punctuation">(</span></span>app<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">listen<span class="token punctuation">(</span></span><span class="token number">80</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+https<span class="token punctuation">.</span><span class="token function">createServer<span class="token punctuation">(</span></span>options<span class="token punctuation">,</span> app<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">listen<span class="token punctuation">(</span></span><span class="token number">443</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+    <p><code>app.listen()</code> 方法只是一个快捷方法，如果你想使用 HTTPS ，或者同时提供 HTTP 和 HTTPS ，可以使用上面的代码。</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">app<span class="token punctuation">.</span>listen <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">var</span> server <span class="token operator">=</span> http<span class="token punctuation">.</span><span class="token function">createServer<span class="token punctuation">(</span></span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> server<span class="token punctuation">.</span>listen<span class="token punctuation">.</span><span class="token function">apply<span class="token punctuation">(</span></span>server<span class="token punctuation">,</span> arguments<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+
+  </section>
+
+  <p><a id="request" class="h2"></a></p>
+  <h2>Request</h2>
+
+  <section>
+    <h3 id="req.params">req.params</h3>
+
+    <p>This property is an array containing properties mapped to the named route “parameters”.
+For example if you have the route <code>/user/:name</code>, then the “name” property
+is available to you as <code>req.params.name</code>. This object defaults to <code>{}</code>.</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript"><span class="token comment" spellcheck="true">// GET /user/tj
+</span>req<span class="token punctuation">.</span>params<span class="token punctuation">.</span>name
+<span class="token comment" spellcheck="true">// =&gt; "tj"
+</span></code></pre>
+
+    <p>When a regular expression is used for the route definition, capture groups
+are provided in the array using <code>req.params[N]</code>, where <code>N</code>
+is the nth capture group. This rule is applied to unnamed wild-card matches
+with string routes such as <code>/file/*</code>:</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript"><span class="token comment" spellcheck="true">// GET /file/javascripts/jquery.js
+</span>req<span class="token punctuation">.</span>params<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+<span class="token comment" spellcheck="true">// =&gt; "javascripts/jquery.js"
+</span></code></pre>
+
+  </section>
+
+  <section>
+    <h3 id="req.query">req.query</h3>
+
+    <p>This property is an object containing the parsed query-string,
+defaulting to <code>{}</code>.</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript"><span class="token comment" spellcheck="true">// GET /search?q=tobi+ferret
+</span>req<span class="token punctuation">.</span>query<span class="token punctuation">.</span>q
+<span class="token comment" spellcheck="true">// =&gt; "tobi ferret"
+</span>
+<span class="token comment" spellcheck="true">// GET /shoes?order=desc&amp;shoe[color]=blue&amp;shoe[type]=converse
+</span>req<span class="token punctuation">.</span>query<span class="token punctuation">.</span>order
+<span class="token comment" spellcheck="true">// =&gt; "desc"
+</span>
+req<span class="token punctuation">.</span>query<span class="token punctuation">.</span>shoe<span class="token punctuation">.</span>color
+<span class="token comment" spellcheck="true">// =&gt; "blue"
+</span>
+req<span class="token punctuation">.</span>query<span class="token punctuation">.</span>shoe<span class="token punctuation">.</span>type
+<span class="token comment" spellcheck="true">// =&gt; "converse"
+</span></code></pre>
+
+  </section>
+
+  <section>
+    <h3 id="req.body">req.body</h3>
+
+    <p>This property is an object containing the parsed request body. This feature
+is provided by the <code>bodyParser()</code> middleware, though other body
+parsing middleware may follow this convention as well. This property
+defaults to <code>{}</code> when <code>bodyParser()</code> is used.</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript"><span class="token comment" spellcheck="true">// POST user[name]=tobi&amp;user[email]=tobi@learnboost.com
+</span>req<span class="token punctuation">.</span>body<span class="token punctuation">.</span>user<span class="token punctuation">.</span>name
+<span class="token comment" spellcheck="true">// =&gt; "tobi"
+</span>
+req<span class="token punctuation">.</span>body<span class="token punctuation">.</span>user<span class="token punctuation">.</span>email
+<span class="token comment" spellcheck="true">// =&gt; "tobi@learnboost.com"
+</span>
+<span class="token comment" spellcheck="true">// POST { "name": "tobi" }
+</span>req<span class="token punctuation">.</span>body<span class="token punctuation">.</span>name
+<span class="token comment" spellcheck="true">// =&gt; "tobi"
+</span></code></pre>
+
+  </section>
+
+  <section>
+    <h3 id="req.files">req.files</h3>
+
+    <p>This property is an object of the files uploaded. This feature
+is provided by the <code>bodyParser()</code> middleware, though other body
+parsing middleware may follow this convention as well. This property
+defaults to <code>{}</code> when <code>bodyParser()</code> is used.</p>
+
+    <p>For example if a <strong>file</strong> field was named “image”,
+and a file was uploaded, <code>req.files.image</code> would contain
+the following <code>File</code> object:</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript"><span class="token punctuation">{</span> size<span class="token punctuation">:</span> <span class="token number">74643</span><span class="token punctuation">,</span>
+  path<span class="token punctuation">:</span> <span class="token string">'/tmp/8ef9c52abe857867fd0a4e9a819d1876'</span><span class="token punctuation">,</span>
+  name<span class="token punctuation">:</span> <span class="token string">'edge.png'</span><span class="token punctuation">,</span>
+  type<span class="token punctuation">:</span> <span class="token string">'image/png'</span><span class="token punctuation">,</span>
+  hash<span class="token punctuation">:</span> <span class="token keyword">false</span><span class="token punctuation">,</span>
+  lastModifiedDate<span class="token punctuation">:</span> Thu Aug <span class="token number">09</span> <span class="token number">2012</span> <span class="token number">20</span><span class="token punctuation">:</span><span class="token number">07</span><span class="token punctuation">:</span><span class="token number">51</span> GMT<span class="token number">-0700</span> <span class="token punctuation">(</span>PDT<span class="token punctuation">)</span><span class="token punctuation">,</span>
+  _writeStream<span class="token punctuation">:</span> 
+   <span class="token punctuation">{</span> path<span class="token punctuation">:</span> <span class="token string">'/tmp/8ef9c52abe857867fd0a4e9a819d1876'</span><span class="token punctuation">,</span>
+     fd<span class="token punctuation">:</span> <span class="token number">13</span><span class="token punctuation">,</span>
+     writable<span class="token punctuation">:</span> <span class="token keyword">false</span><span class="token punctuation">,</span>
+     flags<span class="token punctuation">:</span> <span class="token string">'w'</span><span class="token punctuation">,</span>
+     encoding<span class="token punctuation">:</span> <span class="token string">'binary'</span><span class="token punctuation">,</span>
+     mode<span class="token punctuation">:</span> <span class="token number">438</span><span class="token punctuation">,</span>
+     bytesWritten<span class="token punctuation">:</span> <span class="token number">74643</span><span class="token punctuation">,</span>
+     busy<span class="token punctuation">:</span> <span class="token keyword">false</span><span class="token punctuation">,</span>
+     _queue<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+     _open<span class="token punctuation">:</span> <span class="token punctuation">[</span>Function<span class="token punctuation">]</span><span class="token punctuation">,</span>
+     drainable<span class="token punctuation">:</span> <span class="token keyword">true</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  length<span class="token punctuation">:</span> <span class="token punctuation">[</span>Getter<span class="token punctuation">]</span><span class="token punctuation">,</span>
+  filename<span class="token punctuation">:</span> <span class="token punctuation">[</span>Getter<span class="token punctuation">]</span><span class="token punctuation">,</span>
+  mime<span class="token punctuation">:</span> <span class="token punctuation">[</span>Getter<span class="token punctuation">]</span> <span class="token punctuation">}</span>
+</code></pre>
+
+    <p>The <code>bodyParser()</code> middleware utilizes the
+<a href="https://github.com/felixge/node-formidable">node-formidable</a>
+module internally, and accepts the same options. An example of this
+is the <code>keepExtensions</code> formidable option, defaulting to <strong>false</strong>
+which in this case gives you the filename “/tmp/8ef9c52abe857867fd0a4e9a819d1876” void of
+the “.png” extension. To enable this, and others you may pass them to <code>bodyParser()</code>:</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">app<span class="token punctuation">.</span><span class="token function">use<span class="token punctuation">(</span></span>express<span class="token punctuation">.</span><span class="token function">bodyParser<span class="token punctuation">(</span></span><span class="token punctuation">{</span> keepExtensions<span class="token punctuation">:</span> <span class="token keyword">true</span><span class="token punctuation">,</span> uploadDir<span class="token punctuation">:</span> <span class="token string">'/my/files'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+  </section>
+
+  <section>
+    <h3 id="req.param">req.param(name)</h3>
+
+    <p>Return the value of param <code>name</code> when present.</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript"><span class="token comment" spellcheck="true">// ?name=tobi
+</span>req<span class="token punctuation">.</span><span class="token function">param<span class="token punctuation">(</span></span><span class="token string">'name'</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">// =&gt; "tobi"
+</span>
+<span class="token comment" spellcheck="true">// POST name=tobi
+</span>req<span class="token punctuation">.</span><span class="token function">param<span class="token punctuation">(</span></span><span class="token string">'name'</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">// =&gt; "tobi"
+</span>
+<span class="token comment" spellcheck="true">// /user/tobi for /user/:name 
+</span>req<span class="token punctuation">.</span><span class="token function">param<span class="token punctuation">(</span></span><span class="token string">'name'</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">// =&gt; "tobi"
+</span></code></pre>
+
+    <p>Lookup is performed in the following order:</p>
+
+    <ul>
+      <li><code>req.params</code></li>
+      <li><code>req.body</code></li>
+      <li><code>req.query</code></li>
+    </ul>
+
+    <p>Direct access to <code>req.body</code>, <code>req.params</code>,
+and <code>req.query</code> should be favoured for clarity - unless
+you truly accept input from each object.</p>
+
+  </section>
+
+  <section>
+    <h3 id="req.route">req.route</h3>
+
+    <p>The currently matched <code>Route</code> containing
+several properties such as the route’s original path
+string, the regexp generated, and so on.</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">app<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'/user/:id?'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>req<span class="token punctuation">,</span> res<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log<span class="token punctuation">(</span></span>req<span class="token punctuation">.</span>route<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+    <p>Example output from the previous snippet:</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript"><span class="token punctuation">{</span> path<span class="token punctuation">:</span> <span class="token string">'/user/:id?'</span><span class="token punctuation">,</span>
+  method<span class="token punctuation">:</span> <span class="token string">'get'</span><span class="token punctuation">,</span>
+  callbacks<span class="token punctuation">:</span> <span class="token punctuation">[</span> <span class="token punctuation">[</span>Function<span class="token punctuation">]</span> <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  keys<span class="token punctuation">:</span> <span class="token punctuation">[</span> <span class="token punctuation">{</span> name<span class="token punctuation">:</span> <span class="token string">'id'</span><span class="token punctuation">,</span> optional<span class="token punctuation">:</span> <span class="token keyword">true</span> <span class="token punctuation">}</span> <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  regexp<span class="token punctuation">:</span> <span class="token regex">/^\/user(?:\/([^\/]+?))?\/?$/i</span><span class="token punctuation">,</span>
+  params<span class="token punctuation">:</span> <span class="token punctuation">[</span> id<span class="token punctuation">:</span> <span class="token string">'12'</span> <span class="token punctuation">]</span> <span class="token punctuation">}</span>
+</code></pre>
+
+  </section>
+
+  <section>
+    <h3 id="req.cookies">req.cookies</h3>
+
+    <p>This object requires the <code>cookieParser()</code> middleware for use.
+It contains cookies sent by the user-agent. If no cookies are sent, it 
+defaults to <code>{}</code>.</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript"><span class="token comment" spellcheck="true">// Cookie: name=tj
+</span>req<span class="token punctuation">.</span>cookies<span class="token punctuation">.</span>name
+<span class="token comment" spellcheck="true">// =&gt; "tj"
+</span></code></pre>
+
+  </section>
+
+  <section>
+    <h3 id="req.signedCookies">req.signedCookies</h3>
+
+    <p>This object requires the <code>cookieParser(secret)</code> middleware for use. 
+It contains signed cookies sent by the user-agent, unsigned and ready for use. 
+Signed cookies reside in a different object to show developer intent; otherwise, 
+a malicious attack could be placed on <code>req.cookie</code> values (which are easy to spoof). 
+Note that signing a cookie does not make it “hidden” or encrypted; this simply 
+prevents tampering (because the secret used to sign is private). If no signed 
+cookies are sent, it defaults to <code>{}</code>.</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript"><span class="token comment" spellcheck="true">// Cookie: user=tobi.CP7AWaXDfAKIRfH49dQzKJx7sKzzSoPq7/AcBBRVwlI3
+</span>req<span class="token punctuation">.</span>signedCookies<span class="token punctuation">.</span>user
+<span class="token comment" spellcheck="true">// =&gt; "tobi"
+</span></code></pre>
+
+  </section>
+
+  <section>
+    <h3 id="req.get">req.get(field)</h3>
+
+    <p>Get the case-insensitive request header <code>field</code>. The “Referrer” and “Referer” fields are interchangeable.</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">req<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'Content-Type'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// =&gt; "text/plain"
+</span>
+req<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'content-type'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// =&gt; "text/plain"
+</span>
+req<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'Something'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// =&gt; undefined
+</span></code></pre>
+
+    <p>p Aliased as <code>req.header(field)</code>.</p>
+
+  </section>
+
+  <section>
+    <h3 id="req.accepts">req.accepts(types)</h3>
+
+    <p>Check if the given <code>types</code> are acceptable, returning
+the best match when true, otherwise <code>undefined</code> - in which
+case you should respond with 406 “Not Acceptable”.</p>
+
+    <p>The <code>type</code> value may be a single mime type string
+such as “application/json”, the extension name
+such as “json”, a comma-delimited list or an array. When a list
+or array is given the best match, if any is returned.</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript"><span class="token comment" spellcheck="true">// Accept: text/html
+</span>req<span class="token punctuation">.</span><span class="token function">accepts<span class="token punctuation">(</span></span><span class="token string">'html'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// =&gt; "html"
+</span>
+<span class="token comment" spellcheck="true">// Accept: text/*, application/json
+</span>req<span class="token punctuation">.</span><span class="token function">accepts<span class="token punctuation">(</span></span><span class="token string">'html'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// =&gt; "html"
+</span>req<span class="token punctuation">.</span><span class="token function">accepts<span class="token punctuation">(</span></span><span class="token string">'text/html'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// =&gt; "text/html"
+</span>req<span class="token punctuation">.</span><span class="token function">accepts<span class="token punctuation">(</span></span><span class="token string">'json, text'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// =&gt; "json"
+</span>req<span class="token punctuation">.</span><span class="token function">accepts<span class="token punctuation">(</span></span><span class="token string">'application/json'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// =&gt; "application/json"
+</span>
+<span class="token comment" spellcheck="true">// Accept: text/*, application/json
+</span>req<span class="token punctuation">.</span><span class="token function">accepts<span class="token punctuation">(</span></span><span class="token string">'image/png'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+req<span class="token punctuation">.</span><span class="token function">accepts<span class="token punctuation">(</span></span><span class="token string">'png'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// =&gt; undefined
+</span>
+<span class="token comment" spellcheck="true">// Accept: text/*;q=.5, application/json
+</span>req<span class="token punctuation">.</span><span class="token function">accepts<span class="token punctuation">(</span></span><span class="token punctuation">[</span><span class="token string">'html'</span><span class="token punctuation">,</span> <span class="token string">'json'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+req<span class="token punctuation">.</span><span class="token function">accepts<span class="token punctuation">(</span></span><span class="token string">'html, json'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// =&gt; "json"
+</span></code></pre>
+
+  </section>
+
+  <section>
+    <h3 id="req.accepted">req.accepted</h3>
+
+    <p>Return an array of Accepted media types ordered from highest quality to lowest.</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript"><span class="token punctuation">[</span> <span class="token punctuation">{</span> value<span class="token punctuation">:</span> <span class="token string">'application/json'</span><span class="token punctuation">,</span>
+    quality<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    type<span class="token punctuation">:</span> <span class="token string">'application'</span><span class="token punctuation">,</span>
+    subtype<span class="token punctuation">:</span> <span class="token string">'json'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+   <span class="token punctuation">{</span> value<span class="token punctuation">:</span> <span class="token string">'text/html'</span><span class="token punctuation">,</span>
+     quality<span class="token punctuation">:</span> <span class="token number">0.5</span><span class="token punctuation">,</span>
+     type<span class="token punctuation">:</span> <span class="token string">'text'</span><span class="token punctuation">,</span>
+     subtype<span class="token punctuation">:</span> <span class="token string">'html'</span> <span class="token punctuation">}</span> <span class="token punctuation">]</span>
+</code></pre>
+
+  </section>
+
+  <section>
+    <h3 id="req.is">req.is(type)</h3>
+
+    <p>Check if the incoming request contains the “Content-Type” 
+header field, and it matches the give mime <code>type</code>.</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript"><span class="token comment" spellcheck="true">// With Content-Type: text/html; charset=utf-8
+</span>req<span class="token punctuation">.</span><span class="token function">is<span class="token punctuation">(</span></span><span class="token string">'html'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+req<span class="token punctuation">.</span><span class="token function">is<span class="token punctuation">(</span></span><span class="token string">'text/html'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+req<span class="token punctuation">.</span><span class="token function">is<span class="token punctuation">(</span></span><span class="token string">'text/*'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// =&gt; true
+</span>
+<span class="token comment" spellcheck="true">// When Content-Type is application/json
+</span>req<span class="token punctuation">.</span><span class="token function">is<span class="token punctuation">(</span></span><span class="token string">'json'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+req<span class="token punctuation">.</span><span class="token function">is<span class="token punctuation">(</span></span><span class="token string">'application/json'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+req<span class="token punctuation">.</span><span class="token function">is<span class="token punctuation">(</span></span><span class="token string">'application/*'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// =&gt; true
+</span>
+req<span class="token punctuation">.</span><span class="token function">is<span class="token punctuation">(</span></span><span class="token string">'html'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// =&gt; false
+</span></code></pre>
+
+  </section>
+
+  <section>
+    <h3 id="req.ip">req.ip</h3>
+
+    <p>Return the remote address, or when “trust proxy”
+is enabled - the upstream address.</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">req<span class="token punctuation">.</span>ip
+<span class="token comment" spellcheck="true">// =&gt; "127.0.0.1"
+</span></code></pre>
+
+  </section>
+
+  <section>
+    <h3 id="req.ips">req.ips</h3>
+
+    <p>When “trust proxy” is <code>true</code>, parse
+the “X-Forwarded-For” ip address list
+and return an array, otherwise an empty
+array is returned.</p>
+
+    <p>For example if the value were “client, proxy1, proxy2”
+you would receive the array <code>["client", "proxy1", "proxy2"]</code>
+where “proxy2” is the furthest down-stream.</p>
+
+  </section>
+
+  <section>
+    <h3 id="req.path">req.path</h3>
+
+    <p>Returns the request URL pathname.</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript"><span class="token comment" spellcheck="true">// example.com/users?sort=desc
+</span>req<span class="token punctuation">.</span>path
+<span class="token comment" spellcheck="true">// =&gt; "/users"
+</span></code></pre>
+
+  </section>
+
+  <section>
+    <h3 id="req.host">req.host</h3>
+
+    <p>Returns the hostname from the “Host” header field (void of portno).</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript"><span class="token comment" spellcheck="true">// Host: "example.com:3000"
+</span>req<span class="token punctuation">.</span>host
+<span class="token comment" spellcheck="true">// =&gt; "example.com"
+</span></code></pre>
+
+  </section>
+
+  <section>
+    <h3 id="req.fresh">req.fresh</h3>
+
+    <p>Check if the request is fresh - aka Last-Modified and/or the ETag still match,
+indicating that the resource is “fresh”.</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">req<span class="token punctuation">.</span>fresh
+<span class="token comment" spellcheck="true">// =&gt; true
+</span></code></pre>
+
+  </section>
+
+  <section>
+    <h3 id="req.stale">req.stale</h3>
+
+    <p>Check if the request is stale - aka Last-Modified and/or the ETag do not match,
+indicating that the resource is “stale”.</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">req<span class="token punctuation">.</span>stale
+<span class="token comment" spellcheck="true">// =&gt; true
+</span></code></pre>
+
+  </section>
+
+  <section>
+    <h3 id="req.xhr">req.xhr</h3>
+
+    <p>Check if the request was issued with the “X-Requested-With”
+header field set to “XMLHttpRequest” (jQuery etc).</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">req<span class="token punctuation">.</span>xhr
+<span class="token comment" spellcheck="true">// =&gt; true
+</span></code></pre>
+
+  </section>
+
+  <section>
+    <h3 id="req.protocol">req.protocol</h3>
+
+    <p>Return the protocol string “http” or “https”
+when requested with TLS. When the “trust proxy” 
+setting is enabled the “X-Forwarded-Proto” header
+field will be trusted. If you’re running behind
+a reverse proxy that supplies https for you this
+may be enabled.</p>
+
+    <p>js
+req.protocol
+// =&gt; “http”
+~~~</p>
+
+  </section>
+
+  <section>
+    <h3 id="req.secure">req.secure</h3>
+
+    <p>Check if a TLS connection is established. This is a short-hand for:</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript"><span class="token string">'https'</span> <span class="token operator">==</span> req<span class="token punctuation">.</span>protocol<span class="token punctuation">;</span>
+</code></pre>
+
+  </section>
+
+  <section>
+    <h3 id="req.subdomains">req.subdomains</h3>
+
+    <p>Return subdomains as an array.</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript"><span class="token comment" spellcheck="true">// Host: "tobi.ferrets.example.com"
+</span>req<span class="token punctuation">.</span>subdomains
+<span class="token comment" spellcheck="true">// =&gt; ["ferrets", "tobi"]
+</span></code></pre>
+
+  </section>
+
+  <section>
+    <h3 id="req.originalUrl">req.originalUrl</h3>
+
+    <p>This property is much like <code>req.url</code>, however it retains
+the original request url, allowing you to rewrite <code>req.url</code>
+freely for internal routing purposes. For example the “mounting” feature
+of <a href="http://www.expressjs.com.cn/3x/api.html#app.use">app.use()</a> will rewrite <code>req.url</code> to
+strip the mount point.</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript"><span class="token comment" spellcheck="true">// GET /search?q=something
+</span>req<span class="token punctuation">.</span>originalUrl
+<span class="token comment" spellcheck="true">// =&gt; "/search?q=something"
+</span></code></pre>
+
+  </section>
+
+  <section>
+    <h3 id="req.acceptedLanguages">req.acceptedLanguages</h3>
+
+    <p>Return an array of Accepted languages ordered from highest quality to lowest.</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">Accept<span class="token operator">-</span>Language<span class="token punctuation">:</span> en<span class="token punctuation">;</span>q<span class="token operator">=</span><span class="token punctuation">.</span><span class="token number">5</span><span class="token punctuation">,</span> en<span class="token operator">-</span>us
+<span class="token comment" spellcheck="true">// =&gt; ['en-us', 'en']
+</span></code></pre>
+
+  </section>
+
+  <section>
+    <h3 id="req.acceptedCharsets">req.acceptedCharsets</h3>
+
+    <p>Return an array of Accepted charsets ordered from highest quality to lowest.</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">Accept<span class="token operator">-</span>Charset<span class="token punctuation">:</span> iso<span class="token number">-8859</span><span class="token operator">-</span><span class="token number">5</span><span class="token punctuation">;</span>q<span class="token operator">=</span><span class="token punctuation">.</span><span class="token number">2</span><span class="token punctuation">,</span> unicode<span class="token number">-1</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>q<span class="token operator">=</span><span class="token number">0.8</span>
+<span class="token comment" spellcheck="true">// =&gt; ['unicode-1-1', 'iso-8859-5']
+</span></code></pre>
+
+  </section>
+
+  <section>
+    <h3 id="req.acceptsCharset">req.acceptsCharset(charset)</h3>
+
+    <p>Check if the given <code>charset</code> are acceptable.</p>
+
+  </section>
+
+  <section>
+    <h3 id="req.acceptsLanguage">req.acceptsLanguage(lang)</h3>
+
+    <p>Check if the given <code>lang</code> are acceptable.</p>
+
+  </section>
+
+  <p><a id="response" class="h2"></a></p>
+  <h2>Response</h2>
+
+  <section>
+    <h3 id="res.status">res.status(code)</h3>
+
+    <p>Chainable alias of node’s <code>res.statusCode=</code>.</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">res<span class="token punctuation">.</span><span class="token function">status<span class="token punctuation">(</span></span><span class="token number">404</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">sendfile<span class="token punctuation">(</span></span><span class="token string">'path/to/404.png'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+  </section>
+
+  <section>
+    <h3 id="res.set">res.set(field, [value])</h3>
+
+    <p>Set header <code>field</code> to <code>value</code>, or pass an object to set multiple fields at once.</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">res<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span><span class="token string">'Content-Type'</span><span class="token punctuation">,</span> <span class="token string">'text/plain'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+res<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token string">'Content-Type'</span><span class="token punctuation">:</span> <span class="token string">'text/plain'</span><span class="token punctuation">,</span>
+  <span class="token string">'Content-Length'</span><span class="token punctuation">:</span> <span class="token string">'123'</span><span class="token punctuation">,</span>
+  <span class="token string">'ETag'</span><span class="token punctuation">:</span> <span class="token string">'12345'</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+
+    <p>Aliased as <code>res.header(field, [value])</code>.</p>
+
+  </section>
+
+  <section>
+    <h3 id="res.get">res.get(field)</h3>
+
+    <p>Get the case-insensitive response header <code>field</code>.</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">res<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'Content-Type'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// =&gt; "text/plain"
+</span></code></pre>
+
+  </section>
+
+  <section>
+    <h3 id="res.cookie">res.cookie(name, value, [options])</h3>
+
+    <p>Set cookie <code>name</code> to <code>value</code>, which may be a string or object converted to JSON. The <code>path</code>
+option defaults to “/”.</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">res<span class="token punctuation">.</span><span class="token function">cookie<span class="token punctuation">(</span></span><span class="token string">'name'</span><span class="token punctuation">,</span> <span class="token string">'tobi'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> domain<span class="token punctuation">:</span> <span class="token string">'.example.com'</span><span class="token punctuation">,</span> path<span class="token punctuation">:</span> <span class="token string">'/admin'</span><span class="token punctuation">,</span> secure<span class="token punctuation">:</span> <span class="token keyword">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+res<span class="token punctuation">.</span><span class="token function">cookie<span class="token punctuation">(</span></span><span class="token string">'rememberme'</span><span class="token punctuation">,</span> <span class="token string">'1'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> expires<span class="token punctuation">:</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span>Date<span class="token punctuation">.</span><span class="token function">now<span class="token punctuation">(</span></span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">900000</span><span class="token punctuation">)</span><span class="token punctuation">,</span> httpOnly<span class="token punctuation">:</span> <span class="token keyword">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+    <p>The <code>maxAge</code> option is a convenience option for setting “expires”
+relative to the current time in milliseconds. The following is equivalent to
+the previous example.</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">res<span class="token punctuation">.</span><span class="token function">cookie<span class="token punctuation">(</span></span><span class="token string">'rememberme'</span><span class="token punctuation">,</span> <span class="token string">'1'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> maxAge<span class="token punctuation">:</span> <span class="token number">900000</span><span class="token punctuation">,</span> httpOnly<span class="token punctuation">:</span> <span class="token keyword">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+
+    <p>An object may be passed which is then serialized as JSON, which is
+automatically parsed by the <code>bodyParser()</code> middleware.</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">res<span class="token punctuation">.</span><span class="token function">cookie<span class="token punctuation">(</span></span><span class="token string">'cart'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> items<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+res<span class="token punctuation">.</span><span class="token function">cookie<span class="token punctuation">(</span></span><span class="token string">'cart'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> items<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> maxAge<span class="token punctuation">:</span> <span class="token number">900000</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+    <p>Signed cookies are also supported through this method. Simply
+pass the <code>signed</code> option. When given <code>res.cookie()</code>
+will use the secret passed to <code>express.cookieParser(secret)</code>
+to sign the value.</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">res<span class="token punctuation">.</span><span class="token function">cookie<span class="token punctuation">(</span></span><span class="token string">'name'</span><span class="token punctuation">,</span> <span class="token string">'tobi'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> signed<span class="token punctuation">:</span> <span class="token keyword">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+    <p>Later you may access this value through the <a href="http://www.expressjs.com.cn/3x/api.html#req.signedCookies">req.signedCookie</a>
+object.</p>
+
+  </section>
+
+  <section>
+    <h3 id="res.clearCookie">res.clearCookie(name, [options])</h3>
+
+    <p>Clear cookie <code>name</code>. The <code>path</code> option defaults to “/”.</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">res<span class="token punctuation">.</span><span class="token function">cookie<span class="token punctuation">(</span></span><span class="token string">'name'</span><span class="token punctuation">,</span> <span class="token string">'tobi'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> path<span class="token punctuation">:</span> <span class="token string">'/admin'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+res<span class="token punctuation">.</span><span class="token function">clearCookie<span class="token punctuation">(</span></span><span class="token string">'name'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> path<span class="token punctuation">:</span> <span class="token string">'/admin'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+  </section>
+
+  <section>
+    <h3 id="res.redirect">res.redirect([status], url)</h3>
+
+    <p>Redirect to the given <code>url</code> with optional <code>status</code> code
+defaulting to 302 “Found”.</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">res<span class="token punctuation">.</span><span class="token function">redirect<span class="token punctuation">(</span></span><span class="token string">'/foo/bar'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+res<span class="token punctuation">.</span><span class="token function">redirect<span class="token punctuation">(</span></span><span class="token string">'http://example.com'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+res<span class="token punctuation">.</span><span class="token function">redirect<span class="token punctuation">(</span></span><span class="token number">301</span><span class="token punctuation">,</span> <span class="token string">'http://example.com'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+res<span class="token punctuation">.</span><span class="token function">redirect<span class="token punctuation">(</span></span><span class="token string">'../login'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+    <p>Express supports a few forms of redirection, first being
+a fully qualified URI for redirecting to a different site:</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">res<span class="token punctuation">.</span><span class="token function">redirect<span class="token punctuation">(</span></span><span class="token string">'http://google.com'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+    <p>The second form is the pathname-relative redirect, for example
+if you were on <code>http://example.com/admin/post/new</code>, the 
+following redirect to <code>/admin</code> would land you at <code>http://example.com/admin</code>:</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">res<span class="token punctuation">.</span><span class="token function">redirect<span class="token punctuation">(</span></span><span class="token string">'/admin'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+    <p>This next redirect is relative to the <code>mount</code> point of the application. For example
+if you have a blog application mounted at <code>/blog</code>, ideally it has no knowledge of
+where it was mounted, so where a redirect of <code>/admin/post/new</code> would simply give you
+<code>http://example.com/admin/post/new</code>, the following mount-relative redirect would give
+you <code>http://example.com/blog/admin/post/new</code>:</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">res<span class="token punctuation">.</span><span class="token function">redirect<span class="token punctuation">(</span></span><span class="token string">'admin/post/new'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+    <p>Pathname relative redirects are also possible. If you were
+on <code>http://example.com/admin/post/new</code>, the following redirect
+would land you at <code>http//example.com/admin/post</code>:</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">res<span class="token punctuation">.</span><span class="token function">redirect<span class="token punctuation">(</span></span><span class="token string">'..'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+    <p>The final special-case is a <code>back</code> redirect, redirecting back to
+the Referer (or Referrer), defaulting to <code>/</code> when missing.</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">res<span class="token punctuation">.</span><span class="token function">redirect<span class="token punctuation">(</span></span><span class="token string">'back'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+  </section>
+
+  <section>
+    <h3 id="res.location">res.location</h3>
+
+    <p>Set the location header.</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">res<span class="token punctuation">.</span><span class="token function">location<span class="token punctuation">(</span></span><span class="token string">'/foo/bar'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+res<span class="token punctuation">.</span><span class="token function">location<span class="token punctuation">(</span></span><span class="token string">'foo/bar'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+res<span class="token punctuation">.</span><span class="token function">location<span class="token punctuation">(</span></span><span class="token string">'http://example.com'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+res<span class="token punctuation">.</span><span class="token function">location<span class="token punctuation">(</span></span><span class="token string">'../login'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+res<span class="token punctuation">.</span><span class="token function">location<span class="token punctuation">(</span></span><span class="token string">'back'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+    <p>You can use the same kind of <code>urls</code> as in <code>res.redirect()</code>.</p>
+
+    <p>For example, if your application is mounted at <code>/blog</code>,
+the following would set the <code>location</code> header to
+<code>/blog/admin</code>:</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">res<span class="token punctuation">.</span><span class="token function">location<span class="token punctuation">(</span></span><span class="token string">'admin'</span><span class="token punctuation">)</span>
+</code></pre>
+
+  </section>
+
+  <section>
+    <h3 id="res.charset">res.charset</h3>
+
+    <p>Assign the charset. Defaults to “utf-8”.</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">res<span class="token punctuation">.</span>charset <span class="token operator">=</span> <span class="token string">'value'</span><span class="token punctuation">;</span>
+res<span class="token punctuation">.</span><span class="token function">send<span class="token punctuation">(</span></span><span class="token string">'&lt;p&gt;some html&lt;/p&gt;'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// =&gt; Content-Type: text/html; charset=value
+</span></code></pre>
+
+  </section>
+
+  <section>
+    <h3 id="res.send">res.send([body|status], [body])</h3>
+
+    <p>Send a response.</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">res<span class="token punctuation">.</span><span class="token function">send<span class="token punctuation">(</span></span><span class="token keyword">new</span> <span class="token class-name">Buffer</span><span class="token punctuation">(</span><span class="token string">'whoop'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+res<span class="token punctuation">.</span><span class="token function">send<span class="token punctuation">(</span></span><span class="token punctuation">{</span> some<span class="token punctuation">:</span> <span class="token string">'json'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+res<span class="token punctuation">.</span><span class="token function">send<span class="token punctuation">(</span></span><span class="token string">'&lt;p&gt;some html&lt;/p&gt;'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+res<span class="token punctuation">.</span><span class="token function">send<span class="token punctuation">(</span></span><span class="token number">404</span><span class="token punctuation">,</span> <span class="token string">'Sorry, we cannot find that!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+res<span class="token punctuation">.</span><span class="token function">send<span class="token punctuation">(</span></span><span class="token number">500</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> error<span class="token punctuation">:</span> <span class="token string">'something blew up'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+res<span class="token punctuation">.</span><span class="token function">send<span class="token punctuation">(</span></span><span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+    <p>This method performs a myriad of
+useful tasks for simple non-streaming responses such
+as automatically assigning the Content-Length unless
+previously defined and providing automatic <em>HEAD</em> and
+HTTP cache freshness support.</p>
+
+    <p>When a <code>Buffer</code> is given
+the Content-Type is set to “application/octet-stream”
+unless previously defined as shown below:</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">res<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span><span class="token string">'Content-Type'</span><span class="token punctuation">,</span> <span class="token string">'text/html'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+res<span class="token punctuation">.</span><span class="token function">send<span class="token punctuation">(</span></span><span class="token keyword">new</span> <span class="token class-name">Buffer</span><span class="token punctuation">(</span><span class="token string">'&lt;p&gt;some html&lt;/p&gt;'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+    <p>When a <code>String</code> is given the
+Content-Type is set defaulted to “text/html”:</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">res<span class="token punctuation">.</span><span class="token function">send<span class="token punctuation">(</span></span><span class="token string">'&lt;p&gt;some html&lt;/p&gt;'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+    <p>When an <code>Array</code> or <code>Object</code> is
+given Express will respond with the JSON representation:</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">res<span class="token punctuation">.</span><span class="token function">send<span class="token punctuation">(</span></span><span class="token punctuation">{</span> user<span class="token punctuation">:</span> <span class="token string">'tobi'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+res<span class="token punctuation">.</span><span class="token function">send<span class="token punctuation">(</span></span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+</code></pre>
+
+    <p>Finally when a <code>Number</code> is given without
+any of the previously mentioned bodies, then a response
+body string is assigned for you. For example 200 will
+respond will the text “OK”, and 404 “Not Found” and so on.</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">res<span class="token punctuation">.</span><span class="token function">send<span class="token punctuation">(</span></span><span class="token number">200</span><span class="token punctuation">)</span>
+res<span class="token punctuation">.</span><span class="token function">send<span class="token punctuation">(</span></span><span class="token number">404</span><span class="token punctuation">)</span>
+res<span class="token punctuation">.</span><span class="token function">send<span class="token punctuation">(</span></span><span class="token number">500</span><span class="token punctuation">)</span>
+</code></pre>
+
+  </section>
+
+  <section>
+    <h3 id="res.json">res.json([status|body], [body])</h3>
+
+    <p>Send a JSON response. This method is identical
+to <code>res.send()</code> when an object or
+array is passed, however it may be used for
+explicit JSON conversion of non-objects (null, undefined, etc),
+though these are technically not valid JSON.</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">res<span class="token punctuation">.</span><span class="token function">json<span class="token punctuation">(</span></span><span class="token keyword">null</span><span class="token punctuation">)</span>
+res<span class="token punctuation">.</span><span class="token function">json<span class="token punctuation">(</span></span><span class="token punctuation">{</span> user<span class="token punctuation">:</span> <span class="token string">'tobi'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+res<span class="token punctuation">.</span><span class="token function">json<span class="token punctuation">(</span></span><span class="token number">500</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> error<span class="token punctuation">:</span> <span class="token string">'message'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+
+  </section>
+
+  <section>
+    <h3 id="res.jsonp">res.jsonp([status|body], [body])</h3>
+
+    <p>Send a JSON response with JSONP support. This method is identical
+to <code>res.json()</code> however opts-in to JSONP callback
+support.</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">res<span class="token punctuation">.</span><span class="token function">jsonp<span class="token punctuation">(</span></span><span class="token keyword">null</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">// =&gt; null
+</span>
+res<span class="token punctuation">.</span><span class="token function">jsonp<span class="token punctuation">(</span></span><span class="token punctuation">{</span> user<span class="token punctuation">:</span> <span class="token string">'tobi'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">// =&gt; { "user": "tobi" }
+</span>
+res<span class="token punctuation">.</span><span class="token function">jsonp<span class="token punctuation">(</span></span><span class="token number">500</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> error<span class="token punctuation">:</span> <span class="token string">'message'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">// =&gt; { "error": "message" }
+</span></code></pre>
+
+    <p>By default the JSONP callback name is simply <code>callback</code>,
+however you may alter this with the <a href="http://www.expressjs.com.cn/3x/api.html#app-settings">jsonp callback name</a>
+setting. The following are some examples of JSONP responses using the same
+code:</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript"><span class="token comment" spellcheck="true">// ?callback=foo
+</span>res<span class="token punctuation">.</span><span class="token function">jsonp<span class="token punctuation">(</span></span><span class="token punctuation">{</span> user<span class="token punctuation">:</span> <span class="token string">'tobi'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">// =&gt; foo({ "user": "tobi" })
+</span>
+app<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span><span class="token string">'jsonp callback name'</span><span class="token punctuation">,</span> <span class="token string">'cb'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// ?cb=foo
+</span>res<span class="token punctuation">.</span><span class="token function">jsonp<span class="token punctuation">(</span></span><span class="token number">500</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> error<span class="token punctuation">:</span> <span class="token string">'message'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">// =&gt; foo({ "error": "message" })
+</span></code></pre>
+
+  </section>
+
+  <section>
+    <h3 id="res.type">res.type(type)</h3>
+
+    <p>Sets the Content-Type to the mime lookup of <code>type</code>,
+or when “/” is present the Content-Type is simply set to this
+literal value.</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">res<span class="token punctuation">.</span><span class="token function">type<span class="token punctuation">(</span></span><span class="token string">'.html'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+res<span class="token punctuation">.</span><span class="token function">type<span class="token punctuation">(</span></span><span class="token string">'html'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+res<span class="token punctuation">.</span><span class="token function">type<span class="token punctuation">(</span></span><span class="token string">'json'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+res<span class="token punctuation">.</span><span class="token function">type<span class="token punctuation">(</span></span><span class="token string">'application/json'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+res<span class="token punctuation">.</span><span class="token function">type<span class="token punctuation">(</span></span><span class="token string">'png'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+    <p>p Aliased as <code>res.contentType(type)</code>.</p>
+
+  </section>
+
+  <section>
+    <h3 id="res.format">res.format(object)</h3>
+
+    <p>Performs content-negotiation on the request Accept header
+field when present. This method uses <code>req.accepted</code>, an array of
+acceptable types ordered by their quality values, otherwise the
+first callback is invoked. When no match is performed the server
+responds with 406 “Not Acceptable”, or invokes the <code>default</code>
+callback.</p>
+
+    <p>The Content-Type is set for you when a callback is selected,
+however you may alter this within the callback using <code>res.set()</code>
+or <code>res.type()</code> etcetera.</p>
+
+    <p>The following example would respond with <code>{ "message": "hey" }</code>
+when the Accept header field is set to “application/json” or “<em>/json”,
+however if “</em>/*” is given then “hey” will be the response.</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">res<span class="token punctuation">.</span><span class="token function">format<span class="token punctuation">(</span></span><span class="token punctuation">{</span>
+  <span class="token string">'text/plain'</span><span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    res<span class="token punctuation">.</span><span class="token function">send<span class="token punctuation">(</span></span><span class="token string">'hey'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token string">'text/html'</span><span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    res<span class="token punctuation">.</span><span class="token function">send<span class="token punctuation">(</span></span><span class="token string">'&lt;p&gt;hey&lt;/p&gt;'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token string">'application/json'</span><span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    res<span class="token punctuation">.</span><span class="token function">send<span class="token punctuation">(</span></span><span class="token punctuation">{</span> message<span class="token punctuation">:</span> <span class="token string">'hey'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+    <p>In addition to canonicalized MIME types you may also
+use extnames mapped to these types, providing a slightly
+less verbose implementation:</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">res<span class="token punctuation">.</span><span class="token function">format<span class="token punctuation">(</span></span><span class="token punctuation">{</span>
+  text<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    res<span class="token punctuation">.</span><span class="token function">send<span class="token punctuation">(</span></span><span class="token string">'hey'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  html<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    res<span class="token punctuation">.</span><span class="token function">send<span class="token punctuation">(</span></span><span class="token string">'&lt;p&gt;hey&lt;/p&gt;'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  json<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    res<span class="token punctuation">.</span><span class="token function">send<span class="token punctuation">(</span></span><span class="token punctuation">{</span> message<span class="token punctuation">:</span> <span class="token string">'hey'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+  </section>
+
+  <section>
+    <h3 id="res.attachment">res.attachment([filename])</h3>
+
+    <p>Sets the Content-Disposition header field to “attachment”. If
+a <code>filename</code> is given then the Content-Type will be
+automatically set based on the extname via <code>res.type()</code>,
+and the Content-Disposition’s “filename=” parameter will be set.</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">res<span class="token punctuation">.</span><span class="token function">attachment<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// Content-Disposition: attachment
+</span>
+res<span class="token punctuation">.</span><span class="token function">attachment<span class="token punctuation">(</span></span><span class="token string">'path/to/logo.png'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// Content-Disposition: attachment; filename="logo.png"
+</span><span class="token comment" spellcheck="true">// Content-Type: image/png
+</span></code></pre>
+
+  </section>
+
+  <section>
+    <h3 id="res.sendfile">res.sendfile(path, [options], [fn]])</h3>
+
+    <p>Transfer the file at the given <code>path</code>.</p>
+
+    <p>Automatically defaults the Content-Type response header field based
+on the filename’s extension. The callback <code>fn(err)</code> is 
+invoked when the transfer is complete or when an error occurs.</p>
+
+    <p>Options:</p>
+
+    <ul>
+      <li><code>maxAge</code> in milliseconds defaulting to 0</li>
+      <li><code>root</code> root directory for relative filenames</li>
+    </ul>
+
+    <p>This method provides fine-grained support for file serving
+as illustrated in the following example:</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">app<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'/user/:uid/photos/:file'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>req<span class="token punctuation">,</span> res<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">var</span> uid <span class="token operator">=</span> req<span class="token punctuation">.</span>params<span class="token punctuation">.</span>uid
+    <span class="token punctuation">,</span> file <span class="token operator">=</span> req<span class="token punctuation">.</span>params<span class="token punctuation">.</span>file<span class="token punctuation">;</span>
+
+  req<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">mayViewFilesFrom<span class="token punctuation">(</span></span>uid<span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>yes<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>yes<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      res<span class="token punctuation">.</span><span class="token function">sendfile<span class="token punctuation">(</span></span><span class="token string">'/uploads/'</span> <span class="token operator">+</span> uid <span class="token operator">+</span> <span class="token string">'/'</span> <span class="token operator">+</span> file<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      res<span class="token punctuation">.</span><span class="token function">send<span class="token punctuation">(</span></span><span class="token number">403</span><span class="token punctuation">,</span> <span class="token string">'Sorry! you cant see that.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+  </section>
+
+  <section>
+    <h3 id="res.download">res.download(path, [filename], [fn])</h3>
+
+    <p>Transfer the file at <code>path</code> as an “attachment”,
+typically browsers will prompt the user for download. The
+Content-Disposition “filename=” parameter, aka the one
+that will appear in the brower dialog is set to <code>path</code>
+by default, however you may provide an override <code>filename</code>.</p>
+
+    <p>When an error has ocurred or transfer is complete the optional 
+callback <code>fn</code> is invoked. This method uses <a href="http://www.expressjs.com.cn/3x/api.html#res.sendfile">res.sendfile()</a>
+to transfer the file.</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">res<span class="token punctuation">.</span><span class="token function">download<span class="token punctuation">(</span></span><span class="token string">'/report-12345.pdf'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+res<span class="token punctuation">.</span><span class="token function">download<span class="token punctuation">(</span></span><span class="token string">'/report-12345.pdf'</span><span class="token punctuation">,</span> <span class="token string">'report.pdf'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+res<span class="token punctuation">.</span><span class="token function">download<span class="token punctuation">(</span></span><span class="token string">'/report-12345.pdf'</span><span class="token punctuation">,</span> <span class="token string">'report.pdf'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// handle error, keep in mind the response may be partially-sent
+</span>    <span class="token comment" spellcheck="true">// so check res.headerSent
+</span>  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// decrement a download credit etc
+</span>  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+  </section>
+
+  <section>
+    <h3 id="res.links">res.links(links)</h3>
+
+    <p>Join the given <code>links</code> to populate the “Link” response header field.</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">res<span class="token punctuation">.</span><span class="token function">links<span class="token punctuation">(</span></span><span class="token punctuation">{</span>
+  next<span class="token punctuation">:</span> <span class="token string">'http://api.example.com/users?page=2'</span><span class="token punctuation">,</span>
+  last<span class="token punctuation">:</span> <span class="token string">'http://api.example.com/users?page=5'</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+    <p>p yields:</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">Link<span class="token punctuation">:</span> <span class="token operator">&amp;</span>lt<span class="token punctuation">;</span>http<span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span>api<span class="token punctuation">.</span>example<span class="token punctuation">.</span>com<span class="token operator">/</span>users<span class="token operator">?</span>page<span class="token operator">=</span><span class="token number">2</span><span class="token operator">&amp;</span>gt<span class="token punctuation">;</span><span class="token punctuation">;</span> rel<span class="token operator">=</span><span class="token string">"next"</span><span class="token punctuation">,</span> 
+      <span class="token operator">&amp;</span>lt<span class="token punctuation">;</span>http<span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span>api<span class="token punctuation">.</span>example<span class="token punctuation">.</span>com<span class="token operator">/</span>users<span class="token operator">?</span>page<span class="token operator">=</span><span class="token number">5</span><span class="token operator">&amp;</span>gt<span class="token punctuation">;</span><span class="token punctuation">;</span> rel<span class="token operator">=</span><span class="token string">"last"</span>
+</code></pre>
+
+  </section>
+
+  <section>
+    <h3 id="res.locals">res.locals</h3>
+
+    <p>Response local variables are scoped to the request, thus only
+available to the view(s) rendered during that request / response
+cycle, if any. Otherwise this API is identical to <a href="http://www.expressjs.com.cn/3x/api.html#app.locals">app.locals</a>.</p>
+
+    <p>This object is useful for exposing request-level information such as the
+request pathname, authenticated user, user settings etcetera.</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">app<span class="token punctuation">.</span><span class="token function">use<span class="token punctuation">(</span></span><span class="token keyword">function</span><span class="token punctuation">(</span>req<span class="token punctuation">,</span> res<span class="token punctuation">,</span> next<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  res<span class="token punctuation">.</span>locals<span class="token punctuation">.</span>user <span class="token operator">=</span> req<span class="token punctuation">.</span>user<span class="token punctuation">;</span>
+  res<span class="token punctuation">.</span>locals<span class="token punctuation">.</span>authenticated <span class="token operator">=</span> <span class="token operator">!</span> req<span class="token punctuation">.</span>user<span class="token punctuation">.</span>anonymous<span class="token punctuation">;</span>
+  <span class="token function">next<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+  </section>
+
+  <section>
+    <h3 id="res.render">res.render(view, [locals], callback)</h3>
+
+    <p>Render a <code>view</code> with a callback responding with
+the rendered string. When an error occurs <code>next(err)</code>
+is invoked internally. When a callback is provided both the possible error
+and rendered string are passed, and no automated response is performed.</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">res<span class="token punctuation">.</span><span class="token function">render<span class="token punctuation">(</span></span><span class="token string">'index'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> html<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// ...
+</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+res<span class="token punctuation">.</span><span class="token function">render<span class="token punctuation">(</span></span><span class="token string">'user'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> name<span class="token punctuation">:</span> <span class="token string">'Tobi'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>err<span class="token punctuation">,</span> html<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// ...
+</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+  </section>
+
+  <p><a id="middleware" class="h2"></a></p>
+  <h2>Middleware</h2>
+
+  <section>
+    <h3 id="basicAuth">basicAuth()</h3>
+
+    <p>Basic Authentication middleware, populating <code>req.user</code>
+with the username.</p>
+
+    <p>Simple username and password:</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">app<span class="token punctuation">.</span><span class="token function">use<span class="token punctuation">(</span></span>express<span class="token punctuation">.</span><span class="token function">basicAuth<span class="token punctuation">(</span></span><span class="token string">'username'</span><span class="token punctuation">,</span> <span class="token string">'password'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+    <p>Callback verification:</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript"> app<span class="token punctuation">.</span><span class="token function">use<span class="token punctuation">(</span></span>express<span class="token punctuation">.</span><span class="token function">basicAuth<span class="token punctuation">(</span></span><span class="token keyword">function</span><span class="token punctuation">(</span>user<span class="token punctuation">,</span> pass<span class="token punctuation">)</span><span class="token punctuation">{</span>
+   <span class="token keyword">return</span> <span class="token string">'tj'</span> <span class="token operator">==</span> user <span class="token operator">&amp;&amp;</span> <span class="token string">'wahoo'</span> <span class="token operator">==</span> pass<span class="token punctuation">;</span>
+ <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+    <p>Async callback verification, accepting <code>fn(err, user)</code>,
+in this case <code>req.user</code> will be the user object passed.</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">app<span class="token punctuation">.</span><span class="token function">use<span class="token punctuation">(</span></span>express<span class="token punctuation">.</span><span class="token function">basicAuth<span class="token punctuation">(</span></span><span class="token keyword">function</span><span class="token punctuation">(</span>user<span class="token punctuation">,</span> pass<span class="token punctuation">,</span> fn<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  User<span class="token punctuation">.</span><span class="token function">authenticate<span class="token punctuation">(</span></span><span class="token punctuation">{</span> user<span class="token punctuation">:</span> user<span class="token punctuation">,</span> pass<span class="token punctuation">:</span> pass <span class="token punctuation">}</span><span class="token punctuation">,</span> fn<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+
+  </section>
+
+  <section>
+    <h3 id="bodyParser">bodyParser()</h3>
+
+    <p>Request body parsing middleware supporting JSON, urlencoded,
+and multipart requests. This middleware is simply a wrapper
+for the <code>json()</code>, <code>urlencoded()</code>, and
+<code>multipart()</code> middleware.</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">app<span class="token punctuation">.</span><span class="token function">use<span class="token punctuation">(</span></span>express<span class="token punctuation">.</span><span class="token function">bodyParser<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// is equivalent to:
+</span>app<span class="token punctuation">.</span><span class="token function">use<span class="token punctuation">(</span></span>express<span class="token punctuation">.</span><span class="token function">json<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+app<span class="token punctuation">.</span><span class="token function">use<span class="token punctuation">(</span></span>express<span class="token punctuation">.</span><span class="token function">urlencoded<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+app<span class="token punctuation">.</span><span class="token function">use<span class="token punctuation">(</span></span>express<span class="token punctuation">.</span><span class="token function">multipart<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+    <p>For security sake, it’s better to disable file upload if your application
+doesn’t need it. To do this, use only the needed middleware, i.e. don’t use
+the <code>bodyParser</code> and <code>multipart()</code> middleware:</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">app<span class="token punctuation">.</span><span class="token function">use<span class="token punctuation">(</span></span>express<span class="token punctuation">.</span><span class="token function">json<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+app<span class="token punctuation">.</span><span class="token function">use<span class="token punctuation">(</span></span>express<span class="token punctuation">.</span><span class="token function">urlencoded<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+    <p>If your application needs file upload you should set up
+<a href="https://groups.google.com/d/msg/express-js/iP2VyhkypHo/5AXQiYN3RPcJ">a strategy for dealing with those files</a>.</p>
+
+  </section>
+
+  <section>
+    <h3 id="compress">compress()</h3>
+
+    <p>Compress response data with gzip / deflate. This middleware
+should be placed “high” within the stack to ensure all
+responses may be compressed.</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">app<span class="token punctuation">.</span><span class="token function">use<span class="token punctuation">(</span></span>express<span class="token punctuation">.</span><span class="token function">logger<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+app<span class="token punctuation">.</span><span class="token function">use<span class="token punctuation">(</span></span>express<span class="token punctuation">.</span><span class="token function">compress<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+app<span class="token punctuation">.</span><span class="token function">use<span class="token punctuation">(</span></span>express<span class="token punctuation">.</span><span class="token function">methodOverride<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+app<span class="token punctuation">.</span><span class="token function">use<span class="token punctuation">(</span></span>express<span class="token punctuation">.</span><span class="token function">bodyParser<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+  </section>
+
+  <section>
+    <h3 id="cookieParser">cookieParser()</h3>
+
+    <p>Parses the Cookie header field and populates <code>req.cookies</code>
+with an object keyed by the cookie names. Optionally you may enabled 
+signed cookie support by passing a <code>secret</code> string.</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">app<span class="token punctuation">.</span><span class="token function">use<span class="token punctuation">(</span></span>express<span class="token punctuation">.</span><span class="token function">cookieParser<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+app<span class="token punctuation">.</span><span class="token function">use<span class="token punctuation">(</span></span>express<span class="token punctuation">.</span><span class="token function">cookieParser<span class="token punctuation">(</span></span><span class="token string">'some secret'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+  </section>
+
+  <section>
+    <h3 id="cookieSession">cookieSession()</h3>
+
+    <p>Provides cookie-based sessions, and populates <code>req.session</code>.
+This middleware takes the following options:</p>
+
+    <ul>
+      <li><code>key</code> cookie name defaulting to <code>connect.sess</code></li>
+      <li><code>secret</code> prevents cookie tampering</li>
+      <li><code>cookie</code> session cookie settings, defaulting to <code>{ path: '/', httpOnly: true, maxAge: null }</code></li>
+      <li><code>proxy</code> trust the reverse proxy when setting secure cookies (via “x-forwarded-proto”)</li>
+    </ul>
+
+    <pre class="  language-javascript"><code class="  language-javascript">app<span class="token punctuation">.</span><span class="token function">use<span class="token punctuation">(</span></span>express<span class="token punctuation">.</span><span class="token function">cookieSession<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+    <p>To clear a cookie simply assign the session to null before responding:</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">req<span class="token punctuation">.</span>session <span class="token operator">=</span> <span class="token keyword">null</span>
+</code></pre>
+
+  </section>
+
+  <section>
+    <h3 id="csrf">csrf()</h3>
+
+    <p>CSRF protection middleware.</p>
+
+    <p>By default this middleware generates a token named “_csrf”
+which should be added to requests which mutate
+state, within a hidden form field, query-string etc. This
+token is validated against <code>req.csrfToken()</code>.</p>
+
+    <p>The default <code>value</code> function checks <code>req.body</code> generated
+by the <code>bodyParser()</code> middleware, <code>req.query</code> generated
+by <code>query()</code>, and the “X-CSRF-Token” header field.</p>
+
+    <p>This middleware requires session support, thus should be added
+somewhere below <code>session()</code>.</p>
+
+  </section>
+
+  <section>
+    <h3 id="directory">directory()</h3>
+
+    <p>Directory serving middleware, serves the given <code>path</code>.
+This middleware may be paired with <code>static()</code> to serve
+files, providing a full-featured file browser.</p>
+
+    <pre class="  language-javascript"><code class="  language-javascript">app<span class="token punctuation">.</span><span class="token function">use<span class="token punctuation">(</span></span>express<span class="token punctuation">.</span><span class="token function">directory<span class="token punctuation">(</span></span><span class="token string">'public'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+app<span class="token punctuation">.</span><span class="token function">use<span class="token punctuation">(</span></span>express<span class="token punctuation">.</span><span class="token keyword">static</span><span class="token punctuation">(</span><span class="token string">'public'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+
+    <p>This middleware accepts the following options:</p>
+
+    <ul>
+      <li><code>hidden</code> display hidden (dot) files. Defaults to false.</li>
+      <li><code>icons</code>  display icons. Defaults to false.</li>
+      <li><code>filter</code> Apply this filter function to files. Defaults to false.</li>
+    </ul>
+
+  </section>
+
+</div>
+
+
+    </section>
+
+    <a id="top" href="http://www.expressjs.com.cn/3x/api.html#"><img src="./16Express 3.x - API 中文手册_files/arrow.png"></a>
+    
+    <footer>
+        <div id="footer-content">
+            <div id="github">
+                <a href="https://github.com/strongloop/express" target="_blank">Github Repo</a>
+            </div>
+            <div id="sponsor">Express 项目由 <a href="http://strongloop.com/" target="_blank">StrongLoop</a> 赞助。</div>
+            <div id="fork"><a href="https://github.com/strongloop/expressjs.com/tree/gh-pages/_includes/api/en/3x">Edit this page on GitHub</a></div>
+            <div>Copyright © StrongLoop, Inc., and other expressjs.com contributors.</div>
+        </div>
+    
+        <div class="friend-links">
+            <a href="http://www.bootcss.com/" title="Bootstrap 中文网">Bootstrap中文网</a>
+            <a href="http://www.gruntjs.net/" title="Grunt 中文网">Grunt中文网</a>
+            <a href="http://www.gulpjs.com.cn/" title="Gulp 中文网">Gulp中文网</a>
+            <a href="http://www.bootcdn.cn/" title="BootCDN 加速">BootCDN</a>
+            <a href="http://www.nodeapp.cn/" title="Node.js 中文文档">Node.js 中文文档</a>
+        </div>
+    </footer>
+    
+    <div class="beian">
+    	<a href="http://www.miibeian.gov.cn/" target="_blank">冀ICP备15008021号</a><span>|</span>© Express 中文网 2015
+    </div>
+  
+
+
+</body></html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)http://www.expressjs.com.cn/starter/hello-world.html -->
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>基于 Express 的 "Hello World" 实例</title>
+      
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      
+      <link rel="stylesheet" href="./基于 Express 的 _Hello World_ 实例_files/style.css">
+      <link rel="stylesheet" href="./基于 Express 的 _Hello World_ 实例_files/dropit.css">
+      <link rel="stylesheet" href="./基于 Express 的 _Hello World_ 实例_files/prism.css">
+      <link href="./基于 Express 的 _Hello World_ 实例_files/font-awesome.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="./基于 Express 的 _Hello World_ 实例_files/css">
+  
+      <script src="./基于 Express 的 _Hello World_ 实例_files/hm.js.下载"></script><script src="./基于 Express 的 _Hello World_ 实例_files/hm.js(1).下载"></script><script data-cfasync="false" src="./基于 Express 的 _Hello World_ 实例_files/jquery.min.js.下载"></script>
+      <script data-cfasync="false" src="./基于 Express 的 _Hello World_ 实例_files/app.js.下载"></script>
+      <script data-cfasync="false" src="./基于 Express 的 _Hello World_ 实例_files/retina.js.下载"></script>
+      <script data-cfasync="false" src="./基于 Express 的 _Hello World_ 实例_files/dropit.js.下载"></script>
+      <script data-cfasync="false" src="./基于 Express 的 _Hello World_ 实例_files/prism.js.下载"></script>
+      <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?1e9527683dc35951cb595bc55ece8e84";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();
+      </script></head>
+
+  <body rlt="1" class="">
+
+    <section class="content">
+
+      <header>
+        <div id="mobile-menu">
+            <div id="nav-button" class="fa fa-bars fa-2x button"></div>
+        </div>
+        <section id="logo"><a href="http://www.expressjs.com.cn/" class="express">Express</a>
+        </section>
+        <div id="navbar">
+            <ul id="navmenu">
+                <li><a href="http://www.expressjs.com.cn/" id="home-menu">首页</a></li>
+                <li>
+                    <ul id="getting-started-menu" class="menu dropit">
+                        <li class="dropit-trigger"><a href="http://www.expressjs.com.cn/starter/installing.html">入门</a>
+                            <ul class="dropit-submenu" style="display: none;">
+                                <li>
+                                  <a href="http://www.expressjs.com.cn/starter/installing.html">
+                                    安装
+                                  </a>
+                                </li>
+                                <li>
+                                  <a href="http://www.expressjs.com.cn/starter/hello-world.html">
+                                    Hello world
+                                  </a>
+                                </li>
+                                <li>
+                                <a href="http://www.expressjs.com.cn/starter/generator.html">
+                                  Express 应用生成器
+                                </a>
+                                </li>
+                                <li>
+                                  <a href="http://www.expressjs.com.cn/starter/basic-routing.html">
+                                    基本路由
+                                  </a>
+                                </li>
+                                <li>
+                                  <a href="http://www.expressjs.com.cn/starter/static-files.html">
+                                    静态文件
+                                  </a>
+                                </li>
+                                <li>
+                                  <a href="http://www.expressjs.com.cn/starter/faq.html">
+                                    常见问题
+                                  </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <ul id="guide-menu" class="menu dropit">
+                        <li class="dropit-trigger"><a href="http://www.expressjs.com.cn/guide/routing.html">使用指南</a>
+                            <ul class="dropit-submenu" style="display: none;">
+                                <li><a href="http://www.expressjs.com.cn/guide/routing.html">路由</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/guide/using-middleware.html">中间件</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/guide/using-template-engines.html">模板引擎</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/guide/error-handling.html">错误处理</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/guide/debugging.html">调试</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/guide/behind-proxies.html">为 Express 设置代理</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/guide/migrating-4.html">升级到 Express 4</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/guide/database-integration.html">数据库集成</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <ul id="application-menu" class="menu dropit">
+                        <li class="dropit-trigger"><a href="http://www.expressjs.com.cn/4x/api.html">API 中文手册</a>
+                            <ul class="dropit-submenu" style="display: none;">
+                                <li><a href="http://www.expressjs.com.cn/4x/api.html">4.x 版本</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/3x/api.html">3.x 版本</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <ul id="advanced-topics-menu" class="menu dropit">
+                        <li class="dropit-trigger"><a href="http://www.expressjs.com.cn/advanced/developing-template-engines.html">进阶话题</a>
+                            <ul class="dropit-submenu" style="display: none;">
+                                <li><a href="http://www.expressjs.com.cn/advanced/developing-template-engines.html">模板引擎</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/advanced/pm.html">进程管理器</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/advanced/security-updates.html">安全更新</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <ul id="resources-menu" class="menu dropit">
+                        <li class="dropit-trigger"><a href="http://www.expressjs.com.cn/resources/glossary.html">有用的资源</a>
+                            <ul class="dropit-submenu" style="display: none;">
+                                <li><a href="http://www.expressjs.com.cn/resources/glossary.html">术语表</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/resources/middleware.html">中间件</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/resources/community.html">社区</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/resources/books-blogs.html">书籍与博客</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/resources/applications.html">实例展示</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+      </header>
+      <div id="overlay"></div>
+    
+      
+<h1 id="hello-world-">Hello world 实例</h1>
+
+<p>继续之前请务必按照 <a href="http://www.expressjs.com.cn/starter/installing.html">Installing</a> 章节执行了所有的前期准备工作。</p>
+
+<p>接下来，我们一起创建一个基本的 Express 应用。</p>
+
+<div class="doc-box doc-info">
+  <p>注意：这里所创建是一个最最简单的 Express 应用，并且仅仅只有一个文件 — 和通过 <a href="http://www.expressjs.com.cn/starter/generator.html">Express 应用生成器</a> 所创建的应用_完全不一样_，Express 应用生成器所创建的应用框架包含多个 JavaScript 文件、Jade 模板和针对不同用途的子目录。</p>
+</div>
+
+<p>进入 <code>myapp</code> 目录，创建一个名为 <code>app.js</code> 的文件，然后将下列代码复制进去：</p>
+
+<pre class="  language-javascript"><code class="  language-javascript"><span class="token keyword">var</span> express <span class="token operator">=</span> <span class="token function">require<span class="token punctuation">(</span></span><span class="token string">'express'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> app <span class="token operator">=</span> <span class="token function">express<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+app<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>req<span class="token punctuation">,</span> res<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  res<span class="token punctuation">.</span><span class="token function">send<span class="token punctuation">(</span></span><span class="token string">'Hello World!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> server <span class="token operator">=</span> app<span class="token punctuation">.</span><span class="token function">listen<span class="token punctuation">(</span></span><span class="token number">3000</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> host <span class="token operator">=</span> server<span class="token punctuation">.</span><span class="token function">address<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">.</span>address<span class="token punctuation">;</span>
+  <span class="token keyword">var</span> port <span class="token operator">=</span> server<span class="token punctuation">.</span><span class="token function">address<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">.</span>port<span class="token punctuation">;</span>
+
+  console<span class="token punctuation">.</span><span class="token function">log<span class="token punctuation">(</span></span><span class="token string">'Example app listening at http://%s:%s'</span><span class="token punctuation">,</span> host<span class="token punctuation">,</span> port<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+<p>上面的代码启动一个服务并监听从 3000 端口进入的所有连接请求。他将对所有 (<code>/</code>) URL 或 <em>路由</em> 返回 “Hello World!” 字符串。对于其他所有路径全部返回 <strong>404 Not Found</strong>。</p>
+
+<div class="doc-box doc-notice">
+  <p><code>req</code> (请求) 和 <code>res</code> (响应) 与 Node 提供的对象完全一致，因此，你可以调用
+<code>req.pipe()</code>、<code>req.on('data', callback)</code> 以及任何 Node 提供的方法。</p>
+</div>
+
+<p>通过如下命令启动此应用：</p>
+
+<pre class="language-sh"><code class="language-sh">$ node app.js
+</code></pre>
+
+<p>然后在浏览器中打开 <a href="http://localhost:3000/">http://localhost:3000/</a> 并查看输出结果。</p>
+
+      
+    </section>
+
+    <a id="top" href="http://www.expressjs.com.cn/starter/hello-world.html#"><img src="./基于 Express 的 _Hello World_ 实例_files/arrow.png"></a>
+    
+    <footer>
+        <div id="footer-content">
+            <div id="github">
+                <a href="https://github.com/strongloop/express" target="_blank">Github Repo</a>
+            </div>
+            <div id="sponsor">Express 项目由 <a href="http://strongloop.com/" target="_blank">StrongLoop</a> 赞助。</div>
+            <div id="fork"><a href="https://github.com/strongloop/expressjs.com/blob/gh-pages/starter/hello-world.md">Edit this page on GitHub</a></div>
+            <div>Copyright © StrongLoop, Inc., and other expressjs.com contributors.</div>
+        </div>
+    
+        <div class="friend-links">
+            <a href="http://www.bootcss.com/" title="Bootstrap 中文网">Bootstrap中文网</a>
+            <a href="http://www.gruntjs.net/" title="Grunt 中文网">Grunt中文网</a>
+            <a href="http://www.gulpjs.com.cn/" title="Gulp 中文网">Gulp中文网</a>
+            <a href="http://www.bootcdn.cn/" title="BootCDN 加速">BootCDN</a>
+            <a href="http://www.nodeapp.cn/" title="Node.js 中文文档">Node.js 中文文档</a>
+        </div>
+    </footer>
+    
+    <div class="beian">
+    	<a href="http://www.miibeian.gov.cn/" target="_blank">冀ICP备15008021号</a><span>|</span>© Express 中文网 2015
+    </div>
+  
+
+
+</body></html>

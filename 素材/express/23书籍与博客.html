@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<!-- saved from url=(0054)http://www.expressjs.com.cn/resources/books-blogs.html -->
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>关于 Express 的书籍和博客</title>
+      
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      
+      <link rel="stylesheet" href="./23关于 Express 的书籍和博客_files/style.css">
+      <link rel="stylesheet" href="./23关于 Express 的书籍和博客_files/dropit.css">
+      <link rel="stylesheet" href="./23关于 Express 的书籍和博客_files/prism.css">
+      <link href="./23关于 Express 的书籍和博客_files/font-awesome.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="./23关于 Express 的书籍和博客_files/css">
+  
+      <script src="./23关于 Express 的书籍和博客_files/hm.js.下载"></script><script src="./23关于 Express 的书籍和博客_files/hm.js(1).下载"></script><script data-cfasync="false" src="./23关于 Express 的书籍和博客_files/jquery.min.js.下载"></script>
+      <script data-cfasync="false" src="./23关于 Express 的书籍和博客_files/app.js.下载"></script>
+      <script data-cfasync="false" src="./23关于 Express 的书籍和博客_files/retina.js.下载"></script>
+      <script data-cfasync="false" src="./23关于 Express 的书籍和博客_files/dropit.js.下载"></script>
+      <script data-cfasync="false" src="./23关于 Express 的书籍和博客_files/prism.js.下载"></script>
+      <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?1e9527683dc35951cb595bc55ece8e84";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();
+      </script></head>
+
+  <body rlt="1" class="">
+
+    <section class="content">
+
+      <header>
+        <div id="mobile-menu">
+            <div id="nav-button" class="fa fa-bars fa-2x button"></div>
+        </div>
+        <section id="logo"><a href="http://www.expressjs.com.cn/" class="express">Express</a>
+        </section>
+        <div id="navbar">
+            <ul id="navmenu">
+                <li><a href="http://www.expressjs.com.cn/" id="home-menu">首页</a></li>
+                <li>
+                    <ul id="getting-started-menu" class="menu dropit">
+                        <li class="dropit-trigger"><a href="http://www.expressjs.com.cn/starter/installing.html">入门</a>
+                            <ul class="dropit-submenu" style="display: none;">
+                                <li>
+                                  <a href="http://www.expressjs.com.cn/starter/installing.html">
+                                    安装
+                                  </a>
+                                </li>
+                                <li>
+                                  <a href="http://www.expressjs.com.cn/starter/hello-world.html">
+                                    Hello world
+                                  </a>
+                                </li>
+                                <li>
+                                <a href="http://www.expressjs.com.cn/starter/generator.html">
+                                  Express 应用生成器
+                                </a>
+                                </li>
+                                <li>
+                                  <a href="http://www.expressjs.com.cn/starter/basic-routing.html">
+                                    基本路由
+                                  </a>
+                                </li>
+                                <li>
+                                  <a href="http://www.expressjs.com.cn/starter/static-files.html">
+                                    静态文件
+                                  </a>
+                                </li>
+                                <li>
+                                  <a href="http://www.expressjs.com.cn/starter/faq.html">
+                                    常见问题
+                                  </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <ul id="guide-menu" class="menu dropit">
+                        <li class="dropit-trigger"><a href="http://www.expressjs.com.cn/guide/routing.html">使用指南</a>
+                            <ul class="dropit-submenu" style="display: none;">
+                                <li><a href="http://www.expressjs.com.cn/guide/routing.html">路由</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/guide/using-middleware.html">中间件</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/guide/using-template-engines.html">模板引擎</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/guide/error-handling.html">错误处理</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/guide/debugging.html">调试</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/guide/behind-proxies.html">为 Express 设置代理</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/guide/migrating-4.html">升级到 Express 4</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/guide/database-integration.html">数据库集成</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <ul id="application-menu" class="menu dropit">
+                        <li class="dropit-trigger"><a href="http://www.expressjs.com.cn/4x/api.html">API 中文手册</a>
+                            <ul class="dropit-submenu" style="display: none;">
+                                <li><a href="http://www.expressjs.com.cn/4x/api.html">4.x 版本</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/3x/api.html">3.x 版本</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <ul id="advanced-topics-menu" class="menu dropit">
+                        <li class="dropit-trigger"><a href="http://www.expressjs.com.cn/advanced/developing-template-engines.html">进阶话题</a>
+                            <ul class="dropit-submenu" style="display: none;">
+                                <li><a href="http://www.expressjs.com.cn/advanced/developing-template-engines.html">模板引擎</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/advanced/pm.html">进程管理器</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/advanced/security-updates.html">安全更新</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <ul id="resources-menu" class="menu dropit">
+                        <li class="dropit-trigger"><a href="http://www.expressjs.com.cn/resources/glossary.html">有用的资源</a>
+                            <ul class="dropit-submenu" style="display: none;">
+                                <li><a href="http://www.expressjs.com.cn/resources/glossary.html">术语表</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/resources/middleware.html">中间件</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/resources/community.html">社区</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/resources/books-blogs.html">书籍与博客</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/resources/applications.html">实例展示</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+      </header>
+      <div id="overlay"></div>
+    
+      
+<h1 id="express-">关于 Express 的书籍和博客</h1>
+
+<div class="doc-box doc-warn">声明：我们不为这些社区资源背书</div>
+
+<h2 id="section">书籍</h2>
+
+<p>这里列出了一些关于 Express 的书籍：</p>
+
+<ul>
+  <li><strong><a href="http://www.manning.com/sholmes/">Getting MEAN with Mongo, Express, Angular, and Node</a></strong>,
+Manning Publications, early 2015.</li>
+  <li><strong><a href="http://www.manning.com/hahn/">Express.js in Action</a></strong>,
+Manning Publications, early 2015.</li>
+  <li><strong><a href="https://www.packtpub.com/web-development/mastering-web-application-development-express-raw">Mastering Web Application Development with Express</a></strong>,
+Packt Publishing, September 2014.</li>
+  <li><strong><a href="http://shop.oreilly.com/product/0636920032977.do">Web Development with Node and Express</a></strong>,
+O’Reilly Media, July 2014.</li>
+  <li><strong><a href="http://www.manning.com/cantelon/">Node.js in Action</a></strong>,
+Manning Publications, October 2013.</li>
+  <li><strong><a href="https://www.packtpub.com/web-development/express-web-application-development">Express Web Application Development</a></strong>,
+Packt Publishing, June 2013.</li>
+</ul>
+
+<h3 id="add-your-book-here">Add your book here!</h3>
+
+<p><a href="https://github.com/strongloop/expressjs.com/blob/gh-pages/resources/books-blogs.md">Edit the the Markdown file</a> and add a link to your book, then submit a pull request (GitHub login required).  Follow the format of the above listings.</p>
+
+<h2 id="section-1">博客</h2>
+
+<ul>
+  <li><a href="http://strongloop.com/strongblog/category/express/">StrongLoop Blog: Express category</a></li>
+  <li><a href="http://www.hacksparrow.com/category/express-js">Hage Yaapa’s Blog: Express category</a></li>
+  <li><a href="http://codeforgeek.com/code/nodejs/express/">Codeforgeek Blog: Express category</a></li>
+  <li><a href="http://node-tricks.com/category/express/">Node-tricks Blog: Express category</a></li>
+</ul>
+
+<h3 id="add-your-blog-here">Add your blog here!</h3>
+
+<p><a href="https://github.com/strongloop/expressjs.com/blob/gh-pages/resources/books-blogs.md">Edit the the Markdown file</a> and add a link to your blog, then submit a pull request (GitHub login required).  Follow the format of the above listings.</p>
+
+      
+    </section>
+
+    <a id="top" href="http://www.expressjs.com.cn/resources/books-blogs.html#"><img src="./23关于 Express 的书籍和博客_files/arrow.png"></a>
+    
+    <footer>
+        <div id="footer-content">
+            <div id="github">
+                <a href="https://github.com/strongloop/express" target="_blank">Github Repo</a>
+            </div>
+            <div id="sponsor">Express 项目由 <a href="http://strongloop.com/" target="_blank">StrongLoop</a> 赞助。</div>
+            <div id="fork"><a href="https://github.com/strongloop/expressjs.com/blob/gh-pages/resources/books-blogs.md">Edit this page on GitHub</a></div>
+            <div>Copyright © StrongLoop, Inc., and other expressjs.com contributors.</div>
+        </div>
+    
+        <div class="friend-links">
+            <a href="http://www.bootcss.com/" title="Bootstrap 中文网">Bootstrap中文网</a>
+            <a href="http://www.gruntjs.net/" title="Grunt 中文网">Grunt中文网</a>
+            <a href="http://www.gulpjs.com.cn/" title="Gulp 中文网">Gulp中文网</a>
+            <a href="http://www.bootcdn.cn/" title="BootCDN 加速">BootCDN</a>
+            <a href="http://www.nodeapp.cn/" title="Node.js 中文文档">Node.js 中文文档</a>
+        </div>
+    </footer>
+    
+    <div class="beian">
+    	<a href="http://www.miibeian.gov.cn/" target="_blank">冀ICP备15008021号</a><span>|</span>© Express 中文网 2015
+    </div>
+  
+
+
+</body></html>

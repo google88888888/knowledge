@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<!-- saved from url=(0044)http://www.expressjs.com.cn/advanced/pm.html -->
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>Process managers for Express apps</title>
+      
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      
+      <link rel="stylesheet" href="./18Process managers for Express apps_files/style.css">
+      <link rel="stylesheet" href="./18Process managers for Express apps_files/dropit.css">
+      <link rel="stylesheet" href="./18Process managers for Express apps_files/prism.css">
+      <link href="./18Process managers for Express apps_files/font-awesome.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="./18Process managers for Express apps_files/css">
+  
+      <script src="./18Process managers for Express apps_files/hm.js.下载"></script><script src="./18Process managers for Express apps_files/hm.js(1).下载"></script><script data-cfasync="false" src="./18Process managers for Express apps_files/jquery.min.js.下载"></script>
+      <script data-cfasync="false" src="./18Process managers for Express apps_files/app.js.下载"></script>
+      <script data-cfasync="false" src="./18Process managers for Express apps_files/retina.js.下载"></script>
+      <script data-cfasync="false" src="./18Process managers for Express apps_files/dropit.js.下载"></script>
+      <script data-cfasync="false" src="./18Process managers for Express apps_files/prism.js.下载"></script>
+      <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?1e9527683dc35951cb595bc55ece8e84";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();
+      </script></head>
+
+  <body rlt="1" class="">
+
+    <section class="content">
+
+      <header>
+        <div id="mobile-menu">
+            <div id="nav-button" class="fa fa-bars fa-2x button"></div>
+        </div>
+        <section id="logo"><a href="http://www.expressjs.com.cn/" class="express">Express</a>
+        </section>
+        <div id="navbar">
+            <ul id="navmenu">
+                <li><a href="http://www.expressjs.com.cn/" id="home-menu">首页</a></li>
+                <li>
+                    <ul id="getting-started-menu" class="menu dropit">
+                        <li class="dropit-trigger"><a href="http://www.expressjs.com.cn/starter/installing.html">入门</a>
+                            <ul class="dropit-submenu" style="display: none;">
+                                <li>
+                                  <a href="http://www.expressjs.com.cn/starter/installing.html">
+                                    安装
+                                  </a>
+                                </li>
+                                <li>
+                                  <a href="http://www.expressjs.com.cn/starter/hello-world.html">
+                                    Hello world
+                                  </a>
+                                </li>
+                                <li>
+                                <a href="http://www.expressjs.com.cn/starter/generator.html">
+                                  Express 应用生成器
+                                </a>
+                                </li>
+                                <li>
+                                  <a href="http://www.expressjs.com.cn/starter/basic-routing.html">
+                                    基本路由
+                                  </a>
+                                </li>
+                                <li>
+                                  <a href="http://www.expressjs.com.cn/starter/static-files.html">
+                                    静态文件
+                                  </a>
+                                </li>
+                                <li>
+                                  <a href="http://www.expressjs.com.cn/starter/faq.html">
+                                    常见问题
+                                  </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <ul id="guide-menu" class="menu dropit">
+                        <li class="dropit-trigger"><a href="http://www.expressjs.com.cn/guide/routing.html">使用指南</a>
+                            <ul class="dropit-submenu" style="display: none;">
+                                <li><a href="http://www.expressjs.com.cn/guide/routing.html">路由</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/guide/using-middleware.html">中间件</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/guide/using-template-engines.html">模板引擎</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/guide/error-handling.html">错误处理</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/guide/debugging.html">调试</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/guide/behind-proxies.html">为 Express 设置代理</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/guide/migrating-4.html">升级到 Express 4</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/guide/database-integration.html">数据库集成</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <ul id="application-menu" class="menu dropit">
+                        <li class="dropit-trigger"><a href="http://www.expressjs.com.cn/4x/api.html">API 中文手册</a>
+                            <ul class="dropit-submenu" style="display: none;">
+                                <li><a href="http://www.expressjs.com.cn/4x/api.html">4.x 版本</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/3x/api.html">3.x 版本</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <ul id="advanced-topics-menu" class="menu dropit">
+                        <li class="dropit-trigger"><a href="http://www.expressjs.com.cn/advanced/developing-template-engines.html">进阶话题</a>
+                            <ul class="dropit-submenu" style="display: none;">
+                                <li><a href="http://www.expressjs.com.cn/advanced/developing-template-engines.html">模板引擎</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/advanced/pm.html">进程管理器</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/advanced/security-updates.html">安全更新</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <ul id="resources-menu" class="menu dropit">
+                        <li class="dropit-trigger"><a href="http://www.expressjs.com.cn/resources/glossary.html">有用的资源</a>
+                            <ul class="dropit-submenu" style="display: none;">
+                                <li><a href="http://www.expressjs.com.cn/resources/glossary.html">术语表</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/resources/middleware.html">中间件</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/resources/community.html">社区</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/resources/books-blogs.html">书籍与博客</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/resources/applications.html">实例展示</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+      </header>
+      <div id="overlay"></div>
+    
+      
+<h1 id="process-managers-for-express-apps">Process managers for Express apps</h1>
+
+<p>When running Express apps for production, it is helpful to use a <em>process manager</em> to:</p>
+
+<ul>
+  <li>Restart the app automatically if it crashes.</li>
+  <li>Gain insights into runtime performance and resource consumption.</li>
+  <li>Modify settings dynamically to improve performance.</li>
+  <li>Control clustering.</li>
+</ul>
+
+<p>A process manager is somewhat like an application server: it’s a “container” for applications that facilitates deployment,
+provides high availability, and enables you to manage the application at runtime.</p>
+
+<p>The most popular process managers for Express and other Node applications are:</p>
+
+<ul>
+  <li><a href="http://www.expressjs.com.cn/advanced/pm.html#sl">StrongLoop Process Manager</a></li>
+  <li><a href="http://www.expressjs.com.cn/advanced/pm.html#pm2">PM2</a></li>
+  <li><a href="http://www.expressjs.com.cn/advanced/pm.html#forever">Forever</a></li>
+</ul>
+
+<p>Using any of these three tools can be very helpful, however StrongLoop Process Manager is the only solution that provides a comprehensive runtime and deployment solution that address entire Node application life cycle with tooling for every step before and after production in an unified interface.</p>
+
+<p>Here’s a brief look at each of these tools.
+For a detailed comparison, see <a href="http://strong-pm.io/compare/">http://strong-pm.io/compare/</a>.</p>
+
+<h2 id="a-idslstrongloop-process-managera"><a id="sl">StrongLoop Process Manager</a></h2>
+
+<p>StrongLoop Process Manager (StrongLoop PM) is a production process manager for Node.js applications with built-in load balancing, monitoring, multi-host deployment, and a graphical console.
+It enables you to:</p>
+
+<ul>
+  <li>Build, package, and deploy your Node application to a local or remote system.</li>
+  <li>View CPU profiles and heap snapshots to optimize performance and diagnose memory leaks.</li>
+  <li>Keep processes and clusters alive forever.</li>
+  <li>View performance metrics on your application.</li>
+  <li>Easily manage multi-host deployments with Nginx integration.</li>
+  <li>Unify multiple StrongLoop PMs to a distributed microservices runtime managed from Arc.</li>
+</ul>
+
+<p>You can work with StrongLoop PM using a powerful CLI tool, <code>slc</code>, or a graphical tool, Arc.  It’s open source, with professional support provided by StrongLoop.</p>
+
+<p>For more information, see <a href="http://strong-pm.io/">http://strong-pm.io/</a>.</p>
+
+<p>Full documentation:</p>
+
+<ul>
+  <li><a href="http://docs.strongloop.com/display/SLC">Operating Node apps (StrongLoop documentation)</a></li>
+  <li><a href="http://docs.strongloop.com/display/SLC/Using+Process+Manager">Using StrongLoop Process Manager</a>.</li>
+</ul>
+
+<h3 id="installation">Installation</h3>
+<pre class="language-sh"><code class="language-sh">$ [sudo] npm install -g strongloop
+</code></pre>
+
+<h3 id="basic-use">Basic use</h3>
+<pre class="language-sh"><code class="language-sh">$ cd my-app
+$ slc start
+</code></pre>
+
+<p>View status of Process Manager and all deployed apps:</p>
+
+<pre class="language-sh"><code class="language-sh">$ slc ctl
+Service ID: 1
+Service Name: my-app
+Environment variables:
+  No environment variables defined
+Instances:
+    Version  Agent version  Cluster size
+     4.1.13      1.5.14           4
+Processes:
+        ID      PID   WID  Listening Ports  Tracking objects?  CPU profiling?
+    1.1.57692  57692   0
+    1.1.57693  57693   1     0.0.0.0:3001
+    1.1.57694  57694   2     0.0.0.0:3001
+    1.1.57695  57695   3     0.0.0.0:3001
+    1.1.57696  57696   4     0.0.0.0:3001
+</code></pre>
+
+<p>List all apps (services) under management:</p>
+
+<pre class="language-sh"><code class="language-sh">$ slc ctl ls
+Id          Name         Scale
+ 1          my-app       1
+</code></pre>
+
+<p>Stop an app:</p>
+
+<pre class="language-sh"><code class="language-sh">$ slc ctl stop my-app
+</code></pre>
+
+<p>Restart an app:</p>
+
+<pre class="language-sh"><code class="language-sh">$ slc ctl restart my-app
+</code></pre>
+
+<p>You can also “soft restart,” which gives worker processes a grace period to close existing connections, then restarts the current application:</p>
+
+<pre class="language-sh"><code class="language-sh">$ slc ctl soft-restart my-app
+</code></pre>
+
+<p>To remove an app from management:</p>
+
+<pre class="language-sh"><code class="language-sh">$ slc ctl remove my-app
+</code></pre>
+
+<h2 id="a-idpm2pm2a"><a id="pm2">PM2</a></h2>
+
+<p>PM2 is a production process manager for Node.js applications with a built-in load balancer. It allows you to keep applications alive forever, to reload them without downtime and will facilitate common system admin tasks.  It also enables you to manage application logging, monitoring, and clustering.</p>
+
+<p>For more information, see <a href="https://github.com/Unitech/pm2">https://github.com/Unitech/pm2</a>.</p>
+
+<h3 id="installation-1">Installation</h3>
+
+<pre class="language-sh"><code class="language-sh">$ [sudo] npm install pm2 -g
+</code></pre>
+
+<h3 id="basic-use-1">Basic use</h3>
+
+<p>Starting an app with <code>pm2</code> requires the path of the app to be specified. However, stopping, restarting, and deleting requires just the name or the id of the app.</p>
+
+<pre class="language-sh"><code class="language-sh">$ pm2 start app.js
+[PM2] restartProcessId process id 0
+┌──────────┬────┬──────┬───────┬────────┬─────────┬────────┬─────────────┬──────────┐
+│ App name │ id │ mode │ pid   │ status │ restart │ uptime │ memory      │ watching │
+├──────────┼────┼──────┼───────┼────────┼─────────┼────────┼─────────────┼──────────┤
+│ my-app   │ 0  │ fork │ 64029 │ online │ 1       │ 0s     │ 17.816 MB   │ disabled │
+└──────────┴────┴──────┴───────┴────────┴─────────┴────────┴─────────────┴──────────┘
+ Use `pm2 show &lt;id|name&gt;` to get more details about an app
+</code></pre>
+
+<p>Starting an app with <code>pm2</code> will immediately send it to the background. You can control the background app from the command line using various <code>pm2</code> commands.</p>
+
+<p>Once an app is started with <code>pm2</code> it is registered in <code>pm2</code>’s list of processes with an ID, which makes it possible to manage apps with the same name from different directories on the system, using their IDs.</p>
+
+<p>Note that if more than one app with the same name is running, <code>pm2</code> commands affect all of them. So use IDs instead of names to manage individual apps.</p>
+
+<p>List all running processes:</p>
+
+<pre class="language-sh"><code class="language-sh">$ pm2 list
+</code></pre>
+
+<p>Stop an app:</p>
+
+<pre class="language-sh"><code class="language-sh">$ pm2 stop 0
+</code></pre>
+
+<p>Restart an app:</p>
+
+<pre class="language-sh"><code class="language-sh">$ pm2 restart 0
+</code></pre>
+
+<p>To view detailed information about an app:</p>
+
+<pre class="language-sh"><code class="language-sh">$ pm2 show 0
+</code></pre>
+
+<p>To remove an app from <code>pm2</code>’s registry:</p>
+
+<pre class="language-sh"><code class="language-sh">$ pm2 delete 0
+</code></pre>
+
+<h2 id="a-idforeverforevera"><a id="forever">Forever</a></h2>
+
+<p>Forever is a simple CLI tool for ensuring that a given script runs continuously (forever). Its simple interface makes it ideal for running smaller deployments of Node apps and scripts.</p>
+
+<p>For more information, see <a href="https://github.com/foreverjs/forever">https://github.com/foreverjs/forever</a>.</p>
+
+<h3 id="installation-2">Installation</h3>
+
+<pre class="language-sh"><code class="language-sh">$ [sudo] npm install forever -g
+</code></pre>
+
+<h3 id="basic-use-2">Basic use</h3>
+
+<p>To start a script, use the <code>forever start</code> command and specify the path of the script:</p>
+
+<pre class="language-sh"><code class="language-sh">$ forever start script.js
+</code></pre>
+
+<p>This will run the script in daemon mode (in the background).</p>
+
+<p>To run the script attached to the terminal, omit <code>start</code>:</p>
+
+<pre class="language-sh"><code class="language-sh">$ forever script.js
+</code></pre>
+
+<p>It is a good idea to log output from forever and the script using the logging options <code>-l</code>, <code>-o</code>, <code>-e</code>, as shown this example:</p>
+
+<pre class="language-sh"><code class="language-sh">$ forever start -l forever.log -o out.log -e err.log script.js
+</code></pre>
+
+<p>To view the list of scripts started by forever:</p>
+
+<pre class="language-sh"><code class="language-sh">$ forever list
+</code></pre>
+
+<p>To stop a script started by forever use the <code>forever stop</code> command and specify the process index (as listed by the <code>forever list</code> command).</p>
+
+<pre class="language-sh"><code class="language-sh">$ forever stop 1
+</code></pre>
+
+<p>Alternatively, specify the path of the file:</p>
+
+<pre class="language-sh"><code class="language-sh">$ forever stop script.js
+</code></pre>
+
+<p>To stop all the scripts started by <code>forever</code>:</p>
+
+<pre class="language-sh"><code class="language-sh">$ forever stopall
+</code></pre>
+
+<p>Forever has many more options, and it also provides a programmatic API.</p>
+
+      
+    </section>
+
+    <a id="top" href="http://www.expressjs.com.cn/advanced/pm.html#"><img src="./18Process managers for Express apps_files/arrow.png"></a>
+    
+    <footer>
+        <div id="footer-content">
+            <div id="github">
+                <a href="https://github.com/strongloop/express" target="_blank">Github Repo</a>
+            </div>
+            <div id="sponsor">Express 项目由 <a href="http://strongloop.com/" target="_blank">StrongLoop</a> 赞助。</div>
+            <div id="fork"><a href="https://github.com/strongloop/expressjs.com/blob/gh-pages/advanced/pm.md">Edit this page on GitHub</a></div>
+            <div>Copyright © StrongLoop, Inc., and other expressjs.com contributors.</div>
+        </div>
+    
+        <div class="friend-links">
+            <a href="http://www.bootcss.com/" title="Bootstrap 中文网">Bootstrap中文网</a>
+            <a href="http://www.gruntjs.net/" title="Grunt 中文网">Grunt中文网</a>
+            <a href="http://www.gulpjs.com.cn/" title="Gulp 中文网">Gulp中文网</a>
+            <a href="http://www.bootcdn.cn/" title="BootCDN 加速">BootCDN</a>
+            <a href="http://www.nodeapp.cn/" title="Node.js 中文文档">Node.js 中文文档</a>
+        </div>
+    </footer>
+    
+    <div class="beian">
+    	<a href="http://www.miibeian.gov.cn/" target="_blank">冀ICP备15008021号</a><span>|</span>© Express 中文网 2015
+    </div>
+  
+
+
+</body></html>

@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)http://www.expressjs.com.cn/guide/migrating-4.html -->
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>迁移到 Express 4</title>
+      
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      
+      <link rel="stylesheet" href="./13迁移到 Express 4_files/style.css">
+      <link rel="stylesheet" href="./13迁移到 Express 4_files/dropit.css">
+      <link rel="stylesheet" href="./13迁移到 Express 4_files/prism.css">
+      <link href="./13迁移到 Express 4_files/font-awesome.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="./13迁移到 Express 4_files/css">
+  
+      <script src="./13迁移到 Express 4_files/hm.js.下载"></script><script src="./13迁移到 Express 4_files/hm.js(1).下载"></script><script data-cfasync="false" src="./13迁移到 Express 4_files/jquery.min.js.下载"></script>
+      <script data-cfasync="false" src="./13迁移到 Express 4_files/app.js.下载"></script>
+      <script data-cfasync="false" src="./13迁移到 Express 4_files/retina.js.下载"></script>
+      <script data-cfasync="false" src="./13迁移到 Express 4_files/dropit.js.下载"></script>
+      <script data-cfasync="false" src="./13迁移到 Express 4_files/prism.js.下载"></script>
+      <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?1e9527683dc35951cb595bc55ece8e84";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();
+      </script></head>
+
+  <body rlt="1">
+
+    <section class="content">
+
+      <header>
+        <div id="mobile-menu">
+            <div id="nav-button" class="fa fa-bars fa-2x button"></div>
+        </div>
+        <section id="logo"><a href="http://www.expressjs.com.cn/" class="express">Express</a>
+        </section>
+        <div id="navbar">
+            <ul id="navmenu">
+                <li><a href="http://www.expressjs.com.cn/" id="home-menu">首页</a></li>
+                <li>
+                    <ul id="getting-started-menu" class="menu dropit">
+                        <li class="dropit-trigger"><a href="http://www.expressjs.com.cn/starter/installing.html">入门</a>
+                            <ul class="dropit-submenu" style="display: none;">
+                                <li>
+                                  <a href="http://www.expressjs.com.cn/starter/installing.html">
+                                    安装
+                                  </a>
+                                </li>
+                                <li>
+                                  <a href="http://www.expressjs.com.cn/starter/hello-world.html">
+                                    Hello world
+                                  </a>
+                                </li>
+                                <li>
+                                <a href="http://www.expressjs.com.cn/starter/generator.html">
+                                  Express 应用生成器
+                                </a>
+                                </li>
+                                <li>
+                                  <a href="http://www.expressjs.com.cn/starter/basic-routing.html">
+                                    基本路由
+                                  </a>
+                                </li>
+                                <li>
+                                  <a href="http://www.expressjs.com.cn/starter/static-files.html">
+                                    静态文件
+                                  </a>
+                                </li>
+                                <li>
+                                  <a href="http://www.expressjs.com.cn/starter/faq.html">
+                                    常见问题
+                                  </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <ul id="guide-menu" class="menu dropit">
+                        <li class="dropit-trigger"><a href="http://www.expressjs.com.cn/guide/routing.html">使用指南</a>
+                            <ul class="dropit-submenu" style="display: none;">
+                                <li><a href="http://www.expressjs.com.cn/guide/routing.html">路由</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/guide/using-middleware.html">中间件</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/guide/using-template-engines.html">模板引擎</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/guide/error-handling.html">错误处理</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/guide/debugging.html">调试</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/guide/behind-proxies.html">为 Express 设置代理</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/guide/migrating-4.html">升级到 Express 4</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/guide/database-integration.html">数据库集成</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <ul id="application-menu" class="menu dropit">
+                        <li class="dropit-trigger"><a href="http://www.expressjs.com.cn/4x/api.html">API 中文手册</a>
+                            <ul class="dropit-submenu" style="display: none;">
+                                <li><a href="http://www.expressjs.com.cn/4x/api.html">4.x 版本</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/3x/api.html">3.x 版本</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <ul id="advanced-topics-menu" class="menu dropit">
+                        <li class="dropit-trigger"><a href="http://www.expressjs.com.cn/advanced/developing-template-engines.html">进阶话题</a>
+                            <ul class="dropit-submenu" style="display: none;">
+                                <li><a href="http://www.expressjs.com.cn/advanced/developing-template-engines.html">模板引擎</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/advanced/pm.html">进程管理器</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/advanced/security-updates.html">安全更新</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <ul id="resources-menu" class="menu dropit">
+                        <li class="dropit-trigger"><a href="http://www.expressjs.com.cn/resources/glossary.html">有用的资源</a>
+                            <ul class="dropit-submenu" style="display: none;">
+                                <li><a href="http://www.expressjs.com.cn/resources/glossary.html">术语表</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/resources/middleware.html">中间件</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/resources/community.html">社区</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/resources/books-blogs.html">书籍与博客</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/resources/applications.html">实例展示</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+      </header>
+      <div id="overlay"></div>
+    
+      
+<h1 id="express-4">迁移到 Express 4</h1>
+
+<h2 id="overview">概览</h2>
+
+<p>Express 4 是对 Express 3 的一个颠覆性改变，也就是说如果您更新了 Express， Express 3 应用会无法工作。</p>
+
+<p>该章包含如下内容：</p>
+
+<ul class="doclist">
+  <li><a href="http://www.expressjs.com.cn/guide/migrating-4.html#changes">Express 4 的变化。</a></li>
+  <li>一个从 Express 3 迁移到 Express 4 的<a href="http://www.expressjs.com.cn/guide/migrating-4.html#example-migration">实例</a>。</li>
+  <li><a href="http://www.expressjs.com.cn/guide/migrating-4.html#app-gen">迁移到 Express 4 应用生成器。</a></li>
+</ul>
+
+<h2 id="changes">Express 4 的变化</h2>
+
+<p>Express 4 的主要变化如下：</p>
+
+<ul class="doclist">
+  <li><a href="http://www.expressjs.com.cn/guide/migrating-4.html#core-changes">对 Express 内核和中间件系统的改进： </a>不再依赖 Connect 和内置的中间件，您需要自己添加中间件。
+  </li>
+  <li><a href="http://www.expressjs.com.cn/guide/migrating-4.html#routing">对路由系统的改进</a></li>
+  <li><a href="http://www.expressjs.com.cn/guide/migrating-4.html#other-changes">其他变化。</a></li>
+</ul>
+
+<p>其他变化请参考：</p>
+
+<ul>
+  <li><a href="https://github.com/strongloop/express/wiki/New-features-in-4.x">4.x 中的新功能</a></li>
+  <li><a href="https://github.com/strongloop/express/wiki/Migrating-from-3.x-to-4.x">从 3.x 迁移到 4.x</a></li>
+</ul>
+
+<h3 id="core-changes">
+对 Express 内核和中间件系统的改进
+</h3>
+
+<p>Express 4 不再依赖 Connect，而且从内核中移除了除 <code>express.static</code> 外的所有内置中间件。也就是说现在的 Express 是一个独立的路由和中间件 Web 框架，Express 的版本升级不再受中间件更新的影响。</p>
+
+<p>移除了内置的中间件后，您必须显式地添加所有运行应用需要的中间件。请遵循如下步骤：</p>
+
+<ol>
+  <li>安装模块：<code>npm install --save &lt;module-name&gt;</code></li>
+  <li>在应用中引入模块：<code>require('module-name')</code></li>
+  <li>按照文档的描述使用模块：<code>app.use( ... )</code></li>
+</ol>
+
+<p>下表列出了 Express 3 和 Express 4 中对应的中间件。</p>
+
+<table class="doctable" border="1">
+<tbody><tr><th>Express 3</th><th>Express 4</th></tr>
+<tr><td><code>express.bodyParser</code></td>
+<td><a href="https://github.com/expressjs/body-parser">body-parser</a> +
+<a href="https://github.com/expressjs/multer">multer</a></td></tr>
+<tr><td><code>express.compress</code></td>
+<td><a href="https://github.com/expressjs/compression">compression</a></td></tr>
+<tr><td><code>express.cookieSession</code></td>
+<td><a href="https://github.com/expressjs/cookie-session">cookie-session</a></td></tr>
+<tr><td><code>express.cookieParser</code></td>
+<td><a href="https://github.com/expressjs/cookie-parser">cookie-parser</a></td></tr>
+<tr><td><code>express.logger</code></td>
+<td><a href="https://github.com/expressjs/morgan">morgan</a></td></tr>
+<tr><td><code>express.session</code></td>
+<td><a href="https://github.com/expressjs/session">express-session</a></td></tr>
+<tr><td><code>express.favicon</code></td>
+<td><a href="https://github.com/expressjs/serve-favicon">serve-favicon</a></td></tr>
+<tr><td><code>express.responseTime</code></td>
+<td><a href="https://github.com/expressjs/response-time">response-time</a></td></tr>
+<tr><td><code>express.errorHandler</code></td>
+<td><a href="https://github.com/expressjs/errorhandler">errorhandler</a></td></tr>
+<tr><td><code>express.methodOverride</code></td>
+<td><a href="https://github.com/expressjs/method-override">method-override</a></td></tr>
+<tr><td><code>express.timeout</code></td>
+<td><a href="https://github.com/expressjs/timeout">connect-timeout</a></td></tr>
+<tr><td><code>express.vhost</code></td>
+<td><a href="https://github.com/expressjs/vhost">vhost</a></td></tr>
+<tr><td><code>express.csrf</code></td>
+<td><a href="https://github.com/expressjs/csurf">csurf</a></td></tr>
+<tr><td><code>express.directory</code></td>
+<td><a href="https://github.com/expressjs/serve-index">serve-index</a></td></tr>
+<tr><td><code>express.static</code></td>
+<td><a href="https://github.com/expressjs/serve-static">serve-static</a></td></tr>
+</tbody></table>
+
+<p>这里是 Express 4 的 <a href="https://github.com/senchalabs/connect#middleware">所有中间件列表</a> 。</p>
+
+<p>多数情况下，您可以直接使用 Express 4 中对应的中间件替换 Express 3 中的中间件，请参考 GitHub 中的模块文档了解更多信息。</p>
+
+<h4 id="app-use"><code>app.use</code> 可以接收参数了</h4>
+
+<p>在 Express 4 中，可以从路由句柄中读取参数，以该参数的值作为路径加载中间件，比如像下面这样：</p>
+
+<pre class="  language-javascript"><code class="  language-javascript">app<span class="token punctuation">.</span><span class="token function">use<span class="token punctuation">(</span></span><span class="token string">'/book/:id'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>req<span class="token punctuation">,</span> res<span class="token punctuation">,</span> next<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log<span class="token punctuation">(</span></span><span class="token string">'ID:'</span><span class="token punctuation">,</span> req<span class="token punctuation">.</span>params<span class="token punctuation">.</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">next<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h3 id="routing">
+路由系统
+</h3>
+
+<p>应用现在隐式地加载路由中间件，因此不需要担心涉及到 <code>router</code> 中间件对路由中间件加载顺序的问题了。</p>
+
+<p>定义路由的方式依然未变，但是新的路由系统有两个新功能能帮助您组织路由：</p>
+
+<ul class="doclist">
+  <li>添加了一个新方法 <code>app.route()</code>，可以为路由路径创建链式路由句柄。</li>
+  <li>添加了一个新类 <code>express.Router</code>，可以创建可挂载的模块化路由句柄。</li>
+</ul>
+
+<h4 id="app-route"><code>app.route()</code> 方法</h4>
+
+<p>新增加的 <code>app.route()</code> 方法可为路由路径创建链式路由句柄。由于路径在一个地方指定，会让路由更加模块化，也能减少代码冗余和拼写错误。请参考 <a href="http://www.expressjs.com.cn/4x/api.html#router"><code>Router()</code> 文档</a> 获取更多关于路由的信息。。</p>
+
+<p>下面是一个使用 <code>app.route()</code> 方法定义链式路由句柄的例子。</p>
+
+<pre class="  language-javascript"><code class="  language-javascript">app<span class="token punctuation">.</span><span class="token function">route<span class="token punctuation">(</span></span><span class="token string">'/book'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>req<span class="token punctuation">,</span> res<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    res<span class="token punctuation">.</span><span class="token function">send<span class="token punctuation">(</span></span><span class="token string">'Get a random book'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">post<span class="token punctuation">(</span></span><span class="token keyword">function</span><span class="token punctuation">(</span>req<span class="token punctuation">,</span> res<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    res<span class="token punctuation">.</span><span class="token function">send<span class="token punctuation">(</span></span><span class="token string">'Add a book'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">put<span class="token punctuation">(</span></span><span class="token keyword">function</span><span class="token punctuation">(</span>req<span class="token punctuation">,</span> res<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    res<span class="token punctuation">.</span><span class="token function">send<span class="token punctuation">(</span></span><span class="token string">'Update the book'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+<h4 id="express-router"><code>express.Router</code> 类</h4>
+
+<p>另外一个帮助组织路由的是新加的 <code>express.Router</code> 类，可使用它创建可挂载的模块化路由句柄。<code>Router</code> 类是一个完整的中间件和路由系统，鉴于此，人们常称之为“迷你应用”。</p>
+
+<p>下面的例子创建了一个模块化的路由，并加载了一个中间件，然后定义了一些路由，并且在主应用中将其挂载到指定路径。</p>
+
+<p>在应用目录下创建文件 <code>birds.js</code>，其内容如下：</p>
+
+<pre class="  language-javascript"><code class="  language-javascript"><span class="token keyword">var</span> express <span class="token operator">=</span> <span class="token function">require<span class="token punctuation">(</span></span><span class="token string">'express'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> router <span class="token operator">=</span> express<span class="token punctuation">.</span><span class="token function">Router<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 特针对于该路由的中间件
+</span>router<span class="token punctuation">.</span><span class="token function">use<span class="token punctuation">(</span></span><span class="token keyword">function</span> <span class="token function">timeLog<span class="token punctuation">(</span></span>req<span class="token punctuation">,</span> res<span class="token punctuation">,</span> next<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log<span class="token punctuation">(</span></span><span class="token string">'Time: '</span><span class="token punctuation">,</span> Date<span class="token punctuation">.</span><span class="token function">now<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">next<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// 定义网站主页的路由
+</span>router<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>req<span class="token punctuation">,</span> res<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  res<span class="token punctuation">.</span><span class="token function">send<span class="token punctuation">(</span></span><span class="token string">'Birds home page'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// 定义 about 页面的路由
+</span>router<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'/about'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>req<span class="token punctuation">,</span> res<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  res<span class="token punctuation">.</span><span class="token function">send<span class="token punctuation">(</span></span><span class="token string">'About birds'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> router<span class="token punctuation">;</span>
+</code></pre>
+
+<p>然后，在应用中加载该路由：</p>
+
+<pre class="  language-javascript"><code class="  language-javascript"><span class="token keyword">var</span> birds <span class="token operator">=</span> <span class="token function">require<span class="token punctuation">(</span></span><span class="token string">'./birds'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+app<span class="token punctuation">.</span><span class="token function">use<span class="token punctuation">(</span></span><span class="token string">'/birds'</span><span class="token punctuation">,</span> birds<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+<p>应用现在就可以处理发送到 <code>/birds</code> 和 <code>/birds/about</code> 的请求，并且会调用特针对于该路由的 <code>timeLog</code> 中间件。</p>
+
+<h3 id="other-changes">
+其他变化
+</h3>
+
+<p>下表列出了 Express 4 中其他一些尽管不大，但是非常重要的变化。</p>
+
+<table class="doctable" border="1">
+<tbody><tr>
+<th>对象</th>
+<th>描述</th>
+</tr>
+<tr>
+<td>Node</td>
+<td>&gt;Express 4 需要 Node 0.10.x 或以上版本，已经放弃了对 Node 0.8.x 的支持。</td>
+</tr>
+<tr>
+<td>
+      <p><code>http.createServer()</code></p>
+    </td>
+<td>
+      <p><code>http</code> 模块不再是必须的了，除非您需要直接使用它（socket.io/SPDY/HTTPS）。现在可以使用 <code>app.listen()</code> 启动应用了。</p>
+    </td>
+</tr>
+<tr>
+<td>
+      <p><code>app.configure()</code></p>
+    </td>
+<td>
+      <p>已经删除 <code>app.configure()</code>，使用 <code>process.env.NODE_ENV</code> 或者 <code>app.get('env')</code> 检测环境并配置应用。</p>
+    </td>
+</tr>
+<tr>
+<td>
+      <p><code>json spaces</code></p>
+    </td>
+<td>
+      <p>Express 4 默认禁用 <code>json spaces</code> 属性。</p>
+    </td>
+</tr>
+<tr>
+<td>
+      <p><code>req.accepted()</code></p>
+    </td>
+<td>
+      <p>使用 <code>req.accepts()</code>, <code>req.acceptsEncodings()</code>,
+<code>req.acceptsCharsets()</code> 和  <code>req.acceptsLanguages()</code>、</p>
+    </td>
+</tr>
+<tr>
+<td>
+      <p><code>res.location()</code></p>
+    </td>
+<td>
+      <p>不再解析相对 URLs。</p>
+    </td>
+</tr>
+<tr>
+<td>
+      <p><code>req.params</code></p>
+    </td>
+<td>
+      <p>从数组变为对象。</p>
+    </td>
+</tr>
+<tr>
+<td>
+      <p><code>res.locals</code></p>
+    </td>
+<td>
+      <p>从函数变为对象。</p>
+    </td>
+</tr>
+<tr>
+<td>
+      <p><code>res.headerSent</code></p>
+    </td>
+<td>
+      <p>变为 <code>res.headersSent</code>。</p>
+    </td>
+</tr>
+<tr>
+<td>
+      <p><code>app.route</code></p>
+    </td>
+<td>
+      <p>变为 <code>app.mountpath</code>。</p>
+    </td>
+</tr>
+<tr>
+<td>
+      <p><code>res.on('header')</code></p>
+    </td>
+<td>
+      <p>已删除。</p>
+    </td>
+</tr>
+<tr>
+<td>
+      <p><code>res.charset</code></p>
+    </td>
+<td>
+      <p>已删除。</p>
+    </td>
+</tr>
+<tr>
+<td>
+      <p><code>res.setHeader('Set-Cookie', val)</code></p>
+    </td>
+<td>
+      <p>F功能仅限于设置基本的 cookie 值，使用 <code>res.cookie()</code> 访问更多功能。</p>
+    </td>
+</tr>
+</tbody></table>
+
+<h2 id="example-migration">迁移示例</h2>
+
+<p>下面是一个从 Express 3 迁移到 Express 4 的例子，请留意 <code>app.js</code> 和 <code>package.json</code>。</p>
+
+<h3>
+Express 3 应用
+</h3>
+
+<h4><code>app.js</code></h4>
+
+<p>请看如下 Express 3 应用，其 <code>app.js</code> 文件内容如下：</p>
+
+<pre class="  language-javascript"><code class="  language-javascript"><span class="token keyword">var</span> express <span class="token operator">=</span> <span class="token function">require<span class="token punctuation">(</span></span><span class="token string">'express'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> routes <span class="token operator">=</span> <span class="token function">require<span class="token punctuation">(</span></span><span class="token string">'./routes'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> user <span class="token operator">=</span> <span class="token function">require<span class="token punctuation">(</span></span><span class="token string">'./routes/user'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> http <span class="token operator">=</span> <span class="token function">require<span class="token punctuation">(</span></span><span class="token string">'http'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> path <span class="token operator">=</span> <span class="token function">require<span class="token punctuation">(</span></span><span class="token string">'path'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> app <span class="token operator">=</span> <span class="token function">express<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 适用开发和生产环境
+</span>app<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span><span class="token string">'port'</span><span class="token punctuation">,</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span>PORT <span class="token operator">||</span> <span class="token number">3000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+app<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span><span class="token string">'views'</span><span class="token punctuation">,</span> path<span class="token punctuation">.</span><span class="token function">join<span class="token punctuation">(</span></span>__dirname<span class="token punctuation">,</span> <span class="token string">'views'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+app<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span><span class="token string">'view engine'</span><span class="token punctuation">,</span> <span class="token string">'jade'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+app<span class="token punctuation">.</span><span class="token function">use<span class="token punctuation">(</span></span>express<span class="token punctuation">.</span><span class="token function">favicon<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+app<span class="token punctuation">.</span><span class="token function">use<span class="token punctuation">(</span></span>express<span class="token punctuation">.</span><span class="token function">logger<span class="token punctuation">(</span></span><span class="token string">'dev'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+app<span class="token punctuation">.</span><span class="token function">use<span class="token punctuation">(</span></span>express<span class="token punctuation">.</span><span class="token function">methodOverride<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+app<span class="token punctuation">.</span><span class="token function">use<span class="token punctuation">(</span></span>express<span class="token punctuation">.</span><span class="token function">session<span class="token punctuation">(</span></span><span class="token punctuation">{</span> secret<span class="token punctuation">:</span> <span class="token string">'your secret here'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+app<span class="token punctuation">.</span><span class="token function">use<span class="token punctuation">(</span></span>express<span class="token punctuation">.</span><span class="token function">bodyParser<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+app<span class="token punctuation">.</span><span class="token function">use<span class="token punctuation">(</span></span>app<span class="token punctuation">.</span>router<span class="token punctuation">)</span><span class="token punctuation">;</span>
+app<span class="token punctuation">.</span><span class="token function">use<span class="token punctuation">(</span></span>express<span class="token punctuation">.</span><span class="token keyword">static</span><span class="token punctuation">(</span>path<span class="token punctuation">.</span><span class="token function">join<span class="token punctuation">(</span></span>__dirname<span class="token punctuation">,</span> <span class="token string">'public'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 只针对开发环境
+</span><span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token string">'development'</span> <span class="token operator">==</span> app<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'env'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  app<span class="token punctuation">.</span><span class="token function">use<span class="token punctuation">(</span></span>express<span class="token punctuation">.</span><span class="token function">errorHandler<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+app<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">,</span> routes<span class="token punctuation">.</span>index<span class="token punctuation">)</span><span class="token punctuation">;</span>
+app<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'/users'</span><span class="token punctuation">,</span> user<span class="token punctuation">.</span>list<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+http<span class="token punctuation">.</span><span class="token function">createServer<span class="token punctuation">(</span></span>app<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">listen<span class="token punctuation">(</span></span>app<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'port'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log<span class="token punctuation">(</span></span><span class="token string">'Express server listening on port '</span> <span class="token operator">+</span> app<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'port'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+<h4><code>package.json</code></h4>
+
+<p>相对应的 <code>package.json</code> 文件内容如下：</p>
+
+<pre class="  language-javascript"><code class="  language-javascript"><span class="token punctuation">{</span>
+  <span class="token string">"name"</span><span class="token punctuation">:</span> <span class="token string">"application-name"</span><span class="token punctuation">,</span>
+  <span class="token string">"version"</span><span class="token punctuation">:</span> <span class="token string">"0.0.1"</span><span class="token punctuation">,</span>
+  <span class="token string">"private"</span><span class="token punctuation">:</span> <span class="token keyword">true</span><span class="token punctuation">,</span>
+  <span class="token string">"scripts"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token string">"start"</span><span class="token punctuation">:</span> <span class="token string">"node app.js"</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token string">"dependencies"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token string">"express"</span><span class="token punctuation">:</span> <span class="token string">"3.12.0"</span><span class="token punctuation">,</span>
+    <span class="token string">"jade"</span><span class="token punctuation">:</span> <span class="token string">"*"</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+
+<h3>
+迁移过程
+</h3>
+
+<p>首先安装 Express 4 应用需要的中间件，使用如下命令将 Express 和 Jade 更新至最新版本：</p>
+
+<pre class="language-sh"><code class="language-sh">$ npm install serve-favicon morgan method-override express-session body-parser multer errorhandler express@latest jade@latest --save
+</code></pre>
+
+<p>按如下方式修改 <code>app.js</code> 文件：</p>
+
+<ol>
+  <li>
+    <p>这些内置中间件 <code>express.favicon</code>,
+ <code>express.logger</code>, <code>express.methodOverride</code>,
+ <code>express.session</code>, <code>express.bodyParser</code> and
+ <code>express.errorHandler</code> 在 <code>express</code> 对象中已经没有了，您必须手动安装相应的中间件，并在应用中加载它们。</p>
+  </li>
+  <li>
+    <p>不需要加载 <code>app.router</code>，它不再是一个合法的 Express 4 对象，删掉 <code>app.use(app.router);</code>。</p>
+  </li>
+  <li>
+    <p>确保加载中间件的顺序正确，加载完应用路由后再加载 <code>errorHandler</code>。</p>
+  </li>
+</ol>
+
+<h3>Express 4 应用</h3>
+
+<h4><code>package.json</code></h4>
+
+<p>运行上述 <code>npm</code> 命令后，会将 <code>package.json</code> 文件更新为：</p>
+
+<pre class="  language-javascript"><code class="  language-javascript"><span class="token punctuation">{</span>
+  <span class="token string">"name"</span><span class="token punctuation">:</span> <span class="token string">"application-name"</span><span class="token punctuation">,</span>
+  <span class="token string">"version"</span><span class="token punctuation">:</span> <span class="token string">"0.0.1"</span><span class="token punctuation">,</span>
+  <span class="token string">"private"</span><span class="token punctuation">:</span> <span class="token keyword">true</span><span class="token punctuation">,</span>
+  <span class="token string">"scripts"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token string">"start"</span><span class="token punctuation">:</span> <span class="token string">"node app.js"</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token string">"dependencies"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token string">"body-parser"</span><span class="token punctuation">:</span> <span class="token string">"^1.5.2"</span><span class="token punctuation">,</span>
+    <span class="token string">"errorhandler"</span><span class="token punctuation">:</span> <span class="token string">"^1.1.1"</span><span class="token punctuation">,</span>
+    <span class="token string">"express"</span><span class="token punctuation">:</span> <span class="token string">"^4.8.0"</span><span class="token punctuation">,</span>
+    <span class="token string">"express-session"</span><span class="token punctuation">:</span> <span class="token string">"^1.7.2"</span><span class="token punctuation">,</span>
+    <span class="token string">"jade"</span><span class="token punctuation">:</span> <span class="token string">"^1.5.0"</span><span class="token punctuation">,</span>
+    <span class="token string">"method-override"</span><span class="token punctuation">:</span> <span class="token string">"^2.1.2"</span><span class="token punctuation">,</span>
+    <span class="token string">"morgan"</span><span class="token punctuation">:</span> <span class="token string">"^1.2.2"</span><span class="token punctuation">,</span>
+    <span class="token string">"multer"</span><span class="token punctuation">:</span> <span class="token string">"^0.1.3"</span><span class="token punctuation">,</span>
+    <span class="token string">"serve-favicon"</span><span class="token punctuation">:</span> <span class="token string">"^2.0.1"</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+
+<h4><code>app.js</code></h4>
+
+<p>然后删掉无效的代码，加载需要的中间件，再做一些必要的修改，新的 <code>app.js</code> 内容如下：</p>
+
+<pre class="  language-javascript"><code class="  language-javascript"><span class="token keyword">var</span> http <span class="token operator">=</span> <span class="token function">require<span class="token punctuation">(</span></span><span class="token string">'http'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> express <span class="token operator">=</span> <span class="token function">require<span class="token punctuation">(</span></span><span class="token string">'express'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> routes <span class="token operator">=</span> <span class="token function">require<span class="token punctuation">(</span></span><span class="token string">'./routes'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> user <span class="token operator">=</span> <span class="token function">require<span class="token punctuation">(</span></span><span class="token string">'./routes/user'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> path <span class="token operator">=</span> <span class="token function">require<span class="token punctuation">(</span></span><span class="token string">'path'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> favicon <span class="token operator">=</span> <span class="token function">require<span class="token punctuation">(</span></span><span class="token string">'serve-favicon'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> logger <span class="token operator">=</span> <span class="token function">require<span class="token punctuation">(</span></span><span class="token string">'morgan'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> methodOverride <span class="token operator">=</span> <span class="token function">require<span class="token punctuation">(</span></span><span class="token string">'method-override'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> session <span class="token operator">=</span> <span class="token function">require<span class="token punctuation">(</span></span><span class="token string">'express-session'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> bodyParser <span class="token operator">=</span> <span class="token function">require<span class="token punctuation">(</span></span><span class="token string">'body-parser'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> multer <span class="token operator">=</span> <span class="token function">require<span class="token punctuation">(</span></span><span class="token string">'multer'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> errorHandler <span class="token operator">=</span> <span class="token function">require<span class="token punctuation">(</span></span><span class="token string">'errorhandler'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> app <span class="token operator">=</span> <span class="token function">express<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 适用开发和生产环境
+</span>app<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span><span class="token string">'port'</span><span class="token punctuation">,</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span>PORT <span class="token operator">||</span> <span class="token number">3000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+app<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span><span class="token string">'views'</span><span class="token punctuation">,</span> path<span class="token punctuation">.</span><span class="token function">join<span class="token punctuation">(</span></span>__dirname<span class="token punctuation">,</span> <span class="token string">'views'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+app<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span><span class="token string">'view engine'</span><span class="token punctuation">,</span> <span class="token string">'jade'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+app<span class="token punctuation">.</span><span class="token function">use<span class="token punctuation">(</span></span><span class="token function">favicon<span class="token punctuation">(</span></span>__dirname <span class="token operator">+</span> <span class="token string">'/public/favicon.ico'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+app<span class="token punctuation">.</span><span class="token function">use<span class="token punctuation">(</span></span><span class="token function">logger<span class="token punctuation">(</span></span><span class="token string">'dev'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+app<span class="token punctuation">.</span><span class="token function">use<span class="token punctuation">(</span></span><span class="token function">methodOverride<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+app<span class="token punctuation">.</span><span class="token function">use<span class="token punctuation">(</span></span><span class="token function">session<span class="token punctuation">(</span></span><span class="token punctuation">{</span> resave<span class="token punctuation">:</span> <span class="token keyword">true</span><span class="token punctuation">,</span>
+                  saveUninitialized<span class="token punctuation">:</span> <span class="token keyword">true</span><span class="token punctuation">,</span>
+                  secret<span class="token punctuation">:</span> <span class="token string">'uwotm8'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+app<span class="token punctuation">.</span><span class="token function">use<span class="token punctuation">(</span></span>bodyParser<span class="token punctuation">.</span><span class="token function">json<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+app<span class="token punctuation">.</span><span class="token function">use<span class="token punctuation">(</span></span>bodyParser<span class="token punctuation">.</span><span class="token function">urlencoded<span class="token punctuation">(</span></span><span class="token punctuation">{</span> extended<span class="token punctuation">:</span> <span class="token keyword">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+app<span class="token punctuation">.</span><span class="token function">use<span class="token punctuation">(</span></span><span class="token function">multer<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+app<span class="token punctuation">.</span><span class="token function">use<span class="token punctuation">(</span></span>express<span class="token punctuation">.</span><span class="token keyword">static</span><span class="token punctuation">(</span>path<span class="token punctuation">.</span><span class="token function">join<span class="token punctuation">(</span></span>__dirname<span class="token punctuation">,</span> <span class="token string">'public'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+app<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">,</span> routes<span class="token punctuation">.</span>index<span class="token punctuation">)</span><span class="token punctuation">;</span>
+app<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'/users'</span><span class="token punctuation">,</span> user<span class="token punctuation">.</span>list<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// 错误处理中间件应当在路由加载之后才能加载
+</span><span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token string">'development'</span> <span class="token operator">==</span> app<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'env'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  app<span class="token punctuation">.</span><span class="token function">use<span class="token punctuation">(</span></span><span class="token function">errorHandler<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> server <span class="token operator">=</span> http<span class="token punctuation">.</span><span class="token function">createServer<span class="token punctuation">(</span></span>app<span class="token punctuation">)</span><span class="token punctuation">;</span>
+server<span class="token punctuation">.</span><span class="token function">listen<span class="token punctuation">(</span></span>app<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'port'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log<span class="token punctuation">(</span></span><span class="token string">'Express server listening on port '</span> <span class="token operator">+</span> app<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'port'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+<div class="doc-box doc-info">
+  <p>除非需要直接使用 <code>http</code> 模块（socket.io/SPDY/HTTPS），否则不必加载它，可使用如下方式启动应用：</p>
+  <pre class="  language-javascript"><code class="  language-javascript">app<span class="token punctuation">.</span><span class="token function">listen<span class="token punctuation">(</span></span>app<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'port'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log<span class="token punctuation">(</span></span><span class="token string">'Express server listening on port '</span> <span class="token operator">+</span> app<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'port'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+</div>
+
+<h3>运行应用</h3>
+
+<p>迁移完成后，应用就变成了 Express 4 应用。为了确保迁移成功，使用如下命令启动应用：</p>
+
+<pre class="language-sh"><code class="language-sh">$ node .
+</code></pre>
+
+<p>输入 <a href="http://localhost:3000/">http://localhost:3000</a>
+  即可看到经由 Express 4 渲染的主页。</p>
+
+<h2 id="app-gen">迁移到 Express 4 应用生成器</h2>
+
+<p>生成 Express 应用的命令行还是 <code>express</code>，为了升级到最新版本，您必须首先卸载 Express 3 的应用生成器，然后安装新的 <code>express-generator</code>。</p>
+
+<h3>安装 </h3>
+
+<p>如果您已经安装了 Express 3 应用生成器，请使用如下命令卸载：</p>
+
+<pre class="language-sh"><code class="language-sh">$ npm uninstall -g express
+</code></pre>
+
+<p>根据您的文件目录权限，您可能需要以 <code>sudo</code> 权限执行该命令。</p>
+
+<p>然后安装新的生成器：</p>
+
+<pre class="language-sh"><code class="language-sh">$ npm install -g express-generator
+</code></pre>
+
+<p>根据您的文件目录权限，您可能需要以 <code>sudo</code> 权限执行该命令。</p>
+
+<p>现在系统的 <code>express</code> 命令就升级为 Express 4 应用生成器了。</p>
+
+<h3>应用生成器的变化 </h3>
+
+<p>除如下选项外，大部分命令参数和使用方法都维持不变：</p>
+
+<ul class="doclist">
+  <li>删掉了 <code>--sessions</code> o选项。</li>
+  <li>删掉了 <code>--jshtml</code> 选项。</li>
+  <li>增加了 <code>--hogan</code> 选项以支持 <a href="http://twitter.github.io/hogan.js/">Hogan.js</a>。</li>
+</ul>
+
+<h3>实例</h3>
+
+<p>运行下述命令创建一个 Express 4 应用：</p>
+
+<pre class="language-sh"><code class="language-sh">$ express app4
+</code></pre>
+
+<p>如果查看 <code>app4/app.js</code> 的内容，会发现应用需要的所有中间件（不包括 <code>express.static</code>）都作为独立模块载入，而且再不显式地加载 <code>router</code> 中间件。</p>
+
+<p>您可能还会发现，和旧的生成器生成的应用相比， <code>app.js</code> 现在成了一个 Node 模块。</p>
+
+<p>安装完依赖后，使用如下命令启动应用：</p>
+
+<pre class="language-sh"><code class="language-sh">$ npm start
+</code></pre>
+
+<p>如果看一看 <code>package.json</code> 文件中的 npm 启动脚本，会发现启动应用的真正命令是 <code>node ./bin/www</code>，在 Express 3 中则为 <code>node app.js</code>。</p>
+
+<p>Express 4 应用生成器生成的 <code>app.js</code> 是一个 Node 模块，不能作为应用（除非修改代码）单独启动，需要通过一个 Node 文件加载并启动，这里这个文件就是 <code>node ./bin/www</code>。</p>
+
+<p>创建或启动 Express 应用时，<code>bin</code> 目录或者文件名没有后缀的 <code>www</code> 文件都不是必需的，它们只是生成器推荐的做法，请根据需要修改。</p>
+
+<p>如果不想保留 <code>www</code>，想让应用变成 Express 3 的形式，则需要删除 <code>module.exports = app;</code>，并在 <code>app.js</code> 末尾粘贴如下代码。</p>
+
+<pre class="  language-javascript"><code class="  language-javascript">app<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span><span class="token string">'port'</span><span class="token punctuation">,</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span>PORT <span class="token operator">||</span> <span class="token number">3000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> server <span class="token operator">=</span> app<span class="token punctuation">.</span><span class="token function">listen<span class="token punctuation">(</span></span>app<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'port'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">debug<span class="token punctuation">(</span></span><span class="token string">'Express server listening on port '</span> <span class="token operator">+</span> server<span class="token punctuation">.</span><span class="token function">address<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">.</span>port<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+<p>记得在 <code>app.js</code> 上方加入如下代码加载 <code>debug</code> 模块。</p>
+
+<pre class="  language-javascript"><code class="  language-javascript"><span class="token keyword">var</span> debug <span class="token operator">=</span> <span class="token function">require<span class="token punctuation">(</span></span><span class="token string">'debug'</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token string">'app4'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+
+<p>然后将 <code>package.json</code> 文件中的 <code>"start": "node ./bin/www"</code> 修改为 <code>"start": "node app.js"</code>。</p>
+
+<p>现在就将 <code>./bin/www</code> 的功能又改回到 <code>app.js</code> 中了。我们并不推荐这样做，这个练习只是为了帮助大家理解 <code>./bin/www</code> 是如何工作的，以及为什么 <code>app.js</code> 不能再自己启动。</p>
+
+      
+    </section>
+
+    <a id="top" href="http://www.expressjs.com.cn/guide/migrating-4.html#"><img src="./13迁移到 Express 4_files/arrow.png"></a>
+    
+    <footer>
+        <div id="footer-content">
+            <div id="github">
+                <a href="https://github.com/strongloop/express" target="_blank">Github Repo</a>
+            </div>
+            <div id="sponsor">Express 项目由 <a href="http://strongloop.com/" target="_blank">StrongLoop</a> 赞助。</div>
+            <div id="fork"><a href="https://github.com/strongloop/expressjs.com/blob/gh-pages/guide/migrating-4.md">Edit this page on GitHub</a></div>
+            <div>Copyright © StrongLoop, Inc., and other expressjs.com contributors.</div>
+        </div>
+    
+        <div class="friend-links">
+            <a href="http://www.bootcss.com/" title="Bootstrap 中文网">Bootstrap中文网</a>
+            <a href="http://www.gruntjs.net/" title="Grunt 中文网">Grunt中文网</a>
+            <a href="http://www.gulpjs.com.cn/" title="Gulp 中文网">Gulp中文网</a>
+            <a href="http://www.bootcdn.cn/" title="BootCDN 加速">BootCDN</a>
+            <a href="http://www.nodeapp.cn/" title="Node.js 中文文档">Node.js 中文文档</a>
+        </div>
+    </footer>
+    
+    <div class="beian">
+    	<a href="http://www.miibeian.gov.cn/" target="_blank">冀ICP备15008021号</a><span>|</span>© Express 中文网 2015
+    </div>
+  
+
+
+</body></html>

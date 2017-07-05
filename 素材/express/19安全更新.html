@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<!-- saved from url=(0058)http://www.expressjs.com.cn/advanced/security-updates.html -->
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>Express 安全更新</title>
+      
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      
+      <link rel="stylesheet" href="./19Express 安全更新_files/style.css">
+      <link rel="stylesheet" href="./19Express 安全更新_files/dropit.css">
+      <link rel="stylesheet" href="./19Express 安全更新_files/prism.css">
+      <link href="./19Express 安全更新_files/font-awesome.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="./19Express 安全更新_files/css">
+  
+      <script src="./19Express 安全更新_files/hm.js.下载"></script><script src="./19Express 安全更新_files/hm.js(1).下载"></script><script data-cfasync="false" src="./19Express 安全更新_files/jquery.min.js.下载"></script>
+      <script data-cfasync="false" src="./19Express 安全更新_files/app.js.下载"></script>
+      <script data-cfasync="false" src="./19Express 安全更新_files/retina.js.下载"></script>
+      <script data-cfasync="false" src="./19Express 安全更新_files/dropit.js.下载"></script>
+      <script data-cfasync="false" src="./19Express 安全更新_files/prism.js.下载"></script>
+      <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?1e9527683dc35951cb595bc55ece8e84";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();
+      </script></head>
+
+  <body rlt="1" class="">
+
+    <section class="content">
+
+      <header>
+        <div id="mobile-menu">
+            <div id="nav-button" class="fa fa-bars fa-2x button"></div>
+        </div>
+        <section id="logo"><a href="http://www.expressjs.com.cn/" class="express">Express</a>
+        </section>
+        <div id="navbar">
+            <ul id="navmenu">
+                <li><a href="http://www.expressjs.com.cn/" id="home-menu">首页</a></li>
+                <li>
+                    <ul id="getting-started-menu" class="menu dropit">
+                        <li class="dropit-trigger"><a href="http://www.expressjs.com.cn/starter/installing.html">入门</a>
+                            <ul class="dropit-submenu" style="display: none;">
+                                <li>
+                                  <a href="http://www.expressjs.com.cn/starter/installing.html">
+                                    安装
+                                  </a>
+                                </li>
+                                <li>
+                                  <a href="http://www.expressjs.com.cn/starter/hello-world.html">
+                                    Hello world
+                                  </a>
+                                </li>
+                                <li>
+                                <a href="http://www.expressjs.com.cn/starter/generator.html">
+                                  Express 应用生成器
+                                </a>
+                                </li>
+                                <li>
+                                  <a href="http://www.expressjs.com.cn/starter/basic-routing.html">
+                                    基本路由
+                                  </a>
+                                </li>
+                                <li>
+                                  <a href="http://www.expressjs.com.cn/starter/static-files.html">
+                                    静态文件
+                                  </a>
+                                </li>
+                                <li>
+                                  <a href="http://www.expressjs.com.cn/starter/faq.html">
+                                    常见问题
+                                  </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <ul id="guide-menu" class="menu dropit">
+                        <li class="dropit-trigger"><a href="http://www.expressjs.com.cn/guide/routing.html">使用指南</a>
+                            <ul class="dropit-submenu" style="display: none;">
+                                <li><a href="http://www.expressjs.com.cn/guide/routing.html">路由</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/guide/using-middleware.html">中间件</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/guide/using-template-engines.html">模板引擎</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/guide/error-handling.html">错误处理</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/guide/debugging.html">调试</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/guide/behind-proxies.html">为 Express 设置代理</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/guide/migrating-4.html">升级到 Express 4</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/guide/database-integration.html">数据库集成</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <ul id="application-menu" class="menu dropit">
+                        <li class="dropit-trigger"><a href="http://www.expressjs.com.cn/4x/api.html">API 中文手册</a>
+                            <ul class="dropit-submenu" style="display: none;">
+                                <li><a href="http://www.expressjs.com.cn/4x/api.html">4.x 版本</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/3x/api.html">3.x 版本</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <ul id="advanced-topics-menu" class="menu dropit">
+                        <li class="dropit-trigger"><a href="http://www.expressjs.com.cn/advanced/developing-template-engines.html">进阶话题</a>
+                            <ul class="dropit-submenu" style="display: none;">
+                                <li><a href="http://www.expressjs.com.cn/advanced/developing-template-engines.html">模板引擎</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/advanced/pm.html">进程管理器</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/advanced/security-updates.html">安全更新</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <ul id="resources-menu" class="menu dropit">
+                        <li class="dropit-trigger"><a href="http://www.expressjs.com.cn/resources/glossary.html">有用的资源</a>
+                            <ul class="dropit-submenu" style="display: none;">
+                                <li><a href="http://www.expressjs.com.cn/resources/glossary.html">术语表</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/resources/middleware.html">中间件</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/resources/community.html">社区</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/resources/books-blogs.html">书籍与博客</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/resources/applications.html">实例展示</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+      </header>
+      <div id="overlay"></div>
+    
+      
+<h1 id="section">安全更新</h1>
+
+<div class="doc-box doc-notice">
+  <p>Node.js 的漏洞直接影响到 Express。因此，请<a href="http://blog.nodejs.org/vulnerability/">时刻关注 Node 的漏洞</a> 并确保使用最新的 Node 稳定版。</p>
+</div>
+
+<p>下面列出的是 Express 的漏洞以及其被修复的版本。</p>
+
+<h2 id="x">4.x</h2>
+
+<ul>
+  <li>4.11.1
+    <ul>
+      <li>Fixed root path disclosure vulnerability in express.static, res.sendfile, and res.sendFile</li>
+    </ul>
+  </li>
+  <li>4.10.7
+    <ul>
+      <li>Fixed open redirect vulnerability in express.static (advisory (https://nodesecurity.io/advisories/serve-static-open-redirect), CVE-2015-1164 (http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-1164))</li>
+    </ul>
+  </li>
+  <li>4.8.8
+    <ul>
+      <li>Fixed directory traversal vulnerabilities in <code>express.static</code> (<a href="http://nodesecurity.io/advisories/send-directory-traversal">advisory</a> , <a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2014-6394">CVE-2014-6394</a>)</li>
+    </ul>
+  </li>
+  <li>4.8.4
+    <ul>
+      <li>Node.js 0.10 can leak <code>fd</code>s in certain situations that affect <code>express.static</code> and <code>res.sendfile</code>. Malicious requests could cause <code>fd</code>s to leak and eventually leak to <code>EMFILE</code> errors and server unresponsiveness.</li>
+    </ul>
+  </li>
+  <li>4.8.0
+    <ul>
+      <li>Sparse arrays with extremely high indexes in query string could cause the process to run out of memory and crash the server.</li>
+      <li>Extremely nested query string objects could cause the process to block and make the server unresponsive temporarily.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="x-1">3.x</h2>
+
+<ul>
+  <li>3.19.1
+    <ul>
+      <li>Fixed root path disclosure vulnerability in express.static, res.sendfile, and res.sendFile</li>
+    </ul>
+  </li>
+  <li>3.19.0
+    <ul>
+      <li>Fixed open redirect vulnerability in express.static (advisory (https://nodesecurity.io/advisories/serve-static-open-redirect), CVE-2015-1164 (http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2015-1164))</li>
+    </ul>
+  </li>
+  <li>3.16.10
+    <ul>
+      <li>Fixed directory traversal vulnerabilities in <code>express.static</code>.</li>
+    </ul>
+  </li>
+  <li>3.16.6
+    <ul>
+      <li>Node.js 0.10 can leak <code>fd</code>s in certain situations that affect <code>express.static</code> and <code>res.sendfile</code>. Malicious requests could cause <code>fd</code>s to leak and eventually leak to <code>EMFILE</code> errors and server unresponsiveness.</li>
+    </ul>
+  </li>
+  <li>3.16.0
+    <ul>
+      <li>Sparse arrays with extremely high indexes in query string could cause the process to run out of memory and crash the server.</li>
+      <li>Extremely nested query string objects could cause the process to block and make the server unresponsive temporarily.</li>
+    </ul>
+  </li>
+  <li>3.3.0
+    <ul>
+      <li>The 404 response of an unsupported method override attempt was susceptible to cross-site scripting attacks.</li>
+    </ul>
+  </li>
+</ul>
+
+      
+    </section>
+
+    <a id="top" href="http://www.expressjs.com.cn/advanced/security-updates.html#"><img src="./19Express 安全更新_files/arrow.png"></a>
+    
+    <footer>
+        <div id="footer-content">
+            <div id="github">
+                <a href="https://github.com/strongloop/express" target="_blank">Github Repo</a>
+            </div>
+            <div id="sponsor">Express 项目由 <a href="http://strongloop.com/" target="_blank">StrongLoop</a> 赞助。</div>
+            <div id="fork"><a href="https://github.com/strongloop/expressjs.com/blob/gh-pages/advanced/security-updates.md">Edit this page on GitHub</a></div>
+            <div>Copyright © StrongLoop, Inc., and other expressjs.com contributors.</div>
+        </div>
+    
+        <div class="friend-links">
+            <a href="http://www.bootcss.com/" title="Bootstrap 中文网">Bootstrap中文网</a>
+            <a href="http://www.gruntjs.net/" title="Grunt 中文网">Grunt中文网</a>
+            <a href="http://www.gulpjs.com.cn/" title="Gulp 中文网">Gulp中文网</a>
+            <a href="http://www.bootcdn.cn/" title="BootCDN 加速">BootCDN</a>
+            <a href="http://www.nodeapp.cn/" title="Node.js 中文文档">Node.js 中文文档</a>
+        </div>
+    </footer>
+    
+    <div class="beian">
+    	<a href="http://www.miibeian.gov.cn/" target="_blank">冀ICP备15008021号</a><span>|</span>© Express 中文网 2015
+    </div>
+  
+
+
+</body></html>

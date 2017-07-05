@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<!-- saved from url=(0053)http://www.expressjs.com.cn/resources/middleware.html -->
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>Express 中间件</title>
+      
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      
+      <link rel="stylesheet" href="./21Express 中间件_files/style.css">
+      <link rel="stylesheet" href="./21Express 中间件_files/dropit.css">
+      <link rel="stylesheet" href="./21Express 中间件_files/prism.css">
+      <link href="./21Express 中间件_files/font-awesome.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="./21Express 中间件_files/css">
+  
+      <script src="./21Express 中间件_files/hm.js.下载"></script><script src="./21Express 中间件_files/hm.js(1).下载"></script><script data-cfasync="false" src="./21Express 中间件_files/jquery.min.js.下载"></script>
+      <script data-cfasync="false" src="./21Express 中间件_files/app.js.下载"></script>
+      <script data-cfasync="false" src="./21Express 中间件_files/retina.js.下载"></script>
+      <script data-cfasync="false" src="./21Express 中间件_files/dropit.js.下载"></script>
+      <script data-cfasync="false" src="./21Express 中间件_files/prism.js.下载"></script>
+      <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?1e9527683dc35951cb595bc55ece8e84";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();
+      </script></head>
+
+  <body rlt="1">
+
+    <section class="content">
+
+      <header>
+        <div id="mobile-menu">
+            <div id="nav-button" class="fa fa-bars fa-2x button"></div>
+        </div>
+        <section id="logo"><a href="http://www.expressjs.com.cn/" class="express">Express</a>
+        </section>
+        <div id="navbar">
+            <ul id="navmenu">
+                <li><a href="http://www.expressjs.com.cn/" id="home-menu">首页</a></li>
+                <li>
+                    <ul id="getting-started-menu" class="menu dropit">
+                        <li class="dropit-trigger"><a href="http://www.expressjs.com.cn/starter/installing.html">入门</a>
+                            <ul class="dropit-submenu" style="display: none;">
+                                <li>
+                                  <a href="http://www.expressjs.com.cn/starter/installing.html">
+                                    安装
+                                  </a>
+                                </li>
+                                <li>
+                                  <a href="http://www.expressjs.com.cn/starter/hello-world.html">
+                                    Hello world
+                                  </a>
+                                </li>
+                                <li>
+                                <a href="http://www.expressjs.com.cn/starter/generator.html">
+                                  Express 应用生成器
+                                </a>
+                                </li>
+                                <li>
+                                  <a href="http://www.expressjs.com.cn/starter/basic-routing.html">
+                                    基本路由
+                                  </a>
+                                </li>
+                                <li>
+                                  <a href="http://www.expressjs.com.cn/starter/static-files.html">
+                                    静态文件
+                                  </a>
+                                </li>
+                                <li>
+                                  <a href="http://www.expressjs.com.cn/starter/faq.html">
+                                    常见问题
+                                  </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <ul id="guide-menu" class="menu dropit">
+                        <li class="dropit-trigger"><a href="http://www.expressjs.com.cn/guide/routing.html">使用指南</a>
+                            <ul class="dropit-submenu" style="display: none;">
+                                <li><a href="http://www.expressjs.com.cn/guide/routing.html">路由</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/guide/using-middleware.html">中间件</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/guide/using-template-engines.html">模板引擎</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/guide/error-handling.html">错误处理</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/guide/debugging.html">调试</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/guide/behind-proxies.html">为 Express 设置代理</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/guide/migrating-4.html">升级到 Express 4</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/guide/database-integration.html">数据库集成</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <ul id="application-menu" class="menu dropit">
+                        <li class="dropit-trigger"><a href="http://www.expressjs.com.cn/4x/api.html">API 中文手册</a>
+                            <ul class="dropit-submenu" style="display: none;">
+                                <li><a href="http://www.expressjs.com.cn/4x/api.html">4.x 版本</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/3x/api.html">3.x 版本</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <ul id="advanced-topics-menu" class="menu dropit">
+                        <li class="dropit-trigger"><a href="http://www.expressjs.com.cn/advanced/developing-template-engines.html">进阶话题</a>
+                            <ul class="dropit-submenu" style="display: none;">
+                                <li><a href="http://www.expressjs.com.cn/advanced/developing-template-engines.html">模板引擎</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/advanced/pm.html">进程管理器</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/advanced/security-updates.html">安全更新</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <ul id="resources-menu" class="menu dropit">
+                        <li class="dropit-trigger"><a href="http://www.expressjs.com.cn/resources/glossary.html">有用的资源</a>
+                            <ul class="dropit-submenu" style="display: none;">
+                                <li><a href="http://www.expressjs.com.cn/resources/glossary.html">术语表</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/resources/middleware.html">中间件</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/resources/community.html">社区</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/resources/books-blogs.html">书籍与博客</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/resources/applications.html">实例展示</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+      </header>
+      <div id="overlay"></div>
+    
+      
+<h1 id="section">第三方中间件</h1>
+
+<p>这里列出的是部分 Express 中间件组件：</p>
+
+<ul>
+  <li><a href="https://github.com/expressjs/body-parser">body-parser</a>: previously <code>express.bodyParser</code>, <code>json</code>, and <code>urlencoded</code>. 
+  See also:
+    <ul>
+      <li><a href="https://github.com/raynos/body">body</a></li>
+      <li><a href="https://github.com/visionmedia/co-body">co-body</a></li>
+      <li><a href="https://github.com/stream-utils/raw-body">raw-body</a></li>
+    </ul>
+  </li>
+  <li><a href="https://github.com/expressjs/compression">compression</a> - previously <code>express.compress</code></li>
+  <li><a href="https://github.com/msemenistyi/connect-image-optimus">connect-image-optimus</a>: Connect/Express middleware for optimal image serving. Switches to webp/jpegxr if possible.</li>
+  <li><a href="https://github.com/expressjs/timeout">connect-timeout</a>: previously <code>express.timeout</code></li>
+  <li><a href="https://github.com/expressjs/cookie-parser">cookie-parser</a>: previously <code>express.cookieParser</code></li>
+  <li><a href="https://github.com/expressjs/cookie-session">cookie-session</a>: previously <code>express.cookieSession</code></li>
+  <li><a href="https://github.com/expressjs/csurf">csurf</a>: previousy <code>express.csrf</code></li>
+  <li><a href="https://github.com/expressjs/errorhandler">errorhandler</a>: previously <code>express.errorHandler</code></li>
+  <li><a href="https://github.com/devoidfury/express-debug">express-debug</a>: unobtrusive development tool that adds a tab with information about req, session, locals, and more to your application.</li>
+  <li><a href="https://github.com/nemtsov/express-partial-response">express-partial-response</a>: Express middleware for filtering-out parts of JSON responses based on the <code>fields</code> query-string; using Google API’s Partial Response.</li>
+  <li><a href="https://github.com/expressjs/session">express-session</a>: previously <code>express.session</code></li>
+  <li><a href="https://github.com/jamiesteven/express-simple-cdn">express-simple-cdn</a>: easily use a CDN for your static assets, with multiple host support (ex. cdn1.host.com, cdn2.host.com).</li>
+  <li><a href="https://github.com/ericf/express-slash">express-slash</a>: Express middleware for people who are strict about trailing slashes.</li>
+  <li><a href="https://github.com/stormpath/stormpath-express">express-stormpath</a>: Express middleware for user storage, authentication, authorization, SSO, and data security.</li>
+  <li><a href="https://github.com/jamiesteven/express-uncapitalize">express-uncapitalize</a>: redirect HTTP requests containing uppercase to a canonical lowercase form.</li>
+  <li><a href="https://github.com/coderaiser/join-io" title="join-io">join-io</a>: join files on a fly to reduce requests count</li>
+  <li><a href="https://github.com/expressjs/method-override">method-override</a>: previously <code>express.methodOverride</code></li>
+  <li><a href="https://github.com/expressjs/morgan">morgan</a>: previously <code>logger</code></li>
+  <li><a href="https://github.com/jaredhanson/passport">passport</a>: Express middleware for authentication.</li>
+  <li><a href="https://github.com/expressjs/response-time">response-time</a>: previously <code>express.responseTime</code></li>
+  <li><a href="https://github.com/expressjs/serve-favicon">serve-favicon</a>: previously <code>express.favicon</code></li>
+  <li><a href="https://github.com/expressjs/serve-index">serve-index</a>: previousy <code>express.directory</code></li>
+  <li><a href="https://github.com/expressjs/serve-static">serve-static</a>: for serving static content</li>
+  <li><a href="https://github.com/paulwalker/connect-static-expiry">static-expiry</a>: fingerprinted URLs/Caching Headers for static assets including external domain(s) support.</li>
+  <li><a href="https://github.com/expressjs/vhost">vhost</a>: previously <code>express.vhost</code></li>
+  <li><a href="https://github.com/madhums/node-view-helpers">view-helpers</a>: An express middleware that provides common helper methods to the views.</li>
+</ul>
+
+<p>Some middleware previously included with Connect are no longer supported by the Connect/Express team,
+and are replaced by an alternative module, or should be superseded by a better module. Use one of these alternatives instead:</p>
+
+<ul>
+  <li>express.cookieParser
+    <ul>
+      <li><a href="https://github.com/jed/cookies">cookies</a> and <a href="https://github.com/jed/keygrip">keygrip</a></li>
+    </ul>
+  </li>
+  <li>express.limit
+    <ul>
+      <li><a href="https://github.com/stream-utils/raw-body">raw-body</a></li>
+    </ul>
+  </li>
+  <li>express.multipart
+    <ul>
+      <li><a href="https://github.com/mscdex/connect-busboy">connect-busboy</a></li>
+      <li><a href="https://github.com/expressjs/multer">multer</a></li>
+      <li><a href="https://github.com/superjoe30/connect-multiparty">connect-multiparty</a></li>
+    </ul>
+  </li>
+  <li>express.query
+    <ul>
+      <li><a href="https://github.com/visionmedia/node-querystring">qs</a></li>
+    </ul>
+  </li>
+  <li>express.staticCache
+    <ul>
+      <li><a href="https://github.com/isaacs/st">st</a></li>
+      <li><a href="https://github.com/andrewrk/connect-static">connect-static</a></li>
+    </ul>
+  </li>
+</ul>
+
+<p>For more middleware, see also:
+ - <a href="https://github.com/Raynos/http-framework/wiki/Modules">http-framework</a>
+ - <a href="https://github.com/expressjs">expressjs</a></p>
+
+      
+    </section>
+
+    <a id="top" href="http://www.expressjs.com.cn/resources/middleware.html#"><img src="./21Express 中间件_files/arrow.png"></a>
+    
+    <footer>
+        <div id="footer-content">
+            <div id="github">
+                <a href="https://github.com/strongloop/express" target="_blank">Github Repo</a>
+            </div>
+            <div id="sponsor">Express 项目由 <a href="http://strongloop.com/" target="_blank">StrongLoop</a> 赞助。</div>
+            <div id="fork"><a href="https://github.com/strongloop/expressjs.com/blob/gh-pages/resources/middleware.md">Edit this page on GitHub</a></div>
+            <div>Copyright © StrongLoop, Inc., and other expressjs.com contributors.</div>
+        </div>
+    
+        <div class="friend-links">
+            <a href="http://www.bootcss.com/" title="Bootstrap 中文网">Bootstrap中文网</a>
+            <a href="http://www.gruntjs.net/" title="Grunt 中文网">Grunt中文网</a>
+            <a href="http://www.gulpjs.com.cn/" title="Gulp 中文网">Gulp中文网</a>
+            <a href="http://www.bootcdn.cn/" title="BootCDN 加速">BootCDN</a>
+            <a href="http://www.nodeapp.cn/" title="Node.js 中文文档">Node.js 中文文档</a>
+        </div>
+    </footer>
+    
+    <div class="beian">
+    	<a href="http://www.miibeian.gov.cn/" target="_blank">冀ICP备15008021号</a><span>|</span>© Express 中文网 2015
+    </div>
+  
+
+
+</body></html>

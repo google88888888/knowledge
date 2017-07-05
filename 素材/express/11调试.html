@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<!-- saved from url=(0048)http://www.expressjs.com.cn/guide/debugging.html -->
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>调试 Express</title>
+      
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      
+      <link rel="stylesheet" href="./11调试 Express_files/style.css">
+      <link rel="stylesheet" href="./11调试 Express_files/dropit.css">
+      <link rel="stylesheet" href="./11调试 Express_files/prism.css">
+      <link href="./11调试 Express_files/font-awesome.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="./11调试 Express_files/css">
+  
+      <script src="./11调试 Express_files/hm.js.下载"></script><script src="./11调试 Express_files/hm.js(1).下载"></script><script data-cfasync="false" src="./11调试 Express_files/jquery.min.js.下载"></script>
+      <script data-cfasync="false" src="./11调试 Express_files/app.js.下载"></script>
+      <script data-cfasync="false" src="./11调试 Express_files/retina.js.下载"></script>
+      <script data-cfasync="false" src="./11调试 Express_files/dropit.js.下载"></script>
+      <script data-cfasync="false" src="./11调试 Express_files/prism.js.下载"></script>
+      <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?1e9527683dc35951cb595bc55ece8e84";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();
+      </script></head>
+
+  <body rlt="1">
+
+    <section class="content">
+
+      <header>
+        <div id="mobile-menu">
+            <div id="nav-button" class="fa fa-bars fa-2x button"></div>
+        </div>
+        <section id="logo"><a href="http://www.expressjs.com.cn/" class="express">Express</a>
+        </section>
+        <div id="navbar">
+            <ul id="navmenu">
+                <li><a href="http://www.expressjs.com.cn/" id="home-menu">首页</a></li>
+                <li>
+                    <ul id="getting-started-menu" class="menu dropit">
+                        <li class="dropit-trigger"><a href="http://www.expressjs.com.cn/starter/installing.html">入门</a>
+                            <ul class="dropit-submenu" style="display: none;">
+                                <li>
+                                  <a href="http://www.expressjs.com.cn/starter/installing.html">
+                                    安装
+                                  </a>
+                                </li>
+                                <li>
+                                  <a href="http://www.expressjs.com.cn/starter/hello-world.html">
+                                    Hello world
+                                  </a>
+                                </li>
+                                <li>
+                                <a href="http://www.expressjs.com.cn/starter/generator.html">
+                                  Express 应用生成器
+                                </a>
+                                </li>
+                                <li>
+                                  <a href="http://www.expressjs.com.cn/starter/basic-routing.html">
+                                    基本路由
+                                  </a>
+                                </li>
+                                <li>
+                                  <a href="http://www.expressjs.com.cn/starter/static-files.html">
+                                    静态文件
+                                  </a>
+                                </li>
+                                <li>
+                                  <a href="http://www.expressjs.com.cn/starter/faq.html">
+                                    常见问题
+                                  </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <ul id="guide-menu" class="menu dropit">
+                        <li class="dropit-trigger"><a href="http://www.expressjs.com.cn/guide/routing.html">使用指南</a>
+                            <ul class="dropit-submenu" style="display: none;">
+                                <li><a href="http://www.expressjs.com.cn/guide/routing.html">路由</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/guide/using-middleware.html">中间件</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/guide/using-template-engines.html">模板引擎</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/guide/error-handling.html">错误处理</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/guide/debugging.html">调试</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/guide/behind-proxies.html">为 Express 设置代理</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/guide/migrating-4.html">升级到 Express 4</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/guide/database-integration.html">数据库集成</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <ul id="application-menu" class="menu dropit">
+                        <li class="dropit-trigger"><a href="http://www.expressjs.com.cn/4x/api.html">API 中文手册</a>
+                            <ul class="dropit-submenu" style="display: none;">
+                                <li><a href="http://www.expressjs.com.cn/4x/api.html">4.x 版本</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/3x/api.html">3.x 版本</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <ul id="advanced-topics-menu" class="menu dropit">
+                        <li class="dropit-trigger"><a href="http://www.expressjs.com.cn/advanced/developing-template-engines.html">进阶话题</a>
+                            <ul class="dropit-submenu" style="display: none;">
+                                <li><a href="http://www.expressjs.com.cn/advanced/developing-template-engines.html">模板引擎</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/advanced/pm.html">进程管理器</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/advanced/security-updates.html">安全更新</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <ul id="resources-menu" class="menu dropit">
+                        <li class="dropit-trigger"><a href="http://www.expressjs.com.cn/resources/glossary.html">有用的资源</a>
+                            <ul class="dropit-submenu" style="display: none;">
+                                <li><a href="http://www.expressjs.com.cn/resources/glossary.html">术语表</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/resources/middleware.html">中间件</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/resources/community.html">社区</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/resources/books-blogs.html">书籍与博客</a>
+                                </li>
+                                <li><a href="http://www.expressjs.com.cn/resources/applications.html">实例展示</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+      </header>
+      <div id="overlay"></div>
+    
+      
+<h1 id="express">调试 Express</h1>
+
+<p>Express 内部使用 <a href="https://github.com/visionmedia/debug">debug</a> 模块记录路由匹配、使用到的中间件、应用模式以及请求-响应循环。</p>
+
+<div class="doc-box doc-info">
+  <p><code>debug</code> 有点像改装过的 <code>console.log</code>，不同的是，您不需要在生产代码中注释掉 <code>debug</code>。它会默认关闭，而且使用一个名为 <code>DEBUG</code> 的环境变量还可以打开。</p>
+</div>
+
+<p>在启动应用时，设置 <code>DEBUG</code> 环境变量为 <code>express:*</code>，可以查看 Express 中用到的所有内部日志。</p>
+
+<pre class="language-sh"><code class="language-sh">$ DEBUG=express:* node index.js
+</code></pre>
+
+<p>在 Windows 系统里，使用如下的命令。</p>
+
+<pre class="language-sh"><code class="language-sh">&gt; set DEBUG=express:* &amp; node index.js
+</code></pre>
+
+<p>在由 <a href="http://www.expressjs.com.cn/starter/generator.html">express 应用生成器</a> 生成的默认应用中执行，会打印出如下信息：</p>
+
+<pre class="language-sh"><code class="language-sh">$ DEBUG=express:* node ./bin/www
+  express:router:route new / +0ms
+  express:router:layer new / +1ms
+  express:router:route get / +1ms
+  express:router:layer new / +0ms
+  express:router:route new / +1ms
+  express:router:layer new / +0ms
+  express:router:route get / +0ms
+  express:router:layer new / +0ms
+  express:application compile etag weak +1ms
+  express:application compile query parser extended +0ms
+  express:application compile trust proxy false +0ms
+  express:application booting in development mode +1ms
+  express:router use / query +0ms
+  express:router:layer new / +0ms
+  express:router use / expressInit +0ms
+  express:router:layer new / +0ms
+  express:router use / favicon +1ms
+  express:router:layer new / +0ms
+  express:router use / logger +0ms
+  express:router:layer new / +0ms
+  express:router use / jsonParser +0ms
+  express:router:layer new / +1ms
+  express:router use / urlencodedParser +0ms
+  express:router:layer new / +0ms
+  express:router use / cookieParser +0ms
+  express:router:layer new / +0ms
+  express:router use / stylus +90ms
+  express:router:layer new / +0ms
+  express:router use / serveStatic +0ms
+  express:router:layer new / +0ms
+  express:router use / router +0ms
+  express:router:layer new / +1ms
+  express:router use /users router +0ms
+  express:router:layer new /users +0ms
+  express:router use / &lt;anonymous&gt; +0ms
+  express:router:layer new / +0ms
+  express:router use / &lt;anonymous&gt; +0ms
+  express:router:layer new / +0ms
+  express:router use / &lt;anonymous&gt; +0ms
+  express:router:layer new / +0ms
+</code></pre>
+
+<p>当应用收到请求时，能看到 Express 代码中打印出的日志。</p>
+
+<pre class="language-sh"><code class="language-sh">  express:router dispatching GET / +4h
+  express:router query  : / +2ms
+  express:router expressInit  : / +0ms
+  express:router favicon  : / +0ms
+  express:router logger  : / +1ms
+  express:router jsonParser  : / +0ms
+  express:router urlencodedParser  : / +1ms
+  express:router cookieParser  : / +0ms
+  express:router stylus  : / +0ms
+  express:router serveStatic  : / +2ms
+  express:router router  : / +2ms
+  express:router dispatching GET / +1ms
+  express:view lookup "index.jade" +338ms
+  express:view stat "/projects/example/views/index.jade" +0ms
+  express:view render "/projects/example/views/index.jade" +1ms
+</code></pre>
+
+<p>设置 DEBUG 的值为 <code>express:router</code>，只查看路由部分的日志；设置 DEBUG 的值为 <code>express:application</code>，只查看应用部分的日志，依此类推。</p>
+
+<h2 id="express-">通过 <code>express</code> 生成应用</h2>
+
+<p>通过 <code>express</code> 命令行生成的应用也使用了 <code>debug</code> 模块，它的命名空间限制在应用中。</p>
+
+<p>如果您通过下述命令生成应用：</p>
+
+<pre class="language-sh"><code class="language-sh">$ express sample-app
+</code></pre>
+
+<p>则可通过下述命令打开调试信息：</p>
+
+<pre class="language-sh"><code class="language-sh">$ DEBUG=sample-app node ./bin/www
+</code></pre>
+
+<p>可通过逗号隔开的名字列表来指定多个调试命名空间，如下所示：</p>
+
+<pre class="language-sh"><code class="language-sh">$ DEBUG=http,mail,express:* node index.js
+</code></pre>
+
+<p>请查阅 <a href="https://github.com/visionmedia/debug">调试指南</a> 获取更多有关 <code>debug</code> 的文档。</p>
+
+      
+    </section>
+
+    <a id="top" href="http://www.expressjs.com.cn/guide/debugging.html#"><img src="./11调试 Express_files/arrow.png"></a>
+    
+    <footer>
+        <div id="footer-content">
+            <div id="github">
+                <a href="https://github.com/strongloop/express" target="_blank">Github Repo</a>
+            </div>
+            <div id="sponsor">Express 项目由 <a href="http://strongloop.com/" target="_blank">StrongLoop</a> 赞助。</div>
+            <div id="fork"><a href="https://github.com/strongloop/expressjs.com/blob/gh-pages/guide/debugging.md">Edit this page on GitHub</a></div>
+            <div>Copyright © StrongLoop, Inc., and other expressjs.com contributors.</div>
+        </div>
+    
+        <div class="friend-links">
+            <a href="http://www.bootcss.com/" title="Bootstrap 中文网">Bootstrap中文网</a>
+            <a href="http://www.gruntjs.net/" title="Grunt 中文网">Grunt中文网</a>
+            <a href="http://www.gulpjs.com.cn/" title="Gulp 中文网">Gulp中文网</a>
+            <a href="http://www.bootcdn.cn/" title="BootCDN 加速">BootCDN</a>
+            <a href="http://www.nodeapp.cn/" title="Node.js 中文文档">Node.js 中文文档</a>
+        </div>
+    </footer>
+    
+    <div class="beian">
+    	<a href="http://www.miibeian.gov.cn/" target="_blank">冀ICP备15008021号</a><span>|</span>© Express 中文网 2015
+    </div>
+  
+
+
+</body></html>
