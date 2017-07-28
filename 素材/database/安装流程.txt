@@ -1,0 +1,36 @@
+mysql-5.7.19-winx64.zip解压到当前文件夹
+
+在bin目录下创建my.ini文件，内容为
+[mysql]
+# 设置mysql客户端默认字符集
+default-character-set=utf8
+[mysqld]
+#设置3306端口
+port=3306
+# 设置mysql的安装目录
+basedir=D:\mysql\mysql-5.7.19-winx64
+# 设置mysql数据库的数据的存放目录
+datadir=D:\mysql\mysql-5.7.19-winx64\data
+# 允许最大连接数
+max_connections=200
+# 服务端使用的字符集默认为8比特编码的latin1字符集
+character-set-server=utf8
+# 创建新表时将使用的默认存储引擎
+default-storage-engine=INNODB
+
+cmd到bin目录执行mysqld install
+
+cmd到bin目录执行mysqld --initialize --user=mysql --console记住临时密码
+
+mysql -uroot -p
+输入临时密码
+修改密码set password for root@localhost = password('911888mjxok'); 
+
+修改环境变量
+系统环境变量Path最前面加上D:\mysql\mysql-5.7.19-winx64\bin;确定
+
+正常运行
+cmd
+mysql -uroot -p
+输入密码
+show databases;
