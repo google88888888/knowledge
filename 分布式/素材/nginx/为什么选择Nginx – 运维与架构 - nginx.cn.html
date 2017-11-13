@@ -1,0 +1,660 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!-- saved from url=(0036)http://www.nginx.cn/nginxchswhyuseit -->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:wb="http://open.weibo.com/wb"><head profile="http://gmpg.org/xfn/11"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="keywords" content="">
+<meta name="description" content="">
+<link rel="shortcut icon" href="http://www.nginx.cn/favicon.ico">
+<title>为什么选择Nginx  –  运维与架构 - nginx.cn</title>
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0 - 所有文章" href="http://www.nginx.cn/feed">
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0 - 所有评论" href="http://www.nginx.cn/comments/feed">
+<link rel="pingback" href="http://www.nginx.cn/xmlrpc.php">
+<script src="./为什么选择Nginx – 运维与架构 - nginx.cn_files/hm.js.下载"></script><script src="./为什么选择Nginx – 运维与架构 - nginx.cn_files/ca-pub-8728612882429404.js.下载"></script><script src="./为什么选择Nginx – 运维与架构 - nginx.cn_files/hm.js(1).下载"></script><script src="./为什么选择Nginx – 运维与架构 - nginx.cn_files/jquery.js.下载"></script>
+
+	<!-- style START -->
+	<!-- default style -->
+	<style type="text/css" media="screen">@import url( http://www.nginx.cn/wp-content/themes/caonimaxiugaizhe/style.css );</style>
+	<!-- for translations -->
+			<link rel="stylesheet" href="./为什么选择Nginx – 运维与架构 - nginx.cn_files/chinese.css" type="text/css" media="screen">
+		<!--[if IE]>
+		<link rel="stylesheet" href="http://www.nginx.cn/wp-content/themes/caonimaxiugaizhe/ie.css" type="text/css" media="screen" />
+	<![endif]-->
+	<!-- style END -->
+
+	<!-- script START -->
+	<script type="text/javascript" src="./为什么选择Nginx – 运维与架构 - nginx.cn_files/base.js.下载"></script>
+	
+	<script type="text/javascript" src="./为什么选择Nginx – 运维与架构 - nginx.cn_files/menu.js.下载"></script>
+	<!-- script END -->
+
+	<link rel="alternate" type="application/rss+xml" title="运维与架构 - nginx.cn » 为什么选择Nginx评论Feed" href="http://www.nginx.cn/nginxchswhyuseit/feed">
+<link rel="stylesheet" id="crayon-css" href="./为什么选择Nginx – 运维与架构 - nginx.cn_files/crayon.min.css" type="text/css" media="all">
+<script type="text/javascript" src="./为什么选择Nginx – 运维与架构 - nginx.cn_files/jquery.js(1).下载"></script>
+<script type="text/javascript" src="./为什么选择Nginx – 运维与架构 - nginx.cn_files/jquery-migrate.min.js.下载"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var CrayonSyntaxSettings = {"version":"_2.7.2_beta","is_admin":"0","ajaxurl":"http:\/\/www.nginx.cn\/wp-admin\/admin-ajax.php","prefix":"crayon-","setting":"crayon-setting","selected":"crayon-setting-selected","changed":"crayon-setting-changed","special":"crayon-setting-special","orig_value":"data-orig-value","debug":""};
+var CrayonSyntaxStrings = {"copy":"\u4f7f\u7528 %s \u590d\u5236\uff0c\u4f7f\u7528 %s \u7c98\u8d34\u3002","minimize":"\u70b9\u51fb\u5c55\u5f00\u4ee3\u7801"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./为什么选择Nginx – 运维与架构 - nginx.cn_files/crayon.min.js.下载"></script>
+<link rel="https://api.w.org/" href="http://www.nginx.cn/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.nginx.cn/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.nginx.cn/wp-includes/wlwmanifest.xml"> 
+<meta name="generator" content="WordPress 4.8.3">
+<link rel="canonical" href="http://www.nginx.cn/nginxchswhyuseit">
+<link rel="shortlink" href="http://www.nginx.cn/?p=35">
+<link rel="alternate" type="application/json+oembed" href="http://www.nginx.cn/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.nginx.cn%2Fnginxchswhyuseit">
+<link rel="alternate" type="text/xml+oembed" href="http://www.nginx.cn/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.nginx.cn%2Fnginxchswhyuseit&amp;format=xml">
+		<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+		
+<link rel="preload" href="./为什么选择Nginx – 运维与架构 - nginx.cn_files/integrator.js.下载" as="script"><script type="text/javascript" src="./为什么选择Nginx – 运维与架构 - nginx.cn_files/integrator.js.下载"></script><link rel="prefetch" href="https://securepubads.g.doubleclick.net/static/3p_cookie.html"></head>
+
+
+<body rlt="1" style="zoom: 1;">
+<!-- wrap START -->
+<div id="wrap">
+
+<!-- container START -->
+<div id="container">
+
+<!-- header START -->
+<div id="header">
+
+	<!-- banner START -->
+		<!-- banner END -->
+
+	<div id="caption">
+<span id="title"><a href="http://www.nginx.cn/">运维与架构 - nginx.cn</a></span>
+		<div id="tagline">好的架构减少运维，好的运维反哺架构</div>
+	</div>
+
+	<div class="fixed"></div>
+</div>
+<!-- header END -->
+
+<!-- navigation START -->
+<div id="navigation">
+	<!-- menus START -->
+	<ul id="menus">
+	    <li class="current_page_item"><a class="home" title="首页" href="http://www.nginx.cn/">首页</a></li>
+		<li class="page_item page-item-9"><a href="http://www.nginx.cn/nginx-download">nginx最新版下载</a></li>
+<li class="page_item page-item-55"><a href="http://www.nginx.cn/install">Nginx安装</a></li>
+<li class="page_item page-item-55"><a href="http://www.nginx.cn/76.html">Nginx配置</a></li>
+<li class="page_item page-item-55"><a href="http://www.nginx.cn/231.html">PHP-FPM安装配置</a></li>
+<li class="page_item page-item-353"><a href="http://www.nginx.cn/nginx-how-to">nginx中文手册</a></li>
+<li class="page_item page-item-43"><a href="http://www.nginx.cn/nginxchscommandline">运行和控制Nginx</a></li>
+<li class="page_item page-item-620"><a href="http://www.nginx.cn/manual" title="常用运维手册">在线手册</a></li>
+<li class="page_item page-item-55"><a href="http://www.nginx.cn/links" title="好站推荐">友情链接</a></li>
+<li class="page_item page-item-620"><a href="http://www.nginx.cn/about">关于我</a></li>
+		<li><a class="lastmenu" href="javascript:void(0);"></a></li>
+
+	</ul>
+	<!-- menus END -->
+
+
+
+	<div class="fixed"></div>
+</div>
+<!-- navigation END -->
+<!-- content START -->
+<div id="content">
+
+	<!-- main START -->
+	<div id="main">
+
+	<div class="post" id="post-35">
+		<h1>为什么选择Nginx</h1>
+		<div class="info">
+			<span class="date">2012年7月20日</span>
+										<span class="addcomment"><a href="http://www.nginx.cn/nginxchswhyuseit#respond">发表评论</a></span>
+				<span class="comments"><a href="http://www.nginx.cn/nginxchswhyuseit#comments">阅读评论</a></span>
+						<div class="fixed"></div>
+		</div>
+		<div class="content">
+
+                   <script async="" src="./为什么选择Nginx – 运维与架构 - nginx.cn_files/adsbygoogle.js.下载"></script>
+<!-- nginx-page-top -->
+<ins class="adsbygoogle" style="display:inline-block;width:675px;height:90px" data-ad-client="ca-pub-8728612882429404" data-ad-slot="1300189107" data-adsbygoogle-status="done"><ins id="aswift_0_expand" style="display:inline-table;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:675px;background-color:transparent;"><ins id="aswift_0_anchor" style="display:block;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:675px;background-color:transparent;"><iframe width="675" height="90" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;width:675px;height:90px;" src="./为什么选择Nginx – 运维与架构 - nginx.cn_files/saved_resource.html"></iframe></ins></ins></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+			<p>&nbsp;</p>
+<p>Nginx 是一个高性能的 Web 和反向代理服务器, 它具有有很多非常优越的特性:<strong></strong></p>
+<p><strong>作为 Web 服务器</strong>：相比 Apache，Nginx 使用更少的资源，支持更多的并发连接，体现更高的效率，这点使 Nginx 尤其受到虚拟主机提供商的欢迎。能够支持高达 50,000 个并发连接数的响应，感谢 Nginx 为我们选择了 epoll and kqueue 作为开发模型.<strong></strong></p>
+<p><strong>作为负载均衡服务器</strong>：Nginx 既可以在内部直接支持 Rails 和 PHP，也可以支持作为 HTTP代理服务器 对外进行服务。Nginx 用 C 编写, 不论是系统资源开销还是 CPU 使用效率都比 Perlbal 要好的多。<strong></strong></p>
+<p><strong>作为邮件代理服务器</strong>: Nginx 同时也是一个非常优秀的邮件代理服务器（最早开发这个产品的目的之一也是作为邮件代理服务器），Last.fm 描述了成功并且美妙的使用经验。<strong></strong></p>
+<p><strong>Nginx 安装非常的简单，配置文件 非常简洁（还能够支持perl语法），Bugs非常少的服务器</strong>: Nginx 启动特别容易，并且几乎可以做到7*24不间断运行，即使运行数个月也不需要重新启动。你还能够在 不间断服务的情况下进行软件版本的升级。</p>
+<p><strong><br>
+</strong></p>
+<script async="" src="./为什么选择Nginx – 运维与架构 - nginx.cn_files/adsbygoogle.js.下载"></script>
+<!-- nginx-botton-link -->
+<ins class="adsbygoogle" style="display:inline-block;width:468px;height:15px" data-ad-client="ca-pub-8728612882429404" data-ad-slot="2776922304" data-adsbygoogle-status="done"><ins id="aswift_1_expand" style="display:inline-table;border:none;height:15px;margin:0;padding:0;position:relative;visibility:visible;width:468px;background-color:transparent;"><ins id="aswift_1_anchor" style="display:block;border:none;height:15px;margin:0;padding:0;position:relative;visibility:visible;width:468px;background-color:transparent;"><iframe width="468" height="15" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_1" name="aswift_1" style="left:0;position:absolute;top:0;width:468px;height:15px;" src="./为什么选择Nginx – 运维与架构 - nginx.cn_files/saved_resource(1).html"></iframe></ins></ins></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+			<div class="fixed"></div>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="./为什么选择Nginx – 运维与架构 - nginx.cn_files/comment.js.下载"></script>
+
+
+
+<div id="comments">
+
+<div id="cmtswitcher">
+			<a id="commenttab" class="curtab" href="javascript:void(0);">评论 (9)</a>
+				<span class="addcomment"><a href="http://www.nginx.cn/nginxchswhyuseit#respond">发表评论</a></span>
+			<div class="fixed"></div>
+</div>
+
+<div id="commentlist">
+	<!-- comments START -->
+	<ol id="thecomments">
+		<li class="comment regularcomment" id="comment-3622">
+		<div class="author">
+			<div class="pic">
+				<img src="./为什么选择Nginx – 运维与架构 - nginx.cn_files/d4eb40f8f31059d485d95a40e6d12c47" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<a id="commentauthor-3622" class="url" href="http://www.hly.space/" rel="external nofollow">
+				
+				Mixcro
+									</a>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2017年3月17日23:48					 | <a href="http://www.nginx.cn/nginxchswhyuseit#comment-3622">#1</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-3622&#39;, &#39;comment-3622&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-3622&#39;, &#39;comment-3622&#39;, &#39;commentbody-3622&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-3622">
+					<p><a href="http://www.nginx.cn/nginxchswhyuseit#comment-1291" rel="nofollow">@眭栋芳 </a><br>
+不会啊，我树莓派上就跑的好好的</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li><!-- #comment-## -->
+	<li class="comment regularcomment" id="comment-1291">
+		<div class="author">
+			<div class="pic">
+				<img src="./为什么选择Nginx – 运维与架构 - nginx.cn_files/saved_resource" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<a id="commentauthor-1291" class="url" href="http://t.qq.com/wo1322308553" rel="external nofollow">
+				
+				眭栋芳
+									</a>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2016年4月1日09:32					 | <a href="http://www.nginx.cn/nginxchswhyuseit#comment-1291">#2</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-1291&#39;, &#39;comment-1291&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-1291&#39;, &#39;comment-1291&#39;, &#39;commentbody-1291&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-1291">
+					<p>好像听说在arm板子上不太兼容嘛，可以编译成功，测试就出现各种错误！</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li><!-- #comment-## -->
+	<li class="comment regularcomment" id="comment-38">
+		<div class="author">
+			<div class="pic">
+				<img src="./为什么选择Nginx – 运维与架构 - nginx.cn_files/e570c005ff06349877bf7c9ecf84fcaf" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<a id="commentauthor-38" class="url" href="http://www.chezizhu.com/" rel="external nofollow">
+				
+				车自主
+									</a>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2014年12月3日17:17					 | <a href="http://www.nginx.cn/nginxchswhyuseit#comment-38">#3</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-38&#39;, &#39;comment-38&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-38&#39;, &#39;comment-38&#39;, &#39;commentbody-38&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-38">
+					<p>刚接触，体会还不是很大</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li><!-- #comment-## -->
+	<li class="comment regularcomment" id="comment-37">
+		<div class="author">
+			<div class="pic">
+				<img src="./为什么选择Nginx – 运维与架构 - nginx.cn_files/saved_resource" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<a id="commentauthor-37" class="url" href="http://t.qq.com/jiangliuer2010" rel="external nofollow">
+				
+				江流儿
+									</a>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2014年11月19日09:52					 | <a href="http://www.nginx.cn/nginxchswhyuseit#comment-37">#4</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-37&#39;, &#39;comment-37&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-37&#39;, &#39;comment-37&#39;, &#39;commentbody-37&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-37">
+					<p>很强大</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li><!-- #comment-## -->
+	<li class="comment regularcomment" id="comment-36">
+		<div class="author">
+			<div class="pic">
+				<img src="./为什么选择Nginx – 运维与架构 - nginx.cn_files/d219af79b45e5891507fda4c4c2139a0" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<span id="commentauthor-36">
+				
+				www.ilovemakingup.com
+									</span>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2013年10月3日12:37					 | <a href="http://www.nginx.cn/nginxchswhyuseit#comment-36">#5</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-36&#39;, &#39;comment-36&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-36&#39;, &#39;comment-36&#39;, &#39;commentbody-36&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-36">
+					<p>不错，学习了</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li><!-- #comment-## -->
+	<li class="comment regularcomment" id="comment-948">
+		<div class="author">
+			<div class="pic">
+				<img src="./为什么选择Nginx – 运维与架构 - nginx.cn_files/d219af79b45e5891507fda4c4c2139a0" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<span id="commentauthor-948">
+				
+				hi
+									</span>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2013年10月3日12:36					 | <a href="http://www.nginx.cn/nginxchswhyuseit#comment-948">#6</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-948&#39;, &#39;comment-948&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-948&#39;, &#39;comment-948&#39;, &#39;commentbody-948&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-948">
+					<p>很不错嘛</p>
+<p>&lt;a href="<a href="http://www.ilovemakingup.com/%22%3Ewww.ilovemakingup.com%3C/a&amp;gt" rel="nofollow">http://www.ilovemakingup.com/"&gt;www.ilovemakingup.com&lt;/a&amp;gt</a>;</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li><!-- #comment-## -->
+	<li class="comment regularcomment" id="comment-33">
+		<div class="author">
+			<div class="pic">
+				<img src="./为什么选择Nginx – 运维与架构 - nginx.cn_files/ad87e34727424efda7766b52ceb8f9d6" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<a id="commentauthor-33" class="url" href="http://www.alip.biz/" rel="external nofollow">
+				
+				66641163
+									</a>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2013年1月7日22:28					 | <a href="http://www.nginx.cn/nginxchswhyuseit#comment-33">#7</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-33&#39;, &#39;comment-33&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-33&#39;, &#39;comment-33&#39;, &#39;commentbody-33&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-33">
+					<p>我在win2003服务器上配置 nginx 1.2.6 稳定版，我的在线用户大概2000-3000左右，其他配置都好，不过nginx 进程占用内存越来越多，运行时候5MB左右，24小时后80MB左右。我都关闭日记文件和错误文件。还是一样的。几天测试1.3.10 开发板，也是一样。不知道怎么解决？</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+<ul class="children">
+	<li class="comment admincomment" id="comment-34">
+		<div class="author">
+			<div class="pic">
+				<img src="./为什么选择Nginx – 运维与架构 - nginx.cn_files/b2d7d2d13aed54c2ed7feb538b382b42" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<a id="commentauthor-34" class="url" href="http://weibo.com/chenhe" rel="external nofollow">
+				
+				chenhe
+									</a>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2013年1月7日23:17					 | <a href="http://www.nginx.cn/nginxchswhyuseit#comment-34">#8</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-34&#39;, &#39;comment-34&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-34&#39;, &#39;comment-34&#39;, &#39;commentbody-34&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-34">
+					<p>推荐使用linux系统</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li><!-- #comment-## -->
+	<li class="comment regularcomment" id="comment-35">
+		<div class="author">
+			<div class="pic">
+				<img src="./为什么选择Nginx – 运维与架构 - nginx.cn_files/9ff420cae1872b1cfacb038c5cd78df5" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<span id="commentauthor-35">
+				
+				旺旺
+									</span>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2013年1月19日10:32					 | <a href="http://www.nginx.cn/nginxchswhyuseit#comment-35">#9</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-35&#39;, &#39;comment-35&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-35&#39;, &#39;comment-35&#39;, &#39;commentbody-35&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-35">
+					<p>既然都选择了nginx，为什么会用windows的OS呢？除了必须运行ASP或.net程序外，其他的web应用放在linux会好很多！</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	</ol>
+	<!-- comments END -->
+
+
+	<!-- trackbacks START -->
+		<div class="fixed"></div>
+	<!-- trackbacks END -->
+</div>
+
+</div>
+
+	<form action="http://www.nginx.cn/wp-comments-post.php" method="post" id="commentform">
+	<div id="respond">
+
+					
+			<div id="author_info">
+				<div class="row">
+					<input type="text" name="author" id="author" class="textfield" value="" size="24" tabindex="1">
+					<label for="author" class="small">昵称 (必填)</label>
+				</div>
+				<div class="row">
+					<input type="text" name="email" id="email" class="textfield" value="" size="24" tabindex="2">
+					<label for="email" class="small">电子邮箱 (我们会为您保密) (必填)</label>
+				</div>
+				<div class="row">
+					<input type="text" name="url" id="url" class="textfield" value="" size="24" tabindex="3">
+					<label for="url" class="small">网址</label>
+				</div>
+			</div>
+
+			
+		
+		<!-- comment input -->
+		<div class="row">
+			<textarea name="comment" id="comment" tabindex="4" rows="8" cols="50"></textarea>
+		</div>
+
+		<!-- comment submit and rss -->
+		<div id="submitbox">
+			<a class="feed" href="http://www.nginx.cn/comments/feed">订阅评论</a>
+			<div class="submitbutton">
+				<input name="submit" type="submit" id="submit" class="button" tabindex="5" value="提交评论">
+			</div>
+						<input type="hidden" name="comment_post_ID" value="35">
+			<div class="fixed"></div>
+		</div>
+
+	</div>
+	<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="39337132a6"></p><p style="display: none;"></p>	<input type="hidden" id="ak_js" name="ak_js" value="1510543826517"></form>
+
+	
+
+
+	</div>
+	<!-- main END -->
+
+	<!-- sidebar START -->
+<div id="sidebar">
+
+    <!-- sidebar north START -->
+    <div id="northsidebar" class="sidebar">
+<div class="sidebar_compliance"></div>
+        <!--ad-161216-->
+        
+        
+
+        <div id="search-2" class="widget widget_search"><form role="search" method="get" id="searchform" class="searchform" action="http://www.nginx.cn/">
+				<div>
+					<label class="screen-reader-text" for="s">搜索：</label>
+					<input type="text" value="" name="s" id="s">
+					<input type="submit" id="searchsubmit" value="搜索">
+				</div>
+			</form></div><div id="views-3" class="widget widget_views"><h3>热门访问</h3><ul>
+<li><a href="http://www.nginx.cn/install" title="Nginx安装">Nginx安装</a> - 583,172 views</li><li><a href="http://www.nginx.cn/76.html" title="nginx基本配置与参数说明">nginx基本配置与参数说明</a> - 372,596 views</li><li><a href="http://www.nginx.cn/231.html" title="nginx php-fpm安装配置">nginx php-fpm安装配置</a> - 362,324 views</li><li><a href="http://www.nginx.cn/115.html" title="nginx location匹配规则">nginx location匹配规则</a> - 220,161 views</li><li><a href="http://www.nginx.cn/nginx-how-to" title="nginx中文手册">nginx中文手册</a> - 206,669 views</li><li><a href="http://www.nginx.cn/927.html" title="nginx反向代理配置">nginx反向代理配置</a> - 203,062 views</li><li><a href="http://www.nginx.cn/216.html" title="nginx rewrite 指令">nginx rewrite 指令</a> - 143,290 views</li><li><a href="http://www.nginx.cn/nginx-download" title="nginx最新版下载">nginx最新版下载</a> - 142,500 views</li><li><a href="http://www.nginx.cn/591.html" title="nginx配置入门">nginx配置入门</a> - 130,921 views</li><li><a href="http://www.nginx.cn/nginxchscommandline" title="运行和控制Nginx">运行和控制Nginx</a> - 126,496 views</li></ul>
+</div>		<div id="recent-posts-2" class="widget widget_recent_entries">		<h3>近期文章</h3>		<ul>
+					<li>
+				<a href="http://www.nginx.cn/4707.html">git skip worktree文件恢复</a>
+						</li>
+					<li>
+				<a href="http://www.nginx.cn/4696.html">TCP连接建立的三次握手与连接断开四次挥手</a>
+						</li>
+					<li>
+				<a href="http://www.nginx.cn/4692.html">tcpdump抓取http的请求头和响应信息</a>
+						</li>
+					<li>
+				<a href="http://www.nginx.cn/4682.html">The listener supports no services</a>
+						</li>
+					<li>
+				<a href="http://www.nginx.cn/4680.html">oralce删除数据库</a>
+						</li>
+				</ul>
+		</div>		<div id="recent-comments-2" class="widget widget_recent_comments"><h3>近期评论</h3><ul id="recentcomments"><li class="recentcomments"><span class="comment-author-link"><a href="http://www.nginx.cn/927.html#respond" rel="external nofollow" class="url">咩</a></span>发表在《<a href="http://www.nginx.cn/927.html#comment-10992">nginx反向代理配置</a>》</li><li class="recentcomments"><span class="comment-author-link"><a href="https://www.crifan.com/lnpm_wordpress_crifan_com_access_fail_502_bad_gateway_nginx/" rel="external nofollow" class="url">【已解决】LNMP的wordpress网站crifan.com无法访问：502 Bad Gateway nginx – 在路上</a></span>发表在《<a href="http://www.nginx.cn/666.html#comment-10984">nginx php-fpm 输出php错误日志</a>》</li><li class="recentcomments"><span class="comment-author-link"><a href="https://www.debian.cn/" rel="external nofollow" class="url">@Debian</a></span>发表在《<a href="http://www.nginx.cn/links#comment-10944">友情链接</a>》</li><li class="recentcomments"><span class="comment-author-link">mood</span>发表在《<a href="http://www.nginx.cn/927.html#comment-10929">nginx反向代理配置</a>》</li><li class="recentcomments"><span class="comment-author-link"><a href="http://www.nginx.cn/927.html#respond" rel="external nofollow" class="url">咩</a></span>发表在《<a href="http://www.nginx.cn/927.html#comment-10919">nginx反向代理配置</a>》</li></ul></div>    </div>
+    <!-- sidebar north END -->
+
+    <div id="centersidebar">
+
+        
+        <!-- sidebar west START -->
+        <div id="westsidebar" class="sidebar">
+            <div id="categories-2" class="widget widget_categories"><h3>分类目录</h3>		<ul>
+	<li class="cat-item cat-item-2"><a href="http://www.nginx.cn/category/android">android</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="http://www.nginx.cn/category/program/cplusplus">c++</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="http://www.nginx.cn/category/apple">iOS/Mac</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="http://www.nginx.cn/category/java">java</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="http://www.nginx.cn/category/program/js">js</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="http://www.nginx.cn/category/linux">linux</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="http://www.nginx.cn/category/mysql">mysql</a>
+</li>
+	<li class="cat-item cat-item-10"><a href="http://www.nginx.cn/category/nginx-article" title="nginx入门文章，介绍nginx的安装和配置相关内容">nginx</a>
+</li>
+	<li class="cat-item cat-item-11"><a href="http://www.nginx.cn/category/oracle">oracle</a>
+</li>
+	<li class="cat-item cat-item-12"><a href="http://www.nginx.cn/category/program/php">php</a>
+</li>
+	<li class="cat-item cat-item-13"><a href="http://www.nginx.cn/category/program/python">python</a>
+</li>
+	<li class="cat-item cat-item-14"><a href="http://www.nginx.cn/category/redis">redis</a>
+</li>
+	<li class="cat-item cat-item-16"><a href="http://www.nginx.cn/category/wordpress">wordpress</a>
+</li>
+	<li class="cat-item cat-item-17"><a href="http://www.nginx.cn/category/%e5%b0%8f%e6%8a%80%e5%b7%a7">小技巧</a>
+</li>
+	<li class="cat-item cat-item-18"><a href="http://www.nginx.cn/category/whoami">杂谈</a>
+</li>
+	<li class="cat-item cat-item-431"><a href="http://www.nginx.cn/category/arch">架构</a>
+</li>
+	<li class="cat-item cat-item-19"><a href="http://www.nginx.cn/category/site">网站</a>
+</li>
+	<li class="cat-item cat-item-429"><a href="http://www.nginx.cn/category/program/networkprogram">网络编程</a>
+</li>
+		</ul>
+</div>        </div>
+        <!-- sidebar west END -->
+        <div class="fixed"></div>
+    </div>
+
+
+    <!-- sidebar south START -->
+    <div id="southsidebar" class="sidebar">
+        <div id="meta-2" class="widget widget_meta"><h3>功能</h3>			<ul>
+						<li><a href="http://www.nginx.cn/wp-login.php">登录</a></li>
+			<li><a href="http://www.nginx.cn/feed">文章<abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="http://www.nginx.cn/comments/feed">评论<abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="https://cn.wordpress.org/" title="基于WordPress，一个优美、先进的个人信息发布平台。">WordPress.org</a></li>			</ul>
+			</div>    </div>
+    <!-- sidebar south END -->
+
+    <script async="" src="./为什么选择Nginx – 运维与架构 - nginx.cn_files/adsbygoogle.js.下载"></script>
+    <!-- nginx右侧导航 -->
+    <ins class="adsbygoogle" style="display: inline-block; width: 300px; height: 250px;" data-ad-client="ca-pub-8728612882429404" data-ad-slot="8826641902" data-adsbygoogle-status="done"><ins id="aswift_2_expand" style="display:inline-table;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent;"><ins id="aswift_2_anchor" style="display:block;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent;"><iframe width="300" height="250" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_2" name="aswift_2" style="left:0;position:absolute;top:0;width:300px;height:250px;" src="./为什么选择Nginx – 运维与架构 - nginx.cn_files/saved_resource(2).html"></iframe></ins></ins></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
+</div>
+<!-- sidebar END -->	<div class="fixed"></div>
+</div>
+<script type="text/javascript" src="./为什么选择Nginx – 运维与架构 - nginx.cn_files/copy.js.下载"></script>
+<script type="text/javascript">
+(function(){
+//支付鼓励
+        //添加在本篇完之后
+
+        var targetLastP = document.getElementById("ad");
+
+        if (targetLastP ) {
+          //alert('targetlastp');
+                targetLastP.innerHTML = targetLastP.innerHTML + '<br/><table width="650" height="40" cellpadding="0" cellspacing="0" border="0" style="margin:0 auto;border: 1px solid #b8d4ea;">  <tbody>  <tr>  <td align="center"><a href="mailto:admin@nginx.cn" title="寻求空间赞助" target="_blank" rel="nofollow" ><font color="red">赞助本站主机</font></a></td>  <td align="center"><a href="http://wangsu.264.cn" title="网速测试" target="_blank"><font color="blue">网速测试</font></a></td>  <td align="center"><a href="http://huilv.264.cn" title="美元人民币汇率" target="_blank"><font color="red">最新美元人民币汇率</font></a></td>  </tr>  </tbody>  </table>  <br/>';
+        }
+})();
+</script>
+<!-- content END -->
+
+<!-- footer START -->
+<div id="footer">
+	<a id="gotop" href="http://www.nginx.cn/nginxchswhyuseit#" onclick="MGJS.goTop();return false;">回到顶部</a>
+	
+	<div id="copyright">
+		版权所有 © 2009-2017  <a title="nginx中文网" href="http://www.nginx.cn/">服务器运维与Web架构</a> Theme by NeoEase.<a href="mailto:admin@nginx.cn" title="业务联系" target="_blank" rel＝"nofollow"=""><font color="red">合作联系</font></a>
+	</div>
+	
+</div>
+<!-- footer END -->
+
+</div>
+<!-- container END -->
+</div>
+<!-- wrap END -->
+
+<script type="text/javascript" src="./为什么选择Nginx – 运维与架构 - nginx.cn_files/wp-embed.min.js.下载"></script>
+<script type="text/javascript" src="./为什么选择Nginx – 运维与架构 - nginx.cn_files/form.js.下载"></script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?9ff71d1196ef31d4eda8f8d61936342c";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<script language="javascript">
+document.body.oncopy = function () { 
+	setTimeout( function () { 
+		var text = getClipboard();
+		if (text) { 
+			text = text + "\r\n详细出处参考："+location.href.toString(); 
+copy2Clipboard(text);
+		} 
+				}, 100 ) 
+}
+
+</script>
+
+
+</body></html>

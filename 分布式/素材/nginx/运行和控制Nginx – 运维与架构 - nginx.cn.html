@@ -1,0 +1,1065 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!-- saved from url=(0039)http://www.nginx.cn/nginxchscommandline -->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:wb="http://open.weibo.com/wb"><head profile="http://gmpg.org/xfn/11"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="keywords" content="">
+<meta name="description" content="">
+<link rel="shortcut icon" href="http://www.nginx.cn/favicon.ico">
+<title>运行和控制Nginx  –  运维与架构 - nginx.cn</title>
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0 - 所有文章" href="http://www.nginx.cn/feed">
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0 - 所有评论" href="http://www.nginx.cn/comments/feed">
+<link rel="pingback" href="http://www.nginx.cn/xmlrpc.php">
+<script src="./运行和控制Nginx – 运维与架构 - nginx.cn_files/hm.js.下载"></script><script src="./运行和控制Nginx – 运维与架构 - nginx.cn_files/ca-pub-8728612882429404.js.下载"></script><script src="./运行和控制Nginx – 运维与架构 - nginx.cn_files/hm.js(1).下载"></script><script src="./运行和控制Nginx – 运维与架构 - nginx.cn_files/jquery.js.下载"></script>
+
+	<!-- style START -->
+	<!-- default style -->
+	<style type="text/css" media="screen">@import url( http://www.nginx.cn/wp-content/themes/caonimaxiugaizhe/style.css );</style>
+	<!-- for translations -->
+			<link rel="stylesheet" href="./运行和控制Nginx – 运维与架构 - nginx.cn_files/chinese.css" type="text/css" media="screen">
+		<!--[if IE]>
+		<link rel="stylesheet" href="http://www.nginx.cn/wp-content/themes/caonimaxiugaizhe/ie.css" type="text/css" media="screen" />
+	<![endif]-->
+	<!-- style END -->
+
+	<!-- script START -->
+	<script type="text/javascript" src="./运行和控制Nginx – 运维与架构 - nginx.cn_files/base.js.下载"></script>
+	
+	<script type="text/javascript" src="./运行和控制Nginx – 运维与架构 - nginx.cn_files/menu.js.下载"></script>
+	<!-- script END -->
+
+	<link rel="alternate" type="application/rss+xml" title="运维与架构 - nginx.cn » 运行和控制Nginx评论Feed" href="http://www.nginx.cn/nginxchscommandline/feed">
+<link rel="stylesheet" id="crayon-css" href="./运行和控制Nginx – 运维与架构 - nginx.cn_files/crayon.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="crayon-theme-classic-css" href="./运行和控制Nginx – 运维与架构 - nginx.cn_files/classic.css" type="text/css" media="all">
+<link rel="stylesheet" id="crayon-font-monaco-css" href="./运行和控制Nginx – 运维与架构 - nginx.cn_files/monaco.css" type="text/css" media="all">
+<script type="text/javascript" src="./运行和控制Nginx – 运维与架构 - nginx.cn_files/jquery.js(1).下载"></script>
+<script type="text/javascript" src="./运行和控制Nginx – 运维与架构 - nginx.cn_files/jquery-migrate.min.js.下载"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var CrayonSyntaxSettings = {"version":"_2.7.2_beta","is_admin":"0","ajaxurl":"http:\/\/www.nginx.cn\/wp-admin\/admin-ajax.php","prefix":"crayon-","setting":"crayon-setting","selected":"crayon-setting-selected","changed":"crayon-setting-changed","special":"crayon-setting-special","orig_value":"data-orig-value","debug":""};
+var CrayonSyntaxStrings = {"copy":"\u4f7f\u7528 %s \u590d\u5236\uff0c\u4f7f\u7528 %s \u7c98\u8d34\u3002","minimize":"\u70b9\u51fb\u5c55\u5f00\u4ee3\u7801"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./运行和控制Nginx – 运维与架构 - nginx.cn_files/crayon.min.js.下载"></script>
+<link rel="https://api.w.org/" href="http://www.nginx.cn/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.nginx.cn/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.nginx.cn/wp-includes/wlwmanifest.xml"> 
+<meta name="generator" content="WordPress 4.8.3">
+<link rel="canonical" href="http://www.nginx.cn/nginxchscommandline">
+<link rel="shortlink" href="http://www.nginx.cn/?p=43">
+<link rel="alternate" type="application/json+oembed" href="http://www.nginx.cn/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.nginx.cn%2Fnginxchscommandline">
+<link rel="alternate" type="text/xml+oembed" href="http://www.nginx.cn/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.nginx.cn%2Fnginxchscommandline&amp;format=xml">
+		<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+		
+<link rel="preload" href="./运行和控制Nginx – 运维与架构 - nginx.cn_files/integrator.js.下载" as="script"><script type="text/javascript" src="./运行和控制Nginx – 运维与架构 - nginx.cn_files/integrator.js.下载"></script><link rel="prefetch" href="https://securepubads.g.doubleclick.net/static/3p_cookie.html"></head>
+
+
+<body rlt="1" style="zoom: 1;">
+<!-- wrap START -->
+<div id="wrap">
+
+<!-- container START -->
+<div id="container">
+
+<!-- header START -->
+<div id="header">
+
+	<!-- banner START -->
+		<!-- banner END -->
+
+	<div id="caption">
+<span id="title"><a href="http://www.nginx.cn/">运维与架构 - nginx.cn</a></span>
+		<div id="tagline">好的架构减少运维，好的运维反哺架构</div>
+	</div>
+
+	<div class="fixed"></div>
+</div>
+<!-- header END -->
+
+<!-- navigation START -->
+<div id="navigation">
+	<!-- menus START -->
+	<ul id="menus">
+	    <li class="current_page_item"><a class="home" title="首页" href="http://www.nginx.cn/">首页</a></li>
+		<li class="page_item page-item-9"><a href="http://www.nginx.cn/nginx-download">nginx最新版下载</a></li>
+<li class="page_item page-item-55"><a href="http://www.nginx.cn/install">Nginx安装</a></li>
+<li class="page_item page-item-55"><a href="http://www.nginx.cn/76.html">Nginx配置</a></li>
+<li class="page_item page-item-55"><a href="http://www.nginx.cn/231.html">PHP-FPM安装配置</a></li>
+<li class="page_item page-item-353"><a href="http://www.nginx.cn/nginx-how-to">nginx中文手册</a></li>
+<li class="page_item page-item-43"><a href="http://www.nginx.cn/nginxchscommandline">运行和控制Nginx</a></li>
+<li class="page_item page-item-620"><a href="http://www.nginx.cn/manual" title="常用运维手册">在线手册</a></li>
+<li class="page_item page-item-55"><a href="http://www.nginx.cn/links" title="好站推荐">友情链接</a></li>
+<li class="page_item page-item-620"><a href="http://www.nginx.cn/about">关于我</a></li>
+		<li><a class="lastmenu" href="javascript:void(0);"></a></li>
+
+	</ul>
+	<!-- menus END -->
+
+
+
+	<div class="fixed"></div>
+</div>
+<!-- navigation END -->
+<!-- content START -->
+<div id="content">
+
+	<!-- main START -->
+	<div id="main">
+
+	<div class="post" id="post-43">
+		<h1>运行和控制Nginx</h1>
+		<div class="info">
+			<span class="date">2012年7月20日</span>
+										<span class="addcomment"><a href="http://www.nginx.cn/nginxchscommandline#respond">发表评论</a></span>
+				<span class="comments"><a href="http://www.nginx.cn/nginxchscommandline#comments">阅读评论</a></span>
+						<div class="fixed"></div>
+		</div>
+		<div class="content">
+
+                   <script async="" src="./运行和控制Nginx – 运维与架构 - nginx.cn_files/adsbygoogle.js.下载"></script>
+<!-- nginx-page-top -->
+<ins class="adsbygoogle" style="display:inline-block;width:675px;height:90px" data-ad-client="ca-pub-8728612882429404" data-ad-slot="1300189107" data-adsbygoogle-status="done"><ins id="aswift_0_expand" style="display:inline-table;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:675px;background-color:transparent;"><ins id="aswift_0_anchor" style="display:block;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:675px;background-color:transparent;"><iframe width="675" height="90" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;width:675px;height:90px;" src="./运行和控制Nginx – 运维与架构 - nginx.cn_files/saved_resource.html"></iframe></ins></ins></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+			<ol>
+<li><a href="http://www.nginx.cn/nginxchscommandline#option">Nginx命令行选项 </a></li>
+<li><a href="http://www.nginx.cn/nginxchscommandline#command">启动、停止、重启nginx命令</a></li>
+<li><a href="http://www.nginx.cn/nginxchscommandline#reload config">如何重新加载nginx配置文件</a></li>
+<li><a href="http://www.nginx.cn/nginxchscommandline#reload bin">nginx程序不重启平滑升级可执行文件</a></li>
+</ol>
+<p>&nbsp;</p>
+<h2 id="option">nginx命令行参数</h2>
+<p>不像许多其他软件系统，Nginx 仅有几个命令行参数，完全通过配置文件来配置</p>
+<p>-c &lt;/path/to/config&gt; <strong>为 Nginx 指定一个配置文件，来代替缺省的。 </strong></p>
+<p><strong>-t</strong> 不运行，而仅仅测试配置文件。nginx 将检查配置文件的语法的正确性，并尝试打开配置文件中所引用到的文件。</p>
+<p><strong>-v</strong> 显示 nginx 的版本。</p>
+<p><strong>-V</strong> 显示 nginx 的版本，编译器版本和配置参数。</p>
+<p>&nbsp;</p>
+<h2>nginx控制信号</h2>
+<p>可以使用信号系统来控制主进程。默认，nginx 将其主进程的 pid 写入到 /usr/local/nginx/nginx.pid 文件中。通过传递参数给 ./configure 或使用 <strong>pid</strong> 指令，来改变该文件的位置。</p>
+<p>主进程可以处理以下的信号：</p>
+<div>
+<table>
+<tbody>
+<tr>
+<td>TERM, INT</td>
+<td>快速关闭</td>
+</tr>
+<tr>
+<td>QUIT</td>
+<td>从容关闭</td>
+</tr>
+<tr>
+<td>HUP</td>
+<td>重载配置<br>
+用新的配置开始新的工作进程<br>
+从容关闭旧的工作进程</td>
+</tr>
+<tr>
+<td>USR1</td>
+<td>重新打开日志文件</td>
+</tr>
+<tr>
+<td>USR2</td>
+<td>平滑升级可执行程序。</td>
+</tr>
+<tr>
+<td>WINCH</td>
+<td>从容关闭工作进程</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>尽管你不必自己操作工作进程，但是，它们也支持一些信号：</p>
+<div>
+<table>
+<tbody>
+<tr>
+<td>TERM, INT</td>
+<td>快速关闭</td>
+</tr>
+<tr>
+<td>QUIT</td>
+<td>从容关闭</td>
+</tr>
+<tr>
+<td>USR1</td>
+<td>重新打开日志文件</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>&nbsp;</p>
+<h2 id="command">nginx 启动、停止、重启命令</h2>
+<p><strong><span style="color: #ff0000;">nginx启动</span></strong></p>
+<p><span style="color: #008000;">sudo /usr/local/nginx/nginx</span> &nbsp; &nbsp; (nginx二进制文件绝对路径，可以根据自己安装路径实际决定)</p>
+<p>&nbsp;</p>
+<p><strong><span style="color: #ff0000;">nginx从容停止命令，等所有请求结束后关闭服务</span></strong></p>
+<p><span style="color: #008000;">ps -ef |grep nginx</span></p>
+<p><span style="color: #008000;">kill -QUIT &nbsp;nginx主进程号</span></p>
+<p>&nbsp;</p>
+<p><strong><span style="color: #ff0000;">nginx 快速停止命令，立刻关闭nginx进程</span></strong></p>
+<p><span style="color: #008000;">ps -ef |grep nginx</span></p>
+<p><span style="color: #008000;">kill -TERM nginx主进程号&nbsp;</span></p>
+<p><strong><span style="color: #ff0000;">如果以上命令不管用，可以强制停止</span></strong></p>
+<p><span style="color: #008000;">kill -9 nginx主进程号</span></p>
+<p>&nbsp;</p>
+<p>如果嫌麻烦可以不用查看进程号，直接使用命令进行操作<br>
+其中/usr/local/nginx/nginx.pid 为nginx.conf中pid命令设置的参数，用来存放nginx主进程号的文件<br>
+<span style="color: #008000;">kill -信号类型(HUP|TERM|QUIT) <code>cat /usr/local/nginx/nginx.pid</code> </span><br>
+<span style="color: #008000;">例如</span></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5a09305f97d37307770754" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate crayon-wrapped" data-settings=" minimize scroll-mouseover wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important; height: 18px !important; line-height: 18px !important; margin-top: -19px; display: none; z-index: 4;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="切换是否显示行编号"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="纯文本显示代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button crayon-pressed" title="切换自动换行"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="点击展开代码" style="display: none;"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="复制代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="在新窗口中显示代码"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea class="crayon-plain print-no" data-settings="dblclick" readonly="" style="tab-size: 4; font-size: 12px !important; line-height: 15px !important; z-index: 0; opacity: 0; overflow: hidden;">kill -QUIT `cat /usr/local/nginx/nginx.pid`</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table class="crayon-table" style="">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-5a09305f97d37307770754-1" style="height: 15px;">1</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5a09305f97d37307770754-1"><span class="crayon-v">kill</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-i">QUIT</span><span class="crayon-h"> </span><span class="crayon-sy">`</span><span class="crayon-v">cat</span><span class="crayon-h"> </span><span class="crayon-o">/</span><span class="crayon-v">usr</span><span class="crayon-o">/</span><span class="crayon-v">local</span><span class="crayon-o">/</span><span class="crayon-v">nginx</span><span class="crayon-o">/</span><span class="crayon-v">nginx</span><span class="crayon-sy">.</span><span class="crayon-v">pid</span><span class="crayon-sy">`</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0002 seconds] -->
+<p><strong><span style="color: #ff0000;">nginx重启命令</span></strong></p>
+<p>nginx重启可以分成几种类型</p>
+<p>1.简单型，先关闭进程，修改你的配置后，重启进程。<br>
+<span style="color: #ff0000;">kill -QUIT <code>cat /usr/local/nginx/nginx.pid</code></span><br>
+<span style="color: #ff0000;">sudo /usr/local/nginx/nginx</span><br>
+2.<a href="http://www.nginx.cn/nginxchscommandline#reload config">重新加载配置文件，不重启进程，不会停止处理请求</a><br>
+3.<a href="http://www.nginx.cn/nginxchscommandline#reload bin">平滑更新nginx二进制，不会停止处理请求</a></p>
+<p>&nbsp;</p>
+<h2 id="reload config">使用信号加载新的配置</h2>
+<p>Nginx 支持几个信号，能在它运行时控制其操作。其中最普通的是 15 ，用来中止运行的进程：</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5a09305f97d3e375063637" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate crayon-wrapped" data-settings=" minimize scroll-mouseover wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important; height: 18px !important; line-height: 18px !important; margin-top: -19px; display: none; position: absolute; z-index: 2;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="切换是否显示行编号"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="纯文本显示代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button crayon-pressed" title="切换自动换行"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="点击展开代码" style="display: none;"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="复制代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="在新窗口中显示代码"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea class="crayon-plain print-no" data-settings="dblclick" readonly="" style="tab-size: 4; font-size: 12px !important; line-height: 15px !important; z-index: 0; opacity: 0; overflow: hidden;"># &lt;strong&gt;ps aux | egrep '(PID|nginx)'&lt;/strong&gt;
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root      2213  0.0  0.0   6784  2036 ?        Ss   03:01   0:00 nginx: master process /usr/sbin/nginx -c /etc/nginx/nginx.conf
+# &lt;strong&gt;kill -15 2213&lt;/strong&gt;</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table class="crayon-table" style="">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-5a09305f97d3e375063637-1" style="height: 15px;">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a09305f97d3e375063637-2" style="height: 15px;">2</div><div class="crayon-num" data-line="crayon-5a09305f97d3e375063637-3" style="height: 30px;">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a09305f97d3e375063637-4" style="height: 15px;">4</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5a09305f97d3e375063637-1"><span class="crayon-p"># &lt;strong&gt;ps aux | egrep '(PID|nginx)'&lt;/strong&gt;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a09305f97d3e375063637-2"><span class="crayon-e">USER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-v">PID</span><span class="crayon-h"> </span><span class="crayon-o">%</span><span class="crayon-v">CPU</span><span class="crayon-h"> </span><span class="crayon-o">%</span><span class="crayon-e">MEM&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-e">VSZ&nbsp;&nbsp; </span><span class="crayon-e">RSS </span><span class="crayon-e">TTY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-e">STAT </span><span class="crayon-e">START&nbsp;&nbsp; </span><span class="crayon-e">TIME </span><span class="crayon-e">COMMAND</span></div><div class="crayon-line" id="crayon-5a09305f97d3e375063637-3"><span class="crayon-i">root</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-cn">2213</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-cn">0.0</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-cn">0.0</span><span class="crayon-h">&nbsp;&nbsp; </span><span class="crayon-cn">6784</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-cn">2036</span><span class="crayon-h"> </span><span class="crayon-sy">?</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">Ss</span><span class="crayon-h">&nbsp;&nbsp; </span><span class="crayon-cn">03</span><span class="crayon-o">:</span><span class="crayon-cn">01</span><span class="crayon-h">&nbsp;&nbsp; </span><span class="crayon-cn">0</span><span class="crayon-o">:</span><span class="crayon-cn">00</span><span class="crayon-h"> </span><span class="crayon-v">nginx</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-e">master </span><span class="crayon-v">process</span><span class="crayon-h"> </span><span class="crayon-o">/</span><span class="crayon-v">usr</span><span class="crayon-o">/</span><span class="crayon-v">sbin</span><span class="crayon-o">/</span><span class="crayon-v">nginx</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-v">c</span><span class="crayon-h"> </span><span class="crayon-o">/</span><span class="crayon-v">etc</span><span class="crayon-o">/</span><span class="crayon-v">nginx</span><span class="crayon-o">/</span><span class="crayon-v">nginx</span><span class="crayon-sy">.</span><span class="crayon-v">conf</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a09305f97d3e375063637-4"><span class="crayon-p"># &lt;strong&gt;kill -15 2213&lt;/strong&gt;</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0003 seconds] -->
+<p>而最有趣的是能平滑改变 nginx 配置的选项（请注意，在重载前，要先测试一下配置文件）：</p>
+<p>&nbsp;</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5a09305f97d40688017465" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate crayon-wrapped" data-settings=" minimize scroll-mouseover wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important; height: 18px !important; line-height: 18px !important; margin-top: -19px; display: none; position: absolute; z-index: 2;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="切换是否显示行编号"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="纯文本显示代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button crayon-pressed" title="切换自动换行"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="点击展开代码" style="display: none;"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="复制代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="在新窗口中显示代码"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea class="crayon-plain print-no" data-settings="dblclick" readonly="" style="tab-size: 4; font-size: 12px !important; line-height: 15px !important; z-index: 0; opacity: 0; overflow: hidden;">#&lt;strong&gt; nginx -t -c /etc/nginx/nginx.conf&lt;/strong&gt;
+2006/09/16 13:07:10 [info] 15686#0: the configuration file /etc/nginx/nginx.conf syntax is ok
+2006/09/16 13:07:10 [info] 15686#0: the configuration file /etc/nginx/nginx.conf was tested successfully
+#&lt;strong&gt; ps aux | egrep '(PID|nginx)'&lt;/strong&gt;
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root      2213  0.0  0.0   6784  2036 ?        Ss   03:01   0:00 nginx: master process /usr/sbin/nginx -c /etc/nginx/nginx.conf
+&lt;strong&gt;# kill -HUP 2213&lt;/strong&gt;</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table class="crayon-table" style="">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-5a09305f97d40688017465-1" style="height: 15px;">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a09305f97d40688017465-2" style="height: 30px;">2</div><div class="crayon-num" data-line="crayon-5a09305f97d40688017465-3" style="height: 30px;">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a09305f97d40688017465-4" style="height: 15px;">4</div><div class="crayon-num" data-line="crayon-5a09305f97d40688017465-5" style="height: 15px;">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a09305f97d40688017465-6" style="height: 30px;">6</div><div class="crayon-num" data-line="crayon-5a09305f97d40688017465-7" style="height: 15px;">7</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5a09305f97d40688017465-1"><span class="crayon-p">#&lt;strong&gt; nginx -t -c /etc/nginx/nginx.conf&lt;/strong&gt;</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a09305f97d40688017465-2"><span class="crayon-cn">2006</span><span class="crayon-o">/</span><span class="crayon-cn">09</span><span class="crayon-o">/</span><span class="crayon-cn">16</span><span class="crayon-h"> </span><span class="crayon-cn">13</span><span class="crayon-o">:</span><span class="crayon-cn">07</span><span class="crayon-o">:</span><span class="crayon-cn">10</span><span class="crayon-h"> </span><span class="crayon-sy">[</span><span class="crayon-v">info</span><span class="crayon-sy">]</span><span class="crayon-h"> </span><span class="crayon-cn">15686</span><span class="crayon-p">#0: the configuration file /etc/nginx/nginx.conf syntax is ok</span></div><div class="crayon-line" id="crayon-5a09305f97d40688017465-3"><span class="crayon-cn">2006</span><span class="crayon-o">/</span><span class="crayon-cn">09</span><span class="crayon-o">/</span><span class="crayon-cn">16</span><span class="crayon-h"> </span><span class="crayon-cn">13</span><span class="crayon-o">:</span><span class="crayon-cn">07</span><span class="crayon-o">:</span><span class="crayon-cn">10</span><span class="crayon-h"> </span><span class="crayon-sy">[</span><span class="crayon-v">info</span><span class="crayon-sy">]</span><span class="crayon-h"> </span><span class="crayon-cn">15686</span><span class="crayon-p">#0: the configuration file /etc/nginx/nginx.conf was tested successfully</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a09305f97d40688017465-4"><span class="crayon-p">#&lt;strong&gt; ps aux | egrep '(PID|nginx)'&lt;/strong&gt;</span></div><div class="crayon-line" id="crayon-5a09305f97d40688017465-5"><span class="crayon-e">USER&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-v">PID</span><span class="crayon-h"> </span><span class="crayon-o">%</span><span class="crayon-v">CPU</span><span class="crayon-h"> </span><span class="crayon-o">%</span><span class="crayon-e">MEM&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-e">VSZ&nbsp;&nbsp; </span><span class="crayon-e">RSS </span><span class="crayon-e">TTY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-e">STAT </span><span class="crayon-e">START&nbsp;&nbsp; </span><span class="crayon-e">TIME </span><span class="crayon-e">COMMAND</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a09305f97d40688017465-6"><span class="crayon-i">root</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-cn">2213</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-cn">0.0</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-cn">0.0</span><span class="crayon-h">&nbsp;&nbsp; </span><span class="crayon-cn">6784</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-cn">2036</span><span class="crayon-h"> </span><span class="crayon-sy">?</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-i">Ss</span><span class="crayon-h">&nbsp;&nbsp; </span><span class="crayon-cn">03</span><span class="crayon-o">:</span><span class="crayon-cn">01</span><span class="crayon-h">&nbsp;&nbsp; </span><span class="crayon-cn">0</span><span class="crayon-o">:</span><span class="crayon-cn">00</span><span class="crayon-h"> </span><span class="crayon-v">nginx</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-e">master </span><span class="crayon-v">process</span><span class="crayon-h"> </span><span class="crayon-o">/</span><span class="crayon-v">usr</span><span class="crayon-o">/</span><span class="crayon-v">sbin</span><span class="crayon-o">/</span><span class="crayon-v">nginx</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-v">c</span><span class="crayon-h"> </span><span class="crayon-o">/</span><span class="crayon-v">etc</span><span class="crayon-o">/</span><span class="crayon-v">nginx</span><span class="crayon-o">/</span><span class="crayon-v">nginx</span><span class="crayon-sy">.</span><span class="crayon-v">conf</span></div><div class="crayon-line" id="crayon-5a09305f97d40688017465-7"><span class="crayon-o">&lt;</span><span class="crayon-v">strong</span><span class="crayon-o">&gt;</span><span class="crayon-p"># kill -HUP 2213&lt;/strong&gt;</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0005 seconds] -->
+<p>当 nginx 接收到 <tt>HUP</tt> 信号，它会尝试先解析配置文件（如果指定配置文件，就使用指定的，否则使用默认的），成功的话，就应用新的配置文件（例如：重新打开日志文件或监听的套接 字）。之后，nginx 运行新的工作进程并从容关闭旧的工作进程。通知工作进程关闭监听套接字但是继续为当前连接的客户提供服务。所有客户端的服务完成后，旧的工作进程被关闭。 如果新的配置文件应用失败，nginx 将继续使用旧的配置进行工作。</p>
+<p>&nbsp;</p>
+<h2 id="reload bin">平滑升级到新的二进制代码</h2>
+<p>你可以在不中断服务的情况下 - 新的请求也不会丢失，使用新的 nginx 可执行程序替换旧的（当升级新版本或添加/删除服务器模块时）。</p>
+<p>首先，使用新的可执行程序替换旧的（最好做好备份），然后，发送 USR2 (kill -USR2 pid)信号给主进程。主进程将重命名它的 <strong>.pid</strong> 文件为 <strong>.oldbin</strong> (比如：<strong>/usr/local/nginx/logs/nginx.pid.oldbin</strong>)，然后执行新的可执行程序，依次启动新的主进程和新的工作进程：</p>
+<p>&nbsp;</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5a09305f97d45585947946" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate crayon-wrapped" data-settings=" minimize scroll-mouseover wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important; height: 18px !important; line-height: 18px !important; margin-top: -19px; display: none; position: absolute; z-index: 2;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="切换是否显示行编号"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="纯文本显示代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button crayon-pressed" title="切换自动换行"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="点击展开代码" style="display: none;"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="复制代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="在新窗口中显示代码"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea class="crayon-plain print-no" data-settings="dblclick" readonly="" style="tab-size: 4; font-size: 12px !important; line-height: 15px !important; z-index: 0; opacity: 0; overflow: hidden;">  PID  PPID USER    %CPU   VSZ WCHAN  COMMAND
+33126     1 root     0.0  1164 pause  nginx: master process /usr/local/nginx/sbin/nginx
+33134 33126 nobody   0.0  1368 kqread nginx: worker process (nginx)
+33135 33126 nobody   0.0  1380 kqread nginx: worker process (nginx)
+33136 33126 nobody   0.0  1368 kqread nginx: worker process (nginx)
+36264 33126 root     0.0  1148 pause  nginx: master process /usr/local/nginx/sbin/nginx
+36265 36264 nobody   0.0  1364 kqread nginx: worker process (nginx)
+36266 36264 nobody   0.0  1364 kqread nginx: worker process (nginx)
+36267 36264 nobody   0.0  1364 kqread nginx: worker process (nginx)</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table class="crayon-table" style="">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-5a09305f97d45585947946-1" style="height: 15px;">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a09305f97d45585947946-2" style="height: 15px;">2</div><div class="crayon-num" data-line="crayon-5a09305f97d45585947946-3" style="height: 15px;">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a09305f97d45585947946-4" style="height: 15px;">4</div><div class="crayon-num" data-line="crayon-5a09305f97d45585947946-5" style="height: 15px;">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a09305f97d45585947946-6" style="height: 15px;">6</div><div class="crayon-num" data-line="crayon-5a09305f97d45585947946-7" style="height: 15px;">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a09305f97d45585947946-8" style="height: 15px;">8</div><div class="crayon-num" data-line="crayon-5a09305f97d45585947946-9" style="height: 15px;">9</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5a09305f97d45585947946-1"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-e">PID&nbsp;&nbsp;</span><span class="crayon-e">PPID </span><span class="crayon-v">USER</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-o">%</span><span class="crayon-e">CPU&nbsp;&nbsp; </span><span class="crayon-e">VSZ </span><span class="crayon-e">WCHAN&nbsp;&nbsp;</span><span class="crayon-i">COMMAND</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a09305f97d45585947946-2"><span class="crayon-cn">33126</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-cn">1</span><span class="crayon-h"> </span><span class="crayon-i">root</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-cn">0.0</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-cn">1164</span><span class="crayon-h"> </span><span class="crayon-e">pause&nbsp;&nbsp;</span><span class="crayon-v">nginx</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-e">master </span><span class="crayon-v">process</span><span class="crayon-h"> </span><span class="crayon-o">/</span><span class="crayon-v">usr</span><span class="crayon-o">/</span><span class="crayon-v">local</span><span class="crayon-o">/</span><span class="crayon-v">nginx</span><span class="crayon-o">/</span><span class="crayon-v">sbin</span><span class="crayon-o">/</span><span class="crayon-i">nginx</span></div><div class="crayon-line" id="crayon-5a09305f97d45585947946-3"><span class="crayon-cn">33134</span><span class="crayon-h"> </span><span class="crayon-cn">33126</span><span class="crayon-h"> </span><span class="crayon-i">nobody</span><span class="crayon-h">&nbsp;&nbsp; </span><span class="crayon-cn">0.0</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-cn">1368</span><span class="crayon-h"> </span><span class="crayon-e">kqread </span><span class="crayon-v">nginx</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-e">worker </span><span class="crayon-e">process</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-v">nginx</span><span class="crayon-sy">)</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a09305f97d45585947946-4"><span class="crayon-cn">33135</span><span class="crayon-h"> </span><span class="crayon-cn">33126</span><span class="crayon-h"> </span><span class="crayon-i">nobody</span><span class="crayon-h">&nbsp;&nbsp; </span><span class="crayon-cn">0.0</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-cn">1380</span><span class="crayon-h"> </span><span class="crayon-e">kqread </span><span class="crayon-v">nginx</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-e">worker </span><span class="crayon-e">process</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-v">nginx</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-5a09305f97d45585947946-5"><span class="crayon-cn">33136</span><span class="crayon-h"> </span><span class="crayon-cn">33126</span><span class="crayon-h"> </span><span class="crayon-i">nobody</span><span class="crayon-h">&nbsp;&nbsp; </span><span class="crayon-cn">0.0</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-cn">1368</span><span class="crayon-h"> </span><span class="crayon-e">kqread </span><span class="crayon-v">nginx</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-e">worker </span><span class="crayon-e">process</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-v">nginx</span><span class="crayon-sy">)</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a09305f97d45585947946-6"><span class="crayon-cn">36264</span><span class="crayon-h"> </span><span class="crayon-cn">33126</span><span class="crayon-h"> </span><span class="crayon-i">root</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-cn">0.0</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-cn">1148</span><span class="crayon-h"> </span><span class="crayon-e">pause&nbsp;&nbsp;</span><span class="crayon-v">nginx</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-e">master </span><span class="crayon-v">process</span><span class="crayon-h"> </span><span class="crayon-o">/</span><span class="crayon-v">usr</span><span class="crayon-o">/</span><span class="crayon-v">local</span><span class="crayon-o">/</span><span class="crayon-v">nginx</span><span class="crayon-o">/</span><span class="crayon-v">sbin</span><span class="crayon-o">/</span><span class="crayon-i">nginx</span></div><div class="crayon-line" id="crayon-5a09305f97d45585947946-7"><span class="crayon-cn">36265</span><span class="crayon-h"> </span><span class="crayon-cn">36264</span><span class="crayon-h"> </span><span class="crayon-i">nobody</span><span class="crayon-h">&nbsp;&nbsp; </span><span class="crayon-cn">0.0</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-cn">1364</span><span class="crayon-h"> </span><span class="crayon-e">kqread </span><span class="crayon-v">nginx</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-e">worker </span><span class="crayon-e">process</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-v">nginx</span><span class="crayon-sy">)</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a09305f97d45585947946-8"><span class="crayon-cn">36266</span><span class="crayon-h"> </span><span class="crayon-cn">36264</span><span class="crayon-h"> </span><span class="crayon-i">nobody</span><span class="crayon-h">&nbsp;&nbsp; </span><span class="crayon-cn">0.0</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-cn">1364</span><span class="crayon-h"> </span><span class="crayon-e">kqread </span><span class="crayon-v">nginx</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-e">worker </span><span class="crayon-e">process</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-v">nginx</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-5a09305f97d45585947946-9"><span class="crayon-cn">36267</span><span class="crayon-h"> </span><span class="crayon-cn">36264</span><span class="crayon-h"> </span><span class="crayon-i">nobody</span><span class="crayon-h">&nbsp;&nbsp; </span><span class="crayon-cn">0.0</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-cn">1364</span><span class="crayon-h"> </span><span class="crayon-e">kqread </span><span class="crayon-v">nginx</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-e">worker </span><span class="crayon-e">process</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-v">nginx</span><span class="crayon-sy">)</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0008 seconds] -->
+<p>在这时，两个 nginx 实例会同时运行，一起处理输入的请求。要逐步停止旧的实例，你必须发送 WINCH 信号给旧的主进程，然后，它的工作进程就将开始从容关闭：</p>
+<p>&nbsp;</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5a09305f97d47584141153" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate crayon-wrapped" data-settings=" minimize scroll-mouseover wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important; height: 18px !important; line-height: 18px !important; margin-top: -19px; display: none; position: absolute; z-index: 2;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="切换是否显示行编号"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="纯文本显示代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button crayon-pressed" title="切换自动换行"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="点击展开代码" style="display: none;"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="复制代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="在新窗口中显示代码"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea class="crayon-plain print-no" data-settings="dblclick" readonly="" style="tab-size: 4; font-size: 12px !important; line-height: 15px !important; z-index: 0; opacity: 0; overflow: hidden;">  PID  PPID USER    %CPU   VSZ WCHAN  COMMAND
+33126     1 root     0.0  1164 pause  nginx: master process /usr/local/nginx/sbin/nginx
+33135 33126 nobody   0.0  1380 kqread nginx: worker process is shutting down (nginx)
+36264 33126 root     0.0  1148 pause  nginx: master process /usr/local/nginx/sbin/nginx
+36265 36264 nobody   0.0  1364 kqread nginx: worker process (nginx)
+36266 36264 nobody   0.0  1364 kqread nginx: worker process (nginx)
+36267 36264 nobody   0.0  1364 kqread nginx: worker process (nginx)</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table class="crayon-table" style="">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-5a09305f97d47584141153-1" style="height: 15px;">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a09305f97d47584141153-2" style="height: 15px;">2</div><div class="crayon-num" data-line="crayon-5a09305f97d47584141153-3" style="height: 15px;">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a09305f97d47584141153-4" style="height: 15px;">4</div><div class="crayon-num" data-line="crayon-5a09305f97d47584141153-5" style="height: 15px;">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a09305f97d47584141153-6" style="height: 15px;">6</div><div class="crayon-num" data-line="crayon-5a09305f97d47584141153-7" style="height: 15px;">7</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5a09305f97d47584141153-1"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-e">PID&nbsp;&nbsp;</span><span class="crayon-e">PPID </span><span class="crayon-v">USER</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-o">%</span><span class="crayon-e">CPU&nbsp;&nbsp; </span><span class="crayon-e">VSZ </span><span class="crayon-e">WCHAN&nbsp;&nbsp;</span><span class="crayon-i">COMMAND</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a09305f97d47584141153-2"><span class="crayon-cn">33126</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-cn">1</span><span class="crayon-h"> </span><span class="crayon-i">root</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-cn">0.0</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-cn">1164</span><span class="crayon-h"> </span><span class="crayon-e">pause&nbsp;&nbsp;</span><span class="crayon-v">nginx</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-e">master </span><span class="crayon-v">process</span><span class="crayon-h"> </span><span class="crayon-o">/</span><span class="crayon-v">usr</span><span class="crayon-o">/</span><span class="crayon-v">local</span><span class="crayon-o">/</span><span class="crayon-v">nginx</span><span class="crayon-o">/</span><span class="crayon-v">sbin</span><span class="crayon-o">/</span><span class="crayon-i">nginx</span></div><div class="crayon-line" id="crayon-5a09305f97d47584141153-3"><span class="crayon-cn">33135</span><span class="crayon-h"> </span><span class="crayon-cn">33126</span><span class="crayon-h"> </span><span class="crayon-i">nobody</span><span class="crayon-h">&nbsp;&nbsp; </span><span class="crayon-cn">0.0</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-cn">1380</span><span class="crayon-h"> </span><span class="crayon-e">kqread </span><span class="crayon-v">nginx</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-e">worker </span><span class="crayon-e">process </span><span class="crayon-st">is</span><span class="crayon-h"> </span><span class="crayon-e">shutting </span><span class="crayon-e">down</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-v">nginx</span><span class="crayon-sy">)</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a09305f97d47584141153-4"><span class="crayon-cn">36264</span><span class="crayon-h"> </span><span class="crayon-cn">33126</span><span class="crayon-h"> </span><span class="crayon-i">root</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-cn">0.0</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-cn">1148</span><span class="crayon-h"> </span><span class="crayon-e">pause&nbsp;&nbsp;</span><span class="crayon-v">nginx</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-e">master </span><span class="crayon-v">process</span><span class="crayon-h"> </span><span class="crayon-o">/</span><span class="crayon-v">usr</span><span class="crayon-o">/</span><span class="crayon-v">local</span><span class="crayon-o">/</span><span class="crayon-v">nginx</span><span class="crayon-o">/</span><span class="crayon-v">sbin</span><span class="crayon-o">/</span><span class="crayon-i">nginx</span></div><div class="crayon-line" id="crayon-5a09305f97d47584141153-5"><span class="crayon-cn">36265</span><span class="crayon-h"> </span><span class="crayon-cn">36264</span><span class="crayon-h"> </span><span class="crayon-i">nobody</span><span class="crayon-h">&nbsp;&nbsp; </span><span class="crayon-cn">0.0</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-cn">1364</span><span class="crayon-h"> </span><span class="crayon-e">kqread </span><span class="crayon-v">nginx</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-e">worker </span><span class="crayon-e">process</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-v">nginx</span><span class="crayon-sy">)</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a09305f97d47584141153-6"><span class="crayon-cn">36266</span><span class="crayon-h"> </span><span class="crayon-cn">36264</span><span class="crayon-h"> </span><span class="crayon-i">nobody</span><span class="crayon-h">&nbsp;&nbsp; </span><span class="crayon-cn">0.0</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-cn">1364</span><span class="crayon-h"> </span><span class="crayon-e">kqread </span><span class="crayon-v">nginx</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-e">worker </span><span class="crayon-e">process</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-v">nginx</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-5a09305f97d47584141153-7"><span class="crayon-cn">36267</span><span class="crayon-h"> </span><span class="crayon-cn">36264</span><span class="crayon-h"> </span><span class="crayon-i">nobody</span><span class="crayon-h">&nbsp;&nbsp; </span><span class="crayon-cn">0.0</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-cn">1364</span><span class="crayon-h"> </span><span class="crayon-e">kqread </span><span class="crayon-v">nginx</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-e">worker </span><span class="crayon-e">process</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-v">nginx</span><span class="crayon-sy">)</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0007 seconds] -->
+<p>一段时间后，旧的工作进程处理了所有已连接的请求后退出，就仅由新的工作进程来处理输入的请求了：</p>
+<p>&nbsp;</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5a09305f97d4e534644989" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate crayon-wrapped" data-settings=" minimize scroll-mouseover wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important; height: 18px !important; line-height: 18px !important; margin-top: -19px; display: none; position: absolute; z-index: 2;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="切换是否显示行编号"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="纯文本显示代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button crayon-pressed" title="切换自动换行"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="点击展开代码" style="display: none;"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="复制代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="在新窗口中显示代码"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea class="crayon-plain print-no" data-settings="dblclick" readonly="" style="tab-size: 4; font-size: 12px !important; line-height: 15px !important; z-index: 0; opacity: 0; overflow: hidden;">  PID  PPID USER    %CPU   VSZ WCHAN  COMMAND
+33126     1 root     0.0  1164 pause  nginx: master process /usr/local/nginx/sbin/nginx
+36264 33126 root     0.0  1148 pause  nginx: master process /usr/local/nginx/sbin/nginx
+36265 36264 nobody   0.0  1364 kqread nginx: worker process (nginx)
+36266 36264 nobody   0.0  1364 kqread nginx: worker process (nginx)
+36267 36264 nobody   0.0  1364 kqread nginx: worker process (nginx)</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table class="crayon-table" style="">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-5a09305f97d4e534644989-1" style="height: 15px;">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a09305f97d4e534644989-2" style="height: 15px;">2</div><div class="crayon-num" data-line="crayon-5a09305f97d4e534644989-3" style="height: 15px;">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a09305f97d4e534644989-4" style="height: 15px;">4</div><div class="crayon-num" data-line="crayon-5a09305f97d4e534644989-5" style="height: 15px;">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a09305f97d4e534644989-6" style="height: 15px;">6</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5a09305f97d4e534644989-1"><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-e">PID&nbsp;&nbsp;</span><span class="crayon-e">PPID </span><span class="crayon-v">USER</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-o">%</span><span class="crayon-e">CPU&nbsp;&nbsp; </span><span class="crayon-e">VSZ </span><span class="crayon-e">WCHAN&nbsp;&nbsp;</span><span class="crayon-i">COMMAND</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a09305f97d4e534644989-2"><span class="crayon-cn">33126</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-cn">1</span><span class="crayon-h"> </span><span class="crayon-i">root</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-cn">0.0</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-cn">1164</span><span class="crayon-h"> </span><span class="crayon-e">pause&nbsp;&nbsp;</span><span class="crayon-v">nginx</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-e">master </span><span class="crayon-v">process</span><span class="crayon-h"> </span><span class="crayon-o">/</span><span class="crayon-v">usr</span><span class="crayon-o">/</span><span class="crayon-v">local</span><span class="crayon-o">/</span><span class="crayon-v">nginx</span><span class="crayon-o">/</span><span class="crayon-v">sbin</span><span class="crayon-o">/</span><span class="crayon-i">nginx</span></div><div class="crayon-line" id="crayon-5a09305f97d4e534644989-3"><span class="crayon-cn">36264</span><span class="crayon-h"> </span><span class="crayon-cn">33126</span><span class="crayon-h"> </span><span class="crayon-i">root</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-cn">0.0</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-cn">1148</span><span class="crayon-h"> </span><span class="crayon-e">pause&nbsp;&nbsp;</span><span class="crayon-v">nginx</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-e">master </span><span class="crayon-v">process</span><span class="crayon-h"> </span><span class="crayon-o">/</span><span class="crayon-v">usr</span><span class="crayon-o">/</span><span class="crayon-v">local</span><span class="crayon-o">/</span><span class="crayon-v">nginx</span><span class="crayon-o">/</span><span class="crayon-v">sbin</span><span class="crayon-o">/</span><span class="crayon-i">nginx</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a09305f97d4e534644989-4"><span class="crayon-cn">36265</span><span class="crayon-h"> </span><span class="crayon-cn">36264</span><span class="crayon-h"> </span><span class="crayon-i">nobody</span><span class="crayon-h">&nbsp;&nbsp; </span><span class="crayon-cn">0.0</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-cn">1364</span><span class="crayon-h"> </span><span class="crayon-e">kqread </span><span class="crayon-v">nginx</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-e">worker </span><span class="crayon-e">process</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-v">nginx</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-5a09305f97d4e534644989-5"><span class="crayon-cn">36266</span><span class="crayon-h"> </span><span class="crayon-cn">36264</span><span class="crayon-h"> </span><span class="crayon-i">nobody</span><span class="crayon-h">&nbsp;&nbsp; </span><span class="crayon-cn">0.0</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-cn">1364</span><span class="crayon-h"> </span><span class="crayon-e">kqread </span><span class="crayon-v">nginx</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-e">worker </span><span class="crayon-e">process</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-v">nginx</span><span class="crayon-sy">)</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a09305f97d4e534644989-6"><span class="crayon-cn">36267</span><span class="crayon-h"> </span><span class="crayon-cn">36264</span><span class="crayon-h"> </span><span class="crayon-i">nobody</span><span class="crayon-h">&nbsp;&nbsp; </span><span class="crayon-cn">0.0</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-cn">1364</span><span class="crayon-h"> </span><span class="crayon-e">kqread </span><span class="crayon-v">nginx</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-e">worker </span><span class="crayon-e">process</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-v">nginx</span><span class="crayon-sy">)</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0006 seconds] -->
+<p>这时，因为旧的服务器还尚未关闭它监听的套接字，所以，通过下面的几步，你仍可以恢复旧的服务器：</p>
+<ul>
+<li>发送 HUP 信号给旧的主进程 - 它将在不重载配置文件的情况下启动它的工作进程</li>
+<li>发送 QUIT 信号给新的主进程，要求其从容关闭其工作进程</li>
+<li>发送 TERM 信号给新的主进程，迫使其退出</li>
+<li>如果因为某些原因新的工作进程不能退出，向其发送 KILL 信号</li>
+</ul>
+<p>新的主进程退出后，旧的主进程会由移除 <strong>.oldbin</strong> 前缀，恢复为它的 <strong>.pid</strong> 文件，这样，一切就都恢复到升级之前了。</p>
+<p>如果尝试升级成功，而你也希望保留新的服务器时，发送 QUIT 信号给旧的主进程使其退出而只留下新的服务器运行：</p>
+<p>&nbsp;</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5a09305f97d51186256802" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate crayon-wrapped" data-settings=" minimize scroll-mouseover wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important; height: 18px !important; line-height: 18px !important; margin-top: -19px; display: none; position: absolute; z-index: 2;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="切换是否显示行编号"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="纯文本显示代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button crayon-pressed" title="切换自动换行"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="点击展开代码" style="display: none;"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="复制代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="在新窗口中显示代码"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea class="crayon-plain print-no" data-settings="dblclick" readonly="" style="tab-size: 4; font-size: 12px !important; line-height: 15px !important; z-index: 0; opacity: 0; overflow: hidden;">      PID  PPID USER    %CPU   VSZ WCHAN  COMMAND
+    36264     1 root     0.0  1148 pause  nginx: master process /usr/local/nginx/sbin/nginx
+    36265 36264 nobody   0.0  1364 kqread nginx: worker process (nginx)
+    36266 36264 nobody   0.0  1364 kqread nginx: worker process (nginx)
+    36267 36264 nobody   0.0  1364 kqread nginx: worker process (nginx)</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table class="crayon-table" style="">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-5a09305f97d51186256802-1" style="height: 15px;">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a09305f97d51186256802-2" style="height: 30px;">2</div><div class="crayon-num" data-line="crayon-5a09305f97d51186256802-3" style="height: 15px;">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a09305f97d51186256802-4" style="height: 15px;">4</div><div class="crayon-num" data-line="crayon-5a09305f97d51186256802-5" style="height: 15px;">5</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5a09305f97d51186256802-1"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-e">PID&nbsp;&nbsp;</span><span class="crayon-e">PPID </span><span class="crayon-v">USER</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-o">%</span><span class="crayon-e">CPU&nbsp;&nbsp; </span><span class="crayon-e">VSZ </span><span class="crayon-e">WCHAN&nbsp;&nbsp;</span><span class="crayon-i">COMMAND</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a09305f97d51186256802-2"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-cn">36264</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-cn">1</span><span class="crayon-h"> </span><span class="crayon-i">root</span><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp; </span><span class="crayon-cn">0.0</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-cn">1148</span><span class="crayon-h"> </span><span class="crayon-e">pause&nbsp;&nbsp;</span><span class="crayon-v">nginx</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-e">master </span><span class="crayon-v">process</span><span class="crayon-h"> </span><span class="crayon-o">/</span><span class="crayon-v">usr</span><span class="crayon-o">/</span><span class="crayon-v">local</span><span class="crayon-o">/</span><span class="crayon-v">nginx</span><span class="crayon-o">/</span><span class="crayon-v">sbin</span><span class="crayon-o">/</span><span class="crayon-i">nginx</span></div><div class="crayon-line" id="crayon-5a09305f97d51186256802-3"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-cn">36265</span><span class="crayon-h"> </span><span class="crayon-cn">36264</span><span class="crayon-h"> </span><span class="crayon-i">nobody</span><span class="crayon-h">&nbsp;&nbsp; </span><span class="crayon-cn">0.0</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-cn">1364</span><span class="crayon-h"> </span><span class="crayon-e">kqread </span><span class="crayon-v">nginx</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-e">worker </span><span class="crayon-e">process</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-v">nginx</span><span class="crayon-sy">)</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a09305f97d51186256802-4"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-cn">36266</span><span class="crayon-h"> </span><span class="crayon-cn">36264</span><span class="crayon-h"> </span><span class="crayon-i">nobody</span><span class="crayon-h">&nbsp;&nbsp; </span><span class="crayon-cn">0.0</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-cn">1364</span><span class="crayon-h"> </span><span class="crayon-e">kqread </span><span class="crayon-v">nginx</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-e">worker </span><span class="crayon-e">process</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-v">nginx</span><span class="crayon-sy">)</span></div><div class="crayon-line" id="crayon-5a09305f97d51186256802-5"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-cn">36267</span><span class="crayon-h"> </span><span class="crayon-cn">36264</span><span class="crayon-h"> </span><span class="crayon-i">nobody</span><span class="crayon-h">&nbsp;&nbsp; </span><span class="crayon-cn">0.0</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-cn">1364</span><span class="crayon-h"> </span><span class="crayon-e">kqread </span><span class="crayon-v">nginx</span><span class="crayon-o">:</span><span class="crayon-h"> </span><span class="crayon-e">worker </span><span class="crayon-e">process</span><span class="crayon-h"> </span><span class="crayon-sy">(</span><span class="crayon-v">nginx</span><span class="crayon-sy">)</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0005 seconds] -->
+<p></p>
+<script async="" src="./运行和控制Nginx – 运维与架构 - nginx.cn_files/adsbygoogle.js.下载"></script>
+<!-- nginx-botton-link -->
+<ins class="adsbygoogle" style="display:inline-block;width:468px;height:15px" data-ad-client="ca-pub-8728612882429404" data-ad-slot="2776922304" data-adsbygoogle-status="done"><ins id="aswift_1_expand" style="display:inline-table;border:none;height:15px;margin:0;padding:0;position:relative;visibility:visible;width:468px;background-color:transparent;"><ins id="aswift_1_anchor" style="display:block;border:none;height:15px;margin:0;padding:0;position:relative;visibility:visible;width:468px;background-color:transparent;"><iframe width="468" height="15" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_1" name="aswift_1" style="left:0;position:absolute;top:0;width:468px;height:15px;" src="./运行和控制Nginx – 运维与架构 - nginx.cn_files/saved_resource(1).html"></iframe></ins></ins></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+			<div class="fixed"></div>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="./运行和控制Nginx – 运维与架构 - nginx.cn_files/comment.js.下载"></script>
+
+
+
+<div id="comments">
+
+<div id="cmtswitcher">
+			<a id="commenttab" class="curtab" href="javascript:void(0);">评论 (13)</a>
+				<span class="addcomment"><a href="http://www.nginx.cn/nginxchscommandline#respond">发表评论</a></span>
+			<div class="fixed"></div>
+</div>
+
+<div id="commentlist">
+	<!-- comments START -->
+	<ol id="thecomments">
+		<li class="comment regularcomment" id="comment-10661">
+		<div class="author">
+			<div class="pic">
+				<img src="./运行和控制Nginx – 运维与架构 - nginx.cn_files/d615d5793929e8c7d70eab5f00f7f5f1" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<a id="commentauthor-10661" class="url" href="http://0.3.64.131/" rel="external nofollow">
+				
+				1
+									</a>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2017年10月24日15:44					 | <a href="http://www.nginx.cn/nginxchscommandline#comment-10661">#1</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-10661&#39;, &#39;comment-10661&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-10661&#39;, &#39;comment-10661&#39;, &#39;commentbody-10661&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-10661">
+					<blockquote cite="./运行和控制Nginx – 运维与架构 - nginx.cn_files/nginxchscommandline"><p>
+<strong><a href="http://www.nginx.cn/nginxchscommandline#comment-46" rel="nofollow">abc</a> :</strong><br>
+这个不错
+</p></blockquote>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li><!-- #comment-## -->
+	<li class="comment regularcomment" id="comment-7916">
+		<div class="author">
+			<div class="pic">
+				<img src="./运行和控制Nginx – 运维与架构 - nginx.cn_files/4610ae20443534856a39008d90d94c35" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<a id="commentauthor-7916" class="url" href="http://www.yunque365.com/" rel="external nofollow">
+				
+				云雀运维
+									</a>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2017年5月31日10:04					 | <a href="http://www.nginx.cn/nginxchscommandline#comment-7916">#2</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-7916&#39;, &#39;comment-7916&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-7916&#39;, &#39;comment-7916&#39;, &#39;commentbody-7916&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-7916">
+					<p>不错，顶一个！！！！</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li><!-- #comment-## -->
+	<li class="comment regularcomment" id="comment-2471">
+		<div class="author">
+			<div class="pic">
+				<img src="./运行和控制Nginx – 运维与架构 - nginx.cn_files/7d1b342d9148069543621e789b85b779" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<a id="commentauthor-2471" class="url" href="http://www.leixuesong.cn/" rel="external nofollow">
+				
+				PHP程序员雷雪松
+									</a>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2016年9月12日17:18					 | <a href="http://www.nginx.cn/nginxchscommandline#comment-2471">#3</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-2471&#39;, &#39;comment-2471&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-2471&#39;, &#39;comment-2471&#39;, &#39;commentbody-2471&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-2471">
+					<p>有用！！！</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li><!-- #comment-## -->
+	<li class="comment regularcomment" id="comment-48">
+		<div class="author">
+			<div class="pic">
+				<img src="./运行和控制Nginx – 运维与架构 - nginx.cn_files/saved_resource" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<a id="commentauthor-48" class="url" href="http://weibo.com/2363344271" rel="external nofollow">
+				
+				Cgruppo
+									</a>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2015年6月24日12:01					 | <a href="http://www.nginx.cn/nginxchscommandline#comment-48">#4</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-48&#39;, &#39;comment-48&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-48&#39;, &#39;comment-48&#39;, &#39;commentbody-48&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-48">
+					<p>ngnix :sudo service nginx configtest<br>
+[FAIL] Testing nginx configuration: failed !</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li><!-- #comment-## -->
+	<li class="comment regularcomment" id="comment-47">
+		<div class="author">
+			<div class="pic">
+				<img src="./运行和控制Nginx – 运维与架构 - nginx.cn_files/69c8cd2127b5edf9811c7a8e0425024b" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<span id="commentauthor-47">
+				
+				ternus
+									</span>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2015年6月13日20:02					 | <a href="http://www.nginx.cn/nginxchscommandline#comment-47">#5</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-47&#39;, &#39;comment-47&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-47&#39;, &#39;comment-47&#39;, &#39;commentbody-47&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-47">
+					<p>学习了，平滑升级这点命令有点少啊。</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li><!-- #comment-## -->
+	<li class="comment regularcomment" id="comment-46">
+		<div class="author">
+			<div class="pic">
+				<img src="./运行和控制Nginx – 运维与架构 - nginx.cn_files/7c99b0d72a58c0539022bdadd887f167" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<span id="commentauthor-46">
+				
+				abc
+									</span>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2015年4月1日21:16					 | <a href="http://www.nginx.cn/nginxchscommandline#comment-46">#6</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-46&#39;, &#39;comment-46&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-46&#39;, &#39;comment-46&#39;, &#39;commentbody-46&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-46">
+					<p>这个不错</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li><!-- #comment-## -->
+	<li class="comment regularcomment" id="comment-45">
+		<div class="author">
+			<div class="pic">
+				<img src="./运行和控制Nginx – 运维与架构 - nginx.cn_files/saved_resource" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<a id="commentauthor-45" class="url" href="http://t.qq.com/LOVELIUXINGFOREVER" rel="external nofollow">
+				
+				刘兴
+									</a>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2015年2月9日15:02					 | <a href="http://www.nginx.cn/nginxchscommandline#comment-45">#7</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-45&#39;, &#39;comment-45&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-45&#39;, &#39;comment-45&#39;, &#39;commentbody-45&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-45">
+					<p>嗯 这一条很好，很重要</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li><!-- #comment-## -->
+	<li class="comment regularcomment" id="comment-43">
+		<div class="author">
+			<div class="pic">
+				<img src="./运行和控制Nginx – 运维与架构 - nginx.cn_files/1f8393fae6608ef345a919c1855b0951" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<span id="commentauthor-43">
+				
+				Echo
+									</span>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2014年1月13日22:33					 | <a href="http://www.nginx.cn/nginxchscommandline#comment-43">#8</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-43&#39;, &#39;comment-43&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-43&#39;, &#39;comment-43&#39;, &#39;commentbody-43&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-43">
+					<p>Nice~!</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li><!-- #comment-## -->
+	<li class="comment regularcomment" id="comment-41">
+		<div class="author">
+			<div class="pic">
+				<img src="./运行和控制Nginx – 运维与架构 - nginx.cn_files/fbf366873b6aca557853e10d0c295e1e" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<span id="commentauthor-41">
+				
+				pinefantasy
+									</span>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2013年11月27日18:58					 | <a href="http://www.nginx.cn/nginxchscommandline#comment-41">#9</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-41&#39;, &#39;comment-41&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-41&#39;, &#39;comment-41&#39;, &#39;commentbody-41&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-41">
+					<p>通过传递参数给 ./configure 或使用 pid 指令，来改变该文件的位置。---这个没看懂，记住pid做什么呢</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+<ul class="children">
+	<li class="comment regularcomment" id="comment-42">
+		<div class="author">
+			<div class="pic">
+				<img src="./运行和控制Nginx – 运维与架构 - nginx.cn_files/20eb6960d7c2da6847bb8359a48b3a9a" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<span id="commentauthor-42">
+				
+				mood
+									</span>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2013年11月27日21:32					 | <a href="http://www.nginx.cn/nginxchscommandline#comment-42">#10</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-42&#39;, &#39;comment-42&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-42&#39;, &#39;comment-42&#39;, &#39;commentbody-42&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-42">
+					<p>重启或者关闭的时候会读pid</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li><!-- #comment-## -->
+	<li class="comment regularcomment" id="comment-44">
+		<div class="author">
+			<div class="pic">
+				<img src="./运行和控制Nginx – 运维与架构 - nginx.cn_files/saved_resource" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<a id="commentauthor-44" class="url" href="http://t.qq.com/linjianying2008" rel="external nofollow">
+				
+				林建营
+									</a>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2014年4月15日07:36					 | <a href="http://www.nginx.cn/nginxchscommandline#comment-44">#11</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-44&#39;, &#39;comment-44&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-44&#39;, &#39;comment-44&#39;, &#39;commentbody-44&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-44">
+					<p>方便信号控制进程，不用每次都ps -ef |grep nginx来查看nginx的pid</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment regularcomment" id="comment-40">
+		<div class="author">
+			<div class="pic">
+				<img src="./运行和控制Nginx – 运维与架构 - nginx.cn_files/5817adef1df81bfd2cc61cc1adf63f2f" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<span id="commentauthor-40">
+				
+				dayphosphor
+									</span>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2013年10月15日17:39					 | <a href="http://www.nginx.cn/nginxchscommandline#comment-40">#12</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-40&#39;, &#39;comment-40&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-40&#39;, &#39;comment-40&#39;, &#39;commentbody-40&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-40">
+					<p>超不错~~</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li><!-- #comment-## -->
+	<li class="comment regularcomment" id="comment-39">
+		<div class="author">
+			<div class="pic">
+				<img src="./运行和控制Nginx – 运维与架构 - nginx.cn_files/2d1ef4744c416d47fa77faf25040f71a" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<span id="commentauthor-39">
+				
+				jay61439476
+									</span>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2012年12月24日10:09					 | <a href="http://www.nginx.cn/nginxchscommandline#comment-39">#13</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-39&#39;, &#39;comment-39&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-39&#39;, &#39;comment-39&#39;, &#39;commentbody-39&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-39">
+					<p>不错  这对实际生产很有帮助</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li><!-- #comment-## -->
+	</ol>
+	<!-- comments END -->
+
+
+	<!-- trackbacks START -->
+		<div class="fixed"></div>
+	<!-- trackbacks END -->
+</div>
+
+</div>
+
+	<form action="http://www.nginx.cn/wp-comments-post.php" method="post" id="commentform">
+	<div id="respond">
+
+					
+			<div id="author_info">
+				<div class="row">
+					<input type="text" name="author" id="author" class="textfield" value="" size="24" tabindex="1">
+					<label for="author" class="small">昵称 (必填)</label>
+				</div>
+				<div class="row">
+					<input type="text" name="email" id="email" class="textfield" value="" size="24" tabindex="2">
+					<label for="email" class="small">电子邮箱 (我们会为您保密) (必填)</label>
+				</div>
+				<div class="row">
+					<input type="text" name="url" id="url" class="textfield" value="" size="24" tabindex="3">
+					<label for="url" class="small">网址</label>
+				</div>
+			</div>
+
+			
+		
+		<!-- comment input -->
+		<div class="row">
+			<textarea name="comment" id="comment" tabindex="4" rows="8" cols="50"></textarea>
+		</div>
+
+		<!-- comment submit and rss -->
+		<div id="submitbox">
+			<a class="feed" href="http://www.nginx.cn/comments/feed">订阅评论</a>
+			<div class="submitbutton">
+				<input name="submit" type="submit" id="submit" class="button" tabindex="5" value="提交评论">
+			</div>
+						<input type="hidden" name="comment_post_ID" value="43">
+			<div class="fixed"></div>
+		</div>
+
+	</div>
+	<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="477b469553"></p><p style="display: none;"></p>	<input type="hidden" id="ak_js" name="ak_js" value="1510551647964"></form>
+
+	
+
+
+	</div>
+	<!-- main END -->
+
+	<!-- sidebar START -->
+<div id="sidebar">
+
+    <!-- sidebar north START -->
+    <div id="northsidebar" class="sidebar">
+<div class="sidebar_compliance"></div>
+        <!--ad-161216-->
+        
+        
+
+        <div id="search-2" class="widget widget_search"><form role="search" method="get" id="searchform" class="searchform" action="http://www.nginx.cn/">
+				<div>
+					<label class="screen-reader-text" for="s">搜索：</label>
+					<input type="text" value="" name="s" id="s">
+					<input type="submit" id="searchsubmit" value="搜索">
+				</div>
+			</form></div><div id="views-3" class="widget widget_views"><h3>热门访问</h3><ul>
+<li><a href="http://www.nginx.cn/install" title="Nginx安装">Nginx安装</a> - 583,298 views</li><li><a href="http://www.nginx.cn/76.html" title="nginx基本配置与参数说明">nginx基本配置与参数说明</a> - 372,718 views</li><li><a href="http://www.nginx.cn/231.html" title="nginx php-fpm安装配置">nginx php-fpm安装配置</a> - 362,378 views</li><li><a href="http://www.nginx.cn/115.html" title="nginx location匹配规则">nginx location匹配规则</a> - 220,218 views</li><li><a href="http://www.nginx.cn/nginx-how-to" title="nginx中文手册">nginx中文手册</a> - 206,688 views</li><li><a href="http://www.nginx.cn/927.html" title="nginx反向代理配置">nginx反向代理配置</a> - 203,071 views</li><li><a href="http://www.nginx.cn/216.html" title="nginx rewrite 指令">nginx rewrite 指令</a> - 143,339 views</li><li><a href="http://www.nginx.cn/nginx-download" title="nginx最新版下载">nginx最新版下载</a> - 142,521 views</li><li><a href="http://www.nginx.cn/591.html" title="nginx配置入门">nginx配置入门</a> - 131,021 views</li><li><a href="http://www.nginx.cn/nginxchscommandline" title="运行和控制Nginx">运行和控制Nginx</a> - 126,511 views</li></ul>
+</div>		<div id="recent-posts-2" class="widget widget_recent_entries">		<h3>近期文章</h3>		<ul>
+					<li>
+				<a href="http://www.nginx.cn/4707.html">git skip worktree文件恢复</a>
+						</li>
+					<li>
+				<a href="http://www.nginx.cn/4696.html">TCP连接建立的三次握手与连接断开四次挥手</a>
+						</li>
+					<li>
+				<a href="http://www.nginx.cn/4692.html">tcpdump抓取http的请求头和响应信息</a>
+						</li>
+					<li>
+				<a href="http://www.nginx.cn/4682.html">The listener supports no services</a>
+						</li>
+					<li>
+				<a href="http://www.nginx.cn/4680.html">oralce删除数据库</a>
+						</li>
+				</ul>
+		</div>		<div id="recent-comments-2" class="widget widget_recent_comments"><h3>近期评论</h3><ul id="recentcomments"><li class="recentcomments"><span class="comment-author-link"><a href="http://www.nginx.cn/927.html#respond" rel="external nofollow" class="url">咩</a></span>发表在《<a href="http://www.nginx.cn/927.html#comment-10992">nginx反向代理配置</a>》</li><li class="recentcomments"><span class="comment-author-link"><a href="https://www.crifan.com/lnpm_wordpress_crifan_com_access_fail_502_bad_gateway_nginx/" rel="external nofollow" class="url">【已解决】LNMP的wordpress网站crifan.com无法访问：502 Bad Gateway nginx – 在路上</a></span>发表在《<a href="http://www.nginx.cn/666.html#comment-10984">nginx php-fpm 输出php错误日志</a>》</li><li class="recentcomments"><span class="comment-author-link"><a href="https://www.debian.cn/" rel="external nofollow" class="url">@Debian</a></span>发表在《<a href="http://www.nginx.cn/links#comment-10944">友情链接</a>》</li><li class="recentcomments"><span class="comment-author-link">mood</span>发表在《<a href="http://www.nginx.cn/927.html#comment-10929">nginx反向代理配置</a>》</li><li class="recentcomments"><span class="comment-author-link"><a href="http://www.nginx.cn/927.html#respond" rel="external nofollow" class="url">咩</a></span>发表在《<a href="http://www.nginx.cn/927.html#comment-10919">nginx反向代理配置</a>》</li></ul></div>    </div>
+    <!-- sidebar north END -->
+
+    <div id="centersidebar">
+
+        
+        <!-- sidebar west START -->
+        <div id="westsidebar" class="sidebar">
+            <div id="categories-2" class="widget widget_categories"><h3>分类目录</h3>		<ul>
+	<li class="cat-item cat-item-2"><a href="http://www.nginx.cn/category/android">android</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="http://www.nginx.cn/category/program/cplusplus">c++</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="http://www.nginx.cn/category/apple">iOS/Mac</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="http://www.nginx.cn/category/java">java</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="http://www.nginx.cn/category/program/js">js</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="http://www.nginx.cn/category/linux">linux</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="http://www.nginx.cn/category/mysql">mysql</a>
+</li>
+	<li class="cat-item cat-item-10"><a href="http://www.nginx.cn/category/nginx-article" title="nginx入门文章，介绍nginx的安装和配置相关内容">nginx</a>
+</li>
+	<li class="cat-item cat-item-11"><a href="http://www.nginx.cn/category/oracle">oracle</a>
+</li>
+	<li class="cat-item cat-item-12"><a href="http://www.nginx.cn/category/program/php">php</a>
+</li>
+	<li class="cat-item cat-item-13"><a href="http://www.nginx.cn/category/program/python">python</a>
+</li>
+	<li class="cat-item cat-item-14"><a href="http://www.nginx.cn/category/redis">redis</a>
+</li>
+	<li class="cat-item cat-item-16"><a href="http://www.nginx.cn/category/wordpress">wordpress</a>
+</li>
+	<li class="cat-item cat-item-17"><a href="http://www.nginx.cn/category/%e5%b0%8f%e6%8a%80%e5%b7%a7">小技巧</a>
+</li>
+	<li class="cat-item cat-item-18"><a href="http://www.nginx.cn/category/whoami">杂谈</a>
+</li>
+	<li class="cat-item cat-item-431"><a href="http://www.nginx.cn/category/arch">架构</a>
+</li>
+	<li class="cat-item cat-item-19"><a href="http://www.nginx.cn/category/site">网站</a>
+</li>
+	<li class="cat-item cat-item-429"><a href="http://www.nginx.cn/category/program/networkprogram">网络编程</a>
+</li>
+		</ul>
+</div>        </div>
+        <!-- sidebar west END -->
+        <div class="fixed"></div>
+    </div>
+
+
+    <!-- sidebar south START -->
+    <div id="southsidebar" class="sidebar">
+        <div id="meta-2" class="widget widget_meta"><h3>功能</h3>			<ul>
+						<li><a href="http://www.nginx.cn/wp-login.php">登录</a></li>
+			<li><a href="http://www.nginx.cn/feed">文章<abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="http://www.nginx.cn/comments/feed">评论<abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="https://cn.wordpress.org/" title="基于WordPress，一个优美、先进的个人信息发布平台。">WordPress.org</a></li>			</ul>
+			</div>    </div>
+    <!-- sidebar south END -->
+
+    <script async="" src="./运行和控制Nginx – 运维与架构 - nginx.cn_files/adsbygoogle.js.下载"></script>
+    <!-- nginx右侧导航 -->
+    <ins class="adsbygoogle" style="display: inline-block; width: 300px; height: 250px;" data-ad-client="ca-pub-8728612882429404" data-ad-slot="8826641902" data-adsbygoogle-status="done"><ins id="aswift_2_expand" style="display:inline-table;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent;"><ins id="aswift_2_anchor" style="display:block;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent;"><iframe width="300" height="250" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_2" name="aswift_2" style="left:0;position:absolute;top:0;width:300px;height:250px;" src="./运行和控制Nginx – 运维与架构 - nginx.cn_files/saved_resource(2).html"></iframe></ins></ins></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
+</div>
+<!-- sidebar END -->	<div class="fixed"></div>
+</div>
+<script type="text/javascript" src="./运行和控制Nginx – 运维与架构 - nginx.cn_files/copy.js.下载"></script>
+<script type="text/javascript">
+(function(){
+//支付鼓励
+        //添加在本篇完之后
+
+        var targetLastP = document.getElementById("ad");
+
+        if (targetLastP ) {
+          //alert('targetlastp');
+                targetLastP.innerHTML = targetLastP.innerHTML + '<br/><table width="650" height="40" cellpadding="0" cellspacing="0" border="0" style="margin:0 auto;border: 1px solid #b8d4ea;">  <tbody>  <tr>  <td align="center"><a href="mailto:admin@nginx.cn" title="寻求空间赞助" target="_blank" rel="nofollow" ><font color="red">赞助本站主机</font></a></td>  <td align="center"><a href="http://wangsu.264.cn" title="网速测试" target="_blank"><font color="blue">网速测试</font></a></td>  <td align="center"><a href="http://huilv.264.cn" title="美元人民币汇率" target="_blank"><font color="red">最新美元人民币汇率</font></a></td>  </tr>  </tbody>  </table>  <br/>';
+        }
+})();
+</script>
+<!-- content END -->
+
+<!-- footer START -->
+<div id="footer">
+	<a id="gotop" href="http://www.nginx.cn/nginxchscommandline#" onclick="MGJS.goTop();return false;">回到顶部</a>
+	
+	<div id="copyright">
+		版权所有 © 2009-2017  <a title="nginx中文网" href="http://www.nginx.cn/">服务器运维与Web架构</a> Theme by NeoEase.<a href="mailto:admin@nginx.cn" title="业务联系" target="_blank" rel＝"nofollow"=""><font color="red">合作联系</font></a>
+	</div>
+	
+</div>
+<!-- footer END -->
+
+</div>
+<!-- container END -->
+</div>
+<!-- wrap END -->
+
+<script type="text/javascript" src="./运行和控制Nginx – 运维与架构 - nginx.cn_files/wp-embed.min.js.下载"></script>
+<script type="text/javascript" src="./运行和控制Nginx – 运维与架构 - nginx.cn_files/form.js.下载"></script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?9ff71d1196ef31d4eda8f8d61936342c";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<script language="javascript">
+document.body.oncopy = function () { 
+	setTimeout( function () { 
+		var text = getClipboard();
+		if (text) { 
+			text = text + "\r\n详细出处参考："+location.href.toString(); 
+copy2Clipboard(text);
+		} 
+				}, 100 ) 
+}
+
+</script>
+
+
+<iframe id="google_osd_static_frame_5450504484511" name="google_osd_static_frame" style="display: none; width: 0px; height: 0px;" src="./运行和控制Nginx – 运维与架构 - nginx.cn_files/saved_resource(3).html"></iframe></body></html>
