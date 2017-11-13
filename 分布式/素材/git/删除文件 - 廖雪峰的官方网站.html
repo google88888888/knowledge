@@ -1,0 +1,1717 @@
+<!DOCTYPE html>
+<!-- saved from url=(0134)https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013758392816224cafd33c44b4451887cc941e6716805c000 -->
+<html xmlns:itranswarp="http://www.itranswarp.com/" xmlns:wb="http://open.weibo.com/wb" class="uk-notouch"><!--
+
+--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>删除文件 - 廖雪峰的官方网站</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="keywords" content="javascript,node,jquery,git,python,java,sql,linux,ios,android,教程,软件,编程,开发,运维,云计算,网络,互联网">
+    <meta name="description" content="研究互联网产品和技术，提供原创中文精品教程">
+    <meta property="x-nav" content=" /wiki/0013739516305929606dd18361248578c67b8067c8c017b000 ">
+    <link rel="alternate" href="https://www.liaoxuefeng.com/feed" title="廖雪峰的官方网站" type="application/rss+xml">
+    
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013758392816224cafd33c44b4451887cc941e6716805c000">
+    <meta property="og:title" content="删除文件">
+    <meta property="og:description" content="史上最浅显易懂的Git教程">
+    <meta property="og:image" content="https://cdn.webxueyuan.com/cdn/files/attachments/0015102977048535e123db6e86b4fbf9899e945e1b20ca3000/l">
+    <meta property="og:tag" content="git">
+
+    
+    <link rel="stylesheet" href="./删除文件 - 廖雪峰的官方网站_files/all.css">
+    
+    <!--[if lt IE 9]>
+    <link rel="stylesheet" href="/static/themes/default/css/ie.css?v=ec624a8" />
+    <![endif]-->
+    
+    <script src="./删除文件 - 廖雪峰的官方网站_files/hm.js.下载"></script><script src="./删除文件 - 廖雪峰的官方网站_files/ca-pub-6727358730461554.js.下载"></script><script src="./删除文件 - 廖雪峰的官方网站_files/hm.js(1).下载" async=""></script><script src="./删除文件 - 廖雪峰的官方网站_files/all.js.下载"></script>
+    
+    <script id="tplComment" type="text/plain">
+        <div class="uk-comment">
+            <div class="uk-comment-header" style="margin-bottom:0">
+                <a target="_blank" href="/user/{ user.id }"><img class="uk-comment-avatar uk-border-circle x-avatar" src="{ user.image_url }" width="50" height="50" alt=""></a>
+                <h4 class="uk-comment-title"><a target="_blank" href="/discuss/{ board_id }/{ id }">{ name }</a></h4>
+                <div class="uk-comment-meta"><a target="_blank" href="/user/{ user.id }">{ user.name }</a> created at { created_at.toSmartDate() }, Last updated at { updated_at.toSmartDate() }</div>
+            </div>
+            <div class="uk-comment-body x-auto-content">
+                { content|safe }
+            </div>
+        </div>
+    </script>
+
+    <script id="tplCommentReply" type="text/plain">
+        <div class="uk-comment">
+            <div class="uk-comment-header" style="margin-bottom:0">
+                <a target="_blank" href="/user/{ user.id }"><img class="uk-comment-avatar uk-border-circle x-avatar" src="{ user.image_url }" width="50" height="50" alt=""></a>
+                <div class="uk-comment-meta"><a target="_blank" href="/user/{ user.id }">{ user.name }</a></div>
+                <div class="uk-comment-meta">Created at { created_at.toSmartDate() }, Last updated at { updated_at.toSmartDate() }</div>
+            </div>
+            <div class="uk-comment-body x-auto-content">
+                { content|safe }
+            </div>
+        </div>
+    </script>
+
+    <script id="tplCommentInfo" type="text/plain">
+        <li>
+            <div class="x-comment-info">
+                <hr>
+                <a target="_blank" class="uk-button uk-button-small" href="/discuss/{ board_id }/{ id }"><i class="uk-icon-list-ul"></i> 全部讨论</a>
+                &nbsp;
+                <a target="_blank" class="uk-button uk-button-small" href="/discuss/{ board_id }/{ id }#reply"><i class="uk-icon-reply"></i> 回复</a>
+            </div>
+        </li>
+    </script>
+
+    <script id="tplCommentArea" type="text/plain">
+        <div class="x-display-if-signin">
+            <p><button id="comment-make-button" type="button" class="uk-button uk-button-primary"><i class="uk-icon-comment"></i> 发表评论</button></p>
+            <form id="comment-form" class="uk-form" style="display:none;">
+                <fieldset>
+                    <div class="uk-alert uk-alert-danger" style="display:none"></div>
+                    <div class="uk-form-row">
+                        <label>标题:</label>
+                    </div>
+                    <div class="uk-form-row">
+                        <input type="text" name="name" maxlength="100" style="width:100%">
+                    </div>
+                    <div class="uk-form-row">
+                        <label>内容:</label>
+                    </div>
+                    <div class="uk-form-row x-textarea">
+                    </div>
+                    <div class="uk-form-row">
+                        <button type="submit" class="uk-button uk-button-primary"><i class="uk-icon-check"></i> 发布</button>
+                        &nbsp;&nbsp;
+                        <button type="button" class="uk-button x-cancel"><i class="uk-icon-close"></i> 取消</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </script>
+
+    <style id="x-doc-style">
+        .x-display-none { display: none; }
+
+        .x-display-if-signin { display: none; }
+
+    </style>
+    <script>
+        var g_time = parseFloat('1510538071494');
+        var g_signins = JSON.parse('[{"id":"weibo","icon":"weibo","name":"使用新浪微博登录"}]');
+//
+        var g_user = null;
+//
+        var g_ads = JSON.parse(decodeURIComponent('%7B%22a%22%3A%7B%22name%22%3A%22A%22%2C%22width%22%3A336%2C%22height%22%3A280%2C%22auto_fill%22%3A%22%3Cins%20class%3D%5C%22adsbygoogle%5C%22%20style%3D%5C%22display%3Ainline-block%3Bwidth%3A336px%3Bheight%3A280px%5C%22%20data-ad-client%3D%5C%22ca-pub-6727358730461554%5C%22%20data-ad-slot%3D%5C%228492060710%5C%22%3E%3C%2Fins%3E%5Cn%3Cscript%3E%5Cn(adsbygoogle%20%3D%20window.adsbygoogle%20%7C%7C%20%5B%5D).push(%7B%7D)%3B%5Cn%3C%2Fscript%3E%22%2C%22num_auto_fill%22%3A2%2C%22adperiods%22%3A%5B%7B%22user%22%3A%22%E7%94%A8%E6%88%B78316456992%22%2C%22admaterials%22%3A%5B%7B%22image%22%3A%22%2Ffiles%2Fattachments%2F0015102081959733fcd2e57229548a0855e8f9459a33f9a000%2F0%22%2C%22weight%22%3A100%2C%22keywords%22%3A%22%22%2C%22url%22%3A%22http%3A%2F%2Fwww.zhufengpeixun.cn%2Fvideo%2Fcourse%2Fguide.html%22%7D%5D%7D%2C%7B%22user%22%3A%22%E9%BA%A6%E5%AD%90%E5%AD%A6%E9%99%A2%22%2C%22admaterials%22%3A%5B%7B%22image%22%3A%22%2Ffiles%2Fattachments%2F001509595320611fa323e4a8b81431b8799630ce3ef0f3a000%2F0%22%2C%22weight%22%3A100%2C%22keywords%22%3A%22%22%2C%22url%22%3A%22http%3A%2F%2Fwww.maiziedu.com%2Fland%2Fpages%2Fpython%2Flxf01%22%7D%5D%7D%2C%7B%22user%22%3A%22%E7%A8%80%E5%9C%9F%E6%8E%98%E9%87%91%22%2C%22admaterials%22%3A%5B%7B%22image%22%3A%22%2Ffiles%2Fattachments%2F00150839838075647d7b0cd1ca54b32b46eee76a70deb63000%2F0%22%2C%22weight%22%3A100%2C%22keywords%22%3A%22%22%2C%22url%22%3A%22https%3A%2F%2Fjuejin.im%3Futm_source%3Dliaoxuefeng%26utm_medium%3Dbanner1%26utm_campaign%3Dpersonal%22%7D%2C%7B%22image%22%3A%22%2Ffiles%2Fattachments%2F001508398629669f436b375fe9749449b2106e7a0146a94000%2F0%22%2C%22weight%22%3A100%2C%22keywords%22%3A%22%22%2C%22url%22%3A%22https%3A%2F%2Fjuejin.im%3Futm_source%3Dliaoxuefeng%26utm_medium%3Dbanner2%26utm_campaign%3Dpersonal%22%7D%5D%7D%5D%7D%2C%22b%22%3A%7B%22name%22%3A%22B%22%2C%22width%22%3A300%2C%22height%22%3A600%2C%22auto_fill%22%3A%22%3Cins%20class%3D%5C%22adsbygoogle%5C%22%20style%3D%5C%22display%3Ainline-block%3Bwidth%3A300px%3Bheight%3A600px%5C%22%20data-ad-client%3D%5C%22ca-pub-6727358730461554%5C%22%20data-ad-slot%3D%5C%224769867116%5C%22%3E%3C%2Fins%3E%5Cn%3Cscript%3E%5Cn(adsbygoogle%20%3D%20window.adsbygoogle%20%7C%7C%20%5B%5D).push(%7B%7D)%3B%5Cn%3C%2Fscript%3E%22%2C%22num_auto_fill%22%3A1%2C%22adperiods%22%3A%5B%7B%22user%22%3A%22%E4%B8%83%E6%9C%88%E5%9C%A8%E7%BA%BFAI%E5%AE%9E%E9%AA%8C%E5%AE%A4%22%2C%22admaterials%22%3A%5B%7B%22image%22%3A%22%2Ffiles%2Fattachments%2F001510209682528634604862ef642c7ad897a037f3f755b000%2F0%22%2C%22weight%22%3A100%2C%22keywords%22%3A%22%22%2C%22url%22%3A%22http%3A%2F%2Fwww.julyedu.com%2Fsale%2Fpre_1111%3Ffrom%3Dlxf%22%7D%2C%7B%22image%22%3A%22%2Ffiles%2Fattachments%2F001510307852584b68bd377234f4394b6547b82ab7aad67000%2F0%22%2C%22weight%22%3A100%2C%22keywords%22%3A%22%22%2C%22url%22%3A%22http%3A%2F%2Fwww.julyedu.com%2FSale%2Fedu1111%22%7D%5D%7D%2C%7B%22user%22%3A%22%E9%BA%A6%E5%AD%90%E5%AD%A6%E9%99%A2%22%2C%22admaterials%22%3A%5B%7B%22image%22%3A%22%2Ffiles%2Fattachments%2F001509595043455f5cef331bec8450e90a1a16325173203000%2F0%22%2C%22weight%22%3A100%2C%22keywords%22%3A%22%22%2C%22url%22%3A%22http%3A%2F%2Fwww.maiziedu.com%2Fland%2Fpages%2Fai%2Flxf02%22%7D%5D%7D%2C%7B%22user%22%3A%22%E5%87%B3%E5%AD%90%E5%AD%A6%E9%99%A2%22%2C%22admaterials%22%3A%5B%7B%22image%22%3A%22%2Ffiles%2Fattachments%2F00150883741742081e9f1a48df54a3894948be033df0579000%2F0%22%2C%22weight%22%3A100%2C%22keywords%22%3A%22%22%2C%22url%22%3A%22http%3A%2F%2Fwww.dengzixy.com%2F%22%7D%5D%7D%5D%7D%7D'));
+        var meta_keywords = $('meta[property="og:tag"]').attr('content');
+        if (meta_keywords) {
+            meta_keywords = meta_keywords.toLowerCase().split(',');
+            _.mapObject(g_ads, function (adslot, adkey) {
+                _.map(adslot.adperiods, function (adp) {
+                    var matched_adms = _.filter(adp.admaterials, function (adm) {
+                        var ks = adm.keywords.toLowerCase().split(',');
+                        // ad keywords = [a, b, c, d]
+                        // meta keywords = [b, c]
+                        var ms = _.filter(meta_keywords, function (mkey) {
+                            return ks.indexOf(mkey) >= 0;
+                        });
+                        return ms.length > 0;
+                    });
+                    if (matched_adms.length > 0) {
+                        adp.admaterials = matched_adms;
+                    }
+                });
+            });
+        }
+        $(function () {
+            var fnRandom = function (adms) {
+                if (adms.length === 1) {
+                    return adms[0];
+                }
+                var
+                    weights = _.map(adms, function (m) {
+                        return m.weight;
+                    }),
+                    total_weights = _.reduce(weights, function (ax, w) {
+                        return ax + w;
+                    }, 0),
+                    rnd = Math.random(),
+                    ws = 0,
+                    i,
+                    hit;
+                for (i=0; i<weights.length; i++) {
+                    ws = ws + weights[i];
+                    if (rnd < ws / total_weights) {
+                        return adms[i];
+                    }
+                }
+                return adms[0];
+            };
+            _.mapObject(g_ads, function (ad, k) {
+                _.map(ad.adperiods, function (adp) {
+                    if (adp.admaterials.length === 0) {
+                        add_sponsor('#x-sponsor-' + k, ad.width, ad.height, adp.user, 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAAAkCAMAAAB2bcIBAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyNpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChNYWNpbnRvc2gpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjE0NDhCRDA3QTM3MjExRTc4QjI0RjRCQjQzOTgwRDc3IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjE0NDhCRDA4QTM3MjExRTc4QjI0RjRCQjQzOTgwRDc3Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MTQ0OEJEMDVBMzcyMTFFNzhCMjRGNEJCNDM5ODBENzciIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MTQ0OEJEMDZBMzcyMTFFNzhCMjRGNEJCNDM5ODBENzciLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5Adyw0AAAADFBMVEXm5uazs7NdXV3///8WehxTAAAABHRSTlP///8AQCqp9AAAAaVJREFUeNrslsuWwyAMQyXy//88LX7JhEw7q9mQRQ8QEBcjO8X1zw8OwAE4AAdA2xzvh7Nj7eq/RuYQ+STl71PR1ayPlBt4AkCbUgBGgBwwySLjsoCLGheAwT0A7Hz0GZwdOxVCoPpXncUA2F+L2pTD6HobAAor8lwxzlgHV2yXhYoI6zXiIjiXse/zCFA7CgCK25sVzABw2dew8FrzbwAgNQJzqa6ydnOLATkw2XeZbwoATwDoFu8RUEE4AJluCQ+gbarAX0QgjEo2ALtDiiBmTN8/Qy+LS45cewA+mjAzOc+VTxe8IgJuh4DLRFVHRMS+SEOFYANQR8gVjLoe9FqGbQT2lUhMSGqIow6Q68UxI2DJNwHMueqZmweyDjxEoKCpgVUoNZgNTF2fri4XYPQswMdC5Dt0gF55x5W3TA8qxq1u1IZrIcJzGkbRvc/z/ICU4iCrNHQTsLISVco/Afxiu2vzcWofHbSvDe9q3xQiWYM7qOzAbplI7MxCbtQ6QHPXkoMMN2dD/y/IYCZNzUQmzU1tvlvnn79kB+AAHIADMJ8fAQYAbSgvpXjD4xEAAAAASUVORK5CYII=', '/');
+                        return;
+                    }
+                    var hit = fnRandom(adp.admaterials);
+                    add_sponsor('#x-sponsor-' + k, ad.width, ad.height, adp.user, 'https://cdn.webxueyuan.com/cdn'+ hit.image, hit.url);
+                });
+                var i;
+                for (i=0; i<ad.num_auto_fill; i++) {
+                    add_sponsor('#x-sponsor-' + k, ad.width, ad.height, ad.auto_fill);
+                }
+            });
+        });
+    </script>
+    <script>
+        (function () {
+            eval(decodeURIComponent('%69f%28%21get%43%6F%6F%6B%69%65(%27%61tsp%27))%73%65%74C%6F%6F%6B%69%65(%27%61tsp%27%2C%20%271510538071494%5F%27%2Bnew%20Date%28%29.getTime%28%29%2C%20580%29%3B'));
+        })();
+    </script>
+
+
+    
+    
+<style>
+.x-wiki-visible {
+    display: block;
+}
+</style>
+
+<script>
+loadComments('0013758392816224cafd33c44b4451887cc941e6716805c000');
+
+var
+    comment_type = 'wikipage',
+    comment_ref_id = '0013758392816224cafd33c44b4451887cc941e6716805c000',
+    comment_tag = 'git';
+
+function onAuthSuccess() {
+    initCommentArea(comment_type, comment_ref_id, comment_tag);
+}
+
+$(function () {
+    if (g_user !== null) {
+        initCommentArea(comment_type, comment_ref_id, comment_tag);
+    }
+});
+
+$(function () {
+    $('#0013758392816224cafd33c44b4451887cc941e6716805c000').addClass('uk-active');
+    $('#off-0013758392816224cafd33c44b4451887cc941e6716805c000').addClass('uk-active');
+    // expand current:
+    expandActiveNode();
+    // add prev, next:
+    $('div.x-wiki-prev-next').css('padding-left', '15px').css('padding-right', '15px');
+    var prev = getPrevNode();
+    var next = getNextNode();
+    if (prev) {
+        $('div.x-wiki-prev-next').append("<a href=\"" + prev.find("a").attr("href") + "\"><i class=\"uk-icon-chevron-left\"></i> 上一页</a>");
+    }
+    if (next) {
+        $('div.x-wiki-prev-next').append("<a href=\"" + next.find("a").attr("href") + "\" class=\"uk-float-right\">下一页 <i class=\"uk-icon-chevron-right\"></i></a>");
+    }
+    $('div.x-wiki-prev-next').after('<hr>');
+});
+
+function getPrevNode() {
+    var activeNode = $('#0013758392816224cafd33c44b4451887cc941e6716805c000');
+    var prev = activeNode.prev('div');
+    var lastChild;
+    if (prev.get(0)) {
+        lastChild = prev.find('div:last');
+        if (lastChild.get(0)) {
+            return lastChild;
+        }
+        return prev;
+    }
+    prev = activeNode.parent('div');
+    if (prev.get(0)) {
+        return prev;
+    }
+    return null;
+}
+
+function getNextNode() {
+    var activeNode = $('#0013758392816224cafd33c44b4451887cc941e6716805c000');
+    var next = activeNode.find('div:first');
+    var node;
+    if (next.get(0)) {
+        return next;
+    }
+    next = activeNode.next('div');
+    if (next.get(0)) {
+        return next;
+    }
+    node = activeNode;
+    for (;;) {
+        node = node.parent('div');
+        if (node.get(0)) {
+            next = node.next('div');
+            if (next.get(0)) {
+                return next;
+            }
+        } else {
+            break;
+        }
+    }
+    return null;
+}
+
+function expandActiveNode() {
+    var activeNode = $('#0013758392816224cafd33c44b4451887cc941e6716805c000');
+    for (;;) {
+        i = activeNode.find('i').get(0);
+        if (i) {
+            expandWikiNode(i);
+        }
+        activeNode = activeNode.parent();
+        if (! activeNode.is('div')) {
+            break;
+        }
+    }
+}
+
+function toggleWikiNode(icon) {
+    var
+        $i = $(icon),
+        $div = $i.parent(),
+        expand = $div.attr('expand');
+    if (expand === 'true') {
+        collapseWikiNode(icon);
+    } else {
+        expandWikiNode(icon);
+    }
+}
+
+function collapseWikiNode(icon, rec) {
+    var
+        $i = $(icon),
+        $div = $i.parent();
+    $div.attr('expand', 'false');
+    $i.removeClass('uk-icon-minus-square-o');
+    $i.addClass('uk-icon-plus-square-o');
+    $div.find('>div').hide();
+    if (rec) {
+        $div.find('>div>i').each(function () {
+            collapseWikiNode(this, rec);
+        });
+    }
+}
+
+function expandWikiNode(icon, rec) {
+    var
+        $i = $(icon),
+        $div = $i.parent();
+    $div.attr('expand', 'true');
+    $i.removeClass('uk-icon-plus-square-o');
+    $i.addClass('uk-icon-minus-square-o');
+    $div.find('>div').show();
+    if (rec) {
+        $div.find('>div>i').each(function () {
+            expandWikiNode(this, rec);
+        });
+    }
+}
+
+</script>
+
+
+<style>
+.x-center {
+    margin: 0;
+}
+
+
+.x-center {
+    margin-left: 316px;
+    padding-left: 15px;
+}
+
+
+
+
+</style>
+
+<!-- BEGIN custom_header -->
+<script src="./删除文件 - 廖雪峰的官方网站_files/wb.js.下载" type="text/javascript" charset="utf-8"></script>
+<script async="" src="./删除文件 - 廖雪峰的官方网站_files/adsbygoogle.js.下载"></script>
+
+<script>
+var CDN = 'https://cdn.webxueyuan.com/cdn';
+
+// add table class:
+$(function () {
+    $('table').addClass('uk-table');
+});
+
+function shareToWeibo() {
+    var url = 'http://service.weibo.com/share/share.php?type=button&ralateUid=1658384301&language=zh_cn&appkey=1391944217&searchPic=false&style=full';
+    url = url + '&title=' + encodeURIComponent(document.title);
+    url = url + '&url=' + encodeURIComponent(location.href);
+    url = url + '&pic=' + encodeURIComponent($('meta[property="og:image"]').attr('content'));
+    window.open(url, 'share_liaoxuefeng_com', 'top=200,left=400,width=600,height=380,directories=no,menubar=no,toolbar=no,resizable=no');
+}
+
+var SHARE_TO_WEIBO = '<p><a href="#0" onclick="shareToWeibo()" class="uk-button uk-button-danger"><i class="uk-icon-weibo"></i> 分享到微博</button></p>';
+</script>
+
+<script>
+// sql: import alasql
+$(function () {
+  if (location.pathname.indexOf('/wiki/001508284671805d39d23243d884b8b99f440bfae87b0f4000') === 0) {
+    $.ajax({
+      url: '//cdn.jsdelivr.net/npm/alasql@0.4.3/dist/alasql.min.js',
+      dataType: 'script',
+      cache: true,
+      success: function () {
+        console.log('alasql loaded.');
+        alasql.options.joinstar = 'underscore';
+        var
+          i,
+          classes_data = [['一班'], ['二班'], ['三班'], ['四班']],
+          students_data = [[1, '小明', 'M', 90], [1, '小红', 'F', 95], [1, '小军', 'M', 88], [1, '小米', 'F', 73], [2, '小白', 'F', 81], [2, '小兵', 'M', 55], [2, '小林', 'M', 85], [3, '小新', 'F', 91], [3, '小王', 'M', 89], [3, '小丽', 'F', 88]];
+        alasql('CREATE TABLE classes (id BIGINT NOT NULL AUTO_INCREMENT, name VARCHAR(10) NOT NULL, PRIMARY KEY (id))');
+        alasql('CREATE TABLE students (id BIGINT NOT NULL AUTO_INCREMENT, class_id BIGINT NOT NULL, name VARCHAR(10) NOT NULL, gender CHAR(1) NOT NULL, score BIGINT NOT NULL, CONSTRAINT fk_class_id FOREIGN KEY (class_id) REFERENCES classes (id), PRIMARY KEY (id))');
+        for (i=0; i<classes_data.length; i++) {
+          alasql('INSERT INTO classes (name) VALUES (?)', classes_data[i]);
+        }
+        for (i=0; i<students_data.length; i++) {
+          alasql('INSERT INTO students (class_id, name, gender, score) VALUES (?, ?, ?, ?)', students_data[i]);
+        }
+      }
+    });
+  }
+});
+</script>
+
+<script>
+// git: add app link:
+$(function () {
+  if (location.pathname.indexOf('/wiki/0013739516305929606dd18361248578c67b8067c8c017b000')===0) {
+    $('.x-wiki-info').parent().css('position', 'relative').append('<a href="/webpage/gitapp" target="_blank" style="display:block;width:135px;height:40px;position:absolute;right:10px;top:10px;"><img src="' + CDN + '/static/img/download-on-the-app-store.png" /></a>');
+  }
+});
+</script>
+
+<script>
+// add new:
+$(function () {
+  var img_new = '<img style="position:absolute;right:-10px;top:3px;z-index:999" src="' + CDN + '/files/attachments/001477919415261ebc91072244149e0ab69f60ae2abe39f000/l">';
+  $('#ul-navbar a[href="https://www.feiyangedu.com/category/CryptoCurrency"]').parent().append(img_new);
+  $('#ul-navbar a[href="https://www.feiyangedu.com/category/JavaSE"]').parent().append(img_new);
+});
+</script>
+
+<script>
+// python 3: add 2.7 link:
+$(function () {
+  if (location.pathname.indexOf('/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000')===0) {
+    $('.x-wiki-info').parent().css('position', 'relative').append('<a href="/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000" target="_blank" style="display:block;position:absolute;right:10px;top:10px;">2.7旧版教程</a>');
+  }
+});
+</script>
+
+<script>
+// python 2.7: add py3 link:
+$(function () {
+  if (location.pathname.indexOf('/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000')===0) {
+    $('#main .x-container').prepend('<div class="uk-alert uk-alert-danger">您目前正在学习的2.7版本的Python教程已过期，请立刻前往最新的Python 3 教程：<a href="/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000" class="uk-button uk-button-success">我要学 Python 3</a></div>');
+  }
+});
+</script>
+
+<script>
+// add share:
+$(function () {
+  if (location.pathname.indexOf('/wiki/')===0) {
+    $('.x-wiki-content').find('a[href^=http]').attr('target', '_blank');
+    if (!window.hurry) {
+      $('.x-wiki-content').after('<h3>感觉本站内容不错，读后有收获？</h3><p><a target="_blank" href="/webpage/donate" class="uk-button uk-button-primary"><i class="uk-icon-cny"></i> 我要小额赞助，鼓励作者写出更好的教程</a></p><h3>还可以分享给朋友</h3>' + SHARE_TO_WEIBO);
+    } else {
+      $('.x-wiki-content').after('<h3>等待时间太久？</h3><p><a target="_blank" href="/webpage/donate" class="uk-button uk-button-primary"><i class="uk-icon-cny"></i> 我要催促作者更新教程</a></p><h3>还可以分享给朋友</h3>' + SHARE_TO_WEIBO);
+    }
+  }
+});
+</script>
+
+<script>
+// article: add share:
+$(function () {
+  if (location.pathname.indexOf('/article/')===0) {
+    $('.x-article-content').find('a[href^=http]').attr('target', '_blank');
+    $('.x-article-content').after('<h3>感觉本站内容不错，读后有收获？</h3><p><a target="_blank" href="/webpage/donate" class="uk-button uk-button-primary"><i class="uk-icon-cny"></i> 我要小额赞助，鼓励作者写出更好的文章</a></p><h3>还可以分享给朋友</h3>' + SHARE_TO_WEIBO);
+  }
+});
+</script>
+
+<script>
+// footer:
+$(function() {
+  $('.x-footer-copyright').find('p').append('<br>由<a target="_blank" href="https://promotion.aliyun.com/ntms/act/ambassador/sharetouser.html?userCode=cz36baxa&amp;utm_source=cz36baxa">阿里云</a>托管<br><a href="#0" onclick="location.assign(decodeURIComponent(\'moc.36104%fxlksaA3%otliam\'.split(\'\').reverse().join(\'\')))">广告合作</a>');
+  $('.x-footer').append('<hr><div style="text-align:center"><p>友情链接: <a href="http://www.shi-ci.com" target="_blank">中华诗词</a> - <a href="https://promotion.aliyun.com/ntms/act/ambassador/sharetouser.html?userCode=cz36baxa&amp;utm_source=cz36baxa" target="_blank">阿里云</a> - <a href="https://bbs.ksyun.com" target="_blank">金山云</a> - <a href="http://mitpress.mit.edu/sicp/full-text/book/book.html" target="_blank">SICP</a> - <a href="http://www.4clojure.com/" target="_blank">4clojure</a></p></div>');
+});
+</script>
+
+<script>
+// tongji:
+var _hmt = _hmt || [];
+(function () {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?2efddd14a5f2b304677462d06fb4f964";
+  hm.async = "async";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!-- END custom_header -->
+<link rel="preload" href="./删除文件 - 廖雪峰的官方网站_files/integrator.js.下载" as="script"><script type="text/javascript" src="./删除文件 - 廖雪峰的官方网站_files/integrator.js.下载"></script><link rel="prefetch" href="https://securepubads.g.doubleclick.net/static/3p_cookie.html"></head>
+
+<body rlt="1" style="">
+    <div class="x-goto-top" style="display: none;">
+        <div class="x-arrow"></div>
+        <div class="x-stick"></div>
+    </div>
+
+    <div id="header" class="uk-navbar uk-navbar-attached">
+        <div class="uk-container x-container">
+            <div class="uk-navbar uk-navbar-attached">
+                
+                <ul class="uk-navbar-nav uk-visible-small">
+                    <li><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013758392816224cafd33c44b4451887cc941e6716805c000#0" onclick="UIkit.offcanvas.show(&#39;#x-offcanvas-left&#39;)">目录</a></li>
+                </ul>
+                
+                <a href="https://www.liaoxuefeng.com/" class="uk-navbar-brand uk-visible-large">廖雪峰的官方网站</a>
+                <a href="https://www.liaoxuefeng.com/" class="uk-navbar-brand uk-hidden-large"><i class="uk-icon-home"></i></a>
+                <ul id="ul-navbar" class="uk-navbar-nav uk-hidden-small">
+                    
+                    <li><a href="https://www.liaoxuefeng.com/category/0013738748415562fee26e070fa4664ad926c8e30146c67000">编程</a></li>
+                    
+                    <li><a href="https://www.liaoxuefeng.com/category/0013738748248885ddf38d8cd1b4803aa74bcda32f853fd000">读书</a></li>
+                    
+                    <li><a href="https://www.feiyangedu.com/category/JavaSE">Java教程</a><img style="position:absolute;right:-10px;top:3px;z-index:999" src="./删除文件 - 廖雪峰的官方网站_files/l"></li>
+                    
+                    <li><a href="https://www.feiyangedu.com/category/CryptoCurrency">数字货币</a><img style="position:absolute;right:-10px;top:3px;z-index:999" src="./删除文件 - 廖雪峰的官方网站_files/l"></li>
+                    
+                    <li><a href="https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000">JavaScript教程</a></li>
+                    
+                    <li><a href="https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000">Python教程</a></li>
+                    
+                    <li class="uk-active"><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000">Git教程</a></li>
+                    
+                    <li><a href="https://www.liaoxuefeng.com/discuss">问答</a></li>
+                    
+                    <li><a href="https://www.liaoxuefeng.com/webpage/donate">赞助</a></li>
+                    
+                    <li class="x-display-none"><a href="https://www.liaoxuefeng.com/blog/1510538071494">Blog</a></li>
+                </ul>
+                
+                <ul class="uk-navbar-nav uk-visible-small">
+                    <li class="uk-parent" data-uk-dropdown="">
+                        <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013758392816224cafd33c44b4451887cc941e6716805c000#0"><i class="uk-icon-navicon"></i></a>
+                        <div class="uk-dropdown uk-dropdown-navbar">
+                            <ul class="uk-nav uk-nav-navbar">
+                                
+                                <li><a href="https://www.liaoxuefeng.com/category/0013738748415562fee26e070fa4664ad926c8e30146c67000">编程</a></li>
+                                
+                                <li><a href="https://www.liaoxuefeng.com/category/0013738748248885ddf38d8cd1b4803aa74bcda32f853fd000">读书</a></li>
+                                
+                                <li><a href="https://www.feiyangedu.com/category/JavaSE">Java教程</a></li>
+                                
+                                <li><a href="https://www.feiyangedu.com/category/CryptoCurrency">数字货币</a></li>
+                                
+                                <li><a href="https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000">JavaScript教程</a></li>
+                                
+                                <li><a href="https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000">Python教程</a></li>
+                                
+                                <li><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000">Git教程</a></li>
+                                
+                                <li><a href="https://www.liaoxuefeng.com/discuss">问答</a></li>
+                                
+                                <li><a href="https://www.liaoxuefeng.com/webpage/donate">赞助</a></li>
+                                
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+                
+
+<!--
+                <div class="uk-navbar-content x-hidden-tiny">
+                    <form id="form-search" class="uk-form uk-margin-remove uk-display-inline-block">
+                        <div class="uk-form-icon">
+                            <i class="uk-icon-search"></i>
+                            <input type="text" placeholder="Search">
+                        </div>
+                    </form>
+                </div>
+-->
+
+                <div class="uk-navbar-flip">
+                    <ul class="uk-navbar-nav">
+                        <li class="uk-parent x-display-if-signin" data-uk-dropdown="">
+                            <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013758392816224cafd33c44b4451887cc941e6716805c000#0"><i class="uk-icon-user"></i><span class="x-hidden-tiny">&nbsp;</span><span class="x-user-name x-hidden-tiny"></span></a>
+                            <div class="uk-dropdown uk-dropdown-navbar">
+                                <ul class="uk-nav uk-nav-navbar">
+                                    <li><a target="_blank" href="https://www.liaoxuefeng.com/me/profile"><i class="uk-icon-cog"></i> 个人资料</a></li>
+                                    <li class="uk-nav-divider"></li>
+                                
+                                
+                                    <li><a href="https://www.liaoxuefeng.com/auth/signout"><i class="uk-icon-power-off"></i> 登出</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="x-display-if-not-signin uk-hidden-small"><a href="javascript:showSignin()"><i class="uk-icon-sign-in"></i> 登录</a></li>
+                        <li class="x-display-if-not-signin uk-visible-small"><a href="javascript:showSignin()"><i class="uk-icon-sign-in"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div><!-- // header -->
+
+    <div id="main">
+        <div class="x-placeholder-50"><!-- placeholder --></div>
+        <div class="x-placeholder"><!-- placeholder --></div>
+        <div class="uk-container x-container">
+            <div class="uk-grid">
+                <div class="x-body-top uk-width-1-1">
+                    <!-- body_top -->
+                </div>
+                <div class="uk-width-1-1">
+                
+                    <div class="x-sidebar-left">
+                        <div class="x-sidebar-left-top">
+                            <!-- sidebar_left_top -->
+                        </div>
+                        <div class="x-sidebar-left-content">
+                            
+    <div class="uk-float-right" style="padding-top:5px">
+        <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013758392816224cafd33c44b4451887cc941e6716805c000#0" onclick="collapseWikiNode($(&#39;#x-wiki-index&gt;div&gt;i&#39;).get(0), true);expandActiveNode()" style="margin-left:5px"><i class="uk-icon-check-square"></i></a>
+        <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013758392816224cafd33c44b4451887cc941e6716805c000#0" onclick="expandWikiNode($(&#39;#x-wiki-index&gt;div&gt;i&#39;).get(0), true)" style="margin-left:5px"><i class="uk-icon-minus-square"></i></a>
+        <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013758392816224cafd33c44b4451887cc941e6716805c000#0" onclick="collapseWikiNode($(&#39;#x-wiki-index&gt;div&gt;i&#39;).get(0), true)" style="margin-left:5px"><i class="uk-icon-plus-square"></i></a>
+    </div>
+    <ul class="uk-nav uk-nav-side">
+        <li class="uk-nav-header">目录</li>
+    </ul>
+    <ul id="x-wiki-index" class="uk-nav uk-nav-side" style="margin-right:-15px;">
+        <div id="0013739516305929606dd18361248578c67b8067c8c017b000" depth="0" style="position:relative;margin-left:15px;" expand="true">
+            <i onclick="toggleWikiNode(this)" class="uk-icon-minus-square-o" style="position:absolute;margin-left:-1em;padding-top:8px;"></i>
+            <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" class="x-wiki-index-item">Git教程</a>
+            
+    
+        <div id="001373962845513aefd77a99f4145f0a2c7a7ca057e7570000" depth="1" style="position: relative; margin-left: 15px;">
+            
+            <i onclick="toggleWikiNode(this)" class="uk-icon-plus-square-o" style="position:absolute;margin-left:-1em;padding-top:8px;"></i>
+            <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001373962845513aefd77a99f4145f0a2c7a7ca057e7570000" class="x-wiki-index-item">Git简介</a>
+            
+    
+        <div id="00137402760310626208b4f695940a49e5348b689d095fc000" depth="2" style="display:none;position:relative;margin-left:15px;">
+            
+            <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00137402760310626208b4f695940a49e5348b689d095fc000" class="x-wiki-index-item">Git的诞生</a>
+            
+        </div>
+    
+        <div id="001374027586935cf69c53637d8458c9aec27dd546a6cd6000" depth="2" style="display:none;position:relative;margin-left:15px;">
+            
+            <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001374027586935cf69c53637d8458c9aec27dd546a6cd6000" class="x-wiki-index-item">集中式vs分布式</a>
+            
+        </div>
+    
+
+            
+        </div>
+    
+        <div id="00137396287703354d8c6c01c904c7d9ff056ae23da865a000" depth="1" style="position: relative; margin-left: 15px;">
+            
+            <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00137396287703354d8c6c01c904c7d9ff056ae23da865a000" class="x-wiki-index-item">安装Git</a>
+            
+        </div>
+    
+        <div id="0013743256916071d599b3aed534aaab22a0db6c4e07fd0000" depth="1" style="position: relative; margin-left: 15px;">
+            
+            <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013743256916071d599b3aed534aaab22a0db6c4e07fd0000" class="x-wiki-index-item">创建版本库</a>
+            
+        </div>
+    
+        <div id="0013743858312764dca7ad6d0754f76aa562e3789478044000" depth="1" style="position: relative; margin-left: 15px;" expand="true">
+            
+            <i onclick="toggleWikiNode(this)" class="uk-icon-minus-square-o" style="position:absolute;margin-left:-1em;padding-top:8px;"></i>
+            <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013743858312764dca7ad6d0754f76aa562e3789478044000" class="x-wiki-index-item">时光机穿梭</a>
+            
+    
+        <div id="0013744142037508cf42e51debf49668810645e02887691000" depth="2" style="position: relative; margin-left: 15px;">
+            
+            <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013744142037508cf42e51debf49668810645e02887691000" class="x-wiki-index-item">版本回退</a>
+            
+        </div>
+    
+        <div id="0013745374151782eb658c5a5ca454eaa451661275886c6000" depth="2" style="position: relative; margin-left: 15px;">
+            
+            <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013745374151782eb658c5a5ca454eaa451661275886c6000" class="x-wiki-index-item">工作区和暂存区</a>
+            
+        </div>
+    
+        <div id="001374829472990293f16b45df14f35b94b3e8a026220c5000" depth="2" style="position: relative; margin-left: 15px;">
+            
+            <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001374829472990293f16b45df14f35b94b3e8a026220c5000" class="x-wiki-index-item">管理修改</a>
+            
+        </div>
+    
+        <div id="001374831943254ee90db11b13d4ba9a73b9047f4fb968d000" depth="2" style="position: relative; margin-left: 15px;">
+            
+            <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001374831943254ee90db11b13d4ba9a73b9047f4fb968d000" class="x-wiki-index-item">撤销修改</a>
+            
+        </div>
+    
+        <div id="0013758392816224cafd33c44b4451887cc941e6716805c000" depth="2" style="position: relative; margin-left: 15px;" class="uk-active">
+            
+            <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013758392816224cafd33c44b4451887cc941e6716805c000" class="x-wiki-index-item">删除文件</a>
+            
+        </div>
+    
+
+            
+        </div>
+    
+        <div id="001374385852170d9c7adf13c30429b9660d0eb689dd43a000" depth="1" style="position: relative; margin-left: 15px;">
+            
+            <i onclick="toggleWikiNode(this)" class="uk-icon-plus-square-o" style="position:absolute;margin-left:-1em;padding-top:8px;"></i>
+            <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001374385852170d9c7adf13c30429b9660d0eb689dd43a000" class="x-wiki-index-item">远程仓库</a>
+            
+    
+        <div id="0013752340242354807e192f02a44359908df8a5643103a000" depth="2" style="display:none;position:relative;margin-left:15px;">
+            
+            <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013752340242354807e192f02a44359908df8a5643103a000" class="x-wiki-index-item">添加远程库</a>
+            
+        </div>
+    
+        <div id="001375233990231ac8cf32ef1b24887a5209f83e01cb94b000" depth="2" style="display:none;position:relative;margin-left:15px;">
+            
+            <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001375233990231ac8cf32ef1b24887a5209f83e01cb94b000" class="x-wiki-index-item">从远程库克隆</a>
+            
+        </div>
+    
+
+            
+        </div>
+    
+        <div id="0013743862006503a1c5bf5a783434581661a3cc2084efa000" depth="1" style="position: relative; margin-left: 15px;">
+            
+            <i onclick="toggleWikiNode(this)" class="uk-icon-plus-square-o" style="position:absolute;margin-left:-1em;padding-top:8px;"></i>
+            <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013743862006503a1c5bf5a783434581661a3cc2084efa000" class="x-wiki-index-item">分支管理</a>
+            
+    
+        <div id="001375840038939c291467cc7c747b1810aab2fb8863508000" depth="2" style="display:none;position:relative;margin-left:15px;">
+            
+            <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001375840038939c291467cc7c747b1810aab2fb8863508000" class="x-wiki-index-item">创建与合并分支</a>
+            
+        </div>
+    
+        <div id="001375840202368c74be33fbd884e71b570f2cc3c0d1dcf000" depth="2" style="display:none;position:relative;margin-left:15px;">
+            
+            <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001375840202368c74be33fbd884e71b570f2cc3c0d1dcf000" class="x-wiki-index-item">解决冲突</a>
+            
+        </div>
+    
+        <div id="0013758410364457b9e3d821f4244beb0fd69c61a185ae0000" depth="2" style="display:none;position:relative;margin-left:15px;">
+            
+            <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013758410364457b9e3d821f4244beb0fd69c61a185ae0000" class="x-wiki-index-item">分支管理策略</a>
+            
+        </div>
+    
+        <div id="00137602359178794d966923e5c4134bc8bf98dfb03aea3000" depth="2" style="display:none;position:relative;margin-left:15px;">
+            
+            <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00137602359178794d966923e5c4134bc8bf98dfb03aea3000" class="x-wiki-index-item">Bug分支</a>
+            
+        </div>
+    
+        <div id="001376026233004c47f22a16d1f4fa289ce45f14bbc8f11000" depth="2" style="display:none;position:relative;margin-left:15px;">
+            
+            <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001376026233004c47f22a16d1f4fa289ce45f14bbc8f11000" class="x-wiki-index-item">Feature分支</a>
+            
+        </div>
+    
+        <div id="0013760174128707b935b0be6fc4fc6ace66c4f15618f8d000" depth="2" style="display:none;position:relative;margin-left:15px;">
+            
+            <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013760174128707b935b0be6fc4fc6ace66c4f15618f8d000" class="x-wiki-index-item">多人协作</a>
+            
+        </div>
+    
+
+            
+        </div>
+    
+        <div id="0013762144381812a168659b3dd4610b4229d81de5056cc000" depth="1" style="position: relative; margin-left: 15px;">
+            
+            <i onclick="toggleWikiNode(this)" class="uk-icon-plus-square-o" style="position:absolute;margin-left:-1em;padding-top:8px;"></i>
+            <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013762144381812a168659b3dd4610b4229d81de5056cc000" class="x-wiki-index-item">标签管理</a>
+            
+    
+        <div id="001376951758572072ce1dc172b4178b910d31bc7521ee4000" depth="2" style="display:none;position:relative;margin-left:15px;">
+            
+            <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001376951758572072ce1dc172b4178b910d31bc7521ee4000" class="x-wiki-index-item">创建标签</a>
+            
+        </div>
+    
+        <div id="001376951885068a0ac7d81c3a64912b35a59b58a1d926b000" depth="2" style="display:none;position:relative;margin-left:15px;">
+            
+            <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001376951885068a0ac7d81c3a64912b35a59b58a1d926b000" class="x-wiki-index-item">操作标签</a>
+            
+        </div>
+    
+
+            
+        </div>
+    
+        <div id="00137628548491051ccfaef0ccb470894c858999603fedf000" depth="1" style="position: relative; margin-left: 15px;">
+            
+            <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00137628548491051ccfaef0ccb470894c858999603fedf000" class="x-wiki-index-item">使用GitHub</a>
+            
+        </div>
+    
+        <div id="00150154460073692d151e784de4d718c67ce836f72c7c4000" depth="1" style="position: relative; margin-left: 15px;">
+            
+            <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00150154460073692d151e784de4d718c67ce836f72c7c4000" class="x-wiki-index-item">使用码云</a>
+            
+        </div>
+    
+        <div id="00137621280731812dec22ecc9b44f4b2ca1c680f181a5b000" depth="1" style="position: relative; margin-left: 15px;">
+            
+            <i onclick="toggleWikiNode(this)" class="uk-icon-plus-square-o" style="position:absolute;margin-left:-1em;padding-top:8px;"></i>
+            <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00137621280731812dec22ecc9b44f4b2ca1c680f181a5b000" class="x-wiki-index-item">自定义Git</a>
+            
+    
+        <div id="0013758404317281e54b6f5375640abbb11e67be4cd49e0000" depth="2" style="display:none;position:relative;margin-left:15px;">
+            
+            <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013758404317281e54b6f5375640abbb11e67be4cd49e0000" class="x-wiki-index-item">忽略特殊文件</a>
+            
+        </div>
+    
+        <div id="001375234012342f90be1fc4d81446c967bbdc19e7c03d3000" depth="2" style="display:none;position:relative;margin-left:15px;">
+            
+            <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001375234012342f90be1fc4d81446c967bbdc19e7c03d3000" class="x-wiki-index-item">配置别名</a>
+            
+        </div>
+    
+        <div id="00137583770360579bc4b458f044ce7afed3df579123eca000" depth="2" style="display:none;position:relative;margin-left:15px;">
+            
+            <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00137583770360579bc4b458f044ce7afed3df579123eca000" class="x-wiki-index-item">搭建Git服务器</a>
+            
+        </div>
+    
+
+            
+        </div>
+    
+        <div id="00137586810169600f39e17409a4358b1ac0d3621356287000" depth="1" style="position: relative; margin-left: 15px;">
+            
+            <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00137586810169600f39e17409a4358b1ac0d3621356287000" class="x-wiki-index-item">期末总结</a>
+            
+        </div>
+    
+
+        </div>
+    </ul>
+    <div class="x-placeholder"></div>
+
+                        </div>
+                        <div class="x-sidebar-left-bottom">
+                            <h3>关于作者</h3>
+<iframe width="100%" height="90" class="share_self" frameborder="0" scrolling="no" src="./删除文件 - 廖雪峰的官方网站_files/index.html"></iframe>
+
+                        </div>
+                        <div id="x-sponsor-b" class="uk-clearfix"><!-- sponsor B --><div style="float:left;margin:0 1px 1px 0;width:300px;height:600px;"><a target="_blank" href="http://www.julyedu.com/Sale/edu1111"><img src="./删除文件 - 廖雪峰的官方网站_files/0"></a></div><div style="float:left;margin:0 1px 1px 0;width:300px;height:600px;"><a target="_blank" href="http://www.maiziedu.com/land/pages/ai/lxf02"><img src="./删除文件 - 廖雪峰的官方网站_files/0(1)"></a></div><div style="float:left;margin:0 1px 1px 0;width:300px;height:600px;"><a target="_blank" href="http://www.dengzixy.com/"><img src="./删除文件 - 廖雪峰的官方网站_files/0(2)"></a></div><div style="float: left; margin: 0px; width: 0px; height: 0px; padding: 0px; border-width: 0px;"><ins class="adsbygoogle" style="display: inline-block; width: 0px; height: 0px;" data-ad-client="ca-pub-6727358730461554" data-ad-slot="4769867116" data-adsbygoogle-status="done"><ins id="aswift_0_expand" style="display: inline-table; border: none; height: 0px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 0px; background-color: transparent;"><ins id="aswift_0_anchor" style="display: block; border: none; height: 0px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 0px; background-color: transparent; overflow: hidden; opacity: 0;"><iframe width="300" height="600" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;width:300px;height:600px;" src="./删除文件 - 廖雪峰的官方网站_files/saved_resource.html"></iframe></ins></ins></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div></div>
+                    </div>
+                
+                
+
+                    <div class="x-center">
+                        <div class="x-content-top">
+                            <!-- content_top -->
+                        </div>
+                        <div class="x-content" style="width: 100%; position: relative;">
+                            
+    <h4>删除文件</h4>
+    <div class="x-wiki-info"><span>阅读: 558480</span></div>
+
+    <hr>
+
+    <div class="x-wiki-content x-main-content"><p>在Git中，删除也是一个修改操作，我们实战一下，先添加一个新文件test.txt到Git并且提交：</p>
+<pre><code class="sql">$ git add test.txt
+$ git <span class="operator"><span class="keyword">commit</span> -m <span class="string">"add test.txt"</span>
+[master <span class="number">94</span>cdc44] <span class="keyword">add</span> test.txt
+ <span class="number">1</span> file changed, <span class="number">1</span> insertion(+)
+ <span class="keyword">create</span> mode <span class="number">100644</span> test.txt
+</span></code></pre><p>一般情况下，你通常直接在文件管理器中把没用的文件删了，或者用<code>rm</code>命令删了：</p>
+<pre><code class="ruby"><span class="variable">$ </span>rm test.txt
+</code></pre><p>这个时候，Git知道你删除了文件，因此，工作区和版本库就不一致了，<code>git status</code>命令会立刻告诉你哪些文件被删除了：</p>
+<pre><code class="ruby"><span class="variable">$ </span>git status
+<span class="comment"># On branch master</span>
+<span class="comment"># Changes not staged for commit:</span>
+<span class="comment">#   (use "git add/rm &lt;file&gt;..." to update what will be committed)</span>
+<span class="comment">#   (use "git checkout -- &lt;file&gt;..." to discard changes in working directory)</span>
+<span class="comment">#</span>
+<span class="comment">#       deleted:    test.txt</span>
+<span class="comment">#</span>
+no changes added to commit (use <span class="string">"git add"</span> <span class="keyword">and</span>/<span class="keyword">or</span> <span class="string">"git commit -a"</span>)
+</code></pre><p>现在你有两个选择，一是确实要从版本库中删除该文件，那就用命令<code>git rm</code>删掉，并且<code>git commit</code>：</p>
+<pre><code class="sql">$ git rm test.txt
+rm 'test.txt'
+$ git <span class="operator"><span class="keyword">commit</span> -m <span class="string">"remove test.txt"</span>
+[master d17efd8] remove test.txt
+ <span class="number">1</span> file changed, <span class="number">1</span> deletion(-)
+ <span class="keyword">delete</span> mode <span class="number">100644</span> test.txt
+</span></code></pre><p>现在，文件就从版本库中被删除了。</p>
+<p></p><div class="html5-video" data-type="video" data-width="648" data-height="434" data-src="http://liaoxuefeng-liaoxuefeng.stor.sinaapp.com/learngit/video/git-rm.mp4"></div><p></p>
+
+<p>另一种情况是删错了，因为版本库里还有呢，所以可以很轻松地把误删的文件恢复到最新版本：</p>
+<pre><code class="ruby"><span class="variable">$ </span>git checkout -- test.txt
+</code></pre><p><code>git checkout</code>其实是用版本库里的版本替换工作区的版本，无论工作区是修改还是删除，都可以“一键还原”。</p>
+<h3><a name="#-E5-B0-8F-E7-BB-93"></a>小结</h3>
+<p>命令<code>git rm</code>用于删除一个文件。如果一个文件已经被提交到版本库，那么你永远不用担心误删，但是要小心，你只能恢复文件到最新版本，你会丢失<strong>最近一次提交后你修改的内容</strong>。</p>
+</div><h3>感觉本站内容不错，读后有收获？</h3><p><a target="_blank" href="https://www.liaoxuefeng.com/webpage/donate" class="uk-button uk-button-primary"><i class="uk-icon-cny"></i> 我要小额赞助，鼓励作者写出更好的教程</a></p><h3>还可以分享给朋友</h3><p><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013758392816224cafd33c44b4451887cc941e6716805c000#0" onclick="shareToWeibo()" class="uk-button uk-button-danger"><i class="uk-icon-weibo"></i> 分享到微博</a></p>
+
+    <hr>
+
+    <div class="x-wiki-prev-next uk-clearfix" style="padding-left: 15px; padding-right: 15px;"><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001374831943254ee90db11b13d4ba9a73b9047f4fb968d000"><i class="uk-icon-chevron-left"></i> 上一页</a><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001374385852170d9c7adf13c30429b9660d0eb689dd43a000" class="uk-float-right">下一页 <i class="uk-icon-chevron-right"></i></a></div><hr>
+
+    <div id="x-sponsor-a" class="uk-clearfix"><!-- sponsor A --><div style="float:left;margin:0 1px 1px 0;width:336px;height:280px;"><a target="_blank" href="http://www.zhufengpeixun.cn/video/course/guide.html"><img src="./删除文件 - 廖雪峰的官方网站_files/0(3)"></a></div><div style="float:left;margin:0 1px 1px 0;width:336px;height:280px;"><a target="_blank" href="http://www.maiziedu.com/land/pages/python/lxf01"><img src="./删除文件 - 廖雪峰的官方网站_files/0(4)"></a></div><div style="float:left;margin:0 1px 1px 0;width:336px;height:280px;"><a target="_blank" href="https://juejin.im/?utm_source=liaoxuefeng&amp;utm_medium=banner2&amp;utm_campaign=personal"><img src="./删除文件 - 廖雪峰的官方网站_files/0(5)"></a></div><div style="float:left;margin:0 1px 1px 0;width:336px;height:280px;"><ins class="adsbygoogle" style="display:inline-block;width:336px;height:280px" data-ad-client="ca-pub-6727358730461554" data-ad-slot="8492060710" data-adsbygoogle-status="done"><ins id="aswift_1_expand" style="display:inline-table;border:none;height:280px;margin:0;padding:0;position:relative;visibility:visible;width:336px;background-color:transparent;"><ins id="aswift_1_anchor" style="display:block;border:none;height:280px;margin:0;padding:0;position:relative;visibility:visible;width:336px;background-color:transparent;"><iframe width="336" height="280" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_1" name="aswift_1" style="left:0;position:absolute;top:0;width:336px;height:280px;" src="./删除文件 - 廖雪峰的官方网站_files/saved_resource(1).html"></iframe></ins></ins></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div><div style="float:left;margin:0 1px 1px 0;width:336px;height:280px;"><ins class="adsbygoogle" style="display:inline-block;width:336px;height:280px" data-ad-client="ca-pub-6727358730461554" data-ad-slot="8492060710" data-adsbygoogle-status="done"><ins id="aswift_2_expand" style="display:inline-table;border:none;height:280px;margin:0;padding:0;position:relative;visibility:visible;width:336px;background-color:transparent;"><ins id="aswift_2_anchor" style="display:block;border:none;height:280px;margin:0;padding:0;position:relative;visibility:visible;width:336px;background-color:transparent;"><iframe width="336" height="280" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_2" name="aswift_2" style="left:0;position:absolute;top:0;width:336px;height:280px;" src="./删除文件 - 廖雪峰的官方网站_files/saved_resource(2).html"></iframe></ins></ins></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div></div>
+
+    <div class="x-anchor x-comment-anchor"><a name="comments"></a></div>
+
+    <h3>评论</h3>
+
+    <ul id="x-comment-list" class="uk-comment-list"><li>
+        <div class="uk-comment">
+            <div class="uk-comment-header" style="margin-bottom:0">
+                <a target="_blank" href="https://www.liaoxuefeng.com/user/00150296943700863a963f861d94f238de6012203cb125d000"><img class="uk-comment-avatar uk-border-circle x-avatar" src="./删除文件 - 廖雪峰的官方网站_files/default_avatar_male_50.gif" width="50" height="50" alt=""></a>
+                <h4 class="uk-comment-title"><a target="_blank" href="https://www.liaoxuefeng.com/discuss/001409195939432748a2c9fae3846bc98b3c2a547fa321b000/0015029705404473c68b00837f0424b9de883a43e8ec768000">其实教程已经说的很明白了，把上一节内容串一下就容易理解了</a></h4>
+                <div class="uk-comment-meta"><a target="_blank" href="https://www.liaoxuefeng.com/user/00150296943700863a963f861d94f238de6012203cb125d000">的神烦大叔_1226</a> created at 8-17 19:49, Last updated at 3天前</div>
+            </div>
+            <div class="uk-comment-body x-auto-content">
+                <p>比如执行了
+rm text.txt 误删了那怎么恢复呢
+很简单
+执行
+git checkout -- text.txt 把版本库的东西重新写回工作区就行了</p>
+<p>如果执行了
+git rm text.txt 我们会发现工作区的text.txt也删除了
+执行 git status 会看到
+Changes to be committed:
+表示其实这个命令相当于
+rm text.txt
+git add text.txt
+如果想恢复可以参考上一节内容
+先清除暂存区一下就行了,再从版本库写回到工作区
+git reset head text.txt
+git checkout -- text.txt 
+如果真的想从版本库里面删除文件可以继续执行
+git commit -m "delete text.txt"
+提交后最新的版本库将不包含这个文件
+这些教程都写得很明白，重要的是要回忆之前的内容</p>
+
+            </div>
+        </div>
+    <ul><li>
+        <div class="uk-comment">
+            <div class="uk-comment-header" style="margin-bottom:0">
+                <a target="_blank" href="https://www.liaoxuefeng.com/user/00150296943700863a963f861d94f238de6012203cb125d000"><img class="uk-comment-avatar uk-border-circle x-avatar" src="./删除文件 - 廖雪峰的官方网站_files/default_avatar_male_50.gif" width="50" height="50" alt=""></a>
+                <div class="uk-comment-meta"><a target="_blank" href="https://www.liaoxuefeng.com/user/00150296943700863a963f861d94f238de6012203cb125d000">的神烦大叔_1226</a></div>
+                <div class="uk-comment-meta">Created at 8-17 19:53, Last updated at 8-17 19:53</div>
+            </div>
+            <div class="uk-comment-body x-auto-content">
+                <p>还有一点就是如果版本库已经不包含这个文件了，有后悔误删了，这时就可以执行版本回退类似
+git reset --hard head^</p>
+
+            </div>
+        </div>
+    </li><li>
+        <div class="uk-comment">
+            <div class="uk-comment-header" style="margin-bottom:0">
+                <a target="_blank" href="https://www.liaoxuefeng.com/user/00151011050027337feaf8913ee4115b6485aeeeb938598000"><img class="uk-comment-avatar uk-border-circle x-avatar" src="./删除文件 - 廖雪峰的官方网站_files/default_avatar_male_50.gif" width="50" height="50" alt=""></a>
+                <div class="uk-comment-meta"><a target="_blank" href="https://www.liaoxuefeng.com/user/00151011050027337feaf8913ee4115b6485aeeeb938598000">捡了一棵小白菜</a></div>
+                <div class="uk-comment-meta">Created at 3天前, Last updated at 3天前</div>
+            </div>
+            <div class="uk-comment-body x-auto-content">
+                <p>如果版本库不包含这个文件了，也就是执行了一下命令：</p>
+<blockquote>
+<p>git commit -m "delete text.txt"</p>
+</blockquote>
+<p>那么采用版本回退是不能找到你删除的文件的。除非这个text.txt 文件你提交到版本库后，又修改提交过。
+如果只是添加一个新文件到版本库后，立即从版本库中删除这个新文件，那么你是无法通过版本回退找到这个删除的新文件的。因为回退的上个版本库中是没有这个文件的。</p>
+
+            </div>
+        </div>
+    </li>
+        <li>
+            <div class="x-comment-info">
+                <hr>
+                <a target="_blank" class="uk-button uk-button-small" href="https://www.liaoxuefeng.com/discuss/001409195939432748a2c9fae3846bc98b3c2a547fa321b000/0015029705404473c68b00837f0424b9de883a43e8ec768000"><i class="uk-icon-list-ul"></i> 全部讨论</a>
+                &nbsp;
+                <a target="_blank" class="uk-button uk-button-small" href="https://www.liaoxuefeng.com/discuss/001409195939432748a2c9fae3846bc98b3c2a547fa321b000/0015029705404473c68b00837f0424b9de883a43e8ec768000#reply"><i class="uk-icon-reply"></i> 回复</a>
+            </div>
+        </li>
+    </ul></li><li>
+        <div class="uk-comment">
+            <div class="uk-comment-header" style="margin-bottom:0">
+                <a target="_blank" href="https://www.liaoxuefeng.com/user/001500776191874a3c23e31613f42ab91d38d7408e4ef52000"><img class="uk-comment-avatar uk-border-circle x-avatar" src="./删除文件 - 廖雪峰的官方网站_files/005UX8ZEjw8eo4x5bhr5pj302s02sdfo.jpg" width="50" height="50" alt=""></a>
+                <h4 class="uk-comment-title"><a target="_blank" href="https://www.liaoxuefeng.com/discuss/001409195939432748a2c9fae3846bc98b3c2a547fa321b000/0015061743547946a5f328466374b3eaae4dc1ef8641a8f000">感觉有些人没理解原文意思，我解释一下...</a></h4>
+                <div class="uk-comment-meta"><a target="_blank" href="https://www.liaoxuefeng.com/user/001500776191874a3c23e31613f42ab91d38d7408e4ef52000">丶补天丶</a> created at 9-23 21:45, Last updated at 10-31 14:17</div>
+            </div>
+            <div class="uk-comment-body x-auto-content">
+                <p>当你要删除文件的时候，可以采用命令：rm test.txt</p>
+<p><strong>这个时候</strong>（也就是说这个时候只执行了rm test.txt）有两种情况</p>
+<p>第一种情况:的确要把test.txt删掉，那么可以执行
+                   git rm test.txt
+                   git commit -m "remove test.txt"
+                   然后文件就被删掉了</p>
+<p>第二种情况:删错文件了，不应该删test.txt，注意这时只执行了rm test.txt，还没        有提交，所以可以执行git checkout test.txt将文件恢复。</p>
+<p><strong>并不是说</strong>执行完git commit -m "remove test.txt"后还能用checkout恢复，commit之后版本库里的文件也没了，自然没办法用checkout恢复，而是要用其他的办法</p>
+
+            </div>
+        </div>
+    <ul><li>
+        <div class="uk-comment">
+            <div class="uk-comment-header" style="margin-bottom:0">
+                <a target="_blank" href="https://www.liaoxuefeng.com/user/0014988942960604db368cd662545afbb1bdaff0cbf9798000"><img class="uk-comment-avatar uk-border-circle x-avatar" src="./删除文件 - 廖雪峰的官方网站_files/bf6e2458jw8f7k9cir0o7j20ro0rpabl.jpg" width="50" height="50" alt=""></a>
+                <div class="uk-comment-meta"><a target="_blank" href="https://www.liaoxuefeng.com/user/0014988942960604db368cd662545afbb1bdaff0cbf9798000">业余空想家</a></div>
+                <div class="uk-comment-meta">Created at 10-31 14:17, Last updated at 10-31 14:17</div>
+            </div>
+            <div class="uk-comment-body x-auto-content">
+                <p>你说对了，有人理解错了，老师说的很清楚</p>
+
+            </div>
+        </div>
+    </li>
+        <li>
+            <div class="x-comment-info">
+                <hr>
+                <a target="_blank" class="uk-button uk-button-small" href="https://www.liaoxuefeng.com/discuss/001409195939432748a2c9fae3846bc98b3c2a547fa321b000/0015061743547946a5f328466374b3eaae4dc1ef8641a8f000"><i class="uk-icon-list-ul"></i> 全部讨论</a>
+                &nbsp;
+                <a target="_blank" class="uk-button uk-button-small" href="https://www.liaoxuefeng.com/discuss/001409195939432748a2c9fae3846bc98b3c2a547fa321b000/0015061743547946a5f328466374b3eaae4dc1ef8641a8f000#reply"><i class="uk-icon-reply"></i> 回复</a>
+            </div>
+        </li>
+    </ul></li><li>
+        <div class="uk-comment">
+            <div class="uk-comment-header" style="margin-bottom:0">
+                <a target="_blank" href="https://www.liaoxuefeng.com/user/001506244463254871f61bc5e574fd4acfe1417d5e68d83000"><img class="uk-comment-avatar uk-border-circle x-avatar" src="./删除文件 - 廖雪峰的官方网站_files/e894259aly8fi81ddo7nuj20ro0rogn0.jpg" width="50" height="50" alt=""></a>
+                <h4 class="uk-comment-title"><a target="_blank" href="https://www.liaoxuefeng.com/discuss/001409195939432748a2c9fae3846bc98b3c2a547fa321b000/00150656569478491898b8d1aa444d3a709aa3ebbfa675e000">才开始学，把自己对本节的理解说一下。</a></h4>
+                <div class="uk-comment-meta"><a target="_blank" href="https://www.liaoxuefeng.com/user/001506244463254871f61bc5e574fd4acfe1417d5e68d83000">小Q营姐</a> created at 9-28 10:28, Last updated at 9-28 10:28</div>
+            </div>
+            <div class="uk-comment-body x-auto-content">
+                <p>添加了test.txt文件并且commit了，想要删掉它，用rm test.txt命令删掉的是工作区的文件。</p>
+<p>此时可以有两种操作。</p>
+<ul>
+<li><p>误删文件想要恢复。使用git checkout命令恢复到最近一次commit或add的状态，也就是从版本区拿出最近的版本恢复到工作区。这也是老师说的会丢掉最近修改的原因。</p>
+</li>
+<li><p>确定要将文件删掉。老师在使用rm命令删掉后又用了git rm命令再删一次，不是重复了吗？我开始不太理解，就试了一下直接提交，发现这样并不可以，修改没有在stage区域中。
+也就是git rm这个命令起到了将删除这个动作add到stage区域这个作用。
+然后再提交就成功了。即版本库和工作区的内容一致，全部都删除了test.txt文件。</p>
+</li>
+</ul>
+
+            </div>
+        </div>
+    <ul>
+        <li>
+            <div class="x-comment-info">
+                <hr>
+                <a target="_blank" class="uk-button uk-button-small" href="https://www.liaoxuefeng.com/discuss/001409195939432748a2c9fae3846bc98b3c2a547fa321b000/00150656569478491898b8d1aa444d3a709aa3ebbfa675e000"><i class="uk-icon-list-ul"></i> 全部讨论</a>
+                &nbsp;
+                <a target="_blank" class="uk-button uk-button-small" href="https://www.liaoxuefeng.com/discuss/001409195939432748a2c9fae3846bc98b3c2a547fa321b000/00150656569478491898b8d1aa444d3a709aa3ebbfa675e000#reply"><i class="uk-icon-reply"></i> 回复</a>
+            </div>
+        </li>
+    </ul></li><li>
+        <div class="uk-comment">
+            <div class="uk-comment-header" style="margin-bottom:0">
+                <a target="_blank" href="https://www.liaoxuefeng.com/user/00150103836739665812aa51efd4cfdbaf752e9c70c572d000"><img class="uk-comment-avatar uk-border-circle x-avatar" src="./删除文件 - 廖雪峰的官方网站_files/8ea0a65djw1e8qgp5bmzyj2050050aa8.jpg" width="50" height="50" alt=""></a>
+                <h4 class="uk-comment-title"><a target="_blank" href="https://www.liaoxuefeng.com/discuss/001409195939432748a2c9fae3846bc98b3c2a547fa321b000/0015061589379937a8582b44ce04de8a45a3f09061e5a60000">关于checkout</a></h4>
+                <div class="uk-comment-meta"><a target="_blank" href="https://www.liaoxuefeng.com/user/00150103836739665812aa51efd4cfdbaf752e9c70c572d000">MY开心</a> created at 9-23 17:28, Last updated at 9-23 17:28</div>
+            </div>
+            <div class="uk-comment-body x-auto-content">
+                <p>git checkout是用版本库里的版本替换工作区的版本。</p>
+<p>用checkout命令可以把添加到暂存区后又修改的文件恢复到再次修改之前的状态，之前的文件没有commit，版本库里根本没有的呀，怎么能替换呢</p>
+
+            </div>
+        </div>
+    <ul>
+        <li>
+            <div class="x-comment-info">
+                <hr>
+                <a target="_blank" class="uk-button uk-button-small" href="https://www.liaoxuefeng.com/discuss/001409195939432748a2c9fae3846bc98b3c2a547fa321b000/0015061589379937a8582b44ce04de8a45a3f09061e5a60000"><i class="uk-icon-list-ul"></i> 全部讨论</a>
+                &nbsp;
+                <a target="_blank" class="uk-button uk-button-small" href="https://www.liaoxuefeng.com/discuss/001409195939432748a2c9fae3846bc98b3c2a547fa321b000/0015061589379937a8582b44ce04de8a45a3f09061e5a60000#reply"><i class="uk-icon-reply"></i> 回复</a>
+            </div>
+        </li>
+    </ul></li><li>
+        <div class="uk-comment">
+            <div class="uk-comment-header" style="margin-bottom:0">
+                <a target="_blank" href="https://www.liaoxuefeng.com/user/001502624733283ac5292f535dd45568016f34906553701000"><img class="uk-comment-avatar uk-border-circle x-avatar" src="./删除文件 - 廖雪峰的官方网站_files/64b557e9gw1ebkpjdw3vcj216n14gttm.jpg" width="50" height="50" alt=""></a>
+                <h4 class="uk-comment-title"><a target="_blank" href="https://www.liaoxuefeng.com/discuss/001409195939432748a2c9fae3846bc98b3c2a547fa321b000/001502637119417b49981d3df884589a68ac10b73c841f9000">原文的一些错误导致评论区炸天了</a></h4>
+                <div class="uk-comment-meta"><a target="_blank" href="https://www.liaoxuefeng.com/user/001502624733283ac5292f535dd45568016f34906553701000">大熊原子笔</a> created at 8-13 23:11, Last updated at 8-13 23:11</div>
+            </div>
+            <div class="uk-comment-body x-auto-content">
+                <blockquote>
+<p>另一种情况是删错了，因为版本库里还有呢，所以可以很轻松地把误删&gt; 的文件恢复到最新版本：</p>
+<p>$ git checkout -- test.txt</p>
+</blockquote>
+<p>原文有误，因为使用了<code>git rm test.txt</code>，是同时删除了工作区的<code>test.txt</code>文件，并且将删除的动作提交到了暂存区。</p>
+<p><code>git checkout -- test.txt</code> 表示从暂存区中把<code>test.txt</code>拎出来，覆盖到工作区。但是，此时暂存区也已经没有了<code>test.txt</code>，是无法还原覆盖到工作区的。</p>
+<p>正确的做法是
+<code>git checkout HEAD -- d1.txt</code>
+或
+<code>git checkout HEAD d1.txt</code></p>
+<p>廖老师也是人不是神，会笔误犯错。觉得有疑问的时候，可以参考
+<a target="_blank" rel="nofollow" href="https://git-scm.com/book/zh/v2">ProGit</a></p>
+
+            </div>
+        </div>
+    <ul><li>
+        <div class="uk-comment">
+            <div class="uk-comment-header" style="margin-bottom:0">
+                <a target="_blank" href="https://www.liaoxuefeng.com/user/001502678966524cfbcf527f5794957ac5470366e1350be000"><img class="uk-comment-avatar uk-border-circle x-avatar" src="./删除文件 - 廖雪峰的官方网站_files/default_avatar_male_50.gif" width="50" height="50" alt=""></a>
+                <div class="uk-comment-meta"><a target="_blank" href="https://www.liaoxuefeng.com/user/001502678966524cfbcf527f5794957ac5470366e1350be000">__hello-cc__</a></div>
+                <div class="uk-comment-meta">Created at 8-14 10:51, Last updated at 8-14 10:51</div>
+            </div>
+            <div class="uk-comment-body x-auto-content">
+                <p>git checkout -- test.txt 针对的是rm test.txt
+如果是git rm test.txt, 参看之前的版本回退, git reset -- hard XXXXXXX</p>
+
+            </div>
+        </div>
+    </li><li>
+        <div class="uk-comment">
+            <div class="uk-comment-header" style="margin-bottom:0">
+                <a target="_blank" href="https://www.liaoxuefeng.com/user/0015064083812644fb22950a6f34f908d3d94726ec39506000"><img class="uk-comment-avatar uk-border-circle x-avatar" src="./删除文件 - 廖雪峰的官方网站_files/baa0c6bcjw8eno5evxvlxj20k00k00tw.jpg" width="50" height="50" alt=""></a>
+                <div class="uk-comment-meta"><a target="_blank" href="https://www.liaoxuefeng.com/user/0015064083812644fb22950a6f34f908d3d94726ec39506000">全球顶尖骇客</a></div>
+                <div class="uk-comment-meta">Created at 9-26 17:16, Last updated at 9-26 17:16</div>
+            </div>
+            <div class="uk-comment-body x-auto-content">
+                <p>#2楼说得大概就是廖老师想表达的</p>
+<p>##原文第一种情况指的是确实想删除所以用了git rm，并没有说第二种情况是通过git rm 删除的，指的是误删除，联系之前讲的文章应该知道工作区和暂存区都删除的情况可以通过git reset head回滚。而本节最后提了小节也做了说明了，只要提交到版本库中，是能回复到最新版本的。一楼指的命令大概是后面廖老师要讲的命令。此节无争议</p>
+
+            </div>
+        </div>
+    </li><li>
+        <div class="uk-comment">
+            <div class="uk-comment-header" style="margin-bottom:0">
+                <a target="_blank" href="https://www.liaoxuefeng.com/user/0015064083812644fb22950a6f34f908d3d94726ec39506000"><img class="uk-comment-avatar uk-border-circle x-avatar" src="./删除文件 - 廖雪峰的官方网站_files/baa0c6bcjw8eno5evxvlxj20k00k00tw.jpg" width="50" height="50" alt=""></a>
+                <div class="uk-comment-meta"><a target="_blank" href="https://www.liaoxuefeng.com/user/0015064083812644fb22950a6f34f908d3d94726ec39506000">全球顶尖骇客</a></div>
+                <div class="uk-comment-meta">Created at 9-26 17:22, Last updated at 9-26 17:22</div>
+            </div>
+            <div class="uk-comment-body x-auto-content">
+                <h1>2楼说得大概就是廖老师想表达的</h1>
+<h2>原文第一种情况指的是确实想删除所以用了git rm，并没有说第二种情况是通过git rm 删除的，指的是误删除，联系之前讲的文章应该知道工作区和暂存区都删除的情况可以通过git reset head回滚。而本节最后提了小节也做了说明了，只要提交到版本库中，是能回复到最新版本的。一楼指的命令大概是后面廖老师要讲的命令。此节无争议</h2>
+
+            </div>
+        </div>
+    </li>
+        <li>
+            <div class="x-comment-info">
+                <hr>
+                <a target="_blank" class="uk-button uk-button-small" href="https://www.liaoxuefeng.com/discuss/001409195939432748a2c9fae3846bc98b3c2a547fa321b000/001502637119417b49981d3df884589a68ac10b73c841f9000"><i class="uk-icon-list-ul"></i> 全部讨论</a>
+                &nbsp;
+                <a target="_blank" class="uk-button uk-button-small" href="https://www.liaoxuefeng.com/discuss/001409195939432748a2c9fae3846bc98b3c2a547fa321b000/001502637119417b49981d3df884589a68ac10b73c841f9000#reply"><i class="uk-icon-reply"></i> 回复</a>
+            </div>
+        </li>
+    </ul></li><li>
+        <div class="uk-comment">
+            <div class="uk-comment-header" style="margin-bottom:0">
+                <a target="_blank" href="https://www.liaoxuefeng.com/user/001497181754725f59b2eaa0ce34a5fa537fd80013d9225000"><img class="uk-comment-avatar uk-border-circle x-avatar" src="./删除文件 - 廖雪峰的官方网站_files/0061N04Nly8ffasw2zui4j30ro0romzr.jpg" width="50" height="50" alt=""></a>
+                <h4 class="uk-comment-title"><a target="_blank" href="https://www.liaoxuefeng.com/discuss/001409195939432748a2c9fae3846bc98b3c2a547fa321b000/001497180829581a4ab0928951d4eecb05227712015c9f2000">看到评论意见这么混乱，那么我就问老师了</a></h4>
+                <div class="uk-comment-meta"><a target="_blank" href="https://www.liaoxuefeng.com/user/001497181754725f59b2eaa0ce34a5fa537fd80013d9225000">随时能改名字就是好</a> created at 6-11 19:33, Last updated at 6-26 17:16</div>
+            </div>
+            <div class="uk-comment-body x-auto-content">
+                <p>廖老师，如果直接rm就是删除电脑工作区的文件是么， 那么git rm xxx是不是就是一次性删除工作区和版本库的文件呀？ 我测试了一下，效果上是这样，但是问一下老师放心一点。</p>
+
+            </div>
+        </div>
+    <ul><li>
+        <div class="uk-comment">
+            <div class="uk-comment-header" style="margin-bottom:0">
+                <a target="_blank" href="https://www.liaoxuefeng.com/user/001498469569922a1a4b81e4a3f4acdb8f25a7fabfc4570000"><img class="uk-comment-avatar uk-border-circle x-avatar" src="./删除文件 - 廖雪峰的官方网站_files/default_avatar_male_50.gif" width="50" height="50" alt=""></a>
+                <div class="uk-comment-meta"><a target="_blank" href="https://www.liaoxuefeng.com/user/001498469569922a1a4b81e4a3f4acdb8f25a7fabfc4570000">用户5890634297</a></div>
+                <div class="uk-comment-meta">Created at 6-26 17:16, Last updated at 6-26 17:16</div>
+            </div>
+            <div class="uk-comment-body x-auto-content">
+                <p>git rm xxx是删除工作区和暂存区的文件，commit后才会删除版本库的文件</p>
+
+            </div>
+        </div>
+    </li><li>
+        <div class="uk-comment">
+            <div class="uk-comment-header" style="margin-bottom:0">
+                <a target="_blank" href="https://www.liaoxuefeng.com/user/0014894701808469e4192c2f12a47449d51373cdefbe524000"><img class="uk-comment-avatar uk-border-circle x-avatar" src="./删除文件 - 廖雪峰的官方网站_files/default_avatar_male_50.gif" width="50" height="50" alt=""></a>
+                <div class="uk-comment-meta"><a target="_blank" href="https://www.liaoxuefeng.com/user/0014894701808469e4192c2f12a47449d51373cdefbe524000">小新交作业</a></div>
+                <div class="uk-comment-meta">Created at 9-28 16:40, Last updated at 9-28 16:40</div>
+            </div>
+            <div class="uk-comment-body x-auto-content">
+                <p>git rm readme.txt 相当于：1、rm readme.txt；2、git add readme.txt；</p>
+
+            </div>
+        </div>
+    </li>
+        <li>
+            <div class="x-comment-info">
+                <hr>
+                <a target="_blank" class="uk-button uk-button-small" href="https://www.liaoxuefeng.com/discuss/001409195939432748a2c9fae3846bc98b3c2a547fa321b000/001497180829581a4ab0928951d4eecb05227712015c9f2000"><i class="uk-icon-list-ul"></i> 全部讨论</a>
+                &nbsp;
+                <a target="_blank" class="uk-button uk-button-small" href="https://www.liaoxuefeng.com/discuss/001409195939432748a2c9fae3846bc98b3c2a547fa321b000/001497180829581a4ab0928951d4eecb05227712015c9f2000#reply"><i class="uk-icon-reply"></i> 回复</a>
+            </div>
+        </li>
+    </ul></li><li>
+        <div class="uk-comment">
+            <div class="uk-comment-header" style="margin-bottom:0">
+                <a target="_blank" href="https://www.liaoxuefeng.com/user/00149483241524102723ea46511499ebd3264f0552901fe000"><img class="uk-comment-avatar uk-border-circle x-avatar" src="./删除文件 - 廖雪峰的官方网站_files/default_avatar_male_50(1).gif" width="50" height="50" alt=""></a>
+                <h4 class="uk-comment-title"><a target="_blank" href="https://www.liaoxuefeng.com/discuss/001409195939432748a2c9fae3846bc98b3c2a547fa321b000/001495287121308282548f3ce314438b462f935acbd2492000">关于删除的疑问</a></h4>
+                <div class="uk-comment-meta"><a target="_blank" href="https://www.liaoxuefeng.com/user/00149483241524102723ea46511499ebd3264f0552901fe000">BlueTatYouku</a> created at 5-20 21:32, Last updated at 5-20 21:32</div>
+            </div>
+            <div class="uk-comment-body x-auto-content">
+                <p>如果我新版本以及之后的版本移除A文件，但在老版本中需要保留A文件及其版本变动，这个是rm还是git rm？</p>
+
+            </div>
+        </div>
+    <ul>
+        <li>
+            <div class="x-comment-info">
+                <hr>
+                <a target="_blank" class="uk-button uk-button-small" href="https://www.liaoxuefeng.com/discuss/001409195939432748a2c9fae3846bc98b3c2a547fa321b000/001495287121308282548f3ce314438b462f935acbd2492000"><i class="uk-icon-list-ul"></i> 全部讨论</a>
+                &nbsp;
+                <a target="_blank" class="uk-button uk-button-small" href="https://www.liaoxuefeng.com/discuss/001409195939432748a2c9fae3846bc98b3c2a547fa321b000/001495287121308282548f3ce314438b462f935acbd2492000#reply"><i class="uk-icon-reply"></i> 回复</a>
+            </div>
+        </li>
+    </ul></li><li>
+        <div class="uk-comment">
+            <div class="uk-comment-header" style="margin-bottom:0">
+                <a target="_blank" href="https://www.liaoxuefeng.com/user/001464317532401e25a7ed287e041f9a33ab177833babb6000"><img class="uk-comment-avatar uk-border-circle x-avatar" src="./删除文件 - 廖雪峰的官方网站_files/91bf9e47jw1e8qgp5bmzyj2050050aa8.jpg" width="50" height="50" alt=""></a>
+                <h4 class="uk-comment-title"><a target="_blank" href="https://www.liaoxuefeng.com/discuss/001409195939432748a2c9fae3846bc98b3c2a547fa321b000/0014919211471244104a2cff7c343aab55257c8c82a7439000">git checkout -- test.txt 这个地方不是从版本库恢复吧</a></h4>
+                <div class="uk-comment-meta"><a target="_blank" href="https://www.liaoxuefeng.com/user/001464317532401e25a7ed287e041f9a33ab177833babb6000">丨晴天灬小猪丨</a> created at 4-11 22:32, Last updated at 4-12 17:42</div>
+            </div>
+            <div class="uk-comment-body x-auto-content">
+                <p>“git checkout其实是用版本库里的版本替换工作区的版本，无论工作区是修改还是删除，都可以“一键还原”。”</p>
+<p>有点疑问，自己实验了下</p>
+<pre><code>$ git rm test.txt
+rm 'test.txt'
+
+$ git checkout -- test.txt
+error: pathspec 'test.txt' did not match any file(s) known to git.
+
+$ git reset HEAD
+Unstaged changes after reset:
+D    test.txt
+
+$ git checkout -- test.txt
+
+$ ls
+LICENSE  readme.txt  test.txt
+</code></pre><p>这样看来应该是从暂存区恢复的吧？
+求大大们指导下</p>
+
+            </div>
+        </div>
+    <ul><li>
+        <div class="x-anchor"><a name="COLLAPSE-1"></a></div><div class="uk-comment">
+            <div class="uk-comment-header" style="margin-bottom:0">
+                <a target="_blank" href="https://www.liaoxuefeng.com/user/001471469870545508a41ab32eb4cf787e5ebbb0b9919a6000"><img class="uk-comment-avatar uk-border-circle x-avatar" src="./删除文件 - 廖雪峰的官方网站_files/006wf6uCjw8f5b9ixsrydj305k05kwed.jpg" width="50" height="50" alt=""></a>
+                <div class="uk-comment-meta"><a target="_blank" href="https://www.liaoxuefeng.com/user/001471469870545508a41ab32eb4cf787e5ebbb0b9919a6000">潇洒净柏</a></div>
+                <div class="uk-comment-meta">Created at 4-12 15:19, Last updated at 4-12 15:19</div>
+            </div>
+            <div class="uk-comment-body x-auto-content" style="max-height: 400px; overflow: hidden;">
+                <p>教程原话:
+"git checkout -- file可以丢弃工作区的修改：</p>
+<pre><code>$ git checkout -- readme.txt
+</code></pre><p>就是让这个文件回到最近一次git commit或git add时的状态。"</p>
+<pre><code>git reset HEAD
+</code></pre><p>reset 命令是修改库版本库指向,HEAD指向了最新的版本,同时清空了 add 以后的暂存区.
+reset本来是用来修改版本库指向的,清空缓存区只是reset的一个附加功能.</p>
+<pre><code>git rm test.txt
+</code></pre><p>等于</p>
+<pre><code>rm test.txt
+git add test.txt
+</code></pre><p>--</p>
+<pre><code>git checkout -- test.txt
+</code></pre><p>工作区(已删除test.txt)与add后的缓存区(git add test.txt 所以也删除了test.txt)比较了文件,都是没有test.txt文件,没有差异,提示没有匹配到文件(英文错误提示).</p>
+<pre><code>$ git reset HEAD
+</code></pre><p>指向HEAD 清空了缓存区,但是没有修改工作区
+这时候可以打一下 
+git status
+显示
+delete test.txt
+也就是说之前的rm test.txt 还有效 (git rm test.txt分了两步,保留了第一步操作)</p>
+<pre><code>$ git checkout -- test.txt
+</code></pre><p>工作区没有变(依旧是删除了test.txt) 但是缓存区没了,所以跟就跟HEAD版本库比较了test.txt 并找回了这个test.txt文件.</p>
+
+            </div><p style="padding-left: 75px"><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013758392816224cafd33c44b4451887cc941e6716805c000#0"><i class="uk-icon-chevron-down"></i> Read More</a><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013758392816224cafd33c44b4451887cc941e6716805c000#0" style="display:none"><i class="uk-icon-chevron-up"></i> Collapse</a></p>
+        </div>
+    </li><li>
+        <div class="uk-comment">
+            <div class="uk-comment-header" style="margin-bottom:0">
+                <a target="_blank" href="https://www.liaoxuefeng.com/user/001471469870545508a41ab32eb4cf787e5ebbb0b9919a6000"><img class="uk-comment-avatar uk-border-circle x-avatar" src="./删除文件 - 廖雪峰的官方网站_files/006wf6uCjw8f5b9ixsrydj305k05kwed.jpg" width="50" height="50" alt=""></a>
+                <div class="uk-comment-meta"><a target="_blank" href="https://www.liaoxuefeng.com/user/001471469870545508a41ab32eb4cf787e5ebbb0b9919a6000">潇洒净柏</a></div>
+                <div class="uk-comment-meta">Created at 4-12 17:42, Last updated at 4-12 17:42</div>
+            </div>
+            <div class="uk-comment-body x-auto-content">
+                <p>修正一下:
+reset本来是用来修改版本库指向的,清空缓存区只是reset的一个附加功能.
+这句话说得有问题...当我没说...</p>
+
+            </div>
+        </div>
+    </li><li>
+        <div class="uk-comment">
+            <div class="uk-comment-header" style="margin-bottom:0">
+                <a target="_blank" href="https://www.liaoxuefeng.com/user/0015064083812644fb22950a6f34f908d3d94726ec39506000"><img class="uk-comment-avatar uk-border-circle x-avatar" src="./删除文件 - 廖雪峰的官方网站_files/baa0c6bcjw8eno5evxvlxj20k00k00tw.jpg" width="50" height="50" alt=""></a>
+                <div class="uk-comment-meta"><a target="_blank" href="https://www.liaoxuefeng.com/user/0015064083812644fb22950a6f34f908d3d94726ec39506000">全球顶尖骇客</a></div>
+                <div class="uk-comment-meta">Created at 9-26 17:21, Last updated at 9-26 17:21</div>
+            </div>
+            <div class="uk-comment-body x-auto-content">
+                <h1>二楼正解</h1>
+
+            </div>
+        </div>
+    </li>
+        <li>
+            <div class="x-comment-info">
+                <hr>
+                <a target="_blank" class="uk-button uk-button-small" href="https://www.liaoxuefeng.com/discuss/001409195939432748a2c9fae3846bc98b3c2a547fa321b000/0014919211471244104a2cff7c343aab55257c8c82a7439000"><i class="uk-icon-list-ul"></i> 全部讨论</a>
+                &nbsp;
+                <a target="_blank" class="uk-button uk-button-small" href="https://www.liaoxuefeng.com/discuss/001409195939432748a2c9fae3846bc98b3c2a547fa321b000/0014919211471244104a2cff7c343aab55257c8c82a7439000#reply"><i class="uk-icon-reply"></i> 回复</a>
+            </div>
+        </li>
+    </ul></li><li>
+        <div class="uk-comment">
+            <div class="uk-comment-header" style="margin-bottom:0">
+                <a target="_blank" href="https://www.liaoxuefeng.com/user/00147261154923724d1f93d136146a085f65d5c8f3d15f7000"><img class="uk-comment-avatar uk-border-circle x-avatar" src="./删除文件 - 廖雪峰的官方网站_files/e28e757fjw8espjtlpd4ij208c0b3gly.jpg" width="50" height="50" alt=""></a>
+                <h4 class="uk-comment-title"><a target="_blank" href="https://www.liaoxuefeng.com/discuss/001409195939432748a2c9fae3846bc98b3c2a547fa321b000/001473063255061f8613519ce1b4879827e6fdf412de893000">rm和git rm</a></h4>
+                <div class="uk-comment-meta"><a target="_blank" href="https://www.liaoxuefeng.com/user/00147261154923724d1f93d136146a085f65d5c8f3d15f7000">带着猫猫履行ing</a> created at 2016-9-5 16:14, Last updated at 3-30 11:50</div>
+            </div>
+            <div class="uk-comment-body x-auto-content">
+                <p>可不可以理解为rm是删除工作区的文件，git rm是删除版本库的文件啊？为什么我先不用rm删除工作区的文件，直接用git rm删除版本库的文件后，工作区的文件也没了啊？</p>
+
+            </div>
+        </div>
+    <ul><li>
+        <div class="uk-comment">
+            <div class="uk-comment-header" style="margin-bottom:0">
+                <a target="_blank" href="https://www.liaoxuefeng.com/user/0014749879278582c735d1a7a114ae6820c23f7ae166699000"><img class="uk-comment-avatar uk-border-circle x-avatar" src="./删除文件 - 廖雪峰的官方网站_files/7235c1ccjw8emyzxykd4yj20k00k0q4l.jpg" width="50" height="50" alt=""></a>
+                <div class="uk-comment-meta"><a target="_blank" href="https://www.liaoxuefeng.com/user/0014749879278582c735d1a7a114ae6820c23f7ae166699000">Jay枫若情</a></div>
+                <div class="uk-comment-meta">Created at 2016-9-28 16:11, Last updated at 2016-9-28 16:11</div>
+            </div>
+            <div class="uk-comment-body x-auto-content">
+                <p>我想我可以回答你这个问题，不知道楼主现在搞懂了没。</p>
+<p>你用rm只是删除了你想删除的文件，是在工作区操作的，还没有把这个修改放到暂存区，然后你用“git rm”命令，就是把工作区删除文件的操作放到了暂存区的。</p>
+<p>但是如果你直接用“git rm”命令，就相当于直接完成了“rm”和“git rm”这两个命令，前一个命令被自动执行了。这时候你再“git status”一下，你就会发现，你已经把删除工作区文件这个操作放到了暂存区，只等你提交到版本库里去了。</p>
+<p>其实想了解这个本质，和廖老师说的，时常“git status”一下，或者时常“git log ==pretty=oneline”、“git relog”一下就懂了。</p>
+
+            </div>
+        </div>
+    </li><li>
+        <div class="uk-comment">
+            <div class="uk-comment-header" style="margin-bottom:0">
+                <a target="_blank" href="https://www.liaoxuefeng.com/user/0014749879278582c735d1a7a114ae6820c23f7ae166699000"><img class="uk-comment-avatar uk-border-circle x-avatar" src="./删除文件 - 廖雪峰的官方网站_files/7235c1ccjw8emyzxykd4yj20k00k0q4l.jpg" width="50" height="50" alt=""></a>
+                <div class="uk-comment-meta"><a target="_blank" href="https://www.liaoxuefeng.com/user/0014749879278582c735d1a7a114ae6820c23f7ae166699000">Jay枫若情</a></div>
+                <div class="uk-comment-meta">Created at 2016-9-28 16:20, Last updated at 2016-9-28 16:20</div>
+            </div>
+            <div class="uk-comment-body x-auto-content">
+                <p>不好意思，回复完了以后，才发现还有一点没说。</p>
+<pre><code>$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add/rm &lt;file&gt;..." to update what will be committed)
+  (use "git checkout -- &lt;file&gt;..." to discard changes in working directory)
+
+        deleted:    test.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+</code></pre><p>注意看以上的代码的第四行“ (use "git add/rm &lt;file&gt;..." to update what will be committed)”
+当你“rm”操作以后，再进行“git rm”,其实和“git add”的作用是等同的，你可以自己亲自操作试试。</p>
+
+            </div>
+        </div>
+    </li><li>
+        <div class="uk-comment">
+            <div class="uk-comment-header" style="margin-bottom:0">
+                <a target="_blank" href="https://www.liaoxuefeng.com/user/001445320404134a70293143f424298969d4e2ba40d2a35000"><img class="uk-comment-avatar uk-border-circle x-avatar" src="./删除文件 - 廖雪峰的官方网站_files/1" width="50" height="50" alt=""></a>
+                <div class="uk-comment-meta"><a target="_blank" href="https://www.liaoxuefeng.com/user/001445320404134a70293143f424298969d4e2ba40d2a35000">美食大师001</a></div>
+                <div class="uk-comment-meta">Created at 1-12 16:04, Last updated at 1-12 16:04</div>
+            </div>
+            <div class="uk-comment-body x-auto-content">
+                <p>我相信连楼主自己都不知道在讲什么？随便看看就行了，主要还是自己多实践。</p>
+
+            </div>
+        </div>
+    </li><li>
+        <div class="uk-comment">
+            <div class="uk-comment-header" style="margin-bottom:0">
+                <a target="_blank" href="https://www.liaoxuefeng.com/user/001486465495130a9b6c7d3712948a0a3f60401fbd566ab000"><img class="uk-comment-avatar uk-border-circle x-avatar" src="./删除文件 - 廖雪峰的官方网站_files/8e38560ajw8evtxny14hyj20u00u0tbo.jpg" width="50" height="50" alt=""></a>
+                <div class="uk-comment-meta"><a target="_blank" href="https://www.liaoxuefeng.com/user/001486465495130a9b6c7d3712948a0a3f60401fbd566ab000">谁给湖面画上云朵</a></div>
+                <div class="uk-comment-meta">Created at 2-13 10:39, Last updated at 2-13 10:39</div>
+            </div>
+            <div class="uk-comment-body x-auto-content">
+                <p>就像一楼说的，我补充一下，这时候在版本库里删掉文件后
+我们还可以“版本还原”
+git reset --hard 版本号 或者 git reset --hard HEAD </p>
+
+            </div>
+        </div>
+    </li><li>
+        <div class="uk-comment">
+            <div class="uk-comment-header" style="margin-bottom:0">
+                <a target="_blank" href="https://www.liaoxuefeng.com/user/0014786070492807ad682c025f7452ca9a7226d3b2b50d4000"><img class="uk-comment-avatar uk-border-circle x-avatar" src="./删除文件 - 廖雪峰的官方网站_files/eaca8d9fjw8f4ffeuzc9jj20ro0rp402.jpg" width="50" height="50" alt=""></a>
+                <div class="uk-comment-meta"><a target="_blank" href="https://www.liaoxuefeng.com/user/0014786070492807ad682c025f7452ca9a7226d3b2b50d4000">LesLieM樂</a></div>
+                <div class="uk-comment-meta">Created at 3-30 11:50, Last updated at 3-30 11:50</div>
+            </div>
+            <div class="uk-comment-body x-auto-content">
+                <p>@谁给湖面画上云朵</p>
+<p>如果同时有多个文件</p>
+<pre><code>git reset --hard 版本号 或者 git reset --hard HEAD~
+</code></pre><p>会让所有文件回退</p>
+<p>如果想回退特定的文件</p>
+<pre><code>$git reset 版本号orHEAD~n  &lt;file&gt;
+</code></pre>
+            </div>
+        </div>
+    </li>
+        <li>
+            <div class="x-comment-info">
+                <hr>
+                <a target="_blank" class="uk-button uk-button-small" href="https://www.liaoxuefeng.com/discuss/001409195939432748a2c9fae3846bc98b3c2a547fa321b000/001473063255061f8613519ce1b4879827e6fdf412de893000"><i class="uk-icon-list-ul"></i> 全部讨论</a>
+                &nbsp;
+                <a target="_blank" class="uk-button uk-button-small" href="https://www.liaoxuefeng.com/discuss/001409195939432748a2c9fae3846bc98b3c2a547fa321b000/001473063255061f8613519ce1b4879827e6fdf412de893000#reply"><i class="uk-icon-reply"></i> 回复</a>
+            </div>
+        </li>
+    </ul></li><li>
+        <div class="uk-comment">
+            <div class="uk-comment-header" style="margin-bottom:0">
+                <a target="_blank" href="https://www.liaoxuefeng.com/user/001486465495130a9b6c7d3712948a0a3f60401fbd566ab000"><img class="uk-comment-avatar uk-border-circle x-avatar" src="./删除文件 - 廖雪峰的官方网站_files/8e38560ajw8evtxny14hyj20u00u0tbo.jpg" width="50" height="50" alt=""></a>
+                <h4 class="uk-comment-title"><a target="_blank" href="https://www.liaoxuefeng.com/discuss/001409195939432748a2c9fae3846bc98b3c2a547fa321b000/001486950464526a5314175bfbc43b398f614a290f48f27000">~~~</a></h4>
+                <div class="uk-comment-meta"><a target="_blank" href="https://www.liaoxuefeng.com/user/001486465495130a9b6c7d3712948a0a3f60401fbd566ab000">谁给湖面画上云朵</a> created at 2-13 9:47, Last updated at 3-30 11:21</div>
+            </div>
+            <div class="uk-comment-body x-auto-content">
+                <p>这一节不能看评论，，，，</p>
+
+            </div>
+        </div>
+    <ul><li>
+        <div class="uk-comment">
+            <div class="uk-comment-header" style="margin-bottom:0">
+                <a target="_blank" href="https://www.liaoxuefeng.com/user/0014878595091205aaaa00492fd4929ba8053a994151039000"><img class="uk-comment-avatar uk-border-circle x-avatar" src="./删除文件 - 廖雪峰的官方网站_files/670905bejw8e9ac5xqqcdj20kk0kkq3c.jpg" width="50" height="50" alt=""></a>
+                <div class="uk-comment-meta"><a target="_blank" href="https://www.liaoxuefeng.com/user/0014878595091205aaaa00492fd4929ba8053a994151039000">謝增光_Feson</a></div>
+                <div class="uk-comment-meta">Created at 3-29 15:35, Last updated at 3-29 15:35</div>
+            </div>
+            <div class="uk-comment-body x-auto-content">
+                <p>这节的评论真的是。。。</p>
+
+            </div>
+        </div>
+    </li><li>
+        <div class="uk-comment">
+            <div class="uk-comment-header" style="margin-bottom:0">
+                <a target="_blank" href="https://www.liaoxuefeng.com/user/0014786070492807ad682c025f7452ca9a7226d3b2b50d4000"><img class="uk-comment-avatar uk-border-circle x-avatar" src="./删除文件 - 廖雪峰的官方网站_files/eaca8d9fjw8f4ffeuzc9jj20ro0rp402.jpg" width="50" height="50" alt=""></a>
+                <div class="uk-comment-meta"><a target="_blank" href="https://www.liaoxuefeng.com/user/0014786070492807ad682c025f7452ca9a7226d3b2b50d4000">LesLieM樂</a></div>
+                <div class="uk-comment-meta">Created at 3-30 11:21, Last updated at 3-30 11:21</div>
+            </div>
+            <div class="uk-comment-body x-auto-content">
+                <p>这节评论确实不能看。。。</p>
+
+            </div>
+        </div>
+    </li>
+        <li>
+            <div class="x-comment-info">
+                <hr>
+                <a target="_blank" class="uk-button uk-button-small" href="https://www.liaoxuefeng.com/discuss/001409195939432748a2c9fae3846bc98b3c2a547fa321b000/001486950464526a5314175bfbc43b398f614a290f48f27000"><i class="uk-icon-list-ul"></i> 全部讨论</a>
+                &nbsp;
+                <a target="_blank" class="uk-button uk-button-small" href="https://www.liaoxuefeng.com/discuss/001409195939432748a2c9fae3846bc98b3c2a547fa321b000/001486950464526a5314175bfbc43b398f614a290f48f27000#reply"><i class="uk-icon-reply"></i> 回复</a>
+            </div>
+        </li>
+    </ul></li></ul>
+
+    <h3>发表评论</h3>
+
+    <div class="x-display-if-not-signin">
+        <p><button type="button" class="uk-button" onclick="showSignin()"><i class="uk-icon-signin"></i> 登录后发表评论</button></p>
+    </div>
+
+    <div id="x-comment-area"></div>
+
+
+                        <a href="https://www.liaoxuefeng.com/webpage/gitapp" target="_blank" style="display:block;width:135px;height:40px;position:absolute;right:10px;top:10px;"><img src="./删除文件 - 廖雪峰的官方网站_files/download-on-the-app-store.png"></a></div>
+                        <div class="x-content-bottom">
+                            <!-- content_bottom -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="x-body-bottom uk-width-1-1">
+                    <!-- body_bottom -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="x-offcanvas-left" class="uk-offcanvas">
+        <div class="uk-offcanvas-bar">
+            <div class="uk-panel">
+                
+    <ul class="uk-nav uk-nav-side">
+        <li class="uk-nav-header">目录</li>
+    </ul>
+    <ul class="uk-nav uk-nav-side">
+        <li id="off-0013739516305929606dd18361248578c67b8067c8c017b000"><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000">Git教程</a></li>
+        
+    
+    <li id="off-001373962845513aefd77a99f4145f0a2c7a7ca057e7570000" style="margin-left:1em;">
+        <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001373962845513aefd77a99f4145f0a2c7a7ca057e7570000">Git简介</a>
+    </li>
+    
+        
+    
+    <li id="off-00137402760310626208b4f695940a49e5348b689d095fc000" style="margin-left:2em;">
+        <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00137402760310626208b4f695940a49e5348b689d095fc000">Git的诞生</a>
+    </li>
+    
+    
+    <li id="off-001374027586935cf69c53637d8458c9aec27dd546a6cd6000" style="margin-left:2em;">
+        <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001374027586935cf69c53637d8458c9aec27dd546a6cd6000">集中式vs分布式</a>
+    </li>
+    
+    
+
+    
+    
+    <li id="off-00137396287703354d8c6c01c904c7d9ff056ae23da865a000" style="margin-left:1em;">
+        <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00137396287703354d8c6c01c904c7d9ff056ae23da865a000">安装Git</a>
+    </li>
+    
+    
+    <li id="off-0013743256916071d599b3aed534aaab22a0db6c4e07fd0000" style="margin-left:1em;">
+        <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013743256916071d599b3aed534aaab22a0db6c4e07fd0000">创建版本库</a>
+    </li>
+    
+    
+    <li id="off-0013743858312764dca7ad6d0754f76aa562e3789478044000" style="margin-left:1em;">
+        <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013743858312764dca7ad6d0754f76aa562e3789478044000">时光机穿梭</a>
+    </li>
+    
+        
+    
+    <li id="off-0013744142037508cf42e51debf49668810645e02887691000" style="margin-left:2em;">
+        <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013744142037508cf42e51debf49668810645e02887691000">版本回退</a>
+    </li>
+    
+    
+    <li id="off-0013745374151782eb658c5a5ca454eaa451661275886c6000" style="margin-left:2em;">
+        <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013745374151782eb658c5a5ca454eaa451661275886c6000">工作区和暂存区</a>
+    </li>
+    
+    
+    <li id="off-001374829472990293f16b45df14f35b94b3e8a026220c5000" style="margin-left:2em;">
+        <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001374829472990293f16b45df14f35b94b3e8a026220c5000">管理修改</a>
+    </li>
+    
+    
+    <li id="off-001374831943254ee90db11b13d4ba9a73b9047f4fb968d000" style="margin-left:2em;">
+        <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001374831943254ee90db11b13d4ba9a73b9047f4fb968d000">撤销修改</a>
+    </li>
+    
+    
+    <li id="off-0013758392816224cafd33c44b4451887cc941e6716805c000" style="margin-left:2em;" class="uk-active">
+        <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013758392816224cafd33c44b4451887cc941e6716805c000">删除文件</a>
+    </li>
+    
+    
+
+    
+    
+    <li id="off-001374385852170d9c7adf13c30429b9660d0eb689dd43a000" style="margin-left:1em;">
+        <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001374385852170d9c7adf13c30429b9660d0eb689dd43a000">远程仓库</a>
+    </li>
+    
+        
+    
+    <li id="off-0013752340242354807e192f02a44359908df8a5643103a000" style="margin-left:2em;">
+        <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013752340242354807e192f02a44359908df8a5643103a000">添加远程库</a>
+    </li>
+    
+    
+    <li id="off-001375233990231ac8cf32ef1b24887a5209f83e01cb94b000" style="margin-left:2em;">
+        <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001375233990231ac8cf32ef1b24887a5209f83e01cb94b000">从远程库克隆</a>
+    </li>
+    
+    
+
+    
+    
+    <li id="off-0013743862006503a1c5bf5a783434581661a3cc2084efa000" style="margin-left:1em;">
+        <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013743862006503a1c5bf5a783434581661a3cc2084efa000">分支管理</a>
+    </li>
+    
+        
+    
+    <li id="off-001375840038939c291467cc7c747b1810aab2fb8863508000" style="margin-left:2em;">
+        <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001375840038939c291467cc7c747b1810aab2fb8863508000">创建与合并分支</a>
+    </li>
+    
+    
+    <li id="off-001375840202368c74be33fbd884e71b570f2cc3c0d1dcf000" style="margin-left:2em;">
+        <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001375840202368c74be33fbd884e71b570f2cc3c0d1dcf000">解决冲突</a>
+    </li>
+    
+    
+    <li id="off-0013758410364457b9e3d821f4244beb0fd69c61a185ae0000" style="margin-left:2em;">
+        <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013758410364457b9e3d821f4244beb0fd69c61a185ae0000">分支管理策略</a>
+    </li>
+    
+    
+    <li id="off-00137602359178794d966923e5c4134bc8bf98dfb03aea3000" style="margin-left:2em;">
+        <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00137602359178794d966923e5c4134bc8bf98dfb03aea3000">Bug分支</a>
+    </li>
+    
+    
+    <li id="off-001376026233004c47f22a16d1f4fa289ce45f14bbc8f11000" style="margin-left:2em;">
+        <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001376026233004c47f22a16d1f4fa289ce45f14bbc8f11000">Feature分支</a>
+    </li>
+    
+    
+    <li id="off-0013760174128707b935b0be6fc4fc6ace66c4f15618f8d000" style="margin-left:2em;">
+        <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013760174128707b935b0be6fc4fc6ace66c4f15618f8d000">多人协作</a>
+    </li>
+    
+    
+
+    
+    
+    <li id="off-0013762144381812a168659b3dd4610b4229d81de5056cc000" style="margin-left:1em;">
+        <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013762144381812a168659b3dd4610b4229d81de5056cc000">标签管理</a>
+    </li>
+    
+        
+    
+    <li id="off-001376951758572072ce1dc172b4178b910d31bc7521ee4000" style="margin-left:2em;">
+        <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001376951758572072ce1dc172b4178b910d31bc7521ee4000">创建标签</a>
+    </li>
+    
+    
+    <li id="off-001376951885068a0ac7d81c3a64912b35a59b58a1d926b000" style="margin-left:2em;">
+        <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001376951885068a0ac7d81c3a64912b35a59b58a1d926b000">操作标签</a>
+    </li>
+    
+    
+
+    
+    
+    <li id="off-00137628548491051ccfaef0ccb470894c858999603fedf000" style="margin-left:1em;">
+        <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00137628548491051ccfaef0ccb470894c858999603fedf000">使用GitHub</a>
+    </li>
+    
+    
+    <li id="off-00150154460073692d151e784de4d718c67ce836f72c7c4000" style="margin-left:1em;">
+        <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00150154460073692d151e784de4d718c67ce836f72c7c4000">使用码云</a>
+    </li>
+    
+    
+    <li id="off-00137621280731812dec22ecc9b44f4b2ca1c680f181a5b000" style="margin-left:1em;">
+        <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00137621280731812dec22ecc9b44f4b2ca1c680f181a5b000">自定义Git</a>
+    </li>
+    
+        
+    
+    <li id="off-0013758404317281e54b6f5375640abbb11e67be4cd49e0000" style="margin-left:2em;">
+        <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013758404317281e54b6f5375640abbb11e67be4cd49e0000">忽略特殊文件</a>
+    </li>
+    
+    
+    <li id="off-001375234012342f90be1fc4d81446c967bbdc19e7c03d3000" style="margin-left:2em;">
+        <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001375234012342f90be1fc4d81446c967bbdc19e7c03d3000">配置别名</a>
+    </li>
+    
+    
+    <li id="off-00137583770360579bc4b458f044ce7afed3df579123eca000" style="margin-left:2em;">
+        <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00137583770360579bc4b458f044ce7afed3df579123eca000">搭建Git服务器</a>
+    </li>
+    
+    
+
+    
+    
+    <li id="off-00137586810169600f39e17409a4358b1ac0d3621356287000" style="margin-left:1em;">
+        <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00137586810169600f39e17409a4358b1ac0d3621356287000">期末总结</a>
+    </li>
+    
+    
+
+    </ul>
+    <div class="x-placeholder"></div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div id="footer">
+        <div class="x-footer uk-container x-container">
+            <hr>
+            <div class="uk-grid">
+                <div class="x-footer-copyright uk-width-small-1-2 uk-width-medium-1-3">
+                    <p>
+                        <a href="https://www.liaoxuefeng.com/">廖雪峰的官方网站</a>©2017 vec624a8
+                        <br>
+                        Powered by <a href="https://github.com/michaelliao/itranswarp.js" target="_blank">iTranswarp.js</a>
+                    <br>由<a target="_blank" href="https://promotion.aliyun.com/ntms/act/ambassador/sharetouser.html?userCode=cz36baxa&amp;utm_source=cz36baxa">阿里云</a>托管<br><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013758392816224cafd33c44b4451887cc941e6716805c000#0" onclick="location.assign(decodeURIComponent(&#39;moc.36104%fxlksaA3%otliam&#39;.split(&#39;&#39;).reverse().join(&#39;&#39;)))">广告合作</a></p>
+                </div>
+                <div class="uk-width-small-1-2 uk-width-medium-1-3 x-hidden-tiny">
+                    <a href="https://www.liaoxuefeng.com/feed" target="_blank" class="uk-icon-button uk-icon-rss" data-uk-tooltip="" title="Subscribe the RSS"></a>
+                    <a href="https://github.com/michaelliao/itranswarp.js" target="_blank" class="uk-icon-button uk-icon-github" data-uk-tooltip="" title="View source code on GitHub"></a>
+                    <a href="https://twitter.com/liaoxuefeng" target="_blank" class="uk-icon-button uk-icon-twitter" data-uk-tooltip="" title="Follow author on Twitter"></a>
+                    <a href="https://www.weibo.com/liaoxuefeng" target="_blank" class="uk-icon-button uk-icon-weibo uk-visible-large uk-hidden-medium" data-uk-tooltip="" title="Follow author on Weibo"></a>
+                </div>
+                <div class="uk-width-medium-1-3 uk-hidden-small">
+                    <p>
+                        <a href="https://github.com/michaelliao/itranswarp.js/issues" target="_blank">意见反馈</a>
+                        <br>
+                        <a href="https://github.com/michaelliao/itranswarp.js/blob/master/LICENSE" target="_blank">使用许可</a>
+                    </p>
+                </div>
+            </div>
+        <hr><div style="text-align:center"><p>友情链接: <a href="http://www.shi-ci.com/" target="_blank">中华诗词</a> - <a href="https://promotion.aliyun.com/ntms/act/ambassador/sharetouser.html?userCode=cz36baxa&amp;utm_source=cz36baxa" target="_blank">阿里云</a> - <a href="https://bbs.ksyun.com/" target="_blank">金山云</a> - <a href="http://mitpress.mit.edu/sicp/full-text/book/book.html" target="_blank">SICP</a> - <a href="http://www.4clojure.com/" target="_blank">4clojure</a></p></div></div>
+    </div>
+
+    <div id="modal-signin" class="uk-modal">
+        <div class="uk-modal-dialog">
+            <a class="uk-modal-close uk-close"></a>
+            <div class="uk-modal-header">
+                <h2>Please Sign In</h2>
+            </div>
+            <p>You can sign in directly without register:</p>
+            
+            <h3><a href="https://www.liaoxuefeng.com/auth/from/weibo"><i class="uk-icon-weibo"></i> 使用新浪微博登录</a></h3>
+            
+            <p>You need authorize to allow connect to your social passport for the first time.</p>
+        </div>
+    </div>
+
+    <div id="oldBrowser">
+        <div class="uk-alert uk-alert-danger" data-uk-alert="">
+            <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/0013758392816224cafd33c44b4451887cc941e6716805c000#0" class="uk-alert-close uk-close"></a>
+            <p>
+                WARNING: You are using an old browser that does not support HTML5.
+                Please choose a modern browser (<a href="https://www.google.com/chrome" target="_blank">Chrome</a> / <a href="https://www.microsoft.com/windows/microsoft-edge" target="_blank">Microsoft Edge</a> / <a href="https://www.mozilla.org/firefox/" target="_blank">Firefox</a> / <a href="https://www.apple.com/safari/" target="_blank">Sarafi</a>) to get a good experience.
+            </p>
+        </div>
+    </div>
+
+
+</body></html>
