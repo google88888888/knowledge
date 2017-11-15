@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0042)http://www.nginx.cn/doc/mail/mailauth.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+<title>MailAuth-Nginx中文文档</title>
+
+<style type="text/css" media="all">@import url('userguide.css');</style>
+<link rel="stylesheet" type="text/css" media="all" href="./MailAuth-Nginx中文文档_files/userguide.css">
+
+<script type="text/javascript" src="./MailAuth-Nginx中文文档_files/nav.js.下载"></script>
+<script type="text/javascript" src="./MailAuth-Nginx中文文档_files/prototype.lite.js.下载"></script>
+<script type="text/javascript" src="./MailAuth-Nginx中文文档_files/moo.fx.js.下载"></script>
+
+<script type="text/javascript" src="./MailAuth-Nginx中文文档_files/user_guide_menu.js.下载"></script>
+
+<meta name="robots" content="all">
+
+
+
+
+</head>
+<body rlt="1" style="">
+<!-- START NAVIGATION -->
+<div id="nav2"><a name="top"></a><a href="http://www.nginx.cn/doc"><img src="./MailAuth-Nginx中文文档_files/nav_toggle_darker.jpg" width="154" height="43" border="0"></a></div>
+
+
+<div id="masthead">
+
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tbody><tr>
+<td><span id="sitename">Nginx中文文档</span></td>
+<td id="breadcrumb_right"><a href="http://www.nginx.cn/doc/index.html">目录首页</a></td>
+</tr>
+</tbody></table>
+</div>
+<!-- END NAVIGATION -->
+
+
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tbody><tr>
+<td id="breadcrumb">
+<a href="http://www.nginx.cn/">Nginx中文站</a> &nbsp;›&nbsp; <a href="http://www.nginx.cn/doc/index.html">文档首页</a>&nbsp;›&nbsp;MailAuth
+
+</td>
+</tr>
+</tbody></table>
+
+
+
+<br clear="all">
+
+
+
+<!-- START CONTENT -->
+<div id="content">
+
+
+<h1>MailAuth</h1>
+<p>Example configuration<br>
+配置举例：
+</p>
+<pre>  auth_http           localhost:9000/cgi-bin/nginxauth.cgi;
+  auth_http_timeout   5;
+}
+</pre>
+<h2>指令</h2>
+<h2>auth_http </h2>
+
+<p><b>syntax:</b> <i>auth_http</i> <i><b>URL</b></i>
+</p><p><b>default:</b> <i>no</i>
+</p><p><b>context:</b> <i>mail, server</i>
+</p><p>With this directive you can set the URL to the external HTTP-like server for authorization. A description of the protocol can be found <a href="http://www.nginx.cn/doc/mail/mailcore.html" title="NginxMailCoreModule"> here</a> . <br>
+使用这条指令你可以设置URL像HTTP服务器那样的验证。协议描述可以看<a href="http://www.nginx.cn/doc/mail/mailcore.html" title="NginxMailCoreModule"> 这里</a> 
+
+</p>
+<h2> auth_http_header </h2>
+<p><b>syntax:</b> <i>auth_http_header</i> <i><b>header value</b></i>
+</p><p><b>default:</b> <i>no</i>
+</p><p><b>context:</b> <i>mail, server</i>
+
+</p><p>With this directive you can add a HTTP header and value during the identification process. This makes it possible to use a shared secret to ensure that the request was answered by nginx. <br>
+使用这条指令你可以添加HTTP头和值到验证进程中。这个使得可以用共享密码来却不请求得到Nginx的响应
+</p><p>For example:
+</p>
+<pre>auth_http_header X-NGX-Auth-Key "secret_string";
+</pre>
+<h2>auth_http_timeout  </h2>
+<p><b>syntax:</b> <i>auth_http_timeout</i> <i><b>milliseconds;</b></i>
+
+</p><p><b>default:</b> <i>60000</i>
+</p><p><b>context:</b> <i>mail, server</i>
+</p><p>With this directive you can set the time out for authentication process. <br>
+使用这条指令你可以设置验证进程的超时时间
+</p>
+
+</div>
+<!-- END CONTENT -->
+
+
+<div id="footer">
+<p><a href="http://www.nginx.cn/doc/mail/mailauth.html#top">顶端</a></p>
+
+<p>中文化: <a href="http://www.nginx.cn/">Nginx中文</a> &nbsp;·&nbsp; 制作: www.nginx.cn  (整理及部分翻译 )</p>
+
+</div>
+
+
+
+<div style="display:none"><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F7f826a2d9c693c7ed804c0145be7da9d' type='text/javascript'%3E%3C/script%3E"));</script><script src="./MailAuth-Nginx中文文档_files/h.js.下载" type="text/javascript"></script><a href="http://tongji.baidu.com/hm-web/welcome/ico?s=7f826a2d9c693c7ed804c0145be7da9d" target="_blank"><img border="0" src="./MailAuth-Nginx中文文档_files/21.gif" width="20" height="20"></a></div>
+
+</body></html>

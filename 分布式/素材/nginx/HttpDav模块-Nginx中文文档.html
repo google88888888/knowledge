@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0045)http://www.nginx.cn/doc/optional/httpdav.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+<title>HttpDav模块-Nginx中文文档</title>
+
+<style type="text/css" media="all">@import url('userguide.css');</style>
+<link rel="stylesheet" type="text/css" media="all" href="./HttpDav模块-Nginx中文文档_files/userguide.css">
+
+<script src="http://hm.baidu.com/hm.js?407473d433e871de861cf818aa1405a1"></script><script type="text/javascript" src="./HttpDav模块-Nginx中文文档_files/nav.js.下载"></script>
+<script type="text/javascript" src="./HttpDav模块-Nginx中文文档_files/prototype.lite.js.下载"></script>
+<script type="text/javascript" src="./HttpDav模块-Nginx中文文档_files/moo.fx.js.下载"></script>
+
+<script type="text/javascript" src="./HttpDav模块-Nginx中文文档_files/user_guide_menu.js.下载"></script>
+
+<meta name="robots" content="all">
+
+
+
+
+</head>
+<body rlt="1" style="">
+<!-- START NAVIGATION -->
+<div id="nav2"><a name="top"></a><a href="http://www.nginx.cn/doc"><img src="./HttpDav模块-Nginx中文文档_files/nav_toggle_darker.jpg" width="154" height="43" border="0"></a></div>
+
+
+<div id="masthead">
+
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tbody><tr>
+<td><span id="sitename">Nginx中文文档</span></td>
+<td id="breadcrumb_right"><a href="http://www.nginx.cn/doc/index.html">目录首页</a></td>
+</tr>
+</tbody></table>
+</div>
+<!-- END NAVIGATION -->
+
+
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tbody><tr>
+<td id="breadcrumb">
+<a href="http://www.nginx.cn/">Nginx中文站</a> &nbsp;›&nbsp; <a href="http://www.nginx.cn/doc/index.html">文档首页</a>&nbsp;›&nbsp;HttpDav模块
+
+</td>
+</tr>
+</tbody></table>
+
+
+
+<br clear="all">
+
+
+
+<!-- START CONTENT -->
+<div id="content">
+
+
+<h1>HttpDav模块</h1>
+<p>这个模块可以为Http webDAV 增加 PUT, DELETE, MKCOL, COPY 和 MOVE 等方法。
+</p><p>这个模块在默认编译的情况下不是被包含的，你需要在编译时指定如下参数：
+</p>
+<pre>./configure --with-http_dav_module
+</pre>
+<p>配置范例：
+</p>
+<pre>location / {
+  root     /data/www;
+  client_body_temp_path  /data/client_temp;
+ 
+  dav_methods  PUT DELETE MKCOL COPY MOVE;
+ 
+  create_full_put_path   on;
+  dav_access             group:rw  all:r;
+ 
+  limit_except  GET {
+    allow  192.168.1.0/32;
+    deny   all;
+  }
+}
+</pre>
+
+<p>配置指导
+</p>
+<h2>dav_access</h2>
+<p>syntax: dav_access user:permissions [users:permissions] ... 
+</p><p>default: dav_access user:rw 
+</p><p>context: http, server, location 
+</p><p>这个指令是赋予某个目录或文件以访问权，如：
+</p>
+<pre>dav_access user:rw group:rw all:r;
+</pre>
+<p>如果给一个用户组或所有用户任何权限，user 这个参数就没有必要设置了，如：
+</p>
+<pre>dav_access group:rw all:r;
+
+</pre>
+<h2>dav_methods</h2>
+<p>syntax: dav_methods [off|put|delete|mkcol|copy|move] ... 
+</p><p>default: dav_methods off 
+</p><p>context: http, server, location 
+</p>
+<pre>这个指令用于于指定HTTP和WebDAV的方法，设置它为off 时其所有的方法都将无效（忽视你已经设置的方法）。
+
+Put 方法的目标文件必须是和Nginx 的临时文件夹client_body_temp_path 在同一个分区里。
+
+当使用Put 方法创建一个文件时，有可能会通过设定date header 修改文件创建日期。
+</pre>
+<h2>create_full_put_path</h2>
+<p>syntax: create_full_put_path on|off 
+</p><p>default: create_full_put_path off 
+</p><p>context: http, server, location 
+
+</p>
+<pre>默认情况下，Put 方法只能在已存在的目录里创建文件。当然了Nginx 必须得有这个目录的修改和写入权限。
+</pre>
+
+
+
+</div>
+<!-- END CONTENT -->
+
+
+<div id="footer">
+<p><a href="http://www.nginx.cn/doc/optional/httpdav.html#top">顶端</a></p>
+
+<p>中文化: <a href="http://www.nginx.cn/">Nginx中文</a> &nbsp;·&nbsp; 制作: www.nginx.cn  (整理及部分翻译 )</p>
+
+</div>
+
+
+
+<div style="display:none"><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F7f826a2d9c693c7ed804c0145be7da9d' type='text/javascript'%3E%3C/script%3E"));</script><script src="./HttpDav模块-Nginx中文文档_files/h.js.下载" type="text/javascript"></script><a href="http://tongji.baidu.com/hm-web/welcome/ico?s=7f826a2d9c693c7ed804c0145be7da9d" target="_blank"><img border="0" src="./HttpDav模块-Nginx中文文档_files/21.gif" width="20" height="20"></a></div>
+
+</body></html>
