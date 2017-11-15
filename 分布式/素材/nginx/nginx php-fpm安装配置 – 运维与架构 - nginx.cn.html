@@ -1,0 +1,3211 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!-- saved from url=(0028)http://www.nginx.cn/231.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:wb="http://open.weibo.com/wb"><head profile="http://gmpg.org/xfn/11"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="keywords" content="php-fpm, ">
+<meta name="description" content="nginx本身不能处理PHP，它只是个web服务器，当接收到请求后，如果是php请求，则发给php解释器处理，并把结果返回给客户端。nginx一般是把请求发fastcgi管理进程处理，fascgi管理进程选择cg">
+<link rel="shortcut icon" href="http://www.nginx.cn/favicon.ico">
+<title>nginx php-fpm安装配置  –  运维与架构 - nginx.cn</title>
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0 - 所有文章" href="http://www.nginx.cn/feed">
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0 - 所有评论" href="http://www.nginx.cn/comments/feed">
+<link rel="pingback" href="http://www.nginx.cn/xmlrpc.php">
+<script src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/hm.js.下载"></script><script src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/ca-pub-8728612882429404.js.下载"></script><script src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/hm.js(1).下载"></script><script src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/jquery.js.下载"></script>
+
+	<!-- style START -->
+	<!-- default style -->
+	<style type="text/css" media="screen">@import url( http://www.nginx.cn/wp-content/themes/caonimaxiugaizhe/style.css );</style>
+	<!-- for translations -->
+			<link rel="stylesheet" href="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/chinese.css" type="text/css" media="screen">
+		<!--[if IE]>
+		<link rel="stylesheet" href="http://www.nginx.cn/wp-content/themes/caonimaxiugaizhe/ie.css" type="text/css" media="screen" />
+	<![endif]-->
+	<!-- style END -->
+
+	<!-- script START -->
+	<script type="text/javascript" src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/base.js.下载"></script>
+	
+	<script type="text/javascript" src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/menu.js.下载"></script>
+	<!-- script END -->
+
+	<link rel="alternate" type="application/rss+xml" title="运维与架构 - nginx.cn » nginx php-fpm安装配置评论Feed" href="http://www.nginx.cn/231.html/feed">
+<link rel="stylesheet" id="crayon-css" href="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/crayon.min.css" type="text/css" media="all">
+<link rel="stylesheet" id="crayon-theme-classic-css" href="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/classic.css" type="text/css" media="all">
+<link rel="stylesheet" id="crayon-font-monaco-css" href="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/monaco.css" type="text/css" media="all">
+<script type="text/javascript" src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/jquery.js(1).下载"></script>
+<script type="text/javascript" src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/jquery-migrate.min.js.下载"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var CrayonSyntaxSettings = {"version":"_2.7.2_beta","is_admin":"0","ajaxurl":"http:\/\/www.nginx.cn\/wp-admin\/admin-ajax.php","prefix":"crayon-","setting":"crayon-setting","selected":"crayon-setting-selected","changed":"crayon-setting-changed","special":"crayon-setting-special","orig_value":"data-orig-value","debug":""};
+var CrayonSyntaxStrings = {"copy":"\u4f7f\u7528 %s \u590d\u5236\uff0c\u4f7f\u7528 %s \u7c98\u8d34\u3002","minimize":"\u70b9\u51fb\u5c55\u5f00\u4ee3\u7801"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/crayon.min.js.下载"></script>
+<link rel="https://api.w.org/" href="http://www.nginx.cn/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.nginx.cn/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.nginx.cn/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="nginx rewrite 指令" href="http://www.nginx.cn/216.html">
+<link rel="next" title="nginx日志切割" href="http://www.nginx.cn/255.html">
+<meta name="generator" content="WordPress 4.8.3">
+<link rel="canonical" href="http://www.nginx.cn/231.html">
+<link rel="shortlink" href="http://www.nginx.cn/?p=231">
+<link rel="alternate" type="application/json+oembed" href="http://www.nginx.cn/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.nginx.cn%2F231.html">
+<link rel="alternate" type="text/xml+oembed" href="http://www.nginx.cn/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.nginx.cn%2F231.html&amp;format=xml">
+		<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+		
+<link rel="preload" href="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/integrator.js.下载" as="script"><script type="text/javascript" src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/integrator.js.下载"></script></head>
+
+
+<body rlt="1" style="zoom: 1;">
+<!-- wrap START -->
+<div id="wrap">
+
+<!-- container START -->
+<div id="container">
+
+<!-- header START -->
+<div id="header">
+
+	<!-- banner START -->
+		<!-- banner END -->
+
+	<div id="caption">
+<span id="title"><a href="http://www.nginx.cn/">运维与架构 - nginx.cn</a></span>
+		<div id="tagline">好的架构减少运维，好的运维反哺架构</div>
+	</div>
+
+	<div class="fixed"></div>
+</div>
+<!-- header END -->
+
+<!-- navigation START -->
+<div id="navigation">
+	<!-- menus START -->
+	<ul id="menus">
+	    <li class="current_page_item"><a class="home" title="首页" href="http://www.nginx.cn/">首页</a></li>
+		<li class="page_item page-item-9"><a href="http://www.nginx.cn/nginx-download">nginx最新版下载</a></li>
+<li class="page_item page-item-55"><a href="http://www.nginx.cn/install">Nginx安装</a></li>
+<li class="page_item page-item-55"><a href="http://www.nginx.cn/76.html">Nginx配置</a></li>
+<li class="page_item page-item-55"><a href="http://www.nginx.cn/231.html">PHP-FPM安装配置</a></li>
+<li class="page_item page-item-353"><a href="http://www.nginx.cn/nginx-how-to">nginx中文手册</a></li>
+<li class="page_item page-item-43"><a href="http://www.nginx.cn/nginxchscommandline">运行和控制Nginx</a></li>
+<li class="page_item page-item-620"><a href="http://www.nginx.cn/manual" title="常用运维手册">在线手册</a></li>
+<li class="page_item page-item-55"><a href="http://www.nginx.cn/links" title="好站推荐">友情链接</a></li>
+<li class="page_item page-item-620"><a href="http://www.nginx.cn/about">关于我</a></li>
+		<li><a class="lastmenu" href="javascript:void(0);"></a></li>
+
+	</ul>
+	<!-- menus END -->
+
+
+
+	<div class="fixed"></div>
+</div>
+<!-- navigation END -->
+<!-- content START -->
+<div id="content">
+
+	<!-- main START -->
+	<div id="main">
+
+	<div id="postpath">
+		<a title="转到首页" href="http://www.nginx.cn/">首页</a>
+		 &gt; <a href="http://www.nginx.cn/category/nginx-article" rel="category tag">nginx</a>		 &gt; nginx php-fpm安装配置	</div>
+
+	<div class="post" id="post-231">
+		<h1>nginx php-fpm安装配置</h1>
+		<div class="info">
+			<span class="date">2012年9月21日</span>
+			<span class="author"><a href="http://www.nginx.cn/author/mood" title="由mood发布" rel="author">mood</a></span>										<span class="addcomment"><a href="http://www.nginx.cn/231.html#respond">发表评论</a></span>
+				<span class="comments"><a href="http://www.nginx.cn/231.html#comments">阅读评论</a></span>
+						<div class="fixed"></div>
+		</div>
+<div id="ad"><br><table width="650" height="40" cellpadding="0" cellspacing="0" border="0" style="margin:0 auto;border: 1px solid #b8d4ea;">  <tbody>  <tr>  <td align="center"><a href="mailto:admin@nginx.cn" title="寻求空间赞助" target="_blank" rel="nofollow"><font color="red">赞助本站主机</font></a></td>  <td align="center"><a href="http://wangsu.264.cn/" title="网速测试" target="_blank"><font color="blue">网速测试</font></a></td>  <td align="center"><a href="http://huilv.264.cn/" title="美元人民币汇率" target="_blank"><font color="red">最新美元人民币汇率</font></a></td>  </tr>  </tbody>  </table>  <br></div>
+		<div class="content">
+<div style="float:right;padding:8px;">
+<script async="" src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/adsbygoogle.js.下载"></script>
+<!-- nginx-content -->
+<ins class="adsbygoogle" style="display:inline-block;width:250px;height:250px" data-ad-client="ca-pub-8728612882429404" data-ad-slot="8926172305" data-adsbygoogle-status="done"><ins id="aswift_0_expand" style="display:inline-table;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:250px;background-color:transparent;"><ins id="aswift_0_anchor" style="display:block;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:250px;background-color:transparent;"><iframe width="250" height="250" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;width:250px;height:250px;" src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/saved_resource.html"></iframe></ins></ins></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+<p>nginx本身不能处理PHP，它只是个web服务器，当接收到请求后，如果是php请求，则发给php解释器处理，并把结果返回给客户端。</p>
+<p>nginx一般是把请求发fastcgi管理进程处理，fascgi管理进程选择cgi子进程处理结果并返回被nginx</p>
+<p>本文以php-fpm为例介绍如何使nginx支持PHP</p>
+<p>一、编译安装php-fpm</p>
+<p><strong>什么是PHP-FPM</strong><br>
+<span id="more-231"></span></p>
+<p>PHP-FPM是一个PHP FastCGI管理器，是只用于PHP的,可以在 http://php-fpm.org/download下载得到.</p>
+<p>PHP-FPM其实是PHP源代码的一个补丁，旨在将FastCGI进程管理整合进PHP包中。必须将它patch到你的PHP源代码中，在编译安装PHP后才可以使用。</p>
+<p><span style="color: #ff0000;"><strong>新版PHP已经集成php-fpm了，不再是第三方的包了，推荐使用</strong></span>。PHP-FPM提供了更好的PHP进程管理方式，可以有效控制内存和进程、可以平滑重载PHP配置，比spawn-fcgi具有更多优点，所以被PHP官方收录了。在./configure的时候带 –enable-fpm参数即可开启PHP-FPM，其它参数都是配置php的，具体选项含义可以<a href="http://www.php.net/manual/en/configure.about.php" target="_blank">查看这里</a>。</p>
+<p>安装前准备<br>
+centos下执行</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5a0c1123e3cdd909187539" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate crayon-wrapped" data-settings=" minimize scroll-mouseover wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important; height: 18px !important; line-height: 18px !important; margin-top: -19px; display: none; position: absolute; z-index: 2;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="切换是否显示行编号"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="纯文本显示代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button crayon-pressed" title="切换自动换行"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="点击展开代码" style="display: none;"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="复制代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="在新窗口中显示代码"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea class="crayon-plain print-no" data-settings="dblclick" readonly="" style="tab-size: 4; font-size: 12px !important; line-height: 15px !important; z-index: 0; opacity: 0; overflow: hidden;">yum -y install gcc automake autoconf libtool make
+
+yum -y install gcc gcc-c++ glibc
+
+yum -y install libmcrypt-devel mhash-devel libxslt-devel 
+libjpeg libjpeg-devel libpng libpng-devel freetype freetype-devel libxml2 libxml2-devel 
+zlib zlib-devel glibc glibc-devel glib2 glib2-devel bzip2 bzip2-devel 
+ncurses ncurses-devel curl curl-devel e2fsprogs e2fsprogs-devel 
+krb5 krb5-devel libidn libidn-devel openssl openssl-devel</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table class="crayon-table" style="">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-5a0c1123e3cdd909187539-1" style="height: 15px;">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a0c1123e3cdd909187539-2" style="height: 15px;">2</div><div class="crayon-num" data-line="crayon-5a0c1123e3cdd909187539-3" style="height: 15px;">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a0c1123e3cdd909187539-4" style="height: 15px;">4</div><div class="crayon-num" data-line="crayon-5a0c1123e3cdd909187539-5" style="height: 15px;">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a0c1123e3cdd909187539-6" style="height: 15px;">6</div><div class="crayon-num" data-line="crayon-5a0c1123e3cdd909187539-7" style="height: 15px;">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a0c1123e3cdd909187539-8" style="height: 15px;">8</div><div class="crayon-num" data-line="crayon-5a0c1123e3cdd909187539-9" style="height: 15px;">9</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5a0c1123e3cdd909187539-1"><span class="crayon-v">yum</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-i">y</span><span class="crayon-h"> </span><span class="crayon-e">install </span><span class="crayon-e">gcc </span><span class="crayon-e">automake </span><span class="crayon-e">autoconf </span><span class="crayon-e">libtool </span><span class="crayon-e">make</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a0c1123e3cdd909187539-2">&nbsp;</div><div class="crayon-line" id="crayon-5a0c1123e3cdd909187539-3"><span class="crayon-v">yum</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-i">y</span><span class="crayon-h"> </span><span class="crayon-e">install </span><span class="crayon-e">gcc </span><span class="crayon-v">gcc</span><span class="crayon-o">-</span><span class="crayon-v">c</span><span class="crayon-o">++</span><span class="crayon-h"> </span><span class="crayon-e">glibc</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a0c1123e3cdd909187539-4">&nbsp;</div><div class="crayon-line" id="crayon-5a0c1123e3cdd909187539-5"><span class="crayon-v">yum</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-i">y</span><span class="crayon-h"> </span><span class="crayon-e">install </span><span class="crayon-v">libmcrypt</span><span class="crayon-o">-</span><span class="crayon-e">devel </span><span class="crayon-v">mhash</span><span class="crayon-o">-</span><span class="crayon-e">devel </span><span class="crayon-v">libxslt</span><span class="crayon-o">-</span><span class="crayon-e">devel </span></div><div class="crayon-line crayon-striped-line" id="crayon-5a0c1123e3cdd909187539-6"><span class="crayon-e">libjpeg </span><span class="crayon-v">libjpeg</span><span class="crayon-o">-</span><span class="crayon-e">devel </span><span class="crayon-e">libpng </span><span class="crayon-v">libpng</span><span class="crayon-o">-</span><span class="crayon-e">devel </span><span class="crayon-e">freetype </span><span class="crayon-v">freetype</span><span class="crayon-o">-</span><span class="crayon-e">devel </span><span class="crayon-e">libxml2 </span><span class="crayon-v">libxml2</span><span class="crayon-o">-</span><span class="crayon-e">devel </span></div><div class="crayon-line" id="crayon-5a0c1123e3cdd909187539-7"><span class="crayon-e">zlib </span><span class="crayon-v">zlib</span><span class="crayon-o">-</span><span class="crayon-e">devel </span><span class="crayon-e">glibc </span><span class="crayon-v">glibc</span><span class="crayon-o">-</span><span class="crayon-e">devel </span><span class="crayon-e">glib2 </span><span class="crayon-v">glib2</span><span class="crayon-o">-</span><span class="crayon-e">devel </span><span class="crayon-e">bzip2 </span><span class="crayon-v">bzip2</span><span class="crayon-o">-</span><span class="crayon-e">devel </span></div><div class="crayon-line crayon-striped-line" id="crayon-5a0c1123e3cdd909187539-8"><span class="crayon-e">ncurses </span><span class="crayon-v">ncurses</span><span class="crayon-o">-</span><span class="crayon-e">devel </span><span class="crayon-e">curl </span><span class="crayon-v">curl</span><span class="crayon-o">-</span><span class="crayon-e">devel </span><span class="crayon-e">e2fsprogs </span><span class="crayon-v">e2fsprogs</span><span class="crayon-o">-</span><span class="crayon-e">devel </span></div><div class="crayon-line" id="crayon-5a0c1123e3cdd909187539-9"><span class="crayon-e">krb5 </span><span class="crayon-v">krb5</span><span class="crayon-o">-</span><span class="crayon-e">devel </span><span class="crayon-e">libidn </span><span class="crayon-v">libidn</span><span class="crayon-o">-</span><span class="crayon-e">devel </span><span class="crayon-e">openssl </span><span class="crayon-v">openssl</span><span class="crayon-o">-</span><span class="crayon-v">devel</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0007 seconds] -->
+<p><strong>新版php-fpm安装(<span style="color: #ff0000;">推荐安装方式</span>)</strong></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5a0c1123e3ce7908955722" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate crayon-wrapped" data-settings=" minimize scroll-mouseover wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important; height: 18px !important; line-height: 18px !important; margin-top: -19px; display: none; position: absolute; z-index: 2;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="切换是否显示行编号"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="纯文本显示代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button crayon-pressed" title="切换自动换行"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="点击展开代码" style="display: none;"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="复制代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="在新窗口中显示代码"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea class="crayon-plain print-no" data-settings="dblclick" readonly="" style="tab-size: 4; font-size: 12px !important; line-height: 15px !important; z-index: 0; opacity: 0; overflow: hidden;">wget http://cn2.php.net/distributions/php-5.4.7.tar.gz
+tar zvxf php-5.4.7.tar.gz
+cd php-5.4.7
+./configure --prefix=/usr/local/php  --enable-fpm --with-mcrypt 
+--enable-mbstring --disable-pdo --with-curl --disable-debug  --disable-rpath 
+--enable-inline-optimization --with-bz2  --with-zlib --enable-sockets 
+--enable-sysvsem --enable-sysvshm --enable-pcntl --enable-mbregex 
+--with-mhash --enable-zip --with-pcre-regex --with-mysql --with-mysqli 
+--with-gd --with-jpeg-dir
+
+make all install</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table class="crayon-table" style="">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-5a0c1123e3ce7908955722-1" style="height: 15px;">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a0c1123e3ce7908955722-2" style="height: 15px;">2</div><div class="crayon-num" data-line="crayon-5a0c1123e3ce7908955722-3" style="height: 15px;">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a0c1123e3ce7908955722-4" style="height: 15px;">4</div><div class="crayon-num" data-line="crayon-5a0c1123e3ce7908955722-5" style="height: 15px;">5</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a0c1123e3ce7908955722-6" style="height: 15px;">6</div><div class="crayon-num" data-line="crayon-5a0c1123e3ce7908955722-7" style="height: 15px;">7</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a0c1123e3ce7908955722-8" style="height: 15px;">8</div><div class="crayon-num" data-line="crayon-5a0c1123e3ce7908955722-9" style="height: 15px;">9</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a0c1123e3ce7908955722-10" style="height: 15px;">10</div><div class="crayon-num" data-line="crayon-5a0c1123e3ce7908955722-11" style="height: 15px;">11</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5a0c1123e3ce7908955722-1"><span class="crayon-e">wget </span><span class="crayon-v">http</span><span class="crayon-o">:</span><span class="crayon-c">//cn2.php.net/distributions/php-5.4.7.tar.gz</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a0c1123e3ce7908955722-2"><span class="crayon-e">tar </span><span class="crayon-e">zvxf </span><span class="crayon-v">php</span><span class="crayon-o">-</span><span class="crayon-cn">5.4.7.tar.gz</span></div><div class="crayon-line" id="crayon-5a0c1123e3ce7908955722-3"><span class="crayon-e">cd </span><span class="crayon-v">php</span><span class="crayon-o">-</span><span class="crayon-cn">5.4.7</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a0c1123e3ce7908955722-4"><span class="crayon-sy">.</span><span class="crayon-o">/</span><span class="crayon-v">configure</span><span class="crayon-h"> </span><span class="crayon-o">--</span><span class="crayon-v">prefix</span><span class="crayon-o">=</span><span class="crayon-o">/</span><span class="crayon-v">usr</span><span class="crayon-o">/</span><span class="crayon-v">local</span><span class="crayon-o">/</span><span class="crayon-v">php</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-o">--</span><span class="crayon-v">enable</span><span class="crayon-o">-</span><span class="crayon-v">fpm</span><span class="crayon-h"> </span><span class="crayon-o">--</span><span class="crayon-v">with</span><span class="crayon-o">-</span><span class="crayon-v">mcrypt</span><span class="crayon-h"> </span></div><div class="crayon-line" id="crayon-5a0c1123e3ce7908955722-5"><span class="crayon-o">--</span><span class="crayon-v">enable</span><span class="crayon-o">-</span><span class="crayon-v">mbstring</span><span class="crayon-h"> </span><span class="crayon-o">--</span><span class="crayon-v">disable</span><span class="crayon-o">-</span><span class="crayon-v">pdo</span><span class="crayon-h"> </span><span class="crayon-o">--</span><span class="crayon-v">with</span><span class="crayon-o">-</span><span class="crayon-v">curl</span><span class="crayon-h"> </span><span class="crayon-o">--</span><span class="crayon-v">disable</span><span class="crayon-o">-</span><span class="crayon-v">debug</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-o">--</span><span class="crayon-v">disable</span><span class="crayon-o">-</span><span class="crayon-v">rpath</span><span class="crayon-h"> </span></div><div class="crayon-line crayon-striped-line" id="crayon-5a0c1123e3ce7908955722-6"><span class="crayon-o">--</span><span class="crayon-v">enable</span><span class="crayon-o">-</span><span class="crayon-v">inline</span><span class="crayon-o">-</span><span class="crayon-v">optimization</span><span class="crayon-h"> </span><span class="crayon-o">--</span><span class="crayon-v">with</span><span class="crayon-o">-</span><span class="crayon-v">bz2</span><span class="crayon-h">&nbsp;&nbsp;</span><span class="crayon-o">--</span><span class="crayon-v">with</span><span class="crayon-o">-</span><span class="crayon-v">zlib</span><span class="crayon-h"> </span><span class="crayon-o">--</span><span class="crayon-v">enable</span><span class="crayon-o">-</span><span class="crayon-v">sockets</span><span class="crayon-h"> </span></div><div class="crayon-line" id="crayon-5a0c1123e3ce7908955722-7"><span class="crayon-o">--</span><span class="crayon-v">enable</span><span class="crayon-o">-</span><span class="crayon-v">sysvsem</span><span class="crayon-h"> </span><span class="crayon-o">--</span><span class="crayon-v">enable</span><span class="crayon-o">-</span><span class="crayon-v">sysvshm</span><span class="crayon-h"> </span><span class="crayon-o">--</span><span class="crayon-v">enable</span><span class="crayon-o">-</span><span class="crayon-v">pcntl</span><span class="crayon-h"> </span><span class="crayon-o">--</span><span class="crayon-v">enable</span><span class="crayon-o">-</span><span class="crayon-v">mbregex</span><span class="crayon-h"> </span></div><div class="crayon-line crayon-striped-line" id="crayon-5a0c1123e3ce7908955722-8"><span class="crayon-o">--</span><span class="crayon-v">with</span><span class="crayon-o">-</span><span class="crayon-v">mhash</span><span class="crayon-h"> </span><span class="crayon-o">--</span><span class="crayon-v">enable</span><span class="crayon-o">-</span><span class="crayon-v">zip</span><span class="crayon-h"> </span><span class="crayon-o">--</span><span class="crayon-v">with</span><span class="crayon-o">-</span><span class="crayon-v">pcre</span><span class="crayon-o">-</span><span class="crayon-v">regex</span><span class="crayon-h"> </span><span class="crayon-o">--</span><span class="crayon-v">with</span><span class="crayon-o">-</span><span class="crayon-v">mysql</span><span class="crayon-h"> </span><span class="crayon-o">--</span><span class="crayon-v">with</span><span class="crayon-o">-</span><span class="crayon-v">mysqli</span><span class="crayon-h"> </span></div><div class="crayon-line" id="crayon-5a0c1123e3ce7908955722-9"><span class="crayon-o">--</span><span class="crayon-v">with</span><span class="crayon-o">-</span><span class="crayon-v">gd</span><span class="crayon-h"> </span><span class="crayon-o">--</span><span class="crayon-v">with</span><span class="crayon-o">-</span><span class="crayon-v">jpeg</span><span class="crayon-o">-</span><span class="crayon-e">dir</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a0c1123e3ce7908955722-10">&nbsp;</div><div class="crayon-line" id="crayon-5a0c1123e3ce7908955722-11"><span class="crayon-e">make </span><span class="crayon-e">all </span><span class="crayon-v">install</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0007 seconds] -->
+<p><del datetime="2013-09-13T04:38:03+00:00"><strong>旧版手动打补丁php-fpm安装（旧版程序已经没有了，大家新版的吧，这里做个展示）</strong><br>
+wget http://cn2.php.net/get/php-5.2.17.tar.gz<br>
+wget http://php-fpm.org/downloads/php-5.2.17-fpm-0.5.14.diff.gz<br>
+tar zvxf php-5.2.17.tar.gz<br>
+gzip -cd php-5.2.17-fpm-0.5.14.diff.gz | patch -d php-5.2.17 -p1<br>
+cd php-5.2.17<br>
+./configure --prefix=/usr/local/php -with-config-file-path=/usr/local/php/etc<br>
+-with-mysql=/usr/local/mysql<br>
+-with-mysqli=/usr/local/mysql/bin/mysql_config -with-openssl -enable-fpm -enable-mbstring<br>
+-with-freetype-dir -with-jpeg-dir -with-png-dir -with-zlib-dir -with-libxml-dir=/usr -enable-xml<br>
+-with-mhash -with-mcrypt -enable-pcntl -enable-sockets &nbsp;-with-bz2 -with-curl -with-curlwrappers<br>
+-enable-mbregex -with-gd -enable-gd-native-ttf -enable-zip -enable-soap -with-iconv -enable-bcmath<br>
+-enable-shmop -enable-sysvsem -enable-inline-optimization -with-ldap -with-ldap-sasl -enable-pdo<br>
+-with-pdo-mysql<br>
+make all install</del></p>
+<p>以上两种方式都可以安装php-fpm，安装后内容放在/usr/local/php目录下</p>
+<p><a href="http://www.nginx.cn/wp-content/uploads/2012/09/1.png"><img class="alignnone size-medium wp-image-237" title="1" alt="" src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/1-300x41.png" width="300" height="41"></a></p>
+<p>以上就完成了php-fpm的安装。</p>
+<p>下面是对php-fpm运行用户进行设置</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5a0c1123e3ceb768526831" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate crayon-wrapped" data-settings=" minimize scroll-mouseover wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important; height: 18px !important; line-height: 18px !important; margin-top: -19px; display: none; position: absolute; z-index: 2;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="切换是否显示行编号"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="纯文本显示代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button crayon-pressed" title="切换自动换行"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="点击展开代码" style="display: none;"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="复制代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="在新窗口中显示代码"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea class="crayon-plain print-no" data-settings="dblclick" readonly="" style="tab-size: 4; font-size: 12px !important; line-height: 15px !important; z-index: 0; opacity: 0; overflow: hidden;">cd /usr/local/php
+cp etc/php-fpm.conf.default etc/php-fpm.conf
+vi etc/php-fpm.conf</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table class="crayon-table" style="">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-5a0c1123e3ceb768526831-1" style="height: 15px;">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a0c1123e3ceb768526831-2" style="height: 15px;">2</div><div class="crayon-num" data-line="crayon-5a0c1123e3ceb768526831-3" style="height: 15px;">3</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5a0c1123e3ceb768526831-1"><span class="crayon-v">cd</span><span class="crayon-h"> </span><span class="crayon-o">/</span><span class="crayon-v">usr</span><span class="crayon-o">/</span><span class="crayon-v">local</span><span class="crayon-o">/</span><span class="crayon-e">php</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a0c1123e3ceb768526831-2"><span class="crayon-e">cp </span><span class="crayon-v">etc</span><span class="crayon-o">/</span><span class="crayon-v">php</span><span class="crayon-o">-</span><span class="crayon-v">fpm</span><span class="crayon-sy">.</span><span class="crayon-v">conf</span><span class="crayon-sy">.</span><span class="crayon-st">default</span><span class="crayon-h"> </span><span class="crayon-v">etc</span><span class="crayon-o">/</span><span class="crayon-v">php</span><span class="crayon-o">-</span><span class="crayon-v">fpm</span><span class="crayon-sy">.</span><span class="crayon-e">conf</span></div><div class="crayon-line" id="crayon-5a0c1123e3ceb768526831-3"><span class="crayon-e">vi </span><span class="crayon-v">etc</span><span class="crayon-o">/</span><span class="crayon-v">php</span><span class="crayon-o">-</span><span class="crayon-v">fpm</span><span class="crayon-sy">.</span><span class="crayon-v">conf</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0002 seconds] -->
+<p>修改<br>
+user = www-data<br>
+group = www-data</p>
+<p>如果www-data用户不存在，那么先添加www-data用户<br>
+groupadd www-data<br>
+useradd -g www-data www-data</p>
+<p>二、编译安装nginx</p>
+<p>然后按照<a href="http://www.nginx.cn/install">http://www.nginx.cn/install</a>&nbsp;安装nginx</p>
+<p>三、修改nginx配置文件以支持php-fpm</p>
+<p>nginx安装完成后，修改nginx配置文件为,<a href="http://www.nginx.cn/wp-content/uploads/2012/09/nginx.conf_.txt">nginx.conf</a></p>
+<p>其中server段增加如下配置，注意标红内容配置，否则会出现No input file specified.错误</p>
+<p># pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000<br>
+#<br>
+location ~ .php$ {<br>
+<span style="color: #ff0000;">root html;</span><br>
+fastcgi_pass 127.0.0.1:9000;<br>
+fastcgi_index index.php;<br>
+<span style="color: #ff0000;">fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;</span><br>
+include fastcgi_params;<br>
+}</p>
+<p>四、创建测试php文件</p>
+<p>创建php文件</p>
+<p>在/usr/local/nginx/html下创建index.php文件，输入如下内容</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5a0c1123e3cf1446721386" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate crayon-wrapped" data-settings=" minimize scroll-mouseover wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important; height: 18px !important; line-height: 18px !important; margin-top: -19px; display: none; position: absolute; z-index: 2;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><span class="crayon-mixed-highlight" title="含多种语言"></span><div class="crayon-button crayon-nums-button crayon-pressed" title="切换是否显示行编号"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="纯文本显示代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button crayon-pressed" title="切换自动换行"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="点击展开代码" style="display: none;"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="复制代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="在新窗口中显示代码"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea class="crayon-plain print-no" data-settings="dblclick" readonly="" style="tab-size: 4; font-size: 12px !important; line-height: 15px !important; z-index: 0; opacity: 0; overflow: hidden;">&lt;?php
+    echo phpinfo();
+?&gt;</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table class="crayon-table" style="">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-5a0c1123e3cf1446721386-1" style="height: 15px;">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a0c1123e3cf1446721386-2" style="height: 15px;">2</div><div class="crayon-num" data-line="crayon-5a0c1123e3cf1446721386-3" style="height: 15px;">3</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5a0c1123e3cf1446721386-1"><span class="crayon-ta">&lt;?php</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a0c1123e3cf1446721386-2"><span class="crayon-h">&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="crayon-k ">echo</span><span class="crayon-h"> </span><span class="crayon-e">phpinfo</span><span class="crayon-sy">(</span><span class="crayon-sy">)</span><span class="crayon-sy">;</span></div><div class="crayon-line" id="crayon-5a0c1123e3cf1446721386-3"><span class="crayon-ta">?&gt;</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0009 seconds] -->
+<p>五、启动服务</p>
+<p>启动php-fpm和nginx</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5a0c1123e3cf3541040299" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate crayon-wrapped" data-settings=" minimize scroll-mouseover wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important; height: 18px !important; line-height: 18px !important; margin-top: -19px; display: none; position: absolute; z-index: 2;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="切换是否显示行编号"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="纯文本显示代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button crayon-pressed" title="切换自动换行"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="点击展开代码" style="display: none;"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="复制代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="在新窗口中显示代码"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea class="crayon-plain print-no" data-settings="dblclick" readonly="" style="tab-size: 4; font-size: 12px !important; line-height: 15px !important; z-index: 0; opacity: 0; overflow: hidden;">/usr/local/php/sbin/php-fpm 
+#手动打补丁的启动方式/usr/local/php/sbin/php-fpm start
+
+sudo /usr/local/nginx/nginx</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table class="crayon-table" style="">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-5a0c1123e3cf3541040299-1" style="height: 15px;">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a0c1123e3cf3541040299-2" style="height: 15px;">2</div><div class="crayon-num" data-line="crayon-5a0c1123e3cf3541040299-3" style="height: 15px;">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a0c1123e3cf3541040299-4" style="height: 15px;">4</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5a0c1123e3cf3541040299-1"><span class="crayon-o">/</span><span class="crayon-v">usr</span><span class="crayon-o">/</span><span class="crayon-v">local</span><span class="crayon-o">/</span><span class="crayon-v">php</span><span class="crayon-o">/</span><span class="crayon-v">sbin</span><span class="crayon-o">/</span><span class="crayon-v">php</span><span class="crayon-o">-</span><span class="crayon-v">fpm</span><span class="crayon-h"> </span></div><div class="crayon-line crayon-striped-line" id="crayon-5a0c1123e3cf3541040299-2"><span class="crayon-p">#手动打补丁的启动方式/usr/local/php/sbin/php-fpm start</span></div><div class="crayon-line" id="crayon-5a0c1123e3cf3541040299-3">&nbsp;</div><div class="crayon-line crayon-striped-line" id="crayon-5a0c1123e3cf3541040299-4"><span class="crayon-v">sudo</span><span class="crayon-h"> </span><span class="crayon-o">/</span><span class="crayon-v">usr</span><span class="crayon-o">/</span><span class="crayon-v">local</span><span class="crayon-o">/</span><span class="crayon-v">nginx</span><span class="crayon-o">/</span><span class="crayon-v">nginx</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0002 seconds] -->
+<p>php-fpm关闭重启见文章结尾</p>
+<p>六、浏览器访问</p>
+<p>访问http://你的服务器ip/index.php，皆可以见到php信息了。</p>
+<p><a href="http://www.nginx.cn/wp-content/uploads/2012/09/2.png"><img class="alignnone size-medium wp-image-236" title="2" alt="" src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/2-300x120.png" width="300" height="120"></a></p>
+<p><span style="color: #ff0000;"><strong>安装php-fpm时可能遇到的错误：</strong></span></p>
+<p>1.<strong> php configure时出错</strong></p>
+<p>configure: error: XML configuration could not be found</p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5a0c1123e3cf5373989078" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate crayon-wrapped" data-settings=" minimize scroll-mouseover wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important; height: 18px !important; line-height: 18px !important; margin-top: -19px; display: none; z-index: 4;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="切换是否显示行编号"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="纯文本显示代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button crayon-pressed" title="切换自动换行"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="点击展开代码" style="display: none;"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="复制代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="在新窗口中显示代码"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea class="crayon-plain print-no" data-settings="dblclick" readonly="" style="tab-size: 4; font-size: 12px !important; line-height: 15px !important; z-index: 0; opacity: 0; overflow: hidden;">apt-get install libxml2 libxml2-dev &nbsp;(ubuntu下)
+yum -y install libxml2 libxml2-devel（centos下)</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table class="crayon-table" style="">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-5a0c1123e3cf5373989078-1" style="height: 15px;">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a0c1123e3cf5373989078-2" style="height: 15px;">2</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5a0c1123e3cf5373989078-1"><span class="crayon-v">apt</span><span class="crayon-o">-</span><span class="crayon-e">get </span><span class="crayon-e">install </span><span class="crayon-e">libxml2 </span><span class="crayon-v">libxml2</span><span class="crayon-o">-</span><span class="crayon-i">dev</span><span class="crayon-h"> </span>&nbsp;<span class="crayon-sy">(</span><span class="crayon-i">ubuntu</span>下<span class="crayon-sy">)</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a0c1123e3cf5373989078-2"><span class="crayon-v">yum</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-i">y</span><span class="crayon-h"> </span><span class="crayon-e">install </span><span class="crayon-e">libxml2 </span><span class="crayon-v">libxml2</span><span class="crayon-o">-</span><span class="crayon-i">devel</span>（<span class="crayon-i">centos</span>下<span class="crayon-sy">)</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0002 seconds] -->
+<p>2.<strong> Please reinstall the BZip2 distribution</strong></p><!-- Crayon Syntax Highlighter v_2.7.2_beta -->
+
+		<div id="crayon-5a0c1123e3cf6263648175" class="crayon-syntax crayon-theme-classic crayon-font-monaco crayon-os-pc print-yes notranslate crayon-wrapped" data-settings=" minimize scroll-mouseover wrap" style="margin-top: 12px; margin-bottom: 12px; font-size: 12px !important; line-height: 15px !important; height: auto;">
+		
+			<div class="crayon-toolbar" data-settings=" mouseover overlay hide delay" style="font-size: 12px !important; height: 18px !important; line-height: 18px !important; margin-top: -19px; display: none; position: absolute; z-index: 2;"><span class="crayon-title"></span>
+			<div class="crayon-tools" style="font-size: 12px !important;height: 18px !important; line-height: 18px !important;"><div class="crayon-button crayon-nums-button crayon-pressed" title="切换是否显示行编号"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-plain-button" title="纯文本显示代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-wrap-button crayon-pressed" title="切换自动换行"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-expand-button" title="点击展开代码" style="display: none;"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-copy-button" title="复制代码"><div class="crayon-button-icon"></div></div><div class="crayon-button crayon-popup-button" title="在新窗口中显示代码"><div class="crayon-button-icon"></div></div></div></div>
+			<div class="crayon-info" style="min-height: 16.8px !important; line-height: 16.8px !important;"></div>
+			<div class="crayon-plain-wrap"><textarea class="crayon-plain print-no" data-settings="dblclick" readonly="" style="tab-size: 4; font-size: 12px !important; line-height: 15px !important; z-index: 0; opacity: 0; overflow: hidden;">wget http://www.bzip.org/1.0.5/bzip2-1.0.5.tar.gz
+tar -zxvf bzip2-1.0.5.tar.gz
+cd bzip2-1.0.5
+make
+make install</textarea></div>
+			<div class="crayon-main" style="position: relative; z-index: 1; overflow: hidden;">
+				<table class="crayon-table" style="">
+					<tbody><tr class="crayon-row">
+				<td class="crayon-nums " data-settings="show">
+					<div class="crayon-nums-content" style="font-size: 12px !important; line-height: 15px !important;"><div class="crayon-num" data-line="crayon-5a0c1123e3cf6263648175-1" style="height: 15px;">1</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a0c1123e3cf6263648175-2" style="height: 15px;">2</div><div class="crayon-num" data-line="crayon-5a0c1123e3cf6263648175-3" style="height: 15px;">3</div><div class="crayon-num crayon-striped-num" data-line="crayon-5a0c1123e3cf6263648175-4" style="height: 15px;">4</div><div class="crayon-num" data-line="crayon-5a0c1123e3cf6263648175-5" style="height: 15px;">5</div></div>
+				</td>
+						<td class="crayon-code"><div class="crayon-pre" style="font-size: 12px !important; line-height: 15px !important; -moz-tab-size:4; -o-tab-size:4; -webkit-tab-size:4; tab-size:4;"><div class="crayon-line" id="crayon-5a0c1123e3cf6263648175-1"><span class="crayon-e">wget </span><span class="crayon-v">http</span><span class="crayon-o">:</span><span class="crayon-c">//www.bzip.org/1.0.5/bzip2-1.0.5.tar.gz</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a0c1123e3cf6263648175-2"><span class="crayon-v">tar</span><span class="crayon-h"> </span><span class="crayon-o">-</span><span class="crayon-e">zxvf </span><span class="crayon-v">bzip2</span><span class="crayon-o">-</span><span class="crayon-cn">1.0.5.tar.gz</span></div><div class="crayon-line" id="crayon-5a0c1123e3cf6263648175-3"><span class="crayon-e">cd </span><span class="crayon-v">bzip2</span><span class="crayon-o">-</span><span class="crayon-cn">1.0.5</span></div><div class="crayon-line crayon-striped-line" id="crayon-5a0c1123e3cf6263648175-4"><span class="crayon-e">make</span></div><div class="crayon-line" id="crayon-5a0c1123e3cf6263648175-5"><span class="crayon-e">make </span><span class="crayon-v">install</span></div></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+<!-- [Format Time: 0.0001 seconds] -->
+<p>3.&nbsp;<strong>php的配置文件中有一行--with-mysql=/usr</strong>。<br>
+安装的时候提示：<br>
+configure: error: Cannot find MySQL header files under yes.<br>
+Note that the MySQL client library is not bundled anymore.</p>
+<p>这是由于安装mysql时没有安装mysql头文件，或者是路径指定不正确,php找不到mysql的头文件引起的错误提示。<br>
+解决方法。<br>
+(1.) 查看你的系统有没有安装mysql header<br>
+find / -name mysql.h<br>
+如果有。请指定--with-mysql=/跟你的正常路径。<br>
+如果没有。请看下一步。<br>
+(2.)redhat安装<br>
+rpm -ivh MySQL-devel-4.1.12-1.i386.rpm<br>
+(3.)ubuntu安装<br>
+apt-get install libmysqlclient15-dev<br>
+(4.)最后一步php的配置选项添加--with-mysql=/usr即可！</p>
+<p>4.<strong>No input file specified.</strong></p>
+<p>location ~ .php$ {<br>
+root html;<br>
+fastcgi_pass 127.0.0.1:9000;<br>
+fastcgi_index index.php;<br>
+fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;<br>
+include fastcgi_params;<br>
+}</p>
+<p><span style="line-height: 1.714285714; font-size: 1rem;">5.&nbsp;<strong>如果php configure时缺库，可以先安装库(ubuntu下)</strong></span></p>
+<p>sudo apt-get install make bison flex gcc patch autoconf subversion locate<br>
+sudo apt-get install libxml2-dev libbz2-dev libpcre3-dev libssl-dev zlib1g-dev libmcrypt-dev libmhash-dev libmhash2 libcurl4-openssl-dev libpq-dev libpq5 libsyck0-dev</p>
+<p>6.&nbsp;<strong>mcrypt.h not found. Please reinstall libmcrypt</strong></p>
+<p>apt-get install libmcrypt-dev</p>
+<p>或者</p>
+<p>cd /usr/local/src<br>
+wget http://softlayer.dl.sourceforge.net/sourceforge/mcrypt/libmcrypt-2.5.8.tar.gz<br>
+tar -zxvf libmcrypt-2.5.8.tar.gz<br>
+cd /usr/local/src/libmcrypt-2.5.8<br>
+./configure --prefix=/usr/local<br>
+make<br>
+make install</p>
+<p><span style="line-height: 1.714285714; font-size: 1rem;">7. <strong>php-fpm 5.4.7 如何关闭 重启？</strong></span></p>
+<p>php 5.4.7 下的php-fpm 不再支持 php-fpm 以前具有的 /usr/local/php/sbin/php-fpm (start|stop|reload)等命令，需要使用信号控制：</p>
+<p>master进程可以理解以下信号</p>
+<p>INT, TERM 立刻终止 QUIT 平滑终止 USR1 重新打开日志文件 USR2 平滑重载所有worker进程并重新载入配置和二进制模块</p>
+<p>示例：</p>
+<p>php-fpm 关闭：</p>
+<p>kill -INT <code>cat /usr/local/php/var/run/php-fpm.pid</code></p>
+<p>php-fpm 重启：</p>
+<p>kill -USR2 <code>cat /usr/local/php/var/run/php-fpm.pid</code></p>
+<p>查看php-fpm进程数：</p>
+<p>ps aux | grep -c php-fpm</p>
+<p>8.命令行下执行php，提示找不到命令</p>
+<p>-bash: /usr/bin/php: No such file or directory</p>
+<p>vi /etc/profile</p>
+<p>在文件底部增加一行配置<br>
+export PATH=/usr/local/php/bin:$PATH</p>
+<p>保存退出</p>
+<p>source /etc/profile</p>
+
+
+<script async="" src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/adsbygoogle.js.下载"></script>
+<!-- nginx-page-top -->
+<ins class="adsbygoogle" style="display: inline-block; width: 675px; height: 0px;" data-ad-client="ca-pub-8728612882429404" data-ad-slot="1300189107" data-adsbygoogle-status="done"><ins id="aswift_1_expand" style="display: inline-table; border: none; height: 0px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 675px; background-color: transparent;"><ins id="aswift_1_anchor" style="display: block; border: none; height: 0px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 675px; background-color: transparent; overflow: hidden; opacity: 0;"><iframe width="675" height="90" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_1" name="aswift_1" style="left:0;position:absolute;top:0;width:675px;height:90px;" src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/saved_resource(1).html"></iframe></ins></ins></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<div style="clear:both;"></div>
+<span style="color:red">
+除非注明，本站文章均为: <a href="http://www.nginx.cn/" target="_blank">nginx.cn</a>原创，转载请注明本文地址:
+<a href="http://www.nginx.cn/231.html" target="_blank" title="nginx php-fpm安装配置">http://www.nginx.cn/231.html</a></span>
+
+<p id="wan">--完--</p><p>
+
+
+			</p><div class="fixed"></div>
+		</div>
+		<div class="under">
+			<span class="categories">分类: </span><span><a href="http://www.nginx.cn/category/nginx-article" rel="category tag">nginx</a></span>			<span class="tags">标签: </span><span><a href="http://www.nginx.cn/tag/php-fpm" rel="tag">php-fpm</a></span>		</div>
+	</div>
+
+	<!-- related posts START -->
+		<!-- related posts END -->
+<!--
+<script type="text/javascript">
+    /*640*60 创建于 2015-04-25*/
+    var cpro_id = "u2067893";
+</script>
+<script src="http://cpro.baidustatic.com/cpro/ui/c.js" type="text/javascript"></script>
+
+-->
+	<script type="text/javascript" src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/comment.js.下载"></script>
+
+
+
+<div id="comments">
+
+<div id="cmtswitcher">
+			<a id="commenttab" class="curtab" href="javascript:void(0);" onclick="MGJS.switchTab(&#39;thecomments,commentnavi&#39;, &#39;thetrackbacks&#39;, &#39;commenttab&#39;, &#39;curtab&#39;, &#39;trackbacktab&#39;, &#39;tab&#39;);">评论 (62)</a>
+		<a id="trackbacktab" class="tab" href="javascript:void(0);" onclick="MGJS.switchTab(&#39;thetrackbacks&#39;, &#39;thecomments,commentnavi&#39;, &#39;trackbacktab&#39;, &#39;curtab&#39;, &#39;commenttab&#39;, &#39;tab&#39;);">Trackbacks (42)</a>
+				<span class="addcomment"><a href="http://www.nginx.cn/231.html#respond">发表评论</a></span>
+				<span class="addtrackback"><a href="http://www.nginx.cn/231.html/trackback">Trackback</a></span>
+		<div class="fixed"></div>
+</div>
+
+<div id="commentlist">
+	<!-- comments START -->
+	<ol id="thecomments">
+		<li class="comment regularcomment" id="comment-11085">
+		<div class="author">
+			<div class="pic">
+				<img src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/9309befd3b233fdcffc8a338660bdab7" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<span id="commentauthor-11085">
+				
+				simuhunluo
+									</span>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2017年11月15日00:06					 | <a href="http://www.nginx.cn/231.html#comment-11085">#1</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-11085&#39;, &#39;comment-11085&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-11085&#39;, &#39;comment-11085&#39;, &#39;commentbody-11085&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-11085">
+					<p><a href="http://www.nginx.cn/231.html#comment-2352" rel="nofollow">@寂寞侵蚀的岁月 </a><br>
+那是在开始配置./configure的时候没有引入fpm</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li><!-- #comment-## -->
+	<li class="comment regularcomment" id="comment-2363">
+		<div class="author">
+			<div class="pic">
+				<img src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/a6f64f23825373eebd7cb086f563fd5d" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<span id="commentauthor-2363">
+				
+				西门吹牛
+									</span>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2016年8月11日17:47					 | <a href="http://www.nginx.cn/231.html#comment-2363">#2</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-2363&#39;, &#39;comment-2363&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-2363&#39;, &#39;comment-2363&#39;, &#39;commentbody-2363&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-2363">
+					<p>centos7 安装好之后访问的时候页面不出来phpinfo页面，而是出现了index.php文件中的代码，经检查后发现，楼主代码为：<br>
+&amp;lt;?php<br>
+    echo phpinfo();<br>
+?&amp;gt;<br>
+将代码改为：<br>
+&lt;?php<br>
+    echo phpinfo();<br>
+?&gt;<br>
+问题解决。</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+<ul class="children">
+	<li class="comment admincomment" id="comment-2364">
+		<div class="author">
+			<div class="pic">
+				<img src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/20eb6960d7c2da6847bb8359a48b3a9a" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<a id="commentauthor-2364" class="url" href="http://www.nginx.cn/" rel="external nofollow">
+				
+				nginx
+									</a>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2016年8月11日18:37					 | <a href="http://www.nginx.cn/231.html#comment-2364">#3</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-2364&#39;, &#39;comment-2364&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-2364&#39;, &#39;comment-2364&#39;, &#39;commentbody-2364&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-2364">
+					<p>嗯，被转义了。 <img src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/geili_org.gif"> </p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment regularcomment" id="comment-2352">
+		<div class="author">
+			<div class="pic">
+				<img src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/saved_resource" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<a id="commentauthor-2352" class="url" href="http://weibo.com/2165491993" rel="external nofollow">
+				
+				寂寞侵蚀的岁月
+									</a>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2016年7月7日11:31					 | <a href="http://www.nginx.cn/231.html#comment-2352">#4</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-2352&#39;, &#39;comment-2352&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-2352&#39;, &#39;comment-2352&#39;, &#39;commentbody-2352&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-2352">
+					<p>7.0 的php安装后找不到fpm</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li><!-- #comment-## -->
+	<li class="comment regularcomment" id="comment-1277">
+		<div class="author">
+			<div class="pic">
+				<img src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/404a69dab02f3961650713f39b865661" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<a id="commentauthor-1277" class="url" href="http://www.liuhaihua.cn/" rel="external nofollow">
+				
+				HarriesBlog
+									</a>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2016年3月11日14:19					 | <a href="http://www.nginx.cn/231.html#comment-1277">#5</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-1277&#39;, &#39;comment-1277&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-1277&#39;, &#39;comment-1277&#39;, &#39;commentbody-1277&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-1277">
+					<p>感谢楼主</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li><!-- #comment-## -->
+	<li class="comment regularcomment" id="comment-1271">
+		<div class="author">
+			<div class="pic">
+				<img src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/saved_resource" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<a id="commentauthor-1271" class="url" href="http://weibo.com/JamesWNO" rel="external nofollow">
+				
+				dreafly
+									</a>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2016年3月4日23:44					 | <a href="http://www.nginx.cn/231.html#comment-1271">#6</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-1271&#39;, &#39;comment-1271&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-1271&#39;, &#39;comment-1271&#39;, &#39;commentbody-1271&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-1271">
+					<p>楼主你好，在phpinfo()中看到Configuration File (php.ini) Path指向/usr/local/php/lib 目录，但是在该目录下却没看到php.ini配置文件，且从根目录开始查找也没找到这个配置文件，这是为什么？？</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+<ul class="children">
+	<li class="comment regularcomment" id="comment-1272">
+		<div class="author">
+			<div class="pic">
+				<img src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/saved_resource" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<a id="commentauthor-1272" class="url" href="http://weibo.com/JamesWNO" rel="external nofollow">
+				
+				dreafly
+									</a>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2016年3月5日00:09					 | <a href="http://www.nginx.cn/231.html#comment-1272">#7</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-1272&#39;, &#39;comment-1272&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-1272&#39;, &#39;comment-1272&#39;, &#39;commentbody-1272&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-1272">
+					<p>我安装的是php5.6</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+<ul class="children">
+	<li class="comment admincomment" id="comment-2366">
+		<div class="author">
+			<div class="pic">
+				<img src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/20eb6960d7c2da6847bb8359a48b3a9a" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<a id="commentauthor-2366" class="url" href="http://www.nginx.cn/" rel="external nofollow">
+				
+				nginx
+									</a>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2016年8月11日18:39					 | <a href="http://www.nginx.cn/231.html#comment-2366">#8</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-2366&#39;, &#39;comment-2366&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-2366&#39;, &#39;comment-2366&#39;, &#39;commentbody-2366&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-2366">
+					<p>可以自己建立这个文件</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment regularcomment" id="comment-1194">
+		<div class="author">
+			<div class="pic">
+				<img src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/1abedd787581835a0e76c346b400b0a7" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<span id="commentauthor-1194">
+				
+				天边的乌云
+									</span>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2015年12月2日17:14					 | <a href="http://www.nginx.cn/231.html#comment-1194">#9</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-1194&#39;, &#39;comment-1194&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-1194&#39;, &#39;comment-1194&#39;, &#39;commentbody-1194&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-1194">
+					<p>虽然我刚刚安装好了，博主说的问题都遇到了，确实比较详细。</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li><!-- #comment-## -->
+	<li class="comment regularcomment" id="comment-517">
+		<div class="author">
+			<div class="pic">
+				<img src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/saved_resource" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<a id="commentauthor-517" class="url" href="http://weibo.com/1780974930" rel="external nofollow">
+				
+				Aceslup
+									</a>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2015年5月9日16:57					 | <a href="http://www.nginx.cn/231.html#comment-517">#10</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-517&#39;, &#39;comment-517&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-517&#39;, &#39;comment-517&#39;, &#39;commentbody-517&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-517">
+					<p>楼主，我想问下<br>
+1、打开--enable-pcntl，不手动编译pcntl.so扩展，pcntl_fork函数是不支持的，为啥呢？<br>
+2、打开pcntl后，php-fpm.conf进程管理是否可以配置为静态？<br>
+望广大网友帮忙解惑。非常感谢。</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li><!-- #comment-## -->
+	<li class="comment regularcomment" id="comment-516">
+		<div class="author">
+			<div class="pic">
+				<img src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/89929dff7f4efb4770051e51ba1c6a70" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<span id="commentauthor-516">
+				
+				蒙太奇葩
+									</span>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2015年4月13日18:12					 | <a href="http://www.nginx.cn/231.html#comment-516">#11</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-516&#39;, &#39;comment-516&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-516&#39;, &#39;comment-516&#39;, &#39;commentbody-516&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-516">
+					<p>十分感谢，文章简洁明了，一路很顺。</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li><!-- #comment-## -->
+	<li class="comment regularcomment" id="comment-512">
+		<div class="author">
+			<div class="pic">
+				<img src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/saved_resource" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<a id="commentauthor-512" class="url" href="http://t.qq.com/shouji1924002" rel="external nofollow">
+				
+				1924
+									</a>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2015年2月23日20:17					 | <a href="http://www.nginx.cn/231.html#comment-512">#12</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-512&#39;, &#39;comment-512&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-512&#39;, &#39;comment-512&#39;, &#39;commentbody-512&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-512">
+					<p>请问<a href="http://www.xn--conf%3F-y39h17k/" rel="nofollow">http://www.conf在哪？</a></p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li><!-- #comment-## -->
+	<li class="comment regularcomment" id="comment-511">
+		<div class="author">
+			<div class="pic">
+				<img src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/saved_resource" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<a id="commentauthor-511" class="url" href="http://t.qq.com/shouji1924002" rel="external nofollow">
+				
+				1924
+									</a>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2015年2月23日14:50					 | <a href="http://www.nginx.cn/231.html#comment-511">#13</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-511&#39;, &#39;comment-511&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-511&#39;, &#39;comment-511&#39;, &#39;commentbody-511&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-511">
+					<p>lz用什么源？</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+<ul class="children">
+	<li class="comment admincomment" id="comment-513">
+		<div class="author">
+			<div class="pic">
+				<img src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/b2d7d2d13aed54c2ed7feb538b382b42" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<a id="commentauthor-513" class="url" href="http://www.nginx.cn/" rel="external nofollow">
+				
+				chenhe
+									</a>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2015年2月23日20:58					 | <a href="http://www.nginx.cn/231.html#comment-513">#14</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-513&#39;, &#39;comment-513&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-513&#39;, &#39;comment-513&#39;, &#39;commentbody-513&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-513">
+					<p>163的</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment regularcomment" id="comment-510">
+		<div class="author">
+			<div class="pic">
+				<img src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/saved_resource" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<a id="commentauthor-510" class="url" href="http://t.qq.com/shouji1924002" rel="external nofollow">
+				
+				1924
+									</a>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2015年2月23日12:39					 | <a href="http://www.nginx.cn/231.html#comment-510">#15</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-510&#39;, &#39;comment-510&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-510&#39;, &#39;comment-510&#39;, &#39;commentbody-510&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-510">
+					<p>新版php安装时出现make: *** No rule to make target `all'.  Stop.如何解决？</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+<ul class="children">
+	<li class="comment regularcomment" id="comment-515">
+		<div class="author">
+			<div class="pic">
+				<img src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/5ac14f5153439707eb59fb73260a4778" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<span id="commentauthor-515">
+				
+				农民
+									</span>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2015年4月11日22:14					 | <a href="http://www.nginx.cn/231.html#comment-515">#16</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-515&#39;, &#39;comment-515&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-515&#39;, &#39;comment-515&#39;, &#39;commentbody-515&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-515">
+					<p>这个问题解决了吗？我也遇到了 <img src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/bs_org.gif"> </p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment regularcomment" id="comment-507">
+		<div class="author">
+			<div class="pic">
+				<img src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/0f4def7ae00eb465717a4e81de839cdc" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<span id="commentauthor-507">
+				
+				山里的娃
+									</span>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2014年12月28日18:07					 | <a href="http://www.nginx.cn/231.html#comment-507">#17</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-507&#39;, &#39;comment-507&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-507&#39;, &#39;comment-507&#39;, &#39;commentbody-507&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-507">
+					<p>请问一下：我的nginx和php都安装好了，phpinfo的测试页面也能正常显示，但是为啥将WordPress的内容放到html目录下面，访问的时候就会返回500错误？</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+<ul class="children">
+	<li class="comment admincomment" id="comment-508">
+		<div class="author">
+			<div class="pic">
+				<img src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/b2d7d2d13aed54c2ed7feb538b382b42" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<a id="commentauthor-508" class="url" href="http://www.nginx.cn/" rel="external nofollow">
+				
+				chenhe
+									</a>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2014年12月28日18:21					 | <a href="http://www.nginx.cn/231.html#comment-508">#18</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-508&#39;, &#39;comment-508&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-508&#39;, &#39;comment-508&#39;, &#39;commentbody-508&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-508">
+					<p>需要配好规则，试试这个吧<a href="http://www.nginx.cn/300.html" rel="nofollow">http://www.nginx.cn/300.html</a></p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment regularcomment" id="comment-496">
+		<div class="author">
+			<div class="pic">
+				<img src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/saved_resource" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<a id="commentauthor-496" class="url" href="http://t.qq.com/xzh598550105" rel="external nofollow">
+				
+				小谢
+									</a>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2014年5月18日23:19					 | <a href="http://www.nginx.cn/231.html#comment-496">#19</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-496&#39;, &#39;comment-496&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-496&#39;, &#39;comment-496&#39;, &#39;commentbody-496&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-496">
+					<p>我安装好了mysql 并且mysql没报任何错误也能正常运行。在/usr/local/mysql/include/mysql/mysql.h 也是有的。但是在编译php的时候 总是报<br>
+configure: error: Cannot find MySQL header files under /usr.<br>
+Note that the MySQL client library is not bundled anymore!<br>
+我php ./configure --with-mysql=/usr/local/mysql  --with-mysql=/usr --with-mysql 这三个方式都试过还是不行<br>
+请问这个是怎么回事呢</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+<ul class="children">
+	<li class="comment regularcomment" id="comment-497">
+		<div class="author">
+			<div class="pic">
+				<img src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/saved_resource" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<a id="commentauthor-497" class="url" href="http://t.qq.com/xzh598550105" rel="external nofollow">
+				
+				小谢
+									</a>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2014年5月18日23:30					 | <a href="http://www.nginx.cn/231.html#comment-497">#20</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-497&#39;, &#39;comment-497&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-497&#39;, &#39;comment-497&#39;, &#39;commentbody-497&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-497">
+					<p>我自己在网上找的解决办法 yum install mysql-devel这样就完全通过了不知道为什么会差这个东西就不行。。</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li><!-- #comment-## -->
+	<li class="comment regularcomment" id="comment-514">
+		<div class="author">
+			<div class="pic">
+				<img src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/68dc76a9bd1886a2c40ef4667d67b0f1" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<span id="commentauthor-514">
+				
+				海盗窝
+									</span>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2015年3月19日09:09					 | <a href="http://www.nginx.cn/231.html#comment-514">#21</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-514&#39;, &#39;comment-514&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-514&#39;, &#39;comment-514&#39;, &#39;commentbody-514&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-514">
+					<p>--with-mysql=mysqlnd  --with-mysqli=mysqlnd 试下。</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment regularcomment" id="comment-494">
+		<div class="author">
+			<div class="pic">
+				<img src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/saved_resource" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<a id="commentauthor-494" class="url" href="http://t.qq.com/hiwjcn" rel="external nofollow">
+				
+				王俊
+									</a>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2014年5月12日09:58					 | <a href="http://www.nginx.cn/231.html#comment-494">#22</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-494&#39;, &#39;comment-494&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-494&#39;, &#39;comment-494&#39;, &#39;commentbody-494&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-494">
+					<p>你的wp是用nginx搭建的吗？</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+<ul class="children">
+	<li class="comment admincomment" id="comment-495">
+		<div class="author">
+			<div class="pic">
+				<img src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/b2d7d2d13aed54c2ed7feb538b382b42" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<a id="commentauthor-495" class="url" href="http://www.nginx.cn/" rel="external nofollow">
+				
+				chenhe
+									</a>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2014年5月12日13:56					 | <a href="http://www.nginx.cn/231.html#comment-495">#23</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-495&#39;, &#39;comment-495&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-495&#39;, &#39;comment-495&#39;, &#39;commentbody-495&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-495">
+					<p>是的</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li><!-- #comment-## -->
+	<li class="comment admincomment" id="comment-502">
+		<div class="author">
+			<div class="pic">
+				<img src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/b2d7d2d13aed54c2ed7feb538b382b42" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<a id="commentauthor-502" class="url" href="http://www.nginx.cn/" rel="external nofollow">
+				
+				chenhe
+									</a>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2014年7月17日21:52					 | <a href="http://www.nginx.cn/231.html#comment-502">#24</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-502&#39;, &#39;comment-502&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-502&#39;, &#39;comment-502&#39;, &#39;commentbody-502&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-502">
+					<p>是啊</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment regularcomment" id="comment-489">
+		<div class="author">
+			<div class="pic">
+				<img src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/cc139419ba7032e619c807dfc1ae0676" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<span id="commentauthor-489">
+				
+				Victor
+									</span>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2014年1月5日19:00					 | <a href="http://www.nginx.cn/231.html#comment-489">#25</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-489&#39;, &#39;comment-489&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-489&#39;, &#39;comment-489&#39;, &#39;commentbody-489&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-489">
+					<p>make: *** No targets specified and no makefile found. Stop.</p>
+<p>安装前准备 都已经安装了 。这个问题这么解决呢？？</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li><!-- #comment-## -->
+	<li class="comment regularcomment" id="comment-488">
+		<div class="author">
+			<div class="pic">
+				<img src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/cc139419ba7032e619c807dfc1ae0676" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<span id="commentauthor-488">
+				
+				victor
+									</span>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2014年1月5日18:27					 | <a href="http://www.nginx.cn/231.html#comment-488">#26</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-488&#39;, &#39;comment-488&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-488&#39;, &#39;comment-488&#39;, &#39;commentbody-488&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-488">
+					<p>make: *** No targets specified and no makefile found.  Stop.</p>
+<p>shi weishenme a ???</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+<ul class="children">
+	<li class="comment admincomment" id="comment-490">
+		<div class="author">
+			<div class="pic">
+				<img src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/b2d7d2d13aed54c2ed7feb538b382b42" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<a id="commentauthor-490" class="url" href="http://www.nginx.cn/" rel="external nofollow">
+				
+				chenhe
+									</a>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2014年1月7日09:35					 | <a href="http://www.nginx.cn/231.html#comment-490">#27</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-490&#39;, &#39;comment-490&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-490&#39;, &#39;comment-490&#39;, &#39;commentbody-490&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-490">
+					<p>configure没成功，需要确认configure成功后再make</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment regularcomment" id="comment-487">
+		<div class="author">
+			<div class="pic">
+				<img src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/saved_resource" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<a id="commentauthor-487" class="url" href="http://weibo.com/hemingwang0902" rel="external nofollow">
+				
+				hemingwang0902
+									</a>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2013年12月29日23:28					 | <a href="http://www.nginx.cn/231.html#comment-487">#28</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-487&#39;, &#39;comment-487&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-487&#39;, &#39;comment-487&#39;, &#39;commentbody-487&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-487">
+					<p>阿里云 CenterOS，前面的准备工作也作了，也按照“6. mcrypt.h not found. Please reinstall libmcrypt”的解决方案操作了，但执行编辑的时候仍然提示：configure: error: mcrypt.h not found. Please reinstall libmcrypt. 求解！</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+<ul class="children">
+	<li class="comment admincomment" id="comment-491">
+		<div class="author">
+			<div class="pic">
+				<img src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/b2d7d2d13aed54c2ed7feb538b382b42" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<a id="commentauthor-491" class="url" href="http://www.nginx.cn/" rel="external nofollow">
+				
+				chenhe
+									</a>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2014年1月7日09:46					 | <a href="http://www.nginx.cn/231.html#comment-491">#29</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-491&#39;, &#39;comment-491&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-491&#39;, &#39;comment-491&#39;, &#39;commentbody-491&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-491">
+					<p>建议重新执行以下步骤六试试，已更新方法6，或者参考<a href="http://www.nginx.cn/2196.html" rel="nofollow">http://www.nginx.cn/2196.html</a></p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment regularcomment" id="comment-482">
+		<div class="author">
+			<div class="pic">
+				<img src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/cccfbe38de9e22e0aaa800bdd5b0260f" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<span id="commentauthor-482">
+				
+				CaenZhang
+									</span>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2013年12月12日17:42					 | <a href="http://www.nginx.cn/231.html#comment-482">#30</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-482&#39;, &#39;comment-482&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-482&#39;, &#39;comment-482&#39;, &#39;commentbody-482&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-482">
+					<p>[12-Dec-2013 16:57:29] ERROR: unable to bind listening socket for address '127.0.0.1:9000': Address already in use (98)<br>
+----这是什么情况啊？求解！！！</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+<ul class="children">
+	<li class="comment admincomment" id="comment-483">
+		<div class="author">
+			<div class="pic">
+				<img src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/b2d7d2d13aed54c2ed7feb538b382b42" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<a id="commentauthor-483" class="url" href="http://www.nginx.cn/" rel="external nofollow">
+				
+				chenhe
+									</a>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2013年12月13日10:26					 | <a href="http://www.nginx.cn/231.html#comment-483">#31</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-483&#39;, &#39;comment-483&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-483&#39;, &#39;comment-483&#39;, &#39;commentbody-483&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-483">
+					<p>端口已经被使用了</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+<ul class="children">
+	<li class="comment regularcomment" id="comment-485">
+		<div class="author">
+			<div class="pic">
+				<img src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/saved_resource" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<a id="commentauthor-485" class="url" href="http://t.qq.com/hanshaoan" rel="external nofollow">
+				
+				韩少安
+									</a>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2013年12月22日08:29					 | <a href="http://www.nginx.cn/231.html#comment-485">#32</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-485&#39;, &#39;comment-485&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-485&#39;, &#39;comment-485&#39;, &#39;commentbody-485&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-485">
+					<p>怎么解决呢，谢谢。</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+<ul class="children">
+	<li class="comment admincomment" id="comment-486">
+		<div class="author">
+			<div class="pic">
+				<img src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/b2d7d2d13aed54c2ed7feb538b382b42" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<a id="commentauthor-486" class="url" href="http://www.nginx.cn/" rel="external nofollow">
+				
+				chenhe
+									</a>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2013年12月22日11:13					 | <a href="http://www.nginx.cn/231.html#comment-486">#33</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-486&#39;, &#39;comment-486&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-486&#39;, &#39;comment-486&#39;, &#39;commentbody-486&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-486">
+					<p>把原来的9000端口应用停了</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li><!-- #comment-## -->
+	<li class="comment regularcomment" id="comment-501">
+		<div class="author">
+			<div class="pic">
+				<img src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/saved_resource" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<a id="commentauthor-501" class="url" href="http://weibo.com/zhoufwind" rel="external nofollow">
+				
+				老坛酸醋面
+									</a>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2014年6月14日17:04					 | <a href="http://www.nginx.cn/231.html#comment-501">#34</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-501&#39;, &#39;comment-501&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-501&#39;, &#39;comment-501&#39;, &#39;commentbody-501&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-501">
+					<p>1.查看端口应用：# netstat -lnp|grep 9000，获得pid或应用名称。<br>
+2.关闭端口应用：# kill -9 &lt;pid&gt;或者# pkill &lt;应用名称&gt;。</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment regularcomment" id="comment-480">
+		<div class="author">
+			<div class="pic">
+				<img src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/saved_resource" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<a id="commentauthor-480" class="url" href="http://weibo.com/1862566804" rel="external nofollow">
+				
+				沧蓝羽翼
+									</a>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2013年11月11日10:17					 | <a href="http://www.nginx.cn/231.html#comment-480">#35</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-480&#39;, &#39;comment-480&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-480&#39;, &#39;comment-480&#39;, &#39;commentbody-480&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-480">
+					<p>版主真心不错！愿意贡献知识！！！！</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li><!-- #comment-## -->
+	<li class="comment regularcomment" id="comment-475">
+		<div class="author">
+			<div class="pic">
+				<img src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/a578eb13dff81452934e0ffb623c8bfa" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<span id="commentauthor-475">
+				
+				ys165
+									</span>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2013年10月8日00:47					 | <a href="http://www.nginx.cn/231.html#comment-475">#36</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-475&#39;, &#39;comment-475&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-475&#39;, &#39;comment-475&#39;, &#39;commentbody-475&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-475">
+					<p>怎么优化呢？有没有优化方面的介绍？</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+<ul class="children">
+	<li class="comment admincomment" id="comment-477">
+		<div class="author">
+			<div class="pic">
+				<img src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/b2d7d2d13aed54c2ed7feb538b382b42" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<a id="commentauthor-477" class="url" href="http://www.nginx.cn/" rel="external nofollow">
+				
+				chenhe
+									</a>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2013年10月10日14:08					 | <a href="http://www.nginx.cn/231.html#comment-477">#37</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-477&#39;, &#39;comment-477&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-477&#39;, &#39;comment-477&#39;, &#39;commentbody-477&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-477">
+					<p>优化需要针对具体情况具体分析，可以说说你的情况</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment regularcomment" id="comment-470">
+		<div class="author">
+			<div class="pic">
+				<img src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/be5ca0318413099814d380e05954e2ee" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<span id="commentauthor-470">
+				
+				asdf
+									</span>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2013年9月28日21:33					 | <a href="http://www.nginx.cn/231.html#comment-470">#38</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-470&#39;, &#39;comment-470&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-470&#39;, &#39;comment-470&#39;, &#39;commentbody-470&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-470">
+					<p>博主，我按你的方法安装后发现freetype 和jpeg不能用。</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+<ul class="children">
+	<li class="comment admincomment" id="comment-471">
+		<div class="author">
+			<div class="pic">
+				<img src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/b2d7d2d13aed54c2ed7feb538b382b42" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<a id="commentauthor-471" class="url" href="http://www.nginx.cn/" rel="external nofollow">
+				
+				chenhe
+									</a>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2013年9月29日09:04					 | <a href="http://www.nginx.cn/231.html#comment-471">#39</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-471&#39;, &#39;comment-471&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-471&#39;, &#39;comment-471&#39;, &#39;commentbody-471&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-471">
+					<p>安装前的准备工作，你做了吗？</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+<ul class="children">
+	<li class="comment regularcomment" id="comment-472">
+		<div class="author">
+			<div class="pic">
+				<img src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/be5ca0318413099814d380e05954e2ee" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<span id="commentauthor-472">
+				
+				asdf
+									</span>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2013年9月29日11:08					 | <a href="http://www.nginx.cn/231.html#comment-472">#40</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-472&#39;, &#39;comment-472&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-472&#39;, &#39;comment-472&#39;, &#39;commentbody-472&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-472">
+					<p>前面的东西都安装了，但是freetype还是不能用，imagettftest还i是报错，phpinfo 查看gd里面没freetype</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li><!-- #comment-## -->
+	<li class="comment regularcomment" id="comment-473">
+		<div class="author">
+			<div class="pic">
+				<img src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/be5ca0318413099814d380e05954e2ee" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<span id="commentauthor-473">
+				
+				asdf
+									</span>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2013年9月29日11:10					 | <a href="http://www.nginx.cn/231.html#comment-473">#41</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-473&#39;, &#39;comment-473&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-473&#39;, &#39;comment-473&#39;, &#39;commentbody-473&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-473">
+					<p>尝试在安装php的时候加了选项 --with-freetype-dir=/usr/include/freetype2/freetype/ 没报错，但是还是不可用</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li><!-- #comment-## -->
+	<li class="comment regularcomment" id="comment-474">
+		<div class="author">
+			<div class="pic">
+				<img src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/be5ca0318413099814d380e05954e2ee" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<span id="commentauthor-474">
+				
+				asdf
+									</span>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2013年9月29日11:29					 | <a href="http://www.nginx.cn/231.html#comment-474">#42</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-474&#39;, &#39;comment-474&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-474&#39;, &#39;comment-474&#39;, &#39;commentbody-474&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-474">
+					<p>./configure --prefix=/usr/local/php  --enable-fpm --with-mcrypt --enable-mbstring --disable-pdo --with-curl --disable-debug  --disable-rpath --enable-inline-optimization --with-bz2  --with-zlib --enable-sockets --enable-sysvsem --enable-sysvshm --enable-pcntl --enable-mbregex --with-mhash --enable-zip --with-pcre-regex --with-mysql --with-mysqli --with-gd --enable-gd-native-ttf --with-png-dir --with-freetype-dir=/usr/include/freetype2/freetype/ --with-jpeg-dir</p>
+<p>make clean<br>
+make<br>
+male install<br>
+搞定了</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+<ul class="children">
+	<li class="comment regularcomment" id="comment-476">
+		<div class="author">
+			<div class="pic">
+				<img src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/20eb6960d7c2da6847bb8359a48b3a9a" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<span id="commentauthor-476">
+				
+				mood
+									</span>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2013年10月8日13:03					 | <a href="http://www.nginx.cn/231.html#comment-476">#43</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-476&#39;, &#39;comment-476&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-476&#39;, &#39;comment-476&#39;, &#39;commentbody-476&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-476">
+					<p>赞一个</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment regularcomment" id="comment-466">
+		<div class="author">
+			<div class="pic">
+				<img src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/be5ca0318413099814d380e05954e2ee" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<span id="commentauthor-466">
+				
+				asdf
+									</span>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2013年9月13日12:18					 | <a href="http://www.nginx.cn/231.html#comment-466">#44</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-466&#39;, &#39;comment-466&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-466&#39;, &#39;comment-466&#39;, &#39;commentbody-466&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-466">
+					<p>安装完后如何添加mysqli扩展呢？？</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+<ul class="children">
+	<li class="comment admincomment" id="comment-467">
+		<div class="author">
+			<div class="pic">
+				<img src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/b2d7d2d13aed54c2ed7feb538b382b42" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<a id="commentauthor-467" class="url" href="http://www.nginx.cn/" rel="external nofollow">
+				
+				chenhe
+									</a>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2013年9月13日12:55					 | <a href="http://www.nginx.cn/231.html#comment-467">#45</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-467&#39;, &#39;comment-467&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-467&#39;, &#39;comment-467&#39;, &#39;commentbody-467&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-467">
+					<p>重新编译一遍，configure是带上--with-mysqli参数。</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+<ul class="children">
+	<li class="comment regularcomment" id="comment-468">
+		<div class="author">
+			<div class="pic">
+				<img src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/be5ca0318413099814d380e05954e2ee" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<span id="commentauthor-468">
+				
+				asdf
+									</span>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2013年9月13日15:16					 | <a href="http://www.nginx.cn/231.html#comment-468">#46</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-468&#39;, &#39;comment-468&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-468&#39;, &#39;comment-468&#39;, &#39;commentbody-468&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-468">
+					<p>感谢博主回复，文件解决了，但是我关闭php-fpm报错：<br>
+-bash: kill: cat /usr/local/php/var/run/php-fpm.pid: arguments must be process or job IDs；<br>
+发现/usr/local/php/var/run/php-fpm.pid这个文件不存在；</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+<ul class="children">
+	<li class="comment admincomment" id="comment-469">
+		<div class="author">
+			<div class="pic">
+				<img src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/b2d7d2d13aed54c2ed7feb538b382b42" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<a id="commentauthor-469" class="url" href="http://www.nginx.cn/" rel="external nofollow">
+				
+				chenhe
+									</a>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2013年9月13日16:30					 | <a href="http://www.nginx.cn/231.html#comment-469">#47</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-469&#39;, &#39;comment-469&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-469&#39;, &#39;comment-469&#39;, &#39;commentbody-469&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-469">
+					<p>看看你配置php-fpm.conf里怎么定义pid位置的</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment regularcomment" id="comment-462">
+		<div class="author">
+			<div class="pic">
+				<img src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/saved_resource" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<a id="commentauthor-462" class="url" href="http://t.qq.com/shuimaiyu" rel="external nofollow">
+				
+				木易
+									</a>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2013年8月30日14:14					 | <a href="http://www.nginx.cn/231.html#comment-462">#48</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-462&#39;, &#39;comment-462&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-462&#39;, &#39;comment-462&#39;, &#39;commentbody-462&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-462">
+					<p>configure: WARNING: unrecognized options: --with-jpeg  应该是目录</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+<ul class="children">
+	<li class="comment regularcomment" id="comment-464">
+		<div class="author">
+			<div class="pic">
+				<img src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/dde0d7849e079e517546e044c34e76b4" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<a id="commentauthor-464" class="url" href="http://www.jinjunmei.net/" rel="external nofollow">
+				
+				金骏眉
+									</a>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2013年9月4日10:20					 | <a href="http://www.nginx.cn/231.html#comment-464">#49</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-464&#39;, &#39;comment-464&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-464&#39;, &#39;comment-464&#39;, &#39;commentbody-464&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-464">
+					<p>是这样</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment regularcomment" id="comment-460">
+		<div class="author">
+			<div class="pic">
+				<img src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/saved_resource" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<a id="commentauthor-460" class="url" href="http://t.qq.com/zhaoqingchang" rel="external nofollow">
+				
+				赵庆昌
+									</a>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2013年8月29日11:50					 | <a href="http://www.nginx.cn/231.html#comment-460">#50</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-460&#39;, &#39;comment-460&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-460&#39;, &#39;comment-460&#39;, &#39;commentbody-460&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-460">
+					<p>我的php运行起来为什么找不到PID,写进系统程序时没法stop</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+<ul class="children">
+	<li class="comment admincomment" id="comment-463">
+		<div class="author">
+			<div class="pic">
+				<img src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/b2d7d2d13aed54c2ed7feb538b382b42" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<a id="commentauthor-463" class="url" href="http://www.nginx.cn/" rel="external nofollow">
+				
+				chenhe
+									</a>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2013年9月3日23:30					 | <a href="http://www.nginx.cn/231.html#comment-463">#51</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-463&#39;, &#39;comment-463&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-463&#39;, &#39;comment-463&#39;, &#39;commentbody-463&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-463">
+					<p>如果按照我给的方法安装，关闭 kill -INT <code>cat /usr/local/php/var/run/php-fpm.pid</code></p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+<ul class="children">
+	<li class="comment regularcomment" id="comment-465">
+		<div class="author">
+			<div class="pic">
+				<img src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/saved_resource" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<a id="commentauthor-465" class="url" href="http://t.qq.com/zhaoqingchang" rel="external nofollow">
+				
+				赵庆昌
+									</a>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2013年9月4日12:30					 | <a href="http://www.nginx.cn/231.html#comment-465">#52</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-465&#39;, &#39;comment-465&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-465&#39;, &#39;comment-465&#39;, &#39;commentbody-465&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-465">
+					<p>解决了 感谢</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment regularcomment" id="comment-454">
+		<div class="author">
+			<div class="pic">
+				<img src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/5585822709cc91be6c4933c49cd529ab" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<span id="commentauthor-454">
+				
+				无忌
+									</span>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2013年8月13日19:40					 | <a href="http://www.nginx.cn/231.html#comment-454">#53</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-454&#39;, &#39;comment-454&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-454&#39;, &#39;comment-454&#39;, &#39;commentbody-454&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-454">
+					<p>&lt;? echo phpinfo(); ?&gt; 请修改这行代码 &lt;?php echo phpinfo(); ?&gt;</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+<ul class="children">
+	<li class="comment regularcomment" id="comment-455">
+		<div class="author">
+			<div class="pic">
+				<img src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/20eb6960d7c2da6847bb8359a48b3a9a" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<span id="commentauthor-455">
+				
+				mood
+									</span>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2013年8月14日16:53					 | <a href="http://www.nginx.cn/231.html#comment-455">#54</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-455&#39;, &#39;comment-455&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-455&#39;, &#39;comment-455&#39;, &#39;commentbody-455&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-455">
+					<p>谢谢，已更新</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li><!-- #comment-## -->
+	<li class="comment regularcomment" id="comment-458">
+		<div class="author">
+			<div class="pic">
+				<img src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/da4406b2c01e1d416d598dbb824443ed" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<a id="commentauthor-458" class="url" href="http://www.zhibotie.net/space-1.html" rel="external nofollow">
+				
+				卖掉内裤去上网
+									</a>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2013年8月20日10:37					 | <a href="http://www.nginx.cn/231.html#comment-458">#55</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-458&#39;, &#39;comment-458&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-458&#39;, &#39;comment-458&#39;, &#39;commentbody-458&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-458">
+					<p>这行代码无问题。</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+<ul class="children">
+	<li class="comment regularcomment" id="comment-461">
+		<div class="author">
+			<div class="pic">
+				<img src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/1009afb547aaae8e5289abe90923e6fc" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<span id="commentauthor-461">
+				
+				Filix
+									</span>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2013年8月29日22:23					 | <a href="http://www.nginx.cn/231.html#comment-461">#56</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-461&#39;, &#39;comment-461&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-461&#39;, &#39;comment-461&#39;, &#39;commentbody-461&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-461">
+					<p>是没问题，但是短标签是不建议的。<br>
+有些情况会出现问题，比如把php文件当模版时输出XML。因为xml的申明就是&lt;? XML .........<br>
+另外phpinfo是没有返回值的，不需要echo</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment regularcomment" id="comment-453">
+		<div class="author">
+			<div class="pic">
+				<img src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/saved_resource" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<a id="commentauthor-453" class="url" href="http://t.qq.com/YF154055342" rel="external nofollow">
+				
+				小凡
+									</a>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2013年8月7日14:57					 | <a href="http://www.nginx.cn/231.html#comment-453">#57</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-453&#39;, &#39;comment-453&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-453&#39;, &#39;comment-453&#39;, &#39;commentbody-453&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-453">
+					<p>安装完成 php 怎么没有找到php.ini 文件啊</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+<ul class="children">
+	<li class="comment admincomment" id="comment-456">
+		<div class="author">
+			<div class="pic">
+				<img src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/b2d7d2d13aed54c2ed7feb538b382b42" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<a id="commentauthor-456" class="url" href="http://www.nginx.cn/" rel="external nofollow">
+				
+				chenhe
+									</a>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2013年8月14日17:04					 | <a href="http://www.nginx.cn/231.html#comment-456">#58</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-456&#39;, &#39;comment-456&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-456&#39;, &#39;comment-456&#39;, &#39;commentbody-456&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-456">
+					<p>用phpinfo函数看一下</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li><!-- #comment-## -->
+	<li class="comment admincomment" id="comment-457">
+		<div class="author">
+			<div class="pic">
+				<img src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/b2d7d2d13aed54c2ed7feb538b382b42" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<a id="commentauthor-457" class="url" href="http://www.nginx.cn/" rel="external nofollow">
+				
+				chenhe
+									</a>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2013年8月14日17:05					 | <a href="http://www.nginx.cn/231.html#comment-457">#59</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-457&#39;, &#39;comment-457&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-457&#39;, &#39;comment-457&#39;, &#39;commentbody-457&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-457">
+					<p>可以手动创建一个</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment regularcomment" id="comment-450">
+		<div class="author">
+			<div class="pic">
+				<img src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/de659db5c260704a3b8232dd8f244c0a" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<span id="commentauthor-450">
+				
+				小飞
+									</span>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2013年7月18日15:38					 | <a href="http://www.nginx.cn/231.html#comment-450">#60</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-450&#39;, &#39;comment-450&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-450&#39;, &#39;comment-450&#39;, &#39;commentbody-450&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-450">
+					<p>这么好的文章，果断收藏了。</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li><!-- #comment-## -->
+	<li class="comment regularcomment" id="comment-449">
+		<div class="author">
+			<div class="pic">
+				<img src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/saved_resource" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<span id="commentauthor-449">
+				
+				草泥马
+									</span>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2013年7月16日08:21					 | <a href="http://www.nginx.cn/231.html#comment-449">#61</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-449&#39;, &#39;comment-449&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-449&#39;, &#39;comment-449&#39;, &#39;commentbody-449&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-449">
+					<p>简洁精辟！</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li><!-- #comment-## -->
+	<li class="comment regularcomment" id="comment-447">
+		<div class="author">
+			<div class="pic">
+				<img src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/saved_resource" class="avatar avatar-64" height="64" width="64">			</div>
+			<div class="name">
+									<a id="commentauthor-447" class="url" href="http://weibo.com/wukaqi" rel="external nofollow">
+				
+				小吴学长
+									</a>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				2013年5月18日14:14					 | <a href="http://www.nginx.cn/231.html#comment-447">#62</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply(&#39;commentauthor-447&#39;, &#39;comment-447&#39;, &#39;comment&#39;);">回复</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote(&#39;commentauthor-447&#39;, &#39;comment-447&#39;, &#39;commentbody-447&#39;, &#39;comment&#39;);">引用</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-447">
+					<p>学习咯</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li><!-- #comment-## -->
+	</ol>
+	<!-- comments END -->
+
+
+	<!-- trackbacks START -->
+			<ol id="thetrackbacks">
+												<li class="trackback">
+						<div class="date">
+							2012年12月31日21:03							 | <a href="http://www.nginx.cn/231.html#comment-446">#1</a>
+						</div>
+						<div class="act">
+													</div>
+						<div class="fixed"></div>
+						<div class="title">
+							<a href="http://www.nginx.cn/446.html">
+								nginx限制某个IP同一时间段的访问次数 – NGINX中文站							</a>
+						</div>
+					</li>
+									<li class="trackback">
+						<div class="date">
+							2013年6月5日16:16							 | <a href="http://www.nginx.cn/231.html#comment-448">#2</a>
+						</div>
+						<div class="act">
+													</div>
+						<div class="fixed"></div>
+						<div class="title">
+							<a href="http://www.cacti8.com/?p=19">
+								Nginx图文安装教程 | 服务器监控和web架构							</a>
+						</div>
+					</li>
+									<li class="trackback">
+						<div class="date">
+							2013年7月23日22:58							 | <a href="http://www.nginx.cn/231.html#comment-451">#3</a>
+						</div>
+						<div class="act">
+													</div>
+						<div class="fixed"></div>
+						<div class="title">
+							<a href="http://luckyzz.com/linux/20130723231.html">
+								nginx安装配置 | Lucky's Blog							</a>
+						</div>
+					</li>
+									<li class="trackback">
+						<div class="date">
+							2013年8月1日13:14							 | <a href="http://www.nginx.cn/231.html#comment-452">#4</a>
+						</div>
+						<div class="act">
+													</div>
+						<div class="fixed"></div>
+						<div class="title">
+							<a href="http://blog.wumashi.com/archives/485">
+								centos 上安装 nginx php5.4 - 五马石 - 记录历程							</a>
+						</div>
+					</li>
+									<li class="trackback">
+						<div class="date">
+							2013年8月24日09:31							 | <a href="http://www.nginx.cn/231.html#comment-459">#5</a>
+						</div>
+						<div class="act">
+													</div>
+						<div class="fixed"></div>
+						<div class="title">
+							<a href="http://www.w3c.com.cn/phpnginx">
+								phpnginx - 程序员 - 开发者第2257592个问答							</a>
+						</div>
+					</li>
+									<li class="trackback">
+						<div class="date">
+							2013年10月30日00:37							 | <a href="http://www.nginx.cn/231.html#comment-478">#6</a>
+						</div>
+						<div class="act">
+													</div>
+						<div class="fixed"></div>
+						<div class="title">
+							<a href="http://kalepblog.sinaapp.com/?p=43">
+								nginx安装 - Kalep's Blog							</a>
+						</div>
+					</li>
+									<li class="trackback">
+						<div class="date">
+							2013年10月30日00:40							 | <a href="http://www.nginx.cn/231.html#comment-479">#7</a>
+						</div>
+						<div class="act">
+													</div>
+						<div class="fixed"></div>
+						<div class="title">
+							<a href="http://kalepblog.sinaapp.com/?p=48">
+								nginx php-fpm安装配置 - Kalep's Blog							</a>
+						</div>
+					</li>
+									<li class="trackback">
+						<div class="date">
+							2013年12月1日11:00							 | <a href="http://www.nginx.cn/231.html#comment-481">#8</a>
+						</div>
+						<div class="act">
+													</div>
+						<div class="fixed"></div>
+						<div class="title">
+							<a href="http://www.geek521.com/?p=3770">
+								Linux Nginx安装 | 极客我爱你 geek521.com							</a>
+						</div>
+					</li>
+									<li class="trackback">
+						<div class="date">
+							2013年12月13日10:57							 | <a href="http://www.nginx.cn/231.html#comment-484">#9</a>
+						</div>
+						<div class="act">
+													</div>
+						<div class="fixed"></div>
+						<div class="title">
+							<a href="http://www.nginx.cn/1099.html">
+								linux增加自定义path和manpath – 运维与架构							</a>
+						</div>
+					</li>
+									<li class="trackback">
+						<div class="date">
+							2014年1月30日20:22							 | <a href="http://www.nginx.cn/231.html#comment-492">#10</a>
+						</div>
+						<div class="act">
+													</div>
+						<div class="fixed"></div>
+						<div class="title">
+							<a href="http://115.28.141.15/?p=41">
+								LNMP搭建笔记③之编译安装nginx | aidsay							</a>
+						</div>
+					</li>
+									<li class="trackback">
+						<div class="date">
+							2014年1月30日20:55							 | <a href="http://www.nginx.cn/231.html#comment-493">#11</a>
+						</div>
+						<div class="act">
+													</div>
+						<div class="fixed"></div>
+						<div class="title">
+							<a href="http://115.28.141.15/?p=40">
+								LNMP搭建笔记②之编译安装php | aidsay							</a>
+						</div>
+					</li>
+									<li class="trackback">
+						<div class="date">
+							2014年5月25日19:10							 | <a href="http://www.nginx.cn/231.html#comment-498">#12</a>
+						</div>
+						<div class="act">
+													</div>
+						<div class="fixed"></div>
+						<div class="title">
+							<a href="http://www.chenyudong.com/archives/build-website-tutorial.html">
+								搭建Web网站服务教程 | 东东东 陈煜东的博客							</a>
+						</div>
+					</li>
+									<li class="trackback">
+						<div class="date">
+							2014年5月25日19:32							 | <a href="http://www.nginx.cn/231.html#comment-499">#13</a>
+						</div>
+						<div class="act">
+													</div>
+						<div class="fixed"></div>
+						<div class="title">
+							<a href="http://zhan.vequn.com/archives/1135">
+								搭建Web网站服务教程 | 建站服务							</a>
+						</div>
+					</li>
+									<li class="trackback">
+						<div class="date">
+							2014年6月9日13:44							 | <a href="http://www.nginx.cn/231.html#comment-500">#14</a>
+						</div>
+						<div class="act">
+													</div>
+						<div class="fixed"></div>
+						<div class="title">
+							<a href="http://melonnut.com/wordpress/?p=225">
+								Nginx安装 – 运维与架构 | 手捧啊							</a>
+						</div>
+					</li>
+									<li class="trackback">
+						<div class="date">
+							2014年8月22日12:11							 | <a href="http://www.nginx.cn/231.html#comment-503">#15</a>
+						</div>
+						<div class="act">
+													</div>
+						<div class="fixed"></div>
+						<div class="title">
+							<a href="http://www.itbuluoge.com/?p=888">
+								Nginx安装 IT部落格-专注于IT在线学习，免费编程教程，在线编程，IT面试经验—IT在线学习的引导者							</a>
+						</div>
+					</li>
+									<li class="trackback">
+						<div class="date">
+							2014年11月20日22:18							 | <a href="http://www.nginx.cn/231.html#comment-504">#16</a>
+						</div>
+						<div class="act">
+													</div>
+						<div class="fixed"></div>
+						<div class="title">
+							<a href="http://www.zhutingyu.com/nginx%e5%ae%89%e8%a3%85/">
+								Nginx安装 | 欢迎光临							</a>
+						</div>
+					</li>
+									<li class="trackback">
+						<div class="date">
+							2014年11月28日09:40							 | <a href="http://www.nginx.cn/231.html#comment-505">#17</a>
+						</div>
+						<div class="act">
+													</div>
+						<div class="fixed"></div>
+						<div class="title">
+							<a href="http://www.chinanginx.cn/?p=343">
+								Nginx安装 – NGINX中文网							</a>
+						</div>
+					</li>
+									<li class="trackback">
+						<div class="date">
+							2014年12月24日16:47							 | <a href="http://www.nginx.cn/231.html#comment-506">#18</a>
+						</div>
+						<div class="act">
+													</div>
+						<div class="fixed"></div>
+						<div class="title">
+							<a href="http://zhangge.net/3652.html">
+								菜鸟教程：Ngnix安装详解 | 张戈博客							</a>
+						</div>
+					</li>
+									<li class="trackback">
+						<div class="date">
+							2015年1月8日10:23							 | <a href="http://www.nginx.cn/231.html#comment-509">#19</a>
+						</div>
+						<div class="act">
+													</div>
+						<div class="fixed"></div>
+						<div class="title">
+							<a href="http://blog.cqxsn.com/archives/166">
+								nginx php-fpm安装配置 | 分享博客							</a>
+						</div>
+					</li>
+									<li class="trackback">
+						<div class="date">
+							2015年6月17日17:19							 | <a href="http://www.nginx.cn/231.html#comment-518">#20</a>
+						</div>
+						<div class="act">
+													</div>
+						<div class="fixed"></div>
+						<div class="title">
+							<a href="http://www.1pur.com/nginx%e5%ae%89%e8%a3%85%e6%96%b9%e5%bc%8f/">
+								Nginx安装方式 | IT668 技术库							</a>
+						</div>
+					</li>
+									<li class="trackback">
+						<div class="date">
+							2015年7月3日18:35							 | <a href="http://www.nginx.cn/231.html#comment-519">#21</a>
+						</div>
+						<div class="act">
+													</div>
+						<div class="fixed"></div>
+						<div class="title">
+							<a href="http://www.aliog.com/34744.html">
+								Nginx配置 - 系统运维 - 阿里欧歌							</a>
+						</div>
+					</li>
+									<li class="trackback">
+						<div class="date">
+							2015年7月5日16:22							 | <a href="http://www.nginx.cn/231.html#comment-520">#22</a>
+						</div>
+						<div class="act">
+													</div>
+						<div class="fixed"></div>
+						<div class="title">
+							<a href="http://www.07net02.com/?p=254">
+								Nginx安装 | 系统·运维·架构							</a>
+						</div>
+					</li>
+									<li class="trackback">
+						<div class="date">
+							2015年7月26日13:22							 | <a href="http://www.nginx.cn/231.html#comment-521">#23</a>
+						</div>
+						<div class="act">
+													</div>
+						<div class="fixed"></div>
+						<div class="title">
+							<a href="http://blog.aaronkingdom.com/1162/">
+								Nginx安装 | Aaron个人博客							</a>
+						</div>
+					</li>
+									<li class="trackback">
+						<div class="date">
+							2015年7月30日21:48							 | <a href="http://www.nginx.cn/231.html#comment-522">#24</a>
+						</div>
+						<div class="act">
+													</div>
+						<div class="fixed"></div>
+						<div class="title">
+							<a href="http://www.niyouban.com/?p=87">
+								Nginx安装 – 有伴之路							</a>
+						</div>
+					</li>
+									<li class="trackback">
+						<div class="date">
+							2015年8月2日12:16							 | <a href="http://www.nginx.cn/231.html#comment-523">#25</a>
+						</div>
+						<div class="act">
+													</div>
+						<div class="fixed"></div>
+						<div class="title">
+							<a href="http://53cto.com/71.html">
+								nginx php-fpm安装配置 | 53技术博客							</a>
+						</div>
+					</li>
+									<li class="trackback">
+						<div class="date">
+							2015年9月2日22:10							 | <a href="http://www.nginx.cn/231.html#comment-524">#26</a>
+						</div>
+						<div class="act">
+													</div>
+						<div class="fixed"></div>
+						<div class="title">
+							<a href="http://17wanshua.cn/teckong/3110.html">
+								最实用nginx的安装攻略：Nginx的配置与安装-一起玩耍17wanshua.cn							</a>
+						</div>
+					</li>
+									<li class="trackback">
+						<div class="date">
+							2015年12月22日11:41							 | <a href="http://www.nginx.cn/231.html#comment-1205">#27</a>
+						</div>
+						<div class="act">
+													</div>
+						<div class="fixed"></div>
+						<div class="title">
+							<a href="http://1.thomasyu.sinaapp.com/?p=180">
+								nginx php-fpm安装配置 | 加菲喵							</a>
+						</div>
+					</li>
+									<li class="trackback">
+						<div class="date">
+							2016年1月13日16:58							 | <a href="http://www.nginx.cn/231.html#comment-1227">#28</a>
+						</div>
+						<div class="act">
+													</div>
+						<div class="fixed"></div>
+						<div class="title">
+							<a href="http://www.jishuoba.com/9/">
+								Nginx安装 – 技术欧巴							</a>
+						</div>
+					</li>
+									<li class="trackback">
+						<div class="date">
+							2016年2月28日14:42							 | <a href="http://www.nginx.cn/231.html#comment-1262">#29</a>
+						</div>
+						<div class="act">
+													</div>
+						<div class="fixed"></div>
+						<div class="title">
+							<a href="http://www.jpblog.cn/archives/2360">
+								CGI、FastCGI与PHP-FPM理解 - Ordinary							</a>
+						</div>
+					</li>
+									<li class="trackback">
+						<div class="date">
+							2016年3月23日23:28							 | <a href="http://www.nginx.cn/231.html#comment-1288">#30</a>
+						</div>
+						<div class="act">
+													</div>
+						<div class="fixed"></div>
+						<div class="title">
+							<a href="http://www.6myl.com/?p=83">
+								centos下Nginx安装							</a>
+						</div>
+					</li>
+									<li class="trackback">
+						<div class="date">
+							2016年7月16日17:48							 | <a href="http://www.nginx.cn/231.html#comment-1654">#31</a>
+						</div>
+						<div class="act">
+													</div>
+						<div class="fixed"></div>
+						<div class="title">
+							<a href="http://www.sqlplus.com.cn/archives/3593">
+								Nginx安装-SRE空间							</a>
+						</div>
+					</li>
+									<li class="trackback">
+						<div class="date">
+							2016年7月17日06:49							 | <a href="http://www.nginx.cn/231.html#comment-1655">#32</a>
+						</div>
+						<div class="act">
+													</div>
+						<div class="fixed"></div>
+						<div class="title">
+							<a href="http://www.aliog.com/120771.html">
+								Nginx安装_阿里欧歌							</a>
+						</div>
+					</li>
+									<li class="trackback">
+						<div class="date">
+							2016年7月29日11:39							 | <a href="http://www.nginx.cn/231.html#comment-1656">#33</a>
+						</div>
+						<div class="act">
+													</div>
+						<div class="fixed"></div>
+						<div class="title">
+							<a href="http://www.tz-ec.cn/seoer/354.html">
+								前端工程师学习Nginx入门篇 丨 成都SEO|黑桃K博客-专注网络安全和网站优化							</a>
+						</div>
+					</li>
+									<li class="trackback">
+						<div class="date">
+							2016年7月29日15:33							 | <a href="http://www.nginx.cn/231.html#comment-1657">#34</a>
+						</div>
+						<div class="act">
+													</div>
+						<div class="fixed"></div>
+						<div class="title">
+							<a href="http://www.icgao.com/library/peration/4260.html">
+								Nginx安装 爱分享-分享互联网优秀资源							</a>
+						</div>
+					</li>
+									<li class="trackback">
+						<div class="date">
+							2016年8月3日14:42							 | <a href="http://www.nginx.cn/231.html#comment-1658">#35</a>
+						</div>
+						<div class="act">
+													</div>
+						<div class="fixed"></div>
+						<div class="title">
+							<a href="http://www.babyang.cn/wordpress/2016/08/03/%e6%8a%80%e6%9c%af%e7%bd%91%e5%9d%80/">
+								技术网址 – theheartofsea							</a>
+						</div>
+					</li>
+									<li class="trackback">
+						<div class="date">
+							2016年12月13日16:30							 | <a href="http://www.nginx.cn/231.html#comment-2912">#36</a>
+						</div>
+						<div class="act">
+													</div>
+						<div class="fixed"></div>
+						<div class="title">
+							<a href="http://xuhaitao.me/2016/12/13/nginx%e5%ae%89%e8%a3%85/">
+								nginx安装 | 独立行走							</a>
+						</div>
+					</li>
+									<li class="trackback">
+						<div class="date">
+							2017年1月2日16:18							 | <a href="http://www.nginx.cn/231.html#comment-2946">#37</a>
+						</div>
+						<div class="act">
+													</div>
+						<div class="fixed"></div>
+						<div class="title">
+							<a href="http://www.xinmeow.com/2017/01/02/454/">
+								suse 11 sp3 手动安装php php-fmp和nginx – 新之助meow							</a>
+						</div>
+					</li>
+									<li class="trackback">
+						<div class="date">
+							2017年1月22日15:20							 | <a href="http://www.nginx.cn/231.html#comment-3056">#38</a>
+						</div>
+						<div class="act">
+													</div>
+						<div class="fixed"></div>
+						<div class="title">
+							<a href="http://blog.linuxchina.net/?p=1598">
+								什么是CGI、FastCGI、PHP-CGI、PHP-FPM、Spawn-FCGI – linux中国网							</a>
+						</div>
+					</li>
+									<li class="trackback">
+						<div class="date">
+							2017年3月3日17:14							 | <a href="http://www.nginx.cn/231.html#comment-3449">#39</a>
+						</div>
+						<div class="act">
+													</div>
+						<div class="fixed"></div>
+						<div class="title">
+							<a href="http://www.phpxx.net/archives/5420.html">
+								Linux系统下Nginx编译安装总结_技术，创业，感悟人生							</a>
+						</div>
+					</li>
+									<li class="trackback">
+						<div class="date">
+							2017年5月8日18:24							 | <a href="http://www.nginx.cn/231.html#comment-7103">#40</a>
+						</div>
+						<div class="act">
+													</div>
+						<div class="fixed"></div>
+						<div class="title">
+							<a href="http://www.codingblog.cn/blog/50097.html">
+								毕业设计那点事 — 源码安装Nginx – CodingBlog							</a>
+						</div>
+					</li>
+									<li class="trackback">
+						<div class="date">
+							2017年10月19日16:38							 | <a href="http://www.nginx.cn/231.html#comment-10509">#41</a>
+						</div>
+						<div class="act">
+													</div>
+						<div class="fixed"></div>
+						<div class="title">
+							<a href="https://www.i7089.com/php-banbenshengjianzhuangnginx-anzhuangjilu/">
+								PHP 版本升级(安装)+nginx 安装记录 - 708-709博客							</a>
+						</div>
+					</li>
+									<li class="trackback">
+						<div class="date">
+							2017年11月1日11:13							 | <a href="http://www.nginx.cn/231.html#comment-10812">#42</a>
+						</div>
+						<div class="act">
+													</div>
+						<div class="fixed"></div>
+						<div class="title">
+							<a href="http://waiting-flower.cn/?p=200">
+								CentOS下Nignx手动安装 – Waitter&nbsp;stay hungry stay foolish							</a>
+						</div>
+					</li>
+				
+					</ol>
+		<div class="fixed"></div>
+	<!-- trackbacks END -->
+</div>
+
+</div>
+
+	<form action="http://www.nginx.cn/wp-comments-post.php" method="post" id="commentform">
+	<div id="respond">
+
+					
+			<div id="author_info">
+				<div class="row">
+					<input type="text" name="author" id="author" class="textfield" value="" size="24" tabindex="1">
+					<label for="author" class="small">昵称 (必填)</label>
+				</div>
+				<div class="row">
+					<input type="text" name="email" id="email" class="textfield" value="" size="24" tabindex="2">
+					<label for="email" class="small">电子邮箱 (我们会为您保密) (必填)</label>
+				</div>
+				<div class="row">
+					<input type="text" name="url" id="url" class="textfield" value="" size="24" tabindex="3">
+					<label for="url" class="small">网址</label>
+				</div>
+			</div>
+
+			
+		
+		<!-- comment input -->
+		<div class="row">
+			<textarea name="comment" id="comment" tabindex="4" rows="8" cols="50"></textarea>
+		</div>
+
+		<!-- comment submit and rss -->
+		<div id="submitbox">
+			<a class="feed" href="http://www.nginx.cn/comments/feed">订阅评论</a>
+			<div class="submitbutton">
+				<input name="submit" type="submit" id="submit" class="button" tabindex="5" value="提交评论">
+			</div>
+						<input type="hidden" name="comment_post_ID" value="231">
+			<div class="fixed"></div>
+		</div>
+
+	</div>
+	<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="a57f800744"></p><p style="display: none;"></p>	<input type="hidden" id="ak_js" name="ak_js" value="1510740260882"></form>
+
+	
+
+	<div id="postnavi">
+		<span class="prev"><a href="http://www.nginx.cn/255.html" rel="next">nginx日志切割</a></span>
+		<span class="next"><a href="http://www.nginx.cn/216.html" rel="prev">nginx rewrite 指令</a></span>
+		<div class="fixed"></div>
+	</div>
+
+<!--<script type="text/javascript">
+/*120*270，创建于2014-1-3*/
+var cpro_id = "u1448424";
+</script>
+<script src="http://cpro.baidustatic.com/cpro/ui/f.js" type="text/javascript"></script>
+<script type="text/javascript">
+/*250*200，创建于2014-1-3*/
+var cpro_id = "u1448426";
+</script>
+<script src="http://cpro.baidustatic.com/cpro/ui/f.js" type="text/javascript"></script>
+-->
+
+	</div>
+	<!-- main END -->
+
+	<!-- sidebar START -->
+<div id="sidebar">
+
+    <!-- sidebar north START -->
+    <div id="northsidebar" class="sidebar">
+<div class="sidebar_compliance"></div>
+        <!--ad-161216-->
+        
+        
+
+        <div id="search-2" class="widget widget_search"><form role="search" method="get" id="searchform" class="searchform" action="http://www.nginx.cn/">
+				<div>
+					<label class="screen-reader-text" for="s">搜索：</label>
+					<input type="text" value="" name="s" id="s">
+					<input type="submit" id="searchsubmit" value="搜索">
+				</div>
+			</form></div><div id="views-3" class="widget widget_views"><h3>热门访问</h3><ul>
+<li><a href="http://www.nginx.cn/install" title="Nginx安装">Nginx安装</a> - 585,809 views</li><li><a href="http://www.nginx.cn/76.html" title="nginx基本配置与参数说明">nginx基本配置与参数说明</a> - 375,569 views</li><li><a href="http://www.nginx.cn/231.html" title="nginx php-fpm安装配置">nginx php-fpm安装配置</a> - 363,322 views</li><li><a href="http://www.nginx.cn/115.html" title="nginx location匹配规则">nginx location匹配规则</a> - 221,639 views</li><li><a href="http://www.nginx.cn/nginx-how-to" title="nginx中文手册">nginx中文手册</a> - 207,038 views</li><li><a href="http://www.nginx.cn/927.html" title="nginx反向代理配置">nginx反向代理配置</a> - 203,340 views</li><li><a href="http://www.nginx.cn/216.html" title="nginx rewrite 指令">nginx rewrite 指令</a> - 144,251 views</li><li><a href="http://www.nginx.cn/nginx-download" title="nginx最新版下载">nginx最新版下载</a> - 142,898 views</li><li><a href="http://www.nginx.cn/591.html" title="nginx配置入门">nginx配置入门</a> - 133,140 views</li><li><a href="http://www.nginx.cn/nginxchscommandline" title="运行和控制Nginx">运行和控制Nginx</a> - 126,927 views</li></ul>
+</div>		<div id="recent-posts-2" class="widget widget_recent_entries">		<h3>近期文章</h3>		<ul>
+					<li>
+				<a href="http://www.nginx.cn/4718.html">苹果ios同步icloud照片到新手机</a>
+						</li>
+					<li>
+				<a href="http://www.nginx.cn/4707.html">git skip worktree文件恢复</a>
+						</li>
+					<li>
+				<a href="http://www.nginx.cn/4696.html">TCP连接建立的三次握手与连接断开四次挥手</a>
+						</li>
+					<li>
+				<a href="http://www.nginx.cn/4692.html">tcpdump抓取http的请求头和响应信息</a>
+						</li>
+					<li>
+				<a href="http://www.nginx.cn/4682.html">The listener supports no services</a>
+						</li>
+				</ul>
+		</div>		<div id="recent-comments-2" class="widget widget_recent_comments"><h3>近期评论</h3><ul id="recentcomments"><li class="recentcomments"><span class="comment-author-link">simuhunluo</span>发表在《<a href="http://www.nginx.cn/231.html#comment-11085">nginx php-fpm安装配置</a>》</li><li class="recentcomments"><span class="comment-author-link"><a href="http://www.cloudtui.com/wordpress/?p=15" rel="external nofollow" class="url">Nginx location 匹配规则 | Key。</a></span>发表在《<a href="http://www.nginx.cn/115.html#comment-11081">nginx location匹配规则</a>》</li><li class="recentcomments"><span class="comment-author-link"><a href="http://www.nginx.cn/927.html#respond" rel="external nofollow" class="url">咩</a></span>发表在《<a href="http://www.nginx.cn/927.html#comment-10992">nginx反向代理配置</a>》</li><li class="recentcomments"><span class="comment-author-link"><a href="https://www.crifan.com/lnpm_wordpress_crifan_com_access_fail_502_bad_gateway_nginx/" rel="external nofollow" class="url">【已解决】LNMP的wordpress网站crifan.com无法访问：502 Bad Gateway nginx – 在路上</a></span>发表在《<a href="http://www.nginx.cn/666.html#comment-10984">nginx php-fpm 输出php错误日志</a>》</li><li class="recentcomments"><span class="comment-author-link"><a href="https://www.debian.cn/" rel="external nofollow" class="url">@Debian</a></span>发表在《<a href="http://www.nginx.cn/links#comment-10944">友情链接</a>》</li></ul></div>    </div>
+    <!-- sidebar north END -->
+
+    <div id="centersidebar">
+
+        
+        <!-- sidebar west START -->
+        <div id="westsidebar" class="sidebar">
+            <div id="categories-2" class="widget widget_categories"><h3>分类目录</h3>		<ul>
+	<li class="cat-item cat-item-2"><a href="http://www.nginx.cn/category/android">android</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="http://www.nginx.cn/category/program/cplusplus">c++</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="http://www.nginx.cn/category/apple">iOS/Mac</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="http://www.nginx.cn/category/java">java</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="http://www.nginx.cn/category/program/js">js</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="http://www.nginx.cn/category/linux">linux</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="http://www.nginx.cn/category/mysql">mysql</a>
+</li>
+	<li class="cat-item cat-item-10"><a href="http://www.nginx.cn/category/nginx-article" title="nginx入门文章，介绍nginx的安装和配置相关内容">nginx</a>
+</li>
+	<li class="cat-item cat-item-11"><a href="http://www.nginx.cn/category/oracle">oracle</a>
+</li>
+	<li class="cat-item cat-item-12"><a href="http://www.nginx.cn/category/program/php">php</a>
+</li>
+	<li class="cat-item cat-item-13"><a href="http://www.nginx.cn/category/program/python">python</a>
+</li>
+	<li class="cat-item cat-item-14"><a href="http://www.nginx.cn/category/redis">redis</a>
+</li>
+	<li class="cat-item cat-item-16"><a href="http://www.nginx.cn/category/wordpress">wordpress</a>
+</li>
+	<li class="cat-item cat-item-17"><a href="http://www.nginx.cn/category/%e5%b0%8f%e6%8a%80%e5%b7%a7">小技巧</a>
+</li>
+	<li class="cat-item cat-item-18"><a href="http://www.nginx.cn/category/whoami">杂谈</a>
+</li>
+	<li class="cat-item cat-item-431"><a href="http://www.nginx.cn/category/arch">架构</a>
+</li>
+	<li class="cat-item cat-item-19"><a href="http://www.nginx.cn/category/site">网站</a>
+</li>
+	<li class="cat-item cat-item-429"><a href="http://www.nginx.cn/category/program/networkprogram">网络编程</a>
+</li>
+		</ul>
+</div>        </div>
+        <!-- sidebar west END -->
+        <div class="fixed"></div>
+    </div>
+
+
+    <!-- sidebar south START -->
+    <div id="southsidebar" class="sidebar">
+        <div id="meta-2" class="widget widget_meta"><h3>功能</h3>			<ul>
+						<li><a href="http://www.nginx.cn/wp-login.php">登录</a></li>
+			<li><a href="http://www.nginx.cn/feed">文章<abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="http://www.nginx.cn/comments/feed">评论<abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="https://cn.wordpress.org/" title="基于WordPress，一个优美、先进的个人信息发布平台。">WordPress.org</a></li>			</ul>
+			</div>    </div>
+    <!-- sidebar south END -->
+
+    <script async="" src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/adsbygoogle.js.下载"></script>
+    <!-- nginx右侧导航 -->
+    <ins class="adsbygoogle" style="display: inline-block; width: 300px; height: 250px;" data-ad-client="ca-pub-8728612882429404" data-ad-slot="8826641902" data-adsbygoogle-status="done"><ins id="aswift_2_expand" style="display:inline-table;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent;"><ins id="aswift_2_anchor" style="display:block;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent;"><iframe width="300" height="250" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_2" name="aswift_2" style="left:0;position:absolute;top:0;width:300px;height:250px;" src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/saved_resource(2).html"></iframe></ins></ins></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
+</div>
+<!-- sidebar END -->	<div class="fixed"></div>
+</div>
+<script type="text/javascript" src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/copy.js.下载"></script>
+<script type="text/javascript">
+(function(){
+//支付鼓励
+        //添加在本篇完之后
+
+        var targetLastP = document.getElementById("ad");
+
+        if (targetLastP ) {
+          //alert('targetlastp');
+                targetLastP.innerHTML = targetLastP.innerHTML + '<br/><table width="650" height="40" cellpadding="0" cellspacing="0" border="0" style="margin:0 auto;border: 1px solid #b8d4ea;">  <tbody>  <tr>  <td align="center"><a href="mailto:admin@nginx.cn" title="寻求空间赞助" target="_blank" rel="nofollow" ><font color="red">赞助本站主机</font></a></td>  <td align="center"><a href="http://wangsu.264.cn" title="网速测试" target="_blank"><font color="blue">网速测试</font></a></td>  <td align="center"><a href="http://huilv.264.cn" title="美元人民币汇率" target="_blank"><font color="red">最新美元人民币汇率</font></a></td>  </tr>  </tbody>  </table>  <br/>';
+        }
+})();
+</script>
+<!-- content END -->
+
+<!-- footer START -->
+<div id="footer">
+	<a id="gotop" href="http://www.nginx.cn/231.html#" onclick="MGJS.goTop();return false;">回到顶部</a>
+	
+	<div id="copyright">
+		版权所有 © 2009-2017  <a title="nginx中文网" href="http://www.nginx.cn/">服务器运维与Web架构</a> Theme by NeoEase.<a href="mailto:admin@nginx.cn" title="业务联系" target="_blank" rel＝"nofollow"=""><font color="red">合作联系</font></a>
+	</div>
+	
+</div>
+<!-- footer END -->
+
+</div>
+<!-- container END -->
+</div>
+<!-- wrap END -->
+
+<script type="text/javascript" src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/wp-embed.min.js.下载"></script>
+<script type="text/javascript" src="./nginx php-fpm安装配置 – 运维与架构 - nginx.cn_files/form.js.下载"></script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?9ff71d1196ef31d4eda8f8d61936342c";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<script language="javascript">
+document.body.oncopy = function () { 
+	setTimeout( function () { 
+		var text = getClipboard();
+		if (text) { 
+			text = text + "\r\n详细出处参考："+location.href.toString(); 
+copy2Clipboard(text);
+		} 
+				}, 100 ) 
+}
+
+</script>
+
+
+</body></html>
