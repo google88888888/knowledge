@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0050)http://www.nginx.cn/doc/standard/httpupstream.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+<title>HttpUpstream-Nginx中文文档</title>
+
+<style type="text/css" media="all">@import url('userguide.css');</style>
+<link rel="stylesheet" type="text/css" media="all" href="./HttpUpstream-Nginx中文文档_files/userguide.css">
+
+<script src="./HttpUpstream-Nginx中文文档_files/hm.js.下载"></script><script type="text/javascript" src="./HttpUpstream-Nginx中文文档_files/nav.js.下载"></script>
+<script type="text/javascript" src="./HttpUpstream-Nginx中文文档_files/prototype.lite.js.下载"></script>
+<script type="text/javascript" src="./HttpUpstream-Nginx中文文档_files/moo.fx.js.下载"></script>
+
+<script type="text/javascript" src="./HttpUpstream-Nginx中文文档_files/user_guide_menu.js.下载"></script>
+
+<meta name="robots" content="all">
+
+
+
+
+</head>
+<body rlt="1" style="">
+<!-- START NAVIGATION -->
+<div id="nav2"><a name="top"></a><a href="http://www.nginx.cn/doc"><img src="./HttpUpstream-Nginx中文文档_files/nav_toggle_darker.jpg" width="154" height="43" border="0"></a></div>
+
+
+<div id="masthead">
+
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tbody><tr>
+<td><span id="sitename">Nginx中文文档</span></td>
+<td id="breadcrumb_right"><a href="http://www.nginx.cn/doc/index.html">目录首页</a></td>
+</tr>
+</tbody></table>
+</div>
+<!-- END NAVIGATION -->
+
+
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tbody><tr>
+<td id="breadcrumb">
+<a href="http://www.nginx.cn/">Nginx中文站</a> &nbsp;›&nbsp; <a href="http://www.nginx.cn/doc/index.html">文档首页</a>&nbsp;›&nbsp;HttpIndex模块
+
+</td>
+</tr>
+</tbody></table>
+
+
+
+<br clear="all">
+
+
+
+<!-- START CONTENT -->
+<div id="content">
+
+
+<h1>HttpIndex模块</h1>
+<p>这个模块提供一个简单方法来实现在轮询和客户端IP之间的后端服务器负荷平衡。
+</p><p>配置范例：
+</p>
+<pre>upstream backend  {
+  server backend1.example.com weight=5;
+  server backend2.example.com:8080;
+  server unix:/tmp/backend3;
+}
+ 
+server {
+  location / {
+    proxy_pass  http://backend;
+  }
+}
+</pre>
+<p>配置指导
+</p>
+<h2>ip_hash</h2>
+<p>syntax: ip_hash 
+</p><p>default: none 
+
+</p><p>context: upstream 
+</p><p>This directive causes requests to be distributed between upstreams based on the IP-address of the client. 
+The key for the hash is the class-C network address of the client. This method guarantees that the client request will always be transferred to the same server. But if this server is considered inoperative, then the request of this client will be transferred to another server. This gives a high probability clients will always connect to the same server. 
+</p><p>范例：
+</p>
+<pre>upstream backend {
+  ip_hash;
+  server   backend1.example.com;
+  server   backend2.example.com;
+  server   backend3.example.com  down;
+  server   backend4.example.com;
+}
+</pre>
+<h2>server</h2>
+<p>syntax: server name [parameters] 
+</p><p>default: none 
+</p><p>context: upstream
+</p>
+
+</div>
+<!-- END CONTENT -->
+
+
+<div id="footer">
+<p><a href="http://www.nginx.cn/doc/standard/httpupstream.html#top">顶端</a></p>
+
+<p>中文化: <a href="http://www.nginx.cn/">Nginx中文</a> &nbsp;·&nbsp; 制作: www.nginx.cn  (整理及部分翻译 )</p>
+
+</div>
+
+
+
+<div style="display:none"><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F7f826a2d9c693c7ed804c0145be7da9d' type='text/javascript'%3E%3C/script%3E"));</script><script src="./HttpUpstream-Nginx中文文档_files/h.js.下载" type="text/javascript"></script><a href="http://tongji.baidu.com/hm-web/welcome/ico?s=7f826a2d9c693c7ed804c0145be7da9d" target="_blank"><img border="0" src="./HttpUpstream-Nginx中文文档_files/21.gif" width="20" height="20"></a></div>
+
+</body></html>
