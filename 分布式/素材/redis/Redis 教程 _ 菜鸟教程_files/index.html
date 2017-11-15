@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<!-- saved from url=(0051)http://s0.2mdn.net/4606119/1509623174076/index.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <title></title>
+        <link rel="stylesheet" href="./main.css" media="screen" type="text/css">
+        <meta name="ad.size" content="width=160,height=600">
+        <script type="text/javascript">
+            var clickTag = "http://www.flysas.com";
+        </script>
+    <script type="text/javascript">
+    
+      (function() {
+        var relegateNavigation = '';
+        var handleClickTagMessage = function(e) {
+          try {
+            var eventData = JSON.parse(e.data);
+          } catch (err) {
+            return;
+          }
+          if (eventData.isInitClickTag) {
+            if (eventData.clickTags) {
+              for (var i = 0; i < eventData.clickTags.length; i++) {
+                var clkTag = eventData.clickTags[i];
+                window[clkTag.name] = clkTag.url;
+              }
+            } else if (eventData.clickTag) {
+              window.clickTag = eventData.clickTag;
+            }
+            relegateNavigation = eventData.relegateNavigation;
+          }
+        };
+
+        if (open.call) {
+          window.open = function(open) {
+            return function(url, name, features) {
+              if (relegateNavigation === 'parent') {
+                var message = {'clickTag': url, 'isPostClickTag': true};
+                parent.postMessage(JSON.stringify(message), '*');
+              } else {
+                var args = [url, name];
+                if (features) {
+                  args.push(features);
+                }
+                open.apply(window, args);
+              }
+            };
+          }(window.open);
+        }
+
+        if (window.addEventListener) {
+          window.addEventListener(
+              'message', handleClickTagMessage, false);
+        } else {
+          window.attachEvent('onmessage', handleClickTagMessage);
+        }
+      })();
+    
+  </script></head>
+  	<body style="">	
+        <div id="banner">
+            <a href="javascript:window.open(window.clickTag)">
+
+                <div id="box1" style="visibility: visible; will-change: auto; height: 120px; transform: translate3d(0px, 0px, 0px);">
+                    <img src="./header1.png" id="header1" style="will-change: auto; opacity: 1; transform: translate3d(0px, 0px, 0px);">
+                </div>
+
+                <div id="box2" style="visibility: visible; will-change: auto; height: 43px; transform: translate3d(0px, 0px, 0px);">
+                        <img src="./header2.png" id="header2" style="will-change: auto; opacity: 1; transform: translate3d(0px, 0px, 0px);">
+                        <div id="countdownClock" style="will-change: auto; opacity: 1; transform: translate3d(0px, 0px, 0px);">
+                            <span class="days">00</span>:<span class="hours">00</span>:<span class="minutes">00</span>:<span class="seconds">00</span>:<span class="hundredth">00</span></div>
+                </div>
+
+                <div id="star-alliance-wrapper"><img src="./star-alliance-logo.png" id="star-alliance"></div>
+                <div id="logo-wrapper"><img src="./sas-logo.png" id="logo"></div>
+                <img src="./bg_sky.jpg" id="background" style="transform: matrix(0.99999, 0.00017, -0.00017, 0.99999, -50, 0);">
+                <img src="./bg_plane.png" id="plane" style="transform: matrix(0.99999, 0.00017, -0.00017, 0.99999, 50, -20);">
+                <!--<img src="images/skiss.jpg" width="300" height="">-->
+            </a>   
+        </div>
+	
+        <!-- JS -->
+        <script src="./tweenmax_1.18.5_23b0de6da0ee295131e32a500470610c_min.js.下载"></script>
+        <script src="./main.js(1).下载"></script>
+        <script src="./countdown-script.js.下载"></script>
+	
+</body></html>

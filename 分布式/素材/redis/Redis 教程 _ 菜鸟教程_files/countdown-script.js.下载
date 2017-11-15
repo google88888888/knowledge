@@ -1,0 +1,58 @@
+function getTimeRemaining(endtime) {
+  var t = Date.parse(endtime) - Date.now();
+  var hundredth = Math.floor((t % 1000 / 10));
+  var seconds = Math.floor((t / 1000) % 60);
+  var minutes = Math.floor((t / 1000 / 60) % 60);
+  var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+  var days = Math.floor(t / (1000 * 60 * 60 * 24));
+  return {
+    'total': t,
+    'days': days,
+    'hours': hours,
+    'minutes': minutes,
+    'seconds': seconds,
+    'hundredth': hundredth
+  };
+}
+
+function initializeClock(id, endtime) {
+  var clock = document.getElementById(id);
+  var daysSpan = clock.querySelector('.days');
+  var hoursSpan = clock.querySelector('.hours');
+  var minutesSpan = clock.querySelector('.minutes');
+  var secondsSpan = clock.querySelector('.seconds');
+  var hundredthSpan = clock.querySelector('.hundredth');
+
+  function updateClock() {
+    var t = getTimeRemaining(endtime);
+       
+
+    if(t.days <=9)
+    {
+      daysSpan.innerHTML = ('0' + t.days);
+    } else {
+      daysSpan.innerHTML = t.days;
+    }
+
+    hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+    minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+    secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+    hundredthSpan.innerHTML = ('0' + t.hundredth).slice(-2);
+
+    if (t.total <= 0) {
+        clearInterval(timeinterval);
+        daysSpan.innerHTML = "00";
+        hoursSpan.innerHTML = "00";
+        minutesSpan.innerHTML = "00";
+        secondsSpan.innerHTML = "00";
+        hundredthSpan.innerHTML = "00";
+    }
+      
+  }
+
+  updateClock();
+  var timeinterval = setInterval(updateClock, 42);
+}
+
+var deadline = new Date("Nov 13, 2017 23:59:59");
+initializeClock('countdownClock', deadline);

@@ -1,0 +1,24 @@
+
+    //BACKGROUND
+    TweenMax.to("#background", 20, {x:-50, rotation:0.01, ease:Power2.easeOut});
+    TweenMax.to("#plane", 20, {y:-20, rotation:0.01, ease:Power2.easeOut});
+    TweenMax.to("#plane", 20, {x:50, rotation:0.01, ease:Power2.easeOut});
+
+    //CONTENT
+    var tlTxt = new TimelineMax();
+
+    //BOX AND COUNTDOWN
+    tlTxt.set("#box1", {visibility:"visible"});
+    tlTxt.set("#box2", {visibility:"visible"});
+
+    tlTxt.from("#box1", 0.4, {height:0, willChange:"transform", force3D:true, ease:Power2.easeIn}, 0.1)
+    tlTxt.from("#header1", 0.4, {alpha:0, y:-5, willChange:"transform", force3D:true, ease:Expo.easeOut}, 0.4)
+
+    tlTxt.from("#box2", 0.7, {height:0, willChange:"transform", force3D:true, ease:Expo.easeOut}, 0.5)
+    tlTxt.from("#header2", 0.7, {alpha:0, y:-5, willChange:"transform", force3D:true, ease:Expo.easeOut}, 0.6)
+    tlTxt.from("#countdownClock", 0.7, {alpha:0, y:-5, willChange:"transform", force3D:true, ease:Expo.easeOut}, 0.6)
+
+
+window.onload = function()
+{ 
+}
