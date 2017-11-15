@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0051)http://www.nginx.cn/doc/standard/httpautoindex.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+<title>HttpAutoindex模块-Nginx中文文档</title>
+
+<style type="text/css" media="all">@import url('userguide.css');</style>
+<link rel="stylesheet" type="text/css" media="all" href="./HttpAutoindex模块-Nginx中文文档_files/userguide.css">
+
+<script type="text/javascript" src="./HttpAutoindex模块-Nginx中文文档_files/nav.js.下载"></script>
+<script type="text/javascript" src="./HttpAutoindex模块-Nginx中文文档_files/prototype.lite.js.下载"></script>
+<script type="text/javascript" src="./HttpAutoindex模块-Nginx中文文档_files/moo.fx.js.下载"></script>
+
+<script type="text/javascript" src="./HttpAutoindex模块-Nginx中文文档_files/user_guide_menu.js.下载"></script>
+
+<meta name="robots" content="all">
+
+
+
+
+</head>
+<body rlt="1" style="">
+<!-- START NAVIGATION -->
+<div id="nav2"><a name="top"></a><a href="http://www.nginx.cn/doc"><img src="./HttpAutoindex模块-Nginx中文文档_files/nav_toggle_darker.jpg" width="154" height="43" border="0"></a></div>
+
+
+<div id="masthead">
+
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tbody><tr>
+<td><span id="sitename">Nginx中文文档</span></td>
+<td id="breadcrumb_right"><a href="http://www.nginx.cn/doc/index.html">目录首页</a></td>
+</tr>
+</tbody></table>
+</div>
+<!-- END NAVIGATION -->
+
+
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tbody><tr>
+<td id="breadcrumb">
+<a href="http://www.nginx.cn/">Nginx中文站</a> &nbsp;›&nbsp; <a href="http://www.nginx.cn/doc/index.html">文档首页</a>&nbsp;›&nbsp;HttpAutoindex模块
+
+</td>
+</tr>
+</tbody></table>
+
+
+
+<br clear="all">
+
+
+
+<!-- START CONTENT -->
+<div id="content">
+
+
+<h1>HttpAutoindex模块</h1>
+<p>此模块用于自动生成目录列表.
+</p><p>ngx_http_autoindex_module只在 ngx_http_index_module模块未找到索引文件时发出请求. 
+</p><p>__配置实例__
+</p>
+<pre>location  /  {
+: autoindex  on;
+}
+</pre>
+<h2> 指导 </h2>
+<ul><li> [#autoindex autoindex] 
+
+</li><li> [#autoindex_exact_size autoindex_exact_size] 
+</li><li> [#autoindex_localtime autoindex_localtime] 
+</li></ul>
+<p><br>
+
+</p><h2>autoindex </h2>
+<p><b>syntax:</b> <i>autoindex [ on|off ] </i>
+
+</p><p><b>default:</b> <i>autoindex off</i>
+</p><p><b>context:</b> <i>http, server, location</i>
+</p><p>激活/关闭自动索引
+</p>
+<h2> autoindex_exact_size </h2>
+<p><b>syntax:</b> <i>autoindex_exact_size [ on|off ] </i>
+
+</p><p><b>default:</b> <i>autoindex_exact_size on</i>
+</p><p><b>context:</b> <i>http, server, location</i>
+</p><p>设定索引时文件大小的单位(B,KB, MB 或 GB)
+</p>
+<h2> autoindex_localtime</h2>
+<p><b>syntax:</b> <i>autoindex_localtime [ on|off ] </i>
+
+</p><p><b>default:</b> <i>autoindex_localtime off</i>
+</p><p><b>context:</b> <i>http, server, location</i>
+</p><p>开启以本地时间来显示文件时间的功能。默认为关（GMT时间）
+</p>
+<h2>参考 </h2>
+<p><a href="http://sysoev.ru/nginx/docs/http/ngx_http_autoindex_module.html" class="external text" title="http://sysoev.ru/nginx/docs/http/ngx_http_autoindex_module.html" rel="nofollow">Original Documentation</a>
+</p>
+
+
+
+</div>
+<!-- END CONTENT -->
+
+
+<div id="footer">
+<p><a href="http://www.nginx.cn/doc/standard/httpautoindex.html#top">顶端</a></p>
+
+<p>中文化: <a href="http://www.nginx.cn/">Nginx中文</a> &nbsp;·&nbsp; 制作: www.nginx.cn  (整理及部分翻译 )</p>
+
+</div>
+
+
+
+<div style="display:none"><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F7f826a2d9c693c7ed804c0145be7da9d' type='text/javascript'%3E%3C/script%3E"));</script><script src="./HttpAutoindex模块-Nginx中文文档_files/h.js.下载" type="text/javascript"></script><a href="http://tongji.baidu.com/hm-web/welcome/ico?s=7f826a2d9c693c7ed804c0145be7da9d" target="_blank"><img border="0" src="./HttpAutoindex模块-Nginx中文文档_files/21.gif" width="20" height="20"></a></div>
+
+</body></html>

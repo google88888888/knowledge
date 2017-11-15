@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0047)http://www.nginx.cn/doc/standard/httpindex.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+<title>HttpIndex模块-Nginx中文文档</title>
+
+<style type="text/css" media="all">@import url('userguide.css');</style>
+<link rel="stylesheet" type="text/css" media="all" href="./HttpIndex模块-Nginx中文文档_files/userguide.css">
+
+<script src="./HttpIndex模块-Nginx中文文档_files/hm.js.下载"></script><script type="text/javascript" src="./HttpIndex模块-Nginx中文文档_files/nav.js.下载"></script>
+<script type="text/javascript" src="./HttpIndex模块-Nginx中文文档_files/prototype.lite.js.下载"></script>
+<script type="text/javascript" src="./HttpIndex模块-Nginx中文文档_files/moo.fx.js.下载"></script>
+
+<script type="text/javascript" src="./HttpIndex模块-Nginx中文文档_files/user_guide_menu.js.下载"></script>
+
+<meta name="robots" content="all">
+
+
+
+
+</head>
+<body rlt="1" style="">
+<!-- START NAVIGATION -->
+<div id="nav2"><a name="top"></a><a href="http://www.nginx.cn/doc"><img src="./HttpIndex模块-Nginx中文文档_files/nav_toggle_darker.jpg" width="154" height="43" border="0"></a></div>
+
+
+<div id="masthead">
+
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tbody><tr>
+<td><span id="sitename">Nginx中文文档</span></td>
+<td id="breadcrumb_right"><a href="http://www.nginx.cn/doc/index.html">目录首页</a></td>
+</tr>
+</tbody></table>
+</div>
+<!-- END NAVIGATION -->
+
+
+<table cellpadding="0" cellspacing="0" border="0" style="width:100%">
+<tbody><tr>
+<td id="breadcrumb">
+<a href="http://www.nginx.cn/">Nginx中文站</a> &nbsp;›&nbsp; <a href="http://www.nginx.cn/doc/index.html">文档首页</a>&nbsp;›&nbsp;HttpIndex模块
+
+</td>
+</tr>
+</tbody></table>
+
+
+
+<br clear="all">
+
+
+
+<!-- START CONTENT -->
+<div id="content">
+
+
+<h1>HttpIndex模块</h1>
+<p><b>语法:</b> <i>index file [file...] </i>
+</p><p><b>默认值:</b> <i>index index.html</i>
+</p><p><b>作用域:</b> <i>http, server, location</i>
+</p><p>该指令用来指定用来做默认文档的文件名，可以在文件名处使用变量。
+如果您指定了多个文件，那么将按照您指定的顺序逐个查找。
+可以在列表末尾加上一个绝对路径名的文件。
+
+</p><p>示例:
+</p>
+<pre>index  index.$geo.html  index.0.html  /index.html;
+</pre>
+<h2> 参见 </h2>
+<p><a href="http://sysoev.ru/nginx/docs/http/ngx_http_index_module.html" class="external text" title="http://sysoev.ru/nginx/docs/http/ngx_http_index_module.html" rel="nofollow">原始文档</a>
+</p>
+
+
+
+</div>
+<!-- END CONTENT -->
+
+
+<div id="footer">
+<p><a href="http://www.nginx.cn/doc/standard/httpindex.html#top">顶端</a></p>
+
+<p>中文化: <a href="http://www.nginx.cn/">Nginx中文</a> &nbsp;·&nbsp; 制作: www.nginx.cn  (整理及部分翻译 )</p>
+
+</div>
+
+
+
+<div style="display:none"><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F7f826a2d9c693c7ed804c0145be7da9d' type='text/javascript'%3E%3C/script%3E"));</script><script src="./HttpIndex模块-Nginx中文文档_files/h.js.下载" type="text/javascript"></script><a href="http://tongji.baidu.com/hm-web/welcome/ico?s=7f826a2d9c693c7ed804c0145be7da9d" target="_blank"><img border="0" src="./HttpIndex模块-Nginx中文文档_files/21.gif" width="20" height="20"></a></div>
+
+</body></html>
