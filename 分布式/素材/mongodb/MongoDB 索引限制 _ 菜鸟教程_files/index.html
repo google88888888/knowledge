@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!-- saved from url=(0051)http://s1.2mdn.net/4232845/1428580350206/index.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script type="text/javascript">
+    
+      (function() {
+        var relegateNavigation = '';
+        var handleClickTagMessage = function(e) {
+          try {
+            var eventData = JSON.parse(e.data);
+          } catch (err) {
+            return;
+          }
+          if (eventData.isInitClickTag) {
+            if (eventData.clickTags) {
+              for (var i = 0; i < eventData.clickTags.length; i++) {
+                var clkTag = eventData.clickTags[i];
+                window[clkTag.name] = clkTag.url;
+              }
+            } else if (eventData.clickTag) {
+              window.clickTag = eventData.clickTag;
+            }
+            relegateNavigation = eventData.relegateNavigation;
+          }
+        };
+
+        if (open.call) {
+          window.open = function(open) {
+            return function(url, name, features) {
+              if (relegateNavigation === 'parent') {
+                var message = {'clickTag': url, 'isPostClickTag': true};
+                parent.postMessage(JSON.stringify(message), '*');
+              } else {
+                var args = [url, name];
+                if (features) {
+                  args.push(features);
+                }
+                open.apply(window, args);
+              }
+            };
+          }(window.open);
+        }
+
+        if (window.addEventListener) {
+          window.addEventListener(
+              'message', handleClickTagMessage, false);
+        } else {
+          window.attachEvent('onmessage', handleClickTagMessage);
+        }
+      })();
+    
+  </script><title>eBuilders</title><meta name="ad.size" content="width=160,height=600"><meta name="ad.xml" content="//banners.klm.com/013732/feed.xml">
+<meta name="ad.base" content="//banners.klm.com/013732/">
+<link rel="stylesheet" href="./style_160x600.css"><script>var clickTag = 'http://www.klm.com/';</script><script src="./components_160x600.json"></script></head><body style=""><div class="banner-wrap" id="banner" style="opacity: 1;"><div class="banner-bg abs" id="Image" data-template="image" style="background-image: url(&quot;//banners.klm.com/013732/160x600_plane.jpg&quot;); left: 0px;"></div><div class="box box-blue banner-box abs" id="box" style="padding: 0px; height: 400px; width: 150px;"><div class="box-title-1 abs" id="Title_first" data-template="simpleText" data-component="tBox" style="width: 140px; height: 80px; opacity: 0; top: 40px;"><div style="font-size: 23px; color: rgb(255, 255, 255); line-height: 1.2em; text-align: left; vertical-align: top; display: table-cell; width: 140px; white-space: normal; height: 80px;">荷航带你飞往 梦想目的地</div></div><div class="box-title-2 abs" id="Title_second" data-template="simpleText" data-component="tBox" style="width: 140px; height: 120px; margin-left: 0px; opacity: 1;"><div style="font-size: 20px; color: rgb(255, 255, 255); line-height: 1.2em; text-align: left; vertical-align: top; display: table-cell; width: 140px; white-space: normal; height: 120px;">登录荷航官网，开启你的欧洲之旅！</div></div><div class="banner-logo abs" id="banner_logo" style="right: 0px; bottom: 0px; transform: matrix(1, 0, 0, 1, 0, 0);"><div class="banner-logo-text" id="Banner_logo_text" data-template="simpleText" data-component="tBox" style="width: 102px; transform: matrix(1, 0, 0, 1, 0, 0);"><div style="font-size: 12px; color: rgb(0, 161, 222); line-height: 1em; text-align: center; vertical-align: bottom; display: table-cell; width: 102px; white-space: nowrap;">荷兰皇家航空公司</div></div></div><div id="Destinations" data-template="destinations"><div class="des-wrap abs"><div class="des-title abs" id="Destination0" data-template="simpleText" data-component="tBox" style="width: 144px; height: 40px; left: -80px; opacity: 0;"><div style="font-size: 40px; color: rgb(255, 255, 255); line-height: 1em; text-align: center; vertical-align: middle; display: table-cell; width: 144px; white-space: nowrap; height: 40px;">巴 黎</div></div><div class="des-price abs" id="Price_box0" data-component="Box" style="width: 144px; height: 45px; text-align: center; opacity: 0; transform: matrix(1, 0, 0, 1, 0, 0); left: 80px;"><div id="Currency_after0" data-component="tBox"></div><div class="box-component-inner-block inline-block"><div style="display: table-cell; height: 45px; vertical-align: middle;"><div id="Currency_before0" data-component="tBox"><div style="font-size: 17px; color: rgb(255, 255, 255);">CNY</div></div></div><div style="display: table-cell; height: 45px; vertical-align: middle;"><div id="Price0" data-template="simpleText" data-component="tBox" style="height: 45px;"><div style="font-size: 30px; color: rgb(255, 255, 255); line-height: 1em; text-align: center; vertical-align: middle; display: table-cell; width: auto; white-space: nowrap; height: 45px;">4002</div></div></div><div style="display: table-cell; height: 45px; vertical-align: middle;"><div id="Starting_price0" data-template="simpleText" data-component="tBox"><div style="font-size: 17px; color: rgb(255, 255, 255);">起</div></div></div></div></div></div><div class="des-wrap abs"><div class="des-title abs" id="Destination1" data-template="simpleText" data-component="tBox" style="width: 144px; height: 40px; left: -80px; opacity: 0;"><div style="font-size: 36px; color: rgb(255, 255, 255); line-height: 1em; text-align: center; vertical-align: middle; display: table-cell; width: 144px; white-space: nowrap; height: 40px;">巴塞罗那</div></div><div class="des-price abs" id="Price_box1" data-component="Box" style="width: 144px; height: 45px; text-align: center; opacity: 0; transform: matrix(1, 0, 0, 1, 0, 0); left: 80px;"><div id="Currency_after1" data-component="tBox"></div><div class="box-component-inner-block inline-block"><div style="display: table-cell; height: 45px; vertical-align: middle;"><div id="Currency_before1" data-component="tBox"><div style="font-size: 17px; color: rgb(255, 255, 255);">CNY</div></div></div><div style="display: table-cell; height: 45px; vertical-align: middle;"><div id="Price1" data-template="simpleText" data-component="tBox" style="height: 45px;"><div style="font-size: 30px; color: rgb(255, 255, 255); line-height: 1em; text-align: center; vertical-align: middle; display: table-cell; width: auto; white-space: nowrap; height: 45px;">3469</div></div></div><div style="display: table-cell; height: 45px; vertical-align: middle;"><div id="Starting_price1" data-template="simpleText" data-component="tBox"><div style="font-size: 17px; color: rgb(255, 255, 255);">起</div></div></div></div></div></div><div class="des-wrap abs"><div class="des-title abs" id="Destination2" data-template="simpleText" data-component="tBox" style="width: 144px; height: 40px; left: -80px; opacity: 0;"><div style="font-size: 40px; color: rgb(255, 255, 255); line-height: 1em; text-align: center; vertical-align: middle; display: table-cell; width: 144px; white-space: nowrap; height: 40px;">伦 敦</div></div><div class="des-price abs" id="Price_box2" data-component="Box" style="width: 144px; height: 45px; text-align: center; opacity: 0; transform: matrix(1, 0, 0, 1, 0, 0); left: 80px;"><div id="Currency_after2" data-component="tBox"></div><div class="box-component-inner-block inline-block"><div style="display: table-cell; height: 45px; vertical-align: middle;"><div id="Currency_before2" data-component="tBox"><div style="font-size: 17px; color: rgb(255, 255, 255);">CNY</div></div></div><div style="display: table-cell; height: 45px; vertical-align: middle;"><div id="Price2" data-template="simpleText" data-component="tBox" style="height: 45px;"><div style="font-size: 30px; color: rgb(255, 255, 255); line-height: 1em; text-align: center; vertical-align: middle; display: table-cell; width: auto; white-space: nowrap; height: 45px;">4573</div></div></div><div style="display: table-cell; height: 45px; vertical-align: middle;"><div id="Starting_price2" data-template="simpleText" data-component="tBox"><div style="font-size: 17px; color: rgb(255, 255, 255);">起</div></div></div></div></div></div></div><div class="price-conditions abs" id="Price_conditions" data-template="simpleText" data-component="tBox" style="width: 144px; height: 14px; opacity: 0;"><div style="font-size: 14px; color: rgb(255, 255, 255); line-height: 1em; text-align: center; vertical-align: top; display: table-cell; width: 144px; white-space: normal; height: 14px;">往返票价已含税</div></div><div class="btn btn-arrow btn-book abs" id="btn" style="opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);"><div id="Book_now_button_text" data-template="simpleText" data-component="tBox" style="width: 74px; height: 20px;"><div style="font-size: 15px; color: rgb(255, 255, 255); line-height: 1em; text-align: left; vertical-align: middle; display: table-cell; width: 74px; white-space: nowrap; height: 20px;">立即预订</div></div></div><div class="travel-conditions abs" id="Travel_conditions" data-template="simpleText" data-component="tBox" style="width: 140px; height: 25px; opacity: 0;"><div style="font-size: 12px; color: rgb(255, 255, 255); line-height: 1em; text-align: center; vertical-align: top; display: table-cell; width: 140px; white-space: normal; height: 25px;">klm.com.cn</div></div></div></div><script src="./engine.min.js.下载"></script><script src="./banner_160x600.min.js.下载"></script></body></html>

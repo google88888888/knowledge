@@ -1,0 +1,120 @@
+parseJSON({
+    "tBox" :
+    {
+        "Title_first" :  {
+            "parent"        : null,
+            "width"         : 140,
+            "height"        : 80,
+            "minFontSize"   : 14,
+            "maxFontSize"   : 24,
+            "color"         : "#ffffff",
+            "multi"         : true,
+            "align"         : "left",
+            "verticalAlign" : "top",
+            "lineHeight"    : 1.2
+        },
+        "Title_second" :  {
+            "parent"        : null,
+            "width"         : 140,
+            "height"        : 120,
+            "minFontSize"   : 14,
+            "maxFontSize"   : 24,
+            "color"         : "#ffffff",
+            "multi"         : true,
+            "align"         : "left",
+            "verticalAlign" : "top",
+            "lineHeight"    : 1.2
+        },
+        "Price_conditions" :  {
+            "parent"        : null,
+            "width"         : 144,
+            "height"        : 14,
+            "minFontSize"   : 10,
+            "maxFontSize"   : 15,
+            "color"         : "#ffffff",
+            "multi"         : true,
+            "align"         : "center",
+            "verticalAlign" : "top",
+            "lineHeight"    : 1
+        },
+        "Travel_conditions" :  {
+            "parent"        : null,
+            "width"         : 140,
+            "height"        : 25,
+            "minFontSize"   : 7,
+            "maxFontSize"   : 12,
+            "color"         : "#ffffff",
+            "multi"         : true,
+            "align"         : "center",
+            "verticalAlign" : "top",
+            "lineHeight"    : 1
+        },
+        "Book_now_button_text" :  {
+            "parent"        : null,
+            "width"         : 74,
+            "height"        : 20,
+            "minFontSize"   : 10,
+            "maxFontSize"   : 15,
+            "color"         : "#ffffff",
+            "multi"         : false,
+            "align"         : "left",
+            "verticalAlign" : "middle",
+            "lineHeight"    : 1
+        },
+        "Banner_logo_text" :  {
+            "parent"        : null,
+            "width"         : 102,
+            "height"        : null,
+            "minFontSize"   : 6,
+            "maxFontSize"   : 13,
+            "color"         : "#00a1de",
+            "multi"         : false,
+            "align"         : "center",
+            "verticalAlign" : "bottom",
+            "lineHeight"    : 1
+        },
+
+        "Destination" :  {
+            "parent"        : null,
+            "width"         : 144,
+            "height"        : 40,
+            "minFontSize"   : 5,
+            "maxFontSize"   : 40,
+            "color"         : "#ffffff",
+            "multi"         : false,
+            "align"         : "center",
+            "verticalAlign" : "middle",
+            "lineHeight"    : 1
+        },
+        "Starting_price" :  {
+            "parent"        : "Price"
+        },
+        "Price" :  {
+            "parent"        : null,
+            "width"         : null,
+            "height"        : 45,
+            "minFontSize"   : 15,
+            "maxFontSize"   : 30,
+            "color"         : "#ffffff",
+            "multi"         : false,
+            "align"         : "center",
+            "verticalAlign" : "middle",
+            "lineHeight"    : 1
+        },
+        "Currency_before" :  {
+            "parent"        : "Price"
+        },
+        "Currency_after" :  {
+            "parent"        : "Price"
+        }
+    },
+    "Box" :
+    {
+        "Price_box" : {
+            "width"          : 144,
+            "height"         : 45,
+            "align"          : "center",
+            "verticalAlign"  : "middle"
+        }
+    }
+});
