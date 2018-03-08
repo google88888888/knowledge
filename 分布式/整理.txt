@@ -1,1 +1,4 @@
 ﻿Nginx主模块
+error_log
+include
+pid是port id
