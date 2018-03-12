@@ -29,9 +29,11 @@ location  /a/ {
 （6）client_header_buffer_size是请求头的buffer大小
 （7）client_header_timeout是请求头的超时时间
 （8）client_max_body_size是能接收的最大请求体的大小
-（9）default_type
-
-
+（9）default_type是设置文件使用的默认的MIME-type
+（10）error_page是发生错误的时候显示一个预定义的uri
+（11）if_modified_since是定义如何比较修改时间和请求头中"If-Modified-Since"时间
+（12）index是首页文件名称
+（3）internal
 
 
 
