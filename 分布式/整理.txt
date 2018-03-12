@@ -2,3 +2,4 @@
 error_log
 include
 pid是port id
+user是指定执行nginx工作进程的用户
