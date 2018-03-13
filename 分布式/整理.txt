@@ -27,15 +27,23 @@ location  /a/ {
 （4）client_body_temp_path是存储请求体的文件的目录路径
 （5）client_body_timeout是请求体的超时时间
 （6）client_header_buffer_size是请求头的buffer大小
+（16）large_client_header_buffers是当请求头过大，请求头的buffer大小
 （7）client_header_timeout是请求头的超时时间
 （8）client_max_body_size是能接收的最大请求体的大小
 （9）default_type是设置文件使用的默认的MIME-type
 （10）error_page是发生错误的时候显示一个预定义的uri
 （11）if_modified_since是定义如何比较修改时间和请求头中"If-Modified-Since"时间
 （12）index是首页文件名称
-（3）internal
-
-
+（13）internal是指定某个location只能被内部的请求调用，外部的调用请求会返回404
+（14）keepAliveTimeout是关闭连接之前，连接器等待另一个HTTP请求的毫秒数
+（15）keepalive_requests是在长连接期间可接受的请求数
+（）limit_except是限制http方法
+（）limit_rate是设置最高下载速度
+（）limit_rate_after是设置http请求传输多少字节后开始限速
+（）listen
+listen 80是监听所有端口为80的ipv4的地址
+listen [::]:80是监听所有端口为80的ipv6的地址
+（）location
 
 
 
