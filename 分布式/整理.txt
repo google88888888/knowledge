@@ -44,7 +44,13 @@ location  /a/ {
 listen 80是监听所有端口为80的ipv4的地址
 listen [::]:80是监听所有端口为80的ipv6的地址
 （）location
-
+匹配模式及顺序
+location = /uri 　　　  精确匹配
+location ^~ /uri 　　  前缀匹配，顺序是从长到短
+location ~ pattern    区分大小写的正则匹配。
+location ~* pattern 　不区分大小写的正则匹配。
+location /uri 　　　　  前缀匹配，顺序是从长到短
+location /           通用匹配
 
 
 
