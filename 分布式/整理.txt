@@ -51,7 +51,7 @@ location ~ pattern    区分大小写的正则匹配。
 location ~* pattern 　不区分大小写的正则匹配。
 location /uri 　　　　  前缀匹配，顺序是从长到短
 location /           通用匹配
-
+（）open_file_cache
 
 
 
