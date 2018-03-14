@@ -47,15 +47,28 @@ listen [::]:80是监听所有端口为80的ipv6的地址
 匹配模式及顺序
 location = /uri 　　　  精确匹配
 location ^~ /uri 　　  前缀匹配，顺序是从长到短
-location ~ pattern    区分大小写的正则匹配。
-location ~* pattern 　不区分大小写的正则匹配。
+location ~ pattern    区分大小写的正则匹配，顺序是从上到下
+location ~* pattern 　不区分大小写的正则匹配，顺序是从上到下
 location /uri 　　　　  前缀匹配，顺序是从长到短
 location /           通用匹配
-（）open_file_cache
-
-
-
-
+（）open_file_cache max=65535 inactive=30s  
+最多缓存多少个文件，缓存多少时间
+open_file_cache_min_uses 1
+在30S中没有使用到这个配置的次数的话就删除
+open_file_cache_valid 40s
+多少时间检查一次，如果发现30s内没有用过一次的删除
+（）server_name_in_redirect
+当URL 指向一个目录并且在最后没有包含“/”时，Nginx 内部会自动的做一个 301 重定向，这时会有两种情况：
+1、server_name_in_redirect on（默认），URL重定向为：server_name中的第一个域名 + 目录名 + /
+2、server_name_in_redirect off，URL重定向为：原URL中的域名 + 目录名 + /
+（）port_in_redirect是nginx在redirect的时候不要带上port
+（）recursive_error_pages是否允许递归使用error_page 
+（）root是
+location  /a/ {
+ root   /b/;
+}
+若请求/a/a.html将返回/b/a/a.html
+（）satisfy_any
 
 
 
