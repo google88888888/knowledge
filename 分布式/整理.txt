@@ -68,9 +68,11 @@ location  /a/ {
  root   /b/;
 }
 若请求/a/a.html将返回/b/a/a.html
-（）satisfy_any
-
-
+（）satisfy
+如果在一个字段中同时使用了Access模块和Auth Basic模块的指令，可以使用这个指令确定一种验证方式：
+all - 必须同时匹配Access和Auth Basic中指令指定的权限。 
+any - 具有Access 或 Auth Basic指令任一权限即可通过匹配 
+（）send_timeout
 
 
 
