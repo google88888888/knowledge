@@ -72,10 +72,27 @@ location  /a/ {
 如果在一个字段中同时使用了Access模块和Auth Basic模块的指令，可以使用这个指令确定一种验证方式：
 all - 必须同时匹配Access和Auth Basic中指令指定的权限。 
 any - 具有Access 或 Auth Basic指令任一权限即可通过匹配 
-（）send_timeout
-
-
-
+（）sendfile是设置为on表示启动高效传输文件的模式。若设置为off，会先在用户空间（Nginx进程空间）申请一个buffer，用read函数把数据从磁盘读到cache，再从cache读取到用户空间的buffer，再用write函数把数据从用户空间的buffer写入到内核的buffer，最后到tcp socket。若设置为on，可以让数据不用经过用户buffer。
+（）server是在http中，可以定义多个虚拟server
+（）server_name
+在server块中，可以通过server_name来配置server的多域名，匹配的顺序如下：
+1、完全匹配
+2、后缀匹配
+3、前缀匹配
+4、正则匹配
+5、listen指令里配置了default或default_server的server
+6、第一个匹配上listen的server
+（）server_tokens是隐藏错误页面和http响应头的nginx版本号
+（）tcp_nodelay
+on数据立即发送
+off数据每积攒0.2秒发送
+（）tcp_nopush数据每积攒一定大小发送
+（）try_files是按顺序检测文件的存在,并且返回第一个找到的文件
+（）types
+1、MIME-type和Content-Type的关系：
+当web服务器收到静态的资源文件请求时，依据请求文件的后缀名在服务器的MIME配置文件中找到对应的MIME Type，再根据MIME Type设置HTTP Response的Content-Type，然后浏览器根据Content-Type的值处理文件。
+2、MIME Type是经过ietf组织协商，以 RFC 的形式作为建议的标准发布在网上的。如果是某个客户端自己定义的格式，一般只能以 application/x- 开头。
+（）变量
 
 
 
