@@ -154,6 +154,8 @@ $server_protocol 请求使用的协议，通常是HTTP/1.0或HTTP/1.1。
 $uri 请求中的当前URI(不带请求参数，参数位于$args)，不同于浏览器传递的$request_uri的值，它可以通过内部重定向，或者使用index指令进行修改。不包括协议和主机名
 
 
+HTTP Proxy模块
+
 
 
 
