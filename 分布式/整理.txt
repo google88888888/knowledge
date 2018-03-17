@@ -9,7 +9,6 @@
 事件模块
 （1）accept_mutex是惊群问题
 （2）multi_accept是告诉nginx收到一个新连接通知后接受尽可能多的连接
-
 （3）worker_connections是
 nginx作为http服务器的时候：
 max_clients = worker_processes * worker_connections
@@ -155,7 +154,14 @@ $uri 请求中的当前URI(不带请求参数，参数位于$args)，不同于�
 
 
 HTTP Proxy模块
-
+HTTP Proxy模块转发请求到其他服务器，转发请求到其他服务器之前nginx将缓存它们
+（）proxy_pass
+反向代理指代理外网用户请求到内网指定web服务器
+如果proxy_pass后面的url后加/，不带匹配的路径。如果proxy_pass后面的url后不加/，带匹配的路径
+（）proxy_hide_header通过反向代理，响应客户端时，隐藏后端服务版本
+（）proxy_pass_header与proxy_hide_header功能相反
+（）proxy_redirect修改后端服务器响应头部中的location或refresh，与proxy_pass配合使用
+（）proxy_set_header更改或添加客户端请求头部信息
 
 
 
