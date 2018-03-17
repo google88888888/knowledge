@@ -163,7 +163,7 @@ HTTP Proxy模块转发请求到其他服务器，转发请求到其他服务器�
 （）proxy_redirect修改后端服务器响应头部中的location或refresh，与proxy_pass配合使用
 （）proxy_set_header更改或添加客户端请求头部信息
 
-
+Http Rewrite模块
 
 
 
