@@ -164,19 +164,38 @@ HTTP Proxy模块转发请求到其他服务器，转发请求到其他服务器�
 （）proxy_set_header更改或添加客户端请求头部信息
 
 Http Rewrite模块
+（）if
+~和!~是否区分大小正则
+~*和!~*是否不区分大小写正则
+-f和!-f检查一个文件是否存在
+-d和!-d检查一个目录是否存在
+-e和!-e检查一个文件、目录、符号链接是否存在
+-x和!-x检查一个文件是否可执行
 
+（）return停止处理并为客户端返回状态码，默认302状态码
+return code [text]   文本将被放置在响应主体
+return code URL      URL将成为location头部值
 
+（）rewrite
+执行顺序是
+1处理在server中定义的模块指令
+2为请求查找location
+3处理在选中的location中定义的模块指令
+循环至多重复10次，之后nginx返回错误500
 
+重写后若以”http://”或”https://”开始，将停止继续处理，直接返回给客户端。
+flag将停止继续处理，flag可以是如下参数：
+last，完成该rewrite规则的执行后，停止处理后续rewrite指令集；重新查找新URI
+break，完成该rewrite规则的执行后，停止处理后续rewrite指令集，不重新查找新URI。但当前location内非rewrite语句和location外非rewrite语句可以执行；
+redirect，返回302临时重定向，地址栏会显示跳转后的地址
+permanent，返回301永久重定向，地址栏会显示跳转后的地址
 
+重写后的URL包含原URL的请求参数，即原URL的?后内容。若不想带原URL的参数，可以在重写后的URL后加一个问号
 
+若使用}或;需用双引号或单引号包围
 
-
-
-
-
-
-
-
+（）set
+定义一个变量并赋值，值可以是文本，变量或者文本变量混合体。
 
 
 
