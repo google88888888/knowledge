@@ -26,23 +26,23 @@ location  /a/ {
 （4）client_body_temp_path是存储请求体的文件的目录路径
 （5）client_body_timeout是请求体的超时时间
 （6）client_header_buffer_size是请求头的buffer大小
-（16）large_client_header_buffers是当请求头过大，请求头的buffer大小
-（7）client_header_timeout是请求头的超时时间
-（8）client_max_body_size是能接收的最大请求体的大小
-（9）default_type是设置文件使用的默认的MIME-type
-（10）error_page是发生错误的时候显示一个预定义的uri
-（11）if_modified_since是定义如何比较修改时间和请求头中"If-Modified-Since"时间
-（12）index是首页文件名称
-（13）internal是指定某个location只能被内部的请求调用，外部的调用请求会返回404
-（14）keepAliveTimeout是关闭连接之前，连接器等待另一个HTTP请求的毫秒数
-（15）keepalive_requests是在长连接期间可接受的请求数
-（）limit_except是限制http方法
-（）limit_rate是设置最高下载速度
-（）limit_rate_after是设置http请求传输多少字节后开始限速
-（）listen
+（7）large_client_header_buffers是当请求头过大，请求头的buffer大小
+（8）client_header_timeout是请求头的超时时间
+（9）client_max_body_size是能接收的最大请求体的大小
+（10）default_type是设置文件使用的默认的MIME-type
+（11）error_page是发生错误的时候显示一个预定义的uri
+（12）if_modified_since是定义如何比较修改时间和请求头中"If-Modified-Since"时间
+（13）index是首页文件名称
+（14）internal是指定某个location只能被内部的请求调用，外部的调用请求会返回404
+（15）keepAliveTimeout是关闭连接之前，连接器等待另一个HTTP请求的毫秒数
+（16）keepalive_requests是在长连接期间可接受的请求数
+（17）limit_except是限制http方法
+（18）limit_rate是设置最高下载速度
+（19）limit_rate_after是设置http请求传输多少字节后开始限速
+（20）listen
 listen 80是监听所有端口为80的ipv4的地址
 listen [::]:80是监听所有端口为80的ipv6的地址
-（）location
+（21）location
 匹配模式及顺序
 location = /uri 　　　  精确匹配
 location ^~ /uri 　　  前缀匹配，顺序是从长到短
@@ -50,30 +50,30 @@ location ~ pattern    区分大小写的正则匹配，顺序是从上到下
 location ~* pattern 　不区分大小写的正则匹配，顺序是从上到下
 location /uri 　　　　  前缀匹配，顺序是从长到短
 location /           通用匹配
-（）open_file_cache max=65535 inactive=30s  
+（22）open_file_cache max=65535 inactive=30s  
 最多缓存多少个文件，缓存多少时间
 open_file_cache_min_uses 1
 在30S中没有使用到这个配置的次数的话就删除
 open_file_cache_valid 40s
 多少时间检查一次，如果发现30s内没有用过一次的删除
-（）server_name_in_redirect
+（23）server_name_in_redirect
 当URL 指向一个目录并且在最后没有包含“/”时，Nginx 内部会自动的做一个 301 重定向，这时会有两种情况：
 1、server_name_in_redirect on（默认），URL重定向为：server_name中的第一个域名 + 目录名 + /
 2、server_name_in_redirect off，URL重定向为：原URL中的域名 + 目录名 + /
-（）port_in_redirect是nginx在redirect的时候不要带上port
-（）recursive_error_pages是否允许递归使用error_page 
-（）root是
+（24）port_in_redirect是nginx在redirect的时候不要带上port
+（25）recursive_error_pages是否允许递归使用error_page 
+（26）root是
 location  /a/ {
  root   /b/;
 }
 若请求/a/a.html将返回/b/a/a.html
-（）satisfy
+（27）satisfy
 如果在一个字段中同时使用了Access模块和Auth Basic模块的指令，可以使用这个指令确定一种验证方式：
 all - 必须同时匹配Access和Auth Basic中指令指定的权限。 
 any - 具有Access 或 Auth Basic指令任一权限即可通过匹配 
-（）sendfile是设置为on表示启动高效传输文件的模式。若设置为off，会先在用户空间（Nginx进程空间）申请一个buffer，用read函数把数据从磁盘读到cache，再从cache读取到用户空间的buffer，再用write函数把数据从用户空间的buffer写入到内核的buffer，最后到tcp socket。若设置为on，可以让数据不用经过用户buffer。
-（）server是在http中，可以定义多个虚拟server
-（）server_name
+（28）sendfile是设置为on表示启动高效传输文件的模式。若设置为off，会先在用户空间（Nginx进程空间）申请一个buffer，用read函数把数据从磁盘读到cache，再从cache读取到用户空间的buffer，再用write函数把数据从用户空间的buffer写入到内核的buffer，最后到tcp socket。若设置为on，可以让数据不用经过用户buffer。
+（29）server是在http中，可以定义多个虚拟server
+（30）server_name
 在server块中，可以通过server_name来配置server的多域名，匹配的顺序如下：
 1、完全匹配
 2、后缀匹配
@@ -81,17 +81,17 @@ any - 具有Access 或 Auth Basic指令任一权限即可通过匹配
 4、正则匹配
 5、listen指令里配置了default或default_server的server
 6、第一个匹配上listen的server
-（）server_tokens是隐藏错误页面和http响应头的nginx版本号
-（）tcp_nodelay
+（31）server_tokens是隐藏错误页面和http响应头的nginx版本号
+（32）tcp_nodelay
 on数据立即发送
 off数据每积攒0.2秒发送
-（）tcp_nopush数据每积攒一定大小发送
-（）try_files是按顺序检测文件的存在,并且返回第一个找到的文件
-（）types
+（33）tcp_nopush数据每积攒一定大小发送
+（34）try_files是按顺序检测文件的存在,并且返回第一个找到的文件
+（35）types
 1、MIME-type和Content-Type的关系：
 当web服务器收到静态的资源文件请求时，依据请求文件的后缀名在服务器的MIME配置文件中找到对应的MIME Type，再根据MIME Type设置HTTP Response的Content-Type，然后浏览器根据Content-Type的值处理文件。
 2、MIME Type是经过ietf组织协商，以 RFC 的形式作为建议的标准发布在网上的。如果是某个客户端自己定义的格式，一般只能以 application/x- 开头。
-（）变量https://www.cnblogs.com/qytang/p/5542264.html
+（36）变量https://www.cnblogs.com/qytang/p/5542264.html
 nginx配置文件中内置变量以美元符$开始，也叫全局变量。
 
 $arg_PARAMETER是GET请求中变量名PARAMETER参数的值。
@@ -155,16 +155,16 @@ $uri 请求中的当前URI(不带请求参数，参数位于$args)，不同于�
 
 HTTP Proxy模块
 HTTP Proxy模块转发请求到其他服务器，转发请求到其他服务器之前nginx将缓存它们
-（）proxy_pass
+（1）proxy_pass
 反向代理指代理外网用户请求到内网指定web服务器
 如果proxy_pass后面的url后加/，不带匹配的路径。如果proxy_pass后面的url后不加/，带匹配的路径
-（）proxy_hide_header通过反向代理，响应客户端时，隐藏后端服务版本
-（）proxy_pass_header与proxy_hide_header功能相反
-（）proxy_redirect修改后端服务器响应头部中的location或refresh，与proxy_pass配合使用
-（）proxy_set_header更改或添加客户端请求头部信息
+（2）proxy_hide_header通过反向代理，响应客户端时，隐藏后端服务版本
+（3）proxy_pass_header与proxy_hide_header功能相反
+（4）proxy_redirect修改后端服务器响应头部中的location或refresh，与proxy_pass配合使用
+（5）proxy_set_header更改或添加客户端请求头部信息
 
 Http Rewrite模块
-（）if
+（1）if
 ~和!~是否区分大小正则
 ~*和!~*是否不区分大小写正则
 -f和!-f检查一个文件是否存在
@@ -172,11 +172,11 @@ Http Rewrite模块
 -e和!-e检查一个文件、目录、符号链接是否存在
 -x和!-x检查一个文件是否可执行
 
-（）return停止处理并为客户端返回状态码，默认302状态码
+（2）return停止处理并为客户端返回状态码，默认302状态码
 return code [text]   文本将被放置在响应主体
 return code URL      URL将成为location头部值
 
-（）rewrite
+（3）rewrite
 执行顺序是
 1处理在server中定义的模块指令
 2为请求查找location
@@ -194,7 +194,7 @@ permanent，返回301永久重定向，地址栏会显示跳转后的地址
 
 若使用}或;需用双引号或单引号包围
 
-（）set
+（4）set
 定义一个变量并赋值，值可以是文本，变量或者文本变量混合体。
 
 
