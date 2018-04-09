@@ -134,7 +134,35 @@ public class TestA {
 
 
 六（二）、基于设值函数的依赖注入
+（1）
+public class TestA {
+   private TestB testB;
+   private String testC;
+   public void setTestB(TestB testB) {
+      this.testB = testB;
+   }
+   public TestB getTestB() {
+      return testB;
+   }
+   
+   public void setTestC(String testC) {
+      this.testC = testC;
+   }
+   public String getTestC() {
+      return testC;
+   }
+}
 
+<bean id="testA" class="TestA">
+   <property name="testB" ref="testB"/>
+   <property name="testC" value="c"/>
+</bean>
+
+（2）
+<bean id="testA" class="TestA"
+   p:testB-ref="testB"
+   p:testC="c" />
+</bean>
 
 
 
