@@ -42,20 +42,52 @@ XmlBeanFactory factory = new XmlBeanFactory(new ClassPathResource("Beans.xml"));
 （3）WebXmlApplicationContext：该类在一个web应用程序的范围内从XML文件中加载已定义的bean。
 
 五（三）、Spring Bean 定义
+bean定义包含配置元数据，包括class，id，name，scope，constructor-arg，property，autowire，lazy-init，init-method，destroy-method
 
+以下三个方法把配置元数据提供给 Spring 容器：
+基于 XML 的配置文件
+基于注解的配置
+基于 Java 的配置
 
+五（四）、Spring Bean 作用域
+singleton单例并存储高速缓存中（默认）
+prototype每次创建新的实例
+request  HTTP请求
+session  HTTP会话
+global-session   全局HTTP会话
 
+五（五）、Spring Bean 生命周期
+（1）初始化回调
+init-method（建议使用）
+实现InitializingBean接口的afterPropertiesSet方法
 
+（2）销毁回调
+destroy-method（建议使用）
+实现DisposableBean接口的destroy方法
 
+AbstractApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
+context.registerShutdownHook();触发销毁回调
 
+（3）在<beans>默认的初始化方法是default-init-method，默认的销毁方法是default-destroy-method
 
+五（六）、Spring Bean 后置处理器
+ApplicationContext会自动检测BeanPostProcessor接口的实现类
 
+<bean class="Test" />
 
+public class Test implements BeanPostProcessor {
+   public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
+      return bean;
+   }
+   public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
+      return bean;
+   }
+}
 
+五（七）、Spring Bean 定义继承
+<bean id="" class="" parent="父bean的id">
 
-
-
-
+六、Spring 依赖注入
 
 
 
