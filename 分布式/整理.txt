@@ -165,6 +165,209 @@ public class TestA {
 </bean>
 
 
+六（三）、Spring 注入内部 Beans
+public class TestA {
+   private TestB testB;
+   public void setTestB(TestB testB) {
+      this.testB = testB;
+   }
+   public TestB getTestB() {
+      return testB;
+   }
+}
+
+<bean id="testA" class="TestA">
+   <property name="testB">
+      <bean id="testB" class="TestB"/>
+   </property>
+</bean>
+
+
+六（四）、Spring 注入集合
+（1）四中集合List（允许重复）、Set（不能重复）、Map（键和值可以是任何类型）和 Properties（键和值都是字符串类型）
+
+（2）
+public class TestA {
+   List testB;
+   Set  testC;
+   Map  testD;
+   Properties testE;
+   
+   public void setTestB(List testB) {
+      this.testB = testB;
+   }
+   public List getTestB() {
+      return testB;
+   }
+
+   public void setTestC(Set testC) {
+      this.testC = testC;
+   }
+   public Set getTestC() {
+      return testC;
+   }
+
+   public void setTestD(Map testD) {
+      this.testD = testD;
+   }  
+   public Map getTestD() {
+      return testD;
+   }
+
+   public void setTestE(Properties testE) {
+      this.testE = testE;
+   } 
+   public Properties getTestE() {
+      return testE;
+   }
+}
+
+
+   <bean id="..." class="...">
+
+      <property name="testB">
+         <list>
+            <ref bean="beanA"/>
+            <value>stringA</value>
+         </list>
+      </property>
+
+      <property name="testC">
+         <set>
+            <ref bean="beanA"/>
+            <value>stringA</value>
+         </set>
+      </property>
+
+      <property name="testD">
+         <map>
+            <entry key ="beanA" value-ref="beanA"/>
+            <entry key="stringA" value="stringA"/>
+         </map>
+      </property>
+
+   </bean>
+
+（3）注入空字符串和null的值
+<property name="testA" value=""/>
+<property name="testB"><null/></property>
+
+
+
+
+七、Spring Beans 自动装配
+<bean>元素的 autowire 属性值为：
+no（默认），必须使用显式装配
+byName，基于设值函数的依赖注入时，根据名称自动装配
+byType，基于设值函数的依赖注入时，根据类型自动装配
+constructor，基于构造函数的依赖注入时，根据类型自动装配
+autodetect，先使用constructor，如果不执行，使用byType
+
+八、Spring 基于注解的配置
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
