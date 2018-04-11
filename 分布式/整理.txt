@@ -264,24 +264,68 @@ constructor，基于构造函数的依赖注入时，根据类型自动装配
 autodetect，先使用constructor，如果不执行，使用byType
 
 八、Spring 基于注解的配置
+（1）先执行注解配置，后进行XML配置
+
+（2）注解配置默认不打开，使用<context:annotation-config/>打开
+
+八（一）、Spring @Required 注释
+@Required 注释应用于bean属性的setter方法，该bean属性必须存在于XML配置文件中
+
+八（二）、Spring @Autowired 注释
+<beans>里有：
+   <context:annotation-config/>
+   <bean id="textA" class="TextA">
+   </bean>
+   
+（1）@Autowired应用在Setter，除去<property>，执行byType自动装配
+   private TextB textB;
+   @Autowired
+   public void setTextB( TextB textB ){
+      this.textB = textB;
+   }
+
+（2）@Autowired应用在属性，除去<property>和Setter
+   @Autowired
+   private TextB textB;
+
+（3）@Autowired应用在构造函数，除去<property>
+   private TextB textB;
+   @Autowired
+   public TextA(TextB textB){
+      this.textB = textB;
+   }
+
+（4）@Autowired注释默认依赖是必须的，@Autowired（required=false）关闭默认。
 
 
+八（三）、Spring @Qualifier 注释
+@Qualifier("textA")
+private Text text;
 
+<bean id="textA" class="Text">
+   <property name="name"  value="a" />
+</bean>
 
+<bean id="textB" class="Text">
+   <property name="name"  value="b" />
+</bean>
 
+八（四）、Spring JSR-250 注释
+包括@PostConstruct，@PreDestroy和@Resource，用和不用没区别
 
+八（五）、Spring 基于 Java 的配置
+用代码替换xml进行配置
 
+八（六）、Spring 中的事件处理
+（1）ContextStartedEvent，使用ConfigurableApplicationContext接口中的start()方法启动ApplicationContext时，该事件被发布
 
+（2）ContextStoppedEvent，使用ConfigurableApplicationContext接口中的stop()方法停止ApplicationContext时，发布这个事件。接受到这个事件后可以做清理工作。
 
+（3）ContextClosedEvent，使用ConfigurableApplicationContext接口中的close()方法关闭 ApplicationContext 时，发布这个事件。一个已关闭的上下文到达生命周期末端，不能被刷新或重启。
 
+（4）ContextRefreshedEvent，使用ConfigurableApplicationContext接口中的refresh()方法刷新ApplicationContext时，发布这个事件。ApplicationContext 被初始化时，发布这个事件。
 
-
-
-
-
-
-
-
+（5）RequestHandledEvent，告诉所有bean，HTTP请求已被服务。
 
 
 
