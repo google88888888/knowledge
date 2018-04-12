@@ -373,23 +373,69 @@ public static void main(String[] args) {
 
 
 九、Spring 框架的 AOP
+五种通知
+前置通知，在一个方法执行之前，执行通知。
+后置通知，在一个方法执行之后，不考虑结果，执行通知。
+返回后通知，在一个方法执行之后，只有在方法成功完成时，才能执行通知。
+抛出异常后通知，在一个方法执行之后，只有在方法抛出异常时，才能执行通知。
+环绕通知，在一个方法执行之前和执行之后，执行通知。
+
+九（一）、Spring 中基于 AOP 的 XML架构
+（1）在<beans>中导入spring-aop架构，在CLASSPATH中使用AspectJ库文件
+（2）
+public class Test {
+   public void testBefore(){
+   }
+   public void testAfter(){
+   }
+   public void testAfterReturning(Object retVal){
+   }
+   public void testAfterThrowing(IllegalArgumentException ex){ 
+   }  
+}
+
+<aop:config>
+   <aop:aspect id="testAspect" ref="test">
+      <aop:pointcut id="testPointcut" expression="execution(* 包名.*.*(..))"/> 或者 <aop:pointcut id="testPointcut" expression="execution(* 包名.类名.方法名(..))"/>
+      <aop:before pointcut-ref="testPointcut" method="testBefore"/>
+      <aop:after pointcut-ref="testPointcut" method="testAfter"/>
+      <aop:after-returning pointcut-ref="testPointcut" returning="retVal" method="testAfterReturning"/>
+      <aop:after-throwing pointcut-ref="testPointcut" throwing="ex" method="testAfterThrowing"/>
+   </aop:aspect>
+</aop:config>
+<bean id="test" class="Test"/> 
 
 
+九（二）、Spring 中基于 AOP 的 @AspectJ
+（1）在<beans>中导入spring-aop架构，在CLASSPATH中使用AspectJ库文件
+（2）
+@Aspect
+public class Test {
+   @Pointcut("execution(* 包名.*.*(..))") 或者 @Pointcut("execution(* 包名.类名.方法名(..))") 
+   private void testPointcut(){}
+   
+   @Before("testPointcut()")
+   public void testBefore(){
+   }
+   
+   @After("testPointcut()")
+   public void testAfter(){
+   }
+   
+   @AfterReturning(pointcut = "testPointcut()", returning="retVal")
+   public void testAfterReturning(Object retVal){
+   }
+   
+   @AfterThrowing(pointcut = "testPointcut()", throwing = "ex")
+   public void testAfterThrowing(IllegalArgumentException ex){ 
+   }  
+}
+
+<aop:aspectj-autoproxy/>
+<bean id="test" class="Test"/> 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+十、Spring JDBC 框架
 
 
 
