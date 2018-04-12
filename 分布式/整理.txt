@@ -327,25 +327,52 @@ private Text text;
 
 （5）RequestHandledEvent，告诉所有bean，HTTP请求已被服务。
 
+（6）Spring 的事件处理是单线程的。如果一个事件被发布，所有接收者得到该消息前，进程被阻塞。
+
+（7）
+public class Test implements ApplicationListener<ContextStartedEvent>{
+   public void onApplicationEvent(ContextStartedEvent event) {
+   }
+}
+
+<bean id="test" class="Test"/>
+
+
+八（七）、Spring 中的自定义事件
+public class TestEvent extends ApplicationEvent{ 
+   public TestEvent(Object source) {
+      super(source);
+   }
+}
+
+public class TestEventPublisher implements ApplicationEventPublisherAware {
+   private ApplicationEventPublisher applicationEventPublisher;
+   public void setApplicationEventPublisher(ApplicationEventPublisher applicationEventPublisher){
+      this.applicationEventPublisher = applicationEventPublisher;
+   }
+   public void publish() {
+      TestEvent testEvent = new TestEvent(this);
+      applicationEventPublisher.publishEvent(testEvent);
+   }
+}
+
+public class TestEventHandler implements ApplicationListener<TestEvent>{
+   public void onApplicationEvent(TestEvent event) {
+   }
+}
+
+public static void main(String[] args) {
+   ConfigurableApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");    
+   TestEventPublisher testEventPublisher = (TestEventPublisher) context.getBean("TestEventPublisher");
+   testEventPublisher.publish();  
+}
+
+<bean id="testEventPublisher" class="TestEventPublisher"/>
+<bean id="testEventHandler" class="TestEventHandler"/>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+九、Spring 框架的 AOP
 
 
 
