@@ -73,8 +73,6 @@ context.registerShutdownHook();触发销毁回调
 五（六）、Spring Bean 后置处理器
 ApplicationContext会自动检测BeanPostProcessor接口的实现类
 
-<bean class="Test" />
-
 public class Test implements BeanPostProcessor {
    public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
       return bean;
@@ -83,6 +81,8 @@ public class Test implements BeanPostProcessor {
       return bean;
    }
 }
+
+<bean class="Test" />
 
 五（七）、Spring Bean 定义继承
 <bean id="" class="" parent="父bean的id">
@@ -438,17 +438,6 @@ public class Test {
 十、Spring JDBC 框架
 十（一）、Spring JDBC 示例
 
-<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-   <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-   <property name="url" value="jdbc:mysql://localhost:3306/数据库名"/>
-   <property name="username" value="username"/>
-   <property name="password" value="password"/>
-</bean>
-<bean id="testJDBCTemplate" class="TestJDBCTemplate">
-   <property name="dataSource"  ref="dataSource" />    
-</bean>
-
-
 public class TestJDBCTemplate implements TestDAO {
    private DataSource dataSource;
    private JdbcTemplate jdbcTemplate; 
@@ -460,13 +449,109 @@ public class TestJDBCTemplate implements TestDAO {
    
 }
 
+<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+   <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+   <property name="url" value="jdbc:mysql://localhost:3306/数据库名"/>
+   <property name="username" value="username"/>
+   <property name="password" value="password"/>
+</bean>
+<bean id="testJDBCTemplate" class="TestJDBCTemplate">
+   <property name="dataSource"  ref="dataSource" />    
+</bean>
+
+
 十（二）、Spring 中 SQL 的存储过程
 
 十一、Spring 事务管理
+（1）局部事务如JDBC事务，全局事务如分布式系统事务
+
+（2）事务管理包括声明式事务管理和Spring 编程式事务管理
+
+十一（一）、Spring 声明式事务管理
+public class TestJDBCTemplate implements TestDAO {
+   private DataSource dataSource;
+   private JdbcTemplate jdbcTemplate; 
+   public void setDataSource(DataSource dataSource) {
+      this.dataSource = dataSource;
+      this.jdbcTemplate = new JdbcTemplate(dataSource);
+	  //使用jdbcTemplate不同方法执行不同sql语句
+   }
+   public void test(){
+      try {
+      } catch (DataAccessException e) {
+         throw e;
+      }
+	  return;
+   }
+}
+
+<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+   <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+   <property name="url" value="jdbc:mysql://localhost:3306/数据库名"/>
+   <property name="username" value="username"/>
+   <property name="password" value="password"/>
+</bean>
+<bean id="testJDBCTemplate" class="TestJDBCTemplate">
+   <property name="dataSource"  ref="dataSource" />    
+</bean>
+
+<bean id="dataSourceTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+   <property name="dataSource"  ref="dataSource" />    
+</bean>
+<aop:config>
+   <aop:pointcut id="testPointcut" expression="execution(* 包名.TestJDBCTemplate.test(..))"/>
+   <aop:advisor advice-ref="testAdviceRef" pointcut-ref="testPointcut"/>
+</aop:config>
+<tx:advice id="testAdviceRef"  transaction-manager="dataSourceTransactionManager">
+   <tx:attributes>
+      <tx:method name="test"/>
+   </tx:attributes>
+</tx:advice>
 
 
+十一（二）、Spring 编程式事务管理
+public class TestJDBCTemplate implements TestDAO {
+   private DataSource dataSource;
+   private JdbcTemplate jdbcTemplate; 
+   private PlatformTransactionManager platformTransactionManager;
+   public void setDataSource(DataSource dataSource) {
+      this.dataSource = dataSource;
+      this.jdbcTemplate = new JdbcTemplate(dataSource);
+	  //使用jdbcTemplate不同方法执行不同sql语句
+   }
+   public void setPlatformTransactionManager(PlatformTransactionManager platformTransactionManager) {
+      this.platformTransactionManager = platformTransactionManager;
+   }
+   public void test(){
+      TransactionDefinition transactionDefinition = new DefaultTransactionDefinition();
+      TransactionStatus transactionStatus = platformTransactionManager.getTransaction(transactionDefinition);
+      try {
+	     platformTransactionManager.commit(transactionStatus);
+      } catch (DataAccessException e) {
+	     platformTransactionManager.rollback(transactionStatus);
+         throw e;
+      }
+	  return;
+   }
+}
+
+<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+   <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+   <property name="url" value="jdbc:mysql://localhost:3306/数据库名"/>
+   <property name="username" value="username"/>
+   <property name="password" value="password"/>
+</bean>
+<bean id="testJDBCTemplate" class="TestJDBCTemplate">
+   <property name="dataSource"  ref="dataSource" /> 
+   <property name="dataSourceTransactionManager"  ref="dataSourceTransactionManager" />    
+</bean>
+
+<bean id="dataSourceTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+   <property name="dataSource"  ref="dataSource" />    
+</bean>
 
 
+十二、Spring Web MVC 框架
 
 
 
