@@ -555,13 +555,48 @@ public class TestJDBCTemplate implements TestDAO {
 http://www.kaixin001.com/124439585/photo/view_124439585_735014864_32_18_50.html#735014864_124439585_0_32
 
 
+（1）WebApplicationContext是ApplicationContext 的扩展。HandlerMapping、Controller和ViewResolver是WebApplicationContext的一部分
+
+（2）web.xml中有：
+
+   <servlet>
+      <servlet-name>Test</servlet-name>
+      <servlet-class>
+         org.springframework.web.servlet.DispatcherServlet
+      </servlet-class>
+      <load-on-startup>1</load-on-startup>
+   </servlet>
+   <servlet-mapping>
+      <servlet-name>Test</servlet-name>
+      <url-pattern>*.jsp</url-pattern>
+   </servlet-mapping>
+   
+web.xml文件保留在应用程序的WebContent/WEB-INF目录下。
+初始化<servlet-name> DispatcherServlet时，将加载位于该应用程序WebContent/WEB-INF目录下的 <servlet-name>-servlet.xml文件。
+<url-pattern>是所有以.jsp结束的HTTP请求将由<servlet-name> DispatcherServlet处理。
+
+（3）<servlet-name>-servlet.xml中有：
+
+   <context:component-scan base-package="包名" />
+
+   <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+      <property name="prefix" value="/WEB-INF/jsp/" />
+      <property name="suffix" value=".jsp" />
+   </bean>
 
 
+<context:component-scan />标签用于激活Spring MVC注释扫描功能，该功能允许使用注释
+InternalResourceViewResolver规定视图名称。若return "test" 则为/WEB-INF/jsp/test.jsp
 
-
-
-
-
+（4）
+@Controller
+@RequestMapping("/test")
+public class HelloController{ 
+   @RequestMapping(method = RequestMethod.GET)
+   public String test() {
+      return "test";
+   }
+}
 
 
 
