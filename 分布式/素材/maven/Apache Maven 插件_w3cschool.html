@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<!-- saved from url=(0044)https://www.w3cschool.cn/maven/k97l1hta.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Apache Maven 插件_w3cschool</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="keywords" content="Apache Maven 插件">
+<meta name="description" content="Maven - 插件
+什么是 Maven 插件？
+Maven 实际上是一个依赖插件执行的框架，每个任务实际上是由插件完成。Maven 插件通常被用来：
+
+创建 jar 文件
+创建 war 文件
+编译代码文件
+代码单元测试
+创建工程文档
+创建工程报告
+
+插件通常提供了一个目标的集合，并且可以使用下面的_来自Maven 教程，w3cschool。">
+<link href="./Apache Maven 插件_w3cschool_files/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="./Apache Maven 插件_w3cschool_files/w3.css">
+<link rel="stylesheet" href="./Apache Maven 插件_w3cschool_files/style-kn-project-view.css" type="text/css">
+<link rel="stylesheet" href="./Apache Maven 插件_w3cschool_files/style-theme.css" type="text/css">
+<link rel="stylesheet" href="./Apache Maven 插件_w3cschool_files/project.css">
+<link href="./Apache Maven 插件_w3cschool_files/default.css" rel="stylesheet" type="text/css">
+<script src="./Apache Maven 插件_w3cschool_files/push.js.下载"></script><script src="./Apache Maven 插件_w3cschool_files/hm.js.下载"></script><script src="./Apache Maven 插件_w3cschool_files/highlight.pack.js.下载" type="text/javascript"></script>
+<link rel="shortcut icon" href="https://www.w3cschool.cn/statics/images/favicon.ico">
+<script src="./Apache Maven 插件_w3cschool_files/jquery-1.8.3.min.js.下载" type="text/javascript"></script>
+<script src="./Apache Maven 插件_w3cschool_files/jquery.slimscroll.min.js.下载" type="text/javascript"></script>
+<script src="./Apache Maven 插件_w3cschool_files/project.leftbox.js.下载" type="text/javascript"></script><style>.left-container {width:270px;}.left-drager{left:270px;}.main-container{margin-left:270px;}#pro-footer{margin-left:270px;}.space-tools-section{width:270px;}</style>
+<link type="text/css" rel="stylesheet" href="./Apache Maven 插件_w3cschool_files/paypraise.css"><script src="./Apache Maven 插件_w3cschool_files/share.js.下载"></script><link rel="stylesheet" href="./Apache Maven 插件_w3cschool_files/share_style0_16.css"></head>
+<body>
+<div id="full-height-container" class="project-container color-theme-white">
+<!--header start--> 
+<div id="header">
+<div id="header_item">
+<div id="header_index">
+<div id="header-l">
+<a href="https://www.w3cschool.cn/" title="w3cschool" class="logo"><img src="./Apache Maven 插件_w3cschool_files/header-logo.png" alt="W3Cschool"></a>
+<ul class="header-menu">
+<li><a href="https://www.w3cschool.cn/tutorial" title="编程入门教程">编程入门教程</a></li>
+<li><a href="https://www.w3cschool.cn/minicourse/" title="编程微课">编程微课</a></li>
+<li><a href="https://www.w3cschool.cn/manual" title="开源技术文档">极客文档</a></li> 
+<li class="dropdown"><a href="https://www.w3cschool.cn/maven/k97l1hta.html#" class="dropbtn">学院<i class="down-icon1 angle-down-icon"></i></a>
+<div class="dropdown-content">
+<a href="https://www.w3cschool.cn/codecamp/" title="编程实战训练">编程实战训练</a>
+<a href="https://www.w3cschool.cn/examples" title="编程实例">编程实例</a>
+<a href="https://www.w3cschool.cn/exam/" title="编程题库">编程题库</a>
+<a href="https://www.w3cschool.cn/question/" title="编程问答">编程问答</a>
+<a href="https://www.w3cschool.cn/codedemo" title="代码实例">代码实例</a>
+</div> 
+</li>
+<li class="dropdown"><a href="https://www.w3cschool.cn/maven/k97l1hta.html#" class="dropbtn">百宝箱<i class="down-icon1 angle-down-icon"></i></a>
+<div class="dropdown-content">
+<a href="https://123.w3cschool.cn/webtools" target="_blank" title="W3Cschool在线工具集合">在线工具</a>
+<a href="https://123.w3cschool.cn/" target="_blank" title="W3Cschool极客导航">极客导航</a>
+<a href="https://www.w3cschool.cn/dict/" title="速查词典">速查词典</a>
+<a href="https://www.w3cschool.cn/group/" title="群组">群组</a>
+<a href="https://www.w3cschool.cn/position/positionlist" title="职位进阶">职位进阶</a>
+<a href="https://www.w3cschool.cn/popularuser" title="排行榜">排行榜</a>
+<a href="https://www.w3cschool.cn/activity/" title="活动">活动</a>
+</div> 
+</li>
+<li><a href="https://www.w3cschool.cn/vip" title="会员">会员<i class="hot-icon"></i></a></li>
+</ul>
+</div>
+<div id="header-r">
+<div class="sig-box"><div><a href="https://www.w3cschool.cn/register?refer=/maven/k97l1hta.html" class="login-bg">注册</a> | <a href="https://www.w3cschool.cn/login?refer=/maven/k97l1hta.html">登录</a></div></div>
+<a href="https://www.w3cschool.cn/download" target="_blank" class="header-app" title="w3cschool移动端">移动端
+<div class="dropdown-content qrcode-box">
+<span class="j"></span>
+<div class="qrcode-img">
+<img src="./Apache Maven 插件_w3cschool_files/app-qrcode2.png" alt="扫码下载APP" width="150" height="150">
+<p>扫码下载APP</p>
+</div>
+<div class="qrcode-img">
+<img src="./Apache Maven 插件_w3cschool_files/w3cschool.png" alt="w3cschool公众号" width="150" height="150">
+<p>w3cschool公众号</p>
+</div>
+</div>
+</a>
+<div class="searchbox">
+<form action="https://www.w3cschool.cn/search" target="_self">
+<input type="text" name="w" class="box" id="searched_content" placeholder="输入关键字搜索...">
+<button type="submit" class="button"></button>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="register-Box" id="register-Box" style="display: none;">
+<div class="register-Box-content">
+<div class="register-Box-top">
+<span class="register-Box-title">注册成功</span>
+<span onclick="closeDialogBox(this)" class="feedback-Box-close">X</span>
+</div>
+<div class="register-Box-info">
+<div class="register-Box-left" style="float: left;">
+<img class="register-cover" src="./Apache Maven 插件_w3cschool_files/avatar_14.jpg">
+</div>
+<div class="register-Box-right">
+
+<p class="register-userinfo-title">
+<i class="usertype-ico-1"></i><span>W3Cschool</span>
+</p>
+<p class="register-userinfo-info">恭喜您成为首批注册用户</p>
+<p class="register-userinfo-info">获得88经验值奖励</p>
+<button class="search-s" onclick="closeDialogBox(this)" id="registerSubmit">马上体验</button>
+</div>
+</div>
+</div>
+</div>
+<script>
+var apppath = '/maven/k97l1hta.html';
+var domain  = '//www.w3cschool.cn';
+</script>
+<!--header end-->
+<div id="m-splitter">
+<div class="m-splitter-left left-container" style="width: 270px; height: 528px;">
+<div class="slimScrollDiv" style="position: relative; overflow: hidden; width: inherit; height: 528px;"><div class="fixed-sidebar mscroller" style="width: inherit; height: 528px; overflow: hidden;">
+<div class="splitter-sidebar">
+<div class="sidebar-space-info">
+<a href="https://www.w3cschool.cn/maven" title="Maven 教程">
+<div class="sidebar-pro-wrapper">
+<div class="sidebar-pro-container">
+<div class="sidebar-pro-img">
+<span><img class="pimg-cover" alt="Maven 教程" src="./Apache Maven 插件_w3cschool_files/cover_maven.jpeg"></span>
+</div>
+</div>
+</div>
+<div class="pro-name-container">
+<div class="sidebar-pro-name">
+<span>Maven 教程</span>
+</div>
+</div>
+</a>
+</div>
+<div class="sidebar-pro-nav">
+<ul class="page-sidebar-menu">
+<li class="pro-m">
+<a class="btn-thumbs-up" href="javascript:;" onclick="isProjectLike()">
+<i class="icon-thumbs-up"></i> <span id="likestatus">赞</span>
+</a>
+</li>
+<li class="pro-m">
+<a id="hbstar" href="javascript:;" onclick="isProjectStar()" data-type="star"><i class="icon-star"></i> <span>收藏</span></a>
+</li>
+<li class="pro-m">
+<a href="javascript:;" title="分享" class="share-btn  popup_more bdsharebuttonbox bdshare-button-style0-16" data-cmd="more" data-bd-bind="1525345807912"><i class="icon-share"></i> 分享</a>
+</li>
+</ul>
+</div>
+<div class="sidebar-menu">
+<ul>    
+<li class="nav-item"><a href="https://www.w3cschool.cn/maven/list/" title="wiki列表"><i class="icon-bookmark-empty"></i> <span class="nav-item-label">Wiki列表</span></a></li>                     
+<li class="nav-item"><a href="https://www.w3cschool.cn/maven/topic" target="_blank" title="maven问答讨论区"><i class="icon-question-sign"></i> <span class="nav-item-label">maven问答讨论区</span></a></li></ul>
+</div>
+<!--左侧栏导航 start-->
+<div class="sidebar-nav">
+<ul class="treeth">
+<li class="active" target="sidebar-tree-content"><a href="javascript:;" class="text" title="目录"><i class="icon icon-th-list"></i> <span class="title">目录</span></a></li>
+<li class="" target="search-box"><a href="javascript:;" class="text" title="搜索"><i class="icon icon-search"></i> <span class="title">搜索</span></a></li>
+<li target="stars-box"><a href="javascript:;" class="text" title="收藏"><i class="icon icon-heart"></i> <span class="title">收藏</span></a></li>
+</ul>
+</div>
+<!--左侧栏导航 end-->
+<div style="clear:both"></div>
+<div class="sidebar-content">                                          
+<div class="sidebar-tree">
+<div class="sidebar-tree-content">
+<div class="dd" id="nestable_handbook" data-tid="69742" data-id="handbook">
+<ol class="dd-list">
+
+
+    
+<li class="dd-item" data-id="u7oe1ht0">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a href="https://www.w3cschool.cn/maven/u7oe1ht0.html" title="Apache Maven 概述">Apache Maven 概述</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="j3x41ht2">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a href="https://www.w3cschool.cn/maven/j3x41ht2.html" title="Apache Maven 环境配置">Apache Maven 环境配置</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="varq1ht4">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a href="https://www.w3cschool.cn/maven/varq1ht4.html" title="Apache Maven POM">Apache Maven POM</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="tkhr1ht6">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a href="https://www.w3cschool.cn/maven/tkhr1ht6.html" title="Apache Maven 构建生命周期">Apache Maven 构建生命周期</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="tchv1ht8">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a href="https://www.w3cschool.cn/maven/tchv1ht8.html" title="Apache Maven 构建配置文件">Apache Maven 构建配置文件</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="d29q1ht9">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a href="https://www.w3cschool.cn/maven/d29q1ht9.html" title="Apache Maven 仓库">Apache Maven 仓库</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="k97l1hta">
+<div class="dd-content   active ">
+<i class="ic-folder-open2"></i>
+                                 
+<a href="https://www.w3cschool.cn/maven/k97l1hta.html" title="Apache Maven 插件">Apache Maven 插件</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="rm471htd">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a href="https://www.w3cschool.cn/maven/rm471htd.html" title="Apache Maven 创建工程">Apache Maven 创建工程</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="cpuw1htg">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a href="https://www.w3cschool.cn/maven/cpuw1htg.html" title="Apache Maven 构建 &amp; 测试工程">Apache Maven 构建 &amp; 测试工程</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="a4m51htj">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a href="https://www.w3cschool.cn/maven/a4m51htj.html" title="Apache Maven 外部依赖">Apache Maven 外部依赖</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="j8eu1htm">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a href="https://www.w3cschool.cn/maven/j8eu1htm.html" title="Apache Maven 工程文档">Apache Maven 工程文档</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="tz8e1htp">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a href="https://www.w3cschool.cn/maven/tz8e1htp.html" title="Apache Maven 工程模版">Apache Maven 工程模版</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="eljx1hts">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a href="https://www.w3cschool.cn/maven/eljx1hts.html" title="Apache Maven 快照">Apache Maven 快照</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="4dt81htv">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a href="https://www.w3cschool.cn/maven/4dt81htv.html" title="Apache Maven 构建自动化">Apache Maven 构建自动化</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="b3h21hty">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a href="https://www.w3cschool.cn/maven/b3h21hty.html" title="Apache Maven 管理依赖">Apache Maven 管理依赖</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="n4bd1hu1">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a href="https://www.w3cschool.cn/maven/n4bd1hu1.html" title="Apache Maven 自动化部署">Apache Maven 自动化部署</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="q5b81htb">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a href="https://www.w3cschool.cn/maven/q5b81htb.html" title="Apache Maven Web 应用">Apache Maven Web 应用</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="b5ea1hte">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a href="https://www.w3cschool.cn/maven/b5ea1hte.html" title="Apache Maven Elipse IDE">Apache Maven Elipse IDE</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="syzm1hth">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a href="https://www.w3cschool.cn/maven/syzm1hth.html" title="Apache Maven NetBeans">Apache Maven NetBeans</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol></li>
+
+    
+<li class="dd-item" data-id="kby81htk">
+<div class="dd-content  ">
+<i class="ic-folder-open2"></i>
+                                 
+<a href="https://www.w3cschool.cn/maven/kby81htk.html" title="Apache Maven IntelliJ IDEA">Apache Maven IntelliJ IDEA</a>
+</div>
+<ol class="dd-list">
+                          
+
+</ol>
+</li>
+</ol>
+</div>  
+</div>                                
+<!--  sidebar-tree-content end  -->
+<div class="search-box hide1">
+<div id="knsearch" class="tab-pane">
+<div class="knsearch-input">
+<input type="text" placeholder="搜索手册内容" name="w" class="input-s">
+<button class="knsearchbtn">搜索</button>
+<!--<button class="kncleanbtn">清空</button>-->
+</div>                    
+<div class="searchres">
+</div>
+<div class="sidebar-tree-dict"></div>
+</div>
+</div>
+<div class="stars-box hide1">                  
+<div id="kncollect" class="tab-pane">
+<ul class="dd-list">
+<li class="nostar">请登录查看</li>
+</ul>
+</div>
+</div>
+</div>                    
+</div>
+</div>
+<!-- <div class="space-tools-section">
+<div class="tools-button">
+<a href="" class="expand-collapse-trigger"></a>
+</div>
+</div> -->
+</div><div class="slimScrollBar" style="background: rgb(161, 178, 189); width: 7px; position: absolute; top: 95.0281px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 313.593px;"></div><div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div></div>
+</div>
+<div class="splitter-handle left-drager">
+<div class="left-dragger-c splitter-handle-highlight"></div>
+</div>
+<div id="pro-mian" class="main-container font0">
+<div class="project-body">
+<div class="portlet-title pro-title" style="width: 1045px;">
+<div class="set-btn-group font-settings pull-left">
+<a href="javascript:;" class="expand-collapse-trigger" title="折叠/展开"><i class="icon-th-list"></i></a>
+<a href="javascript:;" class="toggle-dropdown" title="视觉主题设置"><i class="icon-font"></i></a>
+<div class="set-dropdown-menu docblur" style="display:none;">
+<div class="dropdown-caret">
+<span class="caret-outer"></span>
+<span class="caret-inner"></span>
+</div>
+<div class="buttons font-opt">
+<button class="button size font-reduce" font="reduce" title="缩小字体">A</button>
+<button class="button size font-enlarge" font="enlarge" title="放大字体">A</button>
+</div>
+<div class="buttons bg-color">
+<button class="button theme" color="color-theme-white" title="日间模式">White</button>
+<button class="button theme" color="color-theme-sepia" title="护眼模式">Sepia</button>
+<button class="button theme" color="color-theme-night" title="夜间模式">Night</button>
+</div>
+</div>
+</div>
+<div class="kn-btn-group pull-right">            
+<span id="content-head-viewcount" class="viewcount-btn"><i class="icon-eye-open"></i> <span>阅读(16424)</span></span>
+<a id="knstar" href="javascript:;" onclick="isstar()" data-type="star"><i class="icon-star"></i> <span>收藏</span></a>
+<a class="btn-thumbs-up" href="javascript:;" onclick="islike()"><i class="icon-thumbs-up"></i> <span id="likestatus">赞</span>(<span id="likecount">4</span>)</a>
+<a href="javascript:;" title="分享" class="share-btn  popup_more bdsharebuttonbox bdshare-button-style0-16" data-cmd="more" data-bd-bind="1525345807912"><i class="icon-share"></i> 分享</a>
+<a href="https://www.w3cschool.cn/edit/maven/k97l1hta" rel="nofollow"><i class="icon-edit"></i> <span>我要纠错</span></a>
+</div>
+</div>
+<div id="pro-mian-header">
+<div class="content-top">
+<h1>Apache Maven 插件</h1>
+</div>
+<div class="kn-infomation">
+由&nbsp;<span>毛泽萝拉</span>&nbsp;创建， 最后一次修改&nbsp;<span>2016-08-12</span>    
+</div>          
+</div>          
+<div class="content-bg">
+<div class="content-intro view-box "><div class="wkcontent"><h2>Maven - 插件</h2>
+<h2 class="head2">什么是 Maven 插件？</h2>
+<p>Maven 实际上是一个依赖插件执行的框架，每个任务实际上是由插件完成。Maven 插件通常被用来：</p>
+<ul>
+<li>创建 jar 文件</li>
+<li>创建 war 文件</li>
+<li>编译代码文件</li>
+<li>代码单元测试</li>
+<li>创建工程文档</li>
+<li>创建工程报告</li>
+</ul>
+<p>插件通常提供了一个目标的集合，并且可以使用下面的语法执行：</p>
+<pre><code class="hljs css"><span class="hljs-selector-tag">mvn</span> <span class="hljs-selector-attr">[plugin-name]</span>:<span class="hljs-selector-attr">[goal-name]</span></code></pre>
+<p>例如，一个 Java 工程可以使用 maven-compiler-plugin 的 compile-goal 编译，使用以下命令：</p>
+<pre><code class="hljs css"><span class="hljs-selector-tag">mvn</span> <span class="hljs-selector-tag">compiler</span><span class="hljs-selector-pseudo">:compile</span></code></pre>
+<h2 class="head2">插件类型</h2>
+<p>Maven 提供了下面两种类型的插件：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Build plugins</td>
+<td>在构建时执行，并在 pom.xml 的  元素中配置。</td>
+</tr>
+<tr>
+<td>Reporting plugins</td>
+<td>在网站生成过程中执行，并在 pom.xml 的  元素中配置。</td>
+</tr>
+</tbody>
+</table>
+<p>下面是一些常用插件的列表：</p>
+<table>
+<thead>
+<tr>
+<th>插件</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>clean</td>
+<td>构建之后清理目标文件。删除目标目录。</td>
+</tr>
+<tr>
+<td>compiler</td>
+<td>编译 Java 源文件。</td>
+</tr>
+<tr>
+<td>surefile</td>
+<td>运行 JUnit 单元测试。创建测试报告。</td>
+</tr>
+<tr>
+<td>jar</td>
+<td>从当前工程中构建 JAR 文件。</td>
+</tr>
+<tr>
+<td>war</td>
+<td>从当前工程中构建 WAR 文件。</td>
+</tr>
+<tr>
+<td>javadoc</td>
+<td>为工程生成 Javadoc。</td>
+</tr>
+<tr>
+<td>antrun</td>
+<td>从构建过程的任意一个阶段中运行一个 ant 任务的集合。</td>
+</tr>
+</tbody>
+</table>
+<h2 class="head2">例子</h2>
+<p>我们已经在我们的例子中大量使用了 <strong>maven-antrun-plugin</strong> 来输出数据到控制台上。请查看 <a href="https://www.w3cschool.cn/maven/build-profiles.html"><strong>Maven - 构建配置文件</strong></a> 章节。让我们用一种更好的方式理解这部分内容，在 C:\MVN\project 目录下创建一个 pom.xml 文件。</p>
+<pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">project</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">"http://maven.apache.org/POM/4.0.0"</span>
+    <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">"http://www.w3.org/2001/XMLSchema-instance"</span>
+    <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">"http://maven.apache.org/POM/4.0.0
+    http://maven.apache.org/xsd/maven-4.0.0.xsd"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">modelVersion</span>&gt;</span>4.0.0<span class="hljs-tag">&lt;/<span class="hljs-name">modelVersion</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>com.companyname.projectgroup<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>project<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">build</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">plugins</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">plugin</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>maven-antrun-plugin<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.1<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
+   <span class="hljs-tag">&lt;<span class="hljs-name">executions</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">execution</span>&gt;</span>
+         <span class="hljs-tag">&lt;<span class="hljs-name">id</span>&gt;</span>id.clean<span class="hljs-tag">&lt;/<span class="hljs-name">id</span>&gt;</span>
+         <span class="hljs-tag">&lt;<span class="hljs-name">phase</span>&gt;</span>clean<span class="hljs-tag">&lt;/<span class="hljs-name">phase</span>&gt;</span>
+         <span class="hljs-tag">&lt;<span class="hljs-name">goals</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">goal</span>&gt;</span>run<span class="hljs-tag">&lt;/<span class="hljs-name">goal</span>&gt;</span>
+         <span class="hljs-tag">&lt;/<span class="hljs-name">goals</span>&gt;</span>
+         <span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">tasks</span>&gt;</span>
+               <span class="hljs-tag">&lt;<span class="hljs-name">echo</span>&gt;</span>clean phase<span class="hljs-tag">&lt;/<span class="hljs-name">echo</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">tasks</span>&gt;</span>
+         <span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">execution</span>&gt;</span>     
+   <span class="hljs-tag">&lt;/<span class="hljs-name">executions</span>&gt;</span>
+   <span class="hljs-tag">&lt;/<span class="hljs-name">plugin</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">plugins</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">build</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">project</span>&gt;</span></code></pre>
+<p>接下来，打开命令终端跳转到 pom.xml 所在的目录，并执行下面的 <strong>mvn</strong> 命令。</p>
+<pre><code class="hljs">C:\MVN\project&gt;mvn clean</code></pre>
+<p>Maven 将开始处理并显示 clean 生命周期的 clean 阶段。</p>
+<pre><code class="hljs php">[INFO] Scanning <span class="hljs-keyword">for</span> projects...
+[INFO] ------------------------------------------------------------------
+[INFO] Building Unnamed - com.companyname.projectgroup:project:jar:<span class="hljs-number">1.0</span>
+[INFO]    task-segment: [post-clean]
+[INFO] ------------------------------------------------------------------
+[INFO] [clean:clean {execution: <span class="hljs-keyword">default</span>-clean}]
+[INFO] [antrun:run {execution: id.clean}]
+[INFO] Executing tasks
+     [<span class="hljs-keyword">echo</span>] clean phase
+[INFO] Executed tasks
+[INFO] ------------------------------------------------------------------
+[INFO] BUILD SUCCESSFUL
+[INFO] ------------------------------------------------------------------
+[INFO] Total time: &lt; <span class="hljs-number">1</span> second
+[INFO] Finished at: Sat Jul <span class="hljs-number">07</span> <span class="hljs-number">13</span>:<span class="hljs-number">38</span>:<span class="hljs-number">59</span> IST <span class="hljs-number">2012</span>
+[INFO] <span class="hljs-keyword">Final</span> Memory: <span class="hljs-number">4</span>M/<span class="hljs-number">44</span>M
+[INFO] ------------------------------------------------------------------</code></pre>
+<p>上面的例子展示了以下关键概念：</p>
+<ul>
+<li>插件是在 pom.xml 中使用 plugins 元素定义的。</li>
+<li>每个插件可以有多个目标。</li>
+<li>你可以定义阶段，插件会使用它的 phase 元素开始处理。我们已经使用了 <strong>clean</strong> 阶段。</li>
+<li>你可以通过绑定到插件的目标的方式来配置要执行的任务。我们已经绑定了 <strong>echo</strong> 任务到 maven-antrun-plugin 的 <strong>run</strong> 目标。</li>
+<li>就是这样，Maven 将处理剩下的事情。它将下载本地仓库中获取不到的插件，并开始处理。</li>
+</ul></div></div>
+<div style="clear:both"></div>
+</div>
+<!--我要赞赏-->
+<div class="project-sq"><div class="project-sq-info"><span>您的支持将鼓励我们做得更好</span></div><ul class="project-sq-avatar"></ul><div class="project-sq-btnarea"><a href="javascript:;">赞赏支持</a></div></div>
+<!--我要赞赏结束-->
+<div class="content-links">
+<div class="previous-link">← <a href="https://www.w3cschool.cn/maven/d29q1ht9.html" title="上一篇：Apache Maven 仓库">Apache Maven 仓库</a></div>
+<div class="next-link"><a href="https://www.w3cschool.cn/maven/rm471htd.html" title="下一篇：Apache Maven 创建工程">Apache Maven 创建工程</a> →</div>
+</div>
+<!--相关推荐|wiki推荐-->
+<!--相关推荐|wiki推荐 结束-->
+<!--横版广告放置-->
+<div class="abox-item">    <div class="content-abox">        <a href="https://www.w3cschool.cn/adlog?w3ctype=workview&amp;url=https://www.w3cschool.cn/article/5461759" target="_blank"><img src="./Apache Maven 插件_w3cschool_files/1511159975177003.png" alt="W3Cschool学编程上微课-边学边练"></a>    </div></div></div>
+<div class="navigation-box">
+<a href="https://www.w3cschool.cn/maven/d29q1ht9.html" title="上一篇：Apache Maven 仓库" class="navigation navigation-prev"><i class="icon-chevron-left"></i></a>
+<a href="https://www.w3cschool.cn/maven/rm471htd.html" title="下一篇：Apache Maven 创建工程" class="navigation navigation-next"><i class="icon-chevron-right"></i></a>
+</div>
+  </div>
+<div id="pro-footer">
+<div class="s-footer">
+<div class="s-footer-bottom">
+<p>Copyright © 2018 <a href="https://www.w3cschool.cn/" title="w3cschool">w3cschool.cn </a> All Rights Reserved. </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="bottom-tools" style="bottom: 40px;">
+<a id="scrollUp" href="javascript:;" title="飞回顶部" style="display: none;"></a>
+<a class="onlinenote" style="" title="在线笔记" href="javascript:;" data-module="page">在线笔记</a>
+<div class="qr-tool">二维码</div>
+<a id="feedback" class="webjy" title="建议反馈" href="javascript:;" data-module="page" onclick="showDialogBox(this)">建议反馈</a>    
+<div class="qr-img"><img src="./Apache Maven 插件_w3cschool_files/w3cschool.jpg" alt="二维码"></div>
+</div>
+
+<div class="feedback-Box" style="display: none;">
+<div class="feedback-Box-content" style="width: 800px;">
+<div class="feedback-Box-top">
+<span class="feedback-Box-title">意见反馈</span>
+<span onclick="closeDialogBox(this)" class="feedback-Box-close">X</span>
+</div>
+<ul>
+<li class="feedback-box">
+<div id="feedbackRadio" type="radio" name="feedbackType" data-value="0" style=""> 意见反馈：</div>
+<textarea name="reportInfo" id="elmaaa" class="feedback-text" rows="15" placeholder="请留下您宝贵的意见反馈吧。" style="width: 700px;height:200px;overflow:auto;"></textarea>
+<p>联系方式：</p>
+<input type="text" placeholder="留个联系方式呗..." name="reportAddress" class="radio-text" id="reportAddress" style="height: 30px;width: 200px;">
+</li>
+</ul>
+<button class="search-s" onclick="dialogSubmit(this)" id="reportSubmit">提交</button>
+</div>
+</div>
+
+<div id="note-start" style="display: none"></div>
+
+<div id="detail" style="display:none;">
+<div id="note-Dialog" class="note-Dialog">
+<div class="note-Box-content">
+<div class="ntitlebox">
+<input type="text" placeholder="" name="ntitle" class="ntitle" id="ntitle">
+</div>
+<div id="editorarea">
+<textarea name="ncontent" id="ncontent" class="ncontent" rows="15" placeholder="" style="width: 700px;height:200px;overflow:auto;"></textarea>
+</div>
+<p></p>
+<a class="closenote" href="https://www.w3cschool.cn/my/note" target="_blank">查看完整版笔记</a>
+<button class="notesubmit" id="notesubmit">保存</button>
+<button class="notebtn pull-right closenote" style="margin:20px 0">关闭</button>
+</div>
+</div>
+</div>
+
+<div class="report-Box" style="display: none;">
+<div class="report-Box-content">
+<div class="report-Box-top">
+<span class="report-Box-title">违规举报</span>
+<span onclick="closeReportBox(this)" class="report-Box-close">X</span>
+</div>
+<ul>
+<li class="radio-box">
+<input id="reportRadio" type="radio" name="reportType" value="1" checked="checked"> 广告等垃圾信息
+</li>
+<li class="radio-box">
+<input id="reportRadio" type="radio" name="reportType" value="2"> 不友善内容
+</li>
+<li class="radio-box">
+<input id="reportRadio" type="radio" name="reportType" value="3"> 违反法律法规的内容
+</li>
+<li class="radio-box">
+<input id="reportRadio" type="radio" name="reportType" value="4"> 不宜公开讨论的政治内容
+</li>
+<li class="radio-box" onclick="reportOther(this)">
+<input id="reportRadio" type="radio" name="reportType" value="0"> 其他
+<input type="text" class="radio-text" name="reportInfo" value="" placeholder="请填写您的举报理由。">
+</li>
+</ul>
+<button class="search-s" onclick="reportSubmit(this)" id="reportSubmit">提交</button>
+</div>
+</div>
+<div class="widget-body" data-type="project"><div class="widget-main" style=""><div class="widget-box"><div class="slogn"><a href="https://www.w3cschool.cn/register">免费注册w3cschool，收藏你感兴趣的教程手册！</a></div><div class="quicklogin quick-box"><a href="https://www.w3cschool.cn/register?refer=/maven/k97l1hta.html" class="reg-btn">注册w3cschool</a><span>或直接</span><a href="https://www.w3cschool.cn/auth" class="qq-btn"><i class="pop-sns icons-qq-widget"></i>QQ登录</a><a href="https://www.w3cschool.cn/auth?platform=weixin" class="weixina"><i class="pop-sns icons-weixin-widget"></i>微信登录</a><a href="https://www.w3cschool.cn/auth?platform=weibo" class="weibo-btn"><i class="pop-sns icons-weibo-widget"></i>微博登录</a><div class="weixinlogin" style=""><img style="width: 180px;height: 180px;" src="./Apache Maven 插件_w3cschool_files/qrapi"><div style="margin-bottom: 10px;">使用微信扫码登录</div></div></div><div class="sig-group"><a href="https://www.w3cschool.cn/login?refer=/maven/k97l1hta.html">已有账号，登录</a></div></div><a class="widget-box-close" href="javascript:;" title="关闭">X</a></div></div>
+<div class="pay-area" data-static="//www.w3cschool.cn/statics"><div class="pay-tip-Box" style="display:none;"><div class="pay-tip-content"><div class="pay-tip-top"><span class="pay-tip-title">赞赏支持</span><span class="pay-tip-close">X</span></div><div class="pay-tip-body"><div class="pay-tip-price pay-tip-price-first"><a href="javascript:;" data-price="2" class="pay-tip-btn pay-tip-btn-ck">&nbsp;2元&nbsp;</a><a href="javascript:;" data-price="4" class="pay-tip-btn">&nbsp;4元&nbsp;</a><a href="javascript:;" data-price="8" class="pay-tip-btn">&nbsp;8元&nbsp;</a></div><div class="pay-tip-price"><a href="javascript:;" data-price="16" class="pay-tip-btn">16元</a><a href="javascript:;" data-price="32" class="pay-tip-btn">32元</a><a href="javascript:;" data-price="64" class="pay-tip-btn">64元</a></div><div class="pay-tip-paytype"><span>支付方式:</span><input type="radio" name="tiptype" checked="checked" value="ALIPAY"><img src="./Apache Maven 插件_w3cschool_files/alipay.png"><input type="radio" name="tiptype" value="WXPAY"><img src="./Apache Maven 插件_w3cschool_files/wechatpay.png"></div><div class="pay-tip-paytype "><span>余额支付:</span><input type="radio" name="tiptype" value="W3CPAY" disabled="disabled"><img src="./Apache Maven 插件_w3cschool_files/w3cpay.png" class="img-gray"><input type="text" disabled="true" class="pay-tip-surplus" value="￥0.00"></div><div class="pay-fbi-waring"><span>特别提醒:本次支付为虚拟物品,不予退款,敬请谅解</span></div><div class="pay-tip-gopay"><a href="javascript:;">前往支付</a></div></div><div class="pay-tip-result" style="display:none;"><div class="pay-tip-result-title"><span>支付遇到问题?</span></div><div class="pay-tip-result-waring"><span><strong>温馨提示:</strong>支付完成前请不要关闭窗口,完成支付后请根据情况点击下面按钮</span></div><div class="pay-tip-result-btn"><a href="javascript:;" id="pay-success">赞赏成功</a><a href="javascript:;" id="pay-error">遇到问题</a></div></div></div></div></div>
+<div class="dialog-area"></div>
+<script src="./Apache Maven 插件_w3cschool_files/shCore.min.js.下载" type="text/javascript"></script>
+<script src="./Apache Maven 插件_w3cschool_files/commonfooter.js.下载" type="text/javascript"></script>
+<script src="./Apache Maven 插件_w3cschool_files/project.view.js.下载" type="text/javascript"></script>
+<script src="./Apache Maven 插件_w3cschool_files/ajaxdo.core.js.下载" type="text/javascript"></script>
+<script src="./Apache Maven 插件_w3cschool_files/paypraise.js.下载" type="text/javascript"></script>
+<script>
+var kn = {
+kename:'k97l1hta',
+pename:'maven',
+ismenu:'0',
+ktitle:'Apache Maven 插件',
+ktype:'kn',
+original:'1',
+uid:'0',
+};
+var book = {
+pename:'maven'
+};
+
+var Gvar = {
+activityflag: ''
+};
+function isProjectLike(){
+
+if(kn.uid == '' || kn.uid == '0'){
+toastr.warning("您还未登录,请先登录!",'',{"positionClass": "toast-top-center"});
+return;
+}
+$.ajaxdo({
+url: "/project/islike/maven.html",
+type: "post",
+dataType: 'json',
+data: {},
+sync: false,
+success: function (data) {
+if (data.statusCode == 200) {
+$('.avatar-list').find('p').remove();
+$('.avatar-list').append('<a href="/u/' + data.data + '" title="' + data.data + '"><img src="/attachments/avatar2/avatar_' + data.data + '.jpg" title=""></a>');
+var likecount = $("#likecount").text() * 1 + 1;
+$("#likecount").html(likecount);
+$(".btn-thumbs-up i").attr('class','icon-thumbs-up isdone');
+$("#likestatus").html('已赞');
+toastr.success(data.message,'',{"positionClass": "toast-top-center"});
+} else {
+toastr.warning(data.message,'',{"positionClass": "toast-top-center"});
+}
+}
+});
+}
+function isProjectStar(){
+if(kn.uid == '' || kn.uid == '0'){
+toastr.warning("您还未登录,请先登录!",'',{"positionClass": "toast-top-center"});
+return;
+}
+var type = $('#hbstar').attr('data-type');
+$.ajaxdo({
+url: "/project/star/maven.html",
+type: "post",
+dataType: 'json',
+data: {},
+success: function (data) {
+if(data.statusCode == 200){
+if (type == 'star') {
+$('#hbstar').html('<i class="icon-star isdone"></i><span>已收藏</span>');
+$('#hbstar').attr('data-type','rstar');
+toastr.success(data.message,'',{"positionClass": "toast-top-center"});
+} else {
+$('#hbstar').html('<i class="icon-star"></i><span>收藏</span>');
+$('#hbstar').attr('data-type','star');
+toastr.success(data.message,'',{"positionClass": "toast-top-center"});
+}
+}else{
+toastr.warning(data.message,'',{"positionClass": "toast-top-center"});
+}
+}
+});
+}
+$(function(){
+$(document).on("click",function(){
+$(".docblur").hide();
+});
+
+$(".onlinenote").show();
+
+if(location.hash !== ""){ // 修复锚点定位失效的问题
+setTimeout(function(){
+location.href=location.hash;
+},300);
+}
+
+if(Gvar.activityflag > 0){ // 开启了活动
+$.ajax({
+url:"/getActivity",
+type:"get",
+dataType:"json",
+success:function(msg){
+function loadad(content){
+var tpl = '<div class="activiey-area">'+
+'<div class="activiey-bg"></div>'+
+'<div class="activiey-main">'+
+'<span class="close-btn"></span> <div style="max-height:500px;max-width:570px;">'+content+'</div></div>'+
+'</div>';
+
+$("body").append(tpl);
+
+$(".activiey-main .close-btn").on("click",function(){
+$(".activiey-area").hide();
+});
+
+}
+if(msg.statusCode < 300){
+console.log(msg.data);
+// 写入cookie
+$.cookie("activity_showed", 1);
+loadad(msg.data.wincontent);
+toastr.success(msg.message);
+}else{
+toastr.warning(msg.message);
+}
+}
+});
+}
+var kename = kn.kename;
+var fid    = "0";
+var uid = '0';
+$(document).on('keyup',function(e){
+var keyCode = e.keyCode;
+var prev,next;
+if(keyCode == 37){ // 上一篇
+prev = $(".navigation-prev");
+if(prev.length > 0 && !prev.is(":hidden")){
+location.href = prev.attr("href");
+}
+}
+if(keyCode == 39){ // 下一篇
+next = $(".navigation-next");
+if(next.length > 0 && !next.is(":hidden")){
+location.href = next.attr("href");
+}
+}
+});
+/*开启计时 准备记录积分*/
+var vcreditfull = $.cookie('ypre_vcreditfull');
+//console.log(vcreditfull);
+if(vcreditfull == undefined && uid != '0' && uid != ''){
+setTimeout(function(){
+$.ajax({
+url:"/project/setViewCredit",
+type:"post",
+data:{kename:kename},
+dataType:"json",
+success:function(msg){
+var statusCode = {
+'200':'success',
+'400':'warning',
+};
+var toastrType = statusCode[msg.statusCode];
+if(msg.statusCode == 300 || msg.statusCode == 400){
+return;
+}
+toastr[toastrType](msg.message);
+}
+});
+},30000);
+}
+hljs.initHighlightingOnLoad();//高亮代码
+window._bd_share_config={"common":{"bdSnsKey":{},bdPopupOffsetTop:"5"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/plugins/baidushare/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+});
+$(".toggle-dropdown").on('click',function(e){
+e.stopPropagation();
+if ($(this).next().is(":hidden")){
+$(this).next().show();    
+}else{
+$(this).next().hide();     
+}
+});
+
+$(".set-dropdown-menu").on("click",function(e){
+e.stopPropagation();
+});
+function getviewkn(){
+var usernamestr ='';
+$.ajax({
+url:"/my/knowledge/getViewkn?pename="+book.pename,
+dataType:"json",
+success:function(msg){
+var objli,objtt;
+for(var p in msg){
+objli = $("#nestable_handbook").find(".dd-item[data-id='"+msg[p]['kename']+"']");
+if(objli.attr("ismenu") != 1){
+objli.addClass("readed").find("a").attr("title","上次浏览时间:("+msg[p]['lasttime']+")");
+}
+}
+}
+}); 
+}
+</script>
+
+</body></html>
