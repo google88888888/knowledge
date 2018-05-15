@@ -1,1 +1,8 @@
-﻿看完待整理
+﻿一、Apache Maven 概述
+二、Apache Maven 环境配置
+三、Apache Maven POM
+pom.xml是Project Object Model的简称，放在工程根目录下。
+pom.xml需要 project 元素和三个必须的字段：groupId,artifactId,version。
+在仓库中的工程标识为 groupId:artifactId:version
+
+四、Apache Maven 构建生命周期
