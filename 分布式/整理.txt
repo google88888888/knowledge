@@ -44,11 +44,18 @@ site-deploy
 
 
 五、Apache Maven 构建配置文件
+使用构建配置文件，可以为不同的环境定制构建过程
+（1）定义在pom.xml中
+
+在 src/main/resources 目录下有三个环境配置文件：
+env.properties	    没有配置文件时的默认配置
+env.test.properties	               测试配置
+env.prod.properties	               产品配置
+
+使用 -P 选项指定 Profile 的名称
 
 
-
-
-
+六、Apache Maven 仓库
 
 
 
