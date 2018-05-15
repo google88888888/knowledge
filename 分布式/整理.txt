@@ -80,11 +80,20 @@ Maven 依赖搜索顺序
 
 十一、Apache Maven 工程文档
 十二、Apache Maven 工程模版
+十三、Apache Maven 快照
+版本：一旦下载指定版本，不会再次下载相同版本。
+快照：每次都下载指定版本
 
+十四、Apache Maven 构建自动化
+十五、Apache Maven 管理依赖
+      <parent>
+      </parent>
 
-
-
-
+十六、Apache Maven 自动化部署
+十七、Apache Maven Web 应用
+十八、Apache Maven Elipse IDE
+十九、Apache Maven NetBeans
+二十、Apache Maven IntelliJ IDEA
 
 
 
