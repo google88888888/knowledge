@@ -65,10 +65,21 @@ Maven 依赖搜索顺序
 执行用mvn [plugin-name]:[goal-name]
 
 八、Apache Maven 创建工程
+九、Apache Maven 构建 & 测试工程
+十、Apache Maven 外部依赖
+在仓库依赖不能满足的情况下，使用外部依赖
+在 src 文件夹下添加 lib 文件夹，复制test.jar 文件到 lib 文件夹下
+在pom.xml中有：
+          <dependency>
+             <groupId>test</groupId>
+             <artifactId>test</artifactId>
+             <scope>system</scope>
+             <version>1.0</version>
+             <systemPath>${basedir}\src\lib\test.jar</systemPath>
+          </dependency>
 
-
-
-
+十一、Apache Maven 工程文档
+十二、Apache Maven 工程模版
 
 
 
