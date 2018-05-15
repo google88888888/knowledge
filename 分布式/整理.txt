@@ -56,11 +56,15 @@ env.prod.properties	               产品配置
 
 
 六、Apache Maven 仓库
+Maven 依赖搜索顺序
+（1）本地仓库
+（2）中央仓库
+（3）远程仓库
 
+七、Apache Maven 插件
+执行用mvn [plugin-name]:[goal-name]
 
-
-
-
+八、Apache Maven 创建工程
 
 
 
