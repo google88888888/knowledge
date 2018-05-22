@@ -1,1 +1,3 @@
 ﻿Spring Boot Mybatis的完整Web案例
+
+3.在 Application 应用启动类添加注解 MapperScan
