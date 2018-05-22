@@ -1,3 +1,4 @@
-﻿Spring Boot Mybatis的完整Web案例
+﻿Spring Boot Mybatis实现Druid多数据源详解
 
-3.在 Application 应用启动类添加注解 MapperScan
+
+3. 数据源配置
