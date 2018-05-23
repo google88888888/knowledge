@@ -1,1 +1,1 @@
-﻿Spring Boot 如何使用Dubbo Activate扩展点
+﻿Spring Boot Dubbo applications.properties配置清单
