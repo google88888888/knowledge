@@ -1,1 +1,1 @@
-﻿Spring Boot Dubbo applications.properties配置清单
+﻿Spring Boot 实现function score query权重分查询
