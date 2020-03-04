@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<!-- saved from url=(0068)https://redux-saga-in-chinese.js.org/docs/advanced/UsingRunSaga.html -->
+<html lang=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>连接 Sagas 至外部的输入/输出 · Redux-Saga</title>
+        
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.0">
+        
+        
+        
+    
+    <link rel="stylesheet" href="./连接 Sagas 至外部的输入_输出 · Redux-Saga_files/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="./连接 Sagas 至外部的输入_输出 · Redux-Saga_files/prism.css">
+                
+            
+                
+                <link rel="stylesheet" href="./连接 Sagas 至外部的输入_输出 · Redux-Saga_files/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="./连接 Sagas 至外部的输入_输出 · Redux-Saga_files/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://redux-saga-in-chinese.js.org/gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="https://redux-saga-in-chinese.js.org/gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    
+    
+    
+    
+
+    <link rel="prev" href="https://redux-saga-in-chinese.js.org/docs/advanced/Testing.html"><link rel="next" href="https://redux-saga-in-chinese.js.org/docs/advanced/Channels.html"></head>
+    <body>
+        
+<div class="book without-animation with-summary font-size-2 font-family-1">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search">
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="https://redux-saga-in-chinese.js.org/">
+            
+                    
+                    自述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../introduction/">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/introduction/">
+            
+                    
+                    介绍
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../introduction/BeginnerTutorial.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/introduction/BeginnerTutorial.html">
+            
+                    
+                    初级教程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../introduction/SagaBackground.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/introduction/SagaBackground.html">
+            
+                    
+                    Saga 概念的背景
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../basics/">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/basics/">
+            
+                    
+                    基础概念
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../basics/UsingSagaHelpers.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/basics/UsingSagaHelpers.html">
+            
+                    
+                    使用 Saga Helpers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../basics/DeclarativeEffects.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/basics/DeclarativeEffects.html">
+            
+                    
+                    声明式 Effects
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../basics/DispatchingActions.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/basics/DispatchingActions.html">
+            
+                    
+                    dispatch action
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../basics/ErrorHandling.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/basics/ErrorHandling.html">
+            
+                    
+                    错误处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../basics/Effect.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/basics/Effect.html">
+            
+                    
+                    一个常见的抽象概念: Effect
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="./">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/">
+            
+                    
+                    高级
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="FutureActions.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/FutureActions.html">
+            
+                    
+                    监听未来的 action
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="NonBlockingCalls.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/NonBlockingCalls.html">
+            
+                    
+                    无阻塞调用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="RunningTasksInParallel.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/RunningTasksInParallel.html">
+            
+                    
+                    同时执行多个任务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="RacingEffects.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/RacingEffects.html">
+            
+                    
+                    在多个 Effects 之间启动 race
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="SequencingSagas.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/SequencingSagas.html">
+            
+                    
+                    使用 yield* 对 Sagas 进行排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="ComposingSagas.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/ComposingSagas.html">
+            
+                    
+                    组合 Sagas
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="TaskCancellation.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/TaskCancellation.html">
+            
+                    
+                    取消任务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="ForkModel.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/ForkModel.html">
+            
+                    
+                    redux-saga 的 fork model
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.9" data-path="Concurrency.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/Concurrency.html">
+            
+                    
+                    并发
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.10" data-path="Testing.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/Testing.html">
+            
+                    
+                    测试 Sagas
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4.11" data-path="UsingRunSaga.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/UsingRunSaga.html">
+            
+                    
+                    连接 Sagas 至外部的输入/输出
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.12" data-path="Channels.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/Channels.html">
+            
+                    
+                    使用 Channels
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../recipes/">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/recipes/">
+            
+                    
+                    技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../ExternalResources.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/ExternalResources.html">
+            
+                    
+                    外部资源
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../Troubleshooting.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/Troubleshooting.html">
+            
+                    
+                    问题解答
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../Glossary.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/Glossary.html">
+            
+                    
+                    名词解释
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../api/">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/api/">
+            
+                    
+                    API 参考
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com/" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <a class="btn pull-left js-toolbar-action" aria-label="" href="https://redux-saga-in-chinese.js.org/docs/advanced/UsingRunSaga.html#"><i class="fa fa-align-justify"></i></a><a class="btn pull-left js-toolbar-action" aria-label="" href="https://redux-saga-in-chinese.js.org/docs/advanced/UsingRunSaga.html#"><i class="fa fa-edit"></i> 开始纠错</a><a class="btn pull-right js-toolbar-action" aria-label="GitHub" href="https://redux-saga-in-chinese.js.org/docs/advanced/UsingRunSaga.html#"><i class="fa fa-github"></i></a><div class="dropdown pull-right  js-toolbar-action"><a class="btn toggle-dropdown" aria-label="Share" href="https://redux-saga-in-chinese.js.org/docs/advanced/UsingRunSaga.html#"><i class="fa fa-share-alt"></i></a><div class="dropdown-menu dropdown-left"><div class="dropdown-caret"><span class="caret-outer"></span><span class="caret-inner"></span></div><div class="buttons"><button class="button size-5 ">Facebook</button><button class="button size-5 ">Google+</button><button class="button size-5 ">Twitter</button><button class="button size-5 ">Weibo</button><button class="button size-5 ">Instapaper</button></div></div></div><a class="btn pull-right js-toolbar-action" aria-label="" href="https://redux-saga-in-chinese.js.org/docs/advanced/UsingRunSaga.html#"><i class="fa fa-facebook"></i></a><a class="btn pull-right js-toolbar-action" aria-label="" href="https://redux-saga-in-chinese.js.org/docs/advanced/UsingRunSaga.html#"><i class="fa fa-twitter"></i></a><a class="btn pull-right js-toolbar-action" aria-label="" href="https://redux-saga-in-chinese.js.org/docs/advanced/UsingRunSaga.html#"><i class="fa fa-google-plus"></i></a><a class="btn pull-right js-toolbar-action" aria-label="" href="https://redux-saga-in-chinese.js.org/docs/advanced/UsingRunSaga.html#"><i class="fa fa-weibo"></i></a><div class="dropdown pull-left font-settings js-toolbar-action"><a class="btn toggle-dropdown" aria-label="Font Settings" href="https://redux-saga-in-chinese.js.org/docs/advanced/UsingRunSaga.html#"><i class="fa fa-font"></i></a><div class="dropdown-menu dropdown-right"><div class="dropdown-caret"><span class="caret-outer"></span><span class="caret-inner"></span></div><div class="buttons"><button class="button size-2 font-reduce">A</button><button class="button size-2 font-enlarge">A</button></div><div class="buttons"><button class="button size-2 ">Serif</button><button class="button size-2 ">Sans</button></div><div class="buttons"><button class="button size-3 ">White</button><button class="button size-3 ">Sepia</button><button class="button size-3 ">Night</button></div></div></div><h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="https://redux-saga-in-chinese.js.org/">连接 Sagas 至外部的输入/输出</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="连接-sagas-至外部输入和输出">连接 Sagas 至外部输入和输出</h1><p>我们已经看到了，<code>take</code> Effect 是通过等待 action 被发起到 Store 来解决（resolved）的。
+也看到了 <code>put</code> Effect 是通过发起一个 action 来解决的，action 被作为参数传给 <code>put</code> Effect。</p><p>当 Saga 启动了（不管是初始启动或是稍后动态启动），middleware 会自动将它的 <code>take</code> / <code>put</code> 连接至 store。
+这 2 个 Effect 可以被看作是一种 Saga 的输入/输出（Input/Output）。</p><p><code>redux-saga</code> 提供了一种方式在 redux middleware 环境外部运行 Saga，并可以连接至自定义的输入输出（Input/Output）。</p><pre><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> runSaga <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'redux-saga'</span>
+
+<span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">saga</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> myIO <span class="token operator">=</span> <span class="token punctuation">{</span>
+  subscribe<span class="token punctuation">:</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// this will be used to resolve take Effects</span>
+  dispatch<span class="token punctuation">:</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span>  <span class="token comment" spellcheck="true">// this will be used to resolve put Effects</span>
+  getState<span class="token punctuation">:</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span>  <span class="token comment" spellcheck="true">// this will be used to resolve select Effects</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">runSaga</span><span class="token punctuation">(</span>
+  myIO<span class="token punctuation">,</span>
+  saga<span class="token punctuation">,</span>
+<span class="token punctuation">)</span></code></pre>
+<p>欲了解更多信息请参见 <a href="http://leonshi.com/redux-saga-in-chinese/docs/api/index.html" target="_blank">API 文档</a>。</p>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class="search-results-count"></span> results matching "<span class="search-query"></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class="search-query"></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/Testing.html" class="navigation navigation-prev " aria-label="Previous page: 测试 Sagas">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/Channels.html" class="navigation navigation-next " aria-label="Next page: 使用 Channels" style="margin-right: 0px;">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"连接 Sagas 至外部的输入/输出","level":"1.4.11","depth":2,"next":{"title":"使用 Channels","level":"1.4.12","depth":2,"path":"docs/advanced/Channels.md","ref":"docs/advanced/Channels.md","articles":[]},"previous":{"title":"测试 Sagas","level":"1.4.10","depth":2,"path":"docs/advanced/Testing.md","ref":"docs/advanced/Testing.md","articles":[]},"dir":"ltr"},"config":{"plugins":["edit-link","prism@1.0.0","-highlight","github"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"edit-link":{"label":"开始纠错","base":"https://github.com/superRaytin/redux-saga-in-chinese/tree/master"},"github":{"url":"https://github.com/superRaytin/redux-saga-in-chinese"},"sharing":{"facebook":true,"twitter":true,"google":true,"weibo":true,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"prism":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Redux-Saga","gitbook":"3.2.0"},"file":{"path":"docs/advanced/UsingRunSaga.md","mtime":"2018-05-28T10:04:29.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2018-05-28T10:21:20.665Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="./连接 Sagas 至外部的输入_输出 · Redux-Saga_files/gitbook.js.下载"></script>
+    <script src="./连接 Sagas 至外部的输入_输出 · Redux-Saga_files/theme.js.下载"></script>
+    
+        
+        <script src="./连接 Sagas 至外部的输入_输出 · Redux-Saga_files/plugin.js.下载"></script>
+        
+    
+        
+        <script src="./连接 Sagas 至外部的输入_输出 · Redux-Saga_files/plugin.js(1).下载"></script>
+        
+    
+        
+        <script src="./连接 Sagas 至外部的输入_输出 · Redux-Saga_files/search-engine.js.下载"></script>
+        
+    
+        
+        <script src="./连接 Sagas 至外部的输入_输出 · Redux-Saga_files/search.js.下载"></script>
+        
+    
+        
+        <script src="./连接 Sagas 至外部的输入_输出 · Redux-Saga_files/lunr.min.js.下载"></script>
+        
+    
+        
+        <script src="./连接 Sagas 至外部的输入_输出 · Redux-Saga_files/search-lunr.js.下载"></script>
+        
+    
+        
+        <script src="./连接 Sagas 至外部的输入_输出 · Redux-Saga_files/buttons.js.下载"></script>
+        
+    
+        
+        <script src="./连接 Sagas 至外部的输入_输出 · Redux-Saga_files/fontsettings.js.下载"></script>
+        
+    
+
+    
+
+
+</body></html>

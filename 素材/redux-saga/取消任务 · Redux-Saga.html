@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<!-- saved from url=(0072)https://redux-saga-in-chinese.js.org/docs/advanced/TaskCancellation.html -->
+<html lang=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>取消任务 · Redux-Saga</title>
+        
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.0">
+        
+        
+        
+    
+    <link rel="stylesheet" href="./取消任务 · Redux-Saga_files/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="./取消任务 · Redux-Saga_files/prism.css">
+                
+            
+                
+                <link rel="stylesheet" href="./取消任务 · Redux-Saga_files/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="./取消任务 · Redux-Saga_files/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://redux-saga-in-chinese.js.org/gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="https://redux-saga-in-chinese.js.org/gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    
+    
+    
+    
+
+    <link rel="prev" href="https://redux-saga-in-chinese.js.org/docs/advanced/ComposingSagas.html"><link rel="next" href="https://redux-saga-in-chinese.js.org/docs/advanced/ForkModel.html"></head>
+    <body>
+        
+<div class="book without-animation with-summary font-size-2 font-family-1">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search">
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="https://redux-saga-in-chinese.js.org/">
+            
+                    
+                    自述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../introduction/">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/introduction/">
+            
+                    
+                    介绍
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../introduction/BeginnerTutorial.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/introduction/BeginnerTutorial.html">
+            
+                    
+                    初级教程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../introduction/SagaBackground.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/introduction/SagaBackground.html">
+            
+                    
+                    Saga 概念的背景
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../basics/">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/basics/">
+            
+                    
+                    基础概念
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../basics/UsingSagaHelpers.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/basics/UsingSagaHelpers.html">
+            
+                    
+                    使用 Saga Helpers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../basics/DeclarativeEffects.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/basics/DeclarativeEffects.html">
+            
+                    
+                    声明式 Effects
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../basics/DispatchingActions.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/basics/DispatchingActions.html">
+            
+                    
+                    dispatch action
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../basics/ErrorHandling.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/basics/ErrorHandling.html">
+            
+                    
+                    错误处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../basics/Effect.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/basics/Effect.html">
+            
+                    
+                    一个常见的抽象概念: Effect
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="./">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/">
+            
+                    
+                    高级
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="FutureActions.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/FutureActions.html">
+            
+                    
+                    监听未来的 action
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="NonBlockingCalls.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/NonBlockingCalls.html">
+            
+                    
+                    无阻塞调用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="RunningTasksInParallel.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/RunningTasksInParallel.html">
+            
+                    
+                    同时执行多个任务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="RacingEffects.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/RacingEffects.html">
+            
+                    
+                    在多个 Effects 之间启动 race
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="SequencingSagas.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/SequencingSagas.html">
+            
+                    
+                    使用 yield* 对 Sagas 进行排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="ComposingSagas.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/ComposingSagas.html">
+            
+                    
+                    组合 Sagas
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4.7" data-path="TaskCancellation.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/TaskCancellation.html">
+            
+                    
+                    取消任务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="ForkModel.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/ForkModel.html">
+            
+                    
+                    redux-saga 的 fork model
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.9" data-path="Concurrency.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/Concurrency.html">
+            
+                    
+                    并发
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.10" data-path="Testing.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/Testing.html">
+            
+                    
+                    测试 Sagas
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.11" data-path="UsingRunSaga.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/UsingRunSaga.html">
+            
+                    
+                    连接 Sagas 至外部的输入/输出
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.12" data-path="Channels.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/Channels.html">
+            
+                    
+                    使用 Channels
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../recipes/">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/recipes/">
+            
+                    
+                    技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../ExternalResources.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/ExternalResources.html">
+            
+                    
+                    外部资源
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../Troubleshooting.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/Troubleshooting.html">
+            
+                    
+                    问题解答
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../Glossary.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/Glossary.html">
+            
+                    
+                    名词解释
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../api/">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/api/">
+            
+                    
+                    API 参考
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com/" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <a class="btn pull-left js-toolbar-action" aria-label="" href="https://redux-saga-in-chinese.js.org/docs/advanced/TaskCancellation.html#"><i class="fa fa-align-justify"></i></a><a class="btn pull-left js-toolbar-action" aria-label="" href="https://redux-saga-in-chinese.js.org/docs/advanced/TaskCancellation.html#"><i class="fa fa-edit"></i> 开始纠错</a><a class="btn pull-right js-toolbar-action" aria-label="GitHub" href="https://redux-saga-in-chinese.js.org/docs/advanced/TaskCancellation.html#"><i class="fa fa-github"></i></a><div class="dropdown pull-right  js-toolbar-action"><a class="btn toggle-dropdown" aria-label="Share" href="https://redux-saga-in-chinese.js.org/docs/advanced/TaskCancellation.html#"><i class="fa fa-share-alt"></i></a><div class="dropdown-menu dropdown-left"><div class="dropdown-caret"><span class="caret-outer"></span><span class="caret-inner"></span></div><div class="buttons"><button class="button size-5 ">Facebook</button><button class="button size-5 ">Google+</button><button class="button size-5 ">Twitter</button><button class="button size-5 ">Weibo</button><button class="button size-5 ">Instapaper</button></div></div></div><a class="btn pull-right js-toolbar-action" aria-label="" href="https://redux-saga-in-chinese.js.org/docs/advanced/TaskCancellation.html#"><i class="fa fa-facebook"></i></a><a class="btn pull-right js-toolbar-action" aria-label="" href="https://redux-saga-in-chinese.js.org/docs/advanced/TaskCancellation.html#"><i class="fa fa-twitter"></i></a><a class="btn pull-right js-toolbar-action" aria-label="" href="https://redux-saga-in-chinese.js.org/docs/advanced/TaskCancellation.html#"><i class="fa fa-google-plus"></i></a><a class="btn pull-right js-toolbar-action" aria-label="" href="https://redux-saga-in-chinese.js.org/docs/advanced/TaskCancellation.html#"><i class="fa fa-weibo"></i></a><div class="dropdown pull-left font-settings js-toolbar-action"><a class="btn toggle-dropdown" aria-label="Font Settings" href="https://redux-saga-in-chinese.js.org/docs/advanced/TaskCancellation.html#"><i class="fa fa-font"></i></a><div class="dropdown-menu dropdown-right"><div class="dropdown-caret"><span class="caret-outer"></span><span class="caret-inner"></span></div><div class="buttons"><button class="button size-2 font-reduce">A</button><button class="button size-2 font-enlarge">A</button></div><div class="buttons"><button class="button size-2 ">Serif</button><button class="button size-2 ">Sans</button></div><div class="buttons"><button class="button size-3 ">White</button><button class="button size-3 ">Sepia</button><button class="button size-3 ">Night</button></div></div></div><h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="https://redux-saga-in-chinese.js.org/">取消任务</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="取消任务">取消任务</h1><p>我们已经在 <a href="http://redux-saga-in-chinese.js.org/docs/advanced/NonBlockingCalls.html" target="_blank">无阻塞调用</a> 一节中看到了取消任务的示例。
+在这节，我们将回顾一下，在一些更加详细的情况下取消的语义。</p><p>一旦任务被 fork，可以使用 <code>yield cancel(task)</code> 来中止任务执行。取消正在运行的任务。</p><p>来看看它是如何工作的，让我们先考虑一个简单的例子：一个可通过某些 UI 命令启动或停止的后台同步任务。
+在接收到 <code>START_BACKGROUND_SYNC</code> action 后，我们 fork 一个后台任务，周期性地从远程服务器同步一些数据。</p><p>这个任务将会一直执行直到一个 <code>STOP_BACKGROUND_SYNC</code> action 被触发。
+然后我们取消后台任务，等待下一个 <code>START_BACKGROUND_SYNC</code> action。</p><pre><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> take<span class="token punctuation">,</span> put<span class="token punctuation">,</span> call<span class="token punctuation">,</span> fork<span class="token punctuation">,</span> cancel<span class="token punctuation">,</span> cancelled<span class="token punctuation">,</span> delay <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'redux-saga/effects'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> someApi<span class="token punctuation">,</span> actions <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'somewhere'</span>
+
+<span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">bgSync</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">try</span> <span class="token punctuation">{</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">yield</span> <span class="token function">put</span><span class="token punctuation">(</span>actions<span class="token punctuation">.</span><span class="token function">requestStart</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+      <span class="token keyword">const</span> result <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token function">call</span><span class="token punctuation">(</span>someApi<span class="token punctuation">)</span>
+      <span class="token keyword">yield</span> <span class="token function">put</span><span class="token punctuation">(</span>actions<span class="token punctuation">.</span><span class="token function">requestSuccess</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">)</span>
+      <span class="token keyword">yield</span> <span class="token function">delay</span><span class="token punctuation">(</span><span class="token number">5000</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">yield</span> <span class="token function">cancelled</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+      <span class="token keyword">yield</span> <span class="token function">put</span><span class="token punctuation">(</span>actions<span class="token punctuation">.</span><span class="token function">requestFailure</span><span class="token punctuation">(</span><span class="token string">'Sync cancelled!'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">while</span> <span class="token punctuation">(</span> <span class="token keyword">yield</span> <span class="token function">take</span><span class="token punctuation">(</span>START_BACKGROUND_SYNC<span class="token punctuation">)</span> <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 启动后台任务</span>
+    <span class="token keyword">const</span> bgSyncTask <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token function">fork</span><span class="token punctuation">(</span>bgSync<span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true">// 等待用户的停止操作</span>
+    <span class="token keyword">yield</span> <span class="token function">take</span><span class="token punctuation">(</span>STOP_BACKGROUND_SYNC<span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true">// 用户点击了停止，取消后台任务</span>
+    <span class="token comment" spellcheck="true">// 这会导致被 fork 的 bgSync 任务跳进它的 finally 区块</span>
+    <span class="token keyword">yield</span> <span class="token function">cancel</span><span class="token punctuation">(</span>bgSyncTask<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>在上面的示例中，取消 <code>bgSyncTask</code> 将会导致 Generator 跳进 finally 区块。可使用 <code>yield cancelled()</code> 来检查 Generator 是否已经被取消。</p><p>取消正在执行的任务，也将同时取消被阻塞在当前 Effect 中的任务。</p><p>举个例子，假设在应用程序生命周期的某个时刻，还有挂起的（未完成的）调用链：</p><pre><code class="lang-javascript"><span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> task <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token function">fork</span><span class="token punctuation">(</span>subtask<span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+  <span class="token comment" spellcheck="true">// later</span>
+  <span class="token keyword">yield</span> <span class="token function">cancel</span><span class="token punctuation">(</span>task<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">subtask</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+  <span class="token keyword">yield</span> <span class="token function">call</span><span class="token punctuation">(</span>subtask2<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// currently blocked on this call</span>
+  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">subtask2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+  <span class="token keyword">yield</span> <span class="token function">call</span><span class="token punctuation">(</span>someApi<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// currently blocked on this call</span>
+  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">}</span></code></pre>
+<p><code>yield cancel(task)</code> 触发了 <code>subtask</code> 任务的取消，反过来它将触发 <code>subtask2</code> 的取消。</p><p>现在我们看到取消不断的往下传播（相反的，被回传的值和没有捕捉的错误不断往上）。
+你可以把它看作是 caller（调用异步的操作）和 callee（被调用的操作）之间的对照。callee 是负责执行操作。如果它完成了（不管是成功或失败）结果将会往上到它的 caller，最终到 caller 的调用方。就是这样，callee 是负责完成流程。</p><p>现在如果 callee 一直处于等待，而且 caller 决定取消操作，它将触发一种信号往下传播到 callee（以及通过 callee 本身被调用的任何深层操作）。所有深层等待的操作都将被取消。</p><p>取消传播还将引发：如果加入的 task 被取消的话，task 的 joiner（那些被阻塞的 yield join(task)）也将会被取消。同样的，任何那些 joiner 潜在的 caller 都将会被取消（因为他们阻塞的操作已经从外面被取消）。</p><h2 id="用-fork-effect-测试-generators">用 fork effect 测试 generators</h2><p>当 <code>fork</code> 被调用时，它会在后台启动 task 并返回 task 对象 —— 就像我们之前所学习的。测试的时候，我们需要 <code>createMockTask</code> 这个 utility function。
+在 fork test 之后，这个 function 返回的 Object 将会被传送到下一个 next 调用。例如 Mock task 可以被传送到 <code>cancel</code>。这是一个页面 <code>main</code> generator 的测试用例。</p><pre><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> createMockTask <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'redux-saga/utils'</span><span class="token punctuation">;</span>
+
+<span class="token function">describe</span><span class="token punctuation">(</span><span class="token string">'main'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> generator <span class="token operator">=</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token function">it</span><span class="token punctuation">(</span><span class="token string">'waits for start action'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> expectedYield <span class="token operator">=</span> <span class="token function">take</span><span class="token punctuation">(</span>START_BACKGROUND_SYNC<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">expect</span><span class="token punctuation">(</span>generator<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">.</span>to<span class="token punctuation">.</span>deep<span class="token punctuation">.</span><span class="token function">equal</span><span class="token punctuation">(</span>expectedYield<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token function">it</span><span class="token punctuation">(</span><span class="token string">'forks the service'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> expectedYield <span class="token operator">=</span> <span class="token function">fork</span><span class="token punctuation">(</span>bgSync<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> mockedAction <span class="token operator">=</span> <span class="token punctuation">{</span> type<span class="token punctuation">:</span> <span class="token string">'START_BACKGROUND_SYNC'</span> <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token function">expect</span><span class="token punctuation">(</span>generator<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span>mockedAction<span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">.</span>to<span class="token punctuation">.</span>deep<span class="token punctuation">.</span><span class="token function">equal</span><span class="token punctuation">(</span>expectedYield<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token function">it</span><span class="token punctuation">(</span><span class="token string">'waits for stop action and then cancels the service'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> mockTask <span class="token operator">=</span> <span class="token function">createMockTask</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">const</span> expectedTakeYield <span class="token operator">=</span> <span class="token function">take</span><span class="token punctuation">(</span>STOP_BACKGROUND_SYNC<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">expect</span><span class="token punctuation">(</span>generator<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span>mockTask<span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">.</span>to<span class="token punctuation">.</span>deep<span class="token punctuation">.</span><span class="token function">equal</span><span class="token punctuation">(</span>expectedTakeYield<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">const</span> expectedCancelYield <span class="token operator">=</span> <span class="token function">cancel</span><span class="token punctuation">(</span>mockTask<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">expect</span><span class="token punctuation">(</span>generator<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">.</span>to<span class="token punctuation">.</span>deep<span class="token punctuation">.</span><span class="token function">equal</span><span class="token punctuation">(</span>expectedCancelYield<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>你也可使用 mock task 的 <code>setRunning</code>、<code>setResult</code> 和 <code>setError</code> function 来设定 mock task 的状态。例如 <code>mockTask.setRunning(false)</code>。</p><h3 id="注意">注意</h3><p>记住重要的一点，<code>yield cancel(task)</code> 不会等待被取消的任务完成（即执行其 catch 区块）。<code>cancel</code> Effect 的行为和 <code>fork</code> 有点类似。
+一旦取消发起，它就会尽快返回。一旦取消，任务通常应尽快完成它的清理逻辑然后返回。</p><h2 id="自动取消">自动取消</h2><p>除了手动取消任务，还有一些情况的取消是自动触发的。</p><ol><li><p>在 <code>race</code> Effect 中。所有参与 race 的任务，除了优胜者（译注：最先完成的任务），其他任务都会被取消。</p></li>
+<li><p>并行的 Effect (<code>yield [...]</code>)。一旦其中任何一个任务被拒绝，并行的 Effect 将会被拒绝（受 <code>Promise.all</code> 启发）。在这种情况中，所有其他的 Effect 将被自动取消。</p></li></ol>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class="search-results-count"></span> results matching "<span class="search-query"></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class="search-query"></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/ComposingSagas.html" class="navigation navigation-prev " aria-label="Previous page: 组合 Sagas">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/ForkModel.html" class="navigation navigation-next " aria-label="Next page: redux-saga 的 fork model" style="margin-right: 0px;">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"取消任务","level":"1.4.7","depth":2,"next":{"title":"redux-saga 的 fork model","level":"1.4.8","depth":2,"path":"docs/advanced/ForkModel.md","ref":"docs/advanced/ForkModel.md","articles":[]},"previous":{"title":"组合 Sagas","level":"1.4.6","depth":2,"path":"docs/advanced/ComposingSagas.md","ref":"docs/advanced/ComposingSagas.md","articles":[]},"dir":"ltr"},"config":{"plugins":["edit-link","prism@1.0.0","-highlight","github"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"edit-link":{"label":"开始纠错","base":"https://github.com/superRaytin/redux-saga-in-chinese/tree/master"},"github":{"url":"https://github.com/superRaytin/redux-saga-in-chinese"},"sharing":{"facebook":true,"twitter":true,"google":true,"weibo":true,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"prism":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Redux-Saga","gitbook":"3.2.0"},"file":{"path":"docs/advanced/TaskCancellation.md","mtime":"2018-05-28T10:04:29.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2018-05-28T10:21:20.665Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="./取消任务 · Redux-Saga_files/gitbook.js.下载"></script>
+    <script src="./取消任务 · Redux-Saga_files/theme.js.下载"></script>
+    
+        
+        <script src="./取消任务 · Redux-Saga_files/plugin.js.下载"></script>
+        
+    
+        
+        <script src="./取消任务 · Redux-Saga_files/plugin.js(1).下载"></script>
+        
+    
+        
+        <script src="./取消任务 · Redux-Saga_files/search-engine.js.下载"></script>
+        
+    
+        
+        <script src="./取消任务 · Redux-Saga_files/search.js.下载"></script>
+        
+    
+        
+        <script src="./取消任务 · Redux-Saga_files/lunr.min.js.下载"></script>
+        
+    
+        
+        <script src="./取消任务 · Redux-Saga_files/search-lunr.js.下载"></script>
+        
+    
+        
+        <script src="./取消任务 · Redux-Saga_files/buttons.js.下载"></script>
+        
+    
+        
+        <script src="./取消任务 · Redux-Saga_files/fontsettings.js.下载"></script>
+        
+    
+
+    
+
+
+</body></html>

@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<!-- saved from url=(0072)https://redux-saga-in-chinese.js.org/docs/advanced/NonBlockingCalls.html -->
+<html lang=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>无阻塞调用 · Redux-Saga</title>
+        
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.0">
+        
+        
+        
+    
+    <link rel="stylesheet" href="./无阻塞调用 · Redux-Saga_files/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="./无阻塞调用 · Redux-Saga_files/prism.css">
+                
+            
+                
+                <link rel="stylesheet" href="./无阻塞调用 · Redux-Saga_files/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="./无阻塞调用 · Redux-Saga_files/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://redux-saga-in-chinese.js.org/gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="https://redux-saga-in-chinese.js.org/gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    
+    
+    
+    
+
+    <link rel="prev" href="https://redux-saga-in-chinese.js.org/docs/advanced/FutureActions.html"><link rel="next" href="https://redux-saga-in-chinese.js.org/docs/advanced/RunningTasksInParallel.html"></head>
+    <body>
+        
+<div class="book without-animation with-summary font-size-2 font-family-1">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search">
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="https://redux-saga-in-chinese.js.org/">
+            
+                    
+                    自述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../introduction/">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/introduction/">
+            
+                    
+                    介绍
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../introduction/BeginnerTutorial.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/introduction/BeginnerTutorial.html">
+            
+                    
+                    初级教程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../introduction/SagaBackground.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/introduction/SagaBackground.html">
+            
+                    
+                    Saga 概念的背景
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../basics/">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/basics/">
+            
+                    
+                    基础概念
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../basics/UsingSagaHelpers.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/basics/UsingSagaHelpers.html">
+            
+                    
+                    使用 Saga Helpers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../basics/DeclarativeEffects.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/basics/DeclarativeEffects.html">
+            
+                    
+                    声明式 Effects
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../basics/DispatchingActions.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/basics/DispatchingActions.html">
+            
+                    
+                    dispatch action
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../basics/ErrorHandling.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/basics/ErrorHandling.html">
+            
+                    
+                    错误处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../basics/Effect.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/basics/Effect.html">
+            
+                    
+                    一个常见的抽象概念: Effect
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="./">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/">
+            
+                    
+                    高级
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="FutureActions.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/FutureActions.html">
+            
+                    
+                    监听未来的 action
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4.2" data-path="NonBlockingCalls.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/NonBlockingCalls.html">
+            
+                    
+                    无阻塞调用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="RunningTasksInParallel.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/RunningTasksInParallel.html">
+            
+                    
+                    同时执行多个任务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="RacingEffects.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/RacingEffects.html">
+            
+                    
+                    在多个 Effects 之间启动 race
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="SequencingSagas.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/SequencingSagas.html">
+            
+                    
+                    使用 yield* 对 Sagas 进行排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="ComposingSagas.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/ComposingSagas.html">
+            
+                    
+                    组合 Sagas
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="TaskCancellation.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/TaskCancellation.html">
+            
+                    
+                    取消任务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="ForkModel.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/ForkModel.html">
+            
+                    
+                    redux-saga 的 fork model
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.9" data-path="Concurrency.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/Concurrency.html">
+            
+                    
+                    并发
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.10" data-path="Testing.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/Testing.html">
+            
+                    
+                    测试 Sagas
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.11" data-path="UsingRunSaga.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/UsingRunSaga.html">
+            
+                    
+                    连接 Sagas 至外部的输入/输出
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.12" data-path="Channels.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/Channels.html">
+            
+                    
+                    使用 Channels
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../recipes/">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/recipes/">
+            
+                    
+                    技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../ExternalResources.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/ExternalResources.html">
+            
+                    
+                    外部资源
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../Troubleshooting.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/Troubleshooting.html">
+            
+                    
+                    问题解答
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../Glossary.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/Glossary.html">
+            
+                    
+                    名词解释
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../api/">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/api/">
+            
+                    
+                    API 参考
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com/" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <a class="btn pull-left js-toolbar-action" aria-label="" href="https://redux-saga-in-chinese.js.org/docs/advanced/NonBlockingCalls.html#"><i class="fa fa-align-justify"></i></a><a class="btn pull-left js-toolbar-action" aria-label="" href="https://redux-saga-in-chinese.js.org/docs/advanced/NonBlockingCalls.html#"><i class="fa fa-edit"></i> 开始纠错</a><a class="btn pull-right js-toolbar-action" aria-label="GitHub" href="https://redux-saga-in-chinese.js.org/docs/advanced/NonBlockingCalls.html#"><i class="fa fa-github"></i></a><div class="dropdown pull-right  js-toolbar-action"><a class="btn toggle-dropdown" aria-label="Share" href="https://redux-saga-in-chinese.js.org/docs/advanced/NonBlockingCalls.html#"><i class="fa fa-share-alt"></i></a><div class="dropdown-menu dropdown-left"><div class="dropdown-caret"><span class="caret-outer"></span><span class="caret-inner"></span></div><div class="buttons"><button class="button size-5 ">Facebook</button><button class="button size-5 ">Google+</button><button class="button size-5 ">Twitter</button><button class="button size-5 ">Weibo</button><button class="button size-5 ">Instapaper</button></div></div></div><a class="btn pull-right js-toolbar-action" aria-label="" href="https://redux-saga-in-chinese.js.org/docs/advanced/NonBlockingCalls.html#"><i class="fa fa-facebook"></i></a><a class="btn pull-right js-toolbar-action" aria-label="" href="https://redux-saga-in-chinese.js.org/docs/advanced/NonBlockingCalls.html#"><i class="fa fa-twitter"></i></a><a class="btn pull-right js-toolbar-action" aria-label="" href="https://redux-saga-in-chinese.js.org/docs/advanced/NonBlockingCalls.html#"><i class="fa fa-google-plus"></i></a><a class="btn pull-right js-toolbar-action" aria-label="" href="https://redux-saga-in-chinese.js.org/docs/advanced/NonBlockingCalls.html#"><i class="fa fa-weibo"></i></a><div class="dropdown pull-left font-settings js-toolbar-action"><a class="btn toggle-dropdown" aria-label="Font Settings" href="https://redux-saga-in-chinese.js.org/docs/advanced/NonBlockingCalls.html#"><i class="fa fa-font"></i></a><div class="dropdown-menu dropdown-right"><div class="dropdown-caret"><span class="caret-outer"></span><span class="caret-inner"></span></div><div class="buttons"><button class="button size-2 font-reduce">A</button><button class="button size-2 font-enlarge">A</button></div><div class="buttons"><button class="button size-2 ">Serif</button><button class="button size-2 ">Sans</button></div><div class="buttons"><button class="button size-3 ">White</button><button class="button size-3 ">Sepia</button><button class="button size-3 ">Night</button></div></div></div><h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="https://redux-saga-in-chinese.js.org/">无阻塞调用</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="无阻塞调用">无阻塞调用</h1><p>在之前的章节中，我们看到了 <code>take</code> Effect 让我们可以在一个集中的地方更好地去描述一个非常规的流程。</p><p>重温一下登录流程示例：</p><pre><code class="lang-javascript"><span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">loginFlow</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">yield</span> <span class="token function">take</span><span class="token punctuation">(</span><span class="token string">'LOGIN'</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true">// ... perform the login logic</span>
+    <span class="token keyword">yield</span> <span class="token function">take</span><span class="token punctuation">(</span><span class="token string">'LOGOUT'</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true">// ... perform the logout logic</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>让我们来完成这个例子，并实现真实的登录/登出逻辑。假设有这样一个 API，它允许我们在一个远程服务器上验证用户的权限。
+如果验证成功，服务器将会返回一个授权令牌，我们的应用程序将会通过 DOM storage 存储这个令牌（假设我们的 API 为 DOM storage 提供了另外一个服务）。</p><p>当用户登出，我们将直接删除以前存储的授权令牌。</p><h3 id="初次尝试">初次尝试</h3><p>到目前为止，我们拥有所有需要的 Effects 用来实现上述流程。我们可以使用 <code>take</code> Effect 等待 store 中指定的 action。
+我们也可以使用 <code>call</code> Effect 进行同步调用，最后使用 <code>put</code> Effect 来发起 action 到 store。</p><p>让我们试试吧：</p><blockquote><p>注意，以下代码有一个小问题，请务必将这一节全部阅读完。</p></blockquote><pre><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> take<span class="token punctuation">,</span> call<span class="token punctuation">,</span> put <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'redux-saga/effects'</span>
+<span class="token keyword">import</span> Api <span class="token keyword">from</span> <span class="token string">'...'</span>
+
+<span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">authorize</span><span class="token punctuation">(</span>user<span class="token punctuation">,</span> password<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">try</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> token <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token function">call</span><span class="token punctuation">(</span>Api<span class="token punctuation">.</span>authorize<span class="token punctuation">,</span> user<span class="token punctuation">,</span> password<span class="token punctuation">)</span>
+    <span class="token keyword">yield</span> <span class="token function">put</span><span class="token punctuation">(</span><span class="token punctuation">{</span>type<span class="token punctuation">:</span> <span class="token string">'LOGIN_SUCCESS'</span><span class="token punctuation">,</span> token<span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> token
+  <span class="token punctuation">}</span> <span class="token keyword">catch</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">yield</span> <span class="token function">put</span><span class="token punctuation">(</span><span class="token punctuation">{</span>type<span class="token punctuation">:</span> <span class="token string">'LOGIN_ERROR'</span><span class="token punctuation">,</span> error<span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">loginFlow</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token punctuation">{</span>user<span class="token punctuation">,</span> password<span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token function">take</span><span class="token punctuation">(</span><span class="token string">'LOGIN_REQUEST'</span><span class="token punctuation">)</span>
+    <span class="token keyword">const</span> token <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token function">call</span><span class="token punctuation">(</span>authorize<span class="token punctuation">,</span> user<span class="token punctuation">,</span> password<span class="token punctuation">)</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>token<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">yield</span> <span class="token function">call</span><span class="token punctuation">(</span>Api<span class="token punctuation">.</span><span class="token function">storeItem</span><span class="token punctuation">(</span><span class="token punctuation">{</span>token<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+      <span class="token keyword">yield</span> <span class="token function">take</span><span class="token punctuation">(</span><span class="token string">'LOGOUT'</span><span class="token punctuation">)</span>
+      <span class="token keyword">yield</span> <span class="token function">call</span><span class="token punctuation">(</span>Api<span class="token punctuation">.</span><span class="token function">clearItem</span><span class="token punctuation">(</span><span class="token string">'token'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>首先我们创建了一个独立的 Generator <code>authorize</code>，它将执行真实的 API 调用并在成功后通知 Store。</p><p><code>loginFlow</code> 在一个 <code>while(true)</code> 循环中实现它所有的流程，这样做的意思是：一旦到达流程最后一步（<code>LOGOUT</code>），通过等待一个新的 <code>LOGIN_REQUEST</code> action 来启动一个新的迭代。</p><p><code>loginFlow</code> 首先等待一个 <code>LOGIN_REQUEST</code> action。
+然后在 action 的 payload 中获取有效凭据（即 <code>user</code> 和 <code>password</code>）并调用一个 <code>call</code> 到 <code>authorize</code> 任务。</p><p>正如你注意到的，<code>call</code> 不仅可以用来调用返回 Promise 的函数。我们也可以用它来调用其他 Generator 函数。
+在上面的例子中，<strong><code>loginFlow</code> 将等待 <code>authorize</code> 直到它终止或返回</strong>（即执行 api 调用后，发起 action 然后返回 token 至 <code>loginFlow</code>）。</p><p>如果 Api 调用成功了，<code>authorize</code> 将发起一个 <code>LOGIN_SUCCESS</code> action 然后返回获取到的 token。
+如果调用导致了错误，将会发起一个 <code>LOGIN_ERROR</code> action。</p><p>如果调用 <code>authorize</code> 成功，<code>loginFlow</code> 将在 DOM storage 中存储返回的 token，并等待 <code>LOGOUT</code> action。
+当用户登出，我们删除存储的 token 并等待一个新的用户登录。</p><p>在 <code>authorize</code> 失败的情况下，它将返回一个 undefined 值，这将导致 <code>loginFlow</code> 跳过当前处理进程并等待一个新的 <code>LOGIN_REQUEST</code> action。</p><p>请观察整个逻辑是如何存储在一个地方的。一个新的开发者阅读我们的代码时，不必再为了理解控制流而在各个地方来回切换。
+这就像是在阅读同步代码：它们的自然顺序确定了执行步骤。并且我们有很多 Effects 可以调用其他函数并等待它们的结果。</p><h3 id="但上面的方法还是有一个小问题">但上面的方法还是有一个小问题</h3><p>假设 <code>loginFlow</code> 正在等待如下的调用被 resolve：</p><pre><code class="lang-javascript"><span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">loginFlow</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    <span class="token keyword">try</span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> token <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token function">call</span><span class="token punctuation">(</span>authorize<span class="token punctuation">,</span> user<span class="token punctuation">,</span> password<span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    <span class="token punctuation">}</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>但用户点击了 <code>Logout</code> 按钮使得 <code>LOGOUT</code> action 被发起。</p><p>下面的例子演示了假想的一系列事件：</p><pre><code>UI                              loginFlow
+--------------------------------------------------------
+LOGIN_REQUEST...................call authorize.......... waiting to resolve
+........................................................
+........................................................                     
+LOGOUT.................................................. missed!
+........................................................
+................................authorize returned...... dispatch a `LOGIN_SUCCESS`!!
+........................................................</code></pre>
+<p>当 <code>loginFlow</code> 在 <code>authorize</code> 中被阻塞了，最终发生在开始调用和收到响应之间的 <code>LOGOUT</code> 将会被错过，
+因为那时 <code>loginFlow</code> 还没有执行 <code>yield take('LOGOUT')</code>。</p><p>上面代码的问题是 <code>call</code> 是一个会阻塞的 Effect。即 Generator 在调用结束之前不能执行或处理任何其他事情。
+但在我们的情况中，我们不仅希望 <code>loginFlow</code> 执行授权调用，也想监听可能发生在调用未完成之前的 <code>LOGOUT</code> action。
+因为 <code>LOGOUT</code> 与调用 <code>authorize</code> 是 <em>并发的</em>。</p><p>所以我们需要的是一些非阻塞调用 <code>authorize</code> 的方法。这样 <code>loginFlow</code> 就可以继续执行，并且监听并发的或响应未完成之前发出的 <code>LOGOUT</code> action。</p><p>为了表示无阻塞调用，redux-saga 提供了另一个 Effect：<a href="http://leonshi.com/redux-saga-in-chinese/docs/api/index.html#forkfn-args" target="_blank"><code>fork</code></a>。
+当我们 fork 一个 <em>任务</em>，任务会在后台启动，调用者也可以继续它自己的流程，而不用等待被 fork 的任务结束。</p><p>所以为了让 <code>loginFlow</code> 不错过一个并发的 <code>LOGOUT</code>，我们不应该使用 <code>call</code> 调用 <code>authorize</code> 任务，而应该使用 <code>fork</code>。</p><pre><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> fork<span class="token punctuation">,</span> call<span class="token punctuation">,</span> take<span class="token punctuation">,</span> put <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'redux-saga/effects'</span>
+
+<span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">loginFlow</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    <span class="token keyword">try</span> <span class="token punctuation">{</span>
+      <span class="token comment" spellcheck="true">// 无阻塞调用，这里返回的值是什么？</span>
+      <span class="token keyword">const</span> <span class="token operator">?</span><span class="token operator">?</span> <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token function">fork</span><span class="token punctuation">(</span>authorize<span class="token punctuation">,</span> user<span class="token punctuation">,</span> password<span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    <span class="token punctuation">}</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>现在的问题是，自从 <code>authorize</code> 的 action 在后台启动之后，我们获取不到 <code>token</code> 的结果（因为我们不应该等待它）。
+所以我们需要将 token 存储操作移到 <code>authorize</code> 任务内部。</p><pre><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> fork<span class="token punctuation">,</span> call<span class="token punctuation">,</span> take<span class="token punctuation">,</span> put <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'redux-saga/effects'</span>
+<span class="token keyword">import</span> Api <span class="token keyword">from</span> <span class="token string">'...'</span>
+
+<span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">authorize</span><span class="token punctuation">(</span>user<span class="token punctuation">,</span> password<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">try</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> token <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token function">call</span><span class="token punctuation">(</span>Api<span class="token punctuation">.</span>authorize<span class="token punctuation">,</span> user<span class="token punctuation">,</span> password<span class="token punctuation">)</span>
+    <span class="token keyword">yield</span> <span class="token function">put</span><span class="token punctuation">(</span><span class="token punctuation">{</span>type<span class="token punctuation">:</span> <span class="token string">'LOGIN_SUCCESS'</span><span class="token punctuation">,</span> token<span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span> <span class="token keyword">catch</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">yield</span> <span class="token function">put</span><span class="token punctuation">(</span><span class="token punctuation">{</span>type<span class="token punctuation">:</span> <span class="token string">'LOGIN_ERROR'</span><span class="token punctuation">,</span> error<span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">loginFlow</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token punctuation">{</span>user<span class="token punctuation">,</span> password<span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token function">take</span><span class="token punctuation">(</span><span class="token string">'LOGIN_REQUEST'</span><span class="token punctuation">)</span>
+    <span class="token keyword">yield</span> <span class="token function">fork</span><span class="token punctuation">(</span>authorize<span class="token punctuation">,</span> user<span class="token punctuation">,</span> password<span class="token punctuation">)</span>
+    <span class="token keyword">yield</span> <span class="token function">take</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'LOGOUT'</span><span class="token punctuation">,</span> <span class="token string">'LOGIN_ERROR'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token keyword">yield</span> <span class="token function">call</span><span class="token punctuation">(</span>Api<span class="token punctuation">.</span><span class="token function">clearItem</span><span class="token punctuation">(</span><span class="token string">'token'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>我们使用了 <code>yield take(['LOGOUT', 'LOGIN_ERROR'])</code>。意思是监听 2 个并发的 action：</p><ul><li><p>如果 <code>authorize</code> 任务在用户登出之前成功了，它将会发起一个 <code>LOGIN_SUCCESS</code> action 然后结束。
+然后 <code>loginFlow</code> Saga 只会等待一个未来的 <code>LOGOUT</code> action 被发起（因为 <code>LOGIN_ERROR</code> 永远不会发生）。</p></li>
+<li><p>如果 <code>authorize</code> 在用户登出之前失败了，它将会发起一个 <code>LOGIN_ERROR</code> action 然后结束。
+那么 <code>loginFlow</code> 将在 <code>LOGOUT</code> 之前收到 <code>LOGIN_ERROR</code>，然后它会进入另外一个 <code>while</code> 迭代并等待下一个 <code>LOGIN_REQUEST</code> action。</p></li>
+<li><p>如果在 <code>authorize</code> 结束之前，用户就登出了，那么 <code>loginFlow</code> 将收到一个 <code>LOGOUT</code> action 并且也会等待下一个 <code>LOGIN_REQUEST</code>。</p></li></ul>
+<p>注意 <code>Api.clearItem</code> 应该是幂等调用。如果 <code>authorize</code> 调用时没有存储 token 也不会有任何影响。
+<code>loginFlow</code> 仅仅是保证在等待下一次登录之前，storage 中没有 token。</p><p>但是还没完。如果我们在 API 调用期间收到一个 <code>LOGOUT</code> action，我们必须要 <strong>取消</strong> <code>authorize</code> 处理进程，否则将有 2 个并发的任务，
+并且 <code>authorize</code> 任务将会继续运行，并在成功的响应（或失败的响应）返回后发起一个 <code>LOGIN_SUCCESS</code> action（或一个 <code>LOGIN_ERROR</code> action），而这将导致状态不一致。</p><p>为了取消 fork 任务，我们可以使用一个指定的 Effect <a href="http://superraytin.github.io/redux-saga-in-chinese/docs/api/index.html#canceltask" target="_blank"><code>cancel</code></a>。</p><pre><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> take<span class="token punctuation">,</span> put<span class="token punctuation">,</span> call<span class="token punctuation">,</span> fork<span class="token punctuation">,</span> cancel <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'redux-saga/effects'</span>
+
+<span class="token comment" spellcheck="true">// ...</span>
+
+<span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">loginFlow</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token punctuation">{</span>user<span class="token punctuation">,</span> password<span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token function">take</span><span class="token punctuation">(</span><span class="token string">'LOGIN_REQUEST'</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true">// fork return a Task object</span>
+    <span class="token keyword">const</span> task <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token function">fork</span><span class="token punctuation">(</span>authorize<span class="token punctuation">,</span> user<span class="token punctuation">,</span> password<span class="token punctuation">)</span>
+    <span class="token keyword">const</span> action <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token function">take</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'LOGOUT'</span><span class="token punctuation">,</span> <span class="token string">'LOGIN_ERROR'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>action<span class="token punctuation">.</span>type <span class="token operator">===</span> <span class="token string">'LOGOUT'</span><span class="token punctuation">)</span>
+      <span class="token keyword">yield</span> <span class="token function">cancel</span><span class="token punctuation">(</span>task<span class="token punctuation">)</span>
+    <span class="token keyword">yield</span> <span class="token function">call</span><span class="token punctuation">(</span>Api<span class="token punctuation">.</span><span class="token function">clearItem</span><span class="token punctuation">(</span><span class="token string">'token'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p><code>yield fork</code> 的返回结果是一个 <a href="http://superraytin.github.io/redux-saga-in-chinese/docs/api/index.html#task" target="_blank">Task Object</a>。
+我们将它们返回的对象赋给一个本地常量 <code>task</code>。如果我们收到一个 <code>LOGOUT</code> action，我们将那个 task 传入给 <code>cancel</code> Effect。
+如果任务仍在运行，它会被中止。如果任务已完成，那什么也不会发生，取消操作将会是一个空操作（no-op）。最后，如果该任务完成了但是有错误，
+那我们什么也没做，因为我们知道，任务已经完成了。</p><p>OK，我们 <em>几乎</em> 要完成了（是的，它的并发性并不容易，你必须认真对待）。</p><p>假设在我们收到一个 <code>LOGIN_REQUEST</code> action 时，我们在 reducer 中设置了一些 <code>isLoginPending</code> 标识为 true，以便可以在界面上显示一些消息或者旋转 loading。
+如果此时我们在 Api 调用期间收到一个 <code>LOGOUT</code> action，并通过 <em>杀死它</em>（即任务被立即停止）简单粗暴地中止任务。
+那我们可能又以不一致的状态结束了。因为 <code>isLoginPending</code> 仍然是 true，而 reducer 还在等待一个结果 action（<code>LOGIN_SUCCESS</code> 或 <code>LOGIN_ERROR</code>）。</p><p>幸运的是，<code>cancel</code> Effect 不会粗暴地结束我们的 <code>authorize</code> 任务，相反它会给予一个机会执行清理的逻辑。
+在 <code>finally</code> 区块可以处理任何的取消逻辑（以及其他类型的完成逻辑）。由于 finally 区块执行在任何类型的完成上（正常的 return, 错误, 或强制取消），如果你想要为取消作特殊处理，有一个 <code>cancelled</code> Effect：</p><pre><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> take<span class="token punctuation">,</span> call<span class="token punctuation">,</span> put<span class="token punctuation">,</span> cancelled <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'redux-saga/effects'</span>
+<span class="token keyword">import</span> Api <span class="token keyword">from</span> <span class="token string">'...'</span>
+
+<span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">authorize</span><span class="token punctuation">(</span>user<span class="token punctuation">,</span> password<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">try</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> token <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token function">call</span><span class="token punctuation">(</span>Api<span class="token punctuation">.</span>authorize<span class="token punctuation">,</span> user<span class="token punctuation">,</span> password<span class="token punctuation">)</span>
+    <span class="token keyword">yield</span> <span class="token function">put</span><span class="token punctuation">(</span><span class="token punctuation">{</span>type<span class="token punctuation">:</span> <span class="token string">'LOGIN_SUCCESS'</span><span class="token punctuation">,</span> token<span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token keyword">yield</span> <span class="token function">call</span><span class="token punctuation">(</span>Api<span class="token punctuation">.</span>storeItem<span class="token punctuation">,</span> <span class="token punctuation">{</span>token<span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> token
+  <span class="token punctuation">}</span> <span class="token keyword">catch</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">yield</span> <span class="token function">put</span><span class="token punctuation">(</span><span class="token punctuation">{</span>type<span class="token punctuation">:</span> <span class="token string">'LOGIN_ERROR'</span><span class="token punctuation">,</span> error<span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">yield</span> <span class="token function">cancelled</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment" spellcheck="true">// ... put special cancellation handling code here</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>你可能已经注意到了，我们仍然没有做任何与清除 <code>isLoginPending</code> 状态相关的事情。
+对于这一点，有 2 个可能的解决方案（或其他的）。</p><ul><li><p>发起一个指定的 action <code>RESET_LOGIN_PENDING</code>。</p></li>
+<li><p>或者更简单，让 reducer 收到 <code>LOGOUT</code> action 时清除 <code>isLoginPending</code>。</p></li></ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class="search-results-count"></span> results matching "<span class="search-query"></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class="search-query"></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/FutureActions.html" class="navigation navigation-prev " aria-label="Previous page: 监听未来的 action">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/RunningTasksInParallel.html" class="navigation navigation-next " aria-label="Next page: 同时执行多个任务" style="margin-right: 0px;">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"无阻塞调用","level":"1.4.2","depth":2,"next":{"title":"同时执行多个任务","level":"1.4.3","depth":2,"path":"docs/advanced/RunningTasksInParallel.md","ref":"docs/advanced/RunningTasksInParallel.md","articles":[]},"previous":{"title":"监听未来的 action","level":"1.4.1","depth":2,"path":"docs/advanced/FutureActions.md","ref":"docs/advanced/FutureActions.md","articles":[]},"dir":"ltr"},"config":{"plugins":["edit-link","prism@1.0.0","-highlight","github"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"edit-link":{"label":"开始纠错","base":"https://github.com/superRaytin/redux-saga-in-chinese/tree/master"},"github":{"url":"https://github.com/superRaytin/redux-saga-in-chinese"},"sharing":{"facebook":true,"twitter":true,"google":true,"weibo":true,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"prism":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Redux-Saga","gitbook":"3.2.0"},"file":{"path":"docs/advanced/NonBlockingCalls.md","mtime":"2018-05-28T10:04:29.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2018-05-28T10:21:20.665Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="./无阻塞调用 · Redux-Saga_files/gitbook.js.下载"></script>
+    <script src="./无阻塞调用 · Redux-Saga_files/theme.js.下载"></script>
+    
+        
+        <script src="./无阻塞调用 · Redux-Saga_files/plugin.js.下载"></script>
+        
+    
+        
+        <script src="./无阻塞调用 · Redux-Saga_files/plugin.js(1).下载"></script>
+        
+    
+        
+        <script src="./无阻塞调用 · Redux-Saga_files/search-engine.js.下载"></script>
+        
+    
+        
+        <script src="./无阻塞调用 · Redux-Saga_files/search.js.下载"></script>
+        
+    
+        
+        <script src="./无阻塞调用 · Redux-Saga_files/lunr.min.js.下载"></script>
+        
+    
+        
+        <script src="./无阻塞调用 · Redux-Saga_files/search-lunr.js.下载"></script>
+        
+    
+        
+        <script src="./无阻塞调用 · Redux-Saga_files/buttons.js.下载"></script>
+        
+    
+        
+        <script src="./无阻塞调用 · Redux-Saga_files/fontsettings.js.下载"></script>
+        
+    
+
+    
+
+
+</body></html>

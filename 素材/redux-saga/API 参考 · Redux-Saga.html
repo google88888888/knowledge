@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<!-- saved from url=(0046)https://redux-saga-in-chinese.js.org/docs/api/ -->
+<html lang=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>API 参考 · Redux-Saga</title>
+        
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.0">
+        
+        
+        
+    
+    <link rel="stylesheet" href="./API 参考 · Redux-Saga_files/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="./API 参考 · Redux-Saga_files/prism.css">
+                
+            
+                
+                <link rel="stylesheet" href="./API 参考 · Redux-Saga_files/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="./API 参考 · Redux-Saga_files/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://redux-saga-in-chinese.js.org/gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="https://redux-saga-in-chinese.js.org/gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    
+    
+    
+    
+
+    <link rel="prev" href="https://redux-saga-in-chinese.js.org/docs/Glossary.html"></head>
+    <body>
+        
+<div class="book without-animation with-summary font-size-2 font-family-1">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search">
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="https://redux-saga-in-chinese.js.org/">
+            
+                    
+                    自述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../introduction/">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/introduction/">
+            
+                    
+                    介绍
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../introduction/BeginnerTutorial.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/introduction/BeginnerTutorial.html">
+            
+                    
+                    初级教程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../introduction/SagaBackground.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/introduction/SagaBackground.html">
+            
+                    
+                    Saga 概念的背景
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../basics/">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/basics/">
+            
+                    
+                    基础概念
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../basics/UsingSagaHelpers.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/basics/UsingSagaHelpers.html">
+            
+                    
+                    使用 Saga Helpers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../basics/DeclarativeEffects.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/basics/DeclarativeEffects.html">
+            
+                    
+                    声明式 Effects
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../basics/DispatchingActions.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/basics/DispatchingActions.html">
+            
+                    
+                    dispatch action
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../basics/ErrorHandling.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/basics/ErrorHandling.html">
+            
+                    
+                    错误处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../basics/Effect.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/basics/Effect.html">
+            
+                    
+                    一个常见的抽象概念: Effect
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../advanced/">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/">
+            
+                    
+                    高级
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../advanced/FutureActions.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/FutureActions.html">
+            
+                    
+                    监听未来的 action
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../advanced/NonBlockingCalls.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/NonBlockingCalls.html">
+            
+                    
+                    无阻塞调用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../advanced/RunningTasksInParallel.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/RunningTasksInParallel.html">
+            
+                    
+                    同时执行多个任务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../advanced/RacingEffects.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/RacingEffects.html">
+            
+                    
+                    在多个 Effects 之间启动 race
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="../advanced/SequencingSagas.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/SequencingSagas.html">
+            
+                    
+                    使用 yield* 对 Sagas 进行排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="../advanced/ComposingSagas.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/ComposingSagas.html">
+            
+                    
+                    组合 Sagas
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="../advanced/TaskCancellation.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/TaskCancellation.html">
+            
+                    
+                    取消任务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="../advanced/ForkModel.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/ForkModel.html">
+            
+                    
+                    redux-saga 的 fork model
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.9" data-path="../advanced/Concurrency.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/Concurrency.html">
+            
+                    
+                    并发
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.10" data-path="../advanced/Testing.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/Testing.html">
+            
+                    
+                    测试 Sagas
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.11" data-path="../advanced/UsingRunSaga.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/UsingRunSaga.html">
+            
+                    
+                    连接 Sagas 至外部的输入/输出
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.12" data-path="../advanced/Channels.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/Channels.html">
+            
+                    
+                    使用 Channels
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../recipes/">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/recipes/">
+            
+                    
+                    技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../ExternalResources.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/ExternalResources.html">
+            
+                    
+                    外部资源
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../Troubleshooting.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/Troubleshooting.html">
+            
+                    
+                    问题解答
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../Glossary.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/Glossary.html">
+            
+                    
+                    名词解释
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.9" data-path="./">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/api/">
+            
+                    
+                    API 参考
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com/" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <a class="btn pull-left js-toolbar-action" aria-label="" href="https://redux-saga-in-chinese.js.org/docs/api/#"><i class="fa fa-align-justify"></i></a><a class="btn pull-left js-toolbar-action" aria-label="" href="https://redux-saga-in-chinese.js.org/docs/api/#"><i class="fa fa-edit"></i> 开始纠错</a><a class="btn pull-right js-toolbar-action" aria-label="GitHub" href="https://redux-saga-in-chinese.js.org/docs/api/#"><i class="fa fa-github"></i></a><div class="dropdown pull-right  js-toolbar-action"><a class="btn toggle-dropdown" aria-label="Share" href="https://redux-saga-in-chinese.js.org/docs/api/#"><i class="fa fa-share-alt"></i></a><div class="dropdown-menu dropdown-left"><div class="dropdown-caret"><span class="caret-outer"></span><span class="caret-inner"></span></div><div class="buttons"><button class="button size-5 ">Facebook</button><button class="button size-5 ">Google+</button><button class="button size-5 ">Twitter</button><button class="button size-5 ">Weibo</button><button class="button size-5 ">Instapaper</button></div></div></div><a class="btn pull-right js-toolbar-action" aria-label="" href="https://redux-saga-in-chinese.js.org/docs/api/#"><i class="fa fa-facebook"></i></a><a class="btn pull-right js-toolbar-action" aria-label="" href="https://redux-saga-in-chinese.js.org/docs/api/#"><i class="fa fa-twitter"></i></a><a class="btn pull-right js-toolbar-action" aria-label="" href="https://redux-saga-in-chinese.js.org/docs/api/#"><i class="fa fa-google-plus"></i></a><a class="btn pull-right js-toolbar-action" aria-label="" href="https://redux-saga-in-chinese.js.org/docs/api/#"><i class="fa fa-weibo"></i></a><div class="dropdown pull-left font-settings js-toolbar-action"><a class="btn toggle-dropdown" aria-label="Font Settings" href="https://redux-saga-in-chinese.js.org/docs/api/#"><i class="fa fa-font"></i></a><div class="dropdown-menu dropdown-right"><div class="dropdown-caret"><span class="caret-outer"></span><span class="caret-inner"></span></div><div class="buttons"><button class="button size-2 font-reduce">A</button><button class="button size-2 font-enlarge">A</button></div><div class="buttons"><button class="button size-2 ">Serif</button><button class="button size-2 ">Sans</button></div><div class="buttons"><button class="button size-3 ">White</button><button class="button size-3 ">Sepia</button><button class="button size-3 ">Night</button></div></div></div><h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="https://redux-saga-in-chinese.js.org/">API 参考</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="api-参考">API 参考</h1><ul><li><p><a href="https://redux-saga-in-chinese.js.org/docs/api/#middleware-api"><code>Middleware API</code></a></p><ul><li><a href="https://redux-saga-in-chinese.js.org/docs/api/#createsagamiddlewareoptions"><code>createSagaMiddleware(options)</code></a>
+</li>
+<li><a href="https://redux-saga-in-chinese.js.org/docs/api/#middlewarerunsaga-args"><code>middleware.run(saga, ...args)</code></a>
+</li></ul>
+</li>
+<li><p><a href="https://redux-saga-in-chinese.js.org/docs/api/#saga-%E8%BE%85%E5%8A%A9%E5%87%BD%E6%95%B0"><code>Saga 辅助函数</code></a></p><ul><li><a href="https://redux-saga-in-chinese.js.org/docs/api/#takeeverypattern-saga-args"><code>takeEvery(pattern, saga, ...args)</code></a>
+</li>
+<li><a href="https://redux-saga-in-chinese.js.org/docs/api/#takeeverychannel-saga-args"><code>takeEvery(channel, saga, ...args)</code></a>
+</li>
+<li><a href="https://redux-saga-in-chinese.js.org/docs/api/#takelatestpattern-saga-args"><code>takeLatest(pattern, saga, ..args)</code></a>
+</li>
+<li><a href="https://redux-saga-in-chinese.js.org/docs/api/#takelatestchannel-saga-args"><code>takeLatest(channel, saga, ..args)</code></a>
+</li>
+<li><a href="https://redux-saga-in-chinese.js.org/docs/api/#takeleadingpattern-saga-args"><code>takeLeading(pattern, saga, ..args)</code></a>
+</li>
+<li><a href="https://redux-saga-in-chinese.js.org/docs/api/#takeleadingchannel-saga-args"><code>takeLeading(channel, saga, ..args)</code></a>
+</li>
+<li><a href="https://redux-saga-in-chinese.js.org/docs/api/#throttlems-pattern-saga-args"><code>throttle(ms, pattern, saga, ..args)</code></a>
+</li></ul>
+</li>
+<li><p><a href="https://redux-saga-in-chinese.js.org/docs/api/#effect-%E5%88%9B%E5%BB%BA%E5%99%A8"><code>Effect 创建器</code></a></p><ul><li><a href="https://redux-saga-in-chinese.js.org/docs/api/#takepattern"><code>take(pattern)</code></a>
+</li>
+<li><a href="https://redux-saga-in-chinese.js.org/docs/api/#takemaybepattern"><code>take.maybe(pattern)</code></a>
+</li>
+<li><a href="https://redux-saga-in-chinese.js.org/docs/api/#takechannel"><code>take(channel)</code></a>
+</li>
+<li><a href="https://redux-saga-in-chinese.js.org/docs/api/#takemaybechannel"><code>take.maybe(channel)</code></a>
+</li>
+<li><a href="https://redux-saga-in-chinese.js.org/docs/api/#putaction"><code>put(action)</code></a>
+</li>
+<li><a href="https://redux-saga-in-chinese.js.org/docs/api/#putresolveaction"><code>put.resolve(action)</code></a>
+</li>
+<li><a href="https://redux-saga-in-chinese.js.org/docs/api/#putchannel-action"><code>put(channel, action)</code></a>
+</li>
+<li><a href="https://redux-saga-in-chinese.js.org/docs/api/#callfn-args"><code>call(fn, ...args)</code></a>
+</li>
+<li><a href="https://redux-saga-in-chinese.js.org/docs/api/#callcontext-fn-args"><code>call([context, fn], ...args)</code></a>
+</li>
+<li><a href="https://redux-saga-in-chinese.js.org/docs/api/#callcontext-fnname-args"><code>call([context, fnName], ...args)</code></a>
+</li>
+<li><a href="https://redux-saga-in-chinese.js.org/docs/api/#applycontext-fn-args"><code>apply(context, fn, args)</code></a>
+</li>
+<li><a href="https://redux-saga-in-chinese.js.org/docs/api/#cpsfn-args"><code>cps(fn, ...args)</code></a>
+</li>
+<li><a href="https://redux-saga-in-chinese.js.org/docs/api/#cpscontext-fn-args"><code>cps([context, fn], ...args)</code></a>
+</li>
+<li><a href="https://redux-saga-in-chinese.js.org/docs/api/#forkfn-args"><code>fork(fn, ...args)</code></a>
+</li>
+<li><a href="https://redux-saga-in-chinese.js.org/docs/api/#forkcontext-fn-args"><code>fork([context, fn], ...args)</code></a>
+</li>
+<li><a href="https://redux-saga-in-chinese.js.org/docs/api/#spawnfn-args"><code>spawn(fn, ...args)</code></a>
+</li>
+<li><a href="https://redux-saga-in-chinese.js.org/docs/api/#spawncontext-fn-args"><code>spawn([context, fn], ...args)</code></a>
+</li>
+<li><a href="https://redux-saga-in-chinese.js.org/docs/api/#jointask"><code>join(task)</code></a>
+</li>
+<li><a href="https://redux-saga-in-chinese.js.org/docs/api/#jointasks"><code>join(...tasks)</code></a>
+</li>
+<li><a href="https://redux-saga-in-chinese.js.org/docs/api/#canceltask"><code>cancel(task)</code></a>
+</li>
+<li><a href="https://redux-saga-in-chinese.js.org/docs/api/#canceltasks"><code>cancel(...tasks)</code></a>
+</li>
+<li><a href="https://redux-saga-in-chinese.js.org/docs/api/#cancel"><code>cancel()</code></a>
+</li>
+<li><a href="https://redux-saga-in-chinese.js.org/docs/api/#selectselector-args"><code>select(selector, ...args)</code></a>
+</li>
+<li><a href="https://redux-saga-in-chinese.js.org/docs/api/#actionchannelpattern-buffer"><code>actionChannel(pattern, [buffer])</code></a>
+</li>
+<li><a href="https://redux-saga-in-chinese.js.org/docs/api/#flushchannel"><code>flush(channel)</code></a>
+</li>
+<li><a href="https://redux-saga-in-chinese.js.org/docs/api/#cancelled"><code>cancelled()</code></a>
+</li>
+<li><a href="https://redux-saga-in-chinese.js.org/docs/api/#setcontextprops"><code>setContext(props)</code></a>
+</li>
+<li><a href="https://redux-saga-in-chinese.js.org/docs/api/#getcontextprop"><code>getContext(prop)</code></a>
+</li></ul>
+</li>
+<li><p><a href="https://redux-saga-in-chinese.js.org/docs/api/#effect-%E7%BB%84%E5%90%88%E5%99%A8combinators"><code>Effect 组合器（combinators）</code></a></p><ul><li><a href="https://redux-saga-in-chinese.js.org/docs/api/#raceeffects"><code>race(effects)</code></a>
+</li>
+<li><a href="https://redux-saga-in-chinese.js.org/docs/api/#raceeffects-with-array"><code>race([...effects])</code></a>
+</li>
+<li><a href="https://redux-saga-in-chinese.js.org/docs/api/#alleffects---parallel-effects"><code>all([...effects]) (aka parallel effects)</code></a>
+</li>
+<li><a href="https://redux-saga-in-chinese.js.org/docs/api/#alleffects"><code>all(effects)</code></a>
+</li></ul>
+</li>
+<li><p><a href="https://redux-saga-in-chinese.js.org/docs/api/#%E6%8E%A5%E5%8F%A3"><code>接口</code></a></p><ul><li><a href="https://redux-saga-in-chinese.js.org/docs/api/#task"><code>Task</code></a>
+</li>
+<li><a href="https://redux-saga-in-chinese.js.org/docs/api/#channel"><code>Channel</code></a>
+</li>
+<li><a href="https://redux-saga-in-chinese.js.org/docs/api/#buffer"><code>Buffer</code></a>
+</li>
+<li><a href="https://redux-saga-in-chinese.js.org/docs/api/#sagamonitor"><code>SagaMonitor</code></a>
+</li></ul>
+</li>
+<li><p><a href="https://redux-saga-in-chinese.js.org/docs/api/#%E5%A4%96%E9%83%A8-api"><code>外部 API</code></a></p><ul><li><a href="https://redux-saga-in-chinese.js.org/docs/api/#runsagaoptions-saga-args"><code>runSaga(options, saga, ...args)</code></a>
+</li></ul>
+</li>
+<li><p><a href="https://redux-saga-in-chinese.js.org/docs/api/#%E5%B7%A5%E5%85%B7"><code>工具</code></a></p><ul><li><a href="https://redux-saga-in-chinese.js.org/docs/api/#channelbuffer"><code>channel([buffer])</code></a>
+</li>
+<li><a href="https://redux-saga-in-chinese.js.org/docs/api/#eventchannelsubscribe-buffer-matcher"><code>eventChannel(subscribe, [buffer], matcher)</code></a>
+</li>
+<li><a href="https://redux-saga-in-chinese.js.org/docs/api/#buffers"><code>buffers</code></a>
+</li>
+<li><a href="https://redux-saga-in-chinese.js.org/docs/api/#delayms-val"><code>delay(ms, [val])</code></a>
+</li>
+<li><a href="https://redux-saga-in-chinese.js.org/docs/api/#cloneablegeneratorgeneratorfunc"><code>cloneableGenerator(generatorFunc)</code></a>
+</li>
+<li><a href="https://redux-saga-in-chinese.js.org/docs/api/#createmocktask"><code>createMockTask()</code></a>
+</li></ul>
+</li></ul>
+<h1 id="速查表">速查表</h1><ul><li><a href="https://redux-saga-in-chinese.js.org/docs/api/#%E9%98%BB%E5%A1%9E--%E9%9D%9E%E9%98%BB%E5%A1%9E">阻塞 / 非阻塞</a>
+</li></ul>
+<h2 id="middleware-api">Middleware API</h2><h3 id="createsagamiddlewareoptions"><code>createSagaMiddleware(options)</code></h3><p>创建一个 Redux middleware，并将 Sagas 连接到 Redux Store。</p><ul><li><p><code>options: Object</code> - 传递给 middleware 的选项列表。目前支持的选项有:</p><ul><li><p><code>sagaMonitor</code> : <a href="https://redux-saga-in-chinese.js.org/docs/api/#sagamonitor">SagaMonitor</a> - 如果提供了 Saga Monitor, middleware 将向 monitor 传送监视事件。</p></li>
+<li><p><code>emitter</code> : 用于从 redux 向 redux-saga 进给 actions。Emitter 是一个高阶函数（high order function），它接受一个内置 emitter 并返回另一个 emitter。</p><p><strong>例子</strong></p><p>在下面的示例中，我们创建了一个 emitter，它将拆开 actions 列表，并发送从中提取的每个 action。</p><pre><code class="lang-javascript">  <span class="token function">createSagaMiddleware</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    emitter<span class="token punctuation">:</span> emit <span class="token operator">=</span><span class="token operator">&gt;</span> action <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+     <span class="token keyword">if</span> <span class="token punctuation">(</span>Array<span class="token punctuation">.</span><span class="token function">isArray</span><span class="token punctuation">(</span>action<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+       action<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>emit<span class="token punctuation">)</span><span class="token punctuation">;</span>
+       <span class="token keyword">return</span>
+     <span class="token punctuation">}</span>
+     <span class="token function">emit</span><span class="token punctuation">(</span>action<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<ul><li><code>logger</code> : Function - 为 middleware 定义一个自定义的日志方法。默认情况下，middleware 会把所有的错误和警告记录到控制台中。此选项告诉 middleware 把错误/警告发送到我们所提供的替代日志方法中。调用该日志方法的参数为 <code>(level, ...args)</code>。第一个参数表示日志的级别（<code>info</code>、<code>warning</code> 或 <code>error</code>）。其余的对应后面的参数（你可以使用  <code>args.join(' ')</code> 将所有的参数拼接成单个字符串）。
+</li></ul>
+</li>
+<li><p><code>onError</code> : Function - 当提供该方法时，middleware 将带着 Sagas 中未被捕获的错误调用它。这个参数在向错误跟踪服务发送未被捕获的异常时非常有用。</p></li></ul>
+</li></ul>
+<h4 id="例子">例子</h4><p>下面，我们将创建一个函数 <code>configureStore</code>，它将使用一个新的方法 <code>runSaga</code> 来增强 Store。然后我们将在主模块中使用该函数来启动应用的顶级 Saga（root Saga）。</p><p><strong>configureStore.js</strong></p><pre><code class="lang-javascript"><span class="token keyword">import</span> createSagaMiddleware <span class="token keyword">from</span> <span class="token string">'redux-saga'</span>
+<span class="token keyword">import</span> reducer <span class="token keyword">from</span> <span class="token string">'./path/to/reducer'</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">configureStore</span><span class="token punctuation">(</span>initialState<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// 注意：必须满足 redux@&gt;=3.1.0 才可以将 middleware 作为 createStore 的最后一个参数传递</span>
+  <span class="token keyword">const</span> sagaMiddleware <span class="token operator">=</span> <span class="token function">createSagaMiddleware</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token keyword">return</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token function">createStore</span><span class="token punctuation">(</span>reducer<span class="token punctuation">,</span> initialState<span class="token punctuation">,</span> <span class="token function">applyMiddleware</span><span class="token punctuation">(</span><span class="token comment" spellcheck="true">/* 其它 middleware, */</span>sagaMiddleware<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    runSaga<span class="token punctuation">:</span> sagaMiddleware<span class="token punctuation">.</span>run
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p><strong>main.js</strong></p><pre><code class="lang-javascript"><span class="token keyword">import</span> configureStore <span class="token keyword">from</span> <span class="token string">'./configureStore'</span>
+<span class="token keyword">import</span> rootSaga <span class="token keyword">from</span> <span class="token string">'./sagas'</span>
+<span class="token comment" spellcheck="true">// ... 其它 imports</span>
+
+<span class="token keyword">const</span> store <span class="token operator">=</span> <span class="token function">configureStore</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+store<span class="token punctuation">.</span><span class="token function">runSaga</span><span class="token punctuation">(</span>rootSaga<span class="token punctuation">)</span></code></pre>
+<h4 id="注意事项">注意事项</h4><p>请阅读下面关于 <code>sagaMiddleware.run</code> 方法的更多信息。</p><h3 id="middlewarerunsaga-args"><code>middleware.run(saga, ...args)</code></h3><p>动态地运行 <code>saga</code>。<strong>只能</strong> 用于在 <code>applyMiddleware</code> 阶段 <strong>之后</strong> 执行 Saga。</p><ul><li><code>saga: Function</code>: 一个 Generator 函数
+</li>
+<li><code>args: Array<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>any</span><span class="token punctuation">&gt;</span></span></code>: 提供给 <code>saga</code> 的参数
+</li></ul>
+<p>该方法返回一个 <a href="https://redux-saga-in-chinese.js.org/docs/api/#task-descriptor">Task 描述对象</a>.</p><h4 id="注意事项">注意事项</h4><p><code>saga</code> 必须是一个返回 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator" target="_blank">Generator 对象</a> 的函数。middleware 会迭代这个 Generator 并执行所有 yield 后的 Effect。（译注：Effect 可以看作是 redux-saga 的任务单元，参考 <a href="http://superraytin.github.io/redux-saga-in-chinese/docs/Glossary.html" target="_blank">名词解释</a>）。</p><p><code>saga</code> 也可以使用库中提供的各种 Effect 来启动其他 saga。下述的迭代过程也适用于所有的子级 saga。</p><p>在第一次迭代里，middleware 会调用 <code>next()</code> 方法来获取下一个 Effect。然后 middleware 按照后续 Effects API 所指定的方式来执行 yield 后的 Effect。
+与此同时，Generator 将被暂停，直到 effect 执行结束。在接收到执行的结果时，middleware 在 Generator 里接着调用 <code>next(result)</code>，并将得到的结果作为参数传入。
+这个过程会一直重复，直到 Generator 正常终止或抛出错误。</p><p>如果执行导致了错误（由各个 Effect 创建器定义），则会调用 Generator 的 <code>throw(error)</code> 方法来代替。如果 Generator 函数定义了一个 <code>try/catch</code> 包裹当前的 yield 指令，那么 <code>catch</code> 区块将被底层 Generator 运行时（runtime）调用。运行时还将调用所有相应的 <code>finally</code> 区块。</p><p>在 Saga 被取消（手动或使用所提供的 Effect）的情况下，middleware 将调用 Generator 的 <code>return()</code> 方法。这将导致 Generator 直接跳到 <code>finally</code> 区块。</p><h2 id="saga-辅助函数">Saga 辅助函数</h2><blockquote><p>注意: 下列函数都是构建在以下 Effect 创建器之上的辅助函数。（译注：即高级 API）</p></blockquote><h3 id="takeeverypattern-saga-args"><code>takeEvery(pattern, saga, ...args)</code></h3><p>在发起（dispatch）到 Store 并且匹配 <code>pattern</code> 的每一个 action 上派生一个 <code>saga</code>。</p><ul><li><p><code>pattern: String | Array | Function</code> - 有关更多信息，请参见 <a href="https://redux-saga-in-chinese.js.org/docs/api/#takepattern"><code>take(pattern)</code></a> 的文档</p></li>
+<li><p><code>saga: Function</code> - 一个 Generator 函数</p></li>
+<li><p><code>args: Array<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>any</span><span class="token punctuation">&gt;</span></span></code> - 传递给启动任务的参数。<code>takeEvery</code> 会把当前的 action 追加到参数列表中。（即 action 将是 <code>saga</code> 的最后一个参数）</p></li></ul>
+<h4 id="例子">例子</h4><p>在下面的示例中，我们创建了一个简单的任务 <code>fetchUser</code>。我们在每次 <code>USER_REQUESTED</code> action 被发起时，使用 <code>takeEvery</code> 来启动一个新的 <code>fetchUser</code> 任务。</p><pre><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> takeEvery <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token template-string"><span class="token string">`redux-saga/effects`</span></span>
+
+<span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">fetchUser</span><span class="token punctuation">(</span>action<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">watchFetchUser</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">yield</span> <span class="token function">takeEvery</span><span class="token punctuation">(</span><span class="token string">'USER_REQUESTED'</span><span class="token punctuation">,</span> fetchUser<span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
+<h4 id="注意事项">注意事项</h4><p><code>takeEvery</code> 是一个使用 <code>take</code> 和 <code>fork</code> 构建的高级 API。下面演示了这个辅助函数是如何由低级 Effect 实现的：</p><pre><code class="lang-javascript"><span class="token keyword">const</span> takeEvery <span class="token operator">=</span> <span class="token punctuation">(</span>patternOrChannel<span class="token punctuation">,</span> saga<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>args<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token function">fork</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token operator">*</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> action <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token function">take</span><span class="token punctuation">(</span>patternOrChannel<span class="token punctuation">)</span>
+    <span class="token keyword">yield</span> <span class="token function">fork</span><span class="token punctuation">(</span>saga<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>args<span class="token punctuation">.</span><span class="token function">concat</span><span class="token punctuation">(</span>action<span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
+<p><code>takeEvery</code> 允许处理并发的 action（译注：即同时触发相同的 action）。在上面的例子里，当发起一个 <code>USER_REQUESTED</code> action 时，即使前一个 <code>fetchUser</code> 任务还未处理结束，也将会启动一个新的 <code>fetchUser</code> 任务。
+（举个例子，用户以极快的速度连续点击一个 <code>Load User</code> 按钮 2 次，即使第一个触发的 <code>fetchUser</code> 任务还未结束，第二次点击依然会发起一个 <code>USER_REQUESTED</code> action。）</p><p><code>takeEvery</code> 不会对多个任务的响应进行排序，并且不保证任务将会以它们启动的顺序结束。如果要对响应进行排序，可以关注以下的 <code>takeLatest</code>。</p><h3 id="takeeverychannel-saga-args"><code>takeEvery(channel, saga, ...args)</code></h3><p>你还可以将 channel 作为参数传入，其行为与 <a href="https://redux-saga-in-chinese.js.org/docs/api/#takeeverypattern-saga-args">takeEvery(pattern, saga, ...args)</a> 一致。</p><h3 id="takelatestpattern-saga-args"><code>takeLatest(pattern, saga, ...args)</code></h3><p>在发起到 Store 并且匹配 <code>pattern</code> 的每一个 action 上派生一个 <code>saga</code>。并自动取消之前所有已经启动但仍在执行中的 <code>saga</code> 任务。</p><p>每当一个 action 被发起到 Store，并且匹配 <code>pattern</code> 时，则 <code>takeLatest</code> 将会在后台启动一个新的 <code>saga</code> 任务。
+如果此前已经有一个 <code>saga</code> 任务启动了（在当前 action 之前发起的最后一个 action），并且仍在执行中，那么这个任务将被取消。</p><ul><li><p><code>pattern: String | Array | Function</code> - 有关更多信息，请参见 <a href="https://redux-saga-in-chinese.js.org/docs/api/#takepattern"><code>take(pattern)</code></a> 的文档</p></li>
+<li><p><code>saga: Function</code> - 一个 Generator 函数</p></li>
+<li><p><code>args: Array<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>any</span><span class="token punctuation">&gt;</span></span></code> - 传递给启动任务的参数。<code>takeLatest</code> 会把当前的 action 追加到参数列表中。（即 action 将是 <code>saga</code> 的最后一个参数）</p></li></ul>
+<h4 id="例子">例子</h4><p>在下面的示例中，我们创建了一个简单的任务 <code>fetchUser</code>。我们在每次 <code>USER_REQUESTED</code> action 被发起时，使用 <code>takeLatest</code> 来启动一个新的 <code>fetchUser</code> 任务。
+由于 <code>takeLatest</code> 取消了所有之前启动且未完成的任务，这样便可以保证：即使用户以极快的速度连续多次触发 <code>USER_REQUESTED</code> action，我们都只会以最后的一个结束。</p><pre><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> takeLatest <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token template-string"><span class="token string">`redux-saga/effects`</span></span>
+
+<span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">fetchUser</span><span class="token punctuation">(</span>action<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">watchLastFetchUser</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">yield</span> <span class="token function">takeLatest</span><span class="token punctuation">(</span><span class="token string">'USER_REQUESTED'</span><span class="token punctuation">,</span> fetchUser<span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
+<h4 id="注意事项">注意事项</h4><p><code>takeLatest</code> 是一个使用 <code>take</code> 和 <code>fork</code> 构建的高级 API。下面演示了这个辅助函数是如何由低级 Effect 实现的：</p><pre><code class="lang-javascript"><span class="token keyword">const</span> takeLatest <span class="token operator">=</span> <span class="token punctuation">(</span>patternOrChannel<span class="token punctuation">,</span> saga<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>args<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token function">fork</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token operator">*</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> lastTask
+  <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> action <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token function">take</span><span class="token punctuation">(</span>patternOrChannel<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>lastTask<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">yield</span> <span class="token function">cancel</span><span class="token punctuation">(</span>lastTask<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 如果任务已经结束，cancel 则是空操作</span>
+    <span class="token punctuation">}</span>
+    lastTask <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token function">fork</span><span class="token punctuation">(</span>saga<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>args<span class="token punctuation">.</span><span class="token function">concat</span><span class="token punctuation">(</span>action<span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
+<h3 id="takelatestchannel-saga-args"><code>takeLatest(channel, saga, ...args)</code></h3><p>你还可以将 channel 作为参数传入，其行为与 <a href="https://redux-saga-in-chinese.js.org/docs/api/#takelatestpattern-saga-args">takeLatest(pattern, saga, ...args)</a> 一致。</p><h3 id="takeleadingpattern-saga-args"><code>takeLeading(pattern, saga, ...args)</code></h3><p>在发起到 Store 并且匹配 <code>pattern</code> 的每一个 action 上派生一个 <code>saga</code>。
+它将在派生一次任务之后阻塞，直到派生的 saga 完成，然后又再次开始监听指定的 <code>pattern</code>。</p><p>简而言之，<code>takeLeading</code> 只在没有 saga 运行的时候才监听 action。</p><ul><li><p><code>pattern: String | Array | Function</code> - 有关更多信息，请参见 <a href="https://redux-saga-in-chinese.js.org/docs/api/#takepattern"><code>take(pattern)</code></a> 的文档</p></li>
+<li><p><code>saga: Function</code> - 一个 Generator 函数</p></li>
+<li><p><code>args: Array<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>any</span><span class="token punctuation">&gt;</span></span></code> - 传递给启动任务的参数。<code>takeLeading</code> 会把当前的 action 追加到参数列表中。（即 action 将是 <code>saga</code> 的最后一个参数）</p></li></ul>
+<h4 id="例子">例子</h4><p>在下面的示例中，我们创建了一个简单的任务 <code>fetchUser</code>。我们在每次 <code>USER_REQUESTED</code> action 被发起时，使用 <code>takeLeading</code> 来启动一个新的 <code>fetchUser</code> 任务。
+由于 <code>takeLeading</code> 在其开始之后便无视所有新传入的任务，我们便可以保证：如果用户以极快的速度连续多次触发 <code>USER_REQUESTED</code> action，我们都只会保持以第一个 action 运行。</p><pre><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> takeLeading <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token template-string"><span class="token string">`redux-saga/effects`</span></span>
+
+<span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">fetchUser</span><span class="token punctuation">(</span>action<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">watchLastFetchUser</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">yield</span> <span class="token function">takeLeading</span><span class="token punctuation">(</span><span class="token string">'USER_REQUESTED'</span><span class="token punctuation">,</span> fetchUser<span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
+<h4 id="注意事项">注意事项</h4><p><code>takeLeading</code> 是一个使用 <code>take</code> 和 <code>call</code> 构建的高级 API。下面演示了这个辅助函数是如何由低级 Effect 实现的：</p><pre><code class="lang-javascript"><span class="token keyword">const</span> takeLeading <span class="token operator">=</span> <span class="token punctuation">(</span>patternOrChannel<span class="token punctuation">,</span> saga<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>args<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token function">fork</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token operator">*</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> action <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token function">take</span><span class="token punctuation">(</span>patternOrChannel<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">yield</span> <span class="token function">call</span><span class="token punctuation">(</span>saga<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>args<span class="token punctuation">.</span><span class="token function">concat</span><span class="token punctuation">(</span>action<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
+<h3 id="takeleadingchannel-saga-args"><code>takeLeading(channel, saga, ...args)</code></h3><p>你还可以将 channel 作为参数传入，其行为与 <a href="https://redux-saga-in-chinese.js.org/docs/api/#takeleadingpattern-saga-args">takeLeading(pattern, saga, ...args)</a> 一致。</p><h3 id="throttlems-pattern-saga-args"><code>throttle(ms, pattern, saga, ...args)</code></h3><p>在发起到 Store 并且匹配 <code>pattern</code> 的一个 action 上派生一个 <code>saga</code>。
+它在派生一次任务之后，仍然将新传入的 action 接收到底层的 <code>buffer</code> 中，至多保留（最近的）一个。但与此同时，它在 <code>ms</code> 毫秒内将暂停派生新的任务 —— 这也就是它被命名为节流阀（<code>throttle</code>）的原因。其用途，是在处理任务时，无视给定的时长内新传入的 action。</p><ul><li><p><code>ms: Number</code> - 在 action 开始处理后，无视新 action 的时长；以毫秒为单位。</p></li>
+<li><p><code>pattern: String | Array | Function</code> - 有关更多信息，请参见 <a href="https://redux-saga-in-chinese.js.org/docs/api/#takepattern"><code>take(pattern)</code></a> 的文档</p></li>
+<li><p><code>saga: Function</code> - 一个 Generator 函数</p></li>
+<li><p><code>args: Array<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>any</span><span class="token punctuation">&gt;</span></span></code> - 传递给启动任务的参数。<code>throttle</code> 会把当前的 action 追加到参数列表中。（即 action 将是 <code>saga</code> 的最后一个参数）</p></li></ul>
+<h4 id="例子">例子</h4><p>在下面的示例中，我们创建了一个简单的任务 <code>fetchAutocomplete</code>。我们在 <code>FETCH_AUTOCOMPLETE</code> action 被发起时，使用 <code>throttle</code> 来启动一个新的 <code>fetchAutocomplete</code> 任务。
+不过由于 <code>throttle</code> 无视了一段时间内连续的 <code>FETCH_AUTOCOMPLETE</code>，我们便可以确保用户不会因此向我们的服务器发起大量请求。</p><pre><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> call<span class="token punctuation">,</span> put<span class="token punctuation">,</span> throttle <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token template-string"><span class="token string">`redux-saga/effects`</span></span>
+
+<span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">fetchAutocomplete</span><span class="token punctuation">(</span>action<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> autocompleteProposals <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token function">call</span><span class="token punctuation">(</span>Api<span class="token punctuation">.</span>fetchAutocomplete<span class="token punctuation">,</span> action<span class="token punctuation">.</span>text<span class="token punctuation">)</span>
+  <span class="token keyword">yield</span> <span class="token function">put</span><span class="token punctuation">(</span><span class="token punctuation">{</span>type<span class="token punctuation">:</span> <span class="token string">'FETCHED_AUTOCOMPLETE_PROPOSALS'</span><span class="token punctuation">,</span> proposals<span class="token punctuation">:</span> autocompleteProposals<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">throttleAutocomplete</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">yield</span> <span class="token function">throttle</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">,</span> <span class="token string">'FETCH_AUTOCOMPLETE'</span><span class="token punctuation">,</span> fetchAutocomplete<span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
+<h4 id="注意事项">注意事项</h4><p><code>throttle</code> 是一个使用 <code>take</code>、<code>fork</code> 和 <code>actionChannel</code> 构建的高级 API。下面演示了这个辅助函数是如何由低级 Effect 实现的：</p><pre><code class="lang-javascript"><span class="token keyword">const</span> throttle <span class="token operator">=</span> <span class="token punctuation">(</span>ms<span class="token punctuation">,</span> pattern<span class="token punctuation">,</span> task<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>args<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token function">fork</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token operator">*</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> throttleChannel <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token function">actionChannel</span><span class="token punctuation">(</span>pattern<span class="token punctuation">)</span>
+
+  <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> action <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token function">take</span><span class="token punctuation">(</span>throttleChannel<span class="token punctuation">)</span>
+    <span class="token keyword">yield</span> <span class="token function">fork</span><span class="token punctuation">(</span>task<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>args<span class="token punctuation">,</span> action<span class="token punctuation">)</span>
+    <span class="token keyword">yield</span> <span class="token function">delay</span><span class="token punctuation">(</span>ms<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="effect-创建器">Effect 创建器</h2><blockquote><p>注意:</p><ul><li>以下每个函数都会返回一个普通 Javascript 对象（plain JavaScript object），并且不会执行任何其它操作。
+</li>
+<li>执行是由 middleware 在上述迭代过程中进行的。
+</li>
+<li>middleware 会检查每个 Effect 的描述信息，并进行相应的操作
+</li></ul>
+</blockquote><h3 id="takepattern"><code>take(pattern)</code></h3><p>创建一个 Effect 描述信息，用来命令 middleware 在 Store 上等待指定的 action。
+在发起与 <code>pattern</code> 匹配的 action 之前，Generator 将暂停。</p><p>我们用以下规则来解释 <code>pattern</code>：</p><ul><li><p>如果以空参数或 <code>'*'</code> 调用 <code>take</code>，那么将匹配所有发起的 action。（例如，<code>take()</code> 将匹配所有 action）</p></li>
+<li><p>如果它是一个函数，那么将匹配 <code>pattern(action)</code> 为 true 的 action。（例如，<code>take(action =&gt; action.entities)</code> 将匹配哪些 <code>entities</code> 字段为真的 action）</p><blockquote><p>注意: 如果 pattern 函数上定义了 <code>toString</code>，<code>action.type</code> 将改用 <code>pattern.toString</code> 来测试。这个设定在你使用 action 创建函数库（如 redux-act 或 redux-actions）时非常有用。</p></blockquote></li>
+<li><p>如果它是一个字符串，那么将匹配 <code>action.type === pattern</code> 的 action。（例如，<code>take(INCREMENT_ASYNC)</code>）</p></li>
+<li><p>如果它是一个数组，那么数组中的每一项都适用于上述规则 —— 因此它是支持字符串与函数混用的。不过，最常见的用例还属纯字符串数组，其结果是用 <code>action.type</code> 与数组中的每一项相对比。（例如，<code>take([INCREMENT, DECREMENT])</code> 将匹配 <code>INCREMENT</code> 或 <code>DECREMENT</code> 类型的 action）</p></li></ul>
+<p>middleware 提供了一个特殊的 action —— <code>END</code>。如果你发起 END action，则无论哪种 pattern，只要是被 take Effect 阻塞的 Sage 都会被终止。假如被终止的 Saga 下仍有分叉（forked）任务还在运行，那么它在终止任务前，会先等待其所有子任务均被终止。</p><h3 id="takemaybepattern"><code>take.maybe(pattern)</code></h3><p>与 <code>take(pattern)</code> 相同，但在 <code>END</code> action 时不自动地终止 Saga。与所有在 take Effect 上阻塞的 Saga 都将获得 <code>END</code> 对象的规则相反。</p><h4 id="注意事项">注意事项</h4><p><code>take.maybe</code> 的命名来自于函数式编程 —— 就好比我们可以使用 <code>Maybe(ACTION)</code> 类型代替（自动处理的）<code>ACTION</code>，使我们得以处理以下两种情况：</p><ul><li>存在 <code>Just(ACTION)</code> 的情况（我们有一个 action）
+</li>
+<li><p><code>NOTHING</code> 的情况（channel 已经被关闭）。例如，我们需要一些途径来映射 <code>END</code>。</p></li>
+<li><p>在内部，所有 <code>dispath</code> 过的 action 都会经过 <code>stdChannel</code>；而当 <code>dispatch(END)</code> 发生时，<code>stdChannel</code> 则会被关闭。</p></li></ul>
+<h3 id="takechannel"><code>take(channel)</code></h3><p>创建一个 Effect 描述信息，用来命令 middleware 从指定的 Channel 中等待一条特定消息。
+如果 channel 已经被关闭，那么 Generator 将以与上面 <code>take(pattern)</code> 所描述一致的步骤马上终止。</p><h3 id="takemaybechannel"><code>take.maybe(channel)</code></h3><p>与 <code>take(channel)</code> 相同，但在 <code>END</code> action 时不自动地终止 Saga。与所有在 take Effect 上阻塞的 Saga 都将获得 <code>END</code> 对象的规则相反。有关更多信息，请参见 <a href="https://redux-saga-in-chinese.js.org/docs/api/#takemaybepattern">这里</a>。</p><h3 id="putaction"><code>put(action)</code></h3><p>创建一个 Effect 描述信息，用来命令 middleware 向 Store 发起一个 action。
+这个 effect 是非阻塞型的，并且所有向下游抛出的错误（例如在 reducer 中），都不会冒泡回到 saga 当中。</p><ul><li><code>action: Object</code> - <a href="http://redux.js.org/docs/api/Store.html#dispatch" target="_blank">有关完整信息，请参见 Redux <code>dispatch</code> 的文档</a>
+</li></ul>
+<h3 id="putresolveaction"><code>put.resolve(action)</code></h3><p>类似 <a href="https://redux-saga-in-chinese.js.org/docs/api/#putaction"><code>put</code></a>，但 effect 是阻塞型的（如果从 <code>dispatch</code> 返回了 promise，它将会等待其结果），并且会从下游冒泡错误。</p><ul><li><code>action: Object</code> - <a href="http://redux.js.org/docs/api/Store.html#dispatch" target="_blank">有关完整信息，请参见 Redux <code>dispatch</code> 的文档</a>
+</li></ul>
+<h3 id="putchannel-action"><code>put(channel, action)</code></h3><p>创建一个 Effect 描述信息，用来命令 middleware 向指定的 channel 中放入一条 action。</p><ul><li><code>channel: Channel</code> - 一个 <a href="https://redux-saga-in-chinese.js.org/docs/api/#channel"><code>Channel</code></a> 对象.
+</li>
+<li><code>action: Object</code> - <a href="http://redux.js.org/docs/api/Store.html#dispatch" target="_blank">有关完整信息，请参见 Redux <code>dispatch</code> 的文档</a>
+</li></ul>
+<p>当 put <strong>没有</strong> 被缓存而是被 taker 立即消费掉的时候，这个 effect 是阻塞型的。假如有错误被抛到了这些 taker 当中，那这个错误将会冒泡回到 saga 里面。</p><h3 id="callfn-args"><code>call(fn, ...args)</code></h3><p>创建一个 Effect 描述信息，用来命令 middleware 以参数 <code>args</code> 调用函数 <code>fn</code> 。</p><ul><li><code>fn: Function</code> - 一个 Generator 函数, 也可以是一个返回 Promise 或任意其它值的普通函数。
+</li>
+<li><code>args: Array<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>any</span><span class="token punctuation">&gt;</span></span></code> - 传递给 <code>fn</code> 的参数数组。
+</li></ul>
+<h4 id="注意事项">注意事项</h4><p><code>fn</code> 即可以是一个 <strong>普通</strong> 函数，也可以是一个 Generator 函数。</p><p>middleware 会调用该函数，并检查其结果。</p><p>如果其结果是一个迭代器对象（Iterator object），那么 middleware 将会执行这个 Generator 函数 —— 正如它对待 startup Generator（该 Generator 会在启动时被传递给 middleware）那样。在子级 Generator 正常结束或遭遇某些错误而中断之前，父级 Generator 将被一直暂停 —— 在前者的情况下，父级 Generator 会在子级 Generator 返回值后带着该值恢复执行；而在后者的情况下，将在父级 Generator 中抛出一个错误。</p><p>如果其结果是一个 Promise，那么在该 Promise 被 resolve 或 reject 之前，middleware 都将一直暂停 Generator —— 在前者的情况下，Generator 会在 resolve 之后带着其返回值恢复执行；而在后者的情况下，将在 Generator 中抛出一个错误。</p><p>如果其结果既不是迭代器对象也不是 Promise，那么 middleware 会立即把该值返回给 saga，从而让它可以以同步的形式地恢复执行。</p><p>当 Generator 中抛出了一个错误时，假如有使用 <code>try/catch</code> 区块包裹当前的 <code>yield</code> 指令，那么控制权将会被转交给 <code>catch</code> 区块。否则，Generator 会因错误而中断，并且假如这个 Generator 是由其它 Generator 调用的话，那么错误还会被传递给该调用方。</p><h3 id="callcontext-fn-args"><code>call([context, fn], ...args)</code></h3><p>类似 <code>call(fn, ...args)</code>，但支持传递 <code>this</code> 上下文给 <code>fn</code>。在调用对象方法时很有用。</p><h3 id="callcontext-fnname-args"><code>call([context, fnName], ...args)</code></h3><p>类似 <code>call([context, fn], ...args)</code>，但支持用字符串传递 <code>fn</code>。在调用对象的方法时很有用。例如 <code>yield call([localStorage, 'getItem'], 'redux-saga')</code>。</p><h3 id="applycontext-fn-args"><code>apply(context, fn, [args])</code></h3><p><code>call([context, fn], ...args)</code> 的另一种写法。</p><h3 id="cpsfn-args"><code>cps(fn, ...args)</code></h3><p>创建一个 Effect 描述信息，用来命令 middleware 以 Node 风格的函数（Node style function）的方式调用 <code>fn</code>。</p><ul><li><p><code>fn: Function</code> - 一个 Node 风格的函数。即除了接受其自身参数之外，还接受一个在 <code>fn</code> 执行结束后会被调用的附加回调函数。该回调函数接受两个参数，第一个参数用于报告错误，而第二个用于报告成功的结果。</p></li>
+<li><p><code>args: Array<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>any</span><span class="token punctuation">&gt;</span></span></code> - 传递给 <code>fn</code> 的参数数组。</p></li></ul>
+<h4 id="注意事项">注意事项</h4><p>middleware 将执行 <code>fn(...arg, cb)</code>。其中 <code>cb</code> 是由 middleware 传递给 <code>fn</code> 的回调函数。如果 <code>fn</code> 正常结束，则必定会调用 <code>cb(null, result)</code>，从而告知 middleware 成功的结果。如果 <code>fn</code> 遇到了错误，则必定会调用 <code>cb(error)</code>，从而告知 middleware 出错了。</p><p>在 <code>fn</code> 终止之前，middleware 会保持暂停状态。</p><h3 id="cpscontext-fn-args"><code>cps([context, fn], ...args)</code></h3><p>支持传递 <code>this</code> 上下文给 <code>fn</code>。（对象方法调用）</p><h3 id="forkfn-args"><code>fork(fn, ...args)</code></h3><p>创建一个 Effect 描述信息，用来命令 middleware 以 <strong>非阻塞调用</strong> 的形式执行 <code>fn</code>。</p><h4 id="参数">参数</h4><ul><li><code>fn: Function</code> - 一个 Generator 函数，或返回 Promise 的普通函数
+</li>
+<li><code>args: Array<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>any</span><span class="token punctuation">&gt;</span></span></code> - 传递给 <code>fn</code> 的参数数组。
+</li></ul>
+<p>返回一个 <a href="https://redux-saga-in-chinese.js.org/docs/api/#task">Task</a> 对象。</p><h4 id="注意事项">注意事项</h4><p><code>fork</code> 类似于 <code>call</code>，可以用来调用普通函数和 Generator 函数。不过，<code>fork</code> 的调用是非阻塞的，Generator 不会在等待 <code>fn</code> 返回结果的时候被 middleware 暂停；恰恰相反地，它在 <code>fn</code> 被调用时便会立即恢复执行。</p><p><code>fork</code>，以及 <code>race</code>，都是用于管理 Saga 间并发的中心化 Effect。</p><p><code>yield fork(fn ...args)</code> 的结果是一个 <a href="https://redux-saga-in-chinese.js.org/docs/api/#task">Task</a> 对象 —— 一个具备着某些实用方法及属性的对象。</p><p>所有分叉任务（forked tasks）都会被附加（attach）到它们的父级任务身上。当父级任务终止其自身命令的执行，它会在返回之前等待所有分叉任务终止。</p><p>来自于子级任务的错误会自动地冒泡到它们的父级任务。如果有任何分叉任务引发了一个未被捕获的错误，那么父级任务会因该子级错误而中断，并且父级的整个执行树（即分叉任务 + 如果还在运行的由父体扮演的 <strong>主任务</strong>）也会被取消。</p><p>一个分叉任务的取消，将自动地取消所有还在执行的分叉任务。另外，这个被取消的任务在被阻塞时所处的当前 Effect（若有的话）也会被取消。</p><p>如果一个分叉任务以同步的形式失败（即在它执行完成后且未开始做异步操作前立即失败），则不会返回 Task，并且父级任务将被尽快地中断（由于父子任务均并行地运行，父级任务将在收到子级任务失败的通知时中断）。</p><p>若要创建 <strong>被分离的（detached）</strong> 分叉，请使用 <code>spawn</code> 代替。</p><h3 id="forkcontext-fn-args"><code>fork([context, fn], ...args)</code></h3><p>支持使用 <code>this</code> 上下文调用分叉函数。</p><h3 id="spawnfn-args"><code>spawn(fn, ...args)</code></h3><p>与 <code>fork(fn, ...args)</code> 相同，但创建的是 <strong>被分离的</strong> 任务。被分离的任务与其父级任务保持独立，并像顶级任务般工作。父级任务不会在返回之前等待被分离的任务终止，并且所有可能影响父级或被分离的任务的事件都是完全独立的（错误、取消）。</p><h3 id="spawncontext-fn-args"><code>spawn([context, fn], ...args)</code></h3><p>支持使用 <code>this</code> 上下文衍生（spawn）函数。</p><h3 id="jointask"><code>join(task)</code></h3><p>创建一个 Effect 描述信息，用来命令 middleware 等待之前的一个分叉任务的结果。</p><ul><li><code>task: Task</code> - 由之前的 <code>fork</code> 指令返回的 <a href="https://redux-saga-in-chinese.js.org/docs/api/#task">Task</a> 对象
+</li></ul>
+<h4 id="注意事项">注意事项</h4><p><code>join</code> 解出的结果（成功或错误）与被连接（join）的任务的相同。如果被连接的任务被取消，那么该取消信息还将冒泡到执行 join effect 的 Saga。同样地，这些连接者的任何潜在调用方也将一律被取消。</p><h3 id="jointasks"><code>join(...tasks)</code></h3><p>创建一个 Effect 描述信息，用来命令 middleware 等待之前的多个分叉任务的结果。</p><ul><li><code>tasks: Array<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Task</span><span class="token punctuation">&gt;</span></span></code> - <a href="https://redux-saga-in-chinese.js.org/docs/api/#task">Task</a> 是由之前 <code>fork</code> 指令返回的对象
+</li></ul>
+<h4 id="注意事项">注意事项</h4><p>它只是把任务数组包裹在 <a href="https://redux-saga-in-chinese.js.org/docs/api/#jointask">join effects</a> 中，大致相当于 <code>yield tasks.map(t =&gt; join(t))</code>。</p><h3 id="canceltask"><code>cancel(task)</code></h3><p>创建一个 Effect 描述信息，用来命令 middleware 取消之前的一个分叉任务。</p><ul><li><code>task: Task</code> - 由之前 <code>fork</code> 指令返回的 <a href="https://redux-saga-in-chinese.js.org/docs/api/#task">Task</a> 对象
+</li></ul>
+<h4 id="注意事项">注意事项</h4><p>若要取消正在运行的任务，middleware 将调用底层 Generator 对象上的 <code>return</code>。这将取消任务中的当前 Effect，并跳转至 finally 区块（若有定义的话）。</p><p>在 finally 区块中，你可以执行任何清理逻辑，或发起某些 action 来保持 store 处于一致状态(例如，当 ajax 请求被取消时，将 spinner 的状态重置为 false)。你可以在 finally 区块中检查 Saga 是不是通过 <code>yield cancelled()</code> 取消的。</p><p>取消信息会向下传播到子 saga。当取消任务时，middleware 还会取消当前 Effect（当前阻塞 task 的 Effect）。如果当前 Effect 调用了另一个 saga，那么该 saga 也会被取消。当取消 saga 时，所有 <strong>附加分叉（attached forks）</strong>（用 <code>yield fork()</code> 分叉出的 saga）将被取消。这意味着取消动作会有效地影响属于取消任务的整个执行树。</p><p><code>cancel</code> 是一个非阻塞的 Effect。也就是说，执行 <code>cancel</code> 的 Saga 会在发起取消动作后立即恢复执行。</p><p>对于返回 Promise 结果的函数，你可以通过给 promise 附加一个 <code>[CANCEL]</code> 来插入自己的取消逻辑。</p><p>下述例子演示了如何将取消逻辑附加到 Promise 结果上:</p><pre><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> CANCEL <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'redux-saga'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> fork<span class="token punctuation">,</span> cancel <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'redux-saga/effects'</span>
+
+<span class="token keyword">function</span> <span class="token function">myApi</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> promise <span class="token operator">=</span> <span class="token function">myXhr</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span>
+
+  promise<span class="token punctuation">[</span>CANCEL<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> myXhr<span class="token punctuation">.</span><span class="token function">abort</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token keyword">return</span> promise
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">mySaga</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token keyword">const</span> task <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token function">fork</span><span class="token punctuation">(</span>myApi<span class="token punctuation">)</span>
+
+  <span class="token comment" spellcheck="true">// ... 过一会儿儿</span>
+  <span class="token comment" spellcheck="true">// 将会调用 myApi 上的 promise[CANCEL]</span>
+  <span class="token keyword">yield</span> <span class="token function">cancel</span><span class="token punctuation">(</span>task<span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
+<p>对于取消 jqXHR 对象，redux-saga 将自动地使用其 <code>abort</code> 方法。</p><h3 id="canceltasks"><code>cancel(...tasks)</code></h3><p>创建一个 Effect 描述信息，用来命令 middleware 取消之前的多个分叉任务。</p><ul><li><code>tasks: Array<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Task</span><span class="token punctuation">&gt;</span></span></code> - <a href="https://redux-saga-in-chinese.js.org/docs/api/#task">Task</a> 是由之前 <code>fork</code> 指令返回的对象
+</li></ul>
+<h4 id="注意事项">注意事项</h4><p>它只是把任务数组包裹在 <a href="https://redux-saga-in-chinese.js.org/docs/api/#canceltask">cancel effects</a> 中，大致相当于 <code>yield tasks.map(t =&gt; cancel(t))</code>。</p><h3 id="cancel"><code>cancel()</code></h3><p>创建一个 Effect 描述信息，用来命令 middleware 取消 yield 它的任务（自取消）。</p><p>允许在 <code>finally</code> 区块中为外部取消（<code>cancel(task)</code>）和自取消（<code>cancel()</code>）复用析构类逻辑。</p><h4 id="example">Example</h4><pre><code class="lang-javascript"><span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">deleteRecord</span><span class="token punctuation">(</span><span class="token punctuation">{</span> payload <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">try</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token punctuation">{</span> confirm<span class="token punctuation">,</span> deny <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token function">call</span><span class="token punctuation">(</span>prompt<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>confirm<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">yield</span> <span class="token function">put</span><span class="token punctuation">(</span>actions<span class="token punctuation">.</span>deleteRecord<span class="token punctuation">.</span><span class="token function">confirmed</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>deny<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">yield</span> <span class="token function">cancel</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span> <span class="token keyword">catch</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 处理失败的情况</span>
+  <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">yield</span> <span class="token function">cancelled</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment" spellcheck="true">// 共享的取消逻辑</span>
+      <span class="token keyword">yield</span> <span class="token function">put</span><span class="token punctuation">(</span>actions<span class="token punctuation">.</span>deleteRecord<span class="token punctuation">.</span><span class="token function">cancel</span><span class="token punctuation">(</span>payload<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="selectselector-args"><code>select(selector, ...args)</code></h3><p>创建一个 Effect，用来命令 middleware 在当前 Store 的 state 上调用指定的选择器（即返回 <code>selector(getState(), ...args)</code> 的结果）。</p><ul><li><p><code>selector: Function</code> - 一个 <code>(state, ...args) =&gt; args</code> 的函数。它接受当前 state 和一些可选参数，并返回当前 Store state 上的一部分数据。</p></li>
+<li><p><code>args: Array<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>any</span><span class="token punctuation">&gt;</span></span></code> - 传递给选择器的可选参数，将追加在 <code>getState</code> 后。</p></li></ul>
+<p>如果调用 <code>select</code> 的参数为空（即 <code>yield select()</code>），那么 effect 会取得完整的 state（与调用 <code>getState()</code> 的结果相同）。</p><blockquote><p>重要提醒：在向 store 发起 action 时，middleware 首先会把 action 转发给 reducers，然后通知 Sagas。这意味着，当你查询 Store 的 state 时，你获得的是 action 被应用 <strong>后</strong> 的 state。
+但是，只有当所有后续中间件都以同步的形式调用 <code>next(action)</code> 时，才能保证此行为。如果有任何后续 middleware 异步地调用 <code>next(action)</code>（虽然不常见，但存在这种可能），那么 saga 会在 action 被应用 <strong>前</strong> 获得 state。因此，建议检查每一个后续的 middleware 的来源，以确保是通过同步的形式调用 <code>next(action)</code>；或者确保 redux-saga 是调用链中的最后一个中间件。</p></blockquote><h4 id="注意事项">注意事项</h4><p>最好的话，Saga 应是自主独立的，并且不应依赖 Store 的 state。这使得我们在不影响 Saga 代码的情况下便可以轻松地修改 state 的实现。如果可能，saga 最好只依赖其自身内部控制的状态。但有的时候我们可能会发现在 Saga 中查询 state 比单独维护所属数据更方便（例如，当一个 Saga 重复调用某个 reducer，来计算那些已经被 Store 计算过的 state）。</p><p>例如，假设我们在应用程序中有这样结构的一份 state：</p><pre><code class="lang-javascript">state <span class="token operator">=</span> <span class="token punctuation">{</span>
+  cart<span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>我们创建一个 <strong>选择器（selector）</strong>，即一个知道如果从 State 中提取 <code>cart</code> 数据的函数：</p><p><code>./selectors</code></p><pre><code class="lang-javascript"><span class="token keyword">export</span> <span class="token keyword">const</span> getCart <span class="token operator">=</span> state <span class="token operator">=</span><span class="token operator">&gt;</span> state<span class="token punctuation">.</span>cart</code></pre>
+<p>然后，我们可以使用 <code>select</code> Effect 从 Saga 的内部使用该选择器：</p><p><code>./sagas.js</code></p><pre><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> take<span class="token punctuation">,</span> fork<span class="token punctuation">,</span> select <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'redux-saga/effects'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> getCart <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./selectors'</span>
+
+<span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">checkout</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// 使用被导出的选择器查询 state</span>
+  <span class="token keyword">const</span> cart <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token function">select</span><span class="token punctuation">(</span>getCart<span class="token punctuation">)</span>
+
+  <span class="token comment" spellcheck="true">// ... 调用某些 API，然后发起一个 success/error action</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">rootSaga</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">yield</span> <span class="token function">take</span><span class="token punctuation">(</span><span class="token string">'CHECKOUT_REQUEST'</span><span class="token punctuation">)</span>
+    <span class="token keyword">yield</span> <span class="token function">fork</span><span class="token punctuation">(</span>checkout<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p><code>checkout</code> 可以通过 <code>select(getCart)</code> 直接地获得所需的信息。Saga 仅与 <code>getCart</code> 选择器相耦合。如果我们有许多个需要访问 <code>cart</code> 数据的 Saga（或 React Component），那么它们将被耦合到统一的 <code>getCart</code> 函数上。并且如果我们改变了 state 的结构，我们只需要更新 <code>getCart</code> 即可。</p><h3 id="actionchannelpattern-buffer"><code>actionChannel(pattern, [buffer])</code></h3><p>创建一个 Effect，用来命令 middleware 通过一个事件 channel 对匹配 <code>pattern</code> 的 action 进行排序。
+作为可选项，你也可以提供一个 buffer 来控制如何缓存排序的 actions。</p><ul><li><code>pattern:</code> - 请查看 <code>take(pattern)</code> 的 API
+</li>
+<li><code>buffer: Buffer</code> - 一个 <a href="https://redux-saga-in-chinese.js.org/docs/api/#buffer">Buffer</a> 对象
+</li></ul>
+<h4 id="例子">例子</h4><p>以下代码创建了一个 channel，并用来缓存所有 <code>USER_REQUEST</code> action。请注意，即使是 Saga 也可能被 <code>call</code> effect 阻塞。所有在它被阻塞时进来的 action 都会被自动地缓存。这使得 Saga 每次只执行一次 API 调用。</p><pre><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> actionChannel<span class="token punctuation">,</span> call <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'redux-saga/effects'</span>
+<span class="token keyword">import</span> api <span class="token keyword">from</span> <span class="token string">'...'</span>
+
+<span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">takeOneAtMost</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> chan <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token function">actionChannel</span><span class="token punctuation">(</span><span class="token string">'USER_REQUEST'</span><span class="token punctuation">)</span>
+  <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token punctuation">{</span>payload<span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token function">take</span><span class="token punctuation">(</span>chan<span class="token punctuation">)</span>
+    <span class="token keyword">yield</span> <span class="token function">call</span><span class="token punctuation">(</span>api<span class="token punctuation">.</span>getUser<span class="token punctuation">,</span> payload<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="flushchannel"><code>flush(channel)</code></h3><p>创建一个 Effect，用来命令 middleware 从 channel 中冲除所有被缓存的数据。被冲除的数据会返回至 saga，这样便可以在需要的时候再次被利用。</p><ul><li><code>channel: Channel</code> - 一个 <a href="https://redux-saga-in-chinese.js.org/docs/api/#channel"><code>Channel</code></a> 对象.
+</li></ul>
+<h4 id="例子">例子</h4><pre><code class="lang-javascript">
+<span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">saga</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> chan <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token function">actionChannel</span><span class="token punctuation">(</span><span class="token string">'ACTION'</span><span class="token punctuation">)</span>
+
+  <span class="token keyword">try</span> <span class="token punctuation">{</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> action <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token function">take</span><span class="token punctuation">(</span>chan<span class="token punctuation">)</span>
+      <span class="token comment" spellcheck="true">// ...</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> actions <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token function">flush</span><span class="token punctuation">(</span>chan<span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true">// ...</span>
+  <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span></code></pre>
+<h3 id="cancelled"><code>cancelled()</code></h3><p>创建一个 Effect，用来命令 middleware 返回该 generator 是否已经被取消。通常你会在 finally 区块中使用这个 Effect 来运行取消时专用的代码。</p><h4 id="例子">例子</h4><pre><code class="lang-javascript">
+<span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">saga</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">try</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// ...</span>
+  <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">yield</span> <span class="token function">cancelled</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment" spellcheck="true">// 只应在取消时执行的逻辑</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">// 应在所有情况下都执行的逻辑（例如关闭一个 channel）</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="setcontextprops"><code>setContext(props)</code></h3><p>创建一个 effect，用来命令 middleware 更新其自身的上下文。这个 effect 扩展了 saga 的上下文，而不是代替。</p><h3 id="getcontextprop"><code>getContext(prop)</code></h3><p>创建一个 effect，用来命令 middleware 返回 saga 的上下文中的一个特定属性。</p><h2 id="effect-组合器（combinators）">Effect 组合器（combinators）</h2><h3 id="raceeffects"><code>race(effects)</code></h3><p>创建一个 Effect 描述信息，用来命令 middleware 在多个 Effect 间运行 <em>竞赛（Race）</em>（与 <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Promise/race" target="_blank"><code>Promise.race([...])</code></a> 的行为类似）。</p><p><code>effects: Object</code> - 一个 {label: effect, ...} 形式的字典对象</p><h4 id="例子">例子</h4><p>下面的例子在两个 effect 间运行了一次竞赛：</p><ol><li>对函数 <code>fetchUsers</code> 的一次 call，该函数将返回一个 Promise
+</li>
+<li>一个 <code>CANCEL_FETCH</code> action，该 action 可能最终在 Store 上被发起
+</li></ol>
+<pre><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> take<span class="token punctuation">,</span> call<span class="token punctuation">,</span> race <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token template-string"><span class="token string">`redux-saga/effects`</span></span>
+<span class="token keyword">import</span> fetchUsers <span class="token keyword">from</span> <span class="token string">'./path/to/fetchUsers'</span>
+
+<span class="token keyword">function</span><span class="token operator">*</span> fetchUsersSaga <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token punctuation">{</span> response<span class="token punctuation">,</span> cancel <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token function">race</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    response<span class="token punctuation">:</span> <span class="token function">call</span><span class="token punctuation">(</span>fetchUsers<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    cancel<span class="token punctuation">:</span> <span class="token function">take</span><span class="token punctuation">(</span>CANCEL_FETCH<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
+<p>如果 <code>call(fetchUsers)</code> 先 resolve（或 reject），那么 <code>race</code> 的结果将是一个对象，该对象包含一个单键对象 <code>{response: result}</code>，其中 <code>result</code> 是 <code>fetchUsers</code> resolve 的结果。</p><p>如果在 <code>fetchUsers</code> 完成之前，Store 上先发起了一个 <code>CANCEL_FETCH</code> 类型的 action，那么结果将是一个单键对象 <code>{cancel: action}</code>，其中 <code>action</code> 是被发起的 action。</p><h4 id="注意事项">注意事项</h4><p>当 resolve <code>race</code> 的时候，middleware 会自动地取消所有输掉的 Effect。</p><h3 id="raceeffects-with-array"><code>race([...effects]) (with Array)</code></h3><p>与 <a href="https://redux-saga-in-chinese.js.org/docs/api/#raceeffects"><code>race(effects)</code></a> 相同，但传入的是 effect 的数组。</p><h4 id="例子">例子</h4><p>下面的例子在两个 effect 间运行了一次竞赛：</p><ol><li>对函数 <code>fetchUsers</code> 的一次 call，该函数将返回一个 Promise
+</li>
+<li>一个 <code>CANCEL_FETCH</code> action，该 action 可能最终在 Store 上被发起
+</li></ol>
+<pre><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> take<span class="token punctuation">,</span> call<span class="token punctuation">,</span> race <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token template-string"><span class="token string">`redux-saga/effects`</span></span>
+<span class="token keyword">import</span> fetchUsers <span class="token keyword">from</span> <span class="token string">'./path/to/fetchUsers'</span>
+
+<span class="token keyword">function</span><span class="token operator">*</span> fetchUsersSaga <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token punctuation">[</span>response<span class="token punctuation">,</span> cancel<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token function">race</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+    <span class="token function">call</span><span class="token punctuation">(</span>fetchUsers<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token function">take</span><span class="token punctuation">(</span>CANCEL_FETCH<span class="token punctuation">)</span>
+  <span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
+<p>如果 <code>call(fetchUsers)</code> 先 resolve（或 reject），那么 <code>response</code> 将是 <code>fetchUsers</code> 的结果，并且 <code>cancel</code> 将是 <code>undefined</code>。</p><p>如果在 <code>fetchUsers</code> 完成之前，Store 上先发起了一个 <code>CANCEL_FETCH</code> 类型的 action，那么 <code>response</code> 将是 <code>undefined</code>，并且 <code>cancel</code> 将是被发起的 action。</p><h3 id="alleffects---parallel-effects"><code>all([...effects]) - parallel effects</code></h3><p>创建一个 Effect 描述信息，用来命令 middleware 并行地运行多个 Effect，并等待它们全部完成。这是与标准的 <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Promise/all" target="_blank"><code>Promise#all</code></a> 相当对应的 API。</p><h4 id="例子">例子</h4><p>以下的例子并行地运行了两个阻塞型调用：</p><pre><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> fetchCustomers<span class="token punctuation">,</span> fetchProducts <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./path/to/api'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> all<span class="token punctuation">,</span> call <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token template-string"><span class="token string">`redux-saga/effects`</span></span>
+
+<span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">mySaga</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token punctuation">[</span>customers<span class="token punctuation">,</span> products<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token function">all</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+    <span class="token function">call</span><span class="token punctuation">(</span>fetchCustomers<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token function">call</span><span class="token punctuation">(</span>fetchProducts<span class="token punctuation">)</span>
+  <span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="alleffects"><code>all(effects)</code></h3><p>与 <a href="https://redux-saga-in-chinese.js.org/docs/api/#alleffects-parallel-effects"><code>all([...effects])</code></a> 相同，但就像 <a href="https://redux-saga-in-chinese.js.org/docs/api/#alleffects"><code>race(effects)</code></a> 那样，传入的是一个带有 label 的 effect 的字典对象。</p><ul><li><code>effects: Object</code> - 一个 {label: effect, ...} 形式的字典对象 
+</li></ul>
+<h4 id="例子">例子</h4><p>以下的例子并行地运行了两个阻塞型调用：</p><pre><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> fetchCustomers<span class="token punctuation">,</span> fetchProducts <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./path/to/api'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> all<span class="token punctuation">,</span> call <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token template-string"><span class="token string">`redux-saga/effects`</span></span>
+
+<span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">mySaga</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token punctuation">{</span> customers<span class="token punctuation">,</span> products <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token function">all</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    customers<span class="token punctuation">:</span> <span class="token function">call</span><span class="token punctuation">(</span>fetchCustomers<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    products<span class="token punctuation">:</span> <span class="token function">call</span><span class="token punctuation">(</span>fetchProducts<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
+<h4 id="注意事项">注意事项</h4><p>当并发运行 Effect 时，middleware 将暂停 Generator，直到以下任一情况发生：</p><ul><li><p>所有 Effect 都成功完成：返回一个包含所有 Effect 结果的数组，并恢复 Generator。</p></li>
+<li><p>在所有 Effect 完成之前，有一个 Effect 被 reject：在 Generator 中抛出 reject 错误。</p></li></ul>
+<h2 id="接口">接口</h2><h3 id="task">Task</h3><p>Task 接口指定了通过 <code>fork</code>，<code>middleare.run</code> 或 <code>runSaga</code> 运行 Saga 的结果。</p><table id="task-descriptor">
+  <tbody><tr>
+    <th>方法</th>
+    <th>返回值</th>
+  </tr>
+  <tr>
+    <td>task.isRunning()</td>
+    <td>若任务还未返回或抛出了一个错误则为 true</td>
+  </tr>
+  <tr>
+    <td>task.isCancelled()</td>
+    <td>若任务已被取消则为 true</td>
+  </tr>
+  <tr>
+    <td>task.result()</td>
+    <td>任务的返回值。若任务仍在运行中则为 `undefined`</td>
+  </tr>
+  <tr>
+    <td>task.error()</td>
+    <td>任务抛出的错误。若任务仍在执行中则为 `undefined`</td>
+  </tr>
+  <tr>
+    <td>task.done</td>
+    <td>
+      一个 Promise，以下二者之一：
+        <ul>
+          <li>以任务的返回值 resolve</li>
+          <li>以任务抛出的错误 reject</li>
+        </ul>
+      </td>
+  </tr>
+  <tr>
+    <td>task.cancel()</td>
+    <td>取消任务（如果任务仍在执行中）</td>
+  </tr>
+</tbody></table>
+
+
+
+<h3 id="channel">Channel</h3><p>channel 是用于在任务间发送和接收消息的对象。在被感兴趣的接收者请求之前，来自发送者的消息将被放入（put）队列；在信息可用之前，已注册的接收者将被放入队列。</p><p>每个 channel 都有一个底层 buffer，这个 buffer 定义了缓存策略（fixed size、dropping、sliding）。</p><p>Channel 接口定义了 3 个方法：<code>take</code>，<code>put</code> 和 <code>close</code></p><p><code>Channel.take(callback):</code> 用于注册一个 taker。take 会根据以下规则解析</p><ul><li>如果 channel 有被缓存的消息，那么将会从底层 buffer 用下一条消息调用 <code>callback</code>。
+</li>
+<li>如果 channel 已关闭，并且没有被缓存的消息，那么将以 <code>END</code> 为参数调用 <code>callback</code>
+</li>
+<li>否则，直到有消息被放入 channel 之前，<code>callback</code> 将被放入队列。
+</li></ul>
+<p><code>Channel.put(message):</code> 用于在 buffer 上放入消息。将根据以下规则处理 put</p><ul><li>如果 channel 已关闭，那么 put 将没有效果
+</li>
+<li>如果还有未被处理的 taker，那么将用该 message 调用最老的 taker。
+</li>
+<li>否则将 message 放入底层 buffer。
+</li></ul>
+<p><code>Channel.flush(callback):</code> 用于从 channel 中提取所有被缓存的消息。flush 会根据以下规则解析</p><ul><li>如果 channel 已关闭，并且没有被缓存的消息，那么将以 <code>END</code> 为参数调用 <code>callback</code>
+</li>
+<li>否则，将以所有被缓存的消息为参数调用 <code>callback</code>
+</li></ul>
+<p><code>Channel.close():</code> 关闭 channel，意味着不再允许做放入操作。所有未被处理的 taker 都将被以 <code>END</code> 为参数调用。</p><h3 id="buffer">Buffer</h3><p>用于为 channel 实现缓存策略。Buffer 接口定义了 3 个方法：<code>isEmpty</code>，<code>put</code> 和 <code>take</code></p><ul><li><code>isEmpty()</code>: 如果缓存中没有消息则返回。每当注册了新的 taker 时，channel 都会调用该方法。
+</li>
+<li><code>put(message)</code>: 用于往缓存中放入新的消息。请注意，缓存可以选择不存储消息。（例如，一个 dropping buffer 可以丢弃超过给定限制的任何新消息）
+</li>
+<li><code>take()</code>：用于检索任何被缓存的消息。请注意，此方法的行为必须与 <code>isEmpty</code> 一致。
+</li></ul>
+<h3 id="sagamonitor">SagaMonitor</h3><p>用于由 middleware 发起监视（monitor）事件。实际上，middleware 发起 5 个事件：</p><ul><li><p>当一个 effect 被触发时（通过 <code>yield someEffect</code>），middleware 调用 <code>sagaMonitor.effectTriggered</code></p></li>
+<li><p>如果该 effect 成功地被 resolve，则 middleware 调用 <code>sagaMonitor.effectResolved</code></p></li>
+<li><p>如果该 effect 因一个错误被 reject，则 middleware 调用 <code>sagaMonitor.effectRejected</code></p></li>
+<li><p>如果该 effect 被取消，则 middleware 调用 <code>sagaMonitor.effectCancelled</code></p></li>
+<li><p>最后，当 Redux action 被发起时，middleware 调用 <code>sagaMonitor.actionDispatched</code></p></li></ul>
+<p>以下是每个方法的特点：</p><ul><li><p><code>effectTriggered(options)</code> : options 是一个包含以下字段的对象</p><ul><li><p><code>effectId</code> : Number - 分配给 yielded effect 的唯一 ID</p></li>
+<li><p><code>parentEffectId</code> : Number - 父级 Effect 的 ID。在 <code>race</code> 或 <code>parallel</code> effect 的情况下，所有在内部 yield 的 effect 都将有一个直接 race/parallel 的父级 effect。在最顶级的 effect 的情况下，父级是包裹它的 Saga。</p></li>
+<li><p><code>label</code> : String - 在 <code>race</code> effect 的情况下，所有子 effect 都将被指定为传递给 <code>race</code> 的对象中对应键的标签。</p></li>
+<li><p><code>effect</code> : Object - yielded effect 其自身</p></li></ul>
+</li></ul>
+<ul><li><p><code>effectResolved(effectId, result)</code></p><ul><li><p><code>effectId</code> : Number - yielded effect 的 ID</p></li>
+<li><p><code>result</code> : any - 该 effect 成功 resolve 的结果。在 <code>fork</code> 或 <code>spawn</code> 的情况下，结果将是一个 <code>Task</code> 对象。</p></li></ul>
+</li></ul>
+<ul><li><p><code>effectRejected(effectId, error)</code></p><ul><li><p><code>effectId</code> : Number - yielded effect 的 ID</p></li>
+<li><p><code>error</code> : any - 该 effect reject 的错误</p></li></ul>
+</li></ul>
+<ul><li><p><code>effectCancelled(effectId)</code></p><ul><li><code>effectId</code> : Number - yielded effect 的 ID
+</li></ul>
+</li>
+<li><p><code>actionDispatched(action)</code></p><ul><li><code>action</code> : Object - 被发起的 Redux action。如果该 action 是由一个 Saga 发起的，那么该 action 将拥有一个属性 <code>SAGA_ACTION</code> 并被设为 true（你可以从 <code>redux-saga/utils</code> 中导入 <code>SAGA_ACTION</code>）。
+</li></ul>
+</li></ul>
+<h2 id="外部-api">外部 API</h2><hr><h3 id="runsagaoptions-saga-args"><code>runSaga(options, saga, ...args)</code></h3><p>允许在 Redux middleware 环境外部启动 saga。如果你想把 Saga 连接至外部的输入和输出（译注：即在外部执行 Saga），而不是至 store 的 action，这个 API 则会很有用。</p><p><code>runSaga</code> 返回一个 Task 对象。与 <code>fork</code> effect 返回的对象一样。</p><ul><li><p><code>options: Object</code> - 目前支持的选项是：</p><ul><li><p><code>subscribe(callback): Function</code> - 一个函数。它接受一个回调函数，并返回一个 <code>unsubscribe</code> 函数。</p><ul><li><code>callback(input): Function</code> - 用于订阅输入事件的回调函数（由 runSaga 提供）。<code>subscribe</code> 必须支持多个订阅。
+<ul><li><code>input: any</code> - 由 <code>subscribe</code> 传递给 <code>callback</code> 的参数（参考下方的注意事项）。
+</li></ul>
+</li></ul>
+</li></ul>
+</li></ul>
+<ul><li><p><code>dispatch(output): Function</code> - 用于实现 <code>put</code> effects。</p><ul><li><code>output: any</code> - 由 Saga 传递给 <code>put</code> effect 的参数（参考下方注意事项）。
+</li></ul>
+</li>
+<li><p><code>getState(): Function</code> - 用于实现 <code>select</code> 和 <code>getState</code> effects</p></li>
+<li><p><code>sagaMonitor</code> : <a href="https://redux-saga-in-chinese.js.org/docs/api/#sagamonitor">SagaMonitor</a> - 请查看 <a href="https://redux-saga-in-chinese.js.org/docs/api/#createsagamiddlewareoptions"><code>createSagaMiddleware(options)</code></a> 的文档</p></li>
+<li><p><code>logger: Function</code> - 请查看 <a href="https://redux-saga-in-chinese.js.org/docs/api/#createsagamiddlewareoptions"><code>createSagaMiddleware(options)</code></a> 的文档</p></li>
+<li><p><code>onError: Function</code> - 请查看 <a href="https://redux-saga-in-chinese.js.org/docs/api/#createsagamiddlewareoptions"><code>createSagaMiddleware(options)</code></a> 的文档</p></li></ul>
+<ul><li><p><code>saga: Function</code> - 一个 Generator 函数</p></li>
+<li><p><code>args: Array<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>any</span><span class="token punctuation">&gt;</span></span></code> - 传递给 <code>saga</code> 的参数</p></li></ul>
+<h4 id="注意事项">注意事项</h4><p><code>{subscribe, dispatch}</code> 用于实现 <code>take</code> 和 <code>put</code> Effects。它定义了 Saga 的输入和输出接口。</p><p><code>subscribe</code> 用于实现 <code>take(PATTERN)</code> effects。它会在每次有输入要发起时调用 <code>callback</code>（例如每次鼠标的点击，如果 Saga 连接到了 DOM 的点击事件的话）。
+每次 <code>subscribe</code> 发射一个输入到它的 callback 时，如果 Saga 被 <code>take</code> Effect 阻塞了，并且 take pattern 和当前输入相匹配，那么 Saga 将以那个输入恢复。</p><p><code>dispatch</code> 用于履行 <code>put</code> Effect。每次 Saga 发射一个 <code>yield put(output)</code> 时，将以 <code>output</code> 调用 <code>dispatch</code>。</p><h2 id="工具">工具</h2><h3 id="channelbuffer"><code>channel([buffer])</code></h3><p>一个可以用于创建 Channel 的工厂方法。你可以选择给它传递一个 buffer 参数，从而控制该 channel 如何缓存消息。</p><p>默认情况下，如果没有提供 buffer 参数，那么直到感兴趣的 taker 被注册之前，channel 都将会把将传入的消息放入队列中，最多存放十条。默认的缓存会用一个 FIFO 的策略派发消息：一个新的 taker 将收到缓存中最老的消息。</p><h3 id="eventchannelsubscribe-buffer-matcher"><code>eventChannel(subscribe, [buffer], [matcher])</code></h3><p>使用 <code>subscribe</code> 方法创建 channel，该 channel 将订阅一个事件源。直到感兴趣的 taker 被注册之前，从事件源传入的事件都将在 channel 中排队。</p><ul><li><p><code>subscribe: Function</code> 用于订阅底层事件源。这个函数必定返回一个用于结束订阅的 unsubscribe 函数。</p></li>
+<li><p><code>buffer: Buffer</code> 可选的 Buffer 对象，用于在该 channel 上缓存消息。如果不传该参数，消息将不会被缓存在该 channel 上。</p></li>
+<li><p><code>matcher: Function</code> 可选的断言函数（<code>any =&gt; Boolean</code>），用于过滤传入的消息。只有被该 matcher 接受的消息才会被放到 channel 上。</p></li></ul>
+<p>若要通知 channel 事件源已结束，你可以使用 <code>END</code> 通知传入的 subscriber 。</p><h4 id="例子">例子</h4><p>在下面的例子中，我们创建了一个 event channel，它将订阅一个 <code>setInterval</code>。
+In the following example we create an event channel that will subscribe to a <code>setInterval</code></p><pre><code class="lang-javascript"><span class="token keyword">const</span> countdown <span class="token operator">=</span> <span class="token punctuation">(</span>secs<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token function">eventChannel</span><span class="token punctuation">(</span>emitter <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> iv <span class="token operator">=</span> <span class="token function">setInterval</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'countdown'</span><span class="token punctuation">,</span> secs<span class="token punctuation">)</span>
+        secs <span class="token operator">-</span><span class="token operator">=</span> <span class="token number">1</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>secs <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token function">emitter</span><span class="token punctuation">(</span>secs<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+          <span class="token function">emitter</span><span class="token punctuation">(</span>END<span class="token punctuation">)</span>
+          <span class="token function">clearInterval</span><span class="token punctuation">(</span>iv<span class="token punctuation">)</span>
+          console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'countdown terminated'</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+        <span class="token function">clearInterval</span><span class="token punctuation">(</span>iv<span class="token punctuation">)</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'countdown cancelled'</span><span class="token punctuation">)</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="buffers"><code>buffers</code></h3><p>提供一些通用的缓存</p><ul><li><p><code>buffers.none()</code>: 不缓存。如果没有尚未处理的 taker，那么新消息将被丢失。</p></li>
+<li><p><code>buffers.fixed(limit)</code>: 新消息将被缓存，最多缓存 <code>limit</code> 条。溢出时将会报错。如果不填 <code>limit</code> 的值，那么 <code>limit</code> 将为 <code>10</code>。</p></li>
+<li><p><code>buffers.expanding(initialSize)</code>: 与 <code>fixed</code> 类似，但溢出时将会使缓存动态扩展。</p></li>
+<li><p><code>buffers.dropping(limit)</code>: 与 <code>fixed</code> 类似，但溢出时将会静默地丢弃消息。</p></li>
+<li><p><code>buffers.sliding(limit)</code>: 与 <code>fixed</code> 类似，但溢出时将会把新消息插到缓存的最尾处，并丢弃缓存中最老的消息。</p></li></ul>
+<h3 id="delayms-val"><code>delay(ms, [val])</code></h3><p>返回一个 effect 描述信息，用于阻塞执行 <code>ms</code> 毫秒，并返回 <code>val</code> 值。</p><h3 id="cloneablegeneratorgeneratorfunc"><code>cloneableGenerator(generatorFunc)</code></h3><p>接受一个 generator 函数（function*），并返回一个 generator 函数。
+从该函数实例化的所有 generator 都是可克隆的。
+仅用于测试。</p><h4 id="例子">例子</h4><p>当你想要测试一个 saga 中的不同分支，而又不需要重放引向它的 actions 时，这会很有用：</p><pre><code class="lang-javascript">
+<span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">oddOrEven</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// some stuff are done here</span>
+  <span class="token keyword">yield</span> <span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token keyword">yield</span> <span class="token number">2</span><span class="token punctuation">;</span>
+  <span class="token keyword">yield</span> <span class="token number">3</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">const</span> userInput <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token string">'enter a number'</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>userInput <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">yield</span> <span class="token string">'even'</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token keyword">yield</span> <span class="token string">'odd'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'my oddOrEven saga'</span><span class="token punctuation">,</span> assert <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> data <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+  data<span class="token punctuation">.</span>gen <span class="token operator">=</span> <span class="token function">cloneableGenerator</span><span class="token punctuation">(</span>oddOrEven<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  assert<span class="token punctuation">.</span><span class="token function">equal</span><span class="token punctuation">(</span>
+    data<span class="token punctuation">.</span>gen<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">,</span>
+    <span class="token number">1</span><span class="token punctuation">,</span>
+    <span class="token string">'it should yield 1'</span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  assert<span class="token punctuation">.</span><span class="token function">equal</span><span class="token punctuation">(</span>
+    data<span class="token punctuation">.</span>gen<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">,</span>
+    <span class="token number">2</span><span class="token punctuation">,</span>
+    <span class="token string">'it should yield 2'</span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  assert<span class="token punctuation">.</span><span class="token function">equal</span><span class="token punctuation">(</span>
+    data<span class="token punctuation">.</span>gen<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">,</span>
+    <span class="token number">3</span><span class="token punctuation">,</span>
+    <span class="token string">'it should yield 3'</span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  assert<span class="token punctuation">.</span><span class="token function">equal</span><span class="token punctuation">(</span>
+    data<span class="token punctuation">.</span>gen<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">,</span>
+    <span class="token string">'enter a number'</span><span class="token punctuation">,</span>
+    <span class="token string">'it should ask for a number'</span>
+  <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  assert<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'even number is given'</span><span class="token punctuation">,</span> a <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 我们在给出 number 前生成该 generator 的一个克隆。</span>
+    data<span class="token punctuation">.</span>clone <span class="token operator">=</span> data<span class="token punctuation">.</span>gen<span class="token punctuation">.</span><span class="token function">clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    a<span class="token punctuation">.</span><span class="token function">equal</span><span class="token punctuation">(</span>
+      data<span class="token punctuation">.</span>gen<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">,</span>
+      <span class="token string">'even'</span><span class="token punctuation">,</span>
+      <span class="token string">'it should yield "event"'</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    a<span class="token punctuation">.</span><span class="token function">equal</span><span class="token punctuation">(</span>
+      data<span class="token punctuation">.</span>gen<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>done<span class="token punctuation">,</span>
+      <span class="token boolean">true</span><span class="token punctuation">,</span>
+      <span class="token string">'it should be done'</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    a<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  assert<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'odd number is given'</span><span class="token punctuation">,</span> a <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+
+    a<span class="token punctuation">.</span><span class="token function">equal</span><span class="token punctuation">(</span>
+      data<span class="token punctuation">.</span>clone<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">,</span>
+      <span class="token string">'odd'</span><span class="token punctuation">,</span>
+      <span class="token string">'it should yield "odd"'</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    a<span class="token punctuation">.</span><span class="token function">equal</span><span class="token punctuation">(</span>
+      data<span class="token punctuation">.</span>clone<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>done<span class="token punctuation">,</span>
+      <span class="token boolean">true</span><span class="token punctuation">,</span>
+      <span class="token string">'it should be done'</span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    a<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  assert<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h3 id="createmocktask"><code>createMockTask()</code></h3><p>返回一个对象，用于 mock 一个 task。
+仅用于测试。
+<a href="https://redux-saga-in-chinese.js.org/docs/advanced/TaskCancellation.html#testing-generators-with-fork-effect">有关更多信息，请查看 Task Cancellation 的文档。</a></p><h2 id="速查表">速查表</h2><h3 id="阻塞--非阻塞">阻塞 / 非阻塞</h3><table>
+<thead>
+<tr><th>名称</th>
+<th>阻塞</th>
+</tr></thead><tbody>
+<tr><td>takeEvery</td>
+<td>否</td>
+</tr><tr><td>takeLatest</td>
+<td>否</td>
+</tr><tr><td>takeLeading</td>
+<td>否</td>
+</tr><tr><td>throttle</td>
+<td>否</td>
+</tr><tr><td>take</td>
+<td>是</td>
+</tr><tr><td>take(channel)</td>
+<td>有时 (请查看 API 参考)</td>
+</tr><tr><td>take.maybe</td>
+<td>是</td>
+</tr><tr><td>put</td>
+<td>否</td>
+</tr><tr><td>put.resolve</td>
+<td>是</td>
+</tr><tr><td>put(channel, action)</td>
+<td>否</td>
+</tr><tr><td>call</td>
+<td>是</td>
+</tr><tr><td>apply</td>
+<td>是</td>
+</tr><tr><td>cps</td>
+<td>是</td>
+</tr><tr><td>fork</td>
+<td>否</td>
+</tr><tr><td>spawn</td>
+<td>否</td>
+</tr><tr><td>join</td>
+<td>是</td>
+</tr><tr><td>cancel</td>
+<td>否</td>
+</tr><tr><td>select</td>
+<td>否</td>
+</tr><tr><td>actionChannel</td>
+<td>否</td>
+</tr><tr><td>flush</td>
+<td>是</td>
+</tr><tr><td>cancelled</td>
+<td>是</td>
+</tr><tr><td>race</td>
+<td>是</td>
+</tr><tr><td>delay</td>
+<td>是</td>
+</tr><tr><td>all</td>
+<td>当 array 或 object 中有阻塞型 effect 的时候阻塞。</td>
+</tr></tbody></table>
+
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class="search-results-count"></span> results matching "<span class="search-query"></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class="search-query"></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="https://redux-saga-in-chinese.js.org/docs/Glossary.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 名词解释">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"API 参考","level":"1.9","depth":1,"previous":{"title":"名词解释","level":"1.8","depth":1,"path":"docs/Glossary.md","ref":"docs/Glossary.md","articles":[]},"dir":"ltr"},"config":{"plugins":["edit-link","prism@1.0.0","-highlight","github"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"edit-link":{"label":"开始纠错","base":"https://github.com/superRaytin/redux-saga-in-chinese/tree/master"},"github":{"url":"https://github.com/superRaytin/redux-saga-in-chinese"},"sharing":{"facebook":true,"twitter":true,"google":true,"weibo":true,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"prism":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Redux-Saga","gitbook":"3.2.0"},"file":{"path":"docs/api/README.md","mtime":"2018-05-28T10:04:29.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2018-05-28T10:21:20.665Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="./API 参考 · Redux-Saga_files/gitbook.js.下载"></script>
+    <script src="./API 参考 · Redux-Saga_files/theme.js.下载"></script>
+    
+        
+        <script src="./API 参考 · Redux-Saga_files/plugin.js.下载"></script>
+        
+    
+        
+        <script src="./API 参考 · Redux-Saga_files/plugin.js(1).下载"></script>
+        
+    
+        
+        <script src="./API 参考 · Redux-Saga_files/search-engine.js.下载"></script>
+        
+    
+        
+        <script src="./API 参考 · Redux-Saga_files/search.js.下载"></script>
+        
+    
+        
+        <script src="./API 参考 · Redux-Saga_files/lunr.min.js.下载"></script>
+        
+    
+        
+        <script src="./API 参考 · Redux-Saga_files/search-lunr.js.下载"></script>
+        
+    
+        
+        <script src="./API 参考 · Redux-Saga_files/buttons.js.下载"></script>
+        
+    
+        
+        <script src="./API 参考 · Redux-Saga_files/fontsettings.js.下载"></script>
+        
+    
+
+    
+
+
+</body></html>

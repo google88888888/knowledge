@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<!-- saved from url=(0072)https://redux-saga-in-chinese.js.org/docs/basics/DeclarativeEffects.html -->
+<html lang=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>声明式 Effects · Redux-Saga</title>
+        
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.0">
+        
+        
+        
+    
+    <link rel="stylesheet" href="./声明式 Effects · Redux-Saga_files/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="./声明式 Effects · Redux-Saga_files/prism.css">
+                
+            
+                
+                <link rel="stylesheet" href="./声明式 Effects · Redux-Saga_files/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="./声明式 Effects · Redux-Saga_files/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://redux-saga-in-chinese.js.org/gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="https://redux-saga-in-chinese.js.org/gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    
+    
+    
+    
+
+    <link rel="prev" href="https://redux-saga-in-chinese.js.org/docs/basics/UsingSagaHelpers.html"><link rel="next" href="https://redux-saga-in-chinese.js.org/docs/basics/DispatchingActions.html"></head>
+    <body>
+        
+<div class="book without-animation with-summary font-size-2 font-family-1">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search">
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="https://redux-saga-in-chinese.js.org/">
+            
+                    
+                    自述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../introduction/">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/introduction/">
+            
+                    
+                    介绍
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../introduction/BeginnerTutorial.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/introduction/BeginnerTutorial.html">
+            
+                    
+                    初级教程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../introduction/SagaBackground.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/introduction/SagaBackground.html">
+            
+                    
+                    Saga 概念的背景
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="./">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/basics/">
+            
+                    
+                    基础概念
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="UsingSagaHelpers.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/basics/UsingSagaHelpers.html">
+            
+                    
+                    使用 Saga Helpers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3.2" data-path="DeclarativeEffects.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/basics/DeclarativeEffects.html">
+            
+                    
+                    声明式 Effects
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="DispatchingActions.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/basics/DispatchingActions.html">
+            
+                    
+                    dispatch action
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="ErrorHandling.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/basics/ErrorHandling.html">
+            
+                    
+                    错误处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="Effect.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/basics/Effect.html">
+            
+                    
+                    一个常见的抽象概念: Effect
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../advanced/">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/">
+            
+                    
+                    高级
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../advanced/FutureActions.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/FutureActions.html">
+            
+                    
+                    监听未来的 action
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../advanced/NonBlockingCalls.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/NonBlockingCalls.html">
+            
+                    
+                    无阻塞调用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../advanced/RunningTasksInParallel.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/RunningTasksInParallel.html">
+            
+                    
+                    同时执行多个任务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../advanced/RacingEffects.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/RacingEffects.html">
+            
+                    
+                    在多个 Effects 之间启动 race
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="../advanced/SequencingSagas.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/SequencingSagas.html">
+            
+                    
+                    使用 yield* 对 Sagas 进行排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="../advanced/ComposingSagas.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/ComposingSagas.html">
+            
+                    
+                    组合 Sagas
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="../advanced/TaskCancellation.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/TaskCancellation.html">
+            
+                    
+                    取消任务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="../advanced/ForkModel.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/ForkModel.html">
+            
+                    
+                    redux-saga 的 fork model
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.9" data-path="../advanced/Concurrency.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/Concurrency.html">
+            
+                    
+                    并发
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.10" data-path="../advanced/Testing.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/Testing.html">
+            
+                    
+                    测试 Sagas
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.11" data-path="../advanced/UsingRunSaga.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/UsingRunSaga.html">
+            
+                    
+                    连接 Sagas 至外部的输入/输出
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.12" data-path="../advanced/Channels.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/Channels.html">
+            
+                    
+                    使用 Channels
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../recipes/">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/recipes/">
+            
+                    
+                    技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../ExternalResources.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/ExternalResources.html">
+            
+                    
+                    外部资源
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../Troubleshooting.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/Troubleshooting.html">
+            
+                    
+                    问题解答
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../Glossary.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/Glossary.html">
+            
+                    
+                    名词解释
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../api/">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/api/">
+            
+                    
+                    API 参考
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com/" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <a class="btn pull-left js-toolbar-action" aria-label="" href="https://redux-saga-in-chinese.js.org/docs/basics/DeclarativeEffects.html#"><i class="fa fa-align-justify"></i></a><a class="btn pull-left js-toolbar-action" aria-label="" href="https://redux-saga-in-chinese.js.org/docs/basics/DeclarativeEffects.html#"><i class="fa fa-edit"></i> 开始纠错</a><a class="btn pull-right js-toolbar-action" aria-label="GitHub" href="https://redux-saga-in-chinese.js.org/docs/basics/DeclarativeEffects.html#"><i class="fa fa-github"></i></a><div class="dropdown pull-right  js-toolbar-action"><a class="btn toggle-dropdown" aria-label="Share" href="https://redux-saga-in-chinese.js.org/docs/basics/DeclarativeEffects.html#"><i class="fa fa-share-alt"></i></a><div class="dropdown-menu dropdown-left"><div class="dropdown-caret"><span class="caret-outer"></span><span class="caret-inner"></span></div><div class="buttons"><button class="button size-5 ">Facebook</button><button class="button size-5 ">Google+</button><button class="button size-5 ">Twitter</button><button class="button size-5 ">Weibo</button><button class="button size-5 ">Instapaper</button></div></div></div><a class="btn pull-right js-toolbar-action" aria-label="" href="https://redux-saga-in-chinese.js.org/docs/basics/DeclarativeEffects.html#"><i class="fa fa-facebook"></i></a><a class="btn pull-right js-toolbar-action" aria-label="" href="https://redux-saga-in-chinese.js.org/docs/basics/DeclarativeEffects.html#"><i class="fa fa-twitter"></i></a><a class="btn pull-right js-toolbar-action" aria-label="" href="https://redux-saga-in-chinese.js.org/docs/basics/DeclarativeEffects.html#"><i class="fa fa-google-plus"></i></a><a class="btn pull-right js-toolbar-action" aria-label="" href="https://redux-saga-in-chinese.js.org/docs/basics/DeclarativeEffects.html#"><i class="fa fa-weibo"></i></a><div class="dropdown pull-left font-settings js-toolbar-action"><a class="btn toggle-dropdown" aria-label="Font Settings" href="https://redux-saga-in-chinese.js.org/docs/basics/DeclarativeEffects.html#"><i class="fa fa-font"></i></a><div class="dropdown-menu dropdown-right"><div class="dropdown-caret"><span class="caret-outer"></span><span class="caret-inner"></span></div><div class="buttons"><button class="button size-2 font-reduce">A</button><button class="button size-2 font-enlarge">A</button></div><div class="buttons"><button class="button size-2 ">Serif</button><button class="button size-2 ">Sans</button></div><div class="buttons"><button class="button size-3 ">White</button><button class="button size-3 ">Sepia</button><button class="button size-3 ">Night</button></div></div></div><h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="https://redux-saga-in-chinese.js.org/">声明式 Effects</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="声明式-effects">声明式 Effects</h1><p>在 <code>redux-saga</code> 的世界里，Sagas 都用 Generator 函数实现。我们从 Generator 里 yield 纯 JavaScript 对象以表达 Saga 逻辑。
+我们称呼那些对象为 <em>Effect</em>。Effect 是一个简单的对象，这个对象包含了一些给 middleware 解释执行的信息。
+你可以把 Effect 看作是发送给 middleware 的指令以执行某些操作（调用某些异步函数，发起一个 action 到 store，等等）。</p><p>你可以使用 <code>redux-saga/effects</code> 包里提供的函数来创建 Effect。</p><p>这一部分和接下来的部分，我们将介绍一些基础的 Effect。并见识到这些 Effect 概念是如何让 Sagas 很容易地被测试的。</p><p>Sagas 可以多种形式 yield Effect。最简单的方式是 yield 一个 Promise。</p><p>举个例子，假设我们有一个监听 <code>PRODUCTS_REQUESTED</code> action 的 Saga。每次匹配到 action，它会启动一个从服务器上获取产品列表的任务。</p><pre><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> takeEvery <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'redux-saga/effects'</span>
+<span class="token keyword">import</span> Api <span class="token keyword">from</span> <span class="token string">'./path/to/api'</span>
+
+<span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">watchFetchProducts</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">yield</span> <span class="token function">takeEvery</span><span class="token punctuation">(</span><span class="token string">'PRODUCTS_REQUESTED'</span><span class="token punctuation">,</span> fetchProducts<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">fetchProducts</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> products <span class="token operator">=</span> <span class="token keyword">yield</span> Api<span class="token punctuation">.</span><span class="token function">fetch</span><span class="token punctuation">(</span><span class="token string">'/products'</span><span class="token punctuation">)</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>products<span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
+<p>在上面的例子中，我们在 Generator 中直接调用了 <code>Api.fetch</code>（在 Generator 函数中，<code>yield</code> 右边的任何表达式都会被求值，结果会被 yield 给调用者）。</p><p><code>Api.fetch('/products')</code> 触发了一个 AJAX 请求并返回一个 Promise，Promise 会 resolve 请求的响应，
+这个 AJAX 请求将立即执行。看起来简单又地道，但...</p><p>假设我们想测试上面的 generator：</p><pre><code class="lang-javascript"><span class="token keyword">const</span> iterator <span class="token operator">=</span> <span class="token function">fetchProducts</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+assert<span class="token punctuation">.</span><span class="token function">deepEqual</span><span class="token punctuation">(</span>iterator<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">,</span> <span class="token operator">?</span><span class="token operator">?</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 我们期望得到什么？</span></code></pre>
+<p>我们想要检查 generator yield 的结果的第一个值。在我们的情况里，这个值是执行 <code>Api.fetch('/products')</code> 这个 Promise 的结果。
+在测试过程中，执行真正的服务（real service）是一个既不可行也不实用的方法，所以我们必须 <em>模拟（mock）</em> <code>Api.fetch</code> 函数。
+也就是说，我们需要将真实的函数替换为一个假的，这个假的函数并不会真的发送 AJAX 请求而只会检查是否用正确的参数调用了 <code>Api.fetch</code>（在我们的情况里，正确的参数是 <code>'/products'</code>）。</p><p>模拟使测试更加困难和不可靠。另一方面，那些只简单地返回值的函数更加容易测试，因此我们可以使用简单的 <code>equal()</code> 来检查结果。
+这是编写最可靠测试用例的方法。</p><p>不相信？我建议你阅读 <a href="https://medium.com/javascript-scene/what-every-unit-test-needs-f6cd34d9836d#.4ttnnzpgc" target="_blank">Eric Elliott's article</a>:</p><blockquote><p>(...)<code>equal()</code>, by nature answers the two most important questions every unit test must answer,
+but most don’t:</p><ul><li>What is the actual output?
+</li>
+<li>What is the expected output?
+</li></ul>
+<p>If you finish a test without answering those two questions, you don’t have a real unit test. You have a sloppy, half-baked test.</p></blockquote><p>实际上我们需要的只是保证 <code>fetchProducts</code> 任务 yield 一个调用正确的函数，并且函数有着正确的参数。</p><p>相比于在 Generator 中直接调用异步函数，<strong>我们可以仅仅 yield 一条描述函数调用的信息</strong>。也就是说，我们将简单地 yield 一个看起来像下面这样的对象：</p><pre><code class="lang-javascript"><span class="token comment" spellcheck="true">// Effect -&gt; 调用 Api.fetch 函数并传递 `./products` 作为参数</span>
+<span class="token punctuation">{</span>
+  CALL<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    fn<span class="token punctuation">:</span> Api<span class="token punctuation">.</span>fetch<span class="token punctuation">,</span>
+    args<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'./products'</span><span class="token punctuation">]</span>  
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>换句话说，Generator 将会 yield 包含 <em>指令</em> 的文本对象（plain Objects），<code>redux-saga</code> middleware 将确保执行这些指令并将指令的结果回馈给 Generator。
+这样的话，在测试 Generator 时，所有我们需要做的就是，将 yield 后的对象作一个简单的 <code>deepEqual</code> 来检查它是否 yield 了我们期望的指令。</p><p>出于这样的原因，<code>redux-saga</code> 提供了一个不一样的方式来执行异步调用。</p><pre><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> call <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'redux-saga/effects'</span>
+
+<span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">fetchProducts</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> products <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token function">call</span><span class="token punctuation">(</span>Api<span class="token punctuation">.</span>fetch<span class="token punctuation">,</span> <span class="token string">'/products'</span><span class="token punctuation">)</span>
+  <span class="token comment" spellcheck="true">// ...</span>
+<span class="token punctuation">}</span></code></pre>
+<p>我们使用了 <code>call(fn, ...args)</code> 这个函数。<strong>与前面的例子不同的是，现在我们不立即执行异步调用，相反，<code>call</code> 创建了一条描述结果的信息</strong>。
+就像在 Redux 里你使用 action 创建器，创建一个将被 Store 执行的、描述 action 的纯文本对象。
+<code>call</code> 创建一个纯文本对象描述函数调用。<code>redux-saga</code> middleware 确保执行函数调用并在响应被 resolve 时恢复 generator。</p><p>这让你能容易地测试 Generator，就算它在 Redux 环境之外。因为 <code>call</code> 只是一个返回纯文本对象的函数而已。</p><pre><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> call <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'redux-saga/effects'</span>
+<span class="token keyword">import</span> Api <span class="token keyword">from</span> <span class="token string">'...'</span>
+
+<span class="token keyword">const</span> iterator <span class="token operator">=</span> <span class="token function">fetchProducts</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true">// expects a call instruction</span>
+assert<span class="token punctuation">.</span><span class="token function">deepEqual</span><span class="token punctuation">(</span>
+  iterator<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">,</span>
+  <span class="token function">call</span><span class="token punctuation">(</span>Api<span class="token punctuation">.</span>fetch<span class="token punctuation">,</span> <span class="token string">'/products'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token string">"fetchProducts should yield an Effect call(Api.fetch, './products')"</span>
+<span class="token punctuation">)</span></code></pre>
+<p>现在我们不需要模拟任何东西了，一个简单的相等测试就足够了。</p><p>这些 <em>声明式调用（declarative calls）</em> 的优势是，我们可以通过简单地遍历 Generator 并在 yield 后的成功的值上面做一个 <code>deepEqual</code> 测试，
+就能测试 Saga 中所有的逻辑。这是一个真正的好处，因为复杂的异步操作都不再是黑盒，你可以详细地测试操作逻辑，不管它有多么复杂。</p><p><code>call</code> 同样支持调用对象方法，你可以使用以下形式，为调用的函数提供一个 <code>this</code> 上下文：</p><pre><code class="lang-javascript"><span class="token keyword">yield</span> <span class="token function">call</span><span class="token punctuation">(</span><span class="token punctuation">[</span>obj<span class="token punctuation">,</span> obj<span class="token punctuation">.</span>method<span class="token punctuation">]</span><span class="token punctuation">,</span> arg1<span class="token punctuation">,</span> arg2<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 如同 obj.method(arg1, arg2 ...)</span></code></pre>
+<p><code>apply</code> 提供了另外一种调用的方式：</p><pre><code class="lang-javascript"><span class="token keyword">yield</span> <span class="token function">apply</span><span class="token punctuation">(</span>obj<span class="token punctuation">,</span> obj<span class="token punctuation">.</span>method<span class="token punctuation">,</span> <span class="token punctuation">[</span>arg1<span class="token punctuation">,</span> arg2<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre>
+<p><code>call</code> 和 <code>apply</code> 非常适合返回 Promise 结果的函数。另外一个函数 <code>cps</code> 可以用来处理 Node 风格的函数
+（例如，<code>fn(...args, callback)</code> 中的 <code>callback</code> 是 <code>(error, result) =&gt; ()</code> 这样的形式，<code>cps</code> 表示的是延续传递风格（Continuation Passing Style））。</p><p>举个例子：</p><pre><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> cps <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'redux-saga'</span>
+
+<span class="token keyword">const</span> content <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token function">cps</span><span class="token punctuation">(</span>readFile<span class="token punctuation">,</span> <span class="token string">'/path/to/file'</span><span class="token punctuation">)</span></code></pre>
+<p>当然你也可以像测试 call 一样测试它：</p><pre><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> cps <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'redux-saga/effects'</span>
+
+<span class="token keyword">const</span> iterator <span class="token operator">=</span> <span class="token function">fetchSaga</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+assert<span class="token punctuation">.</span><span class="token function">deepEqual</span><span class="token punctuation">(</span>iterator<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">,</span> <span class="token function">cps</span><span class="token punctuation">(</span>readFile<span class="token punctuation">,</span> <span class="token string">'/path/to/file'</span><span class="token punctuation">)</span> <span class="token punctuation">)</span></code></pre>
+<p><code>cps</code> 同 <code>call</code> 的方法调用形式是一样的。</p><p>完整列表的 declarative effects 可在这里找到： <a href="https://redux-saga.js.org/docs/api/#effect-creators" target="_blank">API reference</a></p>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class="search-results-count"></span> results matching "<span class="search-query"></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class="search-query"></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="https://redux-saga-in-chinese.js.org/docs/basics/UsingSagaHelpers.html" class="navigation navigation-prev " aria-label="Previous page: 使用 Saga Helpers">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="https://redux-saga-in-chinese.js.org/docs/basics/DispatchingActions.html" class="navigation navigation-next " aria-label="Next page: dispatch action" style="margin-right: 0px;">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"声明式 Effects","level":"1.3.2","depth":2,"next":{"title":"dispatch action","level":"1.3.3","depth":2,"path":"docs/basics/DispatchingActions.md","ref":"docs/basics/DispatchingActions.md","articles":[]},"previous":{"title":"使用 Saga Helpers","level":"1.3.1","depth":2,"path":"docs/basics/UsingSagaHelpers.md","ref":"docs/basics/UsingSagaHelpers.md","articles":[]},"dir":"ltr"},"config":{"plugins":["edit-link","prism@1.0.0","-highlight","github"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"edit-link":{"label":"开始纠错","base":"https://github.com/superRaytin/redux-saga-in-chinese/tree/master"},"github":{"url":"https://github.com/superRaytin/redux-saga-in-chinese"},"sharing":{"facebook":true,"twitter":true,"google":true,"weibo":true,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"prism":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Redux-Saga","gitbook":"3.2.0"},"file":{"path":"docs/basics/DeclarativeEffects.md","mtime":"2018-05-28T10:04:29.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2018-05-28T10:21:20.665Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="./声明式 Effects · Redux-Saga_files/gitbook.js.下载"></script>
+    <script src="./声明式 Effects · Redux-Saga_files/theme.js.下载"></script>
+    
+        
+        <script src="./声明式 Effects · Redux-Saga_files/plugin.js.下载"></script>
+        
+    
+        
+        <script src="./声明式 Effects · Redux-Saga_files/plugin.js(1).下载"></script>
+        
+    
+        
+        <script src="./声明式 Effects · Redux-Saga_files/search-engine.js.下载"></script>
+        
+    
+        
+        <script src="./声明式 Effects · Redux-Saga_files/search.js.下载"></script>
+        
+    
+        
+        <script src="./声明式 Effects · Redux-Saga_files/lunr.min.js.下载"></script>
+        
+    
+        
+        <script src="./声明式 Effects · Redux-Saga_files/search-lunr.js.下载"></script>
+        
+    
+        
+        <script src="./声明式 Effects · Redux-Saga_files/buttons.js.下载"></script>
+        
+    
+        
+        <script src="./声明式 Effects · Redux-Saga_files/fontsettings.js.下载"></script>
+        
+    
+
+    
+
+
+</body></html>

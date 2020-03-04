@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<!-- saved from url=(0076)https://redux-saga-in-chinese.js.org/docs/introduction/BeginnerTutorial.html -->
+<html lang=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>初级教程 · Redux-Saga</title>
+        
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.0">
+        
+        
+        
+    
+    <link rel="stylesheet" href="./初级教程 · Redux-Saga_files/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="./初级教程 · Redux-Saga_files/prism.css">
+                
+            
+                
+                <link rel="stylesheet" href="./初级教程 · Redux-Saga_files/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="./初级教程 · Redux-Saga_files/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://redux-saga-in-chinese.js.org/gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="https://redux-saga-in-chinese.js.org/gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    
+    
+    
+    
+
+    <link rel="prev" href="https://redux-saga-in-chinese.js.org/docs/introduction/"><link rel="next" href="https://redux-saga-in-chinese.js.org/docs/introduction/SagaBackground.html"></head>
+    <body>
+        
+<div class="book without-animation with-summary font-size-2 font-family-1">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search">
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="https://redux-saga-in-chinese.js.org/">
+            
+                    
+                    自述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="./">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/introduction/">
+            
+                    
+                    介绍
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.2.1" data-path="BeginnerTutorial.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/introduction/BeginnerTutorial.html">
+            
+                    
+                    初级教程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="SagaBackground.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/introduction/SagaBackground.html">
+            
+                    
+                    Saga 概念的背景
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../basics/">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/basics/">
+            
+                    
+                    基础概念
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../basics/UsingSagaHelpers.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/basics/UsingSagaHelpers.html">
+            
+                    
+                    使用 Saga Helpers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../basics/DeclarativeEffects.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/basics/DeclarativeEffects.html">
+            
+                    
+                    声明式 Effects
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../basics/DispatchingActions.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/basics/DispatchingActions.html">
+            
+                    
+                    dispatch action
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../basics/ErrorHandling.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/basics/ErrorHandling.html">
+            
+                    
+                    错误处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../basics/Effect.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/basics/Effect.html">
+            
+                    
+                    一个常见的抽象概念: Effect
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../advanced/">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/">
+            
+                    
+                    高级
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../advanced/FutureActions.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/FutureActions.html">
+            
+                    
+                    监听未来的 action
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../advanced/NonBlockingCalls.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/NonBlockingCalls.html">
+            
+                    
+                    无阻塞调用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../advanced/RunningTasksInParallel.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/RunningTasksInParallel.html">
+            
+                    
+                    同时执行多个任务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../advanced/RacingEffects.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/RacingEffects.html">
+            
+                    
+                    在多个 Effects 之间启动 race
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="../advanced/SequencingSagas.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/SequencingSagas.html">
+            
+                    
+                    使用 yield* 对 Sagas 进行排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="../advanced/ComposingSagas.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/ComposingSagas.html">
+            
+                    
+                    组合 Sagas
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="../advanced/TaskCancellation.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/TaskCancellation.html">
+            
+                    
+                    取消任务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="../advanced/ForkModel.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/ForkModel.html">
+            
+                    
+                    redux-saga 的 fork model
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.9" data-path="../advanced/Concurrency.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/Concurrency.html">
+            
+                    
+                    并发
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.10" data-path="../advanced/Testing.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/Testing.html">
+            
+                    
+                    测试 Sagas
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.11" data-path="../advanced/UsingRunSaga.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/UsingRunSaga.html">
+            
+                    
+                    连接 Sagas 至外部的输入/输出
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.12" data-path="../advanced/Channels.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/Channels.html">
+            
+                    
+                    使用 Channels
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../recipes/">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/recipes/">
+            
+                    
+                    技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../ExternalResources.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/ExternalResources.html">
+            
+                    
+                    外部资源
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../Troubleshooting.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/Troubleshooting.html">
+            
+                    
+                    问题解答
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../Glossary.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/Glossary.html">
+            
+                    
+                    名词解释
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../api/">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/api/">
+            
+                    
+                    API 参考
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com/" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <a class="btn pull-left js-toolbar-action" aria-label="" href="https://redux-saga-in-chinese.js.org/docs/introduction/BeginnerTutorial.html#"><i class="fa fa-align-justify"></i></a><a class="btn pull-left js-toolbar-action" aria-label="" href="https://redux-saga-in-chinese.js.org/docs/introduction/BeginnerTutorial.html#"><i class="fa fa-edit"></i> 开始纠错</a><a class="btn pull-right js-toolbar-action" aria-label="GitHub" href="https://redux-saga-in-chinese.js.org/docs/introduction/BeginnerTutorial.html#"><i class="fa fa-github"></i></a><div class="dropdown pull-right  js-toolbar-action"><a class="btn toggle-dropdown" aria-label="Share" href="https://redux-saga-in-chinese.js.org/docs/introduction/BeginnerTutorial.html#"><i class="fa fa-share-alt"></i></a><div class="dropdown-menu dropdown-left"><div class="dropdown-caret"><span class="caret-outer"></span><span class="caret-inner"></span></div><div class="buttons"><button class="button size-5 ">Facebook</button><button class="button size-5 ">Google+</button><button class="button size-5 ">Twitter</button><button class="button size-5 ">Weibo</button><button class="button size-5 ">Instapaper</button></div></div></div><a class="btn pull-right js-toolbar-action" aria-label="" href="https://redux-saga-in-chinese.js.org/docs/introduction/BeginnerTutorial.html#"><i class="fa fa-facebook"></i></a><a class="btn pull-right js-toolbar-action" aria-label="" href="https://redux-saga-in-chinese.js.org/docs/introduction/BeginnerTutorial.html#"><i class="fa fa-twitter"></i></a><a class="btn pull-right js-toolbar-action" aria-label="" href="https://redux-saga-in-chinese.js.org/docs/introduction/BeginnerTutorial.html#"><i class="fa fa-google-plus"></i></a><a class="btn pull-right js-toolbar-action" aria-label="" href="https://redux-saga-in-chinese.js.org/docs/introduction/BeginnerTutorial.html#"><i class="fa fa-weibo"></i></a><div class="dropdown pull-left font-settings js-toolbar-action"><a class="btn toggle-dropdown" aria-label="Font Settings" href="https://redux-saga-in-chinese.js.org/docs/introduction/BeginnerTutorial.html#"><i class="fa fa-font"></i></a><div class="dropdown-menu dropdown-right"><div class="dropdown-caret"><span class="caret-outer"></span><span class="caret-inner"></span></div><div class="buttons"><button class="button size-2 font-reduce">A</button><button class="button size-2 font-enlarge">A</button></div><div class="buttons"><button class="button size-2 ">Serif</button><button class="button size-2 ">Sans</button></div><div class="buttons"><button class="button size-3 ">White</button><button class="button size-3 ">Sepia</button><button class="button size-3 ">Night</button></div></div></div><h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="https://redux-saga-in-chinese.js.org/">初级教程</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="新手教程">新手教程</h1><h2 id="本教程的目标">本教程的目标</h2><p>本教程尝试用一种容易上手的方式（希望如此）来介绍 redux-saga。</p><p>我们将使用 Redux 仓库那个很小的计数器例子作为我们的入门教程。
+这个应用程序比较简单，但是非常适合用来演示说明 redux-saga 的基本概念，不至于迷失在过多的细节里。</p><h3 id="初始步骤">初始步骤</h3><p>在我们开始前，clone 这个 <a href="https://github.com/redux-saga/redux-saga-beginner-tutorial" target="_blank">教程仓库</a>。</p><blockquote><p>教程的最终代码放在 <code>sagas</code> 分支上</p></blockquote><p>然后在命令行输入：</p><pre><code class="lang-sh">$ cd redux-saga-beginner-tutorial
+$ npm install</code></pre>
+<p>接着启动应用：</p><pre><code class="lang-sh">$ npm start</code></pre>
+<p>我们先从最简单的用例开始：2 个按钮 <code>增加（Increment）</code> 和 <code>减少（Decrement）</code> 计数。之后我们将介绍异步调用。</p><p>不出意外的话，你应该能看到 2 个按钮 <code>Increment</code> 和 <code>Decrement</code>，以及按钮下方 <code>Counter : 0</code> 的文字。</p><blockquote><p>如果你在运行这个应用程序的时候遇到问题，可随时在这个<a href="https://github.com/redux-saga/redux-saga-beginner-tutorial/issues" target="_blank">教程仓库</a>上创建 issue。</p></blockquote><h2 id="hello，sagas！">Hello，Sagas！</h2><p>接下来将创建我们的第一个 Saga。按照传统，我们将编写一个 Sagas 版本的 'Hello, world'。</p><p>创建一个 <code>sagas.js</code> 的文件，然后添加以下代码片段：</p><pre><code class="lang-javascript"><span class="token keyword">export</span> <span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">helloSaga</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Hello Sagas!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>所以并没有什么吓人的东西，只是一个很普通的功能（好吧，除了 <code>*</code>）。这段代码的唯一的作用就是打印一句问候的消息到控制台。</p><p>为了运行我们的 Saga，我们需要：</p><ul><li>创建一个 Saga middleware 和要运行的 Sagas（目前我们只有一个 <code>helloSaga</code>）
+</li>
+<li>将这个 Saga middleware 连接至 Redux store.
+</li></ul>
+<p>我们修改一下 <code>main.js</code>：</p><pre><code class="lang-javascript"><span class="token comment" spellcheck="true">// ...</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> createStore<span class="token punctuation">,</span> applyMiddleware <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'redux'</span>
+<span class="token keyword">import</span> createSagaMiddleware <span class="token keyword">from</span> <span class="token string">'redux-saga'</span>
+
+<span class="token comment" spellcheck="true">//...</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> helloSaga <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./sagas'</span>
+
+<span class="token keyword">const</span> store <span class="token operator">=</span> <span class="token function">createStore</span><span class="token punctuation">(</span>
+  reducer<span class="token punctuation">,</span>
+  <span class="token function">applyMiddleware</span><span class="token punctuation">(</span><span class="token function">createSagaMiddleware</span><span class="token punctuation">(</span>helloSaga<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true">// rest unchanged</span></code></pre>
+<p>首先我们引入 <code>./sagas</code> 模块中的 Saga。然后使用 <code>redux-saga</code> 模块的 <code>createSagaMiddleware</code> 工厂函数来创建一个 Saga middleware。</p><p>运行 <code>helloSaga</code> 之前，我们必须使用 <code>applyMiddleware</code> 将 middleware 连接至 Store。然后使用 <code>sagaMiddleware.run(helloSaga)</code> 运行 Saga。</p><p>到目前为止，我们的 Saga 并没做什么特别的事情。它只是打印了一条消息，然后退出。</p><h2 id="发起异步调用">发起异步调用</h2><p>现在我们来添加一些更接近原始计数器例子的东西。为了演示异步调用，我们将添加另外一个按钮，用于在点击 1 秒后增加计数。</p><p>首先，我们需要在 UI 组件上添加一个额外的按钮和一个回调 <code>onIncrementAsync</code>。</p><pre><code class="lang-javascript"><span class="token keyword">const</span> Counter <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> value<span class="token punctuation">,</span> onIncrement<span class="token punctuation">,</span> onDecrement<span class="token punctuation">,</span> onIncrementAsync <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>button onClick<span class="token operator">=</span><span class="token punctuation">{</span>onIncrementAsync<span class="token punctuation">}</span><span class="token operator">&gt;</span>
+      Increment after <span class="token number">1</span> second
+    <span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">&gt;</span>
+    <span class="token punctuation">{</span><span class="token string">' '</span><span class="token punctuation">}</span>
+    <span class="token operator">&lt;</span>button onClick<span class="token operator">=</span><span class="token punctuation">{</span>onIncrement<span class="token punctuation">}</span><span class="token operator">&gt;</span>
+      Increment
+    <span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">&gt;</span>
+    <span class="token punctuation">{</span><span class="token string">' '</span><span class="token punctuation">}</span>
+    <span class="token operator">&lt;</span>button onClick<span class="token operator">=</span><span class="token punctuation">{</span>onDecrement<span class="token punctuation">}</span><span class="token operator">&gt;</span>
+      Decrement
+    <span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>hr <span class="token operator">/</span><span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>
+      Clicked<span class="token punctuation">:</span> <span class="token punctuation">{</span>value<span class="token punctuation">}</span> times
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span></code></pre>
+<p>接下来我们需要将组件的 <code>onIncrementAsync</code> 与 Store action 连接起来。</p><p>修改 <code>main.js</code> 模块：</p><pre><code class="lang-javascript"><span class="token keyword">function</span> <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  ReactDOM<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span>
+    <span class="token operator">&lt;</span>Counter
+      value<span class="token operator">=</span><span class="token punctuation">{</span>store<span class="token punctuation">.</span><span class="token function">getState</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
+      onIncrement<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token function">action</span><span class="token punctuation">(</span><span class="token string">'INCREMENT'</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
+      onDecrement<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token function">action</span><span class="token punctuation">(</span><span class="token string">'DECREMENT'</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
+      onIncrementAsync<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token function">action</span><span class="token punctuation">(</span><span class="token string">'INCREMENT_ASYNC'</span><span class="token punctuation">)</span><span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">&gt;</span><span class="token punctuation">,</span>
+    document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'root'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
+<p>注意，与 redux-thunk 不同，上面组件 dispatch 的是一个 plain Object 的 action。</p><p>现在我们将介绍另一种执行异步调用的 Saga。我们的用例如下：</p><blockquote><p>我们需要在每个 <code>INCREMENT_ASYNC</code> action 启动一个做以下事情的任务：</p><ul><li>等待 1 秒，然后增加计数
+</li></ul>
+</blockquote><p>添加以下代码到 <code>sagas.js</code> 模块：</p><pre><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> delay <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'redux-saga'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> put<span class="token punctuation">,</span> takeEvery <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'redux-saga/effects'</span>
+
+<span class="token comment" spellcheck="true">// ...</span>
+
+<span class="token comment" spellcheck="true">// Our worker Saga: 将执行异步的 increment 任务</span>
+<span class="token keyword">export</span> <span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">incrementAsync</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">yield</span> <span class="token function">delay</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span>
+  <span class="token keyword">yield</span> <span class="token function">put</span><span class="token punctuation">(</span><span class="token punctuation">{</span> type<span class="token punctuation">:</span> <span class="token string">'INCREMENT'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">// Our watcher Saga: 在每个 INCREMENT_ASYNC action spawn 一个新的 incrementAsync 任务</span>
+<span class="token keyword">export</span> <span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">watchIncrementAsync</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">yield</span> <span class="token function">takeEvery</span><span class="token punctuation">(</span><span class="token string">'INCREMENT_ASYNC'</span><span class="token punctuation">,</span> incrementAsync<span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
+<p>好吧，该解释一下了。</p><p>我们引入了一个工具函数 <code>delay</code>，这个函数返回一个延迟 1 秒再 resolve 的 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" target="_blank">Promise</a>
+我们将使用这个函数去 <em>block(阻塞)</em> Generator。</p><p>Sagas 被实现为 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function*" target="_blank">Generator functions</a>，它会 yield 对象到 redux-saga middleware。
+被 yield 的对象都是一类指令，指令可被 middleware 解释执行。当 middleware 取得一个 yield 后的 Promise，middleware 会暂停 Saga，直到 Promise 完成。
+在上面的例子中，<code>incrementAsync</code> 这个 Saga 会暂停直到 <code>delay</code> 返回的 Promise 被 resolve，这个 Promise 将在 1 秒后 resolve。</p><p>一旦 Promise 被 resolve，middleware 会恢复 Saga 接着执行，直到遇到下一个 yield。
+在这个例子中，下一个语句是另一个被 yield 的对象：调用 <code>put({type: 'INCREMENT'})</code> 的结果，意思是告诉 middleware 发起一个 <code>INCREMENT</code> 的 action。</p><p><code>put</code> 就是我们称作 <em>Effect</em> 的一个例子。Effects 是一些简单 Javascript 对象，包含了要被 middleware 执行的指令。
+当 middleware 拿到一个被 Saga yield 的 Effect，它会暂停 Saga，直到 Effect 执行完成，然后 Saga 会再次被恢复。</p><p>总结一下，<code>incrementAsync</code> Saga 通过 <code>delay(1000)</code> 延迟了 1 秒钟，然后 dispatch 一个叫 <code>INCREMENT</code> 的 action。</p><p>接下来，我们创建了另一个 Saga <code>watchIncrementAsync</code>。我们用了一个 <code>redux-saga</code> 提供的辅助函数 <code>takeEvery</code>，用于监听所有的 <code>INCREMENT_ASYNC</code> action，并在 action 被匹配时执行 <code>incrementAsync</code> 任务。</p><p>现在我们有了 2 个 Sagas，我们需要同时启动它们。为了做到这一点，我们将添加一个 <code>rootSaga</code>，负责启动其他的 Sagas。在同样的 <code>sagas.js</code> 文件中，重构文件如下：</p><pre><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> delay <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'redux-saga'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> put<span class="token punctuation">,</span> takeEvery<span class="token punctuation">,</span> all <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'redux-saga/effects'</span>
+
+
+<span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">incrementAsync</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">yield</span> <span class="token function">delay</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span>
+  <span class="token keyword">yield</span> <span class="token function">put</span><span class="token punctuation">(</span><span class="token punctuation">{</span> type<span class="token punctuation">:</span> <span class="token string">'INCREMENT'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">watchIncrementAsync</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">yield</span> <span class="token function">takeEvery</span><span class="token punctuation">(</span><span class="token string">'INCREMENT_ASYNC'</span><span class="token punctuation">,</span> incrementAsync<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token comment" spellcheck="true">// notice how we now only export the rootSaga</span>
+<span class="token comment" spellcheck="true">// single entry point to start all Sagas at once</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">rootSaga</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">yield</span> <span class="token function">all</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+    <span class="token function">helloSaga</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token function">watchIncrementAsync</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
+<p>这个 Saga yield 了一个数组，值是调用 <code>helloSaga</code> 和 <code>watchIncrementAsync</code> 两个 Saga 的结果。意思是说这两个 Generators 将会同时启动。
+现在我们只有在 <code>main.js</code> 的 root Saga 中调用 <code>sagaMiddleware.run</code>。</p><pre><code class="lang-javascript"><span class="token comment" spellcheck="true">// ...</span>
+<span class="token keyword">import</span> rootSaga <span class="token keyword">from</span> <span class="token string">'./sagas'</span>
+
+<span class="token keyword">const</span> sagaMiddleware <span class="token operator">=</span> <span class="token function">createSagaMiddleware</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> store <span class="token operator">=</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+sagaMiddleware<span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span>rootSaga<span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true">// ...</span></code></pre>
+<h2 id="让我们的代码可测试">让我们的代码可测试</h2><p>我们希望测试 <code>incrementAsync</code> Saga，以确保它执行期望的任务。</p><p>创建另一个文件 <code>saga.spec.js</code>：</p><pre><code class="lang-javascript"><span class="token keyword">import</span> test <span class="token keyword">from</span> <span class="token string">'tape'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token punctuation">{</span> incrementAsync <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./sagas'</span>
+
+<span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'incrementAsync Saga test'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>assert<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> gen <span class="token operator">=</span> <span class="token function">incrementAsync</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+  <span class="token comment" spellcheck="true">// now what ?</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p><code>incrementAsync</code> 是一个 Generator 函数。执行的时候返回一个 iterator object，这个 iterator 的 <code>next</code> 方法返回一个如下格式的对象：</p><pre><code class="lang-javascript">gen<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// =&gt; { done: boolean, value: any }</span></code></pre>
+<p><code>value</code> 字段包含被 yield 后的表达式，也就是 <code>yield</code> 后面那个表达式的结果。<code>done</code> 字段指示 generator 是结束了，还是有更多的 <code>yield</code> 表达式。</p><p>在 <code>incrementAsync</code> 的例子中，generator 连续 yield 了两个值：</p><ol><li><code>yield delay(1000)</code>
+</li>
+<li><code>yield put({type: 'INCREMENT'})</code>
+</li></ol>
+<p>所以，如果我们连续 3 次调用 generator 的 next 方法，我们会得到以下结果：</p><pre><code class="lang-javascript">gen<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// =&gt; { done: false, value: &lt;result of calling delay(1000)&gt; }</span>
+gen<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// =&gt; { done: false, value: &lt;result of calling put({type: 'INCREMENT'})&gt; }</span>
+gen<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// =&gt; { done: true, value: undefined }</span></code></pre>
+<p>前两次调用返回了 yield 表达式的结果。第三次调用由于没有更多的 yield 了，所以 <code>done</code> 字段被设置为 true。
+并且由于 <code>incrementAsync</code> Generator 未返回任何东西（没有 <code>return</code> 语句），所以 <code>value</code> 字段被设置为 <code>undefined</code>。</p><p>所以现在，为了测试 <code>incrementAsync</code> 里面的逻辑，我们需要对返回的 Generator 进行简单地迭代并检查 Generator yield 后的值。</p><pre><code class="lang-javascript"><span class="token keyword">import</span> test <span class="token keyword">from</span> <span class="token string">'tape'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token punctuation">{</span> incrementAsync <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./sagas'</span>
+
+<span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'incrementAsync Saga test'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>assert<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> gen <span class="token operator">=</span> <span class="token function">incrementAsync</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+  assert<span class="token punctuation">.</span><span class="token function">deepEqual</span><span class="token punctuation">(</span>
+    gen<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span> done<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span> value<span class="token punctuation">:</span> <span class="token operator">?</span><span class="token operator">?</span><span class="token operator">?</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">'incrementAsync should return a Promise that will resolve after 1 second'</span>
+  <span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>上面的问题是我们如何测试 <code>delay</code> 的返回值？我们不能在 Promise 之间做简单的相等测试。如果 <code>delay</code> 返回的是一个 <em>普通（normal）</em> 的值，
+事情将会变得很简单。</p><p>好吧，<code>redux-saga</code> 提供了一种方式，让上面的语句变得可能。与在 <code>incrementAsync</code> 中直接（directly）调用 <code>delay(1000)</code> 不同，我们叫它 <em>indirectly</em>：</p><pre><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> delay <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'redux-saga'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> put<span class="token punctuation">,</span> takeEvery<span class="token punctuation">,</span> all<span class="token punctuation">,</span> call <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'redux-saga/effects'</span>
+
+<span class="token comment" spellcheck="true">// ...</span>
+
+<span class="token keyword">export</span> <span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">incrementAsync</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// use the call Effect</span>
+  <span class="token keyword">yield</span> <span class="token function">call</span><span class="token punctuation">(</span>delay<span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span>
+  <span class="token keyword">yield</span> <span class="token function">put</span><span class="token punctuation">(</span><span class="token punctuation">{</span> type<span class="token punctuation">:</span> <span class="token string">'INCREMENT'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
+<p>我们现在做的是 <code>yield call(delay, 1000)</code> 而不是 <code>yield delay(1000)</code>，所以有何不同？</p><p>在 <code>yield delay(1000)</code> 的情况下，yield 后的表达式 <code>delay(1000)</code> 在被传递给 <code>next</code> 的调用者之前就被执行了（当运行我们的代码时，调用者可能是 middleware。
+也有可能是运行 Generator 函数并对返回的 Generator 进行迭代的测试代码）。所以调用者得到的是一个 Promise，像在以上的测试代码里一样。</p><p>而在 <code>yield call(delay, 1000)</code> 的情况下，yield 后的表达式 <code>call(delay, 1000)</code> 被传递给 <code>next</code> 的调用者。<code>call</code> 就像 <code>put</code>，
+返回一个 Effect，告诉 middleware 使用给定的参数调用给定的函数。实际上，无论是 <code>put</code> 还是 <code>call</code> 都不执行任何 dispatch 或异步调用，它们只是简单地返回 plain Javascript 对象。</p><pre><code class="lang-javascript"><span class="token function">put</span><span class="token punctuation">(</span><span class="token punctuation">{</span>type<span class="token punctuation">:</span> <span class="token string">'INCREMENT'</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// =&gt; { PUT: {type: 'INCREMENT'} }</span>
+<span class="token function">call</span><span class="token punctuation">(</span>delay<span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span>        <span class="token comment" spellcheck="true">// =&gt; { CALL: {fn: delay, args: [1000]}}</span></code></pre>
+<p>这里发生的事情是：middleware 检查每个被 yield 的 Effect 的类型，然后决定如何实现哪个 Effect。如果 Effect 类型是 <code>PUT</code> 那 middleware 会 dispatch 一个 action 到 Store。
+如果 Effect 类型是 <code>CALL</code> 那么它会调用给定的函数。</p><p>这种把 Effect 创建和 Effect 执行之间分开的做法，使得我们能够以一种非常简单的方法去测试 Generator。</p><pre><code class="lang-javascript"><span class="token keyword">import</span> test <span class="token keyword">from</span> <span class="token string">'tape'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token punctuation">{</span> put<span class="token punctuation">,</span> call <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'redux-saga/effects'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> delay <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'redux-saga'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> incrementAsync <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./sagas'</span>
+
+<span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'incrementAsync Saga test'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>assert<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> gen <span class="token operator">=</span> <span class="token function">incrementAsync</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+  assert<span class="token punctuation">.</span><span class="token function">deepEqual</span><span class="token punctuation">(</span>
+    gen<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">,</span>
+    <span class="token function">call</span><span class="token punctuation">(</span>delay<span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token string">'incrementAsync Saga must call delay(1000)'</span>
+  <span class="token punctuation">)</span>
+
+  assert<span class="token punctuation">.</span><span class="token function">deepEqual</span><span class="token punctuation">(</span>
+    gen<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">,</span>
+    <span class="token function">put</span><span class="token punctuation">(</span><span class="token punctuation">{</span>type<span class="token punctuation">:</span> <span class="token string">'INCREMENT'</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token string">'incrementAsync Saga must dispatch an INCREMENT action'</span>
+  <span class="token punctuation">)</span>
+
+  assert<span class="token punctuation">.</span><span class="token function">deepEqual</span><span class="token punctuation">(</span>
+    gen<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span> done<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> value<span class="token punctuation">:</span> undefined <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token string">'incrementAsync Saga must be done'</span>
+  <span class="token punctuation">)</span>
+
+  assert<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>由于 <code>put</code> 和 <code>call</code> 返回 plain Object，所以我们可以在测试代码中重复使用同样的函数。为了测试 <code>incrementAsync</code> 的逻辑，
+我们可以简单地遍历 generator 并对它的值做 <code>deepEqual</code> 测试。</p><p>为了运行上面的测试代码，我们需要运行：</p><pre><code class="lang-sh">$ npm test</code></pre>
+<p>测试结果会显示在控制面板上。</p>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class="search-results-count"></span> results matching "<span class="search-query"></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class="search-query"></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="https://redux-saga-in-chinese.js.org/docs/introduction/" class="navigation navigation-prev " aria-label="Previous page: 介绍">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="https://redux-saga-in-chinese.js.org/docs/introduction/SagaBackground.html" class="navigation navigation-next " aria-label="Next page: Saga 概念的背景" style="margin-right: 0px;">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"初级教程","level":"1.2.1","depth":2,"next":{"title":"Saga 概念的背景","level":"1.2.2","depth":2,"path":"docs/introduction/SagaBackground.md","ref":"docs/introduction/SagaBackground.md","articles":[]},"previous":{"title":"介绍","level":"1.2","depth":1,"path":"docs/introduction/README.md","ref":"docs/introduction/README.md","articles":[{"title":"初级教程","level":"1.2.1","depth":2,"path":"docs/introduction/BeginnerTutorial.md","ref":"docs/introduction/BeginnerTutorial.md","articles":[]},{"title":"Saga 概念的背景","level":"1.2.2","depth":2,"path":"docs/introduction/SagaBackground.md","ref":"docs/introduction/SagaBackground.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["edit-link","prism@1.0.0","-highlight","github"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"edit-link":{"label":"开始纠错","base":"https://github.com/superRaytin/redux-saga-in-chinese/tree/master"},"github":{"url":"https://github.com/superRaytin/redux-saga-in-chinese"},"sharing":{"facebook":true,"twitter":true,"google":true,"weibo":true,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"prism":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Redux-Saga","gitbook":"3.2.0"},"file":{"path":"docs/introduction/BeginnerTutorial.md","mtime":"2018-05-28T10:04:29.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2018-05-28T10:21:20.665Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="./初级教程 · Redux-Saga_files/gitbook.js.下载"></script>
+    <script src="./初级教程 · Redux-Saga_files/theme.js.下载"></script>
+    
+        
+        <script src="./初级教程 · Redux-Saga_files/plugin.js.下载"></script>
+        
+    
+        
+        <script src="./初级教程 · Redux-Saga_files/plugin.js(1).下载"></script>
+        
+    
+        
+        <script src="./初级教程 · Redux-Saga_files/search-engine.js.下载"></script>
+        
+    
+        
+        <script src="./初级教程 · Redux-Saga_files/search.js.下载"></script>
+        
+    
+        
+        <script src="./初级教程 · Redux-Saga_files/lunr.min.js.下载"></script>
+        
+    
+        
+        <script src="./初级教程 · Redux-Saga_files/search-lunr.js.下载"></script>
+        
+    
+        
+        <script src="./初级教程 · Redux-Saga_files/buttons.js.下载"></script>
+        
+    
+        
+        <script src="./初级教程 · Redux-Saga_files/fontsettings.js.下载"></script>
+        
+    
+
+    
+
+
+</body></html>

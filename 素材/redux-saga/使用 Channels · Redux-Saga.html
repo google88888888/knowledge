@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<!-- saved from url=(0064)https://redux-saga-in-chinese.js.org/docs/advanced/Channels.html -->
+<html lang=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>使用 Channels · Redux-Saga</title>
+        
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.0">
+        
+        
+        
+    
+    <link rel="stylesheet" href="./使用 Channels · Redux-Saga_files/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="./使用 Channels · Redux-Saga_files/prism.css">
+                
+            
+                
+                <link rel="stylesheet" href="./使用 Channels · Redux-Saga_files/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="./使用 Channels · Redux-Saga_files/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="https://redux-saga-in-chinese.js.org/gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="https://redux-saga-in-chinese.js.org/gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    
+    
+    
+    
+
+    <link rel="prev" href="https://redux-saga-in-chinese.js.org/docs/advanced/UsingRunSaga.html"><link rel="next" href="https://redux-saga-in-chinese.js.org/docs/recipes/"></head>
+    <body>
+        
+<div class="book without-animation with-summary font-size-2 font-family-1">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search">
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="https://redux-saga-in-chinese.js.org/">
+            
+                    
+                    自述
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../introduction/">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/introduction/">
+            
+                    
+                    介绍
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../introduction/BeginnerTutorial.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/introduction/BeginnerTutorial.html">
+            
+                    
+                    初级教程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../introduction/SagaBackground.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/introduction/SagaBackground.html">
+            
+                    
+                    Saga 概念的背景
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../basics/">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/basics/">
+            
+                    
+                    基础概念
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../basics/UsingSagaHelpers.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/basics/UsingSagaHelpers.html">
+            
+                    
+                    使用 Saga Helpers
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../basics/DeclarativeEffects.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/basics/DeclarativeEffects.html">
+            
+                    
+                    声明式 Effects
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../basics/DispatchingActions.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/basics/DispatchingActions.html">
+            
+                    
+                    dispatch action
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../basics/ErrorHandling.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/basics/ErrorHandling.html">
+            
+                    
+                    错误处理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../basics/Effect.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/basics/Effect.html">
+            
+                    
+                    一个常见的抽象概念: Effect
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="./">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/">
+            
+                    
+                    高级
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="FutureActions.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/FutureActions.html">
+            
+                    
+                    监听未来的 action
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="NonBlockingCalls.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/NonBlockingCalls.html">
+            
+                    
+                    无阻塞调用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="RunningTasksInParallel.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/RunningTasksInParallel.html">
+            
+                    
+                    同时执行多个任务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="RacingEffects.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/RacingEffects.html">
+            
+                    
+                    在多个 Effects 之间启动 race
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="SequencingSagas.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/SequencingSagas.html">
+            
+                    
+                    使用 yield* 对 Sagas 进行排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="ComposingSagas.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/ComposingSagas.html">
+            
+                    
+                    组合 Sagas
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="TaskCancellation.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/TaskCancellation.html">
+            
+                    
+                    取消任务
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="ForkModel.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/ForkModel.html">
+            
+                    
+                    redux-saga 的 fork model
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.9" data-path="Concurrency.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/Concurrency.html">
+            
+                    
+                    并发
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.10" data-path="Testing.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/Testing.html">
+            
+                    
+                    测试 Sagas
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.11" data-path="UsingRunSaga.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/UsingRunSaga.html">
+            
+                    
+                    连接 Sagas 至外部的输入/输出
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4.12" data-path="Channels.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/Channels.html">
+            
+                    
+                    使用 Channels
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../recipes/">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/recipes/">
+            
+                    
+                    技巧
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../ExternalResources.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/ExternalResources.html">
+            
+                    
+                    外部资源
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../Troubleshooting.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/Troubleshooting.html">
+            
+                    
+                    问题解答
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../Glossary.html">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/Glossary.html">
+            
+                    
+                    名词解释
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../api/">
+            
+                <a href="https://redux-saga-in-chinese.js.org/docs/api/">
+            
+                    
+                    API 参考
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com/" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <a class="btn pull-left js-toolbar-action" aria-label="" href="https://redux-saga-in-chinese.js.org/docs/advanced/Channels.html#"><i class="fa fa-align-justify"></i></a><a class="btn pull-left js-toolbar-action" aria-label="" href="https://redux-saga-in-chinese.js.org/docs/advanced/Channels.html#"><i class="fa fa-edit"></i> 开始纠错</a><a class="btn pull-right js-toolbar-action" aria-label="GitHub" href="https://redux-saga-in-chinese.js.org/docs/advanced/Channels.html#"><i class="fa fa-github"></i></a><div class="dropdown pull-right  js-toolbar-action"><a class="btn toggle-dropdown" aria-label="Share" href="https://redux-saga-in-chinese.js.org/docs/advanced/Channels.html#"><i class="fa fa-share-alt"></i></a><div class="dropdown-menu dropdown-left"><div class="dropdown-caret"><span class="caret-outer"></span><span class="caret-inner"></span></div><div class="buttons"><button class="button size-5 ">Facebook</button><button class="button size-5 ">Google+</button><button class="button size-5 ">Twitter</button><button class="button size-5 ">Weibo</button><button class="button size-5 ">Instapaper</button></div></div></div><a class="btn pull-right js-toolbar-action" aria-label="" href="https://redux-saga-in-chinese.js.org/docs/advanced/Channels.html#"><i class="fa fa-facebook"></i></a><a class="btn pull-right js-toolbar-action" aria-label="" href="https://redux-saga-in-chinese.js.org/docs/advanced/Channels.html#"><i class="fa fa-twitter"></i></a><a class="btn pull-right js-toolbar-action" aria-label="" href="https://redux-saga-in-chinese.js.org/docs/advanced/Channels.html#"><i class="fa fa-google-plus"></i></a><a class="btn pull-right js-toolbar-action" aria-label="" href="https://redux-saga-in-chinese.js.org/docs/advanced/Channels.html#"><i class="fa fa-weibo"></i></a><div class="dropdown pull-left font-settings js-toolbar-action"><a class="btn toggle-dropdown" aria-label="Font Settings" href="https://redux-saga-in-chinese.js.org/docs/advanced/Channels.html#"><i class="fa fa-font"></i></a><div class="dropdown-menu dropdown-right"><div class="dropdown-caret"><span class="caret-outer"></span><span class="caret-inner"></span></div><div class="buttons"><button class="button size-2 font-reduce">A</button><button class="button size-2 font-enlarge">A</button></div><div class="buttons"><button class="button size-2 ">Serif</button><button class="button size-2 ">Sans</button></div><div class="buttons"><button class="button size-3 ">White</button><button class="button size-3 ">Sepia</button><button class="button size-3 ">Night</button></div></div></div><h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="https://redux-saga-in-chinese.js.org/">使用 Channels</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="使用-channels">使用 Channels</h1><p>They can also be used to queue specific actions from the Store.
+到目前为止，我们已经使用了 <code>take</code> 和 <code>put</code> 来与 Redux Store 通信。Channels 概括了这些 Effects 与外部事件源或 Sagas 之间的通信。
+它们还可以用于在 Store 中对特定的 actions 进行排序。</p><p>这一节，我们将会看到：</p><ul><li><p>如何在 Store 中用 <code>yield actionChannel</code> Effect 缓存特定的 action。</p></li>
+<li><p>如何使用 <code>eventChannel</code> factory function 连接 <code>take</code> Effects 至外部的事件来源。</p></li>
+<li><p>如何使用通用的 <code>channel</code> factory function 创建一个 channel，并在 <code>take</code>/<code>put</code> Effects 中使用它来让两个 Saga 之间进行通信。</p></li></ul>
+<h2 id="使用-actionchannel-effect">使用 <code>actionChannel</code> Effect</h2><p>让我们来回顾一下那个经典的例子：</p><pre><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> take<span class="token punctuation">,</span> fork<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'redux-saga/effects'</span>
+
+<span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">watchRequests</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token punctuation">{</span>payload<span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token function">take</span><span class="token punctuation">(</span><span class="token string">'REQUEST'</span><span class="token punctuation">)</span>
+    <span class="token keyword">yield</span> <span class="token function">fork</span><span class="token punctuation">(</span>handleRequest<span class="token punctuation">,</span> payload<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">handleRequest</span><span class="token punctuation">(</span>payload<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token punctuation">}</span></code></pre>
+<p>以上的例子演示了经典的 <em>watch-and-fork</em> 模式。<code>watchRequests</code> 这个 saga 使用 <code>fork</code> 来避免阻塞，也因此它不会错过任何来自 store 的 action。
+<code>handleRequest</code> 任务是在收到每个 <code>REQUEST</code> action 时被创建，因此，如果以很快的速度触发多个 action，那么就会有多个 <code>handleRequest</code> 任务同时执行。</p><p>假设我们的需求如下：每次只处理一个 <code>REQUEST</code> actions。比如有 4 个 <code>REQUEST</code> action，我们想要一个一个处理，处理完第一个 action 之后再处理第二个，如此等等...</p><p>我们想要的是 <em>queue（队列）</em> 所有没被处理的 action，一旦我们处理完当前的 request，就可以从队列中获取下一个的信息。</p><p>Redux-Saga 提供了一个 helper Effect: <code>actionChannel</code> 可以处理这些东西。让我们看看如何重写前一个例子：</p><pre><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> take<span class="token punctuation">,</span> actionChannel<span class="token punctuation">,</span> call<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'redux-saga/effects'</span>
+
+<span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">watchRequests</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// 1- 为 REQUEST actions 创建一个 channel</span>
+  <span class="token keyword">const</span> requestChan <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token function">actionChannel</span><span class="token punctuation">(</span><span class="token string">'REQUEST'</span><span class="token punctuation">)</span>
+  <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 2- take from the channel</span>
+    <span class="token keyword">const</span> <span class="token punctuation">{</span>payload<span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token function">take</span><span class="token punctuation">(</span>requestChan<span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true">// 3- 注意这里我们用了一个阻塞调用</span>
+    <span class="token keyword">yield</span> <span class="token function">call</span><span class="token punctuation">(</span>handleRequest<span class="token punctuation">,</span> payload<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">handleRequest</span><span class="token punctuation">(</span>payload<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token punctuation">}</span></code></pre>
+<p>第一件事是创建一个 action channel。我们使用 <code>yield actionChannel(pattern)</code>，pattern 可以理解成我们之前提到的 <code>take(pattern)</code> 中的 pattern，使用的是同样的规则。
+两种形式的区别在于，如果 Saga 还没有准备好接收它们（比如一个被阻塞的 API 调用），<code>actionChannel</code> <em>能够缓存传入的消息</em>。</p><p>接下来是 <code>yield take(requestChan)</code>。除了使用 <code>pattern</code> 来从 Redux Store 接收特定的 action，<code>take</code> 还可以与 channels 一起使用（在上面我们从特定的 Redux action 创建了 channel 对象）。
+<code>take</code> 将会阻塞 Saga，直到 channel 上有一个可用的消息。如果有一个消息被储存在缓存区，<code>take</code> 也可以立即恢复。</p><p>重要的是，我们要注意如何使用一个阻塞的 <code>call</code>。<code>call(handleRequest)</code> 返回之前，Saga 将保持阻塞。但与此同时，如果其他的 <code>REQUEST</code> action 在 Saga 仍被阻塞的情况下被 dispatch，
+它们将被 <code>requestChan</code> 队列在内部。当 Saga 从 <code>call(handleRequest)</code> 恢复并执行下一个 <code>yield take(requestChan)</code> 时，<code>take</code> 将 resolve 被队列的消息。</p><p>默认情况下，<code>actionChannel</code> 会无限制缓存所有传入的消息。如果你想要更多地控制缓存，你可以提供一个 Buffer 参数给 effect creator。
+Redux-Saga 提供了一些常用的 buffers（none, dropping, sliding），当然你也可以提供自己的 buffer 实现。详细请查看 <a href="https://redux-saga-in-chinese.js.org/docs/api#buffers">API 文档</a>。</p><p>例如，如果你只想要处理最近的五个项目，那么你可以用：</p><pre><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> buffers <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'redux-saga'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> actionChannel <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'redux-saga/effects'</span>
+
+<span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">watchRequests</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> requestChan <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token function">actionChannel</span><span class="token punctuation">(</span><span class="token string">'REQUEST'</span><span class="token punctuation">,</span> buffers<span class="token punctuation">.</span><span class="token function">sliding</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="使用-eventchannel-factory-连接外部的事件">使用 <code>eventChannel</code> factory 连接外部的事件</h2><p>类似 <code>actionChannel</code> (Effect)，<code>eventChannel</code>（一个 factory function, 不是一个 Effect）为 Redux Store 以外的事件来源创建一个 Channel。</p><p>以下是一个从 interval 创建 Channel 的简单例子：</p><pre><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> eventChannel<span class="token punctuation">,</span> END <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'redux-saga'</span>
+
+<span class="token keyword">function</span> <span class="token function">countdown</span><span class="token punctuation">(</span>secs<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token function">eventChannel</span><span class="token punctuation">(</span>emitter <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> iv <span class="token operator">=</span> <span class="token function">setInterval</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+        secs <span class="token operator">-</span><span class="token operator">=</span> <span class="token number">1</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>secs <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token function">emitter</span><span class="token punctuation">(</span>secs<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+          <span class="token comment" spellcheck="true">// 这里将导致 channel 关闭</span>
+          <span class="token function">emitter</span><span class="token punctuation">(</span>END<span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token comment" spellcheck="true">// subscriber 必须回传一个 unsubscribe 函数</span>
+      <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+        <span class="token function">clearInterval</span><span class="token punctuation">(</span>iv<span class="token punctuation">)</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
+<p><code>eventChannel</code> 中第一个参数是一个 <em>subscriber</em> 函数。
+subscriber 的职责是初始化外部的事件来源（上面使用 <code>setInterval</code>），通过调用提供的 <code>emitter</code>，将事件来源传入的所有事件路由到 channel。
+上面的例子中，我们在每秒调用 <code>emitter</code>。</p><blockquote><p>注意：你需要清除你的事件来源，而不是通过事件 channel 传递 null 或 undefined。虽然可以通过数字传递，但我们推荐像 redux action 一样，组织你的 event channel 数据。 用 <code>{ number }</code> 而不是 <code>number</code>.</p></blockquote><p>注意，也可以调用 <code>emitter(END)</code>。我们使用它来通知 channel 消费者：channel 已经关闭了，意味着没有其他消息能够通过这个 channel 了。</p><p>让我们看看如何从 Saga 使用这个 channel。（这个例子来自前面的 cancellable-counter 示例）</p><pre><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> take<span class="token punctuation">,</span> put<span class="token punctuation">,</span> call <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'redux-saga/effects'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> eventChannel<span class="token punctuation">,</span> END <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'redux-saga'</span>
+
+<span class="token comment" spellcheck="true">// 每隔一秒创建一个事件 Channel</span>
+<span class="token keyword">function</span> <span class="token function">countdown</span><span class="token punctuation">(</span>seconds<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">saga</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> chan <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token function">call</span><span class="token punctuation">(</span>countdown<span class="token punctuation">,</span> value<span class="token punctuation">)</span>
+  <span class="token keyword">try</span> <span class="token punctuation">{</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment" spellcheck="true">// take(END) 将造成 saga 终止，跳到 finally 区块</span>
+      <span class="token keyword">let</span> seconds <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token function">take</span><span class="token punctuation">(</span>chan<span class="token punctuation">)</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`countdown: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>seconds<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">`</span></span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'countdown terminated'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>所以 Saga yield 了一个 <code>take(chan)</code> 造成 Saga 阻塞，直到一条消息被 put 到 channel。在上面的示例中，对应的是调用 <code>emitter(secs)</code>。
+注意，我们还在一个 <code>try/finally</code> 区块中执行整个 <code>while (true) {...}</code> 循环。当 interval 终止时，countdown 函数通过调用 <code>emitter(END)</code> 关闭 event channel。
+在 channel 的 <code>take</code> effect 关闭 channel 会终止所有被阻塞的 Saga。
+在我们例子中，终止 Saga 将造成它跳到 <code>finally</code> 区块（如果提供了的话，否则 Saga 只是简单终止）。</p><p>订阅者回传一个 <code>unsubscribe</code> 函数，用于在事件来源完成之前通过 channel 取消订阅。
+在 Saga 中消费来自事件 channel 的消息，如果我们想要在事件来源完成之前<em>提前离开</em>（比如 Saga 被取消了）。
+你可以从来源调用 <code>chan.close()</code> 关闭 channel 并取消订阅。</p><p>举个例子，我们可以让 Saga 支持取消：</p><pre><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> take<span class="token punctuation">,</span> put<span class="token punctuation">,</span> call<span class="token punctuation">,</span> cancelled <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'redux-saga/effects'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> eventChannel<span class="token punctuation">,</span> END <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'redux-saga'</span>
+
+<span class="token comment" spellcheck="true">// 每隔一秒创建一个事件 Channel</span>
+<span class="token keyword">function</span> <span class="token function">countdown</span><span class="token punctuation">(</span>seconds<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">saga</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> chan <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token function">call</span><span class="token punctuation">(</span>countdown<span class="token punctuation">,</span> value<span class="token punctuation">)</span>
+  <span class="token keyword">try</span> <span class="token punctuation">{</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">let</span> seconds <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token function">take</span><span class="token punctuation">(</span>chan<span class="token punctuation">)</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`countdown: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>seconds<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">`</span></span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">yield</span> <span class="token function">cancelled</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      chan<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'countdown cancelled'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>以下是另外一个例子，如何使用事件 channel 传递 WebSocket 事件到你的 saga（例如：使用 socket.io 类库）。
+假设你正在等待一个服务器消息 <code>ping</code>，然后在一些延迟后回复一个 <code>pong</code> 消息。</p><pre><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> take<span class="token punctuation">,</span> put<span class="token punctuation">,</span> call<span class="token punctuation">,</span> apply <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'redux-saga/effects'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> eventChannel<span class="token punctuation">,</span> delay <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'redux-saga'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> createWebSocketConnection <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./socketConnection'</span>
+
+<span class="token comment" spellcheck="true">// 这个函数从给定的 socket 创建一个 event channel</span>
+<span class="token comment" spellcheck="true">// 设定传入 `ping` 事件的 subscription</span>
+<span class="token keyword">function</span> <span class="token function">createSocketChannel</span><span class="token punctuation">(</span>socket<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// `eventChannel` 接收一个 subscriber 函数</span>
+  <span class="token comment" spellcheck="true">// 这个 subscriber 接收一个 `emit` 参数，用来把消息放到 channel 上</span>
+  <span class="token keyword">return</span> <span class="token function">eventChannel</span><span class="token punctuation">(</span>emit <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">const</span> pingHandler <span class="token operator">=</span> <span class="token punctuation">(</span>event<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+      <span class="token comment" spellcheck="true">// 把 event payload 放入 channel</span>
+      <span class="token comment" spellcheck="true">// 这可以让 Saga 从被回传的 channel 接收这个 payload</span>
+      <span class="token function">emit</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span>payload<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">// 设定 subscription</span>
+    socket<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'ping'</span><span class="token punctuation">,</span> pingHandler<span class="token punctuation">)</span>
+
+    <span class="token comment" spellcheck="true">// subscriber 必须返回一个 unsubscribe 函数</span>
+    <span class="token comment" spellcheck="true">// unsubscribe 将在 saga 调用 `channel.close` 方法时被调用</span>
+    <span class="token keyword">const</span> unsubscribe <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+      socket<span class="token punctuation">.</span><span class="token function">off</span><span class="token punctuation">(</span><span class="token string">'ping'</span><span class="token punctuation">,</span> pingHandler<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> unsubscribe
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">// 通过调用 `socket.emit('pong')` 回复一个 `pong` 消息</span>
+<span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">pong</span><span class="token punctuation">(</span>socket<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">yield</span> <span class="token function">call</span><span class="token punctuation">(</span>delay<span class="token punctuation">,</span> <span class="token number">5000</span><span class="token punctuation">)</span>
+  <span class="token keyword">yield</span> <span class="token function">apply</span><span class="token punctuation">(</span>socket<span class="token punctuation">,</span> socket<span class="token punctuation">.</span>emit<span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'pong'</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 把 `emit` 作为一个方法调用，并以 `socket` 为上下文</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">watchOnPings</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> socket <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token function">call</span><span class="token punctuation">(</span>createWebSocketConnection<span class="token punctuation">)</span>
+  <span class="token keyword">const</span> socketChannel <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token function">call</span><span class="token punctuation">(</span>createSocketChannel<span class="token punctuation">,</span> socket<span class="token punctuation">)</span>
+
+  <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> payload <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token function">take</span><span class="token punctuation">(</span>socketChannel<span class="token punctuation">)</span>
+    <span class="token keyword">yield</span> <span class="token function">put</span><span class="token punctuation">(</span><span class="token punctuation">{</span> type<span class="token punctuation">:</span> INCOMING_PONG_PAYLOAD<span class="token punctuation">,</span> payload <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token keyword">yield</span> <span class="token function">fork</span><span class="token punctuation">(</span>pong<span class="token punctuation">,</span> socket<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<blockquote><p>注意：eventChannel 上的消息默认不会被缓存。为了给 channel 指定缓存策略（例如 <code>eventChannel(subscriber, buffer)</code>），你必须提供一个缓存给 eventChannel factory。更多信息请 <a href="https://redux-saga-in-chinese.js.org/docs/api#buffers">查看 API 文档</a>。</p></blockquote><h3 id="使用-channels-在-sagas-之间沟通">使用 channels 在 Sagas 之间沟通</h3><p>除了 action channel 和 event channel。你也可以直接创建 channel，默认不用连接任何来源。
+你可以在 channel 上手动 <code>put</code>。当你想要在 sagas 之间进行沟通使用 channel 是非常方便的。</p><p>为了演示，让我们回顾一下之前处理请求的例子。</p><pre><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> take<span class="token punctuation">,</span> fork<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'redux-saga/effects'</span>
+
+<span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">watchRequests</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token punctuation">{</span> payload <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token function">take</span><span class="token punctuation">(</span><span class="token string">'REQUEST'</span><span class="token punctuation">)</span>
+    <span class="token keyword">yield</span> <span class="token function">fork</span><span class="token punctuation">(</span>handleRequest<span class="token punctuation">,</span> payload<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">handleRequest</span><span class="token punctuation">(</span>payload<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token punctuation">}</span></code></pre>
+<p>我们看到，watch-and-fork 模式允许同时处理多个请求，并且不限制同时执行的任务的数量。
+然后我们使用 <code>actionChannel</code> effect 来限制并发一次执行一个任务。</p><p>假设我们的要求是在同一时间内最多执行三次任务。当我们收到一个请求并且执行的任务少于三个时，我们会立即处理请求，否则我们将任务放入队列，并等待其中一个 <em>slots</em> 完成。</p><p>下面是一个使用 channel 的解决方案：</p><pre><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> channel <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'redux-saga'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> take<span class="token punctuation">,</span> fork<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'redux-saga/effects'</span>
+
+<span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">watchRequests</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// 创建一个 channel 来队列传入的请求</span>
+  <span class="token keyword">const</span> chan <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token function">call</span><span class="token punctuation">(</span>channel<span class="token punctuation">)</span>
+
+  <span class="token comment" spellcheck="true">// 创建 3 个 worker 'threads'</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">3</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">yield</span> <span class="token function">fork</span><span class="token punctuation">(</span>handleRequest<span class="token punctuation">,</span> chan<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token punctuation">{</span>payload<span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token function">take</span><span class="token punctuation">(</span><span class="token string">'REQUEST'</span><span class="token punctuation">)</span>
+    <span class="token keyword">yield</span> <span class="token function">put</span><span class="token punctuation">(</span>chan<span class="token punctuation">,</span> payload<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span><span class="token operator">*</span> <span class="token function">handleRequest</span><span class="token punctuation">(</span>chan<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> payload <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token function">take</span><span class="token punctuation">(</span>chan<span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true">// process the request</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>在上面的例子中，我们使用 <code>channel</code> factory 创建了一个 channel。
+我们得到的这个 channel，默认缓存了所有我们放入的消息（除非有一个正在等待的 taker，当有消息这个 taker 会立即恢复）。</p><p><code>watchRequests</code> saga fork 了 3 个 worker saga。注意，创建的 channel 将提供给所有被 fork 的 saga。
+<code>watchRequests</code> 将使用这个 channel 来 <em>dispatch</em> 工作到那三个 worker saga。每一个 <code>REQUEST</code> action，Saga 只简单地在 channel 上放入 payload。
+payload 然后会被任何 <em>空闲</em> 的 worker 接收。否则它将被 channel 放入队列，直到一个 worker saga 空闲下来准备接收它。</p><p>这三个 worker 都执行一个典型的 while 循环。每次迭代时 worker 将 take 下一次的请求，或者阻塞直到有可用的消息。
+注意，这个机制为 3 个 worker 提供了一个自动的负载均衡。快的 worker 不会被慢的 worker 拖慢。</p>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class="search-results-count"></span> results matching "<span class="search-query"></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class="search-query"></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="https://redux-saga-in-chinese.js.org/docs/advanced/UsingRunSaga.html" class="navigation navigation-prev " aria-label="Previous page: 连接 Sagas 至外部的输入/输出">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="https://redux-saga-in-chinese.js.org/docs/recipes/" class="navigation navigation-next " aria-label="Next page: 技巧" style="margin-right: 0px;">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"使用 Channels","level":"1.4.12","depth":2,"next":{"title":"技巧","level":"1.5","depth":1,"path":"docs/recipes/README.md","ref":"docs/recipes/README.md","articles":[]},"previous":{"title":"连接 Sagas 至外部的输入/输出","level":"1.4.11","depth":2,"path":"docs/advanced/UsingRunSaga.md","ref":"docs/advanced/UsingRunSaga.md","articles":[]},"dir":"ltr"},"config":{"plugins":["edit-link","prism@1.0.0","-highlight","github"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"edit-link":{"label":"开始纠错","base":"https://github.com/superRaytin/redux-saga-in-chinese/tree/master"},"github":{"url":"https://github.com/superRaytin/redux-saga-in-chinese"},"sharing":{"facebook":true,"twitter":true,"google":true,"weibo":true,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"prism":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Redux-Saga","gitbook":"3.2.0"},"file":{"path":"docs/advanced/Channels.md","mtime":"2018-05-28T10:04:29.000Z","type":"markdown"},"gitbook":{"version":"3.2.0","time":"2018-05-28T10:21:20.665Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="./使用 Channels · Redux-Saga_files/gitbook.js.下载"></script>
+    <script src="./使用 Channels · Redux-Saga_files/theme.js.下载"></script>
+    
+        
+        <script src="./使用 Channels · Redux-Saga_files/plugin.js.下载"></script>
+        
+    
+        
+        <script src="./使用 Channels · Redux-Saga_files/plugin.js(1).下载"></script>
+        
+    
+        
+        <script src="./使用 Channels · Redux-Saga_files/search-engine.js.下载"></script>
+        
+    
+        
+        <script src="./使用 Channels · Redux-Saga_files/search.js.下载"></script>
+        
+    
+        
+        <script src="./使用 Channels · Redux-Saga_files/lunr.min.js.下载"></script>
+        
+    
+        
+        <script src="./使用 Channels · Redux-Saga_files/search-lunr.js.下载"></script>
+        
+    
+        
+        <script src="./使用 Channels · Redux-Saga_files/buttons.js.下载"></script>
+        
+    
+        
+        <script src="./使用 Channels · Redux-Saga_files/fontsettings.js.下载"></script>
+        
+    
+
+    
+
+
+</body></html>
