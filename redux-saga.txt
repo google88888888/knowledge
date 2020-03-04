@@ -1,0 +1,174 @@
+（一）自述
+（1）
+redux-saga是一个redux中间件，管理副作用
+
+（二）初级教程
+（1）
+yield delay(1000)返回Promise
+yield call(delay, 1000)返回plain Object
+
+（2）
+export function* needTest() {
+  yield call(delay, 1000)
+  yield put({ type: 'TYPENAME' })
+}
+
+import test from 'tape';
+test('needTest Saga test', (assert) => {
+  const gen = needTest()
+
+  assert.deepEqual(
+    gen.next().value,
+    call(delay, 1000),
+    'needTest Saga must call delay(1000)'
+  )
+
+  assert.deepEqual(
+    gen.next().value,
+    put({type: 'TYPENAME'}),
+    'needTest Saga must dispatch an TYPENAME action'
+  )
+
+  assert.deepEqual(
+    gen.next(),
+    { done: true, value: undefined },
+    'needTest Saga must be done'
+  )
+
+  assert.end()
+});
+
+（三）Saga 概念的背景
+（四）使用 Saga Helpers（从这里开始，这节目前完全没整理）
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
