@@ -20,19 +20,19 @@ test('needTest Saga test', (assert) => {
   assert.deepEqual(
     gen.next().value,
     call(delay, 1000),
-    'needTest Saga must call delay(1000)'
+    'description'
   )
 
   assert.deepEqual(
     gen.next().value,
     put({type: 'TYPENAME'}),
-    'needTest Saga must dispatch an TYPENAME action'
+    'description'
   )
 
   assert.deepEqual(
     gen.next(),
     { done: true, value: undefined },
-    'needTest Saga must be done'
+    'description'
   )
 
   assert.end()
@@ -45,7 +45,7 @@ yield takeEvery('TYPENAME', otherReduxSagaFunction)
 （2）takeLatest 
 yield takeLatest('TYPENAME', otherReduxSagaFunction)
 
-（四）声明式 Effects
+（五）声明式 Effects
 yield call(fn, ...args)
 yield apply(fn, [...args])
 yield call([obj, obj.method], ...args)
@@ -58,14 +58,45 @@ var objectWithoutAdd = {a:1, b:2};
 add.call(objectWithoutAdd, 3, 4); // 1 + 2 + 3 + 4 = 10
 add.apply(objectWithoutAdd, [3, 4]); // 1 + 2 + 3 + 4 = 10
 
-（五）dispatch action（从这里开始，这节目前完全没整理）
+（六）dispatch action
+put
+（七）错误处理
+（1.1）try catch
+function* fetchFunction() {
+  try {
+    const fetchData = yield call(fetchApi, 'fetchUrl')
+    yield put({ type: 'fetchSuccess', fetchData })
+  }
+  catch(error) {
+    yield put({ type: 'fetchFailed', error })
+  }
+}
+（1.2）测试
+const iterator = fetchFunction()
 
+assert.deepEqual(
+  iterator.next().value,
+  call(fetchApi, 'fetchUrl'),
+  'description'
+)
 
+const error = {}
+assert.deepEqual(
+  iterator.throw(error).value,
+  yield put({ type: 'fetchFailed', error }),
+  'description'
+)
+（2）错误标识
+function* fetchFunction() {
+	const { fetchData, error } = yield call(fetchApi, 'fetchUrl')
+	if (fetchData){
+		yield put({ type: 'fetchSuccess', fetchData })
+	}else{
+		yield put({ type: 'fetchFailed', error })
+	}
+}
 
-
-
-
-
+（八）一个常见的抽象概念: Effect（从这里开始，这节目前完全没整理）
 
 
 
