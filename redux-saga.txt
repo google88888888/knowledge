@@ -122,10 +122,10 @@ const [name1, name2] = yield [
 generator会被阻塞直到所有的effect都执行完毕，或一个effect被拒绝
 
 （十二）在多个 Effects 之间启动 race
-const [name1, name2] = yield race([
+const {name1, name2} = yield race({
   name1:call(otherReduxSagaFunction1, ...arguments1),
   name2:call(otherReduxSagaFunction2, ...arguments2))
-])
+})
 
 （十三）使用 yield* 对 Sagas 进行排序
 yield* otherReduxSagaFunction()

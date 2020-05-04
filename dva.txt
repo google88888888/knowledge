@@ -25,17 +25,26 @@ dispatch一个action，如果是同步通过Reducers改变State，如果是异�
 （2.4）effects，副作用，底层使用redux-sagas
 （2.5）subscription，订阅
 
-（六）Dva 图解（从这里开始，这节目前完全没整理）
+（六）Dva 图解
+（七）使用 Dva 开发复杂 SPA（从这里开始，这节目前完全没整理）
+（1）动态加载model
+（2）使用model共享全局信息
+const { namespace1State, namespace2State } = yield select();
 
+（3）model的复用
+（4）动态扩展model
+（5）长流程的业务逻辑
+（6）使用take操作进行事件监听
+（7）多任务调度
+yield [];     并行执行
+yield* [];    顺序执行
 
+（8）任务的竞争
+（9）跨model的通信
+yield call({ type: 'namespace/typeName' });
+yield take('namespace/typeName');
 
-
-
-
-
-
-
-
+（10）为DVA应用编写测试
 
 
 
