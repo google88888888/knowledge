@@ -201,15 +201,22 @@ yield put(chan, action)
 yield fork(otherReduxSagaFunction, chan)
 
 
-（二十一）技巧（从这里开始，这节目前完全没整理）
+（二十一）技巧
+（1）节流，毫秒内不会再一次执行
+import { throttle } from 'redux-saga/effects'
+yield throttle(毫秒, 'typeName', otherReduxSagaFunction)
 
+（2）防抖动
+function* handleInput({ input }) {
+  yield delay(500)
+}
 
+function* watchInput() {
+  yield takeLatest('INPUT_CHANGED', handleInput);
+}
 
-
-
-
-
-
+（3）ajax 重试
+（4）ajax 撤销
 
 
 
