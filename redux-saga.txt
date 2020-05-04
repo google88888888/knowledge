@@ -10,7 +10,7 @@ yield call(delay, 1000)返回plain Object
 （2）
 export function* needTest() {
   yield call(delay, 1000)
-  yield put({ type: 'TYPENAME' })
+  yield put({ type: 'typeName' })
 }
 
 import test from 'tape';
@@ -25,7 +25,7 @@ test('needTest Saga test', (assert) => {
 
   assert.deepEqual(
     gen.next().value,
-    put({type: 'TYPENAME'}),
+    put({type: 'typeName'}),
     'description'
   )
 
@@ -41,15 +41,15 @@ test('needTest Saga test', (assert) => {
 （三）Saga 概念的背景
 （四）使用 Saga Helpers
 （1）takeEvery 
-yield takeEvery('TYPENAME', otherReduxSagaFunction)
+yield takeEvery('typeName', otherReduxSagaFunction)
 （2）takeLatest 
-yield takeLatest('TYPENAME', otherReduxSagaFunction)
+yield takeLatest('typeName', otherReduxSagaFunction)
 
 （五）声明式 Effects
-yield call(fn, ...args)
-yield apply(fn, [...args])
-yield call([obj, obj.method], ...args)
-yield apply(obj, obj.method, [...args])
+yield call(fn, ...arguments)
+yield apply(fn, [...arguments])
+yield call([obj, obj.method], ...arguments)
+yield apply(obj, obj.method, [...arguments])
 注：call和appl作用相同，改变this指向。
 function add(c, d){ 
     return this.a + this.b + c + d; 
@@ -96,17 +96,23 @@ function* fetchFunction() {
 	}
 }
 
-（八）一个常见的抽象概念: Effect（从这里开始，这节目前完全没整理）
+（八）一个常见的抽象概念: Effect
+（九）监听未来的 action
+const action = yield take('*')
+const state = yield select()
+（十）无阻塞调用
+const action = yield take([...typeName])
+const forkName = yield fork(otherReduxSagaFunction, ...arguments)
+yield cancel(forkName)
 
+try {
+} catch(error) {
+} finally {
+    if(yield cancelled()){
+    }
+}
 
-
-
-
-
-
-
-
-
+（十一）同时执行多个任务（从这里开始，这节目前完全没整理）
 
 
 
