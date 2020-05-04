@@ -129,24 +129,51 @@ const [name1, name2] = yield race([
 yield* otherReduxSagaFunction1()
 
 （十四）组合 Sagas
-（十五）取消任务（从这里开始，这节目前完全没整理）
+（十五）取消任务
+取消当前Effect任务，也将同时取消阻塞在当前Effect任务中的任务。
+caller调用
+callee被调用
+（十六）redux-saga 的 fork model
+fork 
+用来创建 attached forks
+parent会等待fork终止。
+取消parent会自动取消fork
+fork抛出的未捕获的错误会冒泡到 parent
+
+spawn 
+用来创建 detached forks
+parent不会等待fork终止。
+取消parent不会自动取消fork
+fork抛出的未捕获的错误不会冒泡到 parent
+
+（十七）并发
+takeEvery实现
+import {fork, take} from "redux-saga/effects"
+
+const takeEvery = (pattern, saga, ...args) => fork(function*() {
+  while (true) {
+    const action = yield take(pattern)
+    yield fork(saga, ...args.concat(action))
+  }
+})
+
+takeLatest实现
+import {cancel, fork, take} from "redux-saga/effects"
+
+const takeLatest = (pattern, saga, ...args) => fork(function*() {
+  let lastTask
+  while (true) {
+    const action = yield take(pattern)
+    if (lastTask) {
+      yield cancel(lastTask) // 如果任务已经结束，则 cancel 为空操作
+    }
+    lastTask = yield fork(saga, ...args.concat(action))
+  }
+})
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+（十八）测试 Sagas（从这里开始，这节目前完全没整理）
 
 
 
