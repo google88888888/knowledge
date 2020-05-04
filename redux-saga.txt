@@ -102,7 +102,7 @@ const action = yield take('*')
 const state = yield select()
 （十）无阻塞调用
 const action = yield take([...typeName])
-const forkName = yield fork(otherReduxSagaFunction, ...arguments)
+const forkName = yield fork(otherReduxSagaFunction, action)
 yield cancel(forkName)
 
 try {
@@ -126,7 +126,7 @@ const [name1, name2] = yield race([
 ])
 
 （十三）使用 yield* 对 Sagas 进行排序
-yield* otherReduxSagaFunction1()
+yield* otherReduxSagaFunction()
 
 （十四）组合 Sagas
 （十五）取消任务
@@ -173,27 +173,35 @@ const takeLatest = (pattern, saga, ...args) => fork(function*() {
 
 
 
-（十八）测试 Sagas（从这里开始，这节目前完全没整理）
+（十八）测试 Sagas
+（十九）连接 Sagas 至外部输入和输出
+（二十）使用 Channels
+（1）actionChannel缓存action
+const chan = yield actionChannel('typeName')
+const action = yield take(chan)
+yield call(otherReduxSagaFunction, action)
+
+（2）eventChannel连接外部事件
+function eventChannelOuterFunction(argument) {
+	return eventChannel(emitter => {
+		//subscriber函数，里面emitter(argument)或emitter(END)
+        //return subscriber函数
+	})
+}
+
+const chan = yield call(eventChannelOuterFunction, argument)
+const action = yield take(chan)
+yield call(otherReduxSagaFunction, action)
+
+（3）channel在Sagas之间沟通
+const chan = yield call(channel)
+const action = yield take(chan)
+yield put(chan, action)
+
+yield fork(otherReduxSagaFunction, chan)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+（二十一）技巧（从这里开始，这节目前完全没整理）
 
 
 
