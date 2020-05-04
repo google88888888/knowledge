@@ -112,19 +112,24 @@ try {
     }
 }
 
-（十一）同时执行多个任务（从这里开始，这节目前完全没整理）
+（十一）同时执行多个任务
+const [name1, name2] = yield [
+  call(otherReduxSagaFunction1, ...arguments1),
+  call(otherReduxSagaFunction2, ...arguments2))
+]
+generator会被阻塞直到所有的effect都执行完毕，或一个effect被拒绝
 
+（十二）在多个 Effects 之间启动 race
+const [name1, name2] = yield race([
+  name1:call(otherReduxSagaFunction1, ...arguments1),
+  name2:call(otherReduxSagaFunction2, ...arguments2))
+])
 
+（十三）使用 yield* 对 Sagas 进行排序
+yield* otherReduxSagaFunction1()
 
-
-
-
-
-
-
-
-
-
+（十四）组合 Sagas
+（十五）取消任务（从这里开始，这节目前完全没整理）
 
 
 
