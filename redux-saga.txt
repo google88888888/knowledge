@@ -1,3 +1,5 @@
+https://redux-saga-in-chinese.js.org/
+
 （一）自述
 （1）
 redux-saga是一个redux中间件，管理副作用
