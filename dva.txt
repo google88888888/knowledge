@@ -5,19 +5,19 @@ dva是基于redux和redux-saga的数据流方案，内置react-router和fetch
 
 （二）快速上手
 （三）例子和脚手架
-（四）Dva 概念（从这里开始，这节目前完全没整理）
+（四）Dva 概念
+（1）数据流向
+dispatch一个action，如果是同步通过Reducers改变State，如果是异步先触发Effects 然后通过Reducers改变State
+（2）state，状态
+（3）action，改变state的唯一途径
+（4）dispatch，触发 action
+（5）reducer，纯函数
+（6）effect，副作用,底层使用redux-sagas
+（7）subscription，订阅
+（8）router，底层使用react-router
+（9）route components
 
-
-
-
-
-
-
-
-
-
-
-
+（五）入门课（从这里开始，这节目前完全没整理）
 
 
 
