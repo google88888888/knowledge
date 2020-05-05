@@ -20,18 +20,19 @@ https://umijs.org/zh-CN/docs
         └── index.tsx
     └── app.ts                配置运行时
 
-（五）配置（从这里开始，这节目前完全没整理）
+（五）配置
+（1）配置文件
+可以写在.umirc.ts，也可以写在config/config.ts，.umirc.ts优先级更高，更推荐
+（2）TypeScript 提示
+（3）本地临时配置
+（3.1）.umirc.ts会和.umirc.local.ts做 deep merge
+（3.2）config/config.ts会和config/config.local.ts做 deep merge
+（3.3）.local.ts优先级最高，比UMI_ENV的配置更高。umi dev时有效。umi build 时无效。应添加到 .gitignore
 
+（4）多环境多份配置
+可以通过环境变量UMI_ENV区分环境指定配置。
 
-
-
-
-
-
-
-
-
-
+（六）运行时配置（从这里开始，这节目前完全没整理）
 
 
 
