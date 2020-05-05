@@ -1,13 +1,26 @@
 https://umijs.org/zh-CN/docs
 
+（一）介绍
+（二）Umi 如何工作？
+（三）快速上手
+（四）目录结构
+（1）基础Umi项目目录结构
+.
+├── package.json
+├── .umirc.ts                 配置内置功能和插件
+├── .env                      环境变量
+├── dist                      存放打包文件
+├── mock                      存放mock文件
+├── public                    该目录下所有文件会被复制到dist
+└── src
+    ├── .umi                  存放临时文件
+    ├── layouts/index.tsx     约定式路由时的全局布局文件
+    ├── pages                 存放路由组件
+        ├── index.less
+        └── index.tsx
+    └── app.ts                配置运行时
 
-
-
-
-
-
-
-
+（五）配置（从这里开始，这节目前完全没整理）
 
 
 
