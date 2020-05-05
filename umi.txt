@@ -69,7 +69,7 @@ history，history实例
 （1.7）wrappers配置高阶组件，通过 props.children 渲染子路由
 （1.8）wrappers配置标题
 
-（2）页面跳转
+（2）页面跳转（页面命令式跳转）
 import { history } from 'umi';
 history.push('/list');
 
@@ -85,7 +85,7 @@ history.goBack();
 
 
 （3）hash 路由
-（4）Link 组件
+（4）Link 组件（页面声明式跳转）
 （4.1）<Link to="/">点击跳转到/</Link> 
 （4.2）Link用于单页应用内部跳转，a标签用于外部地址跳转
 
@@ -125,16 +125,17 @@ src/pages/404.js为404页面
 可以在代码层通过导出静态属性的方式扩展路由
 
 
-（九）插件（从这里开始，这节目前完全没整理）
+（九）插件
+（十）页面跳转
+（十一）HTML 模板
+（1）修改默认模板
+src/pages/document.ejs若存在，作为默认模板
+（2）配置模板
+模板可通过context获取到umi提供的变量，包含：
+route路由信息，需要打包出多个静态HTML时（即配置了exportStatic时）有效
+config配置信息
 
-
-
-
-
-
-
-
-
+（十二）HTML 模板（从这里开始，这节目前完全没整理）
 
 
 
