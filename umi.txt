@@ -135,46 +135,54 @@ src/pages/document.ejs若存在，作为默认模板
 route路由信息，需要打包出多个静态HTML时（即配置了exportStatic时）有效
 config配置信息
 
-（十二）HTML 模板（从这里开始，这节目前完全没整理）
+（十二）Mock 数据
+（1）约定式 Mock 文件
+（2）编写 Mock 文件
+export default {
+  'GET /url/name': objectOrArrayValue,  // GET 可忽略
+  'POST /url/name': (req, res) => {
+  },
+}
+（3）配置 Mock
+（4）如何关闭 Mock？
+（4.1）通过配置
+export default {
+  mock: false,
+};
+（4.2）通过环境变量
+MOCK=none umi dev
+（5）引入 Mock.js
+Mock.js是生成模拟数据的三方库
 
 
+（十三）环境变量
+（1）设置环境变量
+（1.1）命令行中添加
+若同时支持OS和Windows，可使用三方工具cross-env
+yarn add cross-env --dev
+cross-env PORT=3000 umi dev
+（1.2）.env中添加
+PORT=3000
+
+（2）设置环境变量
+APP_ROOT，项目根目录,只能命令行中添加
+ANALYZE，分析bundle构成
+BABEL_POLYFILL，根据targets配置为目标浏览器打补丁
+COMPRESS，压缩css和js，build 时有效
+FORK_TS_CHECKER，开启 TypeScript 类型检查
+FRIENDLY_ERROR
+HMR，代码热更新
+HTML，输出 HTML，build 时有效
+HOST，默认是 0.0.0.0
+PORT，默认是 8000
+PROGRESS，打包进度条
+SOCKET_SERVER，指定用于 HMR 的 socket 服务器
+UMI_ENV，区分环境指定配置
+WATCH，监听文件变更
+WATCH_IGNORED，监听node_modules下的文件变更
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+（十四）命令行工具（从这里开始，这节目前完全没整理）
 
 
 
