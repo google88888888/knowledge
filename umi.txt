@@ -56,37 +56,51 @@ routes，路由
 plugin，运行时插件
 history，history实例
 
-（七）路由（从这里开始，这节目前完全没整理）
+（七）路由
+（1）配置路由
+（1.1）配置文件中通过routes进行配置，包括：
+（1.2）path
+（1.3）component
+路径可以是绝对路径
+路径也可以是相对路径，从src/pages开始找，若指向src目录，可以使用../也可以使用@/推荐后者
+（1.4）exact默认false
+（1.5）routes配置子路由，通过 props.children 渲染子路由
+（1.6）redirect重定向
+（1.7）wrappers配置高阶组件，通过 props.children 渲染子路由
+（1.8）wrappers配置标题
+
+（2）页面跳转
+import { history } from 'umi';
+history.push('/list');
+
+history.push('/list?a=b');
+history.push({
+  pathname: '/list',
+  query: {
+    a: 'b',
+  },
+});
+
+history.goBack();
+
+
+（3）hash 路由
+（4）Link 组件
+（4.1）<Link to="/">点击跳转到/</Link> 
+（4.2）Link用于单页应用内部跳转，a标签用于外部地址跳转
+
+（5）路由组件参数
+路由组件可通过props获取以下属性
+（5.1）match，包含params、path、url 和 isExact
+（5.2）location
+（5.3）history
+（5.4）route
+
+（6）传递参数给子路由
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+（八）约定式路由（从这里开始，这节目前完全没整理）
 
 
 
