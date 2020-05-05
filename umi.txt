@@ -32,21 +32,31 @@ https://umijs.org/zh-CN/docs
 （4）多环境多份配置
 可以通过环境变量UMI_ENV区分环境指定配置。
 
-（六）运行时配置（从这里开始，这节目前完全没整理）
+（六）运行时配置
+（1）运行时配置和配置的区别是他跑在浏览器端。
+（2）配置项
+（2.1）patchRoutes修改路由，不需要返回
+export function patchRoutes({ routes }) {
+}
 
+（2.2）render覆写render
+export function render(oldRender) {
+}
 
+（2.3）onRouteChange初始加载和路由切换时使用
+export function onRouteChange({ routes, matchedRoutes, location, action }) {
+}
 
+（2.4）rootContainer修改交给react-dom渲染的根组件
+export function rootContainer(lastRootContainer, args) {
+	return 
+}
+args包含：
+routes，路由
+plugin，运行时插件
+history，history实例
 
-
-
-
-
-
-
-
-
-
-
+（七）路由（从这里开始，这节目前完全没整理）
 
 
 
