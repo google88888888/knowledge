@@ -209,21 +209,22 @@ import './cssFile.css';
 （3）CSS 预处理器
 支持css，less，不支持sass和stylus。若需要，可通过chainWebpack配置或插件支持。
 
-（十六）使用图片（从这里开始，这节目前完全没整理）
+（十六）使用图片
+（1）JS 里使用图片
+（1.1）<img src={require('相对路径')} />
+（1.2）<img src={require('@指向src的相对路径')} />
+（1.3）<img src={require('cdn绝对路径')} />
 
+（2）CSS 里使用图片
+（2.1）background: url(相对路径);
+（2.2）background: url(~@指向src的相对路径);
+（2.3）background: url(cdn绝对路径);
 
+（3）Base64 编译
+存放在项目中的图片被引入时，若图片小于10K，编译为Base64，否则为图片文件。
+10K可以通过inlineLimit配置修改。
 
-
-
-
-
-
-
-
-
-
-
-
+（十七）按需加载（从这里开始，这节目前完全没整理）
 
 
 
