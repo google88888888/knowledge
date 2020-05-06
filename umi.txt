@@ -160,9 +160,9 @@ Mock.js是生成模拟数据的三方库
 （1.1）命令行中添加
 若同时支持OS和Windows，可使用三方工具cross-env
 yarn add cross-env --dev
-cross-env PORT=3000 umi dev
+cross-env PORT=8000 umi dev
 （1.2）.env中添加
-PORT=3000
+PORT=8000
 
 （2）设置环境变量
 APP_ROOT，项目根目录,只能命令行中添加
@@ -182,16 +182,21 @@ WATCH，监听文件变更
 WATCH_IGNORED，监听node_modules下的文件变更
 
 
-（十四）命令行工具（从这里开始，这节目前完全没整理）
+（十四）命令行工具
+（1）umi build
+（2）umi dev
+（3）umi generate即umi g，内置的生成器，内置的类型page，用于生成最简页面
+（4）umi plugin，查看当前项目使用的所有umi插件
+（5）umi help，查看帮助文档
+（6）umi version即umi v，查看版本号
+（7）umi webpack，查看webpack配置：
+可选参数	        说明
+--rules	            查看webpack.module.rules配置详情
+--rule=[name]	    查看webpack.module.rules中某个规则的配置详情
+--plugins	        查看webpack.plugins配置详情
+--plugin=[name]	    查看webpack.plugins中某个插件的配置详情
 
-
-
-
-
-
-
-
-
+（十五）使用 CSS（从这里开始，这节目前完全没整理）
 
 
 
