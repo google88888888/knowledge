@@ -245,32 +245,54 @@ import('非组件').then(() => {
 });
 
 
-（十八）部署（从这里开始，这节目前完全没整理）
+（十八）部署
+（1）默认方案
+构建后只输出index.html、umi.js 和 umi.css 三个文件
+（2）不输出html文件
+配置环境变量 HTML=none
+（3）部署 html 到非根目录
+部署在 /a/b/c下，配置：
+export default {
+  base: '/a/b/c',
+};
 
+（4）用 hash history
+export default {
+  history: { type: 'hash' },
+};
 
+（5）按需加载
+（6）静态资源在非根目录或 cdn
+（7）使用 runtime 的 publicPath
+在html里管理publicPath：
+export default {
+  runtimePublicPath: true,
+};
 
+<script>
+window.publicPath = <%= YOUR PUBLIC_PATH %>
+</script>
 
+（8）静态化
+每个路由都在对应目录下输出index.html，暂不支持动态路由
+export default {
+  exportStatic: {},
+}
+（9）HTML 后缀
+每个路由都在dist目录下输出index.html，暂不支持动态路由
+export default {
+  exportStatic: {
+    htmlSuffix: true,
+  },
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+（10）静态化后输出到任意路径
+export default {
+  exportStatic: {
+    htmlSuffix: true,
+    dynamicRoot: true,
+  },
+}
 
 
 
