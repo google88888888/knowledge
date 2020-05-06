@@ -196,15 +196,20 @@ WATCH_IGNORED，监听node_modules下的文件变更
 --plugins	        查看webpack.plugins配置详情
 --plugin=[name]	    查看webpack.plugins中某个插件的配置详情
 
-（十五）使用 CSS（从这里开始，这节目前完全没整理）
+（十五）使用 CSS
+（1）全局样式
+src/global.css 为全局样式
+（2）CSS Modules
+自动识别 CSS Modules 
+（2.1）CSS Modules
+import cssFile from './cssFile.css';
+（2.2）非 CSS Modules
+import './cssFile.css';
 
+（3）CSS 预处理器
+支持css，less，不支持sass和stylus。若需要，可通过chainWebpack配置或插件支持。
 
-
-
-
-
-
-
+（十六）使用图片（从这里开始，这节目前完全没整理）
 
 
 
