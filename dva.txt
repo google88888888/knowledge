@@ -26,7 +26,7 @@ dispatch一个action，如果是同步通过Reducers改变State，如果是异�
 （2.5）subscription，订阅
 
 （六）Dva 图解
-（七）使用 Dva 开发复杂 SPA（从这里开始，这节目前完全没整理）
+（七）使用 Dva 开发复杂 SPA
 （1）动态加载model
 （2）使用model共享全局信息
 const { namespace1State, namespace2State } = yield select();
