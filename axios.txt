@@ -4,7 +4,7 @@ http://www.axios-js.com/zh-cn/docs/index.html
 （1）什么是 axios？
 Axios是一个基于promise的HTTP库，可以用在浏览器和node.js中。
 
-
+（2）axios API
 
 
 
