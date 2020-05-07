@@ -162,9 +162,23 @@ axios.interceptors.response.eject(响应拦截器名);
 
 
 （9）错误处理
+.catch(function (error) {
+    if (error.response) {
+	    //有请求有返回，返回状态码不对
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+    } else if (error.request) {
+	    //有请求无返回
+        console.log(error.request);
+    } else {
+	    //设置请求出错
+        console.log('Error', error.message);
+    }
+    console.log(error.config);
+});
 
-
-
+（10）取消
 
 
 
