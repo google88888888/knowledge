@@ -106,8 +106,21 @@ const axiosInstance = axios.create(config);
 }
 
 
+（6）响应结构
+{
+  data: {},
 
+  status: 200,    //服务器响应状态码
 
+  statusText: 'OK',   //服务器响应状态信息
+
+  headers: {},   //服务器响应头
+
+  config: {},    //请求的配置信息
+
+  request: {}  node.js端重定向最后一次ClientRequest实例或浏览器端XMLHttpRequest实例
+  
+}
 
 
 
