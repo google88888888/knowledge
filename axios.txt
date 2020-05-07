@@ -26,7 +26,84 @@ axios.all([functionName1(), functionName2()]).then(axios.spread(function (functi
 const axiosInstance = axios.create(config);
 
 （5）请求配置
+{
+  url: '/url',
+  method: 'get',
+  baseURL: 'https://baseURL/',  //加在url前面。若url是绝对url，则baseURL失效
 
+  transformRequest: [function (data, headers) {   //向服务器发送前，修改请求数据。仅用于post，put，patch。返回字符串或ArrayBuffer或Stream
+    return data;
+  }],
+
+  transformResponse: [function (data) {        //then/catch 前，修改响应数据
+    return data;
+  }],
+
+  headers: {'headerName': 'headerValue'},  //自定义请求头
+
+  params: {   //url参数，是plain object或URLSearchParams
+  },
+
+  paramsSerializer: function(params) {    //params序列化
+    return qs.stringify(params, {arrayFormat: 'brackets'})       
+  },
+
+  //请求体数据。仅用于post，put，patch。
+  // 若没有设置 `transformRequest`，必须是以下类型之一：
+  // string, plain object, ArrayBuffer, ArrayBufferView, URLSearchParams
+  // 浏览器专属：FormData, File, Blob
+  // Node专属：Stream
+  data: {
+  },
+
+  timeout: 1000,  //请求超时的毫秒数，0为无超时时间。
+
+  withCredentials: false, //跨域请求是否需要凭证
+
+  adapter: function (config) {  //自定义处理请求，返回promise 
+  },
+
+  auth: {                    //使用HTTP基础验证，设置并覆盖headers的Authorization
+  },
+
+  responseType: 'json', //服务器响应的数据类型，可以是 'arraybuffer', 'blob', 'document', 'json', 'text', 'stream'
+
+  responseEncoding: 'utf8', //解码响应。responseType是'stream'或者浏览器的请求会被忽略
+
+  xsrfCookieName: 'XSRF-TOKEN', //xsrf token的cookie的名称
+
+  xsrfHeaderName: 'X-XSRF-TOKEN', //xsrf token的header的名称
+
+  onUploadProgress: function (progressEvent) {      //上传处理进度
+  },
+
+  onDownloadProgress: function (progressEvent) {   //下载处理进度
+  },
+
+  maxContentLength: 2000,      //响应内容的最大尺寸
+
+  validateStatus: function (status) {        //根据状态码，promise是resolve还是reject。返回true，null，undefined是resolve。否则是rejecte
+    return status >= 200 && status < 300;
+  },
+
+  maxRedirects: 5, //在node.js中follow的最大重定向数目。设置为0，将不会follow重定向
+
+  socketPath: null, //在node.js中使用的UNIX Socket。socketPath和proxy都可以使用，socketPath优先级更高
+
+  httpAgent: new http.Agent({ keepAlive: false }),    //在node.js中用于定义执行http时使用的自定义代理
+  httpsAgent: new https.Agent({ keepAlive: false }),  //在node.js中用于定义执行https时使用的自定义代理
+
+  proxy:{
+    host: '127.0.0.1',   //代理服务器的主机名
+    port: 9000,          //代理服务器的端口
+    auth: {              //使用HTTP基础验证连接代理，设置并覆盖headers的Proxy-Authorization
+    }
+  },
+  
+  cancelToken: new CancelToken(function (cancel) {   //取消请求
+  })
+  
+}
 
 
 
