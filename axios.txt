@@ -179,23 +179,40 @@ axios.interceptors.response.eject(响应拦截器名);
 });
 
 （10）取消
+（10.1）
+const CancelToken = axios.CancelToken;
+const source = CancelToken.source();
+（10.2）
+{
+	cancelToken: source.token
+}
+（10.3）
+source.cancel('message');
+（10.4）
+.catch(function(thrown) {
+    if (axios.isCancel(thrown)) {
+		console.log(thrown.message);
+    } else {
+		//处理错误
+    }
+});
+
+（2.1）
+const CancelToken = axios.CancelToken;
+let cancel;
+（2.2）
+{
+	cancelToken: new CancelToken(function executor(cancel) {
+		cancel = cancel;
+    })
+}
+（2.3）
+cancel();
+
+（3）可以使用同一个cancelToken取消多个请求
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+（11）使用 application/x-www-form-urlencoded format
 
 
 
