@@ -107,6 +107,7 @@ const axiosInstance = axios.create(config);
 
 
 （6）响应结构
+使用then时的response：
 {
   data: {},
 
@@ -122,16 +123,17 @@ const axiosInstance = axios.create(config);
   
 }
 
+（7）配置默认值
+（7.1）全局的 axios 默认值
+axios.defaults.config中项
 
+（7.2）自定义实例默认值
+axiosInstance.defaults.config中项
 
+（7.3）配置的优先顺序
+请求config>axiosInstance.defaults>axios.defaults
 
-
-
-
-
-
-
-
+（8）拦截器
 
 
 
