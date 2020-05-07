@@ -1,19 +1,31 @@
 http://www.axios-js.com/zh-cn/docs/index.html
 
 
-（1）什么是 axios？
-Axios是一个基于promise的HTTP库，可以用在浏览器和node.js中。
+（1）Axios是一个基于promise的HTTP库，可以用在浏览器和node.js中。
 
 （2）axios API
+（2.1）axios(config)
+（2.2）axios(url[, config]) 默认get请求
 
+（3）请求方法的别名
+axios.request(config)
+axios.get(url[, config])
+axios.delete(url[, config])
+axios.head(url[, config])
+axios.options(url[, config])
+axios.post(url[, data[, config]])
+axios.put(url[, data[, config]])
+axios.patch(url[, data[, config]])
 
+（3）并发
+axios.all([functionName1(), functionName2()]).then(axios.spread(function (functionReturn, functionReturn2) {
 
+}));
 
+（4）创建实例
+const axiosInstance = axios.create(config);
 
-
-
-
-
+（5）请求配置
 
 
 
