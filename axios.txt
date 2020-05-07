@@ -213,8 +213,8 @@ cancel();
 
 
 （12）使用 application/x-www-form-urlencoded format
-
-
+默认，axios将对象序列化为JSON。要以application / x-www-form-urlencoded格式发送数据，可以:
+qs.stringify({})
 
 
 
