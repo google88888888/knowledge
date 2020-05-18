@@ -1,9 +1,8 @@
 https://zh-hans.reactjs.org/docs/getting-started.html
 
 
-https://zh-hans.reactjs.org/docs/rendering-elements.html
-元素是构成 React 应用的最小砖块。
-
+https://zh-hans.reactjs.org/docs/state-and-lifecycle.html
+State & 生命周期
 
 
 （一）Hello World
@@ -17,13 +16,14 @@ https://zh-hans.reactjs.org/docs/rendering-elements.html
 （7）babel把jsx转译成React.createElement()函数调用，创建 “React 元素”对象。构建dom保持更新
 
 （三）元素渲染
+（1）<div id="root"></div>根dom节点内的内容由React DOM管理，渲染用ReactDOM.render(element, document.getElementById('root'));
 
+（四）组件 & Props
+（1）分为函数组件和类组件
+（2）原生DOM标签名称以小写字母开头，组件名称以大写字母开头
+（3）props不能修改
 
-
-
-
-
-
+（五）State & 生命周期
 
 
 
