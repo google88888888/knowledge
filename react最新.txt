@@ -1,9 +1,8 @@
 https://zh-hans.reactjs.org/docs/getting-started.html
 
 
-https://zh-hans.reactjs.org/docs/state-and-lifecycle.html
-State & 生命周期
-
+https://zh-hans.reactjs.org/docs/handling-events.html
+React 元素的事件处理和 DOM 元素的很相似，但是有一点语法上的不同：
 
 （一）Hello World
 （二）JSX 简介
@@ -24,14 +23,33 @@ State & 生命周期
 （3）props不能修改
 
 （五）State & 生命周期
+（1）可以向类组件实例中添加不参与数据流的自定义类组件实例属性
+  componentDidMount() {
+    this.timerID = setInterval(
+      () => this.doSomething(),
+      1000
+    );
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timerID);
+  }
+
+（2）使用
+		this.setState({
+			key：value,
+		});
+	更新state
+	
+（3）性能考虑，React可能把多个setState合并成一个调用
+
+（4）解决this.props和this.state可能异步更新问题：
+this.setState((state, props) => ({
+  key: state.key + props.key
+}));
 
 
-
-
-
-
-
-
+（六）事件处理
 
 
 
