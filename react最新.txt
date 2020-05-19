@@ -1,8 +1,8 @@
 https://zh-hans.reactjs.org/docs/getting-started.html
 
 
-https://zh-hans.reactjs.org/docs/lifting-state-up.html
-通常，多个组件需要反映相同的变化数据，这时我们建议将共享状态提升到最近的共同父组件中去。让我们看看它是如何运作的。
+https://zh-hans.reactjs.org/docs/composition-vs-inheritance.html
+React 有十分强大的组合模式。我们推荐使用组合而非继承来实现组件间的代码重用。
 
 
 （一）Hello World
@@ -113,8 +113,9 @@ true  && expression返回 expression
 （2）非受控组件：表单内部state不与组件state相结合
         <input type="file" />  因其value只读
 
-（十）状态提升
+（十）状态提升：将多个组件中需要共享的state向上移动到它们的最近共同父组件中，实现共享state
 
+（十一）组合vs继承
 
 
 
