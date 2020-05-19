@@ -1,8 +1,9 @@
 https://zh-hans.reactjs.org/docs/getting-started.html
 
 
-https://zh-hans.reactjs.org/docs/handling-events.html
-React 元素的事件处理和 DOM 元素的很相似，但是有一点语法上的不同：
+https://zh-hans.reactjs.org/docs/conditional-rendering.html
+在 React 中，你可以创建不同的组件来封装各种你需要的行为。然后，依据应用的不同状态，你可以只渲染对应状态下的部分内容。
+
 
 （一）Hello World
 （二）JSX 简介
@@ -50,18 +51,31 @@ this.setState((state, props) => ({
 
 
 （六）事件处理
+（1）原生DOM事件与React事件区别
+（1.1）原生DOM事件名称纯小写，React事件名称小驼峰式（camelCase）
+（1.2）原生DOM事件处理函数传入字符串"方法名()"，React事件处理函数传入函数
+（1.3）原生DOM事件阻止默认行为可以使用返回false的方式，React事件阻止默认行为不能使用返回false的方式，必须使用e.preventDefault();
 
-
-
-
-
-
-
-
-
-
-
-
+（2）js中，class方法默认不会绑定this，绑定方法有：
+（2.1） onClick={this.方法名.bind(this)}  
+        方法名(){
+		}
+（2.2） onClick={this.方法名}          class fields 语法
+        方法名= () => {
+		}
+（2.3） onClick={() => this.方法名()}  缺点：每次渲染都会创建不同的回调函数
+        方法名(){
+		}
+（3）传递参数
+（3.1） onClick={this.方法名.bind(this,...param)}  
+        方法名(...param,e){
+		}
+（3.2） onClick={this.方法名}          
+        方法名= (e) => {
+		}
+（3.3） onClick={(e) => this.方法名(...param,e)}  
+        方法名(...param,e){
+		}
 
 
 
