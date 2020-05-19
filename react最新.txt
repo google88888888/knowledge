@@ -1,8 +1,8 @@
 https://zh-hans.reactjs.org/docs/getting-started.html
 
 
-https://zh-hans.reactjs.org/docs/lists-and-keys.html
-首先，让我们看下在 Javascript 中如何转化列表。
+https://zh-hans.reactjs.org/docs/forms.html
+在 React 里，HTML 表单元素的工作方式和其他的 DOM 元素有些不同，这是因为表单元素通常会保持一些内部的 state。例如这个纯 HTML 表单只接受一个名称：
 
 
 （一）Hello World
@@ -87,9 +87,9 @@ true  && expression返回 expression
 
 
 （八）列表 & Key
+（1）数组中项默认用索引做key，应用唯一的字符串做key
 
-
-
+（九）表单
 
 
 
