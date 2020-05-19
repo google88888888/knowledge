@@ -1,8 +1,8 @@
 https://zh-hans.reactjs.org/docs/getting-started.html
 
 
-https://zh-hans.reactjs.org/docs/conditional-rendering.html
-在 React 中，你可以创建不同的组件来封装各种你需要的行为。然后，依据应用的不同状态，你可以只渲染对应状态下的部分内容。
+https://zh-hans.reactjs.org/docs/lists-and-keys.html
+首先，让我们看下在 Javascript 中如何转化列表。
 
 
 （一）Hello World
@@ -77,14 +77,16 @@ this.setState((state, props) => ({
         方法名(...param,e){
 		}
 
+（七）条件渲染
+（1）使用if
+（2）
+false && expression返回 false
+true  && expression返回 expression
+（3）condition ? expressionTrue : expressionFalse
+（4）render方法return null; 不进行渲染
 
 
-
-
-
-
-
-
+（八）列表 & Key
 
 
 
