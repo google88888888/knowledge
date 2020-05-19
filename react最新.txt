@@ -1,8 +1,8 @@
 https://zh-hans.reactjs.org/docs/getting-started.html
 
 
-https://zh-hans.reactjs.org/docs/code-splitting.html
-大多数 React 应用都会使用 Webpack，Rollup 或 Browserify 这类的构建工具来打包文件。 打包是一个将文件引入并合并到一个单独文件的过程，最终形成一个 “bundle”。 接着在页面上引入该 bundle，整个应用即可一次性加载。
+https://zh-hans.reactjs.org/docs/context.html
+Context 提供了一个无需为每层组件手动添加 props，就能在组件树间进行数据传递的方法。
 
 
 （一）Hello World
@@ -122,15 +122,23 @@ true  && expression返回 expression
 （十二）React 哲学
 （十三）无障碍辅助功能
 （十四）代码分割
+（1）动态导入方法
+import("./文件名").then(文件名 => {
+    console.log(文件名.文件名中方法名());
+});
 
+（2）动态导入组件
+（2.1）
+import React, { lazy,Suspense } from 'react';
+const 组件名 = lazy(() => import('./组件名'));
 
+<Suspense fallback={<div>Loading...</div>}>
+    <组件名 />
+</Suspense>
 
+（2.2）lazy目前只支持默认导出（default exports）
 
-
-
-
-
-
+（十五）Context
 
 
 
