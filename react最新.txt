@@ -1,8 +1,8 @@
 https://zh-hans.reactjs.org/docs/getting-started.html
 
 
-https://zh-hans.reactjs.org/docs/forms.html
-在 React 里，HTML 表单元素的工作方式和其他的 DOM 元素有些不同，这是因为表单元素通常会保持一些内部的 state。例如这个纯 HTML 表单只接受一个名称：
+https://zh-hans.reactjs.org/docs/lifting-state-up.html
+通常，多个组件需要反映相同的变化数据，这时我们建议将共享状态提升到最近的共同父组件中去。让我们看看它是如何运作的。
 
 
 （一）Hello World
@@ -90,18 +90,30 @@ true  && expression返回 expression
 （1）数组中项默认用索引做key，应用唯一的字符串做key
 
 （九）表单
+（1）受控组件：表单内部state与组件state相结合
+      <form onSubmit={this.onSubmit}>
+        <input    value={this.state.value} onChange={this.onChange} type="text"   />
+        <input type="submit" value="提交" />
+      </form>
 
+      其他：
+		<textarea value={this.state.value} onChange={this.onChange}    />
+        
+		<select   value={this.state.value} onChange={this.onChange} >
+            <option value="a">a</option>
+			<option value="b">b</option>
+        </select>
 
+        <select   value={this.state.value} onChange={this.handleChange} multiple={true} >
+            <option value="a">a</option>
+			<option value="b">b</option>
+        </select>
+		this.state.value是['a', 'b']形式
 
+（2）非受控组件：表单内部state不与组件state相结合
+        <input type="file" />  因其value只读
 
-
-
-
-
-
-
-
-
+（十）状态提升
 
 
 
