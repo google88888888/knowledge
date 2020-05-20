@@ -1,8 +1,8 @@
 https://zh-hans.reactjs.org/docs/getting-started.html
 
 
-https://zh-hans.reactjs.org/docs/context.html
-Context 提供了一个无需为每层组件手动添加 props，就能在组件树间进行数据传递的方法。
+https://zh-hans.reactjs.org/docs/error-boundaries.html
+过去，组件内的 JavaScript 错误会导致 React 的内部状态被破坏，并且在下一次渲染时 产生 可能无法追踪的 错误。这些错误基本上是由较早的其他代码（非 React 组件代码）错误引起的，但 React 并没有提供一种在组件中优雅处理这些错误的方式，也无法从错误中恢复。
 
 
 （一）Hello World
@@ -139,21 +139,28 @@ const 组件名 = lazy(() => import('./组件名'));
 （2.2）lazy目前只支持默认导出（default exports）
 
 （十五）Context
+（1）
+const NameContext = React.createContext(defaultValue);  defaultValue可以是任意数据类型
 
+<NameContext.Provider value={value}>
+<该组件及子组件使用距其最近的NameContext.Provider提供的value />
+</NameContext.Provider>
 
+使用Object.is检测value变化。value变化时，使用的组件会重渲染且不受制于shouldComponentUpdate
 
+class 该组件及子组件 extends React.Component {
+  在方法中通过this.context使用value
+}
+该组件及子组件.contextType = NameContext;
 
+（2）函数组件和一个组件使用多个context情况使用
+<NameContext.Consumer>
+  {value => 基于context值进行渲染}
+</NameContext.Consumer>
 
+（3）NameContext.displayName=""; React DevTools显示NameContext的名称
 
-
-
-
-
-
-
-
-
-
+（十六）错误边界
 
 
 
