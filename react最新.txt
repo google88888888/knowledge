@@ -1,9 +1,8 @@
 https://zh-hans.reactjs.org/docs/getting-started.html
 
 
-https://zh-hans.reactjs.org/docs/error-boundaries.html
-过去，组件内的 JavaScript 错误会导致 React 的内部状态被破坏，并且在下一次渲染时 产生 可能无法追踪的 错误。这些错误基本上是由较早的其他代码（非 React 组件代码）错误引起的，但 React 并没有提供一种在组件中优雅处理这些错误的方式，也无法从错误中恢复。
-
+https://zh-hans.reactjs.org/docs/forwarding-refs.html
+Ref 转发是一项将 ref 自动地通过组件传递到其一子组件的技巧。对于大多数应用中的组件来说，这通常不是必需的。但其对某些组件，尤其是可重用的组件库是很有用的。最常见的案例如下所述。
 
 （一）Hello World
 （二）JSX 简介
@@ -161,14 +160,17 @@ class 该组件及子组件 extends React.Component {
 （3）NameContext.displayName=""; React DevTools显示NameContext的名称
 
 （十六）错误边界
+（1）错误边界是一种React组件，可以捕获并打印发生在其子组件树任何位置的JavaScript错误，并渲染备用UI
+（2）错误边界无法捕获：
+（2.1）事件处理（使用try catch捕获）
+（2.2）异步代码
+（2.3）自身错误
+（2.4）服务端渲染
 
+（3）只有class组件中定义getDerivedStateFromError(渲染备用UI)或componentDidCatch(打印错误)至少一个，即为错误边界
+（4）自React 16起，未被错误边界捕获的错误会导致整个React组件树被卸载
 
-
-
-
-
-
-
+（十七）Refs 转发
 
 
 
