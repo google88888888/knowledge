@@ -1,8 +1,10 @@
 https://zh-hans.reactjs.org/docs/getting-started.html
 
 
-https://zh-hans.reactjs.org/docs/fragments.html
-React 中的一个常见模式是一个组件返回多个元素。Fragments 允许你将子列表分组，而无需向 DOM 添加额外节点。
+https://zh-hans.reactjs.org/docs/higher-order-components.html
+高阶组件（HOC）是 React 中用于复用组件逻辑的一种高级技巧。HOC 自身不是 React API 的一部分，它是一种基于 React 的组合特性而形成的设计模式。
+
+
 
 （一）Hello World
 （二）JSX 简介
@@ -189,10 +191,10 @@ const ref = React.createRef();
 
 
 （十八）Fragments
-
-
-
-
+（1）返回多个同级，外层可用<React.Fragment></React.Fragment>或<> </>
+（2）<React.Fragment>只支持key，<>不支持key
+       
+（十九）高阶组件
 
 
 
