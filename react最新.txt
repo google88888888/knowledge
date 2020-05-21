@@ -1,8 +1,8 @@
 https://zh-hans.reactjs.org/docs/getting-started.html
 
 
-https://zh-hans.reactjs.org/docs/integrating-with-other-libraries.html
-React 可以被用于任何 web 应用中。它可以被嵌入到其他应用，且需要注意，其他的应用也可以被嵌入到 React。本指南将介绍一些更常见的用例，专注于与 jQuery 和 Backbone 进行整合，同样的思路还可以应用于将组件与任意现有代码集成。
+https://zh-hans.reactjs.org/docs/jsx-in-depth.html
+实际上，JSX 仅仅只是 React.createElement(component, props, ...children) 函数的语法糖。如下 JSX 代码：
 
 
 
@@ -204,9 +204,9 @@ const ref = React.createRef();
 
 
 （十九）与第三方库协同
+（1）操作无需更新的React元素，如一个空<div></div>
 
-
-
+（二十）深入 JSX
 
 
 
