@@ -1,8 +1,8 @@
 https://zh-hans.reactjs.org/docs/getting-started.html
 
 
-https://zh-hans.reactjs.org/docs/forwarding-refs.html
-Ref 转发是一项将 ref 自动地通过组件传递到其一子组件的技巧。对于大多数应用中的组件来说，这通常不是必需的。但其对某些组件，尤其是可重用的组件库是很有用的。最常见的案例如下所述。
+https://zh-hans.reactjs.org/docs/fragments.html
+React 中的一个常见模式是一个组件返回多个元素。Fragments 允许你将子列表分组，而无需向 DOM 添加额外节点。
 
 （一）Hello World
 （二）JSX 简介
@@ -171,18 +171,24 @@ class 该组件及子组件 extends React.Component {
 （4）自React 16起，未被错误边界捕获的错误会导致整个React组件树被卸载
 
 （十七）Refs 转发
+（1）
+let 父组件名 = React.forwardRef((props, ref) => {
+    return <使用ref ref={ref} />;
+});
+
+const ref = React.createRef();
+<父组件名 ref={ref}></父组件名>
+
+（2）创建ref后，可通过非ref名的props向子组件传递该ref
+
+（3）
+（3.1）return外层默认方法，DevTools中显示ForwardRef
+（3.2）return外层name方法，DevTools中显示ForwardRef(name)
+（3.3）return外层name方法
+       name.displayName="newName"，DevTools中显示ForwardRef(newName)
 
 
-
-
-
-
-
-
-
-
-
-
+（十八）Fragments
 
 
 
