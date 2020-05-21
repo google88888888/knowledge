@@ -1,8 +1,8 @@
 https://zh-hans.reactjs.org/docs/getting-started.html
 
 
-https://zh-hans.reactjs.org/docs/higher-order-components.html
-高阶组件（HOC）是 React 中用于复用组件逻辑的一种高级技巧。HOC 自身不是 React API 的一部分，它是一种基于 React 的组合特性而形成的设计模式。
+https://zh-hans.reactjs.org/docs/integrating-with-other-libraries.html
+React 可以被用于任何 web 应用中。它可以被嵌入到其他应用，且需要注意，其他的应用也可以被嵌入到 React。本指南将介绍一些更常见的用例，专注于与 jQuery 和 Backbone 进行整合，同样的思路还可以应用于将组件与任意现有代码集成。
 
 
 
@@ -194,13 +194,16 @@ const ref = React.createRef();
 （1）返回多个同级，外层可用<React.Fragment></React.Fragment>或<> </>
 （2）<React.Fragment>只支持key，<>不支持key
        
-（十九）高阶组件
+（十九）高阶组件（HOC）
+（1）高阶组件是函数，参数中有组件，返回新组件。解决横切关注点问题
+（2）不要在render中使用高阶组件。每次返回新组件，diff算法均判定不同，会卸载原组件并重新挂载新组件，导致状态丢失。
+
+（3）新组件不会有参数中有组件的静态方法。如果要
+（3.1）将参数中有组件的静态方法复制到新组件
+（3.2）单独导出参数中有组件的静态方法
 
 
-
-
-
-
+（十九）与第三方库协同
 
 
 
