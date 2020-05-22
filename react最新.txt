@@ -1,9 +1,8 @@
 https://zh-hans.reactjs.org/docs/getting-started.html
 
 
-https://zh-hans.reactjs.org/docs/jsx-in-depth.html
-函数作为子元素
-
+https://zh-hans.reactjs.org/docs/optimizing-performance.html
+UI 更新需要昂贵的 DOM 操作，而 React 内部使用几种巧妙的技术以便最小化 DOM 操作次数。对于大部分应用而言，使用 React 时无需专门优化就已拥有高性能的用户界面。尽管如此，你仍然有办法来加速你的 React 应用。
 
 
 （一）Hello World
@@ -243,7 +242,7 @@ const Component = components["componentKeyA"];
 <div>{undefined}</div>
 
 
-
+（二十一）性能优化
 
 
 
