@@ -1,8 +1,8 @@
 https://zh-hans.reactjs.org/docs/getting-started.html
 
 
-https://zh-hans.reactjs.org/docs/reconciliation.html
-协调
+https://zh-hans.reactjs.org/docs/refs-and-the-dom.html
+Refs 提供了一种方式，允许我们访问 DOM 节点或在 render 方法中创建的 React 元素。
 
 （一）Hello World
 （二）JSX 简介
@@ -12,10 +12,10 @@ https://zh-hans.reactjs.org/docs/reconciliation.html
 （4）类样式class变成了className
 （5）如果标签children没有内容，可以使用 /> 闭合标签
 （6）插入内容在渲染之前会被转换成了字符串。可以防止 XSS（cross-site-scripting, 跨站脚本）攻击
-（7）babel把jsx转译成React.createElement()函数调用，创建 “React 元素”对象。构建dom保持更新
+（7）babel把jsx转译成React.createElement()函数调用，创建 “react 元素”对象。构建虚拟dom保持更新
 
 （三）元素渲染
-（1）<div id="root"></div>根dom节点内的内容由React DOM管理，渲染用ReactDOM.render(element, document.getElementById('root'));
+（1）<div id="root"></div>根节点内的内容由React管理，渲染用ReactDOM.render(element, document.getElementById('root'));
 
 （四）组件 & Props
 （1）分为函数组件和类组件
@@ -252,8 +252,8 @@ const Component = components["componentKeyA"];
 （4）浅比较为引用相等，深比较为原值相等
 
 （二十二）Portals
-（1）ReactDOM.createPortal(component, container) 将子组件渲染到父组件外的DOM节点
-（2）portal表现在DOM树，结构在React树，其行为与普通子组件行为一致
+（1）ReactDOM.createPortal(component, container) 将子组件渲染到父组件外的dom节点
+（2）portal表现在dom树，结构在React树，其行为与普通子组件行为一致
 
 （二十三）Profiler 
 （1）Profiler能放在React树中的任何地方测量这部分渲染带来的开销，需要两个props
@@ -264,9 +264,13 @@ const Component = components["componentKeyA"];
 （二十四）不使用 ES6
 （二十五）不使用 JSX
 （二十六）协调
+（1）diff算法O(n)
+（2）diff算法实现
+（2.1）元素类型不同，卸载原来虚拟dom建立新的虚拟dom
+（2.2）元素类型相同，更新虚拟dom
+（2.3）列表元素，根据key更新虚拟dom
 
-
-
+（二十七）Refs & DOM
 
 
 
