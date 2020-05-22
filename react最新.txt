@@ -249,6 +249,7 @@ const Component = components["componentKeyA"];
 
 （2）shouldComponentUpdate默认返回true
 （3）React.PureComponent浅比较当前与之前props与state实现shouldComponentUpdate
+（4）浅比较为引用相等，深比较为原值相等
 
 （二十二）Portals
 
