@@ -1,8 +1,8 @@
 https://zh-hans.reactjs.org/docs/getting-started.html
 
 
-https://zh-hans.reactjs.org/docs/portals.html
-Portal 提供了一种将子节点渲染到存在于父组件以外的 DOM 节点的优秀的方案。
+https://zh-hans.reactjs.org/docs/profiler.html
+Profiler
 
 （一）Hello World
 （二）JSX 简介
@@ -242,20 +242,20 @@ const Component = components["componentKeyA"];
 
 
 （二十一）性能优化
-（1）计算某节点是否重渲染，顺序：
-（1.1）shouldComponentUpdate返回false该节点及子节点不重新渲染
-（1.2）shouldComponentUpdate返回true，虚拟dom相同，该节点及子节点不重新渲染
-（1.3）shouldComponentUpdate返回true，虚拟dom不同，该节点重新渲染，计算子节点是否重渲染
+（1）计算某组件是否重渲染，顺序：
+（1.1）shouldComponentUpdate返回false该组件及子组件不重新渲染
+（1.2）shouldComponentUpdate返回true，虚拟dom相同，该组件及子组件不重新渲染
+（1.3）shouldComponentUpdate返回true，虚拟dom不同，该组件重新渲染，计算子组件是否重渲染
 
 （2）shouldComponentUpdate默认返回true
 （3）React.PureComponent浅比较当前与之前props与state实现shouldComponentUpdate
 （4）浅比较为引用相等，深比较为原值相等
 
 （二十二）Portals
+（1）ReactDOM.createPortal(component, container) 将子组件渲染到父组件外的DOM节点
+（2）portal表现在DOM树，结构在React树，其行为与普通子组件行为一致
 
-
-
-
+（二十三）Profiler 
 
 
 
