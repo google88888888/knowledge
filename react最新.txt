@@ -1,8 +1,8 @@
 https://zh-hans.reactjs.org/docs/getting-started.html
 
 
-https://zh-hans.reactjs.org/docs/profiler.html
-Profiler
+https://zh-hans.reactjs.org/docs/react-without-es6.html
+通常我们会用 JavaScript 的 class 关键字来定义 React 组件：
 
 （一）Hello World
 （二）JSX 简介
@@ -256,10 +256,12 @@ const Component = components["componentKeyA"];
 （2）portal表现在DOM树，结构在React树，其行为与普通子组件行为一致
 
 （二十三）Profiler 
+（1）Profiler能放在React树中的任何地方测量这部分渲染带来的开销，需要两个props
+<Profiler id="id" onRender={onRender}>
+    <Component />
+</Profiler>
 
-
-
-
+（二十四）不使用 ES6
 
 
 
