@@ -1,8 +1,8 @@
 https://zh-hans.reactjs.org/docs/getting-started.html
 
 
-https://zh-hans.reactjs.org/docs/react-without-es6.html
-通常我们会用 JavaScript 的 class 关键字来定义 React 组件：
+https://zh-hans.reactjs.org/docs/reconciliation.html
+协调
 
 （一）Hello World
 （二）JSX 简介
@@ -262,8 +262,8 @@ const Component = components["componentKeyA"];
 </Profiler>
 
 （二十四）不使用 ES6
-
-
+（二十五）不使用 JSX
+（二十六）协调
 
 
 
