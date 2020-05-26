@@ -1,8 +1,9 @@
 https://zh-hans.reactjs.org/docs/getting-started.html
 
 
-https://zh-hans.reactjs.org/docs/typechecking-with-proptypes.html
-自 React v15.5 起，React.PropTypes 已移入另一个包中。请使用 prop-types 库 代替。
+https://zh-hans.reactjs.org/docs/uncontrolled-components.html
+在大多数情况下，我们推荐使用 受控组件 来处理表单数据。在一个受控组件中，表单数据是由 React 组件来管理的。另一种替代方案是使用非受控组件，这时表单数据将交由 DOM 节点来处理。
+
 
 
 （一）Hello World
@@ -333,37 +334,62 @@ class 类组件名 extends React.Component {
 
 
 （三十一）使用 PropTypes 进行类型检查
+（1）
+import PropTypes from 'prop-types';
+组件名.propTypes = {
+  props名: props验证
+};
+
+（2）props验证包括：
+（2.1）PropTypes.array
+（2.2）PropTypes.bool
+（2.3）PropTypes.func
+（2.4）PropTypes.number
+（2.5）PropTypes.object
+（2.6）PropTypes.string
+（2.7）PropTypes.symbol
+（2.8）PropTypes.node                     可被渲染的元素
+（2.9）PropTypes.element                  React元素
+（2.10）PropTypes.elementType             React元素类型
+（2.11）PropTypes.instanceOf(类名)        类实例
+（2.12）PropTypes.oneOf([...值])          枚举值中之一
+（2.13）PropTypes.oneOfType([...类型])    枚举类型中之一
+（2.14）PropTypes.arrayOf(类型)           数组全是该类型
+（2.15）PropTypes.objectOf(类型)          对象全是该类型
+（2.16）PropTypes.shape({                 对象
+	       键名: 类型
+	       ...
+       }),
+（2.17）PropTypes.exact({                 正好是描述的对象
+           键名: 类型
+	       ...
+       }),
+（2.18）PropTypes.any                     任意
+（2.19）PropTypes.属性后加isRequired必须提供
+（2.20）自定义验证
+function(props, propsName, componentName) {
+    if (正则匹配) {
+      return new Error("验证失败信息");
+    }
+}
+（2.21）arrayOf或objectOf自定义验证
+PropTypes.arrayOf或objectOf(function(props, propsName, componentName, location, propFullName) {
+    if (正则匹配) {
+        return new Error("验证失败信息");
+    }
+})
+
+（3）children也可以被验证
+（4）默认Props
+组件名.defaultProps = {
+  props名: 默认值
+};
+
+（5）验证发生在默认Props之后
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+（三十二）非受控组件
 
 
 
