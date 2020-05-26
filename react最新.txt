@@ -1,8 +1,9 @@
 https://zh-hans.reactjs.org/docs/getting-started.html
 
 
-https://zh-hans.reactjs.org/docs/render-props.html
-术语 “render prop” 是指一种在 React 组件之间使用一个值为函数的 prop 共享代码的简单技术
+https://zh-hans.reactjs.org/docs/static-type-checking.html
+像 Flow 和 TypeScript 等这些静态类型检查器，可以在运行前识别某些类型的问题。他们还可以通过增加自动补全等功能来改善开发者的工作流程。出于这个原因，我们建议在大型代码库中使用 Flow 或 TypeScript 来代替 PropTypes。
+
 
 
 （一）Hello World
@@ -315,10 +316,10 @@ class 类组件名 extends React.Component {
 
 
 
+（二十八）Render Props
+<组件名 props名={函数返回渲染}/>
 
-
-
-
+（二十九）静态类型检查
 
 
 
