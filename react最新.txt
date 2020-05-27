@@ -2,7 +2,7 @@ https://zh-hans.reactjs.org/docs/getting-started.html
 
 
 https://zh-hans.reactjs.org/docs/react-component.html
-本章节提供了 React class 组件的详细 API 参考。本章节默认你已熟悉基本的 React 概念，例如 组件 & Props，以及 State & 生命周期等。如果你还未熟悉，请先阅读之前章节进行学习。
+getDerivedStateFromProps 会在调用 render 方法之前调用，并且在初始挂载及后续更新时都会被调用。它应返回一个对象来更新 state，如果返回 null 则不更新任何内容。
 
 
 （一）Hello World
@@ -415,37 +415,58 @@ PropTypes.arrayOf或objectOf(function(props, propsName, componentName, location,
 
 
 （三十五）React.Component
+（1）类组件的生命周期
+（1.1）挂载
+constructor()
+static getDerivedStateFromProps()
+render()
+componentDidMount()                 此处可以网络请求
+
+（1.2）更新
+static getDerivedStateFromProps()
+shouldComponentUpdate()
+render()
+getSnapshotBeforeUpdate()
+componentDidUpdate()                此处可以网络请求
+
+（1.3）卸载
+componentWillUnmount()
+
+（1.4）错误处理
+static getDerivedStateFromError()
+componentDidCatch()
 
 
+（2）render()  
+（2.1）返回以下类型之一:
+React元素
+Fragments
+Portals
+数组
+字符串
+数值
+布尔
+null
 
+（2.2）render()应为纯函数
 
+（3）constructor(props)
+（3.1）其他语句前调用super(props)，否则this.props未定义
 
+（4）componentDidMount()
+（4.1）可进行网络请求或订阅
 
+（5）componentDidUpdate(prevProps, prevState, snapshot)
+（5.1）可进行网络请求或订阅
+（5.2）getSnapshotBeforeUpdate()的返回值为第三个参数snapshot
 
+（6）componentWillUnmount()
+（6.1）可进行取消订阅
 
+（7）shouldComponentUpdate(nextProps, nextState)
+（7.1）返回值默认为 true
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+（8）static getDerivedStateFromProps(props, state)
 
 
 
