@@ -1,8 +1,9 @@
 https://zh-hans.reactjs.org/docs/getting-started.html
 
 
-https://zh-hans.reactjs.org/docs/react-component.html
-不同于上述生命周期方法（React 主动调用），以下方法是你可以在组件中调用的方法。
+https://zh-hans.reactjs.org/docs/react-dom.html
+如果你使用一个 <script> 标签引入 React，所有的顶层 API 都能在全局 ReactDOM 上调用。如果你使用 npm 和 ES6，你可以用 import ReactDOM from 'react-dom'。如果你使用 npm 和 ES5，你可以用 var ReactDOM = require('react-dom')。
+
 
 
 （一）Hello World
@@ -447,7 +448,6 @@ Portals
 数值
 布尔
 null
-
 （2.2）render()应为纯函数
 
 （3）constructor(props)
@@ -477,17 +477,15 @@ null
 （10.1）渲染阶段调用，不允许出现副作用
 （10.2）返回对象更新state，根据该对象渲染备用UI
 
-
 （11）componentDidCatch(error, info)
 （11.1）提交阶段调用，允许出现副作用
 
+（12）forceUpdate()
+（12.1）强制使该组件从render()方法开始调用
 
 
 
-
-
-
-
+（三十六）ReactDOM
 
 
 
