@@ -1,8 +1,8 @@
 https://zh-hans.reactjs.org/docs/getting-started.html
 
 
-https://zh-hans.reactjs.org/docs/react-dom.html
-如果你使用一个 <script> 标签引入 React，所有的顶层 API 都能在全局 ReactDOM 上调用。如果你使用 npm 和 ES6，你可以用 import ReactDOM from 'react-dom'。如果你使用 npm 和 ES5，你可以用 var ReactDOM = require('react-dom')。
+https://zh-hans.reactjs.org/docs/dom-elements.html
+React 实现了一套独立于浏览器的 DOM 系统，兼顾了性能和跨浏览器的兼容性。我们借此机会完善了浏览器 DOM 实现的一些特殊情况。
 
 
 
@@ -486,8 +486,8 @@ null
 
 
 （三十六）ReactDOM
-
-
+（三十七）ReactDOMServer
+（三十八）DOM 元素
 
 
 
