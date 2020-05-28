@@ -1,9 +1,8 @@
 https://zh-hans.reactjs.org/docs/getting-started.html
 
 
-https://zh-hans.reactjs.org/docs/hooks-intro.html
+https://zh-hans.reactjs.org/docs/hooks-overview.html
 Hook 是 React 16.8 的新增特性。它可以让你在不编写 class 的情况下使用 state 以及其他的 React 特性。
-
 
 （一）Hello World
 （二）JSX 简介
@@ -508,11 +507,12 @@ null
 （四十三）术语表
 
 （四十四）Hook 简介
+（1）动机
+（1.1）便于在组件之间复用状态逻辑
+（1.2）将原来componentDidMount和componentDidUpdate中设置，componentWillUnmount中清除的两处逻辑，归为hook中一处逻辑
+（1.3）使用函数组件替换类组件
 
-
-
-
-
+（四十五）Hook 概览
 
 
 
