@@ -1,7 +1,7 @@
 https://zh-hans.reactjs.org/docs/getting-started.html
 
 
-https://zh-hans.reactjs.org/docs/hooks-custom.html
+https://zh-hans.reactjs.org/docs/hooks-reference.html
 Hook 是 React 16.8 的新增特性。它可以让你在不编写 class 的情况下使用 state 以及其他的 React 特性。
 
 （一）Hello World
@@ -570,12 +570,11 @@ function 函数组件名() {
 
 
 （四十九）自定义 Hook
+（1）自定义Hook是一个函数，名称以use开头，函数内可调用其他的Hook
+（2）多个组件中使用相同的Hook不会共享state
 
 
-
-
-
-
+（五十）Hook API 索引
 
 
 
