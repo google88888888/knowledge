@@ -2,7 +2,7 @@ https://zh-hans.reactjs.org/docs/getting-started.html
 
 
 https://zh-hans.reactjs.org/docs/hooks-reference.html
-useImperativeHandle(ref, createHandle, [deps])
+useDebugValue(value)
 
 
 （一）Hello World
@@ -604,22 +604,29 @@ refObject在函数组件整个生命周期不变
 （4.4）useRef.current发生变化不会通知，不会重渲染
 
 （5）useImperativeHandle
+（5.1）定义子组件暴露给父组件的可调用的useRef.current
+
+（5.2）
+let 父组件名 = React.forwardRef((props, ref) => {
+    const childRef = useRef();
+    useImperativeHandle(ref, () => ({
+        fatherFocus: () => {
+            childRef.current.focus();
+        }
+    }));
+    return <input ref={childRef} ... />;
+});
+
+<父组件名 ref={fatherRef} />
+fatherRef.current.fatherFocus()。
 
 
 
+（6）useLayoutEffect和useEffect
+（6.1）useLayoutEffect和useEffect参数一致。区别是useLayoutEffect每次渲染后同步执行，useEffect每次渲染后异步执行
 
 
-
-
-
-
-
-
-
-
-
-
-
+（7）useDebugValue
 
 
 
