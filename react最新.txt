@@ -2,7 +2,9 @@ https://zh-hans.reactjs.org/docs/getting-started.html
 
 
 https://zh-hans.reactjs.org/docs/hooks-reference.html
-const value = useContext(MyContext);
+以下介绍的 Hook，有些是上一节中基础 Hook 的变体，有些则仅在特殊情况下会用到。不用特意预先学习它们。
+
+
 
 （一）Hello World
 （二）JSX 简介
@@ -145,7 +147,7 @@ const NameContext = React.createContext(defaultValue);  defaultValue可以是任
 <该组件及子组件使用距其最近的NameContext.Provider提供的value />
 </NameContext.Provider>
 
-使用Object.is检测value变化。value变化时，使用的组件会重渲染且不受制于shouldComponentUpdate
+使用Object.is检测value变化。value变化时，使用的组件会重渲染且不受制于shouldComponentUpdate或React.memo
 
 class 该组件及子组件 extends React.Component {
   在方法中通过this.context使用value
@@ -575,8 +577,8 @@ function 函数组件名() {
 
 
 （五十）Hook API 索引
-
-
+（1）const value = useContext(NameContext);
+（2）
 
 
 
