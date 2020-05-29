@@ -2,8 +2,7 @@ https://zh-hans.reactjs.org/docs/getting-started.html
 
 
 https://zh-hans.reactjs.org/docs/hooks-reference.html
-以下介绍的 Hook，有些是上一节中基础 Hook 的变体，有些则仅在特殊情况下会用到。不用特意预先学习它们。
-
+const memoizedCallback = useCallback(
 
 
 （一）Hello World
@@ -578,16 +577,18 @@ function 函数组件名() {
 
 （五十）Hook API 索引
 （1）const value = useContext(NameContext);
-（2）
 
+（2）useReducer
+（2.1）
+const [state, dispatch] = useReducer(reducer, initState);
+（2.2）惰性初始化
+const [state, dispatch] = useReducer(reducer, initState,init);
+function init(initState) {
+  return 计算后的initState
+}
+（2.3）使用Object.is检测state变化。state变化时，使用的组件会重渲染
 
-
-
-
-
-
-
-
+（3）useCallback
 
 
 
