@@ -2,7 +2,7 @@ https://zh-hans.reactjs.org/docs/getting-started.html
 
 
 https://zh-hans.reactjs.org/docs/hooks-reference.html
-const refContainer = useRef(initialValue);
+useImperativeHandle(ref, createHandle, [deps])
 
 
 （一）Hello World
@@ -595,15 +595,15 @@ function init(initState) {
 
 
 （4）useRef
+（4.1）const refObject = useRef(refObjectPointCurrentInitialValue);
+refObject.current的初始值为refObjectPointCurrentInitialValue
+refObject在函数组件整个生命周期不变
 
+（4.2）ref.current只能设置dom节点。useRef.current可以设置任何值，类似于类组件实例变量
+（4.3）自建{current: ...}对象，每次渲染返回不同对象。useRef每次渲染返回相同对象
+（4.4）useRef.current发生变化不会通知，不会重渲染
 
-
-
-
-
-
-
-
+（5）useImperativeHandle
 
 
 
