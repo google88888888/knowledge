@@ -2,7 +2,7 @@ https://zh-hans.reactjs.org/docs/getting-started.html
 
 
 https://zh-hans.reactjs.org/docs/hooks-reference.html
-const memoizedCallback = useCallback(
+const refContainer = useRef(initialValue);
 
 
 （一）Hello World
@@ -588,11 +588,13 @@ function init(initState) {
 }
 （2.3）使用Object.is检测state变化。state变化时，使用的组件会重渲染
 
-（3）useCallback
+
+（3）useCallback和useMemo和useEffect
+（3.1）useCallback和useMemo与useEffect参数一致。区别是useCallback和useMemo不可以处理副作用，useEffect可以处理副作用
+（3.2）useMemo和useCallback都在函数组件首渲染时执行，之后在其依赖的变量改变时执行。都返回缓存的值，useMemo返回变量，useCallback返回函数
 
 
-
-
+（4）useRef
 
 
 
