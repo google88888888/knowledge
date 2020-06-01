@@ -2,7 +2,7 @@ https://zh-hans.reactjs.org/docs/getting-started.html
 
 
 https://zh-hans.reactjs.org/docs/hooks-faq.html
-我该如何实现 shouldComponentUpdate?
+如何避免向下传递回调？
 
 
 （一）Hello World
@@ -581,7 +581,7 @@ function 函数组件名() {
 （2）useReducer
 （2.1）
 const [state, dispatch] = useReducer(reducer, initState);
-（2.2）惰性初始化
+（2.2）惰性初始化，仅首次渲染初始化
 const [state, dispatch] = useReducer(reducer, initState,init);
 function init(initState) {
   return 计算后的initState
@@ -722,10 +722,13 @@ function Example() {
 不用setCount(count + 1);   引用state，永远是初始值0
 
 
+（7）惰性初始化，仅首次渲染初始化
+（7.1）const [stateParam, setStateParam] = useState(createInitStateParam(props.initStateParam));
+每次渲染都会调用createInitStateParam
+（7.2）const [stateParam, setStateParam] = useState(() => createInitStateParam(props.initStateParam));
+仅首次渲染会调用createInitStateParam
 
-
-
-
+（8）
 
 
 
