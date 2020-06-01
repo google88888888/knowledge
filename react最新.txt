@@ -2,7 +2,7 @@ https://zh-hans.reactjs.org/docs/getting-started.html
 
 
 https://zh-hans.reactjs.org/docs/hooks-faq.html
-Hook 是 React 16.8 的新增特性。它可以让你在不编写 class 的情况下使用 state 以及其他的 React 特性。
+我可以在更新时跳过 effect 吗？
 
 
 （一）Hello World
@@ -644,20 +644,67 @@ useDebugValue(date,date => date.toDateString());
 
 
 （五十一）Hooks FAQ
+（1）16.8.0版本开始，支持Hook
+（2）Hook不足
+（2.1）Hook没有覆盖class的getSnapshotBeforeUpdate和getDerivedStateFromError和componentDidCatch生命周期
+（2.2）一些第三方库不兼容Hook
+（2.3）上一轮props或state需自己存useRef.current，Hook目前未提供存
 
+（3）先点击alert，然后三秒内点击add。alert的结果是0不是1
+function Example() {
+  const [count, setCount] = useState(0);
 
+  function onClickAlert() {
+    setTimeout(() => {
+      alert(count);
+    }, 3000);
+  }
 
+  return (
+    <div>
+      <p>{count}</p>
+      <button onClick={() => setCount(count + 1)}>
+        add
+      </button>
+      <button onClick={onClickAlert}>
+        alert
+      </button>
+    </div>
+  );
+}
 
+（4）实现getDerivedStateFromProps
+function Example(newCount) {
+  const [count, setCount] = useState(0);
 
+  if (count !== newCount) {
+    setCount(newCount);
+  }
 
+  return (
+    <p>{count}</p>
+  );
+}
 
+（5）监听dom节点变化，使用callback ref
+function Example() {
+  const [height, setHeight] = useState(0);
 
+  const callbackRef = useCallback(node => {
+    if (node !== null) {
+      setHeight(node.getBoundingClientRect().height);
+    }
+  }, []);
 
+  return (
+    <>
+      <h1 ref={callbackRef}></h1>
+      <h2>{height}</h2>
+    </>
+  );
+}
 
-
-
-
-
+（6）
 
 
 
