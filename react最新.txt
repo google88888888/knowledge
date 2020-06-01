@@ -2,7 +2,7 @@ https://zh-hans.reactjs.org/docs/getting-started.html
 
 
 https://zh-hans.reactjs.org/docs/hooks-faq.html
-我可以在更新时跳过 effect 吗？
+我该如何实现 shouldComponentUpdate?
 
 
 （一）Hello World
@@ -704,12 +704,22 @@ function Example() {
   );
 }
 
-（6）
+（6）初次渲染设置定时器
+function Example() {
+  const [count, setCount] = useState(0);
 
+  useEffect(() => {
+    const id = setInterval(() => {
+      setCount(c => c + 1);
+    }, 1000);
+    return () => clearInterval(id);
+  }, []); //
 
+  return <h1>{count}</h1>;
+}
 
-
-
+使用setCount(c => c + 1);不引用state，指定state如何改变
+不用setCount(count + 1);   引用state，永远是初始值0
 
 
 
