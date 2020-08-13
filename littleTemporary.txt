@@ -1,7 +1,7 @@
 一、浏览器缓存
 （1）https://mp.weixin.qq.com/s?__biz=MzI5MjU0Mjk5MA==&mid=2247483826&idx=2&sn=e38f5e5b928a6aa5c15371505b4e8d71&chksm=ec7e8ed3db0907c545393ea90ee8bfd7dc944ff013957228b200d66929767251b1982340d036&token=816776520&lang=zh_CN#rd
 （2）强缓存和协商缓存
-浏览器加载资源，浏览器判断是否命中强缓存，如果命中强缓存（http的status为200，size为from cache），从缓存中加载资源，不发请求到服务器。如果没命中强缓存，发请求到服务器。服务器判断是否命中协商缓存，如果命中协商缓存，服务器返回请求，不返回资源，浏览器从缓存中加载资源。如果没命中协商缓存，浏览器从服务器加载资源
+浏览器加载资源，浏览器判断是否命中强缓存，如果命中强缓存（http的status为200，size为from cache），从缓存中加载资源，不发请求到服务器。如果没命中强缓存，发请求到服务器。服务器判断是否命中协商缓存，如果命中协商缓存（http的status为304），服务器返回请求，不返回资源，浏览器从缓存中加载资源。如果没命中协商缓存，浏览器从服务器加载资源
 （3）强缓存
 （3.1）判断是否命中强缓存用Expires和Cache-Control，Cache-Control优先级更高
 （3.2）浏览器首次请求资源，服务器返回资源和在respone的header加上Expires（http1.0提出GMT格式的绝对时间），浏览器把资源和所有response的 header缓存。浏览器再次请求该资源，若再次请求时间在缓存Expires时间前，命中缓存，否则没有命中缓存。Expires是绝对时间，修改客户端时间，能影响命中缓存。所以Cache-Control（http1.1提出秒为单位的相对时间）
@@ -9,8 +9,10 @@
 （3.4）Pragma设置页面是否缓存，值为Pragma缓存，值为no-cache不缓存
 （3.5）强缓存静态资源使用，动态资源慎用。引用静态资源的html相当于动态资源，若html被缓存，该html更新后，没有机制通知浏览器该html有更新
 
-
-
+（4）协商缓存
+（4.1）判断是否命中协商缓存用Last-Modified，If-Modified-Since对和ETag、If-None-Match对
+（4.2）浏览器首次请求资源，服务器返回资源和在respone的header加上Last-Modified（该资源在服务器最后修改时间）。浏览器再次请求该资源，request的header加If-Modified-Since（值是首次请求时返回的Last-Modified的值）。服务器根据该If-Modified-Since和该资源在服务器最后修改时间判断该资源是否有变化，若没有变化，命中协商缓存，在response的header不加上Last-Modified。若有变化，没命中协商缓存。Last-Modified，If-Modified-Since有时服务器资源有变化，但最后修改时间却没变，问题不容易被定位，所以ETag、If-None-Match
+（4.3）
 
 
 
