@@ -12,10 +12,12 @@
 （4）协商缓存
 （4.1）判断是否命中协商缓存用Last-Modified，If-Modified-Since对和ETag、If-None-Match对
 （4.2）浏览器首次请求资源，服务器返回资源和在respone的header加上Last-Modified（该资源在服务器最后修改时间）。浏览器再次请求该资源，request的header加If-Modified-Since（值是首次请求时返回的Last-Modified的值）。服务器根据该If-Modified-Since和该资源在服务器最后修改时间判断该资源是否有变化，若没有变化，命中协商缓存，在response的header不加上Last-Modified。若有变化，没命中协商缓存。Last-Modified，If-Modified-Since有时服务器资源有变化，但最后修改时间却没变，问题不容易被定位，所以ETag、If-None-Match
-（4.3）
-
-
-
+（4.3）浏览器首次请求资源，服务器返回资源和在respone的header加上ETag（服务器根据该资源生成唯一字符串标识）。浏览器再次请求该资源，request的header加If-None-Match（值是首次请求时返回的ETag的值）。服务器根据该If-None-Match和服务器根据该资源再一次生成唯一字符串标识判断该资源是否有变化，若没有变化，命中协商缓存，在response的header加上ETag。若有变化，没命中协商缓存。
+（4.4）分布式系统多台机器间Last-Modified必须一致，以免负载均衡到不同机器导致比对失败。分布式系统尽量关掉ETag，每台机器生成的ETag不一样
+（4.5）协商缓存需配合强缓存使用，如果不启用强缓存，协商缓存没有意义
+（4.6）
+当ctrl+f5强刷网页，跳过强缓存和协商缓存，从服务器加载资源
+当f5刷新网页，跳过强缓存，判断是否命中协商缓存
 
 
 
