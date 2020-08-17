@@ -57,7 +57,8 @@ https://www.runoob.com/cssref/css-selectors.html
 （26）同级:only-of-type
 表示同级父元素只有
 
-
+（27）选择器:before
+表示每个选择之前插入内容
 
 
 
