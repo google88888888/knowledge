@@ -57,28 +57,73 @@ https://www.runoob.com/cssref/css-selectors.html
 （26）同级:only-of-type
 表示同级父元素只有
 
-（27）选择器:before
+（27）选择:before
 表示每个选择之前插入内容
+（28）选择:after
+表示每个选择之后插入内容
+（29）选择:first-letter
+表示每个选择内第一个字母
+（30）选择:first-line
+表示每个选择内第一行
+
+（31）:link
+表示未访问链接
+（32）:active
+表示点击一瞬链接
+（33）:visited
+表示访问后链接
+（34）:target
+表示跳转到同页该位置
 
 
+（35）:enabled
+表示已启用的输入
+（36）:disabled
+表示已禁用的输入
+
+（37）:read-write
+表示可读及可写的输入
+（38）:read-only
+表示只读的输入
+
+（39）:optional
+表示选填的输入
+（40）:required
+表示必填的输入
+
+（41）:valid
+表示合法的输入
+（42）:invalid
+表示非法的输入
+
+（43）:in-range
+表示区间内的输入
+（44）:out-of-range
+表示区间外的输入
+
+（45）:focus
+表示获得焦点的输入
+（46）:checked
+表示已选中的输入
 
 
+（47）:hover
+表示悬浮
 
+（48）::selection
+表示选中
 
+（49）选择:lang(属性值)
+表示每个选择lang属性为属性值单词的所有
 
+（50）:root
+表示文档的根元素
 
+（51）选择:empty
+表示每个选择没有子
 
-
-
-
-
-
-
-
-
-
-
-
+（52）:not(选择)
+表示不是选择的元素
 
 
 
