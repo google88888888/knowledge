@@ -1,7 +1,4 @@
-https://www.runoob.com/cssref/css-selectors.html
-
-
-选择器
+选择器  https://www.runoob.com/cssref/css-selectors.html
 （1）* 
 表示所有
 （2）#id
