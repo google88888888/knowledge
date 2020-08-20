@@ -1,5 +1,24 @@
-css函数
-calc()动态计算宽高
-如
-width:calc(100%-100px);
-height:calc(100vh-100px);
+post方式导出
+import axios from 'axios';
+axios
+.post(url,data,{
+	responseType:'blob',
+})
+.then(res=>{
+	if(!res||!res.data){
+		return false;
+	}
+	const url=URL.createObjectURL(res.data);
+	const a=document.createElement('a');
+	const filename=res.headers['content-disposition']?decodeURI(res.headers['content-disposition'].split('filename=')[1]):'export';
+	const evt=document.createEvent('HTMLEvents'); //对firefox的兼容
+	evt.initEvent('click',false,false); //对firefox的兼容
+	a.href=url;
+	a.download=filename;
+	a.dispatchEvent(evt); //对firefox的兼容
+	a.click();
+	URL.revokeObjectURL(url);
+	a.remove();
+})
+.catch(err=>{
+});
