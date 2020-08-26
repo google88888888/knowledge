@@ -1,14 +1,14 @@
 js事件
-（1）Event.preventDefault()和Event.stopPropagation()和Event.stopImmediatePropagation()区别
+（一）Event.preventDefault()和Event.stopPropagation()和Event.stopImmediatePropagation()区别
 Event.preventDefault()阻止默认行为，如（1）点击form submit后提交表单（2）点击a后链接跳转
 Event.stopPropagation()阻止捕获或冒泡后一级及之后的传播
 Event.stopImmediatePropagation()阻止捕获或冒泡同一级后一个及之后的传播
 
-（2）React合成事件和DOM原生事件
+（二）React合成事件和DOM原生事件
 https://juejin.im/post/6844903502729183239
 https://www.jianshu.com/p/601d0cbbbc71
 
-（3）测试代码
+（三）测试代码
 <html>
 <head>
     <meta charset="utf-8">
