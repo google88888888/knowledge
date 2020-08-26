@@ -1,2 +1,6 @@
-addEventListener的第三个参数
-第三个参数为true在js事件捕获中执行，第三个参数为false在js事件冒泡中执行，第三个参数默认为false
+React合成事件和DOM原生事件
+https://juejin.im/post/6844903502729183239
+https://www.jianshu.com/p/601d0cbbbc71
+
+
+
