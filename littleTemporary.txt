@@ -1,6 +1,9 @@
-fiber及对reac生命周期的影响
+浏览器进程线程及fiber及对reac生命周期的影响
+（1）
+https://segmentfault.com/a/1190000012925872
+（2）
 https://segmentfault.com/a/1190000018250127
+（3）
 https://segmentfault.com/a/1190000020035950
 https://www.jianshu.com/p/0d9f558959c3
 
-https://segmentfault.com/a/1190000012925872
