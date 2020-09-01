@@ -1,5 +1,5 @@
 浏览器进程线程及fiber及对reac生命周期的影响
-（1）看到：Browser进程和浏览器内核（Renderer进程）的通信过程
+（1）看到：JS阻塞页面加载
 https://segmentfault.com/a/1190000012925872
 （2）
 https://segmentfault.com/a/1190000018250127
@@ -55,7 +55,8 @@ https://www.jianshu.com/p/0d9f558959c3
 （a）XMLHttpRequest在连接后新开一个线程请求
 
 
-
+（1.6）GUI渲染线程与JS引擎线程是互斥的原因
+js可操作dom元素，如果js操作dom元素同时渲染界面，那么渲染结果不可预期
 
 
 
