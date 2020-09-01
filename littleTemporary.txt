@@ -1,5 +1,5 @@
 浏览器进程线程及fiber及对reac生命周期的影响
-（1）看到：JS阻塞页面加载
+（1）看到：简单梳理下浏览器渲染流程
 https://segmentfault.com/a/1190000012925872
 （2）
 https://segmentfault.com/a/1190000018250127
@@ -21,6 +21,8 @@ https://www.jianshu.com/p/0d9f558959c3
 （1.2.3）GPU进程：最多一个，用于3D绘制等
 （1.2.4）Renderer进程：渲染进程，浏览器内核，默认每个Tab页一个Renderer进程，互不影响，内部多线程，作用：
 （a）页面渲染，js执行，事件循环等
+（1.2.5）SharedWorker进程
+（a）所有Tab页共享，所有Renderer进程共享
 
 （1.3）浏览器有时会将多个进程合并。比如打开多个空白Tab页，浏览器会将多个空白Tab页合并成一个进程
 
@@ -58,6 +60,9 @@ https://www.jianshu.com/p/0d9f558959c3
 （1.6）GUI渲染线程与JS引擎线程是互斥的原因
 js可操作dom元素，如果js操作dom元素同时渲染界面，那么渲染结果不可预期
 
+（1.7）WebWorker
+（1.7.1）JS引擎线程的子线程，完全受JS引擎线程控制，且不能操作DOM
+（1.7.2）JS引擎线程与WebWorker线程通过postMessage序列化对象通信
 
 
 
