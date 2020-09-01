@@ -1,5 +1,5 @@
 浏览器进程线程及fiber及对reac生命周期的影响
-（1）看到：简单梳理下浏览器渲染流程
+（1）看到：load事件与DOMContentLoaded事件的先后
 https://segmentfault.com/a/1190000012925872
 （2）
 https://segmentfault.com/a/1190000018250127
@@ -64,7 +64,8 @@ js可操作dom元素，如果js操作dom元素同时渲染界面，那么渲染�
 （1.7.1）JS引擎线程的子线程，完全受JS引擎线程控制，且不能操作DOM
 （1.7.2）JS引擎线程与WebWorker线程通过postMessage序列化对象通信
 
-
+（1.8）Renderer进程页面渲染过程
+图片
 
 
 
