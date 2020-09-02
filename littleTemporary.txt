@@ -1,12 +1,13 @@
 浏览器进程线程及fiber及对reac生命周期的影响
 （1）看完并整理完
 https://segmentfault.com/a/1190000012925872
-（2）
+（2）看到：五、Fiber 树
 https://segmentfault.com/a/1190000018250127
 （3）
 https://segmentfault.com/a/1190000020035950
 https://www.jianshu.com/p/0d9f558959c3
 
+（1）浏览器进程线程
 （1.1）
 进程是cpu资源分配的最小单位
 线程是cpu调度的最小单位
@@ -84,12 +85,32 @@ js可操作dom元素，如果js操作dom元素同时渲染界面，那么渲染�
 
 
 
+（2）fiber
+（2.1）Fiber指一种数据结构，可用一个纯JS对象表示：
+const fiber = {
+    stateNode,    // 节点实例
+    child,        // 子节点
+    sibling,      // 兄弟节点
+    return,       // 父节点
+}
 
+（2.2）React框架内部运作分为3层：
+Virtual DOM层：描述页面长什么样。
+Reconciler层：调用组件生命周期方法，进行Diff运算。
+Renderer层：根据不同的平台，渲染出对应的页面，如ReactDOM和ReactNative。
 
+（2.3）fiber改动主要在Reconciler层，以前Reconciler叫Stack Reconciler，运行过程不能被打断，现在Reconciler叫Fiber Reconciler，运行过程可以被打断，让优先级更高的任务先执行。
 
-
-
-
+（2.4）Fiber Reconciler执行过程中，分为2个阶段。
+阶段1：render/reconciliation。生成Fiber树，得出需要更新的节点信息，是一个渐进过程，可以被打断，让优先级更高的任务先执行。包括生命周期
+componentWillMount
+componentWillReceiveProps
+shouldComponentUpdate
+componentWillUpdate
+阶段2：commit。将需要更新的节点一次性批量更新，不能被打断。包括生命周期
+componentDidMount
+componentDidUpdate
+componentWillUnmount
 
 
 
