@@ -1,5 +1,5 @@
 浏览器进程线程及fiber及对reac生命周期的影响
-（1）看到：再根据线程来理解下：
+（1）看完并整理完
 https://segmentfault.com/a/1190000012925872
 （2）
 https://segmentfault.com/a/1190000018250127
