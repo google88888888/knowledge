@@ -3,7 +3,7 @@
 https://segmentfault.com/a/1190000012925872
 （2）看完并整理完
 https://segmentfault.com/a/1190000018250127
-（3）看到：
+（3）看完并整理完
 https://segmentfault.com/a/1190000020035950
 https://www.jianshu.com/p/0d9f558959c3
 
@@ -82,9 +82,6 @@ js可操作dom元素，如果js操作dom元素同时渲染界面，那么渲染�
 
 
 
-
-
-
 （2）fiber
 （2.1）Fiber指一种数据结构，可用一个纯JS对象表示：
 const fiber = {
@@ -117,7 +114,8 @@ componentWillUnmount
 （2.5.2）Fiber树首次渲染时一次性生成。后续需要Diff时，根据已有树和最新Virtual DOM信息，生成新树。该新树每生成一个新节点，会将控制权交还给JS引擎线程，去检查有没有优先级更高的任务需要执行。如果没有，继续构建Fiber树。如果有，丢弃正在生成的Fiber树，执行优先级更高的任务，执行完后空闲时重新生成Fiber树。
 
 
-
+（3）对reac生命周期的影响
+（3.1）由于Fiber树的生成机制，Fiber Reconciler阶段1各生命周期可能被重复执行。由于不是纯函数，执行结果不可预测。换成static getDerivedStateFromProps，是纯函数，执行结果可预测。
 
 
 
