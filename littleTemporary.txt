@@ -1,9 +1,9 @@
 浏览器进程线程及fiber及对reac生命周期的影响
 （1）看完并整理完
 https://segmentfault.com/a/1190000012925872
-（2）看到：五、Fiber 树
+（2）看完并整理完
 https://segmentfault.com/a/1190000018250127
-（3）
+（3）看到：
 https://segmentfault.com/a/1190000020035950
 https://www.jianshu.com/p/0d9f558959c3
 
@@ -96,7 +96,7 @@ const fiber = {
 
 （2.2）React框架内部运作分为3层：
 Virtual DOM层：描述页面长什么样。
-Reconciler层：调用组件生命周期方法，进行Diff运算。
+Reconciler层：调用组件生命周期方法，进行Diff计算。
 Renderer层：根据不同的平台，渲染出对应的页面，如ReactDOM和ReactNative。
 
 （2.3）fiber改动主要在Reconciler层，以前Reconciler叫Stack Reconciler，运行过程不能被打断，现在Reconciler叫Fiber Reconciler，运行过程可以被打断，让优先级更高的任务先执行。
@@ -112,14 +112,9 @@ componentDidMount
 componentDidUpdate
 componentWillUnmount
 
-
-
-
-
-
-
-
-
+（2.5）fiber树
+（2.5.1）Fiber Reconciler在阶段1进行Diff计算时，生成一棵Fiber树。该树在Virtual DOM树基础上增加额外信息生成，本质是一个链表。
+（2.5.2）Fiber树首次渲染时一次性生成。后续需要Diff时，根据已有树和最新Virtual DOM信息，生成新树。该新树每生成一个新节点，会将控制权交还给JS引擎线程，去检查有没有优先级更高的任务需要执行。如果没有，继续构建Fiber树。如果有，丢弃正在生成的Fiber树，执行优先级更高的任务，执行完后空闲时重新生成Fiber树。
 
 
 
