@@ -1,2 +1,8 @@
-npm
-https://segmentfault.com/a/1190000021215627
+盒模型
+（1）两种盒模型：标准盒模型，IE盒模型
+（2）
+标准盒模型：content + padding + border + margin，width=content
+IE盒模型：content + padding + border + margin, width=content + padding + border 
+（3）设置统一盒模型
+标准盒模型：box-sizing:content-box
+IE盒模型：box-sizing:border-box 
