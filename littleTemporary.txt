@@ -7,6 +7,181 @@ IE盒模型：content + padding + border + margin, width=content + padding + bor
 标准盒模型：box-sizing:content-box
 IE盒模型：box-sizing:border-box 
 
+深拷贝的实现方式
+const a = [
+	{
+		name:1,
+		value:1,
+		children:[
+			{
+				name:11,
+				value:11,
+				children:[
+					{
+						value:111,
+						name:111
+					}
+				]
+			},
+			{
+				name:12,
+				value:12,
+				children:[
+					{
+						value:111,name:111
+					}
+				]
+			}
+		]
+	},
+	{
+		name:2,
+		value:2,
+		children:[
+			{
+				name:21,
+				value:21
+			}
+		]
+	}
+]
+
+（1）const b = JSON.parse(JSON.stringify(a));
+（2）
+	function deepClone(obj) {
+		let newObj = obj instanceof Array ? []:{};
+		if(typeof obj !== 'object') {
+			return obj;
+		}else{
+			for(var i in obj) {
+				newObj[i] = typeof obj[i] === 'object' ? deepClone(obj[i]) : obj[i];
+			}
+		}
+		return newObj;
+	};
+	const b = deepClone(a);
+
+
+
 BFC
 https://blog.csdn.net/sinat_36422236/article/details/88763187
 https://zhuanlan.zhihu.com/p/25321647
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
