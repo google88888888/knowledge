@@ -6,3 +6,6 @@ IE盒模型：content + padding + border + margin, width=content + padding + bor
 （3）设置统一盒模型
 标准盒模型：box-sizing:content-box
 IE盒模型：box-sizing:border-box 
+
+BFC
+https://blog.csdn.net/sinat_36422236/article/details/88763187
