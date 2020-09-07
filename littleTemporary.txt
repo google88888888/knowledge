@@ -45,7 +45,6 @@ const a = [
 		]
 	}
 ]
-
 （1）const b = JSON.parse(JSON.stringify(a));
 （2）
 	function deepClone(obj) {
@@ -61,18 +60,11 @@ const a = [
 	};
 	const b = deepClone(a);
 
-
+setState同步异步
 
 BFC
 https://blog.csdn.net/sinat_36422236/article/details/88763187
 https://zhuanlan.zhihu.com/p/25321647
-
-
-
-
-
-
-
 
 
 
