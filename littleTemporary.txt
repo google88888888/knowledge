@@ -60,7 +60,68 @@ const a = [
 	};
 	const b = deepClone(a);
 
-setState同步异步
+setState同步异步及执行问题
+（1）setState在react生命周期是异步的，在原生js或异步函数是同步的。
+（2） 下面组件中，render被执行了几次，a和b分别输出什么
+class Test extends Component {
+	constructor(props){
+		super(props);
+		this.state = {
+			a:1,
+			b:2
+		}
+	}
+	componentDidMount(){
+		this.setState({
+			b:1
+		});
+		this.setState({
+			b:2
+		},()=>{
+			this,setState({
+				a:1
+			})
+		})
+		this.setState({
+			a:2
+		});
+		this.setState({
+			a:3
+		})	
+		this.setState({
+			a:4
+		},()=>{
+			this.state({
+				b:5
+			})
+		})
+		setTimeout(()=>{
+			this.setState({
+          		a:7,
+				b:7
+			});
+			this.setState({
+          		b:8
+			});
+		})
+		setTimeout(()=>{
+			this.setState({
+				b:6
+			});
+		})
+	}
+	render(){
+		const { a, b} = this.state;
+		return (
+			<>
+				{a}
+				{b}
+			</>
+		)
+	}
+}
+
+上面组件render被执行了6次。分别为初始化执行1次，在react生命周期componentDidMount执行1次，在setState两次回调中执行1次,在setTimout三次setState执行3次，a，b分别输出7，6。
 
 BFC
 https://blog.csdn.net/sinat_36422236/article/details/88763187
