@@ -136,8 +136,9 @@ Promise中如果没有resolve或者reject，那么将一直处于pending状态�
 
 
 BFC
-https://blog.csdn.net/sinat_36422236/article/details/88763187
 https://zhuanlan.zhihu.com/p/25321647
+https://blog.csdn.net/sinat_36422236/article/details/88763187
+
 
 
 
