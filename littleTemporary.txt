@@ -7,6 +7,8 @@ IE盒模型：content + padding + border + margin, width=content + padding + bor
 标准盒模型：box-sizing:content-box
 IE盒模型：box-sizing:border-box 
 
+
+
 深拷贝的实现方式
 const a = [
 	{
@@ -59,6 +61,10 @@ const a = [
 		return newObj;
 	};
 	const b = deepClone(a);
+
+
+
+
 
 setState同步异步及执行问题
 （1）setState在react生命周期是异步的，在原生js或异步函数是同步的。
@@ -120,8 +126,14 @@ class Test extends Component {
 		)
 	}
 }
-
 上面组件render被执行了6次。分别为初始化执行1次，在react生命周期componentDidMount执行1次，在setState两次回调中执行1次,在setTimout三次setState执行3次，a，b分别输出7，6。
+
+
+
+Promise中如果没有resolve或者reject，那么将一直处于pending状态，不会执行then
+
+
+
 
 BFC
 https://blog.csdn.net/sinat_36422236/article/details/88763187
