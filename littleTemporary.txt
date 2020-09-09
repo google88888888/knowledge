@@ -1,11 +1,2 @@
-css画三角形
-<div></div>
-
-div{
-    width: 0;
-    height: 0;
-    border-width: 100px;
-    border-style: solid;
-    border-color:red  transparent transparent transparent;
-    transform: rotate(90deg);  /*顺时针旋转90°*/
-}
+requestAnimationFrame
+https://www.jianshu.com/p/bba5b9590b93
