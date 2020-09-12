@@ -1,4 +1,4 @@
 requestAnimationFrame
 https://www.jianshu.com/p/bba5b9590b93
 在看antd中Button的Wave
-Wave使用antd的css-animation，Event.js看完，在看index.js中function fixBrowserByTimeout(node)
+Wave使用antd的css-animation，Event.js看完，在看Render to trigger transition event cost 3 frames 为什么？？？
